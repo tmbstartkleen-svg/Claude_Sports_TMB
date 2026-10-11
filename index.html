@@ -1,0 +1,1197 @@
+<title>Edge Suite</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#07090d; --panel:#10141b; --panel2:#161c26; --border:#232b38;
+  --text:#eef2f7; --sub:#8a97a8; --accent:#33e6a0; --accent2:#5b9dff;
+  --danger:#ff5c72; --warn:#ffc65c;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); box-sizing:border-box;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f2f4f8; --panel:#fff; --panel2:#eef1f6; --border:#dbe1ea;
+    --text:#10151d; --sub:#5b6675; --accent:#0aa06a; --accent2:#1f66c9; --danger:#c8384f; --warn:#a8790a;
+  }
+}
+:root[data-theme="dark"]{ --bg:#07090d; --panel:#10141b; --panel2:#161c26; --border:#232b38; --text:#eef2f7; --sub:#8a97a8; --accent:#33e6a0; --accent2:#5b9dff; }
+html{scroll-padding-top:env(safe-area-inset-top,0px);} *{box-sizing:border-box;}
+body{margin:0;background:
+  radial-gradient(1200px 500px at 20% -10%, rgba(51,230,160,.06), transparent),
+  radial-gradient(1200px 500px at 90% 0%, rgba(91,157,255,.06), transparent), var(--bg);
+  color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.45;}
+.wrap{max-width:960px;margin:0 auto;padding:22px 16px 70px;}
+.brand{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+.brand h1{font-size:1.5rem;margin:0;letter-spacing:-.02em;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;}
+.brand span{color:var(--sub);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;}
+.lede{color:var(--sub);font-size:.86rem;margin:2px 0 16px;}
+.callout{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:10px;padding:10px 13px;font-size:.78rem;color:var(--sub);margin-bottom:18px;}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:18px;border-bottom:1px solid var(--border);}
+nav button{background:transparent;border:none;color:var(--sub);font-size:.82rem;font-weight:600;padding:9px 14px;border-radius:9px 9px 0 0;cursor:pointer;white-space:nowrap;}
+nav button.active{color:var(--text);background:var(--panel);box-shadow:inset 0 -2px 0 var(--accent);}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
+.card h2{font-size:1.02rem;margin:0 0 4px;}
+.desc{color:var(--sub);font-size:.8rem;margin:0 0 12px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1;}
+.field label{font-size:.7rem;color:var(--sub);}
+input,select{background:var(--panel2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:8px 10px;font-size:.86rem;width:100%;}
+input:focus,select:focus{outline:1px solid var(--accent2);}
+button.act{cursor:pointer;border:none;border-radius:8px;padding:9px 14px;font-size:.84rem;font-weight:700;}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#22c98a);color:#04241a;}
+.btn-ghost{background:var(--panel2);color:var(--text);border:1px solid var(--border);}
+.btn-danger{background:transparent;color:var(--danger);border:1px solid var(--border);padding:6px 10px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;margin-top:12px;}
+.stat{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+.stat .v{font-size:1.12rem;font-weight:800;} .stat .k{font-size:.66rem;color:var(--sub);text-transform:uppercase;}
+.pos{color:var(--accent);} .neg{color:var(--danger);} .warnc{color:var(--warn);}
+table{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:10px;display:block;overflow-x:auto;}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--border);white-space:nowrap;}
+th{color:var(--sub);font-weight:700;font-size:.66rem;text-transform:uppercase;}
+.leg-row{display:grid;grid-template-columns:1.4fr .8fr .8fr auto;gap:8px;margin-bottom:8px;}
+.chart-wrap{position:relative;height:240px;margin-top:12px;}
+.tab{display:none;} .tab.active{display:block;}
+@media(max-width:600px){.leg-row{grid-template-columns:1fr 1fr;}}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:.82rem;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100vw - 32px);z-index:9;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+.stat-grid:empty{display:none;} #fairTable,#pkTable{display:none;}
+.pk-wide{}
+.scroll-box{max-height:340px;overflow:auto;border:1px solid var(--border);border-radius:10px;margin-top:10px;}
+.scroll-box table{margin-top:0;}
+.best{background:rgba(51,230,160,.14);border-radius:6px;font-weight:700;}
+.mini{padding:3px 8px;font-size:.72rem;border-radius:6px;border:1px solid var(--border);background:var(--panel2);color:var(--text);cursor:pointer;margin-right:3px;}
+.mini:hover{border-color:var(--accent2);}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.chip{display:inline-flex;align-items:center;gap:2px;background:var(--panel2);border:1px solid var(--border);border-radius:999px;padding:2px 4px 2px 10px;font-size:.78rem;}
+.chip button{background:transparent;border:none;color:var(--text);cursor:pointer;font-size:.8rem;padding:4px 6px;border-radius:999px;}
+.chip button.x{color:var(--sub);}
+.chip .n{background:var(--accent2);color:#fff;border-radius:999px;padding:0 7px;font-size:.7rem;margin-left:4px;}
+.film-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.film-grid.single{grid-template-columns:1fr;}
+@media(max-width:700px){.film-grid{grid-template-columns:1fr;}}
+.film-pane{position:relative;background:#000;border-radius:10px;overflow:hidden;min-height:140px;}
+.film-pane video{display:block;width:100%;height:auto;max-height:58vh;background:#000;}
+.film-pane canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;touch-action:none;}
+.film-pane.draw canvas{pointer-events:auto;cursor:crosshair;}
+.film-pane .empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8a97a8;font-size:.82rem;pointer-events:none;text-align:center;padding:12px;}
+.film-pane.has-video .empty{display:none;}
+.film-pane .lbl{position:absolute;top:6px;left:8px;background:rgba(0,0,0,.55);color:#fff;font-size:.68rem;border-radius:6px;padding:1px 7px;pointer-events:none;}
+input[type=color]{padding:2px;height:34px;min-width:44px;}
+input[type=checkbox]{width:auto;}
+.inline{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--sub);}
+@media(max-width:600px){.row .field{min-width:112px;}}
+</style>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="wrap">
+  <div class="brand"><h1>Edge Suite</h1><span>Sportsbook · Prediction Market · Portfolio Risk</span></div>
+  <p class="lede">Fourteen tools, one workflow: shop lines against a sharp book, de-vig the market, size bets together, cap the day’s downside, track closing line value and ROI, check for arbitrage, and break down game film.</p>
+  <div class="callout">Only Arbitrage and Hedge can lock a profit regardless of outcome. Everything else works on expected value and risk. Portfolio Kelly and Day Risk show the odds of a break-even day; they cannot promise one.</div>
+
+  <nav id="tabNav">
+    <button data-tab="legs" class="active">Leg Builder</button>
+    <button data-tab="fair">Fair Odds</button>
+    <button data-tab="pk">Portfolio Kelly</button>
+    <button data-tab="day">Day Risk</button>
+    <button data-tab="sim">Portfolio Sim</button>
+    <button data-tab="arb">Arbitrage</button>
+    <button data-tab="hedge">Hedge Calc</button>
+    <button data-tab="ranker">EV Ranker</button>
+    <button data-tab="cal">Calibration</button>
+    <button data-tab="shop">Line Shop</button>
+    <button data-tab="clv">Line Move &amp; CLV</button>
+    <button data-tab="ledger">Bet Ledger</button>
+    <button data-tab="film">Film Room</button>
+    <button data-tab="slate">Today's Slate</button>
+  </nav>
+
+  <!-- LEG BUILDER -->
+  <div class="tab active" id="tab-legs">
+    <div class="card">
+      <h2>Bankroll &amp; Risk</h2>
+      <div class="row">
+        <div class="field" style="max-width:120px"><label>Bankroll ($)</label><input id="bankroll" type="number" value="100"></div>
+        <div class="field" style="max-width:140px"><label>Kelly fraction</label><input id="kellyFrac" type="number" value="0.35" step="0.05"></div>
+        <div class="field" style="max-width:160px"><label>Max stake / bet (%)</label><input id="maxStake" type="number" value="3" step="0.5"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Parlay Legs</h2>
+      <p class="desc">Sportsbook odds + your true probability (model or de-vigged prediction-market price).</p>
+      <div id="legsContainer"></div>
+      <button class="act btn-ghost" onclick="addLeg()">+ Add leg</button>
+      <table><thead><tr><th>Leg</th><th>Implied %</th><th>True %</th><th>Edge</th></tr></thead><tbody id="legsBody"></tbody></table>
+      <div class="stat-grid">
+        <div class="stat"><div class="v" id="combOdds">—</div><div class="k">Combined odds</div></div>
+        <div class="stat"><div class="v" id="combProb">—</div><div class="k">Combined prob (indep.)</div></div>
+        <div class="stat"><div class="v" id="combEdge">—</div><div class="k">Edge vs market</div></div>
+        <div class="stat"><div class="v" id="kellyStake">—</div><div class="k">Suggested stake</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAIR ODDS -->
+  <div class="tab" id="tab-fair">
+    <div class="card">
+      <h2>Fair Odds (De-vig)</h2>
+      <p class="desc">Strip the sportsbook's margin to get the market's real probability, then compare a prediction-market price against it.</p>
+      <div class="row">
+        <div class="field"><label>Outcome 1 name</label><input id="fn1" value="Home"></div>
+        <div class="field"><label>Odds (Am.)</label><input id="fo1" type="number" value="-300"></div>
+        <div class="field"><label>Pred. market price (¢)</label><input id="fp1" type="number" value="74"></div>
+      </div>
+      <div class="row" style="margin-top:8px;">
+        <div class="field"><label>Outcome 2 name</label><input id="fn2" value="Away"></div>
+        <div class="field"><label>Odds (Am.)</label><input id="fo2" type="number" value="250"></div>
+        <div class="field"><label>Pred. market price (¢)</label><input id="fp2" type="number" value="27"></div>
+      </div>
+      <div class="row" style="margin-top:8px;">
+        <div class="field"><label>Outcome 3 (draw, optional)</label><input id="fn3" placeholder="Draw"></div>
+        <div class="field"><label>Odds (Am.)</label><input id="fo3" type="number"></div>
+        <div class="field"><label>Pred. market price (¢)</label><input id="fp3" type="number"></div>
+      </div>
+      <div class="row" style="margin-top:10px;"><button class="act btn-primary" onclick="runFair()">De-vig</button></div>
+      <div class="stat-grid" id="fairStats"></div>
+      <table id="fairTable"><thead><tr><th>Outcome</th><th>Raw implied</th><th>Multiplicative</th><th>Power</th><th>Shin</th><th>Pred. mkt</th><th>Edge vs Shin</th></tr></thead><tbody id="fairBody"></tbody></table>
+      <p class="desc" style="margin-top:10px;">Power and Shin move more of the margin onto longshots, which matches how books actually shade lines. Use the Shin column as the default fair price.</p>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO KELLY -->
+  <div class="tab" id="tab-pk">
+    <div class="card">
+      <h2>Portfolio Kelly</h2>
+      <p class="desc">Sizes all bets together by maximizing expected log growth under correlation. Correlated bets get smaller stakes than each would get alone.</p>
+      <div id="pkContainer"></div>
+      <button class="act btn-ghost" onclick="addPk()">+ Add bet</button>
+      <div class="row" style="margin-top:12px;">
+        <div class="field" style="max-width:130px"><label>Correlation</label><input id="pkCorr" type="number" value="0.25" step="0.05" min="0" max="0.9"></div>
+        <div class="field" style="max-width:150px"><label>Total exposure cap (%)</label><input id="pkCap" type="number" value="15" step="1"></div>
+        <div class="field" style="max-width:150px"><label>Daily loss budget ($)</label><input id="dayBudget" type="number" value="6" step="0.5"></div>
+        <button class="act btn-primary" onclick="runPlan()">Size portfolio</button>
+      </div>
+      <div class="stat-grid" id="pkStats"></div>
+      <table id="pkTable"><thead><tr><th>Bet</th><th>Odds</th><th>True %</th><th>Edge</th><th>Solo Kelly</th><th>Portfolio Kelly</th><th>Final stake</th></tr></thead><tbody id="pkBody"></tbody></table>
+      <p class="desc" id="pkNote" style="margin-top:10px;"></p>
+    </div>
+  </div>
+
+  <!-- DAY RISK -->
+  <div class="tab" id="tab-day">
+    <div class="card">
+      <h2>Day Risk Planner</h2>
+      <p class="desc">Simulates one slate of the bets from Portfolio Kelly. Stakes are scaled down until the 95% worst case fits inside your daily loss budget.</p>
+      <div class="row"><button class="act btn-primary" onclick="runPlan()">Re-run day</button><span class="desc" id="dayScale" style="margin:0 0 0 6px;"></span></div>
+      <div class="stat-grid" id="dayStats"></div>
+      <div class="chart-wrap"><canvas id="dayChart"></canvas></div>
+      <p class="desc" style="margin-top:10px;">The bar on 0 is every day the wins and losses cancel. A day at or above break-even is common, but a profit on every day is not possible without arbitrage.</p>
+    </div>
+  </div>
+
+  <!-- CALIBRATION -->
+  <div class="tab" id="tab-cal">
+    <div class="card">
+      <h2>Calibration Tracker</h2>
+      <p class="desc">Log every probability you bet on and the result. After enough rows, the Brier score shows whether your numbers beat the market's.</p>
+      <div class="row">
+        <div class="field" style="flex:2"><label>Bet</label><input id="cDesc" placeholder="e.g. Chiefs ML"></div>
+        <div class="field"><label>My prob (%)</label><input id="cP" type="number" placeholder="62"></div>
+        <div class="field"><label>Market prob (%)</label><input id="cM" type="number" placeholder="58"></div>
+        <div class="field"><label>Result</label><select id="cY"><option value="1">Won</option><option value="0">Lost</option></select></div>
+        <button class="act btn-primary" onclick="addCal()">Log</button>
+      </div>
+      <div class="callout" id="calBanner" style="margin:12px 0 0;display:none;"></div>
+      <div class="stat-grid" id="calStats"></div>
+      <div class="chart-wrap"><canvas id="calChart"></canvas></div>
+      <div class="row" style="margin-top:10px;"><button class="act btn-ghost" onclick="clearCal()">Clear all rows</button></div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO SIM -->
+  <div class="tab" id="tab-sim">
+    <div class="card">
+      <h2>Portfolio Monte Carlo</h2>
+      <p class="desc">Multiple parlays, correlated week over week — see if diversification actually survives variance.</p>
+      <div id="portfolioContainer"></div>
+      <button class="act btn-ghost" onclick="addParlay()">+ Add parlay</button>
+      <div class="row" style="margin-top:12px;">
+        <div class="field" style="max-width:140px"><label>Correlation</label><input id="corr" type="number" value="0.2" step="0.05"></div>
+        <div class="field" style="max-width:110px"><label>Weeks</label><input id="weeks" type="number" value="26"></div>
+        <div class="field" style="max-width:110px"><label>Trials</label><input id="trials" type="number" value="3000" step="500"></div>
+        <button class="act btn-primary" onclick="runSim()">Run</button>
+      </div>
+      <div class="stat-grid" id="simStats" style="display:none;"></div>
+      <div class="chart-wrap"><canvas id="bkChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ARBITRAGE -->
+  <div class="tab" id="tab-arb">
+    <div class="card">
+      <h2>Cross-Book Arbitrage</h2>
+      <p class="desc">Best odds per outcome, from different sources on the <em>same event</em>. Sub-100% implied sum = guaranteed profit.</p>
+      <div class="row">
+        <div class="field"><label>Outcome A source</label><input id="arbSrcA" placeholder="DraftKings"></div>
+        <div class="field"><label>Odds (Am.)</label><input id="arbOddsA" type="number" placeholder="-120"></div>
+        <div class="field"><label>Outcome B source</label><input id="arbSrcB" placeholder="Kalshi"></div>
+        <div class="field"><label>Odds (Am.)</label><input id="arbOddsB" type="number" placeholder="+135"></div>
+      </div>
+      <div class="row" style="margin-top:8px;">
+        <div class="field"><label>Outcome C (optional)</label><input id="arbSrcC" placeholder="leave blank if 2-way"></div>
+        <div class="field"><label>Odds (Am.)</label><input id="arbOddsC" type="number"></div>
+        <div class="field" style="max-width:130px"><label>Stake ($)</label><input id="arbStake" type="number" value="100"></div>
+        <button class="act btn-primary" onclick="calcArb()">Check</button>
+      </div>
+      <div class="stat-grid" id="arbStats" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- HEDGE -->
+  <div class="tab" id="tab-hedge">
+    <div class="card">
+      <h2>Live Parlay Hedge</h2>
+      <p class="desc">One leg left on an alive parlay — stake this on the opposite side to lock equal profit either way.</p>
+      <div class="row">
+        <div class="field"><label>Original stake ($)</label><input id="hgStake" type="number" value="10"></div>
+        <div class="field"><label>Full parlay odds (Am.)</label><input id="hgCombo" type="number" placeholder="+450"></div>
+        <div class="field"><label>Hedge odds (Am.)</label><input id="hgHedge" type="number" placeholder="-130"></div>
+        <button class="act btn-primary" onclick="calcHedge()">Calculate</button>
+      </div>
+      <div class="stat-grid" id="hgStats" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- EV RANKER -->
+  <div class="tab" id="tab-ranker">
+    <div class="card">
+      <h2>EV-Ranked Combo Builder</h2>
+      <p class="desc">Candidate legs → best 2–4 leg combos ranked by edge and Kelly stake.</p>
+      <div id="legPool"></div>
+      <button class="act btn-ghost" onclick="addPoolLeg()">+ Add candidate</button>
+      <div class="row" style="margin-top:10px;">
+        <div class="field" style="max-width:150px"><label>Combo size</label>
+          <select id="comboSize"><option value="2">2 legs</option><option value="3" selected>3 legs</option><option value="4">4 legs</option></select>
+        </div>
+        <button class="act btn-primary" onclick="rankCombos()">Rank</button>
+      </div>
+      <table id="comboTable" style="display:none;"><thead><tr><th>Combo</th><th>Odds</th><th>Prob</th><th>Edge</th><th>Kelly</th></tr></thead><tbody id="comboBody"></tbody></table>
+    </div>
+  </div>
+
+  <!-- LINE SHOP -->
+  <div class="tab" id="tab-shop">
+    <div class="card">
+      <h2>Line Shop &amp; EV</h2>
+      <p class="desc">Enter a sharp book's price as the reference, then each book's price on both sides. The tool finds the best number on each side and shows which prices beat the sharp book's no-vig line. The example prices below are made up; replace them with live ones.</p>
+      <div class="row">
+        <div class="field"><label>Side A</label><input id="shA" value="Home"></div>
+        <div class="field"><label>Side B</label><input id="shB" value="Away"></div>
+        <div class="field"><label>Sharp ref. odds, A</label><input id="shRA" type="number" value="-118"></div>
+        <div class="field"><label>Sharp ref. odds, B</label><input id="shRB" type="number" value="104"></div>
+      </div>
+      <div class="leg-row" style="margin-top:12px;font-size:.68rem;color:var(--sub);text-transform:uppercase;"><div>Book</div><div>Odds A</div><div>Odds B</div><div></div></div>
+      <div id="shBooks"></div>
+      <div class="row" style="margin-top:6px;">
+        <button class="act btn-ghost" onclick="addBook()">+ Add book</button>
+        <button class="act btn-primary" onclick="runShop()">Shop lines</button>
+      </div>
+      <div class="stat-grid" id="shStats"></div>
+      <div class="scroll-box" id="shWrap" style="display:none;"><table id="shTable"><thead><tr><th>Book</th><th>Odds A</th><th>EV A</th><th>Odds B</th><th>EV B</th><th>Hold</th><th>Book no-vig A vs sharp</th></tr></thead><tbody id="shBody"></tbody></table></div>
+      <p class="desc" style="margin-top:10px;" id="shNote"></p>
+    </div>
+  </div>
+
+  <!-- LINE MOVE & CLV -->
+  <div class="tab" id="tab-clv">
+    <div class="card">
+      <h2>Line Movement &amp; Closing Line Value</h2>
+      <p class="desc">Log the price you got and the price at close. If you keep beating the close, your bets are being priced better than the market's final view, which is the best early sign of a real edge. Add the other side's closing price to remove the vig from the close.</p>
+      <div class="row">
+        <div class="field" style="flex:2"><label>Bet</label><input id="clvD" placeholder="e.g. Chiefs -3"></div>
+        <div class="field"><label>Open odds</label><input id="clvO" type="number" placeholder="-110"></div>
+        <div class="field"><label>Your odds</label><input id="clvBet" type="number" placeholder="-105"></div>
+        <div class="field"><label>Close odds</label><input id="clvC" type="number" placeholder="-125"></div>
+        <div class="field"><label>Close, other side</label><input id="clvX" type="number" placeholder="+105"></div>
+        <button class="act btn-primary" onclick="addClv()">Log</button>
+      </div>
+      <div class="callout" id="clvBanner" style="margin:12px 0 0;display:none;"></div>
+      <div class="stat-grid" id="clvStats"></div>
+      <p class="desc" id="clvChartNote" style="margin-top:12px;display:none;">Log at least two bets to see the running average.</p>
+      <div class="chart-wrap" id="clvChartWrap"><canvas id="clvChart"></canvas></div>
+      <div class="scroll-box"><table><thead><tr><th>Bet</th><th>Open</th><th>Yours</th><th>Close</th><th>Line move</th><th>CLV</th><th></th></tr></thead><tbody id="clvBody"></tbody></table></div>
+      <div class="row" style="margin-top:10px;"><button class="act btn-ghost" onclick="clearClv()">Clear all rows</button></div>
+      <p class="desc" id="clvNote" style="margin-top:10px;display:none;">* No closing price for the other side was entered, so the close still includes the book's margin and CLV reads lower than it really is.</p>
+      <p class="desc" style="margin-top:10px;">CLV is a leading indicator, not a result. It takes roughly 100 or more bets before a positive average means much.</p>
+    </div>
+  </div>
+
+  <!-- BET LEDGER -->
+  <div class="tab" id="tab-ledger">
+    <div class="card">
+      <h2>Bet Ledger &amp; ROI Cycles</h2>
+      <p class="desc">Log every bet when you place it and settle it when it finishes. The ledger compares what actually won with what the odds implied, and breaks ROI into weekly or monthly cycles.</p>
+      <div class="row">
+        <div class="field" style="max-width:150px"><label>Date</label><input id="lgDate" type="date"></div>
+        <div class="field" style="flex:2"><label>Bet</label><input id="lgDesc" placeholder="e.g. Chiefs ML"></div>
+        <div class="field" style="max-width:110px"><label>Sport</label><input id="lgSport" list="lgSports" placeholder="NFL"><datalist id="lgSports"><option>NFL</option><option>NBA</option><option>MLB</option><option>NHL</option><option>NCAAF</option><option>NCAAB</option><option>Soccer</option><option>UFC</option></datalist></div>
+        <div class="field" style="max-width:100px"><label>Odds</label><input id="lgOdds" type="number" placeholder="-110"></div>
+        <div class="field" style="max-width:100px"><label>Stake ($)</label><input id="lgStake" type="number" placeholder="2"></div>
+        <button class="act btn-primary" onclick="addLedger()">Add bet</button>
+      </div>
+      <div class="callout" id="lgBanner" style="margin:12px 0 0;display:none;"></div>
+      <div class="stat-grid" id="lgStats"></div>
+      <p class="desc" id="lgChartNote" style="margin-top:12px;display:none;">Settle at least two bets to see the profit curve.</p>
+      <div class="chart-wrap" id="lgChartWrap"><canvas id="lgChart"></canvas></div>
+      <div class="row" style="margin-top:14px;"><div class="field" style="max-width:170px"><label>Cycle length</label><select id="lgCycle" onchange="renderLedger()"><option value="week">Weekly</option><option value="month">Monthly</option></select></div></div>
+      <div class="scroll-box"><table><thead><tr><th>Cycle</th><th>Bets</th><th>Staked</th><th>P&amp;L</th><th>ROI</th><th>Hit rate</th></tr></thead><tbody id="lgCycBody"></tbody></table></div>
+      <div class="scroll-box"><table><thead><tr><th>Sport</th><th>Bets</th><th>Staked</th><th>P&amp;L</th><th>ROI</th></tr></thead><tbody id="lgSportBody"></tbody></table></div>
+      <div class="scroll-box"><table><thead><tr><th>Date</th><th>Bet</th><th>Sport</th><th>Odds</th><th>Stake</th><th>Result</th><th>P&amp;L</th><th></th></tr></thead><tbody id="lgBody"></tbody></table></div>
+      <div class="row" style="margin-top:10px;"><button class="act btn-ghost" onclick="exportLedger()">Copy CSV</button><button class="act btn-ghost" onclick="clearLedger()">Clear all rows</button></div>
+    </div>
+  </div>
+
+  <!-- FILM ROOM -->
+
+  <!-- TODAY'S SLATE -->
+  <div class="tab" id="tab-slate">
+    <div class="card">
+      <h2>Today's Slate</h2>
+      <p class="desc">Reads the <code>slate.json</code> built by the scheduled pipeline: DraftKings and other books, Kalshi and Polymarket, with fair prices, arbitrage, edge bets and a one-day simulation. On your Netlify site it loads by itself. Here, load the file by hand.</p>
+      <div class="row">
+        <div class="field" style="max-width:320px"><label>Load slate.json</label><input id="slFile" type="file" accept=".json,application/json"></div>
+        <button class="act btn-ghost" onclick="slateFetch(true)">Reload from site</button>
+        <button class="act btn-ghost" onclick="slateExample()">Show example</button>
+      </div>
+      <div class="callout" id="slNote" style="margin:12px 0 0;"></div>
+      <div class="stat-grid" id="slStats"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Data sources used</h2>
+      <div id="slSources" class="desc"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Our own model (Elo + rest, built from free results)</h2>
+      <div id="slModel" class="desc"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Games</h2>
+      <table><thead><tr><th>Game</th><th>Books</th><th>Fair (home / away)</th><th>Best home</th><th>Best away</th><th>Arb</th><th>Model P(home)</th><th>Edge bets</th><th>Prediction mkt gap</th></tr></thead><tbody id="slBody"></tbody></table>
+    </div>
+  </div>
+
+  <div class="tab" id="tab-film">
+    <div class="card">
+      <h2>Film Room</h2>
+      <p class="desc">Load game film from your own device (it stays in your browser and is never uploaded), tag events as they happen, draw on the frame, and keep two camera angles in sync. Tags and drawings save in this browser; the video does not, so load the same file again to pick up where you left off.</p>
+      <div class="row">
+        <div class="field"><label>Angle A video</label><input type="file" id="fvA" accept="video/*"></div>
+        <div class="field"><label>Angle B video (optional)</label><input type="file" id="fvB" accept="video/*"></div>
+      </div>
+      <div class="film-grid single" id="filmGrid">
+        <div class="film-pane" id="paneA"><video id="vidA" playsinline controls preload="metadata"></video><canvas id="cvA"></canvas><div class="lbl">A</div><div class="empty">Choose a video file above to start</div></div>
+        <div class="film-pane" id="paneB" style="display:none;"><video id="vidB" playsinline controls muted preload="metadata"></video><canvas id="cvB"></canvas><div class="lbl">B</div><div class="empty"></div></div>
+      </div>
+      <div class="row" style="margin-top:12px;">
+        <button class="act btn-ghost" onclick="filmStep(-1)" title="Back one frame (left arrow)">◀ Frame</button>
+        <button class="act btn-primary" onclick="filmToggle()" title="Space">Play / Pause</button>
+        <button class="act btn-ghost" onclick="filmStep(1)" title="Forward one frame (right arrow)">Frame ▶</button>
+        <div class="field" style="max-width:110px"><label>Speed</label><select id="fSpeed" onchange="filmSpeed()"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></div>
+        <div class="field" style="max-width:80px"><label>Frame rate</label><input id="fFps" type="number" value="30" min="1" max="120"></div>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <label class="inline"><input type="checkbox" id="fLink" onchange="filmLink()"> Keep angle B in sync with A</label>
+        <div class="field" style="max-width:120px"><label>B offset (s)</label><input id="fOffset" type="number" value="0" step="0.1" onchange="filmLink()"></div>
+        <button class="act btn-ghost" onclick="filmMatch()">Match offset to current frames</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Telestration</h2>
+      <p class="desc">Turn on draw mode, then draw straight on the video. Drawings are saved with the next tag you log, and come back when you jump to that tag.</p>
+      <div class="row">
+        <button class="act btn-ghost" id="fdToggle" onclick="drawToggle()">Draw mode: off</button>
+        <div class="field" style="max-width:120px"><label>Tool</label><select id="fdTool" onchange="film.tool=this.value"><option value="pen">Pen</option><option value="line">Line</option><option value="arrow">Arrow</option><option value="circle">Circle</option></select></div>
+        <div class="field" style="max-width:70px"><label>Color</label><input id="fdColor" type="color" value="#ffd23f"></div>
+        <div class="field" style="max-width:100px"><label>Width</label><select id="fdWidth"><option value="2">Thin</option><option value="4" selected>Medium</option><option value="7">Thick</option></select></div>
+        <button class="act btn-ghost" onclick="drawUndo()">Undo</button>
+        <button class="act btn-ghost" onclick="drawClear()">Clear</button>
+        <label class="inline"><input type="checkbox" id="fdClear" checked> Clear drawings on play</label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Event Tags</h2>
+      <p class="desc">Tap a tag (or press its number key) to log it at the current time. Pick a preset to skip the setup, then edit it.</p>
+      <div class="row">
+        <div class="field" style="max-width:170px"><label>Preset</label><select id="fPreset" onchange="loadPreset(this.value)"><option value="">Choose a preset…</option><option value="football">Football</option><option value="basketball">Basketball</option><option value="soccer">Soccer</option><option value="blank">Empty</option></select></div>
+        <div class="field" style="max-width:200px"><label>New tag</label><input id="fNewTag" placeholder="e.g. Blitz pickup"></div>
+        <button class="act btn-ghost" onclick="addTagDef()">Add tag</button>
+      </div>
+      <div class="chips" id="fTags"></div>
+      <div class="row" style="margin-top:14px;">
+        <div class="field" style="max-width:200px"><label>Show</label><select id="fFilter" onchange="renderEvents()"><option value="">All tags</option></select></div>
+        <button class="act btn-ghost" onclick="exportEvents()">Copy CSV</button>
+        <button class="act btn-ghost" onclick="clearEvents()">Clear tags for this video</button>
+      </div>
+      <div class="chips" id="fSummary"></div>
+      <div class="scroll-box"><table><thead><tr><th>Time</th><th>Tag</th><th>Note</th><th></th></tr></thead><tbody id="fBody"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== Edge Suite math core =====
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function normCdf(x){const t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return x>0?1-p:p;}
+function makeRandn(rng){return function(){let u=0,v=0;while(u===0)u=rng();while(v===0)v=rng();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};}
+function amToDec(a){a=Number(a);if(!a||Math.abs(a)<100)return null;return a>0?1+a/100:1+100/Math.abs(a);}
+
+// ---- de-vig: input array of raw implied probs (sum > 1), returns fair probs summing to 1
+function devig(q,method){
+  const S=q.reduce((s,x)=>s+x,0);
+  if(method==='power'){
+    let lo=0.2,hi=5;
+    for(let i=0;i<80;i++){const k=(lo+hi)/2;const s=q.reduce((a,x)=>a+Math.pow(x,k),0);if(s>1)lo=k;else hi=k;}
+    const k=(lo+hi)/2;return q.map(x=>Math.pow(x,k));
+  }
+  if(method==='shin'){
+    const f=z=>q.map(x=>(Math.sqrt(z*z+4*(1-z)*x*x/S)-z)/(2*(1-z)));
+    let lo=0,hi=0.4;
+    for(let i=0;i<80;i++){const z=(lo+hi)/2;const s=f(z).reduce((a,x)=>a+x,0);if(s>1)lo=z;else hi=z;}
+    const p=f((lo+hi)/2);const t=p.reduce((a,x)=>a+x,0);return p.map(x=>x/t);
+  }
+  return q.map(x=>x/S);
+}
+
+// ---- correlated win/lose scenarios (one-factor Gaussian copula)
+function genScenarios(probs,rho,N,seed){
+  const rng=mulberry32(seed||12345),randn=makeRandn(rng),n=probs.length;
+  const W=new Uint8Array(N*n),sr=Math.sqrt(rho),si=Math.sqrt(1-rho);
+  for(let s=0;s<N;s++){const Z=randn();for(let i=0;i<n;i++){W[s*n+i]=normCdf(sr*Z+si*randn())<probs[i]?1:0;}}
+  return W;
+}
+function projectCapped(f,cap,maxEach){
+  let g=f.map(x=>Math.min(Math.max(x,0),maxEach));
+  const s=g.reduce((a,x)=>a+x,0);
+  if(s<=cap)return g;
+  // project onto simplex sum=cap (then re-clip)
+  const u=[...f].sort((a,b)=>b-a);let css=0,rho=0,theta=0;
+  for(let j=0;j<u.length;j++){css+=u[j];const t=(css-cap)/(j+1);if(u[j]-t>0){rho=j;theta=t;}}
+  g=f.map(x=>Math.min(Math.max(x-theta,0),maxEach));
+  const s2=g.reduce((a,x)=>a+x,0);if(s2>cap)g=g.map(x=>x*cap/s2);
+  return g;
+}
+// maximize E[log(1+sum f_i r_i)] with f>=0, sum f<=cap, f_i<=maxEach
+function portfolioKelly(bets,rho,opts){
+  opts=opts||{};const n=bets.length,N=opts.N||20000,cap=opts.cap??0.9,maxEach=opts.maxEach??1;
+  const W=genScenarios(bets.map(b=>b.p),rho,N,opts.seed);
+  const R=bets.map(b=>[-1,b.dec-1]);
+  const G=f=>{let tot=0;for(let s=0;s<N;s++){let w=1;for(let i=0;i<n;i++)w+=f[i]*R[i][W[s*n+i]];tot+=Math.log(w);}return tot/N;};
+  const grad=f=>{const g=new Array(n).fill(0);for(let s=0;s<N;s++){let w=1;for(let i=0;i<n;i++)w+=f[i]*R[i][W[s*n+i]];for(let i=0;i<n;i++)g[i]+=R[i][W[s*n+i]]/w;}return g.map(x=>x/N);};
+  let f=bets.map(b=>{const bb=b.dec-1;return Math.max(0,(bb*b.p-(1-b.p))/bb)/n;});
+  f=projectCapped(f,cap,maxEach);let cur=G(f),step=0.5;
+  for(let it=0;it<400;it++){
+    const g=grad(f);let improved=false;
+    for(let tries=0;tries<25;tries++){
+      const cand=projectCapped(f.map((x,i)=>x+step*g[i]),cap,maxEach),v=G(cand);
+      if(v>cur+1e-12){f=cand;cur=v;improved=true;step*=1.5;break;}step/=2;
+    }
+    if(!improved)break;
+  }
+  return {f,growth:cur};
+}
+// ---- one-day P&L distribution for given stake fractions
+function dayDistribution(bets,fracs,rho,bankroll,opts){
+  opts=opts||{};const n=bets.length,N=opts.N||20000;
+  const W=genScenarios(bets.map(b=>b.p),rho,N,opts.seed||777);
+  const pnl=new Float64Array(N);
+  for(let s=0;s<N;s++){let t=0;for(let i=0;i<n;i++)t+=W[s*n+i]?fracs[i]*bankroll*(bets[i].dec-1):-fracs[i]*bankroll;pnl[s]=t;}
+  const a=Array.from(pnl).sort((x,y)=>x-y);
+  const mean=a.reduce((x,y)=>x+y,0)/N,sd=Math.sqrt(a.reduce((x,y)=>x+(y-mean)*(y-mean),0)/N);
+  const q=p=>a[Math.min(N-1,Math.floor(p*N))];
+  const var95=-q(0.05),k=Math.floor(0.05*N),cvar95=-(a.slice(0,k).reduce((x,y)=>x+y,0)/Math.max(1,k));
+  const pProfit=a.filter(x=>x>0).length/N,pBE=a.filter(x=>x>=-1e-9).length/N;
+  return {mean,sd,var95,cvar95,pProfit,pBreakEven:pBE,best:a[N-1],worst:a[0],p10:q(0.1),p50:q(0.5),p90:q(0.9),hist:a};
+}
+// scale stakes so 95% VaR of the day <= budget (dollars). returns scale in [0,1]
+function fitRiskBudget(bets,fracs,rho,bankroll,budget,opts){
+  let lo=0,hi=1;
+  const ok=s=>dayDistribution(bets,fracs.map(x=>x*s),rho,bankroll,opts).var95<=budget+1e-9;
+  if(ok(1))return 1;
+  for(let i=0;i<22;i++){const m=(lo+hi)/2;if(ok(m))lo=m;else hi=m;}
+  return lo;
+}
+// ---- calibration
+function calibration(rows){
+  const r=rows.filter(x=>x.p>0&&x.p<1&&(x.y===0||x.y===1));const n=r.length;
+  if(!n)return {n:0};
+  const brier=r.reduce((s,x)=>s+(x.p-x.y)**2,0)/n;
+  const ll=-r.reduce((s,x)=>s+(x.y?Math.log(x.p):Math.log(1-x.p)),0)/n;
+  const withM=r.filter(x=>x.m>0&&x.m<1);
+  const mBrier=withM.length?withM.reduce((s,x)=>s+(x.m-x.y)**2,0)/withM.length:null;
+  const mine=withM.length?withM.reduce((s,x)=>s+(x.p-x.y)**2,0)/withM.length:null;
+  const bins=[];for(let b=0;b<10;b++){const rb=r.filter(x=>Math.min(9,Math.floor(x.p*10))===b);
+    if(rb.length)bins.push({lo:b/10,hi:(b+1)/10,n:rb.length,pred:rb.reduce((s,x)=>s+x.p,0)/rb.length,obs:rb.reduce((s,x)=>s+x.y,0)/rb.length});}
+  return {n,brier,logloss:ll,marketBrier:mBrier,myBrierOnMarketRows:mine,nMarket:withM.length,bins};
+}
+
+
+</script>
+<script>
+// tabs
+document.getElementById('tabNav').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#tabNav button').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); document.getElementById('tab-'+b.dataset.tab).classList.add('active');
+});
+
+function americanToDecimal(a){ a=Number(a); if(!a) return null; return a>0?1+a/100:1+100/Math.abs(a); }
+function fmtPct(x){ return (x*100).toFixed(1)+'%'; }
+
+// ---- Leg Builder ----
+let legIdx=0;
+function addLeg(prefill){
+  legIdx++; const id='leg'+legIdx;
+  const div=document.createElement('div'); div.className='leg-row'; div.id=id;
+  div.innerHTML=`<div class="field"><input placeholder="e.g. Chiefs -3.5" value="${prefill?.desc||''}" oninput="recalcLegs()" class="ld"></div>
+    <div class="field"><input type="number" placeholder="-110" value="${prefill?.odds??''}" oninput="recalcLegs()" class="lo"></div>
+    <div class="field"><input type="number" placeholder="55" value="${prefill?.prob??''}" oninput="recalcLegs()" class="lp"></div>
+    <button class="act btn-danger" onclick="document.getElementById('${id}').remove();recalcLegs()">✕</button>`;
+  document.getElementById('legsContainer').appendChild(div); recalcLegs();
+}
+function recalcLegs(){
+  const rows=[...document.querySelectorAll('#legsContainer .leg-row')];
+  const body=document.getElementById('legsBody'); body.innerHTML='';
+  let combOdds=1, combProb=1, any=false;
+  rows.forEach(r=>{
+    const desc=r.querySelector('.ld').value||'Leg', odds=r.querySelector('.lo').value, prob=r.querySelector('.lp').value;
+    const imp=odds?1/americanToDecimal(odds):null, dec=americanToDecimal(odds), tp=prob?Number(prob)/100:null;
+    if(imp&&tp!=null){ any=true; const edge=(tp-imp)*100; combOdds*=dec; combProb*=tp;
+      const tr=document.createElement('tr');
+      tr.innerHTML=`<td>${desc}</td><td>${(imp*100).toFixed(1)}%</td><td>${(tp*100).toFixed(1)}%</td><td class="${edge>=0?'pos':'neg'}">${edge>=0?'+':''}${edge.toFixed(1)}pp</td>`;
+      body.appendChild(tr); }
+  });
+  document.getElementById('combOdds').textContent=any?combOdds.toFixed(2)+'x':'—';
+  document.getElementById('combProb').textContent=any?(combProb*100).toFixed(1)+'%':'—';
+  if(any){
+    const marketImplied=1/combOdds, edge=combProb-marketImplied;
+    const eE=document.getElementById('combEdge'); eE.textContent=(edge>=0?'+':'')+(edge*100).toFixed(1)+'pp'; eE.className='v '+(edge>=0?'pos':'neg');
+    const b=combOdds-1,p=combProb,q=1-p,kellyRaw=b>0?(b*p-q)/b:-1;
+    const kf=Number(document.getElementById('kellyFrac').value)||0, bk=Number(document.getElementById('bankroll').value)||0, maxPct=Number(document.getElementById('maxStake').value)||100;
+    let sp=Math.max(0,kellyRaw*kf*100); sp=Math.min(sp,maxPct);
+    const sE=document.getElementById('kellyStake');
+    if(kellyRaw<=0){ sE.textContent='No bet (neg. edge)'; sE.className='v neg'; }
+    else { sE.textContent='$'+(bk*sp/100).toFixed(2)+' ('+sp.toFixed(1)+'%)'; sE.className='v pos'; }
+  } else { document.getElementById('combEdge').textContent='—'; document.getElementById('kellyStake').textContent='—'; }
+}
+
+// ---- Portfolio Sim ----
+let parlayIdx=0;
+function addParlay(prefill){
+  parlayIdx++; const id='pl'+parlayIdx;
+  const div=document.createElement('div'); div.className='leg-row'; div.id=id;
+  div.innerHTML=`<div class="field"><input placeholder="Parlay name" value="${prefill?.name||''}" class="pn"></div>
+    <div class="field"><input type="number" placeholder="Combined odds e.g. 4.5" value="${prefill?.odds??''}" class="po"></div>
+    <div class="field"><input type="number" placeholder="True win % e.g. 25" value="${prefill?.prob??''}" class="pp"></div>
+    <button class="act btn-danger" onclick="document.getElementById('${id}').remove()">✕</button>`;
+  document.getElementById('portfolioContainer').appendChild(div);
+}
+function normCdf(x){ const t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2);
+  let p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274)))); return x>0?1-p:p; }
+function randn(){ let u=0,v=0; while(u===0)u=Math.random(); while(v===0)v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+let bkChart=null;
+function runSim(){
+  const parlays=[...document.querySelectorAll('#portfolioContainer .leg-row')].map(r=>({
+    name:r.querySelector('.pn').value||'Parlay', odds:Number(r.querySelector('.po').value), prob:Number(r.querySelector('.pp').value)/100
+  })).filter(p=>p.odds>1&&p.prob>0&&p.prob<1);
+  if(!parlays.length){ notify('Add at least one valid parlay.'); return; }
+  const bk0=Number(document.getElementById('bankroll').value)||100, kf=Number(document.getElementById('kellyFrac').value)||0.3;
+  const maxPct=(Number(document.getElementById('maxStake').value)||3)/100, rho=Math.min(0.9,Math.max(0,Number(document.getElementById('corr').value)));
+  const weeks=Math.max(1,Number(document.getElementById('weeks').value)||26), trials=Math.max(200,Number(document.getElementById('trials').value)||3000);
+  const stakes=parlays.map(p=>{ const b=p.odds-1,q=1-p.prob,raw=b>0?(b*p.prob-q)/b:0; return Math.min(Math.max(raw*kf,0),maxPct); });
+  const endings=[], trajectories=[], sampleEvery=Math.max(1,Math.floor(trials/40));
+  for(let t=0;t<trials;t++){
+    let bk=bk0; const traj=[bk];
+    for(let w=0;w<weeks;w++){
+      const Z=randn(); let weekPnl=0;
+      parlays.forEach((p,i)=>{ const zi=Math.sqrt(rho)*Z+Math.sqrt(1-rho)*randn(); const win=normCdf(zi)<p.prob; const stake=bk*stakes[i];
+        weekPnl+=win?stake*(p.odds-1):-stake; });
+      bk=Math.max(0,bk+weekPnl); traj.push(bk);
+    }
+    endings.push(bk); if(t%sampleEvery===0) trajectories.push(traj);
+  }
+  endings.sort((a,b)=>a-b);
+  const median=endings[Math.floor(trials*0.5)], p10=endings[Math.floor(trials*0.1)], ruin=endings.filter(e=>e<10).length/trials;
+  const medGrowth=Math.pow(median/bk0,1/weeks)-1;
+  const el=document.getElementById('simStats'); el.style.display='grid'; el.innerHTML=`
+    <div class="stat"><div class="v ${median>=bk0?'pos':'neg'}">$${median.toFixed(2)}</div><div class="k">Median ending</div></div>
+    <div class="stat"><div class="v ${p10>=bk0?'pos':'warnc'}">$${p10.toFixed(2)}</div><div class="k">10th pct</div></div>
+    <div class="stat"><div class="v ${ruin>0.1?'neg':(ruin>0.02?'warnc':'pos')}">${(ruin*100).toFixed(1)}%</div><div class="k">Prob. of ruin</div></div>
+    <div class="stat"><div class="v ${medGrowth>=0?'pos':'neg'}">${(medGrowth*100).toFixed(2)}%</div><div class="k">Median weekly growth</div></div>`;
+  const labels=Array.from({length:weeks+1},(_,i)=>'W'+i);
+  const datasets=trajectories.map(traj=>({data:traj,borderWidth:1,pointRadius:0,borderColor:'rgba(51,230,160,0.12)',fill:false,tension:.15}));
+  const medTraj=labels.map((_,w)=>{ const vals=trajectories.map(tr=>tr[w]).sort((a,b)=>a-b); return vals[Math.floor(vals.length*0.5)]||0; });
+  datasets.push({data:medTraj,borderColor:'#5b9dff',borderWidth:2.5,pointRadius:0,tension:.15});
+  if(bkChart) bkChart.destroy();
+  bkChart=new Chart(document.getElementById('bkChart'),{type:'line',data:{labels,datasets},options:{animation:false,
+    plugins:{legend:{display:false}}, scales:{x:{ticks:{maxTicksLimit:8,color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}, y:{ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}}}});
+}
+
+// ---- Arbitrage ----
+function calcArb(){
+  const outs=[{src:document.getElementById('arbSrcA').value||'A',odds:document.getElementById('arbOddsA').value},
+              {src:document.getElementById('arbSrcB').value||'B',odds:document.getElementById('arbOddsB').value}];
+  const cOdds=document.getElementById('arbOddsC').value;
+  if(cOdds) outs.push({src:document.getElementById('arbSrcC').value||'C',odds:cOdds});
+  const decs=outs.map(o=>americanToDecimal(o.odds));
+  if(decs.some(d=>!d)){ notify('Enter valid odds for at least two outcomes.'); return; }
+  const impSum=decs.reduce((s,d)=>s+1/d,0), stakeTotal=Number(document.getElementById('arbStake').value)||100;
+  const isArb=impSum<1, roi=(1/impSum)-1;
+  const el=document.getElementById('arbStats'); el.style.display='grid'; el.innerHTML=`
+    <div class="stat"><div class="v ${isArb?'pos':'neg'}">${isArb?'Arbitrage found':'No arbitrage'}</div><div class="k">Implied sum: ${fmtPct(impSum)}</div></div>
+    <div class="stat"><div class="v ${isArb?'pos':'neg'}">${isArb?'+'+(roi*100).toFixed(2)+'%':'—'}</div><div class="k">Guaranteed ROI</div></div>`;
+  outs.forEach((o,i)=>{ const stake=stakeTotal*(1/decs[i])/impSum;
+    el.innerHTML+=`<div class="stat"><div class="v">$${stake.toFixed(2)}</div><div class="k">Stake on ${o.src}</div></div>`; });
+  if(isArb) el.innerHTML+=`<div class="stat"><div class="v pos">$${(stakeTotal*roi).toFixed(2)}</div><div class="k">Locked profit</div></div>`;
+}
+
+// ---- Hedge ----
+function calcHedge(){
+  const stake=Number(document.getElementById('hgStake').value), comboDec=americanToDecimal(document.getElementById('hgCombo').value), hedgeDec=americanToDecimal(document.getElementById('hgHedge').value);
+  if(!stake||!comboDec||!hedgeDec){ notify('Fill in all three fields.'); return; }
+  const P=stake*comboDec, H=P/hedgeDec, locked=P-stake-H;
+  document.getElementById('hgStats').style.display='grid';
+  document.getElementById('hgStats').innerHTML=`
+    <div class="stat"><div class="v">$${H.toFixed(2)}</div><div class="k">Hedge stake</div></div>
+    <div class="stat"><div class="v ${locked>=0?'pos':'neg'}">${locked>=0?'+':''}$${locked.toFixed(2)}</div><div class="k">${locked>=0?'Locked profit':'Locked loss'}</div></div>
+    <div class="stat"><div class="v">$${P.toFixed(2)}</div><div class="k">Payout if parlay hits</div></div>
+    <div class="stat"><div class="v">$${(stake+H).toFixed(2)}</div><div class="k">Total risked</div></div>`;
+}
+
+// ---- EV Ranker ----
+let poolIdx=0;
+function addPoolLeg(prefill){
+  poolIdx++; const id='pool'+poolIdx;
+  const div=document.createElement('div'); div.className='leg-row'; div.id=id;
+  div.innerHTML=`<div class="field"><input placeholder="e.g. Team A ML" value="${prefill?.desc||''}"></div>
+    <div class="field"><input type="number" placeholder="-130" value="${prefill?.odds??''}"></div>
+    <div class="field"><input type="number" placeholder="60" value="${prefill?.prob??''}"></div>
+    <button class="act btn-danger" onclick="document.getElementById('${id}').remove()">✕</button>`;
+  document.getElementById('legPool').appendChild(div);
+}
+function combinations(arr,k){ const res=[]; (function go(s,c){ if(c.length===k){res.push([...c]);return;} for(let i=s;i<arr.length;i++){c.push(arr[i]);go(i+1,c);c.pop();} })(0,[]); return res; }
+function rankCombos(){
+  const rows=[...document.querySelectorAll('#legPool .leg-row')];
+  const legs=rows.map(r=>{ const i=r.querySelectorAll('input'); return {desc:i[0].value||'Leg',odds:Number(i[1].value),prob:Number(i[2].value)/100}; }).filter(l=>l.odds&&l.prob>0&&l.prob<1);
+  const k=Number(document.getElementById('comboSize').value);
+  if(legs.length<k){ notify('Add at least '+k+' valid legs.'); return; }
+  const combos=combinations(legs,k).map(c=>{
+    const dec=c.reduce((p,l)=>p*americanToDecimal(l.odds),1), prob=c.reduce((p,l)=>p*l.prob,1), edge=prob-1/dec;
+    const b=dec-1,q=1-prob,kelly=b>0?Math.max(0,(b*prob-q)/b):0;
+    return {names:c.map(l=>l.desc).join(' + '),dec,prob,edge,kelly};
+  }).sort((a,b)=>b.edge-a.edge).slice(0,8);
+  const body=document.getElementById('comboBody'); body.innerHTML=''; document.getElementById('comboTable').style.display='block';
+  combos.forEach(c=>{ const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${c.names}</td><td>${c.dec.toFixed(2)}x</td><td>${fmtPct(c.prob)}</td><td class="${c.edge>=0?'pos':'neg'}">${c.edge>=0?'+':''}${(c.edge*100).toFixed(1)}pp</td><td>${(c.kelly*100).toFixed(1)}%</td>`;
+    body.appendChild(tr); });
+}
+
+// ===== toast (alert() is blocked in the viewer) =====
+let toastT=null;
+function notify(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3200);}
+function usd(x){return (x<0?'-':'')+'$'+Math.abs(x).toFixed(2);}
+
+// ===== Fair Odds =====
+function runFair(){
+  const outs=[1,2,3].map(i=>({name:document.getElementById('fn'+i).value||('Outcome '+i),odds:document.getElementById('fo'+i).value,pm:document.getElementById('fp'+i).value})).filter(o=>o.odds!=='');
+  const decs=outs.map(o=>amToDec(o.odds));
+  if(outs.length<2||decs.some(d=>!d)){notify('Enter valid American odds (like -150 or +130) for at least two outcomes.');return;}
+  const q=decs.map(d=>1/d),over=q.reduce((a,b)=>a+b,0)-1;
+  const pm=devig(q,'multiplicative'),pw=devig(q,'power'),sh=devig(q,'shin');
+  document.getElementById('fairStats').innerHTML=`
+    <div class="stat"><div class="v ${over<0?'pos':'warnc'}">${(over*100).toFixed(2)}%</div><div class="k">Book margin (vig)</div></div>
+    <div class="stat"><div class="v">${outs.map((o,i)=>(sh[i]*100).toFixed(1)+'%').join(' / ')}</div><div class="k">Fair probs (Shin)</div></div>`;
+  const body=document.getElementById('fairBody');body.innerHTML='';
+  outs.forEach((o,i)=>{
+    const pmv=o.pm!==''?Number(o.pm)/100:null,edge=pmv!=null?sh[i]-pmv:null;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${o.name}</td><td>${(q[i]*100).toFixed(1)}%</td><td>${(pm[i]*100).toFixed(1)}%</td><td>${(pw[i]*100).toFixed(1)}%</td><td><b>${(sh[i]*100).toFixed(1)}%</b></td><td>${pmv!=null?(pmv*100).toFixed(0)+'¢':'—'}</td><td class="${edge==null?'':edge>=0?'pos':'neg'}">${edge==null?'—':(edge>=0?'+':'')+(edge*100).toFixed(1)+'pp'}</td>`;
+    body.appendChild(tr);});
+  document.getElementById('fairTable').style.display='block';
+}
+
+// ===== Portfolio Kelly + Day Risk =====
+let pkIdx=0;
+function addPk(prefill){
+  pkIdx++;const id='pk'+pkIdx;const div=document.createElement('div');div.className='leg-row';div.id=id;
+  div.innerHTML=`<div class="field"><input placeholder="Bet name" value="${prefill?.name||''}" class="kn"></div>
+    <div class="field"><input type="number" placeholder="Odds -110" value="${prefill?.odds??''}" class="ko"></div>
+    <div class="field"><input type="number" placeholder="True win %" value="${prefill?.prob??''}" class="kp"></div>
+    <button class="act btn-danger" onclick="document.getElementById('${id}').remove()">✕</button>`;
+  document.getElementById('pkContainer').appendChild(div);
+}
+let dayChart=null;
+function runPlan(){
+  const bets=[...document.querySelectorAll('#pkContainer .leg-row')].map(r=>({name:r.querySelector('.kn').value||'Bet',odds:r.querySelector('.ko').value,dec:amToDec(r.querySelector('.ko').value),p:Number(r.querySelector('.kp').value)/100})).filter(b=>b.dec&&b.p>0&&b.p<1);
+  if(!bets.length){notify('Add at least one bet with valid odds and a true win %.');return;}
+  const bk=Number(document.getElementById('bankroll').value)||100,kf=Number(document.getElementById('kellyFrac').value)||0.35;
+  const maxEach=(Number(document.getElementById('maxStake').value)||3)/100;
+  const cap=(Number(document.getElementById('pkCap').value)||15)/100;
+  const rho=Math.min(0.9,Math.max(0,Number(document.getElementById('pkCorr').value)||0));
+  const budget=Math.max(0.01,Number(document.getElementById('dayBudget').value)||5);
+  const pk=portfolioKelly(bets,rho,{N:12000,cap:Math.min(cap/kf,0.9),maxEach:Math.min(maxEach/kf,1)});
+  const fr0=pk.f.map(x=>x*kf);
+  const scale=fitRiskBudget(bets,fr0,rho,bk,budget,{N:8000});
+  const fr=fr0.map(x=>x*scale);
+  const d=dayDistribution(bets,fr,rho,bk,{N:20000});
+  const total=fr.reduce((a,b)=>a+b,0);
+  const pBig=d.hist.filter(x=>x<-budget).length/d.hist.length;
+  document.getElementById('pkStats').innerHTML=`
+    <div class="stat"><div class="v">${usd(total*bk)}</div><div class="k">Total staked (${(total*100).toFixed(1)}%)</div></div>
+    <div class="stat"><div class="v ${d.mean>=0?'pos':'neg'}">${usd(d.mean)}</div><div class="k">Expected day P&amp;L</div></div>
+    <div class="stat"><div class="v">${(pk.growth*100).toFixed(2)}%</div><div class="k">Full-Kelly log growth</div></div>`;
+  const body=document.getElementById('pkBody');body.innerHTML='';
+  bets.forEach((b,i)=>{const bb=b.dec-1,solo=Math.max(0,(bb*b.p-(1-b.p))/bb),edge=b.p-1/b.dec;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${b.name}</td><td>${b.odds>0?'+':''}${b.odds}</td><td>${(b.p*100).toFixed(1)}%</td><td class="${edge>=0?'pos':'neg'}">${edge>=0?'+':''}${(edge*100).toFixed(1)}pp</td><td>${(solo*100).toFixed(1)}%</td><td>${(pk.f[i]*100).toFixed(1)}%</td><td><b>${usd(fr[i]*bk)}</b></td>`;
+    body.appendChild(tr);});
+  document.getElementById('pkTable').style.display='block';
+  document.getElementById('pkNote').textContent=total<1e-6?'None of these bets has a positive edge at the odds shown, so the plan stakes nothing.':
+    (scale<0.999?`Stakes were cut to ${(scale*100).toFixed(0)}% of the Kelly plan to keep the 95% worst day inside your ${usd(budget)} budget.`:'Stakes follow the fractional Kelly plan; the daily loss budget did not need to cut them.');
+  document.getElementById('dayScale').textContent=scale<0.999?`Stakes scaled to ${(scale*100).toFixed(0)}% to fit budget`:'Budget not binding';
+  document.getElementById('dayStats').innerHTML=`
+    <div class="stat"><div class="v ${d.pBreakEven>=0.52?'pos':'warnc'}">${(d.pBreakEven*100).toFixed(1)}%</div><div class="k">P(day ≥ break-even)</div></div>
+    <div class="stat"><div class="v">${(d.pProfit*100).toFixed(1)}%</div><div class="k">P(day profit)</div></div>
+    <div class="stat"><div class="v ${d.mean>=0?'pos':'neg'}">${usd(d.mean)}</div><div class="k">Mean day</div></div>
+    <div class="stat"><div class="v">${usd(d.sd)}</div><div class="k">Std. deviation</div></div>
+    <div class="stat"><div class="v warnc">${usd(-d.var95)}</div><div class="k">95% worst day (VaR)</div></div>
+    <div class="stat"><div class="v neg">${usd(-d.cvar95)}</div><div class="k">Avg of worst 5% (CVaR)</div></div>
+    <div class="stat"><div class="v">${(pBig*100).toFixed(1)}%</div><div class="k">P(lose &gt; ${usd(budget)})</div></div>
+    <div class="stat"><div class="v pos">${usd(d.best)}</div><div class="k">Best day</div></div>`;
+  drawDay(d);
+}
+function drawDay(d){
+  const a=d.hist,lo=a[0],hi=a[a.length-1];
+  if(dayChart){dayChart.destroy();dayChart=null;}
+  if(hi-lo<1e-9)return;
+  const nb=26,w=(hi-lo)/nb,counts=new Array(nb).fill(0);
+  a.forEach(x=>{counts[Math.min(nb-1,Math.floor((x-lo)/w))]++;});
+  const labels=counts.map((_,i)=>usd(lo+w*(i+0.5)));
+  const cols=counts.map((_,i)=>{const mid=lo+w*(i+0.5);return Math.abs(mid)<w*0.55?'#ffc65c':mid>0?'#33e6a0':'#ff5c72';});
+  dayChart=new Chart(document.getElementById('dayChart'),{type:'bar',data:{labels,datasets:[{data:counts.map(c=>c/a.length*100),backgroundColor:cols,borderWidth:0}]},
+    options:{animation:false,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y.toFixed(1)+'% of days'}}},
+      scales:{x:{ticks:{maxTicksLimit:7,color:'#8a97a8'},grid:{display:false}},y:{title:{display:true,text:'% of days',color:'#8a97a8'},ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}}}});
+}
+
+// ===== Calibration =====
+let calRows=[],calChart=null,calExample=false;
+function loadCal(){
+  try{const s=localStorage.getItem('edgeSuiteCal');if(s){calRows=JSON.parse(s);return;}}catch(e){}
+  const rng=mulberry32(42);calRows=[];calExample=true;
+  for(let i=0;i<40;i++){const p=0.35+0.4*rng(),m=Math.min(.9,Math.max(.1,p-0.04+0.08*rng()));calRows.push({d:'Example '+(i+1),p,m,y:rng()<p?1:0,ex:true});}
+}
+function saveCal(){try{localStorage.setItem('edgeSuiteCal',JSON.stringify(calRows.filter(r=>!r.ex)));}catch(e){}}
+function addCal(){
+  const p=Number(document.getElementById('cP').value)/100,mv=document.getElementById('cM').value;
+  if(!(p>0&&p<1)){notify('Enter your probability as a percent between 1 and 99.');return;}
+  if(calRows.some(r=>r.ex))calRows=calRows.filter(r=>!r.ex);
+  calRows.push({d:document.getElementById('cDesc').value||'Bet',p,m:mv!==''?Number(mv)/100:null,y:Number(document.getElementById('cY').value)});
+  document.getElementById('cDesc').value='';document.getElementById('cP').value='';document.getElementById('cM').value='';
+  saveCal();renderCal();
+}
+function clearCal(){calRows=[];try{localStorage.removeItem('edgeSuiteCal');}catch(e){}renderCal();}
+function renderCal(){
+  const hasEx=calRows.some(r=>r.ex);
+  const bn=document.getElementById('calBanner');bn.style.display=hasEx?'block':'none';
+  bn.textContent='These 40 rows are example data so you can see the charts. Your first logged bet replaces them.';
+  const c=calibration(calRows.map(r=>({p:r.p,m:r.m,y:r.y})));
+  const st=document.getElementById('calStats');
+  if(!c.n){st.innerHTML='<div class="stat"><div class="v">0</div><div class="k">Bets logged</div></div>';}
+  else{
+    const beat=c.marketBrier!=null&&c.myBrierOnMarketRows<c.marketBrier;
+    const enough=c.nMarket>=100;
+    st.innerHTML=`
+    <div class="stat"><div class="v">${c.n}</div><div class="k">Bets logged</div></div>
+    <div class="stat"><div class="v">${c.brier.toFixed(3)}</div><div class="k">Your Brier (0.250 = coin flip)</div></div>
+    <div class="stat"><div class="v">${c.logloss.toFixed(3)}</div><div class="k">Log loss</div></div>
+    <div class="stat"><div class="v">${c.marketBrier!=null?c.marketBrier.toFixed(3):'—'}</div><div class="k">Market Brier</div></div>
+    <div class="stat"><div class="v ${c.marketBrier==null?'':beat?'pos':'neg'}">${c.marketBrier==null?'—':beat?'You lead':'Market leads'}</div><div class="k">${c.nMarket?(enough?'Over '+c.nMarket+' rows':'Only '+c.nMarket+' rows; need ~100'):'Add market probs'}</div></div>`;
+  }
+  if(calChart){calChart.destroy();calChart=null;}
+  if(c.n&&c.bins.length){
+    calChart=new Chart(document.getElementById('calChart'),{type:'scatter',data:{datasets:[
+      {label:'Perfect',type:'line',data:[{x:0,y:0},{x:100,y:100}],borderColor:'rgba(138,151,168,.5)',borderDash:[5,4],pointRadius:0,borderWidth:1},
+      {label:'Your bins',data:c.bins.map(b=>({x:b.pred*100,y:b.obs*100,n:b.n})),backgroundColor:'#5b9dff',pointRadius:c.bins.map(b=>3+Math.min(8,b.n/3)),showLine:true,borderColor:'#5b9dff',borderWidth:1.5}]},
+      options:{animation:false,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:t=>t.dataset.label==='Your bins'?`said ${t.parsed.x.toFixed(0)}%, won ${t.parsed.y.toFixed(0)}% (${t.raw.n} bets)`:''}}},
+      scales:{x:{min:0,max:100,title:{display:true,text:'You said (%)',color:'#8a97a8'},ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}},y:{min:0,max:100,title:{display:true,text:'Actually won (%)',color:'#8a97a8'},ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}}}});
+  }
+}
+loadCal();renderCal();
+addPk({name:'Team A ML',odds:-150,prob:64});addPk({name:'Team B +3.5',odds:-110,prob:56});addPk({name:'Under 47.5',odds:-105,prob:55});addPk({name:'Team C ML',odds:120,prob:49});
+runFair();runPlan();
+
+// seed data
+addLeg({desc:'Team A ML',odds:-150,prob:64}); addLeg({desc:'Team B +3.5',odds:-110,prob:56});
+addParlay({name:'Conservative 2-leg',odds:2.1,prob:45}); addParlay({name:'Aggressive 4-leg',odds:9,prob:14});
+addPoolLeg({desc:'Team A ML',odds:-140,prob:62}); addPoolLeg({desc:'Team B +4.5',odds:-110,prob:56});
+addPoolLeg({desc:'Under 47.5',odds:-105,prob:53}); addPoolLeg({desc:'Team C ML',odds:120,prob:48});
+</script>
+<script>
+// ===================== shared helpers for the new tabs =====================
+const $=id=>document.getElementById(id);
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function copyObj(o){return JSON.parse(JSON.stringify(o));}
+function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function fmtT(t){const m=Math.floor(t/60),s=t-m*60;return m+':'+(s<10?'0':'')+s.toFixed(1);}
+function fmtOdds(a){a=Number(a);return a>0?'+'+a:String(a);}
+function signed(x,d,suf){return (x>=0?'+':'')+x.toFixed(d)+(suf||'');}
+function store(key){try{const s=localStorage.getItem(key);return s?JSON.parse(s):null;}catch(e){return null;}}
+function save(key,val){try{localStorage.setItem(key,JSON.stringify(val));}catch(e){}}
+function dropKey(key){try{localStorage.removeItem(key);}catch(e){}}
+function copyText(text,okMsg){
+  const fallback=()=>{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy');}catch(e){}ta.remove();notify(ok?okMsg:'Could not copy. Select the table and copy it by hand.');};
+  try{navigator.clipboard.writeText(text).then(()=>notify(okMsg),fallback);}catch(e){fallback();}
+}
+function csvCell(v){v=String(v==null?'':v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+
+// ===================== LINE SHOP =====================
+let shIdx=0;
+function addBook(pre){
+  shIdx++;const id='sh'+shIdx;const d=document.createElement('div');d.className='leg-row';d.id=id;
+  d.innerHTML=`<div class="field"><input placeholder="Book name" value="${esc(pre?pre.name:'')}" class="shn"></div>
+    <div class="field"><input type="number" placeholder="-110" value="${pre&&pre.a!=null?pre.a:''}" class="sha"></div>
+    <div class="field"><input type="number" placeholder="-110" value="${pre&&pre.b!=null?pre.b:''}" class="shb"></div>
+    <button class="act btn-danger" onclick="document.getElementById('${id}').remove()">✕</button>`;
+  $('shBooks').appendChild(d);
+}
+function runShop(){
+  const nA=$('shA').value||'Side A',nB=$('shB').value||'Side B';
+  const rA=amToDec($('shRA').value),rB=amToDec($('shRB').value);
+  if(!rA||!rB){notify('Enter American odds (like -118 or +104) for the sharp reference on both sides.');return;}
+  const fair=devig([1/rA,1/rB],'shin'),fA=fair[0],fB=fair[1];
+  const books=[...document.querySelectorAll('#shBooks .leg-row')].map(r=>({name:r.querySelector('.shn').value||'Book',a:amToDec(r.querySelector('.sha').value),b:amToDec(r.querySelector('.shb').value),ao:r.querySelector('.sha').value,bo:r.querySelector('.shb').value})).filter(x=>x.a&&x.b);
+  if(!books.length){notify('Add at least one book with odds on both sides.');return;}
+  books.forEach(b=>{b.evA=fA*b.a-1;b.evB=fB*b.b-1;b.hold=1/b.a+1/b.b-1;b.nv=devig([1/b.a,1/b.b],'shin')[0];b.gap=b.nv-fA;});
+  const bestA=books.reduce((m,x)=>x.a>m.a?x:m),bestB=books.reduce((m,x)=>x.b>m.b?x:m);
+  const top=[];books.forEach(b=>{top.push({side:nA,book:b.name,dec:b.a,odds:b.ao,ev:b.evA,p:fA});top.push({side:nB,book:b.name,dec:b.b,odds:b.bo,ev:b.evB,p:fB});});
+  top.sort((x,y)=>y.ev-x.ev);const best=top[0];
+  const arbSum=1/bestA.a+1/bestB.b,isArb=arbSum<1;
+  const bank=Number($('bankroll').value)||0,kf=Number($('kellyFrac').value)||0,maxPct=(Number($('maxStake').value)||100)/100;
+  let stakeTxt='No +EV price';
+  if(best.ev>0){const b=best.dec-1,f=Math.min(maxPct,Math.max(0,(b*best.p-(1-best.p))/b)*kf);stakeTxt=usd(bank*f)+' ('+(f*100).toFixed(1)+'%)';}
+  $('shStats').innerHTML=`
+    <div class="stat"><div class="v">${(fA*100).toFixed(1)}% / ${(fB*100).toFixed(1)}%</div><div class="k">Sharp no-vig, ${esc(nA)} / ${esc(nB)}</div></div>
+    <div class="stat"><div class="v">${esc(bestA.name)} ${fmtOdds(bestA.ao)}</div><div class="k">Best price, ${esc(nA)}</div></div>
+    <div class="stat"><div class="v">${esc(bestB.name)} ${fmtOdds(bestB.bo)}</div><div class="k">Best price, ${esc(nB)}</div></div>
+    <div class="stat"><div class="v ${best.ev>0?'pos':'neg'}">${signed(best.ev*100,2,'%')}</div><div class="k">Best EV: ${esc(best.side)} at ${esc(best.book)}</div></div>
+    <div class="stat"><div class="v ${best.ev>0?'pos':''}">${stakeTxt}</div><div class="k">Stake on best (fractional Kelly)</div></div>
+    <div class="stat"><div class="v ${isArb?'pos':''}">${isArb?'Arb: +'+((1/arbSum-1)*100).toFixed(2)+'%':'No arb'}</div><div class="k">Best A + best B, implied ${(arbSum*100).toFixed(1)}%</div></div>`;
+  const body=$('shBody');body.innerHTML='';
+  books.forEach(b=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${esc(b.name)}</td>
+      <td class="${b===bestA?'best':''}">${fmtOdds(b.ao)}</td><td class="${b.evA>0?'pos':'neg'}">${signed(b.evA*100,2,'%')}</td>
+      <td class="${b===bestB?'best':''}">${fmtOdds(b.bo)}</td><td class="${b.evB>0?'pos':'neg'}">${signed(b.evB*100,2,'%')}</td>
+      <td>${(b.hold*100).toFixed(1)}%</td><td class="${Math.abs(b.gap)>0.015?'warnc':''}">${(b.nv*100).toFixed(1)}% (${signed(b.gap*100,1,'pp')})</td>`;
+    body.appendChild(tr);});
+  $('shWrap').style.display='block';
+  $('shNote').textContent='EV here is measured against the sharp book’s no-vig line, which is itself an estimate, not the truth. A gap of more than 1.5 points between a book and the sharp line (amber) often means that book is slow to move, or that the sharp line just moved. Check that the price is still live before you act.';
+}
+
+// ===================== LINE MOVE & CLV =====================
+let clvRows=[],clvChart=null;
+function clvOf(r){
+  const bd=amToDec(r.bet),cd=amToDec(r.close);if(!bd||!cd)return null;
+  let fc=null,vigFree=false;const od=amToDec(r.other);
+  if(od){fc=devig([1/cd,1/od],'shin')[0];vigFree=true;}else fc=1/cd;
+  const od0=amToDec(r.open);
+  return {clv:bd*fc-1,vigFree,beat:bd>cd,move:od0?(1/cd-1/od0)*100:null};
+}
+function loadClv(){
+  const s=store('edgeSuiteClv');if(s){clvRows=s;return;}
+  const rng=mulberry32(11);clvRows=[];
+  for(let i=0;i<24;i++){
+    const base=[-110,-115,-120,-105,-130,+100,+110,-140][Math.floor(rng()*8)];
+    const bd=amToDec(base),drift=(rng()-0.42)*0.07;           // slightly favorable drift
+    const cd=bd*(1-drift),toAm=d=>d>=2?Math.round((d-1)*100):-Math.round(100/(d-1));
+    clvRows.push({d:'Example '+(i+1),open:base,bet:base,close:toAm(cd),other:null,ex:true});
+  }
+}
+function saveClv(){save('edgeSuiteClv',clvRows.filter(r=>!r.ex));}
+function addClv(){
+  const bet=$('clvBet').value,close=$('clvC').value;
+  if(!amToDec(bet)||!amToDec(close)){notify('Enter your odds and the closing odds as American odds (like -110 or +125).');return;}
+  clvRows=clvRows.filter(r=>!r.ex);
+  clvRows.push({d:$('clvD').value||'Bet',open:$('clvO').value||null,bet:Number(bet),close:Number(close),other:$('clvX').value||null});
+  ['clvD','clvO','clvBet','clvC','clvX'].forEach(i=>$(i).value='');
+  saveClv();renderClv();
+}
+function delClv(i){clvRows.splice(i,1);saveClv();renderClv();}
+function clearClv(){clvRows=[];dropKey('edgeSuiteClv');renderClv();}
+function renderClv(){
+  const hasEx=clvRows.some(r=>r.ex),bn=$('clvBanner');
+  bn.style.display=hasEx?'block':'none';bn.textContent='These 24 rows are example data so you can see the charts. Your first logged bet replaces them.';
+  const res=clvRows.map(r=>clvOf(r));
+  const ok=res.filter(x=>x);
+  if(!ok.length){$('clvStats').innerHTML='<div class="stat"><div class="v">0</div><div class="k">Bets logged</div></div>';}
+  else{
+    const avg=ok.reduce((s,x)=>s+x.clv,0)/ok.length,beat=ok.filter(x=>x.beat).length/ok.length,pos=ok.filter(x=>x.clv>0).length/ok.length;
+    const mv=ok.filter(x=>x.move!=null);
+    $('clvStats').innerHTML=`
+      <div class="stat"><div class="v">${ok.length}</div><div class="k">Bets logged</div></div>
+      <div class="stat"><div class="v ${avg>=0?'pos':'neg'}">${signed(avg*100,2,'%')}</div><div class="k">Average CLV</div></div>
+      <div class="stat"><div class="v ${beat>=0.5?'pos':'warnc'}">${(beat*100).toFixed(0)}%</div><div class="k">Beat the closing price</div></div>
+      <div class="stat"><div class="v">${(pos*100).toFixed(0)}%</div><div class="k">CLV above zero</div></div>
+      <div class="stat"><div class="v">${mv.length?signed(mv.reduce((s,x)=>s+x.move,0)/mv.length,2,'pp'):'—'}</div><div class="k">Avg line move, open to close</div></div>`;
+  }
+  const body=$('clvBody');body.innerHTML='';
+  for(let i=clvRows.length-1;i>=0;i--){
+    const r=clvRows[i],x=res[i];const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${esc(r.d)}</td><td>${r.open?fmtOdds(r.open):'—'}</td><td>${fmtOdds(r.bet)}</td><td>${fmtOdds(r.close)}</td>
+      <td>${x&&x.move!=null?signed(x.move,1,'pp'):'—'}</td>
+      <td class="${x&&x.clv>=0?'pos':'neg'}">${x?signed(x.clv*100,2,'%')+(x.vigFree?'':'*'):'—'}</td>
+      <td>${r.ex?'':`<button class="mini" onclick="delClv(${i})">✕</button>`}</td>`;
+    body.appendChild(tr);}
+  if(clvChart){clvChart.destroy();clvChart=null;}
+  $('clvChartWrap').style.display=ok.length>1?'block':'none';$('clvChartNote').style.display=ok.length>1?'none':'block';
+  if(ok.length>1){
+    let run=0;const data=ok.map((x,i)=>{run+=x.clv;return +(run/(i+1)*100).toFixed(3);});
+    clvChart=new Chart($('clvChart'),{type:'line',data:{labels:data.map((_,i)=>i+1),datasets:[{data,borderColor:'#5b9dff',backgroundColor:'rgba(91,157,255,.15)',fill:true,pointRadius:0,borderWidth:2,tension:.2}]},
+      options:{animation:false,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Running average CLV '+c.parsed.y.toFixed(2)+'%'}}},
+        scales:{x:{title:{display:true,text:'Bet number',color:'#8a97a8'},ticks:{maxTicksLimit:8,color:'#8a97a8'},grid:{display:false}},y:{title:{display:true,text:'Running avg CLV (%)',color:'#8a97a8'},ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}}}});
+  }
+  $('clvNote').style.display=ok.some(x=>!x.vigFree)?'block':'none';
+}
+
+// ===================== BET LEDGER =====================
+let lgRows=[],lgChart=null;
+function lgPnl(r){const d=amToDec(r.odds);if(!d||!r.res)return null;return r.res==='W'?r.stake*(d-1):r.res==='L'?-r.stake:0;}
+function loadLedger(){
+  const s=store('edgeSuiteLedger');if(s){lgRows=s;return;}
+  // Example outcomes track the odds' own implied probabilities, so the sample shows an ordinary
+  // result (slightly negative after the book's margin) instead of a lucky streak.
+  const rng=mulberry32(21),sports=['NFL','NBA','MLB','NHL'],oddsSet=[-110,-120,105,-135,150,-105];lgRows=[];
+  let expected=0,wins=0;
+  for(let i=0;i<40;i++){
+    const d=new Date();d.setDate(d.getDate()-Math.floor((40-i)*1.5));
+    const odds=oddsSet[Math.floor(rng()*oddsSet.length)];
+    expected+=1/amToDec(odds)-0.02;                       // fair probability, margin removed
+    const win=wins+0.5<expected;if(win)wins++;
+    lgRows.push({date:ymd(d),desc:'Example '+(i+1),sport:sports[Math.floor(rng()*4)],odds,stake:2,res:win?'W':'L',ex:true});
+  }
+}
+function saveLedger(){save('edgeSuiteLedger',lgRows.filter(r=>!r.ex));}
+function addLedger(){
+  const odds=$('lgOdds').value,stake=Number($('lgStake').value);
+  if(!amToDec(odds)){notify('Enter the odds as American odds (like -110 or +150).');return;}
+  if(!(stake>0)){notify('Enter a stake above zero.');return;}
+  lgRows=lgRows.filter(r=>!r.ex);
+  lgRows.push({date:$('lgDate').value||ymd(new Date()),desc:$('lgDesc').value||'Bet',sport:$('lgSport').value||'Other',odds:Number(odds),stake,res:null});
+  ['lgDesc','lgOdds','lgStake'].forEach(i=>$(i).value='');saveLedger();renderLedger();
+}
+function lgSet(i,res){lgRows[i].res=res;saveLedger();renderLedger();}
+function lgDel(i){lgRows.splice(i,1);saveLedger();renderLedger();}
+function clearLedger(){lgRows=[];dropKey('edgeSuiteLedger');renderLedger();}
+function exportLedger(){
+  const lines=['date,bet,sport,odds,stake,result,pnl'];
+  lgRows.filter(r=>!r.ex).forEach(r=>{const p=lgPnl(r);lines.push([r.date,r.desc,r.sport,r.odds,r.stake,r.res||'pending',p==null?'':p.toFixed(2)].map(csvCell).join(','));});
+  copyText(lines.join('\n'),'Ledger copied as CSV.');
+}
+function cycleKey(ds,mode){
+  if(mode==='month')return ds.slice(0,7);
+  const d=new Date(ds+'T00:00:00');d.setDate(d.getDate()-((d.getDay()+6)%7));return ymd(d);
+}
+function agg(rows){
+  const s=rows.filter(r=>r.res);
+  const staked=s.reduce((a,r)=>a+r.stake,0),pnl=s.reduce((a,r)=>a+lgPnl(r),0);
+  const w=s.filter(r=>r.res==='W').length,l=s.filter(r=>r.res==='L').length;
+  return {n:s.length,staked,pnl,roi:staked?pnl/staked:0,hit:w+l?w/(w+l):null,w,l};
+}
+function renderLedger(){
+  const hasEx=lgRows.some(r=>r.ex),bn=$('lgBanner');
+  bn.style.display=hasEx?'block':'none';bn.textContent='These 40 rows are example data so you can see the charts. Your first logged bet replaces them.';
+  const A=agg(lgRows),bank=Number($('bankroll').value)||0;
+  const wl=lgRows.filter(r=>r.res==='W'||r.res==='L');
+  const exp=wl.reduce((s,r)=>s+1/amToDec(r.odds),0);
+  const cutoff=new Date();cutoff.setDate(cutoff.getDate()-2);const stale=lgRows.filter(r=>!r.res&&new Date(r.date+'T00:00:00')<cutoff).length;
+  const open=lgRows.filter(r=>!r.res).length;
+  $('lgStats').innerHTML=`
+    <div class="stat"><div class="v">${A.n}</div><div class="k">Settled bets</div></div>
+    <div class="stat"><div class="v ${A.pnl>=0?'pos':'neg'}">${usd(A.pnl)}</div><div class="k">Net P&amp;L</div></div>
+    <div class="stat"><div class="v ${A.roi>=0?'pos':'neg'}">${signed(A.roi*100,1,'%')}</div><div class="k">ROI on staked</div></div>
+    <div class="stat"><div class="v">${A.hit==null?'—':(A.hit*100).toFixed(1)+'%'}</div><div class="k">Hit rate</div></div>
+    <div class="stat"><div class="v">${A.w} vs ${exp.toFixed(1)}</div><div class="k">Wins vs wins implied by odds*</div></div>
+    <div class="stat"><div class="v">${usd(bank+A.pnl)}</div><div class="k">Bankroll now (start ${usd(bank)})</div></div>
+    <div class="stat"><div class="v ${stale?'warnc':''}">${open}${stale?' ('+stale+' stale)':''}</div><div class="k">Open bets${stale?', over 2 days old':''}</div></div>`;
+  // cumulative chart
+  const settled=lgRows.filter(r=>r.res).slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
+  if(lgChart){lgChart.destroy();lgChart=null;}
+  $('lgChartWrap').style.display=settled.length>1?'block':'none';$('lgChartNote').style.display=settled.length>1?'none':'block';
+  if(settled.length>1){let run=0;const data=settled.map(r=>+(run+=lgPnl(r)).toFixed(2));
+    lgChart=new Chart($('lgChart'),{type:'line',data:{labels:settled.map(r=>r.date),datasets:[{data,borderColor:data[data.length-1]>=0?'#33e6a0':'#ff5c72',backgroundColor:'rgba(51,230,160,.10)',fill:true,pointRadius:0,borderWidth:2,tension:.15}]},
+      options:{animation:false,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Cumulative P&L $'+c.parsed.y.toFixed(2)}}},
+        scales:{x:{ticks:{maxTicksLimit:7,color:'#8a97a8'},grid:{display:false}},y:{title:{display:true,text:'Cumulative P&L ($)',color:'#8a97a8'},ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}}}});}
+  // cycles
+  const mode=$('lgCycle').value,groups={};
+  lgRows.filter(r=>r.res).forEach(r=>{(groups[cycleKey(r.date,mode)]=groups[cycleKey(r.date,mode)]||[]).push(r);});
+  const cb=$('lgCycBody');cb.innerHTML='';
+  Object.keys(groups).sort().reverse().forEach(k=>{const g=agg(groups[k]);const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${mode==='week'?'Week of '+k:k}</td><td>${g.n}</td><td>${usd(g.staked)}</td><td class="${g.pnl>=0?'pos':'neg'}">${usd(g.pnl)}</td><td class="${g.roi>=0?'pos':'neg'}">${signed(g.roi*100,1,'%')}</td><td>${g.hit==null?'—':(g.hit*100).toFixed(0)+'%'}</td>`;cb.appendChild(tr);});
+  if(!cb.children.length)cb.innerHTML='<tr><td colspan="6">No settled bets yet.</td></tr>';
+  // by sport
+  const sg={};lgRows.filter(r=>r.res).forEach(r=>{(sg[r.sport]=sg[r.sport]||[]).push(r);});
+  const sb=$('lgSportBody');sb.innerHTML='';
+  Object.keys(sg).sort((a,b)=>agg(sg[b]).pnl-agg(sg[a]).pnl).forEach(k=>{const g=agg(sg[k]);const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${esc(k)}</td><td>${g.n}</td><td>${usd(g.staked)}</td><td class="${g.pnl>=0?'pos':'neg'}">${usd(g.pnl)}</td><td class="${g.roi>=0?'pos':'neg'}">${signed(g.roi*100,1,'%')}</td>`;sb.appendChild(tr);});
+  if(!sb.children.length)sb.innerHTML='<tr><td colspan="5">No settled bets yet.</td></tr>';
+  // bet list
+  const lb=$('lgBody');lb.innerHTML='';
+  for(let i=lgRows.length-1;i>=0;i--){const r=lgRows[i],p=lgPnl(r);const tr=document.createElement('tr');
+    const resCell=r.res?`<b class="${r.res==='W'?'pos':r.res==='L'?'neg':''}">${r.res==='W'?'Won':r.res==='L'?'Lost':'Push'}</b> ${r.ex?'':`<button class="mini" onclick="lgSet(${i},null)" title="Reopen">↺</button>`}`:
+      `<button class="mini" onclick="lgSet(${i},'W')">Won</button><button class="mini" onclick="lgSet(${i},'L')">Lost</button><button class="mini" onclick="lgSet(${i},'P')">Push</button>`;
+    tr.innerHTML=`<td>${esc(r.date)}</td><td>${esc(r.desc)}</td><td>${esc(r.sport)}</td><td>${fmtOdds(r.odds)}</td><td>${usd(r.stake)}</td><td>${resCell}</td><td class="${p==null?'':p>=0?'pos':'neg'}">${p==null?'—':usd(p)}</td><td>${r.ex?'':`<button class="mini" onclick="lgDel(${i})">✕</button>`}</td>`;
+    lb.appendChild(tr);}
+}
+
+// ===================== FILM ROOM =====================
+const TAX={football:['Run','Pass','Sack','Turnover','Penalty','Score','Key moment'],basketball:['3-pointer','Turnover','Foul','Fast break','Defense breakdown','Score','Key moment'],soccer:['Shot','Press','Set piece','Turnover','Foul','Goal','Key moment'],blank:[]};
+const film={ev:[],tags:TAX.football.slice(),shapes:{A:[],B:[]},tool:'pen',draw:false,key:null,url:{A:null,B:null},clip:null,last:'A'};
+function filmStoreGet(){return store('edgeSuiteFilm')||{};}
+function filmSave(){const s=filmStoreGet();s.tags=film.tags;s.ev=s.ev||{};if(film.key)s.ev[film.key]=film.ev;save('edgeSuiteFilm',s);}
+function nextEvId(){return film.ev.reduce((m,e)=>Math.max(m,e.id),0)+1;}
+function loadVideo(p,file){
+  if(!file)return;
+  if(film.url[p])URL.revokeObjectURL(film.url[p]);
+  film.url[p]=URL.createObjectURL(file);
+  const v=$('vid'+p);v.src=film.url[p];v.load();
+  $('pane'+p).style.display='block';$('pane'+p).classList.add('has-video');
+  if(p==='A'){film.key=file.name+'|'+file.size;film.ev=(filmStoreGet().ev||{})[film.key]||[];film.shapes.A=[];film.shapes.B=[];renderEvents();}
+  $('filmGrid').classList.toggle('single',$('paneB').style.display==='none');
+  setTimeout(()=>{sizeCanvas('A');sizeCanvas('B');},50);
+}
+$('fvA').addEventListener('change',e=>loadVideo('A',e.target.files[0]));
+$('fvB').addEventListener('change',e=>loadVideo('B',e.target.files[0]));
+const vidA=$('vidA'),vidB=$('vidB');
+function linked(){return $('fLink').checked&&film.url.B&&film.url.A;}
+function offset(){return Number($('fOffset').value)||0;}
+function syncB(){if(!linked())return;const t=vidA.currentTime+offset();if(t>=0&&Math.abs(vidB.currentTime-t)>0.04)vidB.currentTime=t;}
+vidA.addEventListener('play',()=>{if($('fdClear').checked){film.shapes.A=[];film.shapes.B=[];redraw('A');redraw('B');}if(linked()){syncB();vidB.play().catch(()=>{});}});
+vidA.addEventListener('pause',()=>{film.clip=null;if(linked())vidB.pause();});
+vidA.addEventListener('seeked',syncB);
+vidA.addEventListener('ratechange',()=>{if(linked())vidB.playbackRate=vidA.playbackRate;});
+vidA.addEventListener('timeupdate',()=>{
+  if(film.clip!=null&&vidA.currentTime>=film.clip){vidA.pause();film.clip=null;}
+  if(linked()&&!vidA.paused&&Math.abs(vidB.currentTime-(vidA.currentTime+offset()))>0.3)syncB();
+});
+['loadedmetadata','loadeddata'].forEach(ev=>{vidA.addEventListener(ev,()=>sizeCanvas('A'));vidB.addEventListener(ev,()=>sizeCanvas('B'));});
+function filmToggle(){if(!vidA.src){notify('Load Angle A first.');return;}if(vidA.paused)vidA.play().catch(()=>{});else vidA.pause();}
+function filmStep(dir){if(!vidA.src)return;vidA.pause();const fps=Math.max(1,Number($('fFps').value)||30);vidA.currentTime=Math.max(0,vidA.currentTime+dir/fps);}
+function filmSpeed(){const r=Number($('fSpeed').value);vidA.playbackRate=r;vidB.playbackRate=r;}
+function filmLink(){if(linked())syncB();}
+function filmMatch(){if(!(film.url.A&&film.url.B)){notify('Load both angles first.');return;}$('fOffset').value=(vidB.currentTime-vidA.currentTime).toFixed(2);notify('Offset set. Angle B now follows A at that gap.');}
+
+// ---- telestration
+function sizeCanvas(p){const c=$('cv'+p),pane=$('pane'+p),w=pane.clientWidth,h=pane.clientHeight;if(!w||!h)return;const d=window.devicePixelRatio||1;c.width=Math.round(w*d);c.height=Math.round(h*d);redraw(p);}
+if(window.ResizeObserver){const ro=new ResizeObserver(()=>{sizeCanvas('A');sizeCanvas('B');});ro.observe($('paneA'));ro.observe($('paneB'));}
+function drawShape(x,s,W,H){
+  x.strokeStyle=s.color;x.fillStyle=s.color;x.lineWidth=Math.max(1,s.w*(W/600));x.lineCap='round';x.lineJoin='round';
+  const P=s.pts.map(q=>[q[0]*W,q[1]*H]),a=P[0],b=P[P.length-1];
+  if(s.tool==='pen'){x.beginPath();P.forEach((q,i)=>i?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]));x.stroke();return;}
+  if(s.tool==='circle'){x.beginPath();x.arc(a[0],a[1],Math.hypot(b[0]-a[0],b[1]-a[1]),0,Math.PI*2);x.stroke();return;}
+  x.beginPath();x.moveTo(a[0],a[1]);x.lineTo(b[0],b[1]);x.stroke();
+  if(s.tool==='arrow'){const ang=Math.atan2(b[1]-a[1],b[0]-a[0]),L=Math.max(12,s.w*(W/600)*4);
+    x.beginPath();x.moveTo(b[0],b[1]);x.lineTo(b[0]-L*Math.cos(ang-0.45),b[1]-L*Math.sin(ang-0.45));x.lineTo(b[0]-L*Math.cos(ang+0.45),b[1]-L*Math.sin(ang+0.45));x.closePath();x.fill();}
+}
+function redraw(p){const c=$('cv'+p),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);film.shapes[p].forEach(s=>drawShape(x,s,c.width,c.height));}
+['A','B'].forEach(p=>{
+  const c=$('cv'+p);let cur=null;
+  const pos=e=>{const r=c.getBoundingClientRect();return [(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height];};
+  c.addEventListener('pointerdown',e=>{if(!film.draw)return;try{c.setPointerCapture(e.pointerId);}catch(_){}
+    cur={tool:film.tool,color:$('fdColor').value,w:Number($('fdWidth').value),pts:[pos(e)]};film.shapes[p].push(cur);film.last=p;e.preventDefault();});
+  c.addEventListener('pointermove',e=>{if(!cur)return;const q=pos(e);if(cur.tool==='pen')cur.pts.push(q);else cur.pts[1]=q;redraw(p);});
+  const end=()=>{cur=null;};c.addEventListener('pointerup',end);c.addEventListener('pointercancel',end);
+});
+function drawToggle(){film.draw=!film.draw;$('fdToggle').textContent='Draw mode: '+(film.draw?'on':'off');$('fdToggle').className='act '+(film.draw?'btn-primary':'btn-ghost');
+  $('paneA').classList.toggle('draw',film.draw);$('paneB').classList.toggle('draw',film.draw);if(film.draw)vidA.pause();}
+function drawUndo(){const p=film.shapes[film.last].length?film.last:(film.shapes.A.length?'A':'B');film.shapes[p].pop();redraw(p);}
+function drawClear(){film.shapes.A=[];film.shapes.B=[];redraw('A');redraw('B');}
+
+// ---- tags and events
+function renderTagDefs(){
+  $('fTags').innerHTML=film.tags.map((t,i)=>`<span class="chip"><button onclick="addTag(film.tags[${i}])">${i<9?(i+1)+' · ':''}${esc(t)}</button><button class="x" onclick="removeTagDef(${i})" title="Remove tag">✕</button></span>`).join('')||'<span class="desc" style="margin:0">No tags yet. Pick a preset or add your own.</span>';
+  const f=$('fFilter'),cur=f.value;f.innerHTML='<option value="">All tags</option>'+film.tags.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('');f.value=cur;
+}
+function loadPreset(k){if(!k)return;film.tags=TAX[k].slice();filmSave();renderTagDefs();$('fPreset').value='';}
+function addTagDef(){const t=$('fNewTag').value.trim();if(!t)return;if(!film.tags.includes(t))film.tags.push(t);$('fNewTag').value='';filmSave();renderTagDefs();}
+function removeTagDef(i){film.tags.splice(i,1);filmSave();renderTagDefs();}
+function addTag(tag){
+  if(!vidA.src){notify('Load Angle A first.');return;}
+  film.ev.push({id:nextEvId(),t:vidA.currentTime,tag,note:'',A:copyObj(film.shapes.A),B:copyObj(film.shapes.B)});
+  film.ev.sort((a,b)=>a.t-b.t);filmSave();renderEvents();notify('Tagged '+tag+' at '+fmtT(vidA.currentTime));
+}
+function evById(id){return film.ev.find(e=>e.id===id);}
+function jumpTo(id){const e=evById(id);if(!e)return;vidA.pause();film.clip=null;vidA.currentTime=e.t;film.shapes.A=copyObj(e.A||[]);film.shapes.B=copyObj(e.B||[]);redraw('A');redraw('B');}
+function playClip(id){const e=evById(id);if(!e)return;drawClear();film.clip=e.t+3;vidA.currentTime=Math.max(0,e.t-2);vidA.play().catch(()=>{});}
+function setNote(id,v){const e=evById(id);if(e){e.note=v;filmSave();}}
+function delEv(id){film.ev=film.ev.filter(e=>e.id!==id);filmSave();renderEvents();}
+function clearEvents(){film.ev=[];filmSave();renderEvents();}
+function renderEvents(){
+  const filt=$('fFilter').value,rows=film.ev.filter(e=>!filt||e.tag===filt);
+  $('fBody').innerHTML=rows.map(e=>`<tr><td>${fmtT(e.t)}</td><td>${esc(e.tag)}${(e.A&&e.A.length)||(e.B&&e.B.length)?' ✎':''}</td>
+    <td><input value="${esc(e.note)}" placeholder="Add a note" style="min-width:140px" onchange="setNote(${e.id},this.value)"></td>
+    <td><button class="mini" onclick="jumpTo(${e.id})">Jump</button><button class="mini" onclick="playClip(${e.id})">Clip</button><button class="mini" onclick="delEv(${e.id})">✕</button></td></tr>`).join('')||'<tr><td colspan="4">No tags yet for this video.</td></tr>';
+  const counts={};film.ev.forEach(e=>counts[e.tag]=(counts[e.tag]||0)+1);
+  $('fSummary').innerHTML=Object.keys(counts).map(k=>`<span class="chip">${esc(k)}<span class="n">${counts[k]}</span></span>`).join('');
+}
+function exportEvents(){
+  const lines=['time_seconds,time,tag,note'];film.ev.forEach(e=>lines.push([e.t.toFixed(2),fmtT(e.t),e.tag,e.note].map(csvCell).join(',')));
+  copyText(lines.join('\n'),'Tags copied as CSV.');
+}
+document.addEventListener('keydown',e=>{
+  if(!$('tab-film').classList.contains('active'))return;
+  const tg=(e.target.tagName||'').toLowerCase();if(tg==='input'||tg==='select'||tg==='textarea')return;
+  if(/^[1-9]$/.test(e.key)){const t=film.tags[Number(e.key)-1];if(t){addTag(t);e.preventDefault();}}
+  else if(e.key===' '){filmToggle();e.preventDefault();}
+  else if(e.key==='ArrowLeft'){filmStep(-1);e.preventDefault();}
+  else if(e.key==='ArrowRight'){filmStep(1);e.preventDefault();}
+});
+
+// ===================== Today's Slate =====================
+function slateRender(d,label){
+  $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, which has no injury or lineup data.';
+  const day=d.day,g=d.games||[];
+  const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length;
+  $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
+   <div class="stat"><div class="v ${nb?'pos':''}">${nb}</div><div class="k">Edge bets</div></div>
+   <div class="stat"><div class="v ${na?'pos':''}">${na}</div><div class="k">Arbitrage</div></div>`+(day?`
+   <div class="stat"><div class="v">${usd(day.totalStake)}</div><div class="k">Total staked</div></div>
+   <div class="stat"><div class="v ${day.meanPnl>=0?'pos':'neg'}">${usd(day.meanPnl)}</div><div class="k">Expected day</div></div>
+   <div class="stat"><div class="v">${(day.pBreakEven*100).toFixed(0)}%</div><div class="k">P(day ≥ break-even)</div></div>
+   <div class="stat"><div class="v warnc">${usd(-day.var95)}</div><div class="k">95% worst day</div></div>`:'');
+  const mb=d.modelBacktest||{};
+  $('slModel').innerHTML=Object.keys(mb).filter(k=>mb[k]).map(k=>{const b=mb[k];return `<b>${esc(k.toUpperCase())}</b>: walk-forward on ${b.n} past games, Brier ${b.brier} (coin flip ${b.coinFlipBrier}), picked the winner ${(b.accuracy*100).toFixed(0)}% of the time.`;}).join('<br>')||'No model ran for this slate. Bets shown come from the books\' consensus only.';
+  $('slSources').innerHTML=(d.sources||[]).map(s=>`<span class="chip" style="${s.ok?'':'opacity:.6'}">${s.ok?'✓':'✗'} ${esc(s.source)}<span class="n">${esc(s.ok?s.detail:(s.detail||'').slice(0,40))}</span></span>`).join(' ')||'—';
+  $('slBody').innerHTML=g.map(r=>{
+    const bets=r.bets.map(b=>`${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)}`).join('<br>')||'—';
+    const pm=r.pm.map(m=>`${esc(m.source)}: ${m.homeEdgePp!=null?'home '+signed(m.homeEdgePp,1)+'pp':''} ${m.awayEdgePp!=null?'away '+signed(m.awayEdgePp,1)+'pp':''}`).join('<br>')||'—';
+    return `<tr><td>${esc(r.away)} @ ${esc(r.home)}<br><span class="desc" style="margin:0">${esc(r.sport.toUpperCase())}</span></td><td>${r.nBooks}</td>
+    <td>${(r.fair.home*100).toFixed(1)}% / ${(r.fair.away*100).toFixed(1)}%</td>
+    <td>${fmtOdds(r.best.home.american)} ${esc(r.best.home.book)}</td><td>${fmtOdds(r.best.away.american)} ${esc(r.best.away.book)}</td>
+    <td class="${r.arb?'pos':''}">${r.arb?'+'+r.arbRoiPct+'%':'No'}</td><td>${r.model?(r.model.home*100).toFixed(1)+'% <span class="desc" style="margin:0">('+signed(r.model.gapPp,1)+'pp vs market)</span>':'—'}</td><td style="white-space:normal;min-width:200px">${bets}</td><td>${pm}</td></tr>`;}).join('')||'<tr><td colspan="9">No games in this slate.</td></tr>';
+}
+function slateExample(){
+  slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],
+   day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},
+   games:[{sport:'nfl',home:'Example Home',away:'Example Away',nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,stake:1.2}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}]}]},'EXAMPLE DATA, not real games.');
+}
+async function slateFetch(manual){
+  try{const r=await fetch('slate.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);slateRender(await r.json(),'Loaded from this site.');}
+  catch(e){if(manual)notify('No slate.json found next to this page. Load the file by hand.');else slateExample();}
+}
+$('slFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const fr=new FileReader();
+  fr.onload=()=>{try{slateRender(JSON.parse(fr.result),'Loaded from '+f.name+'.');}catch(x){notify('That file is not a valid slate.json.');}};fr.readAsText(f);});
+slateFetch(false);
+
+// ===================== init =====================
+$('lgDate').value=ymd(new Date());
+addBook({name:'DraftKings',a:-110,b:-110});addBook({name:'FanDuel',a:-108,b:-112});addBook({name:'BetMGM',a:-115,b:100});addBook({name:'Caesars',a:-105,b:-115});
+runShop();
+loadClv();renderClv();
+loadLedger();renderLedger();
+{const s=filmStoreGet();if(s.tags)film.tags=s.tags;}renderTagDefs();renderEvents();
+</script>
+

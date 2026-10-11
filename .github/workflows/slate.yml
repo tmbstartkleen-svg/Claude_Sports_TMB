@@ -1,0 +1,28 @@
+name: Build slate
+on:
+  schedule:
+    - cron: "0 15,19,23 * * *"   # 3 runs/day keeps The Odds API free tier (500 credits/mo) safe with 4 sports
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install sports-skills
+      - run: python pipeline/test_offline.py && python pipeline/test_model.py
+      - name: Build slate.json
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          SPORTS: "nfl,nba,mlb,nhl"
+          SLATE_OUT: slate.json
+        run: python pipeline/build_slate.py
+      - name: Commit if changed
+        run: |
+          git config user.name "slate-bot"
+          git config user.email "slate-bot@users.noreply.github.com"
+          git add slate.json
+          git diff --cached --quiet || (git commit -m "Update slate" && git push)
