@@ -19,6 +19,10 @@ try:
     import model as elo
 except Exception:  # model is optional
     elo = None
+try:
+    import history as hist_mod
+except Exception:
+    hist_mod = None
 from datetime import datetime, timezone
 
 SPORTS = {  # key -> (Odds API key, ESPN path)
@@ -208,6 +212,19 @@ def polymarket_via_skills():
     return out
 
 
+def skills_injuries(sport):
+    """Fallback: sports-skills injuries wrapper (shape varies by sport, so parse defensively)."""
+    import sports_skills as ss
+    mod = getattr(ss, sport)
+    r = mod.get_injuries()
+    if not r.get("status"):
+        raise RuntimeError(r.get("message"))
+    d = r.get("data") or {}
+    shaped = {"injuries": [{"displayName": t.get("team") or t.get("name"), "injuries": t.get("injuries", [])}
+                           for t in (d.get("teams") or d.get("injuries") or []) if isinstance(t, dict)]}
+    return elo.injury_adj(sport, elo.fetch_injuries(sport, getter=lambda _u: shaped))
+
+
 # ---------- analysis ----------
 def last_word(name):
     return name.lower().split()[-1]
@@ -239,8 +256,9 @@ def pm_prob_for(m, team):
     return None
 
 
-def analyze(games, pms, models=None):
+def analyze(games, pms, models=None, injuries=None):
     models = models or {}
+    injuries = injuries or {}
     rows = []
     for g in games:
         sides = {"home": [], "away": []}
@@ -259,7 +277,8 @@ def analyze(games, pms, models=None):
         fair = {"home": sum(f[0] for f in fair_by_book) / n, "away": sum(f[1] for f in fair_by_book) / n}
         best = {k: max(v) for k, v in sides.items()}
         implied_sum = 1 / best["home"][0] + 1 / best["away"][0]
-        row = {"sport": g["sport"], "home": g["home"], "away": g["away"], "start": g["start"], "nBooks": n,
+        row = {"key": hist_mod.game_key(g["sport"], g["away"], g["home"], g["start"]) if hist_mod else None,
+               "sport": g["sport"], "home": g["home"], "away": g["away"], "start": g["start"], "nBooks": n,
                "fair": {k: round(v, 4) for k, v in fair.items()},
                "best": {k: {"book": best[k][1], "american": best[k][2], "decimal": round(best[k][0], 3)} for k in best},
                "arb": implied_sum < 1, "impliedSum": round(implied_sum, 4), "bets": [], "pm": []}
@@ -279,11 +298,19 @@ def analyze(games, pms, models=None):
                 start = datetime.fromisoformat(g["start"].replace("Z", "+00:00")).date() if g.get("start") else None
             except ValueError:
                 start = None
-            pm_home = elo.predict(g["sport"], mdl, g["home"], g["away"], start)
+            inj = injuries.get(g["sport"], {})
+            adj = {t: v[0] for t, v in inj.items()}
+            pm_home = elo.predict(g["sport"], mdl, g["home"], g["away"], start, adj)
             if pm_home is not None:
                 bl = elo.blend(pm_home, fair["home"])
                 row["model"] = {"home": round(pm_home, 4), "away": round(1 - pm_home, 4), "blendHome": round(bl, 4),
                                 "gapPp": round((pm_home - fair["home"]) * 100, 1), "weight": elo.MODEL_WEIGHT}
+                notes = []
+                for t in (g["home"], g["away"]):
+                    if t in inj and inj[t][0]:
+                        notes.append(f"{t}: {inj[t][0]:+.0f} Elo" + (" (" + "; ".join(inj[t][1]) + ")" if inj[t][1] else ""))
+                if notes:
+                    row["model"]["injuries"] = notes
                 for k, pk in (("home", bl), ("away", 1 - bl)):
                     evm = pk * best[k][0] - 1
                     if evm >= MIN_EDGE and not any(b["side"] == g[k] for b in row["bets"]):
@@ -358,8 +385,9 @@ def main():
         games += got
     pms = try_sources("kalshi", [("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
     pms += try_sources("polymarket", [("direct", polymarket_direct), ("sports-skills", polymarket_via_skills)])
-    models, backtests = {}, {}
-    if elo:
+    capture_only = os.environ.get("CAPTURE_ONLY") == "1"
+    models, backtests, injuries = {}, {}, {}
+    if elo and not capture_only:
         for sp in [x for x in sports if x in elo.CFG]:
             try:
                 res = elo.fetch_results(sp)
@@ -370,12 +398,33 @@ def main():
                 log(f"model[{sp}]", True, f"{len(res)} games, brier {backtests[sp] and backtests[sp]['brier']}")
             except Exception as e:  # noqa
                 log(f"model[{sp}]", False, repr(e))
-    rows = analyze(games, pms, models)
+            if sp in models:
+                got = try_sources(f"injuries[{sp}]", [("espn", lambda sp=sp: [elo.injury_adj(sp, elo.fetch_injuries(sp))] ),
+                                                       ("sports-skills", lambda sp=sp: [skills_injuries(sp)])])
+                if got and got[0]:
+                    injuries[sp] = got[0]
+    rows = analyze(games, pms, models, injuries)
     rows.sort(key=lambda r: -max([b["evPct"] for b in r["bets"]] + [r.get("arbRoiPct", 0), -99]))
     slate = {"generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
              "settings": {"bankroll": BANKROLL, "kellyFrac": KELLY_FRAC, "maxStakePct": MAX_STAKE_PCT, "dayBudget": DAY_BUDGET, "minEdge": MIN_EDGE},
-             "sources": LOG, "modelBacktest": backtests, "games": rows, "day": simulate_day(rows),
+             "sources": LOG, "modelBacktest": backtests, "games": rows, "day": None if capture_only else simulate_day(rows),
              "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only."}
+    closing = {}
+    if hist_mod:
+        hpath = os.environ.get("HISTORY_PATH", "history.json")
+        now = datetime.now(timezone.utc)
+        h = hist_mod.load(hpath)
+        n_added = hist_mod.record(h, rows, now)
+        hist_mod.prune(h, now)
+        hist_mod.save(hpath, h)
+        closing = hist_mod.closing(h, now)
+        log("history", True, f"{n_added} snapshots added, {len(closing)} closing lines available")
+    if capture_only:
+        print(f"capture-only: {len(rows)} games snapshotted")
+        for l in LOG:
+            print(("OK  " if l["ok"] else "FAIL"), l["source"], l["detail"])
+        return 0
+    slate["closing"] = closing
     out = os.environ.get("SLATE_OUT", "slate.json")
     with open(out, "w") as f:
         json.dump(slate, f, indent=1)

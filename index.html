@@ -359,6 +359,7 @@ input[type=checkbox]{width:auto;}
         <div class="field" style="max-width:320px"><label>Load slate.json</label><input id="slFile" type="file" accept=".json,application/json"></div>
         <button class="act btn-ghost" onclick="slateFetch(true)">Reload from site</button>
         <button class="act btn-ghost" onclick="slateExample()">Show example</button>
+        <button class="act btn-ghost" onclick="slatePullClv()">Pull closing lines into CLV</button>
       </div>
       <div class="callout" id="slNote" style="margin:12px 0 0;"></div>
       <div class="stat-grid" id="slStats"></div>
@@ -1151,7 +1152,30 @@ document.addEventListener('keydown',e=>{
 });
 
 // ===================== Today's Slate =====================
+let slateBets=[],slateClosing={};
+function probToAm(p){const d=1/p;return d>=2?Math.round((d-1)*100):-Math.round(100/(d-1));}
+function slatePullClv(){
+  const fresh=[];let waiting=0,noKey=0;
+  lgRows.filter(r=>!r.ex).forEach(r=>{
+    if(!r.gk){noKey++;return;}
+    const c=slateClosing[r.gk];if(!c){waiting++;return;}
+    const src='slate:'+r.gk+':'+r.side;if(clvRows.some(x=>x.src===src))return;
+    const f=r.side==='home'?c.fairHome:c.fairAway;
+    fresh.push({d:r.desc,open:null,bet:Number(r.odds),close:probToAm(f),other:probToAm(1-f),src,mins:c.minutesBeforeStart});
+  });
+  if(!fresh.length){notify(waiting?waiting+' logged bet(s) have no closing line yet (game not started or not captured).':'No new closing lines. Log bets from the slate first.');return;}
+  clvRows=clvRows.filter(r=>!r.ex).concat(fresh);saveClv();renderClv();
+  notify(`Added ${fresh.length} bet(s) to Line Move & CLV. Closing lines are the last price captured before the game, up to ~30 min early.`);
+}
+function slateLog(k){
+  const b=slateBets[k];if(!b||!(b.stake>0)){notify('This bet has no stake to log.');return;}
+  lgRows=lgRows.filter(r=>!r.ex);
+  if(lgRows.some(r=>r.date===b.date&&r.desc===b.desc)){notify('Already in your ledger today.');return;}
+  lgRows.push({date:b.date,desc:b.desc,sport:b.sport,odds:b.odds,stake:b.stake,res:null,gk:b.gk,side:b.side});
+  saveLedger();renderLedger();notify('Logged to Bet Ledger. Settle it there after the game.');
+}
 function slateRender(d,label){
+  slateBets=[];slateClosing=d.closing||{};
   $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, which has no injury or lineup data.';
   const day=d.day,g=d.games||[];
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length;
@@ -1166,12 +1190,13 @@ function slateRender(d,label){
   $('slModel').innerHTML=Object.keys(mb).filter(k=>mb[k]).map(k=>{const b=mb[k];return `<b>${esc(k.toUpperCase())}</b>: walk-forward on ${b.n} past games, Brier ${b.brier} (coin flip ${b.coinFlipBrier}), picked the winner ${(b.accuracy*100).toFixed(0)}% of the time.`;}).join('<br>')||'No model ran for this slate. Bets shown come from the books\' consensus only.';
   $('slSources').innerHTML=(d.sources||[]).map(s=>`<span class="chip" style="${s.ok?'':'opacity:.6'}">${s.ok?'✓':'✗'} ${esc(s.source)}<span class="n">${esc(s.ok?s.detail:(s.detail||'').slice(0,40))}</span></span>`).join(' ')||'—';
   $('slBody').innerHTML=g.map(r=>{
-    const bets=r.bets.map(b=>`${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)}`).join('<br>')||'—';
+    const bets=r.bets.map(b=>{const k=slateBets.push({date:ymd(new Date()),desc:`${b.side} ML @ ${b.book}`,sport:r.sport.toUpperCase(),odds:Number(b.american),stake:b.stake,gk:r.key||null,side:b.side===r.home?'home':'away'})-1;
+      return `${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)} <button class="mini" onclick="slateLog(${k})">Log bet</button>`;}).join('<br>')||'—';
     const pm=r.pm.map(m=>`${esc(m.source)}: ${m.homeEdgePp!=null?'home '+signed(m.homeEdgePp,1)+'pp':''} ${m.awayEdgePp!=null?'away '+signed(m.awayEdgePp,1)+'pp':''}`).join('<br>')||'—';
     return `<tr><td>${esc(r.away)} @ ${esc(r.home)}<br><span class="desc" style="margin:0">${esc(r.sport.toUpperCase())}</span></td><td>${r.nBooks}</td>
     <td>${(r.fair.home*100).toFixed(1)}% / ${(r.fair.away*100).toFixed(1)}%</td>
     <td>${fmtOdds(r.best.home.american)} ${esc(r.best.home.book)}</td><td>${fmtOdds(r.best.away.american)} ${esc(r.best.away.book)}</td>
-    <td class="${r.arb?'pos':''}">${r.arb?'+'+r.arbRoiPct+'%':'No'}</td><td>${r.model?(r.model.home*100).toFixed(1)+'% <span class="desc" style="margin:0">('+signed(r.model.gapPp,1)+'pp vs market)</span>':'—'}</td><td style="white-space:normal;min-width:200px">${bets}</td><td>${pm}</td></tr>`;}).join('')||'<tr><td colspan="9">No games in this slate.</td></tr>';
+    <td class="${r.arb?'pos':''}">${r.arb?'+'+r.arbRoiPct+'%':'No'}</td><td style="white-space:normal;min-width:150px">${r.model?(r.model.home*100).toFixed(1)+'% <span class="desc" style="margin:0">('+signed(r.model.gapPp,1)+'pp vs market)</span>'+(r.model.injuries?'<br><span class="desc" style="margin:0">Injuries: '+r.model.injuries.map(esc).join(' | ')+'</span>':''):'—'}</td><td style="white-space:normal;min-width:200px">${bets}</td><td>${pm}</td></tr>`;}).join('')||'<tr><td colspan="9">No games in this slate.</td></tr>';
 }
 function slateExample(){
   slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],

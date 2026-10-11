@@ -1,28 +1,43 @@
 name: Build slate
 on:
   schedule:
-    - cron: "0 15,19,23 * * *"   # 3 runs/day keeps The Odds API free tier (500 credits/mo) safe with 4 sports
+    - cron: "0 15,19,23 * * *"           # full runs: odds API + model + slate.json (3/day keeps the free Odds API tier safe)
+    - cron: "*/30 16-23,0-4 * * *"       # capture runs: free sources only, snapshot lines for closing-line value
   workflow_dispatch: {}
 permissions:
   contents: write
+concurrency:
+  group: slate
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FULL_RUN: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 15,19,23 * * *' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install sports-skills
-      - run: python pipeline/test_offline.py && python pipeline/test_model.py
-      - name: Build slate.json
+      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py
+      - name: Build slate.json (full run)
+        if: env.FULL_RUN == 'true'
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           SPORTS: "nfl,nba,mlb,nhl"
           SLATE_OUT: slate.json
+          HISTORY_PATH: history.json
+        run: python pipeline/build_slate.py
+      - name: Snapshot lines (capture run, no Odds API credits)
+        if: env.FULL_RUN != 'true'
+        env:
+          SPORTS: "nfl,nba,mlb,nhl"
+          CAPTURE_ONLY: "1"
+          HISTORY_PATH: history.json
         run: python pipeline/build_slate.py
       - name: Commit if changed
         run: |
           git config user.name "slate-bot"
           git config user.email "slate-bot@users.noreply.github.com"
-          git add slate.json
-          git diff --cached --quiet || (git commit -m "Update slate" && git push)
+          git add slate.json history.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "Update slate data" && git pull --rebase -q && git push)

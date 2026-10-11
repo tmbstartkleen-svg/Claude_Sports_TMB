@@ -12,6 +12,10 @@ from datetime import date, datetime, timedelta
 CFG = {  # assumptions, all tunable
     "nfl": {"espn": "football/nfl", "k": 20, "home": 48, "regress": 1 / 3, "rest": {"bye": 25, "short": -25}, "elo_per_pt": 25},
     "nba": {"espn": "basketball/nba", "k": 20, "home": 100, "regress": 1 / 4, "rest": {"b2b": -46, "rested": 20}, "elo_per_pt": 28},
+    # NHL/MLB: lower K (more games, more randomness), small home edge. MLB has no rest rule: the starting pitcher matters far
+    # more than rest, and this model does not know who is pitching. Treat MLB output as the weakest of the four.
+    "nhl": {"espn": "hockey/nhl", "k": 8, "home": 35, "regress": 1 / 3, "rest": {"b2b": -30, "rested": 10}, "elo_per_pt": 0},
+    "mlb": {"espn": "baseball/mlb", "k": 5, "home": 24, "regress": 1 / 3, "rest": {}, "elo_per_pt": 0},
 }
 MODEL_WEIGHT = float(os.environ.get("MODEL_WEIGHT", 0.25))  # 25% model, 75% market
 LOOKBACK_DAYS = 430
@@ -57,7 +61,7 @@ def fetch_results(sport, today=None, getter=_get):
 
 def _rest_adj(sport, days):
     r = CFG[sport]["rest"]
-    if days is None:
+    if days is None or not r:
         return 0
     if sport == "nfl":
         return r["bye"] if days >= 12 else (r["short"] if days <= 5 else 0)
@@ -105,7 +109,7 @@ def build(sport, games):
     return {"ratings": R, "last": last, "backtest": back}
 
 
-def predict(sport, m, home, away, on=None):
+def predict(sport, m, home, away, on=None, adj=None):
     """Model P(home wins) for an upcoming game, or None if either team is unrated."""
     c = CFG[sport]
     R, last = m["ratings"], m["last"]
@@ -114,7 +118,56 @@ def predict(sport, m, home, away, on=None):
     on = on or date.today()
     dh = (on - last[home]).days if home in last else None
     da = (on - last[away]).days if away in last else None
-    return _win_prob(R[home] - R[away] + c["home"] + _rest_adj(sport, dh) - _rest_adj(sport, da))
+    adj = adj or {}
+    return _win_prob(R[home] - R[away] + c["home"] + _rest_adj(sport, dh) - _rest_adj(sport, da) + adj.get(home, 0) - adj.get(away, 0))
+
+
+# ---------- injuries (rough, position-based; ESPN's injury feed has no player-quality data) ----------
+STATUS_P = {"out": 1.0, "injured reserve": 1.0, "suspension": 1.0, "doubtful": 0.75, "questionable": 0.25, "day-to-day": 0.25, "probable": 0.1}
+# (key position or None, Elo hit for that position at full probability), per-other-player hit, cap on others
+INJ = {
+    "nfl": {"key": {"QB": -100}, "other": -6, "cap": -36},
+    "nba": {"key": {}, "other": -10, "cap": -50},   # cannot tell stars from bench players here
+    "nhl": {"key": {"G": -50}, "other": -3, "cap": -24},
+    "mlb": {"key": {}, "other": -3, "cap": -12},
+}
+
+
+def fetch_injuries(sport, getter=_get):
+    """{team displayName: [{name, pos, status}]} from ESPN's injuries endpoint."""
+    data = getter(f"https://site.api.espn.com/apis/site/v2/sports/{CFG[sport]['espn']}/injuries")
+    out = {}
+    for t in data.get("injuries", []):
+        team = t.get("displayName") or (t.get("team") or {}).get("displayName")
+        for i in t.get("injuries", []):
+            a = i.get("athlete") or {}
+            pos = a.get("position")
+            pos = (pos.get("abbreviation") if isinstance(pos, dict) else pos) or ""
+            st = (i.get("status") or (i.get("type") or {}).get("description") or "").lower()
+            if team and st:
+                out.setdefault(team, []).append({"name": a.get("displayName", "?"), "pos": pos.upper(), "status": st})
+    return out
+
+
+def injury_adj(sport, inj):
+    """{team: (elo_delta, [notes])}. Deliberately small and capped: this is a rough guide, not a lineup model."""
+    cfg, res = INJ[sport], {}
+    for team, plist in inj.items():
+        key_hit, other, notes = 0.0, 0.0, []
+        for p in plist:
+            prob = STATUS_P.get(p["status"], 0.0)
+            if prob <= 0:
+                continue
+            if p["pos"] in cfg["key"]:
+                key_hit += cfg["key"][p["pos"]] * prob
+                notes.append(f"{p['name']} ({p['pos']}) {p['status']}")
+            else:
+                other += cfg["other"] * prob
+        other = max(other, cfg["cap"])
+        total = key_hit + other
+        if total or notes:
+            res[team] = (round(total, 1), notes)
+    return res
 
 
 def blend(p_model, p_market, w=None):

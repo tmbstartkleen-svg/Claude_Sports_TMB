@@ -18,3 +18,11 @@ Edge Suite's **Today's Slate** tab reads it.
 
 Run locally: `ODDS_API_KEY=... python pipeline/build_slate.py`
 Read-only: nothing here places bets.
+
+## Models and extras
+- **Elo + rest models:** NFL, NBA, NHL, MLB (free ESPN results). MLB is the weakest: it does not know who is pitching.
+- **Injuries (rough):** ESPN's injury list, position-based and capped (NFL QB out = about -100 Elo; others small). It cannot tell NBA stars from bench players.
+- **Closing lines:** capture runs every 30 minutes on game days (free sources only) save each game's market price to `history.json`.
+  The last price seen before the start is the "closing line", so it can be up to ~30 min early. Edge Suite's Today's Slate tab can copy those into the CLV tab for bets you logged from the slate.
+- **Netlify:** `netlify.toml` skips deploys when only `history.json` changed.
+- **Tests** run before every build (`test_offline.py`, `test_model.py`, `test_extras.py`); a failing test stops the run.
