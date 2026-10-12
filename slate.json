@@ -1,0 +1,136 @@
+{
+ "generatedAt": "2026-10-12T02:00:46+00:00",
+ "settings": {
+  "bankroll": 100.0,
+  "kellyFrac": 0.35,
+  "maxStakePct": 3.0,
+  "dayBudget": 6.0,
+  "minEdge": 0.01
+ },
+ "sources": [
+  {
+   "source": "odds[nfl]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[nfl]:espn",
+   "ok": true,
+   "detail": "1 items"
+  },
+  {
+   "source": "odds[nba]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[nba]:espn",
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[nba]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
+  },
+  {
+   "source": "odds[mlb]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[mlb]:espn",
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[mlb]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
+  },
+  {
+   "source": "odds[nhl]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[nhl]:espn",
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[nhl]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
+  },
+  {
+   "source": "kalshi:direct",
+   "ok": true,
+   "detail": "1000 items"
+  },
+  {
+   "source": "polymarket:direct",
+   "ok": true,
+   "detail": "576 items"
+  },
+  {
+   "source": "model[nfl]",
+   "ok": false,
+   "detail": "RuntimeError('only 0 completed games found')"
+  },
+  {
+   "source": "model[nba]",
+   "ok": false,
+   "detail": "RuntimeError('only 0 completed games found')"
+  },
+  {
+   "source": "model[mlb]",
+   "ok": false,
+   "detail": "RuntimeError('only 0 completed games found')"
+  },
+  {
+   "source": "model[nhl]",
+   "ok": false,
+   "detail": "RuntimeError('only 0 completed games found')"
+  },
+  {
+   "source": "history",
+   "ok": true,
+   "detail": "1 snapshots added, 0 closing lines available"
+  }
+ ],
+ "modelBacktest": {},
+ "games": [
+  {
+   "key": "nfl|Buffalo Bills|Los Angeles Rams|2026-10-13T00:15",
+   "sport": "nfl",
+   "home": "Los Angeles Rams",
+   "away": "Buffalo Bills",
+   "start": "2026-10-13T00:15Z",
+   "nBooks": 1,
+   "fair": {
+    "home": 0.6214,
+    "away": 0.3786
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -180.0,
+     "decimal": 1.556
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 150.0,
+     "decimal": 2.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0429,
+   "bets": [],
+   "pm": []
+  }
+ ],
+ "day": null,
+ "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
+ "closing": {}
+}
