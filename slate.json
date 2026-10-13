@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-12T22:22:06+00:00",
+ "generatedAt": "2026-10-13T03:19:33+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -15,8 +15,13 @@
   },
   {
    "source": "odds[nfl]:espn",
-   "ok": true,
-   "detail": "1 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[nfl]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
   },
   {
    "source": "odds[nba]:oddsapi",
@@ -25,8 +30,13 @@
   },
   {
    "source": "odds[nba]:espn",
-   "ok": true,
-   "detail": "4 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[nba]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
   },
   {
    "source": "odds[mlb]:oddsapi",
@@ -35,8 +45,13 @@
   },
   {
    "source": "odds[mlb]:espn",
-   "ok": true,
-   "detail": "1 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[mlb]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
   },
   {
    "source": "odds[nhl]:oddsapi",
@@ -45,8 +60,13 @@
   },
   {
    "source": "odds[nhl]:espn",
-   "ok": true,
-   "detail": "2 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[nhl]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
   },
   {
    "source": "kalshi:direct",
@@ -81,260 +101,133 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "8 snapshots added, 0 closing lines available"
+   "detail": "0 snapshots added, 8 closing lines available"
   }
  ],
  "modelBacktest": {},
- "games": [
-  {
-   "key": "nfl|Buffalo Bills|Los Angeles Rams|2026-10-13T00:15",
+ "games": [],
+ "day": null,
+ "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
+ "closing": {
+  "nfl|Buffalo Bills|Los Angeles Rams|2026-10-13T00:15": {
    "sport": "nfl",
    "home": "Los Angeles Rams",
    "away": "Buffalo Bills",
    "start": "2026-10-13T00:15Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 96,
+   "fairHome": 0.6277,
+   "fairAway": 0.3723,
+   "bestHome": -185.0,
+   "bestAway": 154.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.6277,
-    "away": 0.3723
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -185.0,
-     "decimal": 1.541
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": 154.0,
-     "decimal": 2.54
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0428,
-   "bets": [],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "yes Over 0.5 runs,yes Over 0.5 runs,yes Logan Henderson: 3+,yes Drew Rasmussen: 3+,yes Over 2.5 runs scored,yes Over 20.5 points,yes Josh Allen: 28+,yes Matthew Stafford: 33+,yes Josh Allen: 175+,yes Matthew Stafford: 200+,yes Josh Allen: 5+,no BUF Bills wins by over 14.5 points,yes LA Rams over 14.5 points,yes Over 39.5 points",
-     "url": "https://kalshi.com/markets/",
-     "away": 0.0,
-     "awayEdgePp": 37.2
-    },
-    {
-     "source": "kalshi",
-     "title": "no BUF Bills D/ST: 1+,no Alex Bachman: 1+,no CJ Daniels: 1+,no LA Rams D/ST: 1+,no Matthew Stafford: 1+,no Tyler Higbee: 1+",
-     "url": "https://kalshi.com/markets/"
-    },
-    {
-     "source": "kalshi",
-     "title": "no BUF Bills D/ST: 1+,no Alex Bachman: 1+,no CJ Daniels: 1+,no LA Rams D/ST: 1+,no Tyler Higbee: 1+",
-     "url": "https://kalshi.com/markets/"
-    },
-    {
-     "source": "kalshi",
-     "title": "no BUF Bills D/ST: 1+,no Alex Bachman: 1+,no LA Rams D/ST: 1+,no Tyler Higbee: 1+",
-     "url": "https://kalshi.com/markets/"
-    }
-   ]
+   "firstFairHome": 0.6214,
+   "snaps": 4
   },
-  {
-   "key": "nba|Oklahoma City Thunder|Atlanta Hawks|2026-10-12T23:00",
+  "nba|Oklahoma City Thunder|Atlanta Hawks|2026-10-12T23:00": {
    "sport": "nba",
    "home": "Atlanta Hawks",
    "away": "Oklahoma City Thunder",
    "start": "2026-10-12T23:00Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 21,
+   "fairHome": 0.6141,
+   "fairAway": 0.3859,
+   "bestHome": -175.0,
+   "bestAway": 145.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.6141,
-    "away": 0.3859
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -175.0,
-     "decimal": 1.571
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": 145.0,
-     "decimal": 2.45
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0445,
-   "bets": [],
-   "pm": []
+   "firstFairHome": 0.6141,
+   "snaps": 2
   },
-  {
-   "key": "nba|Brooklyn Nets|Washington Wizards|2026-10-12T23:00",
+  "nba|Brooklyn Nets|Washington Wizards|2026-10-12T23:00": {
    "sport": "nba",
    "home": "Washington Wizards",
    "away": "Brooklyn Nets",
    "start": "2026-10-12T23:00Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 21,
+   "fairHome": 0.5536,
+   "fairAway": 0.4464,
+   "bestHome": -135.0,
+   "bestAway": 114.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.5752,
-    "away": 0.4248
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -148.0,
-     "decimal": 1.676
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": 124.0,
-     "decimal": 2.24
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0432,
-   "bets": [],
-   "pm": []
+   "firstFairHome": 0.5752,
+   "snaps": 2
   },
-  {
-   "key": "nba|Minnesota Timberwolves|New York Knicks|2026-10-12T23:30",
+  "nba|Minnesota Timberwolves|New York Knicks|2026-10-12T23:30": {
    "sport": "nba",
    "home": "New York Knicks",
    "away": "Minnesota Timberwolves",
    "start": "2026-10-12T23:30Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 51,
+   "fairHome": 0.4818,
+   "fairAway": 0.5182,
+   "bestHome": -102.0,
+   "bestAway": -118.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.5113,
-    "away": 0.4887
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -115.0,
-     "decimal": 1.87
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": -105.0,
-     "decimal": 1.952
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0471,
-   "bets": [],
-   "pm": []
+   "firstFairHome": 0.5113,
+   "snaps": 2
   },
-  {
-   "key": "nba|San Antonio Spurs|Utah Jazz|2026-10-13T01:00",
+  "nba|San Antonio Spurs|Utah Jazz|2026-10-13T01:00": {
    "sport": "nba",
    "home": "Utah Jazz",
    "away": "San Antonio Spurs",
    "start": "2026-10-13T01:00Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 141,
+   "fairHome": 0.6365,
+   "fairAway": 0.3635,
+   "bestHome": -192.0,
+   "bestAway": 160.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.6365,
-    "away": 0.3635
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -192.0,
-     "decimal": 1.521
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": 160.0,
-     "decimal": 2.6
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0421,
-   "bets": [],
-   "pm": []
+   "firstFairHome": 0.6365,
+   "snaps": 2
   },
-  {
-   "key": "mlb|Cleveland Guardians|Tampa Bay Rays|2026-10-13T00:00",
+  "mlb|Cleveland Guardians|Tampa Bay Rays|2026-10-13T00:00": {
    "sport": "mlb",
    "home": "Tampa Bay Rays",
    "away": "Cleveland Guardians",
    "start": "2026-10-13T00:00Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 81,
+   "fairHome": 0.6049,
+   "fairAway": 0.3951,
+   "bestHome": -169.0,
+   "bestAway": 139.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.6049,
-    "away": 0.3951
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -169.0,
-     "decimal": 1.592
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 139.0,
-     "decimal": 2.39
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0467,
-   "bets": [],
-   "pm": []
+   "firstFairHome": 0.6049,
+   "snaps": 2
   },
-  {
-   "key": "nhl|Ottawa Senators|New Jersey Devils|2026-10-12T23:00",
+  "nhl|Ottawa Senators|New Jersey Devils|2026-10-12T23:00": {
    "sport": "nhl",
    "home": "New Jersey Devils",
    "away": "Ottawa Senators",
    "start": "2026-10-12T23:00Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 21,
+   "fairHome": 0.5273,
+   "fairAway": 0.4727,
+   "bestHome": -122.0,
+   "bestAway": 102.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.5273,
-    "away": 0.4727
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -122.0,
-     "decimal": 1.82
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": 102.0,
-     "decimal": 2.02
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0446,
-   "bets": [],
-   "pm": []
+   "firstFairHome": 0.5273,
+   "snaps": 2
   },
-  {
-   "key": "nhl|Vegas Golden Knights|Minnesota Wild|2026-10-13T00:00",
+  "nhl|Vegas Golden Knights|Minnesota Wild|2026-10-13T00:00": {
    "sport": "nhl",
    "home": "Minnesota Wild",
    "away": "Vegas Golden Knights",
    "start": "2026-10-13T00:00Z",
+   "capturedAt": "2026-10-12T22:39:20+00:00",
+   "minutesBeforeStart": 81,
+   "fairHome": 0.5045,
+   "fairAway": 0.4955,
+   "bestHome": -112.0,
+   "bestAway": -108.0,
    "nBooks": 1,
-   "fair": {
-    "home": 0.5045,
-    "away": 0.4955
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -112.0,
-     "decimal": 1.893
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": -108.0,
-     "decimal": 1.926
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0475,
-   "bets": [],
-   "pm": []
+   "firstFairHome": 0.5045,
+   "snaps": 2
   }
- ],
- "day": null,
- "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
- "closing": {}
+ }
 }
