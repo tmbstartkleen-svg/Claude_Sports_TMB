@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-13T20:29:26+00:00",
+ "generatedAt": "2026-10-14T01:33:56+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -31,7 +31,7 @@
   {
    "source": "odds[nba]:espn",
    "ok": true,
-   "detail": "5 items"
+   "detail": "2 items"
   },
   {
    "source": "odds[mlb]:oddsapi",
@@ -40,8 +40,13 @@
   },
   {
    "source": "odds[mlb]:espn",
-   "ok": true,
-   "detail": "1 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[mlb]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
   },
   {
    "source": "odds[nhl]:oddsapi",
@@ -51,7 +56,7 @@
   {
    "source": "odds[nhl]:espn",
    "ok": true,
-   "detail": "16 items"
+   "detail": "3 items"
   },
   {
    "source": "kalshi:direct",
@@ -86,95 +91,11 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "22 snapshots added, 8 closing lines available"
+   "detail": "5 snapshots added, 25 closing lines available"
   }
  ],
  "modelBacktest": {},
  "games": [
-  {
-   "key": "nba|Cleveland Cavaliers|Orlando Magic|2026-10-13T23:00",
-   "sport": "nba",
-   "home": "Orlando Magic",
-   "away": "Cleveland Cavaliers",
-   "start": "2026-10-13T23:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.4727,
-    "away": 0.5273
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 102.0,
-     "decimal": 2.02
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -122.0,
-     "decimal": 1.82
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0446,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nba|New York Knicks|Toronto Raptors|2026-10-13T23:00",
-   "sport": "nba",
-   "home": "Toronto Raptors",
-   "away": "New York Knicks",
-   "start": "2026-10-13T23:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.7829,
-    "away": 0.2171
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -410.0,
-     "decimal": 1.244
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 320.0,
-     "decimal": 4.2
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.042,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nba|Indiana Pacers|Oklahoma City Thunder|2026-10-14T00:00",
-   "sport": "nba",
-   "home": "Oklahoma City Thunder",
-   "away": "Indiana Pacers",
-   "start": "2026-10-14T00:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.7352,
-    "away": 0.2648
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -310.0,
-     "decimal": 1.323
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 250.0,
-     "decimal": 3.5
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0418,
-   "bets": [],
-   "pm": []
-  },
   {
    "key": "nba|Golden State Warriors|Los Angeles Lakers|2026-10-14T02:00",
    "sport": "nba",
@@ -183,23 +104,23 @@
    "start": "2026-10-14T02:00Z",
    "nBooks": 1,
    "fair": {
-    "home": 0.5339,
-    "away": 0.4661
+    "home": 0.4464,
+    "away": 0.5536
    },
    "best": {
     "home": {
-     "book": "DraftKings",
-     "american": -125.0,
-     "decimal": 1.8
+     "book": "Draft Kings",
+     "american": 114.0,
+     "decimal": 2.14
     },
     "away": {
-     "book": "DraftKings",
-     "american": 105.0,
-     "decimal": 2.05
+     "book": "Draft Kings",
+     "american": -135.0,
+     "decimal": 1.741
     }
    },
    "arb": false,
-   "impliedSum": 1.0434,
+   "impliedSum": 1.0418,
    "bets": [],
    "pm": []
   },
@@ -211,415 +132,23 @@
    "start": "2026-10-14T02:00Z",
    "nBooks": 1,
    "fair": {
-    "home": 0.4818,
-    "away": 0.5182
+    "home": 0.3358,
+    "away": 0.6642
    },
    "best": {
     "home": {
-     "book": "DraftKings",
-     "american": -102.0,
-     "decimal": 1.98
+     "book": "Draft Kings",
+     "american": 180.0,
+     "decimal": 2.8
     },
     "away": {
-     "book": "DraftKings",
-     "american": -118.0,
-     "decimal": 1.847
+     "book": "Draft Kings",
+     "american": -218.0,
+     "decimal": 1.459
     }
    },
    "arb": false,
-   "impliedSum": 1.0462,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "mlb|Cleveland Guardians|Tampa Bay Rays|2026-10-14T00:00",
-   "sport": "mlb",
-   "home": "Tampa Bay Rays",
-   "away": "Cleveland Guardians",
-   "start": "2026-10-14T00:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5534,
-    "away": 0.4466
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -136.0,
-     "decimal": 1.735
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 113.0,
-     "decimal": 2.13
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0458,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|New Jersey Devils|Detroit Red Wings|2026-10-13T22:00",
-   "sport": "nhl",
-   "home": "Detroit Red Wings",
-   "away": "New Jersey Devils",
-   "start": "2026-10-13T22:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5113,
-    "away": 0.4887
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -115.0,
-     "decimal": 1.87
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -105.0,
-     "decimal": 1.952
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0471,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Florida Panthers|Columbus Blue Jackets|2026-10-13T22:15",
-   "sport": "nhl",
-   "home": "Columbus Blue Jackets",
-   "away": "Florida Panthers",
-   "start": "2026-10-13T22:15Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5536,
-    "away": 0.4464
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -135.0,
-     "decimal": 1.741
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 114.0,
-     "decimal": 2.14
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0418,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Buffalo Sabres|Montreal Canadiens|2026-10-13T22:30",
-   "sport": "nhl",
-   "home": "Montreal Canadiens",
-   "away": "Buffalo Sabres",
-   "start": "2026-10-13T22:30Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5865,
-    "away": 0.4135
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -155.0,
-     "decimal": 1.645
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 130.0,
-     "decimal": 2.3
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0426,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Washington Capitals|Carolina Hurricanes|2026-10-13T22:45",
-   "sport": "nhl",
-   "home": "Carolina Hurricanes",
-   "away": "Washington Capitals",
-   "start": "2026-10-13T22:45Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5865,
-    "away": 0.4135
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -155.0,
-     "decimal": 1.645
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 130.0,
-     "decimal": 2.3
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0426,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Seattle Kraken|Philadelphia Flyers|2026-10-13T23:00",
-   "sport": "nhl",
-   "home": "Philadelphia Flyers",
-   "away": "Seattle Kraken",
-   "start": "2026-10-13T23:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5182,
-    "away": 0.4818
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -118.0,
-     "decimal": 1.847
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -102.0,
-     "decimal": 1.98
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0462,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Tampa Bay Lightning|New York Rangers|2026-10-13T23:15",
-   "sport": "nhl",
-   "home": "New York Rangers",
-   "away": "Tampa Bay Lightning",
-   "start": "2026-10-13T23:15Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.4027,
-    "away": 0.5973
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 136.0,
-     "decimal": 2.36
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -162.0,
-     "decimal": 1.617
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.042,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|St. Louis Blues|Ottawa Senators|2026-10-13T23:30",
-   "sport": "nhl",
-   "home": "Ottawa Senators",
-   "away": "St. Louis Blues",
-   "start": "2026-10-13T23:30Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.4955,
-    "away": 0.5045
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -108.0,
-     "decimal": 1.926
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -112.0,
-     "decimal": 1.893
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0475,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Vancouver Canucks|New York Islanders|2026-10-13T23:45",
-   "sport": "nhl",
-   "home": "New York Islanders",
-   "away": "Vancouver Canucks",
-   "start": "2026-10-13T23:45Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.6509,
-    "away": 0.3491
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -205.0,
-     "decimal": 1.488
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 170.0,
-     "decimal": 2.7
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0425,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Pittsburgh Penguins|Chicago Blackhawks|2026-10-14T00:00",
-   "sport": "nhl",
-   "home": "Chicago Blackhawks",
-   "away": "Pittsburgh Penguins",
-   "start": "2026-10-14T00:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.4027,
-    "away": 0.5973
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 136.0,
-     "decimal": 2.36
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -162.0,
-     "decimal": 1.617
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.042,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Minnesota Wild|Winnipeg Jets|2026-10-14T00:15",
-   "sport": "nhl",
-   "home": "Winnipeg Jets",
-   "away": "Minnesota Wild",
-   "start": "2026-10-14T00:15Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5,
-    "away": 0.5
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -110.0,
-     "decimal": 1.909
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -110.0,
-     "decimal": 1.909
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0476,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Colorado Avalanche|Dallas Stars|2026-10-14T00:30",
-   "sport": "nhl",
-   "home": "Dallas Stars",
-   "away": "Colorado Avalanche",
-   "start": "2026-10-14T00:30Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5182,
-    "away": 0.4818
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -118.0,
-     "decimal": 1.847
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -102.0,
-     "decimal": 1.98
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0462,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Vegas Golden Knights|Nashville Predators|2026-10-14T00:45",
-   "sport": "nhl",
-   "home": "Nashville Predators",
-   "away": "Vegas Golden Knights",
-   "start": "2026-10-14T00:45Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.4555,
-    "away": 0.5445
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 110.0,
-     "decimal": 2.1
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -130.0,
-     "decimal": 1.769
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0414,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "nhl|Toronto Maple Leafs|Utah Mammoth|2026-10-14T01:00",
-   "sport": "nhl",
-   "home": "Utah Mammoth",
-   "away": "Toronto Maple Leafs",
-   "start": "2026-10-14T01:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.5973,
-    "away": 0.4027
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -162.0,
-     "decimal": 1.617
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 136.0,
-     "decimal": 2.36
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.042,
+   "impliedSum": 1.0427,
    "bets": [],
    "pm": []
   },
@@ -636,12 +165,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -175.0,
      "decimal": 1.571
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 145.0,
      "decimal": 2.45
     }
@@ -664,12 +193,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 110.0,
      "decimal": 2.1
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -130.0,
      "decimal": 1.769
     }
@@ -687,23 +216,23 @@
    "start": "2026-10-14T03:00Z",
    "nBooks": 1,
    "fair": {
-    "home": 0.4661,
-    "away": 0.5339
+    "home": 0.4555,
+    "away": 0.5445
    },
    "best": {
     "home": {
-     "book": "DraftKings",
-     "american": 105.0,
-     "decimal": 2.05
+     "book": "Draft Kings",
+     "american": 110.0,
+     "decimal": 2.1
     },
     "away": {
-     "book": "DraftKings",
-     "american": -125.0,
-     "decimal": 1.8
+     "book": "Draft Kings",
+     "american": -130.0,
+     "decimal": 1.769
     }
    },
    "arb": false,
-   "impliedSum": 1.0434,
+   "impliedSum": 1.0414,
    "bets": [],
    "pm": []
   }
@@ -830,6 +359,261 @@
    "nBooks": 1,
    "firstFairHome": 0.5045,
    "snaps": 2
+  },
+  "nba|Cleveland Cavaliers|Orlando Magic|2026-10-13T23:00": {
+   "sport": "nba",
+   "home": "Orlando Magic",
+   "away": "Cleveland Cavaliers",
+   "start": "2026-10-13T23:00Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 126,
+   "fairHome": 0.4727,
+   "fairAway": 0.5273,
+   "bestHome": 102.0,
+   "bestAway": -122.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4727,
+   "snaps": 2
+  },
+  "nba|New York Knicks|Toronto Raptors|2026-10-13T23:00": {
+   "sport": "nba",
+   "home": "Toronto Raptors",
+   "away": "New York Knicks",
+   "start": "2026-10-13T23:00Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 126,
+   "fairHome": 0.7829,
+   "fairAway": 0.2171,
+   "bestHome": -410.0,
+   "bestAway": 320.0,
+   "nBooks": 1,
+   "firstFairHome": 0.7829,
+   "snaps": 2
+  },
+  "nba|Indiana Pacers|Oklahoma City Thunder|2026-10-14T00:00": {
+   "sport": "nba",
+   "home": "Oklahoma City Thunder",
+   "away": "Indiana Pacers",
+   "start": "2026-10-14T00:00Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 186,
+   "fairHome": 0.7352,
+   "fairAway": 0.2648,
+   "bestHome": -310.0,
+   "bestAway": 250.0,
+   "nBooks": 1,
+   "firstFairHome": 0.7352,
+   "snaps": 2
+  },
+  "mlb|Cleveland Guardians|Tampa Bay Rays|2026-10-14T00:00": {
+   "sport": "mlb",
+   "home": "Tampa Bay Rays",
+   "away": "Cleveland Guardians",
+   "start": "2026-10-14T00:00Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 186,
+   "fairHome": 0.5534,
+   "fairAway": 0.4466,
+   "bestHome": -136.0,
+   "bestAway": 113.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5534,
+   "snaps": 2
+  },
+  "nhl|New Jersey Devils|Detroit Red Wings|2026-10-13T22:00": {
+   "sport": "nhl",
+   "home": "Detroit Red Wings",
+   "away": "New Jersey Devils",
+   "start": "2026-10-13T22:00Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 66,
+   "fairHome": 0.5113,
+   "fairAway": 0.4887,
+   "bestHome": -115.0,
+   "bestAway": -105.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5113,
+   "snaps": 2
+  },
+  "nhl|Florida Panthers|Columbus Blue Jackets|2026-10-13T22:15": {
+   "sport": "nhl",
+   "home": "Columbus Blue Jackets",
+   "away": "Florida Panthers",
+   "start": "2026-10-13T22:15Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 81,
+   "fairHome": 0.5536,
+   "fairAway": 0.4464,
+   "bestHome": -135.0,
+   "bestAway": 114.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5536,
+   "snaps": 2
+  },
+  "nhl|Buffalo Sabres|Montreal Canadiens|2026-10-13T22:30": {
+   "sport": "nhl",
+   "home": "Montreal Canadiens",
+   "away": "Buffalo Sabres",
+   "start": "2026-10-13T22:30Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 96,
+   "fairHome": 0.5865,
+   "fairAway": 0.4135,
+   "bestHome": -155.0,
+   "bestAway": 130.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5865,
+   "snaps": 2
+  },
+  "nhl|Washington Capitals|Carolina Hurricanes|2026-10-13T22:45": {
+   "sport": "nhl",
+   "home": "Carolina Hurricanes",
+   "away": "Washington Capitals",
+   "start": "2026-10-13T22:45Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 111,
+   "fairHome": 0.5865,
+   "fairAway": 0.4135,
+   "bestHome": -155.0,
+   "bestAway": 130.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5865,
+   "snaps": 2
+  },
+  "nhl|Seattle Kraken|Philadelphia Flyers|2026-10-13T23:00": {
+   "sport": "nhl",
+   "home": "Philadelphia Flyers",
+   "away": "Seattle Kraken",
+   "start": "2026-10-13T23:00Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 126,
+   "fairHome": 0.5182,
+   "fairAway": 0.4818,
+   "bestHome": -118.0,
+   "bestAway": -102.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5182,
+   "snaps": 2
+  },
+  "nhl|Tampa Bay Lightning|New York Rangers|2026-10-13T23:15": {
+   "sport": "nhl",
+   "home": "New York Rangers",
+   "away": "Tampa Bay Lightning",
+   "start": "2026-10-13T23:15Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 141,
+   "fairHome": 0.4027,
+   "fairAway": 0.5973,
+   "bestHome": 136.0,
+   "bestAway": -162.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4027,
+   "snaps": 2
+  },
+  "nhl|St. Louis Blues|Ottawa Senators|2026-10-13T23:30": {
+   "sport": "nhl",
+   "home": "Ottawa Senators",
+   "away": "St. Louis Blues",
+   "start": "2026-10-13T23:30Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 156,
+   "fairHome": 0.4955,
+   "fairAway": 0.5045,
+   "bestHome": -108.0,
+   "bestAway": -112.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4955,
+   "snaps": 2
+  },
+  "nhl|Vancouver Canucks|New York Islanders|2026-10-13T23:45": {
+   "sport": "nhl",
+   "home": "New York Islanders",
+   "away": "Vancouver Canucks",
+   "start": "2026-10-13T23:45Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 171,
+   "fairHome": 0.6509,
+   "fairAway": 0.3491,
+   "bestHome": -205.0,
+   "bestAway": 170.0,
+   "nBooks": 1,
+   "firstFairHome": 0.6509,
+   "snaps": 2
+  },
+  "nhl|Pittsburgh Penguins|Chicago Blackhawks|2026-10-14T00:00": {
+   "sport": "nhl",
+   "home": "Chicago Blackhawks",
+   "away": "Pittsburgh Penguins",
+   "start": "2026-10-14T00:00Z",
+   "capturedAt": "2026-10-13T20:53:43+00:00",
+   "minutesBeforeStart": 186,
+   "fairHome": 0.4027,
+   "fairAway": 0.5973,
+   "bestHome": 136.0,
+   "bestAway": -162.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4027,
+   "snaps": 2
+  },
+  "nhl|Minnesota Wild|Winnipeg Jets|2026-10-14T00:15": {
+   "sport": "nhl",
+   "home": "Winnipeg Jets",
+   "away": "Minnesota Wild",
+   "start": "2026-10-14T00:15Z",
+   "capturedAt": "2026-10-14T00:01:24+00:00",
+   "minutesBeforeStart": 14,
+   "fairHome": 0.5,
+   "fairAway": 0.5,
+   "bestHome": -110.0,
+   "bestAway": -110.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5,
+   "snaps": 3
+  },
+  "nhl|Colorado Avalanche|Dallas Stars|2026-10-14T00:30": {
+   "sport": "nhl",
+   "home": "Dallas Stars",
+   "away": "Colorado Avalanche",
+   "start": "2026-10-14T00:30Z",
+   "capturedAt": "2026-10-14T00:01:24+00:00",
+   "minutesBeforeStart": 29,
+   "fairHome": 0.5182,
+   "fairAway": 0.4818,
+   "bestHome": -118.0,
+   "bestAway": -102.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5182,
+   "snaps": 3
+  },
+  "nhl|Vegas Golden Knights|Nashville Predators|2026-10-14T00:45": {
+   "sport": "nhl",
+   "home": "Nashville Predators",
+   "away": "Vegas Golden Knights",
+   "start": "2026-10-14T00:45Z",
+   "capturedAt": "2026-10-14T00:01:24+00:00",
+   "minutesBeforeStart": 44,
+   "fairHome": 0.4555,
+   "fairAway": 0.5445,
+   "bestHome": 110.0,
+   "bestAway": -130.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4555,
+   "snaps": 3
+  },
+  "nhl|Toronto Maple Leafs|Utah Mammoth|2026-10-14T01:00": {
+   "sport": "nhl",
+   "home": "Utah Mammoth",
+   "away": "Toronto Maple Leafs",
+   "start": "2026-10-14T01:00Z",
+   "capturedAt": "2026-10-14T00:01:24+00:00",
+   "minutesBeforeStart": 59,
+   "fairHome": 0.5973,
+   "fairAway": 0.4027,
+   "bestHome": -162.0,
+   "bestAway": 136.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5973,
+   "snaps": 3
   }
  }
 }
