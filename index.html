@@ -415,6 +415,9 @@ input[type=checkbox]{width:auto;}
       <div id="slDiag" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Data collectors</h2>
       <div id="slNet" class="desc"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Model validation against real closing lines</h2>
+      <div class="desc">Checked against independently graded closing-line datasets (Hugging Face, CC-BY-4.0, not our own data), walking forward so no game is scored with ratings that already know its own result. "Model" is our Elo alone; "Market" is the real closing line. A lower number is better. The blend weight used live is shrunk toward 0.25 rather than taking the fitted optimum outright, since some leagues only had one season to fit from.</div>
+      <div id="btReport" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Our own model (Elo + rest, built from free results)</h2>
       <div id="slModel" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Games</h2>
@@ -1419,7 +1422,20 @@ setTimeout(()=>{['wkLegs','wkPmin','wkPmax','wkLegP','wkLegEv','wkOdds','wkPool'
 
 let SPORT_LABELS={};
 function SN(k){return SPORT_LABELS[k]||String(k).toUpperCase();}
+function btRender(){
+  const el=$('btReport');if(!el)return;
+  fetch('backtest_report.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d){el.textContent='No validation report published yet.';return;}
+    el.innerHTML=Object.keys(d).map(sp=>{const v=d[sp];
+      if(v.error)return '<span class="chip">'+esc(SN(sp)||sp.toUpperCase())+'<span class="n warnc">'+esc(v.error.slice(0,60))+'</span></span>';
+      if(v.ourModel){const better=v.ourModel.logLoss<v.market.logLoss;
+        return '<span class="chip">'+esc(SN(sp)||sp.toUpperCase())+'<span class="n">'+v.matched+' games · model '+v.ourModel.logLoss+' vs market '+v.market.logLoss+' log-loss ('+(better?'<span class="pos">model ahead</span>':'<span class="warnc">market ahead</span>')+') · fitted weight '+Math.round(v.bestBlendWeight*100)+'% (using '+Math.round((v.currentFixedWeight||0)*100)+'%)</span></span>';}
+      return '<span class="chip">'+esc(SN(sp)||sp.toUpperCase())+'<span class="n">'+v.matched+' games · model '+v.ourModelLogLoss+' vs market '+v.marketLogLoss+' log-loss ('+(v.ourModelLogLoss<v.marketLogLoss?'<span class="pos">model ahead</span>':'<span class="warnc">market ahead</span>')+')</span></span>';
+    }).join(' ');
+  }).catch(()=>{el.textContent='No validation report published yet.';});
+}
 function slateRender(d,label){
+  btRender();
   SPORT_LABELS=d.labels||{};
   wkSlate=d;if($('tab-week')&&$('tab-week').classList.contains('active'))wkRender();
   slateBets=[];slateClosing=d.closing||{};

@@ -565,9 +565,9 @@ def analyze(games, pms, models=None, injuries=None, now=None):
             pr = soccer_mod.predict(mdl, g["home"], g["away"])
             if pr:
                 mp = dict(zip(("home", "draw", "away"), pr))
-                bl3 = {k: elo.blend(mp[k], fair[k]) for k in outcomes}
+                bl3 = {k: elo.blend(mp[k], fair[k], sport=g["sport"]) for k in outcomes}
                 row["model"] = {"home": round(mp["home"], 4), "draw": round(mp["draw"], 4), "away": round(mp["away"], 4),
-                                "blendHome": round(bl3["home"], 4), "gapPp": round((mp["home"] - fair["home"]) * 100, 1), "weight": elo.MODEL_WEIGHT}
+                                "blendHome": round(bl3["home"], 4), "gapPp": round((mp["home"] - fair["home"]) * 100, 1), "weight": elo.MODEL_WEIGHTS.get(g["sport"], elo.MODEL_WEIGHT)}
                 for k in outcomes:
                     evm = bl3[k] * best[k][0] - 1
                     if evm >= MIN_EDGE and not any(x["side"] == label(k) for x in row["bets"]):
@@ -590,9 +590,9 @@ def analyze(games, pms, models=None, injuries=None, now=None):
                 adj[g["away"]] = adj.get(g["away"], 0) + pa["away"]
             pm_home = elo.predict(g["sport"], mdl, g["home"], g["away"], start, adj)
             if pm_home is not None:
-                bl = elo.blend(pm_home, fair["home"])
+                bl = elo.blend(pm_home, fair["home"], sport=g["sport"])
                 row["model"] = {"home": round(pm_home, 4), "away": round(1 - pm_home, 4), "blendHome": round(bl, 4),
-                                "gapPp": round((pm_home - fair["home"]) * 100, 1), "weight": elo.MODEL_WEIGHT}
+                                "gapPp": round((pm_home - fair["home"]) * 100, 1), "weight": elo.MODEL_WEIGHTS.get(g["sport"], elo.MODEL_WEIGHT)}
                 notes = []
                 for t in (g["home"], g["away"]):
                     if t in inj and inj[t][0]:

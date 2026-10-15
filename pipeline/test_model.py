@@ -74,3 +74,9 @@ st = {}
 r = M2.fetch_results("nba", today=_d(2026, 1, 1), getter=flaky, stats=st)
 assert r and st["errors"] == 0 and st["completed"] >= 1, st
 print("FETCH DIAG PASS")
+
+# ---- per-sport blend weights fit from the real-market backtest (validate_backtest.py), with a default fallback
+assert abs(M.blend(0.6, 0.5, sport="mlb") - (0.12 * 0.6 + 0.88 * 0.5)) < 1e-9
+assert abs(M.blend(0.6, 0.5, sport="unknownsport") - (M.MODEL_WEIGHT * 0.6 + (1 - M.MODEL_WEIGHT) * 0.5)) < 1e-9
+assert M.blend(0.6, 0.5, w=0.9, sport="mlb") == 0.9 * 0.6 + 0.1 * 0.5, "explicit w overrides the per-sport table"
+print("OK per-sport blend weights")

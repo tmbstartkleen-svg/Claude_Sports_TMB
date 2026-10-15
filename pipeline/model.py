@@ -19,7 +19,14 @@ CFG = {  # assumptions, all tunable
     "nhl": {"espn": "hockey/nhl", "k": 8, "home": 35, "regress": 1 / 3, "rest": {"b2b": -30, "rested": 10}, "elo_per_pt": 0},
     "mlb": {"espn": "baseball/mlb", "k": 5, "home": 24, "regress": 1 / 3, "rest": {}, "elo_per_pt": 0},
 }
-MODEL_WEIGHT = float(os.environ.get("MODEL_WEIGHT", 0.25))  # 25% model, 75% market
+MODEL_WEIGHT = float(os.environ.get("MODEL_WEIGHT", 0.25))  # default when a sport has no validated weight below
+# Per-sport blend weights, fit by log-loss against real closing-line datasets (backtest_report.json, Hugging Face
+# minmaxxxer, point-in-time, no lookahead). Shrunk toward the 0.25 default rather than taking the fitted optimum
+# outright: nfl's fitted weight (1.0) came from only 78 games of one still-open season and is not trusted at face value.
+MODEL_WEIGHTS = {"nfl": 0.4, "nhl": 0.25, "mlb": 0.12, "epl": 0.12, "laliga": 0.1, "seriea": 0.1, "bundesliga": 0.12}
+for _kv in filter(None, os.environ.get("MODEL_WEIGHTS", "").split(",")):  # e.g. MODEL_WEIGHTS="nfl=0.5,mlb=0.15"
+    _k, _v = _kv.split("=")
+    MODEL_WEIGHTS[_k.strip()] = float(_v)
 LOOKBACK_DAYS = 430
 WINDOW_DAYS = 14
 
@@ -272,6 +279,6 @@ def pitcher_adj(pitchers):
     return out, notes
 
 
-def blend(p_model, p_market, w=None):
-    w = MODEL_WEIGHT if w is None else w
+def blend(p_model, p_market, w=None, sport=None):
+    w = (MODEL_WEIGHTS.get(sport, MODEL_WEIGHT) if sport else MODEL_WEIGHT) if w is None else w
     return w * p_model + (1 - w) * p_market
