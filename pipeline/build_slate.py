@@ -618,6 +618,10 @@ def analyze(games, pms, models=None, injuries=None, now=None):
         pm_hits = []
         for m in match_pm(g, pms)[:4]:
             e = {"source": m["source"], "title": m["title"], "url": m.get("url", "")}
+            if m.get("tickers"):
+                e["tickers"] = m["tickers"]
+            if m.get("conditionId"):
+                e["conditionId"] = m["conditionId"]
             for k in ("home", "away"):
                 p = pm_prob_for(m, g[k])
                 if p is not None and abs(p - fair[k]) > 0.12:
