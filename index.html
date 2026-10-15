@@ -41,12 +41,17 @@ body{margin:0;background:
 .callout{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:10px 13px;font-size:.78rem;color:var(--sub);margin-bottom:18px;}
 
 /* tab strip: a terminal ticker, not a browser chrome bar */
-nav{position:sticky;top:0;z-index:5;display:flex;gap:2px;overflow-x:auto;padding:6px 0 0;margin:0 -16px 18px;padding-left:16px;padding-right:16px;background:linear-gradient(var(--bg) 70%, transparent);border-bottom:1px solid var(--border);scrollbar-width:none;}
+nav{display:flex;align-items:center;gap:2px;overflow-x:auto;padding:6px 16px 0;background:var(--bg);border-bottom:1px solid var(--border);scrollbar-width:none;}
 nav::-webkit-scrollbar{display:none;}
 nav button{background:transparent;border:none;color:var(--sub);font-size:.8rem;font-weight:600;padding:9px 13px;border-radius:7px 7px 0 0;cursor:pointer;white-space:nowrap;position:relative;transition:color .15s;}
 nav button:hover{color:var(--text);}
 nav button.active{color:var(--text);}
 nav button.active::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;background:var(--accent);border-radius:2px 2px 0 0;}
+.navdiv{flex:0 0 auto;width:1px;align-self:center;height:16px;background:var(--border);margin:0 4px;}
+.nav-wrap{position:sticky;top:0;z-index:5;margin:0 -16px 18px;}
+.nav-wrap::before,.nav-wrap::after{content:"";position:absolute;top:0;bottom:1px;width:18px;pointer-events:none;z-index:1;}
+.nav-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
+.nav-wrap::after{right:0;background:linear-gradient(270deg,var(--bg),transparent);}
 
 .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;}
 .card h2{font-size:1.01rem;margin:0 0 4px;font-weight:700;letter-spacing:-.005em;}
@@ -118,26 +123,33 @@ input[type=checkbox]{width:auto;}
   <p class="lede">Sixteen tools, one workflow: shop lines against a sharp book, de-vig the market, size bets together, cap the day’s downside, track closing line value and ROI, check for arbitrage, and break down game film.</p>
   <div class="callout">Only arbitrage and hedging can lock a profit. Everything else is expected value and risk: estimates, not promises.</div>
 
+  <div class="nav-wrap">
   <nav id="tabNav">
     <button class="active" data-tab="slate">Today's Slate</button>
     <button data-tab="opps">Opportunities</button>
     <button data-tab="week">Weekly Parlays</button>
+    <span class="navdiv"></span>
     <button data-tab="record">Track Record</button>
     <button data-tab="ledger">Bet Ledger</button>
+    <span class="navdiv"></span>
     <button data-tab="shop">Line Shop</button>
     <button data-tab="arb">Arbitrage</button>
     <button data-tab="promo">Promo Converter</button>
     <button data-tab="ranker">EV Ranker</button>
+    <span class="navdiv"></span>
     <button data-tab="hedge">Hedge Calc</button>
     <button data-tab="legs">Leg Builder</button>
     <button data-tab="pk">Portfolio Kelly</button>
     <button data-tab="day">Day Risk</button>
     <button data-tab="sim">Portfolio Sim</button>
+    <span class="navdiv"></span>
     <button data-tab="fair">Fair Odds</button>
     <button data-tab="cal">Calibration</button>
     <button data-tab="clv">Line Move &amp; CLV</button>
+    <span class="navdiv"></span>
     <button data-tab="film">Film Room</button>
   </nav>
+  </div>
 
   <!-- LEG BUILDER -->
   <div class="tab" id="tab-legs">
