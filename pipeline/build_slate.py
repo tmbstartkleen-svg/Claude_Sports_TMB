@@ -50,25 +50,15 @@ try:
 except ImportError:  # pragma: no cover
     net_mod = None
 
-SPORTS = {  # key -> (Odds API key, ESPN path)
-    "nfl": ("americanfootball_nfl", "football/nfl"),
-    "nba": ("basketball_nba", "basketball/nba"),
-    "mlb": ("baseball_mlb", "baseball/mlb"),
-    "nhl": ("icehockey_nhl", "hockey/nhl"),
-    "ncaaf": ("americanfootball_ncaaf", "football/college-football"),
-    "ncaab": ("basketball_ncaab", "basketball/mens-college-basketball"),
-    "wnba": ("basketball_wnba", "basketball/wnba"),
-    "epl": ("soccer_epl", "soccer/eng.1"),
-    "laliga": ("soccer_spain_la_liga", "soccer/esp.1"),
-    "bundesliga": ("soccer_germany_bundesliga", "soccer/ger.1"),
-    "seriea": ("soccer_italy_serie_a", "soccer/ita.1"),
-    "ligue1": ("soccer_france_ligue_one", "soccer/fra.1"),
-    "mls": ("soccer_usa_mls", "soccer/usa.1"),
-    "ucl": ("soccer_uefa_champs_league", "soccer/uefa.champions"),
-    "mma": ("mma_mixed_martial_arts", "mma/ufc"),
-}
+try:
+    import leagues as _lg
+except ImportError:  # pragma: no cover
+    from pipeline import leagues as _lg
+SPORTS = {k: (v[1], v[2]) for k, v in _lg.OTHER.items()}  # key -> (Odds API key, ESPN path)
+SPORTS.update({k: (v[1], "soccer/" + v[2]) for k, v in _lg.SOCCER.items()})
+LABELS = {**{k: v[0] for k, v in _lg.OTHER.items()}, **{k: v[0] for k, v in _lg.SOCCER.items()}}
 ALL_SPORTS = ",".join(SPORTS)
-THREE_WAY = {"epl", "laliga", "bundesliga", "seriea", "ligue1", "mls", "ucl"}  # soccer: always home / draw / away
+THREE_WAY = set(_lg.SOCCER)  # soccer: always home / draw / away
 # The Odds API charges 1 credit per sport per market per region. Sports outside this list skip it and use the free sources.
 ODDS_API_SPORTS = set(os.environ.get("ODDS_API_SPORTS", "nfl,nba,mlb,nhl").split(","))  # 4 sports x 1 market x 1 region = 4 credits per run; 2 runs a day = about 240 of the 500 free credits a month
 REGIONS = os.environ.get("REGIONS", "us")  # "us,eu" adds Pinnacle and other sharp books but doubles Odds API credit use
@@ -793,7 +783,7 @@ def main():
     if elo and not capture_only:
         for sp in [x for x in sports if x in elo.CFG]:
             try:
-                res = elo.fetch_results(sp)
+                res = elo.fetch_results(sp, cache=True)
                 if len(res) < 50:
                     raise RuntimeError(f"only {len(res)} completed games found")
                 models[sp] = elo.build(sp, res)
@@ -809,7 +799,7 @@ def main():
     if soccer_mod and elo and not capture_only:
         for sp in [x for x in sports if x in soccer_mod.LEAGUES]:
             try:
-                res = elo.fetch_results(sp, path=soccer_mod.LEAGUES[sp])
+                res = elo.fetch_results(sp, path=soccer_mod.LEAGUES[sp], cache=True)
                 if len(res) < soccer_mod.MIN_GAMES:
                     raise RuntimeError(f"only {len(res)} completed games found")
                 mdl_ = soccer_mod.build(res)
@@ -826,7 +816,7 @@ def main():
     rows.sort(key=lambda r: -max([b["evPct"] for b in r["bets"]] + [r.get("arbRoiPct", 0), -99]))
     slate = {"generatedAt": now.isoformat(timespec="seconds"),
              "settings": {"bankroll": BANKROLL, "kellyFrac": KELLY_FRAC, "maxStakePct": MAX_STAKE_PCT, "dayBudget": DAY_BUDGET, "minEdge": MIN_EDGE},
-             "sources": LOG, "network": net_rows, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "day": None if capture_only else simulate_day(rows),
+             "sources": LOG, "labels": LABELS, "network": net_rows, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "day": None if capture_only else simulate_day(rows),
              "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only."}
     closing = {}
     if hist_mod:

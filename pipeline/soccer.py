@@ -11,10 +11,11 @@ from datetime import datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from names import canon
 
-LEAGUES = {  # key -> ESPN path
-    "epl": "soccer/eng.1", "laliga": "soccer/esp.1", "bundesliga": "soccer/ger.1",
-    "seriea": "soccer/ita.1", "ligue1": "soccer/fra.1", "mls": "soccer/usa.1",
-}
+try:
+    import leagues as _lg
+except ImportError:  # pragma: no cover
+    from pipeline import leagues as _lg
+LEAGUES = {k: "soccer/" + v[2] for k, v in _lg.SOCCER.items() if v[3]}  # key -> ESPN path (domestic leagues only)
 K = 18
 HOME_ELO = 65          # home advantage in rating points
 REGRESS = 0.25         # pull toward 1500 after the off-season gap

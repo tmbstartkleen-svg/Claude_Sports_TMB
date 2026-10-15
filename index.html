@@ -1344,7 +1344,7 @@ function oppRender(g){
   const dayName=k=>{const t=new Date(k+'T12:00:00');return isNaN(t)?k:t.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});};
   $('slOpp').innerHTML=Object.keys(days).sort().map(k=>'<h3 style="font-size:.85rem;margin:12px 0 4px">'+esc(dayName(k))+'</h3><div style="overflow-x:auto"><table><thead><tr><th>Game</th><th>Away ML</th><th>Home ML</th><th>Market fair (home)</th><th>Model (home)</th><th>Pred. market</th><th>Flagged</th></tr></thead><tbody>'+days[k].map(r=>{
     const b=r.best||{},pm=(r.pm||[])[0],fl=(r.bets||[]).map(x=>esc(x.side)+' '+am(x.american)+' ('+signed(x.evPct,1,'%')+' EV)<br><span class="desc" style="margin:0">$100: win '+d100(win100(x.american))+' / lose −$100 · EV '+d100(ev100(x.fair,x.american))+'</span>').join('<br><br>');
-    return '<tr><td style="white-space:normal;min-width:180px">'+esc(r.sport.toUpperCase())+' · '+esc(r.away)+' @ '+esc(r.home)+'</td><td>'+am(b.away&&b.away.american)+(b.away?'<br><span class="desc" style="margin:0">$100 wins '+d100(win100(b.away.american))+'</span>':'')+'</td><td>'+am(b.home&&b.home.american)+(b.home?'<br><span class="desc" style="margin:0">$100 wins '+d100(win100(b.home.american))+'</span>':'')+'</td><td>'+pct(r.fair&&r.fair.home)+'</td><td>'+(r.model?pct(r.model.home):'—')+'</td><td>'+(pm&&pm.home!=null?pct(pm.home):'—')+'</td><td class="'+(fl?'pos':'')+'" style="white-space:normal">'+(fl||'—')+'</td></tr>';}).join('')+'</tbody></table></div>').join('')||'<div class="desc">No games.</div>';
+    return '<tr><td style="white-space:normal;min-width:180px">'+esc(SN(r.sport))+' · '+esc(r.away)+' @ '+esc(r.home)+'</td><td>'+am(b.away&&b.away.american)+(b.away?'<br><span class="desc" style="margin:0">$100 wins '+d100(win100(b.away.american))+'</span>':'')+'</td><td>'+am(b.home&&b.home.american)+(b.home?'<br><span class="desc" style="margin:0">$100 wins '+d100(win100(b.home.american))+'</span>':'')+'</td><td>'+pct(r.fair&&r.fair.home)+'</td><td>'+(r.model?pct(r.model.home):'—')+'</td><td>'+(pm&&pm.home!=null?pct(pm.home):'—')+'</td><td class="'+(fl?'pos':'')+'" style="white-space:normal">'+(fl||'—')+'</td></tr>';}).join('')+'</tbody></table></div>').join('')||'<div class="desc">No games.</div>';
   const legs=[];g.forEach((r,i)=>(r.bets||[]).forEach(b=>legs.push({gi:i,r,b,p:b.fair,d:am2dec(b.american)})));
   legs.sort((a,c)=>c.b.evPct-a.b.evPct);const top=legs.slice(0,6),combos=[];
   for(let i=0;i<top.length;i++)for(let j=i+1;j<top.length;j++){if(top[i].gi!==top[j].gi){combos.push([top[i],top[j]]);for(let k=j+1;k<top.length;k++)if(top[k].gi!==top[i].gi&&top[k].gi!==top[j].gi)combos.push([top[i],top[j],top[k]]);}}
@@ -1410,14 +1410,17 @@ function wkRender(){
   $('wkStatus').innerHTML='Built '+now.toLocaleString()+' · '+all.length+' possible legs in the next 7 days · '+legs.length+' pass the filters · '+res.length+' parlays match'+(hail?' · <b>Hail Mary mode</b>':'')+'.';
   el.innerHTML=show.map(x=>'<div style="margin:8px 0;padding:8px;border:1px solid var(--border,#8884);border-radius:8px"><b>'+x.pick.length+'-leg'+(x.nd>1?' across '+x.nd+' days':'')+'</b> · pays '+(x.am>=0?'+':'−')+Math.round(Math.abs(x.am))+' · win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+
     '<br><b>$100 bet: win '+d100((x.dec-1)*100)+' / lose −$100 · EV '+d100(x.ev*100)+'</b><br>'+
-    x.pick.map(l=>esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+esc(l.t.toLocaleDateString(undefined,{weekday:'short'}))+', '+esc(l.r.sport.toUpperCase())+(l.flagged?', flagged':'')+')</span>').join('<br>')+'</div>').join('')+
+    x.pick.map(l=>esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+esc(l.t.toLocaleDateString(undefined,{weekday:'short'}))+', '+esc(SN(l.r.sport))+(l.flagged?', flagged':'')+')</span>').join('<br>')+'</div>').join('')+
     (show.length?'':'<div class="desc">No parlays match these filters. Loosen the win-chance range, lower the leg EV filter, or try Hail Mary mode.</div>')+
     '<div class="warnc">'+(hail?'Hail Mary parlays hit rarely by design. The expected value still depends on our probabilities being right, and longshot probabilities are the least reliable. Size them as money you expect to lose.':'Parlays stack the book margin and our error on every leg. Treat EV as a hypothesis the Track Record must confirm.')+'</div>';
 }
 function am(a){return a==null?'—':(a>0?'+':'')+Math.round(a);}
 setTimeout(()=>{['wkLegs','wkPmin','wkPmax','wkLegP','wkLegEv','wkOdds','wkPool','wkSpread','wkHail'].forEach(i=>{const e=document.getElementById(i);if(e)e.addEventListener('input',wkRender);});},0);
 
+let SPORT_LABELS={};
+function SN(k){return SPORT_LABELS[k]||String(k).toUpperCase();}
 function slateRender(d,label){
+  SPORT_LABELS=d.labels||{};
   wkSlate=d;if($('tab-week')&&$('tab-week').classList.contains('active'))wkRender();
   slateBets=[];slateClosing=d.closing||{};
   $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
@@ -1450,7 +1453,7 @@ function slateRender(d,label){
     const lock=[];
     (r.crossArbs||[]).forEach(a=>lock.push(`<b class="pos">Cross arb +${a.roiPct}%</b>: ${esc(a.bookSide)} ${fmtOdds(a.american)} @ ${esc(a.book)} vs ${esc(a.pmSource)} ${esc(a.pmSide)} at ${(a.pmPrice*100).toFixed(0)}¢ (est., fees included)`));
     (r.middles||[]).forEach(m=>lock.push(`<b>${m.kind==='total'?'Total':'Spread'} middle</b> ${m.gap} pt: ${esc(m.legA)} + ${esc(m.legB)}. Hit ${(m.pMiddle*100).toFixed(1)}%, EV <span class="${m.evPct>=0?'pos':'neg'}">${signed(m.evPct,2,'%')}</span>, outer ${signed(m.outerPct,1,'%')}, stake split ${(m.splitA*100).toFixed(0)}/${(m.splitB*100).toFixed(0)}`));
-    return `<tr><td>${esc(r.away)} @ ${esc(r.home)}<br><span class="desc" style="margin:0">${esc(r.sport.toUpperCase())}${r.threeWay?' · 3-way':''}</span></td><td>${r.nBooks}</td>
+    return `<tr><td>${esc(r.away)} @ ${esc(r.home)}<br><span class="desc" style="margin:0">${esc(SN(r.sport))}${r.threeWay?' · 3-way':''}</span></td><td>${r.nBooks}</td>
     <td>${fairTxt}</td><td>${bestTxt}</td>
     <td class="${r.arb?'pos':''}">${r.arb?'+'+r.arbRoiPct+'%':'No'}</td><td style="white-space:normal;min-width:220px">${lock.join('<br>')||'—'}</td><td style="white-space:normal;min-width:150px">${r.model?(r.model.draw!=null?(r.model.home*100).toFixed(0)+' / '+(r.model.draw*100).toFixed(0)+' / '+(r.model.away*100).toFixed(0)+'%':(r.model.home*100).toFixed(1)+'%')+' <span class="desc" style="margin:0">('+signed(r.model.gapPp,1)+'pp home vs market)</span>'+(r.model.injuries?'<br><span class="desc" style="margin:0">Injuries: '+r.model.injuries.map(esc).join(' | ')+'</span>':'')+(r.model.pitchers?'<br><span class="desc" style="margin:0">Starters: '+r.model.pitchers.map(esc).join(' | ')+'</span>':''):'—'}</td><td style="white-space:normal;min-width:200px">${bets}</td><td>${pm}</td></tr>`;}).join('')||'<tr><td colspan="9">No games in this slate.</td></tr>';
 }

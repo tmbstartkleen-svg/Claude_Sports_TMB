@@ -30,17 +30,15 @@ def _get(url):
         return json.load(r)
 
 
-def fetch_results(sport, today=None, getter=_get, path=None, stats=None):
-    """Completed games [{date, home, away, hs, as}] oldest first. Window-sized requests, each retried once.
-    If nothing usable comes back, raises with the first real error and counts so the cause is visible in the logs."""
+CACHE_DIR = os.environ.get("RESULTS_CACHE", "results_cache")
+BACKFILL_DAYS = int(os.environ.get("BACKFILL_DAYS", 200))   # first run fetches this many recent days; each later run extends backwards by this much until LOOKBACK_DAYS is covered
+
+
+def _fetch_days(days, path, getter):
+    """One ESPN request per day (ranges return HTTP 400, verified from a real run), 12 in parallel, each retried once.
+    Returns (completed games, failed day strings with error text, number of days that had any events)."""
     import time
-    path = path or CFG[sport]["espn"]
-    today = today or date.today()
-    start = today - timedelta(days=LOOKBACK_DAYS)
-    out, seen, errors, with_events, completed = [], set(), [], 0, 0
-    # ESPN rejects date ranges (HTTP 400, verified from a real Actions run), so ask one day at a time, in parallel
-    days = [start + timedelta(days=i) for i in range((today - start).days + 1)]
-    windows = len(days)
+    from concurrent.futures import ThreadPoolExecutor
 
     def one(d):
         url = f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard?dates={d:%Y%m%d}&limit=300"
@@ -51,12 +49,12 @@ def fetch_results(sport, today=None, getter=_get, path=None, stats=None):
                 if attempt == 1:
                     return d, None, f"{d:%Y%m%d}: {ex!r}"[:160]
                 time.sleep(0.5)
-    from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=12) as pool:
         fetched = list(pool.map(one, days))
+    games, errors, with_events, completed = [], [], 0, 0
     for d, data, err in fetched:
         if err:
-            errors.append(err)
+            errors.append((d, err))
             continue
         evs = data.get("events", [])
         with_events += bool(evs)
@@ -66,22 +64,71 @@ def fetch_results(sport, today=None, getter=_get, path=None, stats=None):
                 if not (ev.get("status", {}).get("type", {}).get("completed") or comp.get("status", {}).get("type", {}).get("completed")):
                     continue
                 t = {c["homeAway"]: c for c in comp["competitors"]}
-                g = {"id": ev["id"], "date": ev["date"][:10], "home": t["home"]["team"]["displayName"],
-                     "away": t["away"]["team"]["displayName"], "hs": float(t["home"]["score"]), "as": float(t["away"]["score"])}
+                games.append({"id": ev["id"], "date": ev["date"][:10], "home": t["home"]["team"]["displayName"],
+                              "away": t["away"]["team"]["displayName"], "hs": float(t["home"]["score"]), "as": float(t["away"]["score"])})
+                completed += 1
             except (KeyError, ValueError, IndexError, TypeError):
                 continue
-            completed += 1
-            if g["id"] not in seen:
-                seen.add(g["id"])
-                out.append(g)
+    return games, errors, with_events, completed
+
+
+def _load_cache(path):
+    try:
+        with open(path) as f:
+            c = json.load(f)
+        return date.fromisoformat(c["from"]), date.fromisoformat(c["through"]), c["games"]
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def fetch_results(sport, today=None, getter=_get, path=None, stats=None, cache=False):
+    """Completed games [{date, home, away, hs, as}] oldest first.
+    With cache=True the results are kept in results_cache/<sport>.json: later runs fetch only new days (plus a 3-day overlap) and extend backwards
+    by BACKFILL_DAYS until LOOKBACK_DAYS is covered, so 70 leagues do not mean 30,000 requests a run.
+    If nothing usable comes back, raises with the first real error and counts so the cause is visible in the logs."""
+    path = path or CFG[sport]["espn"]
+    today = today or date.today()
+    start = today - timedelta(days=LOOKBACK_DAYS)
+    cpath = os.path.join(CACHE_DIR, f"{sport}.json")
+    c = _load_cache(cpath) if cache else None
+    if c:
+        have_from, have_through, cached = c
+        days = [have_through - timedelta(days=2) + timedelta(days=i) for i in range((today - (have_through - timedelta(days=2))).days + 1)]
+        if have_from > start:
+            nf = max(start, have_from - timedelta(days=BACKFILL_DAYS))
+            days += [nf + timedelta(days=i) for i in range((have_from - nf).days)]
+            have_from = nf
+        have_from = min(have_from, start) if have_from <= start else have_from
+    else:
+        cached = []
+        first = max(start, today - timedelta(days=BACKFILL_DAYS)) if cache else start
+        days = [first + timedelta(days=i) for i in range((today - first).days + 1)]
+        have_from = first
+    games, errs, with_events, completed = _fetch_days(days, path, getter)
+    errors = [e for _, e in errs]
+    windows = len(days)
+    seen, out = set(), []
+    for g in games + cached:
+        if g["id"] not in seen and g["date"] >= f"{start:%Y-%m-%d}":
+            seen.add(g["id"])
+            out.append(g)
     if stats is not None:
-        stats.update({"windows": windows, "withEvents": with_events, "completed": completed, "errors": len(errors)})
+        stats.update({"windows": windows, "withEvents": with_events, "completed": completed, "errors": len(errors), "total": len(out)})
     if not out:
         raise RuntimeError(f"refusing to build a model, no completed games: {windows} windows, {with_events} had events, {completed} completed, {len(errors)} errors"
                            + (f"; first error {errors[0]}" if errors else ""))
     if errors and len(errors) > windows * 0.2:
         raise RuntimeError(f"refusing to build a model, too many failed windows ({len(errors)} of {windows}); ratings would have holes; first error {errors[0]}")
     out.sort(key=lambda g: g["date"])
+    if cache:
+        # never mark a failed day as covered: stop 'through' just before the earliest failure so the next run retries it
+        through = today if not errs else min(d for d, _ in errs) - timedelta(days=1)
+        try:
+            os.makedirs(CACHE_DIR, exist_ok=True)
+            with open(cpath, "w") as f:
+                json.dump({"from": have_from.isoformat(), "through": through.isoformat(), "games": out}, f, separators=(",", ":"))
+        except OSError:
+            pass
     return out
 
 

@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install sports-skills
-      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py && python pipeline/test_markets.py && python pipeline/test_grade.py && python pipeline/test_notify.py && python pipeline/test_soccer.py && python pipeline/test_review.py && python pipeline/test_network.py && python pipeline/test_kalshi.py
+      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py && python pipeline/test_markets.py && python pipeline/test_grade.py && python pipeline/test_notify.py && python pipeline/test_soccer.py && python pipeline/test_review.py && python pipeline/test_network.py && python pipeline/test_kalshi.py && python pipeline/test_cache.py
       - name: Build slate.json (full run)
         if: env.FULL_RUN == 'true'
         env:
@@ -41,5 +41,5 @@ jobs:
         run: |
           git config user.name "slate-bot"
           git config user.email "slate-bot@users.noreply.github.com"
-          for f in slate.json history.json picks.json record.json alerts.json network_health.json; do [ -f "$f" ] && git add "$f"; done; true
+          for f in results_cache slate.json history.json picks.json record.json alerts.json network_health.json; do [ -e "$f" ] && git add "$f"; done; true
           git diff --cached --quiet || (git commit -m "Update slate data" && git pull --rebase -q && git push)
