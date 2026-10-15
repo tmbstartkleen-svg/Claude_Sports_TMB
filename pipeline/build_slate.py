@@ -290,6 +290,17 @@ KALSHI_GAME_SERIES = ("KXNFLGAME", "KXNBAGAME", "KXNHLGAME", "KXMLBGAME", "KXNCA
                       "KXLALIGAGAME", "KXBUNDESLIGAGAME", "KXSERIEAGAME", "KXLIGUE1GAME", "KXMLSGAME", "KXUCLGAME")
 
 
+_MON = {m: i + 1 for i, m in enumerate("JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split())}
+
+
+def _kalshi_date(event_ticker):
+    """KXNFLGAME-26OCT26DALPHI -> '2026-10-26' (the game date Kalshi encodes in the ticker), or None."""
+    mt = re.search(r"-(\d{2})([A-Z]{3})(\d{2})", event_ticker or "")
+    if not mt or mt.group(2) not in _MON:
+        return None
+    return f"20{mt.group(1)}-{_MON[mt.group(2)]:02d}-{mt.group(3)}"
+
+
 def kalshi_games():
     """Single-game win markets (series KX<LEAGUE>GAME; shapes verified from a real Actions probe). One item per game:
     {source:'kalshi', title:'A vs B', teams:{name: yes ask 0..1}} so both teams are known and nothing is guessed from a one-sided title."""
@@ -312,7 +323,7 @@ def kalshi_games():
         for et, teams in ev.items():
             names = [n for n in teams if n.lower() not in ("tie", "draw")]
             if len(names) == 2:
-                out.append({"source": "kalshi", "title": " vs ".join(names), "teams": teams, "yes": None,
+                out.append({"source": "kalshi", "title": " vs ".join(names), "teams": teams, "yes": None, "date": _kalshi_date(et),
                             "url": f"https://kalshi.com/markets/{ser.lower()}"})
     if not out:
         raise RuntimeError("no Kalshi game markets returned" + (f" ({'; '.join(errs[:3])})" if errs else ""))
@@ -405,6 +416,18 @@ def kalshi_name_matches(kname, full):
     return False
 
 
+def _kalshi_same_day(m, game):
+    """The same two teams can meet in several games (series, rematches). The ticker date must be within a day of this game's start, else skip."""
+    if not m.get("date"):
+        return False
+    try:
+        a = datetime.fromisoformat(m["date"]).date()
+        b = datetime.fromisoformat((game.get("start") or "").replace("Z", "+00:00")).date()
+    except ValueError:
+        return False
+    return abs((a - b).days) <= 1
+
+
 def _kalshi_pick(m, team):
     hits = [v for n, v in m["teams"].items() if n.lower() not in ("tie", "draw") and kalshi_name_matches(n, team)]
     return hits[0] if len(hits) == 1 else None
@@ -416,7 +439,7 @@ def match_pm(game, pms):
     hits = []
     for m in pms:
         if m.get("teams"):
-            if _kalshi_pick(m, game["home"]) is not None and _kalshi_pick(m, game["away"]) is not None:
+            if _kalshi_pick(m, game["home"]) is not None and _kalshi_pick(m, game["away"]) is not None and _kalshi_same_day(m, game):
                 hits.append(m)
             continue
         t = m["title"].lower()
