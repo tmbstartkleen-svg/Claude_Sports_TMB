@@ -1,0 +1,168 @@
+{
+ "checkedAt": "2026-10-15T07:29:15+00:00",
+ "nfl": {
+  "events": 14,
+  "withOdds": 14,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T00:15Z",
+  "leagues": [
+   "National Football League"
+  ]
+ },
+ "nba": {
+  "events": 7,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-14T23:30Z",
+  "leagues": [
+   "National Basketball Association"
+  ]
+ },
+ "mlb": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-15T00:00Z",
+  "leagues": [
+   "Major League Baseball"
+  ]
+ },
+ "nhl": {
+  "events": 2,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-14T23:30Z",
+  "leagues": [
+   "National Hockey League"
+  ]
+ },
+ "ncaaf": {
+  "events": 16,
+  "withOdds": 16,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T16:00Z",
+  "leagues": [
+   "NCAA - Football"
+  ]
+ },
+ "ncaab": {
+  "events": 2,
+  "withOdds": 0,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-11-01T14:30Z",
+  "leagues": [
+   "NCAA Men's Basketball"
+  ]
+ },
+ "wnba": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T19:30Z",
+  "leagues": [
+   "Women's National Basketball Association"
+  ]
+ },
+ "epl": {
+  "events": 5,
+  "withOdds": 5,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T11:30Z",
+  "leagues": [
+   "English Premier League"
+  ]
+ },
+ "laliga": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T19:00Z",
+  "leagues": [
+   "Spanish LALIGA"
+  ]
+ },
+ "bundesliga": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:30Z",
+  "leagues": [
+   "German Bundesliga"
+  ]
+ },
+ "seriea": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:45Z",
+  "leagues": [
+   "Italian Serie A"
+  ]
+ },
+ "ligue1": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:45Z",
+  "leagues": [
+   "French Ligue 1"
+  ]
+ },
+ "mls": {
+  "events": 14,
+  "withOdds": 14,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T18:30Z",
+  "leagues": [
+   "MLS"
+  ]
+ },
+ "ucl": {
+  "events": 9,
+  "withOdds": 9,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-14T16:45Z",
+  "leagues": [
+   "UEFA Champions League"
+  ]
+ },
+ "mma": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T21:00Z",
+  "leagues": [
+   "Ultimate Fighting Championship"
+  ]
+ }
+}

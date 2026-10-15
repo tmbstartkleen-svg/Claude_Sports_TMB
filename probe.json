@@ -2,7 +2,7 @@
  "nba_day": {
   "status": 200,
   "events": 7,
-  "completed": 6,
+  "completed": 7,
   "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261014"
  },
  "nba_range14": {
@@ -38,7 +38,7 @@
  "nba_schedule": {
   "status": 200,
   "events": 7,
-  "completed": 6,
+  "completed": 7,
   "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261014&limit=100"
  },
  "nfl_day": {
