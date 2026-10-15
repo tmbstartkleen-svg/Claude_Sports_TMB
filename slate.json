@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-14T19:08:19+00:00",
+ "generatedAt": "2026-10-15T01:20:48+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -26,7 +26,7 @@
   {
    "source": "odds[nba]:espn",
    "ok": true,
-   "detail": "7 items"
+   "detail": "1 items"
   },
   {
    "source": "odds[mlb]:oddsapi",
@@ -35,8 +35,13 @@
   },
   {
    "source": "odds[mlb]:espn",
-   "ok": true,
-   "detail": "1 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[mlb]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
   },
   {
    "source": "odds[nhl]:oddsapi",
@@ -45,13 +50,153 @@
   },
   {
    "source": "odds[nhl]:espn",
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[nhl]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
+  },
+  {
+   "source": "odds[ncaaf]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[ncaaf]:espn",
    "ok": true,
-   "detail": "2 items"
+   "detail": "16 items"
+  },
+  {
+   "source": "odds[ncaab]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[ncaab]:espn",
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[ncaab]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
+  },
+  {
+   "source": "odds[wnba]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[wnba]:espn",
+   "ok": true,
+   "detail": "1 items"
+  },
+  {
+   "source": "odds[epl]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[epl]:espn",
+   "ok": true,
+   "detail": "5 items"
+  },
+  {
+   "source": "odds[laliga]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[laliga]:espn",
+   "ok": true,
+   "detail": "1 items"
+  },
+  {
+   "source": "odds[bundesliga]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[bundesliga]:espn",
+   "ok": true,
+   "detail": "1 items"
+  },
+  {
+   "source": "odds[seriea]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[seriea]:espn",
+   "ok": true,
+   "detail": "1 items"
+  },
+  {
+   "source": "odds[ligue1]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[ligue1]:espn",
+   "ok": true,
+   "detail": "1 items"
+  },
+  {
+   "source": "odds[mls]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[mls]:espn",
+   "ok": true,
+   "detail": "15 items"
+  },
+  {
+   "source": "odds[ucl]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[ucl]:espn",
+   "ok": false,
+   "detail": "AttributeError(\"'NoneType' object has no attribute 'get'\")"
+  },
+  {
+   "source": "odds[ucl]:sports-skills",
+   "ok": false,
+   "detail": "AttributeError(\"module 'sports_skills' has no attribute 'ucl'\")"
+  },
+  {
+   "source": "odds[mma]:oddsapi",
+   "ok": false,
+   "detail": "RuntimeError('ODDS_API_KEY not set')"
+  },
+  {
+   "source": "odds[mma]:espn",
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[mma]:sports-skills",
+   "ok": false,
+   "detail": "AttributeError(\"module 'sports_skills' has no attribute 'mma'\")"
+  },
+  {
+   "source": "collectors",
+   "ok": true,
+   "detail": "mlb_probables:ok, nhl_schedule:ok, nba_scoreboard:failing, nfl_injuries:ok, soccer_fixtures:ok"
   },
   {
    "source": "kalshi:direct",
-   "ok": true,
-   "detail": "1000 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "kalshi:sports-skills",
+   "ok": false,
+   "detail": "empty"
   },
   {
    "source": "polymarket:direct",
@@ -61,38 +206,240 @@
   {
    "source": "model[nfl]",
    "ok": false,
-   "detail": "RuntimeError('only 0 completed games found')"
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
   },
   {
    "source": "model[nba]",
    "ok": false,
-   "detail": "RuntimeError('only 0 completed games found')"
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
   },
   {
    "source": "model[mlb]",
    "ok": false,
-   "detail": "RuntimeError('only 0 completed games found')"
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
   },
   {
    "source": "model[nhl]",
    "ok": false,
-   "detail": "RuntimeError('only 0 completed games found')"
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
+  },
+  {
+   "source": "model[epl]",
+   "ok": false,
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
+  },
+  {
+   "source": "model[laliga]",
+   "ok": false,
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
+  },
+  {
+   "source": "model[bundesliga]",
+   "ok": false,
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
+  },
+  {
+   "source": "model[seriea]",
+   "ok": false,
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
+  },
+  {
+   "source": "model[ligue1]",
+   "ok": false,
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
+  },
+  {
+   "source": "model[mls]",
+   "ok": false,
+   "detail": "RuntimeError(\"refusing to build a model, no completed games: 31 windows, 0 had events, 0 completed, 31 errors; first error 20250811: <HTTPError 400: 'Bad Request'>\")"
   },
   {
    "source": "history",
    "ok": true,
-   "detail": "24 snapshots added, 30 closing lines available"
+   "detail": "46 snapshots added, 39 closing lines available"
+  },
+  {
+   "source": "grading",
+   "ok": true,
+   "detail": "0 picks added, 0 settled, 0 CLV, 0 total"
+  },
+  {
+   "source": "alerts",
+   "ok": true,
+   "detail": "0 found, 0 sent: no NTFY_TOPIC set; alerts not sent"
+  }
+ ],
+ "network": [
+  {
+   "id": "mlb_probables",
+   "sport": "mlb",
+   "kind": "probables",
+   "verified": true,
+   "note": "Probable starting pitchers (names). ERA comes from ESPN in the main pipeline.",
+   "ok": true,
+   "n": 4,
+   "status": "ok",
+   "error": null,
+   "fails": 0
+  },
+  {
+   "id": "nhl_schedule",
+   "sport": "nhl",
+   "kind": "schedule",
+   "verified": false,
+   "note": "Field names inside the team objects are a guess until the first live run.",
+   "ok": true,
+   "n": 46,
+   "status": "ok",
+   "error": null,
+   "fails": 0
+  },
+  {
+   "id": "nba_scoreboard",
+   "sport": "nba",
+   "kind": "schedule",
+   "verified": false,
+   "note": "",
+   "ok": false,
+   "n": 0,
+   "status": "failing",
+   "error": "<HTTPError 403: 'Forbidden'>",
+   "fails": 1,
+   "shape": null
+  },
+  {
+   "id": "nfl_injuries",
+   "sport": "nfl",
+   "kind": "injuries",
+   "verified": false,
+   "note": "nflverse release asset names are a guess until the first live run.",
+   "ok": true,
+   "n": 1428,
+   "status": "ok",
+   "error": null,
+   "fails": 0
+  },
+  {
+   "id": "soccer_fixtures",
+   "sport": "epl",
+   "kind": "schedule",
+   "verified": false,
+   "note": "football-data.co.uk fixtures list (all covered leagues, one file).",
+   "ok": true,
+   "n": 14,
+   "status": "ok",
+   "error": null,
+   "fails": 0
   }
  ],
  "modelBacktest": {},
+ "diagnostics": {
+  "predictionMarketsFetched": 576,
+  "bySport": {
+   "bundesliga": {
+    "games": 1,
+    "withOdds": 1,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "epl": {
+    "games": 5,
+    "withOdds": 5,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "laliga": {
+    "games": 1,
+    "withOdds": 1,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "ligue1": {
+    "games": 1,
+    "withOdds": 1,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "mls": {
+    "games": 15,
+    "withOdds": 5,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "nba": {
+    "games": 1,
+    "withOdds": 1,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "ncaaf": {
+    "games": 16,
+    "withOdds": 16,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "nfl": {
+    "games": 14,
+    "withOdds": 14,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "seriea": {
+    "games": 1,
+    "withOdds": 1,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   },
+   "wnba": {
+    "games": 1,
+    "withOdds": 1,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 0,
+    "edgeBets": 0
+   }
+  },
+  "warnings": [
+   "bundesliga: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "epl: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "laliga: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "ligue1: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "mls: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "nba: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "ncaaf: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "nfl: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "seriea: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "wnba: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "prediction markets fetched but none matched a game (matching is conservative)"
+  ]
+ },
  "games": [
   {
-   "key": "nfl|Seattle Seahawks|Denver Broncos|2026-10-16T00:15",
+   "key": "nfl|seattleseahawks|denverbroncos|2026-10-16T00:15",
    "sport": "nfl",
    "home": "Denver Broncos",
    "away": "Seattle Seahawks",
    "start": "2026-10-16T00:15Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.4339,
     "away": 0.5661
@@ -112,15 +459,18 @@
    "arb": false,
    "impliedSum": 1.0413,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Houston Texans|Jacksonville Jaguars|2026-10-18T13:30",
+   "key": "nfl|houstontexans|jacksonvillejaguars|2026-10-18T13:30",
    "sport": "nfl",
    "home": "Jacksonville Jaguars",
    "away": "Houston Texans",
    "start": "2026-10-18T13:30Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.5661,
     "away": 0.4339
@@ -140,43 +490,49 @@
    "arb": false,
    "impliedSum": 1.0413,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Chicago Bears|Atlanta Falcons|2026-10-18T17:00",
+   "key": "nfl|chicagobears|atlantafalcons|2026-10-18T17:00",
    "sport": "nfl",
    "home": "Atlanta Falcons",
    "away": "Chicago Bears",
    "start": "2026-10-18T17:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.4555,
-    "away": 0.5445
+    "home": 0.4887,
+    "away": 0.5113
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 110.0,
-     "decimal": 2.1
+     "american": -105.0,
+     "decimal": 1.952
     },
     "away": {
      "book": "DraftKings",
-     "american": -130.0,
-     "decimal": 1.769
+     "american": -115.0,
+     "decimal": 1.87
     }
    },
    "arb": false,
-   "impliedSum": 1.0414,
+   "impliedSum": 1.0471,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Baltimore Ravens|Cleveland Browns|2026-10-18T17:00",
+   "key": "nfl|baltimoreravens|clevelandbrowns|2026-10-18T17:00",
    "sport": "nfl",
    "home": "Cleveland Browns",
    "away": "Baltimore Ravens",
    "start": "2026-10-18T17:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.301,
     "away": 0.699
@@ -196,15 +552,18 @@
    "arb": false,
    "impliedSum": 1.0433,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Tennessee Titans|Indianapolis Colts|2026-10-18T17:00",
+   "key": "nfl|tennesseetitans|indianapoliscolts|2026-10-18T17:00",
    "sport": "nfl",
    "home": "Indianapolis Colts",
    "away": "Tennessee Titans",
    "start": "2026-10-18T17:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.7435,
     "away": 0.2565
@@ -224,15 +583,18 @@
    "arb": false,
    "impliedSum": 1.0425,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|New York Jets|New England Patriots|2026-10-18T17:00",
+   "key": "nfl|newyorkjets|newenglandpatriots|2026-10-18T17:00",
    "sport": "nfl",
    "home": "New England Patriots",
    "away": "New York Jets",
    "start": "2026-10-18T17:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.7512,
     "away": 0.2488
@@ -252,71 +614,80 @@
    "arb": false,
    "impliedSum": 1.043,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|New Orleans Saints|New York Giants|2026-10-18T17:00",
+   "key": "nfl|neworleanssaints|newyorkgiants|2026-10-18T17:00",
    "sport": "nfl",
    "home": "New York Giants",
    "away": "New Orleans Saints",
    "start": "2026-10-18T17:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.4818,
-    "away": 0.5182
+    "home": 0.4887,
+    "away": 0.5113
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -102.0,
-     "decimal": 1.98
+     "american": -105.0,
+     "decimal": 1.952
     },
     "away": {
      "book": "DraftKings",
-     "american": -118.0,
-     "decimal": 1.847
+     "american": -115.0,
+     "decimal": 1.87
     }
    },
    "arb": false,
-   "impliedSum": 1.0462,
+   "impliedSum": 1.0471,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Carolina Panthers|Philadelphia Eagles|2026-10-18T17:00",
+   "key": "nfl|carolinapanthers|philadelphiaeagles|2026-10-18T17:00",
    "sport": "nfl",
    "home": "Philadelphia Eagles",
    "away": "Carolina Panthers",
    "start": "2026-10-18T17:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.5,
-    "away": 0.5
+    "home": 0.4887,
+    "away": 0.5113
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -110.0,
-     "decimal": 1.909
+     "american": -105.0,
+     "decimal": 1.952
     },
     "away": {
      "book": "DraftKings",
-     "american": -110.0,
-     "decimal": 1.909
+     "american": -115.0,
+     "decimal": 1.87
     }
    },
    "arb": false,
-   "impliedSum": 1.0476,
+   "impliedSum": 1.0471,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Pittsburgh Steelers|Tampa Bay Buccaneers|2026-10-18T17:00",
+   "key": "nfl|pittsburghsteelers|tampabaybuccaneers|2026-10-18T17:00",
    "sport": "nfl",
    "home": "Tampa Bay Buccaneers",
    "away": "Pittsburgh Steelers",
    "start": "2026-10-18T17:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.4339,
     "away": 0.5661
@@ -336,99 +707,111 @@
    "arb": false,
    "impliedSum": 1.0413,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Arizona Cardinals|Los Angeles Rams|2026-10-18T20:05",
+   "key": "nfl|arizonacardinals|losangelesrams|2026-10-18T20:05",
    "sport": "nfl",
    "home": "Los Angeles Rams",
    "away": "Arizona Cardinals",
    "start": "2026-10-18T20:05Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.8733,
-    "away": 0.1267
+    "home": 0.8786,
+    "away": 0.1214
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -850.0,
-     "decimal": 1.118
+     "american": -900.0,
+     "decimal": 1.111
     },
     "away": {
      "book": "DraftKings",
-     "american": 575.0,
-     "decimal": 6.75
+     "american": 600.0,
+     "decimal": 7.0
     }
    },
    "arb": false,
    "impliedSum": 1.0429,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Los Angeles Chargers|Kansas City Chiefs|2026-10-18T20:25",
+   "key": "nfl|losangeleschargers|kansascitychiefs|2026-10-18T20:25",
    "sport": "nfl",
    "home": "Kansas City Chiefs",
    "away": "Los Angeles Chargers",
    "start": "2026-10-18T20:25Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.8125,
-    "away": 0.1875
+    "home": 0.8081,
+    "away": 0.1919
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -500.0,
-     "decimal": 1.2
+     "american": -485.0,
+     "decimal": 1.206
     },
     "away": {
      "book": "DraftKings",
-     "american": 380.0,
-     "decimal": 4.8
+     "american": 370.0,
+     "decimal": 4.7
     }
    },
    "arb": false,
-   "impliedSum": 1.0417,
+   "impliedSum": 1.0418,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Buffalo Bills|Las Vegas Raiders|2026-10-18T20:25",
+   "key": "nfl|buffalobills|lasvegasraiders|2026-10-18T20:25",
    "sport": "nfl",
    "home": "Las Vegas Raiders",
    "away": "Buffalo Bills",
    "start": "2026-10-18T20:25Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.3068,
-    "away": 0.6932
+    "home": 0.301,
+    "away": 0.699
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 205.0,
-     "decimal": 3.05
+     "american": 210.0,
+     "decimal": 3.1
     },
     "away": {
      "book": "DraftKings",
-     "american": -250.0,
-     "decimal": 1.4
+     "american": -258.0,
+     "decimal": 1.388
     }
    },
    "arb": false,
-   "impliedSum": 1.0422,
+   "impliedSum": 1.0433,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Dallas Cowboys|Green Bay Packers|2026-10-19T00:20",
+   "key": "nfl|dallascowboys|greenbaypackers|2026-10-19T00:20",
    "sport": "nfl",
    "home": "Green Bay Packers",
    "away": "Dallas Cowboys",
    "start": "2026-10-19T00:20Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.5273,
     "away": 0.4727
@@ -448,15 +831,18 @@
    "arb": false,
    "impliedSum": 1.0446,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nfl|Washington Commanders|San Francisco 49ers|2026-10-20T00:15",
+   "key": "nfl|washingtoncommanders|sanfrancisco49ers|2026-10-20T00:15",
    "sport": "nfl",
    "home": "San Francisco 49ers",
    "away": "Washington Commanders",
    "start": "2026-10-20T00:15Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
     "home": 0.7885,
     "away": 0.2115
@@ -476,102 +862,765 @@
    "arb": false,
    "impliedSum": 1.0421,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nba|Brooklyn Nets|Miami Heat|2026-10-14T23:30",
+   "key": "nba|denvernuggets|laclippers|2026-10-15T02:30",
    "sport": "nba",
-   "home": "Miami Heat",
-   "away": "Brooklyn Nets",
-   "start": "2026-10-14T23:30Z",
+   "home": "LA Clippers",
+   "away": "Denver Nuggets",
+   "start": "2026-10-15T02:30Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.699,
-    "away": 0.301
+    "home": 0.3918,
+    "away": 0.6082
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -258.0,
-     "decimal": 1.388
+     "american": 142.0,
+     "decimal": 2.42
     },
     "away": {
      "book": "DraftKings",
-     "american": 210.0,
-     "decimal": 3.1
+     "american": -170.0,
+     "decimal": 1.588
     }
    },
    "arb": false,
-   "impliedSum": 1.0433,
+   "impliedSum": 1.0429,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nba|Charlotte Hornets|Boston Celtics|2026-10-14T23:30",
-   "sport": "nba",
-   "home": "Boston Celtics",
-   "away": "Charlotte Hornets",
-   "start": "2026-10-14T23:30Z",
+   "key": "ncaaf|ohiostatebuckeyes|indianahoosiers|2026-10-17T16:00",
+   "sport": "ncaaf",
+   "home": "Indiana Hoosiers",
+   "away": "Ohio State Buckeyes",
+   "start": "2026-10-17T16:00Z",
    "nBooks": 1,
+   "threeWay": false,
    "fair": {
-    "home": 0.7543,
-    "away": 0.2457
+    "home": 0.3786,
+    "away": 0.6214
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -345.0,
-     "decimal": 1.29
+     "american": 150.0,
+     "decimal": 2.5
     },
     "away": {
+     "book": "DraftKings",
+     "american": -180.0,
+     "decimal": 1.556
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0429,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|floridagators|texaslonghorns|2026-10-17T16:00",
+   "sport": "ncaaf",
+   "home": "Texas Longhorns",
+   "away": "Florida Gators",
+   "start": "2026-10-17T16:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.7938,
+    "away": 0.2062
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -440.0,
+     "decimal": 1.227
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 340.0,
+     "decimal": 4.4
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0421,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|mississippistatebulldogs|lsutigers|2026-10-17T16:00",
+   "sport": "ncaaf",
+   "home": "LSU Tigers",
+   "away": "Mississippi State Bulldogs",
+   "start": "2026-10-17T16:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.836,
+    "away": 0.164
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -600.0,
+     "decimal": 1.167
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 440.0,
+     "decimal": 5.4
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0423,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|virginiacavaliers|smumustangs|2026-10-17T16:00",
+   "sport": "ncaaf",
+   "home": "SMU Mustangs",
+   "away": "Virginia Cavaliers",
+   "start": "2026-10-17T16:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.7512,
+    "away": 0.2488
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -340.0,
+     "decimal": 1.294
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 270.0,
+     "decimal": 3.7
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.043,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|northwesternwildcats|michiganstatespartans|2026-10-17T16:00",
+   "sport": "ncaaf",
+   "home": "Michigan State Spartans",
+   "away": "Northwestern Wildcats",
+   "start": "2026-10-17T16:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.2648,
+    "away": 0.7352
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -310.0,
+     "decimal": 1.323
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0418,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|auburntigers|georgiabulldogs|2026-10-17T19:30",
+   "sport": "ncaaf",
+   "home": "Georgia Bulldogs",
+   "away": "Auburn Tigers",
+   "start": "2026-10-17T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.9151,
+    "away": 0.0849
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -1450.0,
+     "decimal": 1.069
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 850.0,
+     "decimal": 9.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0407,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|alabamacrimsontide|tennesseevolunteers|2026-10-17T19:30",
+   "sport": "ncaaf",
+   "home": "Tennessee Volunteers",
+   "away": "Alabama Crimson Tide",
+   "start": "2026-10-17T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.2648,
+    "away": 0.7352
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -310.0,
+     "decimal": 1.323
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0418,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|missouritigers|olemissrebels|2026-10-17T19:30",
+   "sport": "ncaaf",
+   "home": "Ole Miss Rebels",
+   "away": "Missouri Tigers",
+   "start": "2026-10-17T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6707,
+    "away": 0.3293
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -225.0,
+     "decimal": 1.444
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 185.0,
+     "decimal": 2.85
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0432,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|arizonastatesundevils|texastechredraiders|2026-10-17T19:30",
+   "sport": "ncaaf",
+   "home": "Texas Tech Red Raiders",
+   "away": "Arizona State Sun Devils",
+   "start": "2026-10-17T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.8542,
+    "away": 0.1458
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -700.0,
+     "decimal": 1.143
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 500.0,
+     "decimal": 6.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0417,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|floridastateseminoles|miamihurricanes|2026-10-17T23:00",
+   "sport": "ncaaf",
+   "home": "Miami Hurricanes",
+   "away": "Florida State Seminoles",
+   "start": "2026-10-17T23:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.9282,
+    "away": 0.0718
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -1800.0,
+     "decimal": 1.056
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 1000.0,
+     "decimal": 11.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0383,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|notredamefightingirish|byucougars|2026-10-17T23:30",
+   "sport": "ncaaf",
+   "home": "BYU Cougars",
+   "away": "Notre Dame Fighting Irish",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.223,
+    "away": 0.777
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 310.0,
+     "decimal": 4.1
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -395.0,
+     "decimal": 1.253
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0419,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|wisconsinbadgers|uclabruins|2026-10-17T23:30",
+   "sport": "ncaaf",
+   "home": "UCLA Bruins",
+   "away": "Wisconsin Badgers",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.5661,
+    "away": 0.4339
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -142.0,
+     "decimal": 1.704
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 120.0,
+     "decimal": 2.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0413,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|kentuckywildcats|oklahomasooners|2026-10-17T23:30",
+   "sport": "ncaaf",
+   "home": "Oklahoma Sooners",
+   "away": "Kentucky Wildcats",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6826,
+    "away": 0.3174
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -238.0,
+     "decimal": 1.42
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 195.0,
+     "decimal": 2.95
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0431,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|oklahomastatecowboys|houstoncougars|2026-10-17T23:30",
+   "sport": "ncaaf",
+   "home": "Houston Cougars",
+   "away": "Oklahoma State Cowboys",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6365,
+    "away": 0.3635
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -192.0,
+     "decimal": 1.521
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 160.0,
+     "decimal": 2.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0421,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|utahutes|coloradobuffaloes|2026-10-18T02:15",
+   "sport": "ncaaf",
+   "home": "Colorado Buffaloes",
+   "away": "Utah Utes",
+   "start": "2026-10-18T02:15Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.1388,
+    "away": 0.8612
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 525.0,
+     "decimal": 6.25
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -750.0,
+     "decimal": 1.133
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0424,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ncaaf|wakeforestdemondeacons|californiagoldenbears|2026-10-18T02:30",
+   "sport": "ncaaf",
+   "home": "California Golden Bears",
+   "away": "Wake Forest Demon Deacons",
+   "start": "2026-10-18T02:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.2457,
+    "away": 0.7543
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -345.0,
+     "decimal": 1.29
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0419,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "wnba|atlantadream|goldenstatevalkyries|2026-10-17T19:30",
+   "sport": "wnba",
+   "home": "Golden State Valkyries",
+   "away": "Atlanta Dream",
+   "start": "2026-10-17T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.5661,
+    "away": 0.4339
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -142.0,
+     "decimal": 1.704
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 120.0,
+     "decimal": 2.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0413,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "epl|chelsea|everton|2026-10-17T11:30",
+   "sport": "epl",
+   "home": "Everton",
+   "away": "Chelsea",
+   "start": "2026-10-17T11:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3014,
+    "away": 0.4473,
+    "draw": 0.2513
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 215.0,
+     "decimal": 3.15
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 115.0,
+     "decimal": 2.15
+    },
+    "draw": {
      "book": "DraftKings",
      "american": 275.0,
      "decimal": 3.75
     }
    },
    "arb": false,
-   "impliedSum": 1.0419,
+   "impliedSum": 1.0492,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nba|Phoenix Suns|San Antonio Spurs|2026-10-15T00:00",
-   "sport": "nba",
-   "home": "San Antonio Spurs",
-   "away": "Phoenix Suns",
-   "start": "2026-10-15T00:00Z",
+   "key": "epl|liverpool|brentford|2026-10-17T14:00",
+   "sport": "epl",
+   "home": "Brentford",
+   "away": "Liverpool",
+   "start": "2026-10-17T14:00Z",
    "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.7682,
-    "away": 0.2318
+    "home": 0.4086,
+    "away": 0.3288,
+    "draw": 0.2626
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -375.0,
-     "decimal": 1.267
+     "american": 135.0,
+     "decimal": 2.35
     },
     "away": {
      "book": "DraftKings",
-     "american": 295.0,
-     "decimal": 3.95
+     "american": 190.0,
+     "decimal": 2.9
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 260.0,
+     "decimal": 3.6
     }
    },
    "arb": false,
-   "impliedSum": 1.0426,
+   "impliedSum": 1.0481,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nba|New Orleans Pelicans|Dallas Mavericks|2026-10-15T00:00",
-   "sport": "nba",
-   "home": "Dallas Mavericks",
-   "away": "New Orleans Pelicans",
-   "start": "2026-10-15T00:00Z",
+   "key": "epl|hullcity|fulham|2026-10-17T14:00",
+   "sport": "epl",
+   "home": "Fulham",
+   "away": "Hull City",
+   "start": "2026-10-17T14:00Z",
    "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.4555,
-    "away": 0.5445
+    "home": 0.5653,
+    "away": 0.1989,
+    "draw": 0.2357
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -140.0,
+     "decimal": 1.714
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 370.0,
+     "decimal": 4.7
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 300.0,
+     "decimal": 4.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0461,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "epl|ipswichtown|manchestercity|2026-10-17T14:00",
+   "sport": "epl",
+   "home": "Manchester City",
+   "away": "Ipswich Town",
+   "start": "2026-10-17T14:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.795,
+    "away": 0.077,
+    "draw": 0.128
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -450.0,
+     "decimal": 1.222
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 1000.0,
+     "decimal": 11.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 600.0,
+     "decimal": 7.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0519,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "epl|astonvilla|newcastleunited|2026-10-17T16:30",
+   "sport": "epl",
+   "home": "Newcastle United",
+   "away": "Aston Villa",
+   "start": "2026-10-17T16:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4286,
+    "away": 0.3187,
+    "draw": 0.2528
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 125.0,
+     "decimal": 2.25
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 200.0,
+     "decimal": 3.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0444,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "laliga|levante|deportivo|2026-10-16T19:00",
+   "sport": "laliga",
+   "home": "Deportivo",
+   "away": "Levante",
+   "start": "2026-10-16T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4573,
+    "away": 0.2734,
+    "draw": 0.2693
    },
    "best": {
     "home": {
@@ -581,137 +1630,145 @@
     },
     "away": {
      "book": "DraftKings",
-     "american": -130.0,
-     "decimal": 1.769
+     "american": 245.0,
+     "decimal": 3.45
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
     }
    },
    "arb": false,
-   "impliedSum": 1.0414,
+   "impliedSum": 1.0518,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nba|Chicago Bulls|Milwaukee Bucks|2026-10-15T00:00",
-   "sport": "nba",
-   "home": "Milwaukee Bucks",
-   "away": "Chicago Bulls",
-   "start": "2026-10-15T00:00Z",
+   "key": "bundesliga|cologne|eintrachtfrankfurt|2026-10-16T18:30",
+   "sport": "bundesliga",
+   "home": "Eintracht Frankfurt",
+   "away": "FC Cologne",
+   "start": "2026-10-16T18:30Z",
    "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.4464,
-    "away": 0.5536
+    "home": 0.4905,
+    "away": 0.2837,
+    "draw": 0.2258
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 114.0,
-     "decimal": 2.14
+     "american": -110.0,
+     "decimal": 1.909
     },
     "away": {
      "book": "DraftKings",
-     "american": -135.0,
-     "decimal": 1.741
+     "american": 220.0,
+     "decimal": 3.2
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 295.0,
+     "decimal": 3.95
     }
    },
    "arb": false,
-   "impliedSum": 1.0418,
+   "impliedSum": 1.0895,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nba|Detroit Pistons|Minnesota Timberwolves|2026-10-15T00:00",
-   "sport": "nba",
-   "home": "Minnesota Timberwolves",
-   "away": "Detroit Pistons",
-   "start": "2026-10-15T00:00Z",
+   "key": "seriea|sassuolo|frosinone|2026-10-16T18:45",
+   "sport": "seriea",
+   "home": "Frosinone",
+   "away": "Sassuolo",
+   "start": "2026-10-16T18:45Z",
    "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.6082,
-    "away": 0.3918
+    "home": 0.3811,
+    "away": 0.358,
+    "draw": 0.261
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -170.0,
-     "decimal": 1.588
+     "american": 145.0,
+     "decimal": 2.45
     },
     "away": {
      "book": "DraftKings",
-     "american": 142.0,
-     "decimal": 2.42
+     "american": 160.0,
+     "decimal": 2.6
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
     }
    },
    "arb": false,
-   "impliedSum": 1.0429,
+   "impliedSum": 1.0785,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nba|Denver Nuggets|LA Clippers|2026-10-15T02:30",
-   "sport": "nba",
-   "home": "LA Clippers",
-   "away": "Denver Nuggets",
-   "start": "2026-10-15T02:30Z",
+   "key": "ligue1|toulouse|lemans|2026-10-16T18:45",
+   "sport": "ligue1",
+   "home": "Le Mans",
+   "away": "Toulouse",
+   "start": "2026-10-16T18:45Z",
    "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.4248,
-    "away": 0.5752
+    "home": 0.3219,
+    "away": 0.4165,
+    "draw": 0.2615
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 124.0,
-     "decimal": 2.24
+     "american": 195.0,
+     "decimal": 2.95
     },
     "away": {
      "book": "DraftKings",
-     "american": -148.0,
-     "decimal": 1.676
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0432,
-   "bets": [],
-   "pm": []
-  },
-  {
-   "key": "mlb|Milwaukee Brewers|Los Angeles Dodgers|2026-10-15T00:00",
-   "sport": "mlb",
-   "home": "Los Angeles Dodgers",
-   "away": "Milwaukee Brewers",
-   "start": "2026-10-15T00:00Z",
-   "nBooks": 1,
-   "fair": {
-    "home": 0.6227,
-    "away": 0.3773
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -182.0,
-     "decimal": 1.549
+     "american": 130.0,
+     "decimal": 2.3
     },
-    "away": {
+    "draw": {
      "book": "DraftKings",
-     "american": 150.0,
-     "decimal": 2.5
+     "american": 260.0,
+     "decimal": 3.6
     }
    },
    "arb": false,
-   "impliedSum": 1.0454,
+   "impliedSum": 1.0515,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nhl|Montreal Canadiens|Washington Capitals|2026-10-14T23:30",
-   "sport": "nhl",
-   "home": "Washington Capitals",
-   "away": "Montreal Canadiens",
-   "start": "2026-10-14T23:30Z",
+   "key": "mls|minnesotaunited|coloradorapids|2026-10-15T01:30",
+   "sport": "mls",
+   "home": "Colorado Rapids",
+   "away": "Minnesota United FC",
+   "start": "2026-10-15T01:30Z",
    "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.5227,
-    "away": 0.4773
+    "home": 0.5142,
+    "away": 0.2376,
+    "draw": 0.2482
    },
    "best": {
     "home": {
@@ -721,42 +1778,169 @@
     },
     "away": {
      "book": "DraftKings",
-     "american": 100.0,
-     "decimal": 2.0
+     "american": 280.0,
+     "decimal": 3.8
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 265.0,
+     "decimal": 3.65
     }
    },
    "arb": false,
-   "impliedSum": 1.0455,
+   "impliedSum": 1.0826,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   },
   {
-   "key": "nhl|Dallas Stars|Colorado Avalanche|2026-10-15T00:30",
-   "sport": "nhl",
-   "home": "Colorado Avalanche",
-   "away": "Dallas Stars",
-   "start": "2026-10-15T00:30Z",
+   "key": "mls|sanjoseearthquakes|realsaltlake|2026-10-15T01:30",
+   "sport": "mls",
+   "home": "Real Salt Lake",
+   "away": "San Jose Earthquakes",
+   "start": "2026-10-15T01:30Z",
    "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.5536,
-    "away": 0.4464
+    "home": 0.5607,
+    "away": 0.2255,
+    "draw": 0.2138
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -135.0,
-     "decimal": 1.741
+     "american": -145.0,
+     "decimal": 1.69
     },
     "away": {
      "book": "DraftKings",
-     "american": 114.0,
-     "decimal": 2.14
+     "american": 300.0,
+     "decimal": 4.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 320.0,
+     "decimal": 4.2
     }
    },
    "arb": false,
-   "impliedSum": 1.0418,
+   "impliedSum": 1.0799,
    "bets": [],
-   "pm": []
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|portlandtimbers|lagalaxy|2026-10-15T02:30",
+   "sport": "mls",
+   "home": "LA Galaxy",
+   "away": "Portland Timbers",
+   "start": "2026-10-15T02:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4458,
+    "away": 0.3171,
+    "draw": 0.2371
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 110.0,
+     "decimal": 2.1
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 190.0,
+     "decimal": 2.9
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 280.0,
+     "decimal": 3.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0842,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|austin|lafc|2026-10-15T02:30",
+   "sport": "mls",
+   "home": "LAFC",
+   "away": "Austin FC",
+   "start": "2026-10-15T02:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.6747,
+    "away": 0.1424,
+    "draw": 0.183
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -245.0,
+     "decimal": 1.408
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 500.0,
+     "decimal": 6.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 380.0,
+     "decimal": 4.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0851,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|houstondynamo|sandiego|2026-10-15T02:30",
+   "sport": "mls",
+   "home": "San Diego FC",
+   "away": "Houston Dynamo FC",
+   "start": "2026-10-15T02:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4703,
+    "away": 0.2772,
+    "draw": 0.2525
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 100.0,
+     "decimal": 2.0
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 230.0,
+     "decimal": 3.3
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 260.0,
+     "decimal": 3.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0808,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
   }
  ],
  "day": null,
@@ -1211,6 +2395,141 @@
    "nBooks": 1,
    "firstFairHome": 0.4661,
    "snaps": 4
+  },
+  "nba|Brooklyn Nets|Miami Heat|2026-10-14T23:30": {
+   "sport": "nba",
+   "home": "Miami Heat",
+   "away": "Brooklyn Nets",
+   "start": "2026-10-14T23:30Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 41,
+   "fairHome": 0.6277,
+   "fairAway": 0.3723,
+   "bestHome": -185.0,
+   "bestAway": 154.0,
+   "nBooks": 1,
+   "firstFairHome": 0.699,
+   "snaps": 3
+  },
+  "nba|Charlotte Hornets|Boston Celtics|2026-10-14T23:30": {
+   "sport": "nba",
+   "home": "Boston Celtics",
+   "away": "Charlotte Hornets",
+   "start": "2026-10-14T23:30Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 41,
+   "fairHome": 0.7225,
+   "fairAway": 0.2775,
+   "bestHome": -290.0,
+   "bestAway": 235.0,
+   "nBooks": 1,
+   "firstFairHome": 0.7543,
+   "snaps": 3
+  },
+  "nba|Phoenix Suns|San Antonio Spurs|2026-10-15T00:00": {
+   "sport": "nba",
+   "home": "San Antonio Spurs",
+   "away": "Phoenix Suns",
+   "start": "2026-10-15T00:00Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 71,
+   "fairHome": 0.8213,
+   "fairAway": 0.1787,
+   "bestHome": -535.0,
+   "bestAway": 400.0,
+   "nBooks": 1,
+   "firstFairHome": 0.7682,
+   "snaps": 3
+  },
+  "nba|New Orleans Pelicans|Dallas Mavericks|2026-10-15T00:00": {
+   "sport": "nba",
+   "home": "Dallas Mavericks",
+   "away": "New Orleans Pelicans",
+   "start": "2026-10-15T00:00Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 71,
+   "fairHome": 0.3723,
+   "fairAway": 0.6277,
+   "bestHome": 154.0,
+   "bestAway": -185.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4555,
+   "snaps": 3
+  },
+  "nba|Chicago Bulls|Milwaukee Bucks|2026-10-15T00:00": {
+   "sport": "nba",
+   "home": "Milwaukee Bucks",
+   "away": "Chicago Bulls",
+   "start": "2026-10-15T00:00Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 71,
+   "fairHome": 0.3491,
+   "fairAway": 0.6509,
+   "bestHome": 170.0,
+   "bestAway": -205.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4464,
+   "snaps": 3
+  },
+  "nba|Detroit Pistons|Minnesota Timberwolves|2026-10-15T00:00": {
+   "sport": "nba",
+   "home": "Minnesota Timberwolves",
+   "away": "Detroit Pistons",
+   "start": "2026-10-15T00:00Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 71,
+   "fairHome": 0.6141,
+   "fairAway": 0.3859,
+   "bestHome": -175.0,
+   "bestAway": 145.0,
+   "nBooks": 1,
+   "firstFairHome": 0.6082,
+   "snaps": 3
+  },
+  "mlb|Milwaukee Brewers|Los Angeles Dodgers|2026-10-15T00:00": {
+   "sport": "mlb",
+   "home": "Los Angeles Dodgers",
+   "away": "Milwaukee Brewers",
+   "start": "2026-10-15T00:00Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 71,
+   "fairHome": 0.6148,
+   "fairAway": 0.3852,
+   "bestHome": -176.0,
+   "bestAway": 145.0,
+   "nBooks": 1,
+   "firstFairHome": 0.6227,
+   "snaps": 3
+  },
+  "nhl|Montreal Canadiens|Washington Capitals|2026-10-14T23:30": {
+   "sport": "nhl",
+   "home": "Washington Capitals",
+   "away": "Montreal Canadiens",
+   "start": "2026-10-14T23:30Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 41,
+   "fairHome": 0.5227,
+   "fairAway": 0.4773,
+   "bestHome": -120.0,
+   "bestAway": 100.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5227,
+   "snaps": 3
+  },
+  "nhl|Dallas Stars|Colorado Avalanche|2026-10-15T00:30": {
+   "sport": "nhl",
+   "home": "Colorado Avalanche",
+   "away": "Dallas Stars",
+   "start": "2026-10-15T00:30Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 101,
+   "fairHome": 0.5973,
+   "fairAway": 0.4027,
+   "bestHome": -162.0,
+   "bestAway": 136.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5536,
+   "snaps": 3
   }
  }
 }
