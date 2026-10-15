@@ -89,6 +89,7 @@ input[type=checkbox]{width:auto;}
   <nav id="tabNav">
     <button class="active" data-tab="slate">Today's Slate</button>
     <button data-tab="opps">Opportunities</button>
+    <button data-tab="week">Weekly Parlays</button>
     <button data-tab="record">Track Record</button>
     <button data-tab="ledger">Bet Ledger</button>
     <button data-tab="shop">Line Shop</button>
@@ -432,6 +433,28 @@ input[type=checkbox]{width:auto;}
     </div>
   </div>
 
+  <div class="tab" id="tab-week">
+    <div class="card">
+      <p class="desc">Optional. Rebuilds every time you open it: the next 7 days of games from the latest slate, with parlays assembled across the week. Legs use our model blend where we have one, otherwise the market's fair price. A parlay multiplies the book margin on every leg and assumes the legs are independent.</p>
+      <div class="field-row" style="display:flex;flex-wrap:wrap;gap:12px">
+        <div class="field"><label>Legs per parlay</label><select id="wkLegs"><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+        <div class="field"><label>Min combined win chance (%)</label><input id="wkPmin" type="number" value="5" min="0" max="100" step="0.5"></div>
+        <div class="field"><label>Max combined win chance (%)</label><input id="wkPmax" type="number" value="60" min="0" max="100" step="0.5"></div>
+        <div class="field"><label>Min single-leg win chance (%)</label><input id="wkLegP" type="number" value="25" min="0" max="100" step="1"></div>
+        <div class="field"><label>Min single-leg EV (%)</label><input id="wkLegEv" type="number" value="0" step="0.5"></div>
+        <div class="field"><label>Min parlay payout (American, 0 = off)</label><input id="wkOdds" type="number" value="0" step="100"></div>
+        <div class="field"><label>Leg pool</label><select id="wkPool"><option value="ev">Legs at or above the EV filter</option><option value="flag">Flagged bets only</option></select></div>
+        <div class="field"><label>Days</label><select id="wkSpread"><option value="any">Any mix of days</option><option value="multi">Legs on different days</option><option value="same">Same day only</option></select></div>
+      </div>
+      <div style="margin:8px 0"><label><input id="wkHail" type="checkbox"> Hail Mary mode: low-probability, high-payout longshots (sets 0.1%–4% combined chance, payout of +1000 or more, legs down to 8%, no EV filter)</label></div>
+      <div id="wkStatus" class="desc"></div>
+      <h2 style="font-size:1rem;margin-top:12px">The week</h2>
+      <div id="wkWeek" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px"></div>
+      <h2 style="font-size:1rem;margin-top:16px">Parlays</h2>
+      <div id="wkParlays"></div>
+    </div>
+  </div>
+
   <div class="tab" id="tab-record">
     <div class="card">
       <h2>Track Record</h2>
@@ -617,7 +640,7 @@ document.getElementById('tabNav').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   document.querySelectorAll('#tabNav button').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active'); document.getElementById('tab-'+b.dataset.tab).classList.add('active');
+  b.classList.add('active'); document.getElementById('tab-'+b.dataset.tab).classList.add('active'); if(b.dataset.tab==='week'&&typeof wkRender==='function')wkRender();
 });
 
 function americanToDecimal(a){ a=Number(a); if(!a) return null; return a>0?1+a/100:1+100/Math.abs(a); }
@@ -1328,7 +1351,74 @@ function oppRender(g){
   const sc=combos.map(c=>{const p=c.reduce((a,x)=>a*x.p,1),d=c.reduce((a,x)=>a*x.d,1);return{c,p,d,ev:p*d-1};}).sort((a,b)=>b.ev-a.ev).slice(0,5);
   $('slParlay').innerHTML=sc.length?sc.map(x=>'<div style="margin:6px 0"><b>'+x.c.length+'-leg</b> · pays '+(x.d>=2?'+'+Math.round((x.d-1)*100):'−'+Math.round(100/(x.d-1)))+' · fair win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+'<br><b>$100 parlay: win '+d100((x.d-1)*100)+' / lose −$100 · EV '+d100(x.ev*100)+' per $100</b><br>'+x.c.map(l=>esc(l.b.side)+' '+am(l.b.american)+' ('+esc(l.r.start.slice(5,10))+')').join(' + ')+'</div>').join('')+'<div class="warnc">Each leg multiplies the book margin and the error in our fair price, so parlays are riskier than the same legs bet singly. Assumes legs are independent. Flagged legs without a multi-book consensus come from our model blend, whose weight is unproven, so treat EV here as a hypothesis the Track Record has to confirm.</div>':'No parlay candidates: fewer than two flagged legs in different games. Nothing is forced when there is no edge.';
 }
+
+// ---------- Weekly Parlays (optional tab; rebuilt on every open) ----------
+let wkSlate=null;
+function wkLegs(g,now){
+  const out=[];
+  g.forEach((r,gi)=>{
+    const t=new Date(r.start);if(isNaN(t)||t<=now)return;
+    const m=r.model,b=r.best||{},f=r.fair||{};
+    const pOf={};
+    ['home','away','draw'].forEach(k=>{
+      if(!b[k]||f[k]==null)return;
+      let p=f[k];
+      if(m){if(k==='home'&&m.blendHome!=null&&m.draw==null)p=m.blendHome;else if(k==='away'&&m.blendHome!=null&&m.draw==null)p=1-m.blendHome;else if(m.draw!=null&&m[k]!=null)p=0.25*m[k]+0.75*f[k];}
+      const dec=am2dec(b[k].american),name=k==='draw'?'Draw':r[k];
+      const flagged=(r.bets||[]).some(x=>x.side===name);
+      out.push({gi,r,k,name,am:b[k].american,book:b[k].book,p,dec,ev:p*dec-1,flagged,t});
+    });
+  });
+  return out;
+}
+function wkDayKey(t){return t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');}
+function wkRender(){
+  const el=$('wkParlays');if(!el)return;
+  const g=(wkSlate&&wkSlate.games)||[];
+  if(!g.length){$('wkStatus').textContent='No slate loaded yet. Open Today\'s Slate first, or load a slate.json there.';$('wkWeek').innerHTML='';el.innerHTML='';return;}
+  const hail=$('wkHail').checked;
+  const n=+$('wkLegs').value,pmin=hail?0.001:(+$('wkPmin').value||0)/100,pmax=hail?0.04:(+$('wkPmax').value||100)/100,legP=hail?0.08:(+$('wkLegP').value||0)/100,
+        legEv=hail?-1:(+$('wkLegEv').value||0)/100,minAm=hail?1000:(+$('wkOdds').value||0),pool=$('wkPool').value,spread=$('wkSpread').value;
+  const now=new Date(),end=new Date(now.getFullYear(),now.getMonth(),now.getDate()+7);
+  const all=wkLegs(g,now).filter(l=>l.t<end);
+  const ok=l=>l.p>=legP&&(l.ev>=legEv||hail)&&(pool!=='flag'||l.flagged||hail);
+  const legs=all.filter(ok);
+  // week layout: one card per day, today first
+  const days=[];for(let i=0;i<7;i++){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i);days.push({d,k:wkDayKey(d),games:new Set(),legs:[]});}
+  all.forEach(l=>{const dk=days.find(x=>x.k===wkDayKey(l.t));if(dk)dk.games.add(l.gi);});
+  legs.forEach(l=>{const dk=days.find(x=>x.k===wkDayKey(l.t));if(dk)dk.legs.push(l);});
+  $('wkWeek').innerHTML=days.map(x=>{const top=x.legs.slice().sort((a,b)=>b.ev-a.ev).slice(0,4);
+    return '<div style="border:1px solid var(--border,#8884);border-radius:8px;padding:8px"><b>'+esc(x.d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}))+'</b><div class="desc" style="margin:2px 0 6px">'+x.games.size+' games · '+x.legs.length+' legs pass</div>'+
+      (top.map(l=>'<div style="font-size:.78rem;margin:2px 0">'+esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+(l.p*100).toFixed(0)+'% · $100 wins '+d100(win100(l.am))+')</span></div>').join('')||'<div class="desc" style="margin:0">No legs pass the filters.</div>')+'</div>';}).join('');
+  // assemble parlays from the best candidates (cap keeps the search small)
+  const cand=legs.slice().sort((a,b)=>hail?b.dec-a.dec:b.ev-a.ev).slice(0,hail?16:14);
+  const res=[];
+  const rec=(start,pick)=>{
+    if(pick.length===n){
+      const days_=pick.map(l=>wkDayKey(l.t));
+      const nd=new Set(days_).size;
+      if(spread==='same'&&nd!==1)return;if(spread==='multi'&&nd!==n)return;
+      const p=pick.reduce((a,l)=>a*l.p,1),dec=pick.reduce((a,l)=>a*l.dec,1);
+      const am_=dec>=2?(dec-1)*100:-100/(dec-1);
+      if(p<pmin||p>pmax)return;if(minAm&&am_<minAm)return;
+      res.push({pick:pick.slice(),p,dec,ev:p*dec-1,am:am_,nd});return;}
+    for(let i=start;i<cand.length;i++){if(pick.some(l=>l.gi===cand[i].gi))continue;pick.push(cand[i]);rec(i+1,pick);pick.pop();}
+  };
+  rec(0,[]);
+  res.sort((a,b)=>hail?b.ev-a.ev:b.ev-a.ev);
+  const show=res.slice(0,12);
+  $('wkStatus').innerHTML='Built '+now.toLocaleString()+' · '+all.length+' possible legs in the next 7 days · '+legs.length+' pass the filters · '+res.length+' parlays match'+(hail?' · <b>Hail Mary mode</b>':'')+'.';
+  el.innerHTML=show.map(x=>'<div style="margin:8px 0;padding:8px;border:1px solid var(--border,#8884);border-radius:8px"><b>'+x.pick.length+'-leg'+(x.nd>1?' across '+x.nd+' days':'')+'</b> · pays '+(x.am>=0?'+':'−')+Math.round(Math.abs(x.am))+' · win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+
+    '<br><b>$100 bet: win '+d100((x.dec-1)*100)+' / lose −$100 · EV '+d100(x.ev*100)+'</b><br>'+
+    x.pick.map(l=>esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+esc(l.t.toLocaleDateString(undefined,{weekday:'short'}))+', '+esc(l.r.sport.toUpperCase())+(l.flagged?', flagged':'')+')</span>').join('<br>')+'</div>').join('')+
+    (show.length?'':'<div class="desc">No parlays match these filters. Loosen the win-chance range, lower the leg EV filter, or try Hail Mary mode.</div>')+
+    '<div class="warnc">'+(hail?'Hail Mary parlays hit rarely by design. The expected value still depends on our probabilities being right, and longshot probabilities are the least reliable. Size them as money you expect to lose.':'Parlays stack the book margin and our error on every leg. Treat EV as a hypothesis the Track Record must confirm.')+'</div>';
+}
+function am(a){return a==null?'—':(a>0?'+':'')+Math.round(a);}
+setTimeout(()=>{['wkLegs','wkPmin','wkPmax','wkLegP','wkLegEv','wkOdds','wkPool','wkSpread','wkHail'].forEach(i=>{const e=document.getElementById(i);if(e)e.addEventListener('input',wkRender);});},0);
+
 function slateRender(d,label){
+  wkSlate=d;if($('tab-week')&&$('tab-week').classList.contains('active'))wkRender();
   slateBets=[];slateClosing=d.closing||{};
   $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
   const day=d.day,g=d.games||[];
