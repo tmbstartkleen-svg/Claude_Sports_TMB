@@ -20,10 +20,31 @@ try:
 except Exception:  # model is optional
     elo = None
 try:
+    import markets as mk
+except Exception:
+    mk = None
+try:
     import history as hist_mod
 except Exception:
     hist_mod = None
-from datetime import datetime, timezone
+try:
+    import soccer as soccer_mod
+except Exception:
+    soccer_mod = None
+try:
+    import notify as notifier
+except Exception:
+    notifier = None
+try:
+    import grade as grader
+except Exception:
+    grader = None
+from datetime import datetime, timedelta, timezone
+try:
+    from names import canon
+except Exception:  # pragma: no cover
+    canon = lambda s: str(s).lower()
+import re
 
 SPORTS = {  # key -> (Odds API key, ESPN path)
     "nfl": ("americanfootball_nfl", "football/nfl"),
@@ -32,12 +53,36 @@ SPORTS = {  # key -> (Odds API key, ESPN path)
     "nhl": ("icehockey_nhl", "hockey/nhl"),
     "ncaaf": ("americanfootball_ncaaf", "football/college-football"),
     "ncaab": ("basketball_ncaab", "basketball/mens-college-basketball"),
+    "wnba": ("basketball_wnba", "basketball/wnba"),
+    "epl": ("soccer_epl", "soccer/eng.1"),
+    "laliga": ("soccer_spain_la_liga", "soccer/esp.1"),
+    "bundesliga": ("soccer_germany_bundesliga", "soccer/ger.1"),
+    "seriea": ("soccer_italy_serie_a", "soccer/ita.1"),
+    "ligue1": ("soccer_france_ligue_one", "soccer/fra.1"),
+    "mls": ("soccer_usa_mls", "soccer/usa.1"),
+    "ucl": ("soccer_uefa_champs_league", "soccer/uefa.champions"),
+    "mma": ("mma_mixed_martial_arts", "mma/ufc"),
 }
+ALL_SPORTS = ",".join(SPORTS)
+THREE_WAY = {"epl", "laliga", "bundesliga", "seriea", "ligue1", "mls", "ucl"}  # soccer: always home / draw / away
+# The Odds API charges 1 credit per sport per market per region. Sports outside this list skip it and use the free sources.
+ODDS_API_SPORTS = set(os.environ.get("ODDS_API_SPORTS", "nfl,nba,mlb,nhl").split(","))  # 4 sports x 1 market x 1 region = 4 credits per run; 2 runs a day = about 240 of the 500 free credits a month
+REGIONS = os.environ.get("REGIONS", "us")  # "us,eu" adds Pinnacle and other sharp books but doubles Odds API credit use
+# Books whose prices count more in the consensus fair price (substring match on the book name, case-insensitive).
+SHARP_WEIGHTS = {"pinnacle": 4.0, "circa": 3.0, "betonline": 2.0, "lowvig": 2.0, "bookmaker": 2.0, "betcris": 2.0}
+for _kv in filter(None, os.environ.get("SHARP_BOOKS", "").split(",")):  # e.g. SHARP_BOOKS="pinnacle=5,circa=3"
+    try:
+        _k, _v = _kv.split("=")
+        SHARP_WEIGHTS[_k.strip().lower()] = float(_v)
+    except ValueError:
+        pass
+MARKETS = os.environ.get("MARKETS", "h2h")  # add ",spreads,totals" to enable the middle scanner (costs more credits)
 BANKROLL = float(os.environ.get("BANKROLL", 100))
 KELLY_FRAC = float(os.environ.get("KELLY_FRAC", 0.35))
 MAX_STAKE_PCT = float(os.environ.get("MAX_STAKE_PCT", 3))
 DAY_BUDGET = float(os.environ.get("DAY_BUDGET", 6))
 MIN_EDGE = float(os.environ.get("MIN_EDGE", 0.01))
+MIN_BOOKS = int(os.environ.get("MIN_BOOKS", 3))  # consensus edge bets need this many books (fewer = noise and winner's curse)
 LOG = []
 
 
@@ -66,6 +111,14 @@ def try_sources(label, attempts):
 
 
 # ---------- odds math ----------
+def book_weight(name):
+    n = (name or "").lower()
+    for k, w in SHARP_WEIGHTS.items():
+        if k in n:
+            return w
+    return 1.0
+
+
 def am_to_dec(a):
     a = float(a)
     if abs(a) < 100:
@@ -95,45 +148,100 @@ def odds_api(sport):
     key = os.environ.get("ODDS_API_KEY")
     if not key:
         raise RuntimeError("ODDS_API_KEY not set")
+    if sport not in ODDS_API_SPORTS:
+        raise RuntimeError("skipped to save Odds API credits (not in ODDS_API_SPORTS)")
     u = f"https://api.the-odds-api.com/v4/sports/{SPORTS[sport][0]}/odds/?" + urllib.parse.urlencode(
-        {"apiKey": key, "regions": "us", "markets": "h2h", "oddsFormat": "american"})
+        {"apiKey": key, "regions": REGIONS, "markets": MARKETS, "oddsFormat": "american"})
+    return parse_odds_api(sport, http_json(u))
+
+
+def parse_odds_api(sport, data):
     out = []
-    for g in http_json(u):
-        books = {}
+    for g in data:
+        books, spreads, totals = {}, {}, {}
         for b in g.get("bookmakers", []):
             for m in b.get("markets", []):
-                if m["key"] != "h2h":
-                    continue
-                px = {o["name"]: o["price"] for o in m["outcomes"]}
-                if g["home_team"] in px and g["away_team"] in px:
-                    books[b["title"]] = {"home": px[g["home_team"]], "away": px[g["away_team"]]}
+                outs = m.get("outcomes", [])
+                if m["key"] == "h2h":
+                    px = {o["name"]: o["price"] for o in outs}
+                    if g["home_team"] in px and g["away_team"] in px:
+                        d = {"home": px[g["home_team"]], "away": px[g["away_team"]]}
+                        if "Draw" in px:
+                            d["draw"] = px["Draw"]
+                        books[b["title"]] = d
+                elif m["key"] == "spreads":
+                    d = {}
+                    for o in outs:
+                        if o.get("point") is None:
+                            continue
+                        side = "home" if o["name"] == g["home_team"] else "away" if o["name"] == g["away_team"] else None
+                        if side:
+                            d[side] = (float(o["point"]), o["price"])
+                    if len(d) == 2:
+                        spreads[b["title"]] = d
+                elif m["key"] == "totals":
+                    d = {}
+                    for o in outs:
+                        if o.get("point") is not None and o["name"] in ("Over", "Under"):
+                            d[o["name"].lower()] = (float(o["point"]), o["price"])
+                    if len(d) == 2:
+                        totals[b["title"]] = d
         if books:
-            out.append({"sport": sport, "home": g["home_team"], "away": g["away_team"], "start": g["commence_time"], "books": books})
+            out.append({"sport": sport, "home": g["home_team"], "away": g["away_team"], "start": g["commence_time"],
+                        "books": books, "spreads": spreads, "totals": totals})
     return out
+
+
+def _am(x):
+    """ESPN odds value -> float American odds, or None."""
+    if x is None:
+        return None
+    t = str(x).strip().upper().replace("EVEN", "100").replace("PK", "").replace("+", "")
+    try:
+        v = float(t)
+    except ValueError:
+        return None
+    return v if am_to_dec(v) else None
 
 
 def _espn_events(sport, data):
     out = []
     for ev in data.get("events", []):
         comp = ev["competitions"][0]
-        teams = {c["homeAway"]: c["team"]["displayName"] for c in comp["competitors"]}
+        comps = comp.get("competitors", [])
+        names = {}
+        for i, c in enumerate(comps):
+            nm = (c.get("team") or {}).get("displayName") or (c.get("athlete") or {}).get("displayName")
+            ha = c.get("homeAway") or ("home" if i == 0 else "away")  # combat sports have no home/away; keep ESPN order
+            if nm:
+                names[ha] = nm
         books = {}
         for o in comp.get("odds", []) or []:
             name = (o.get("provider") or {}).get("name", "ESPN")
-            h = a = None
-            ml = o.get("moneyline")
-            if ml:
-                h = ((ml.get("home") or {}).get("close") or {}).get("odds")
-                a = ((ml.get("away") or {}).get("close") or {}).get("odds")
-            h = h or (o.get("homeTeamOdds") or {}).get("moneyLine")
-            a = a or (o.get("awayTeamOdds") or {}).get("moneyLine")
-            try:
-                if h is not None and a is not None and am_to_dec(str(h).replace("EVEN", "100")) and am_to_dec(str(a).replace("EVEN", "100")):
-                    books[name] = {"home": float(str(h).replace("EVEN", "100")), "away": float(str(a).replace("EVEN", "100"))}
-            except ValueError:
-                pass
-        if books and "home" in teams and "away" in teams:
-            out.append({"sport": sport, "home": teams["home"], "away": teams["away"], "start": ev.get("date"), "books": books})
+            ml = o.get("moneyline") or {}
+            h = _am(((ml.get("home") or {}).get("close") or {}).get("odds")) or _am((o.get("homeTeamOdds") or {}).get("moneyLine"))
+            a = _am(((ml.get("away") or {}).get("close") or {}).get("odds")) or _am((o.get("awayTeamOdds") or {}).get("moneyLine"))
+            d = _am(((ml.get("draw") or {}).get("close") or {}).get("odds")) or _am((o.get("drawOdds") or {}).get("moneyLine"))
+            if h is not None and a is not None:
+                px = {"home": h, "away": a}
+                if d is not None:
+                    px["draw"] = d
+                books[name] = px
+        pitchers = {}
+        if sport == "mlb":
+            for i, c in enumerate(comps):
+                ha = c.get("homeAway") or ("home" if i == 0 else "away")
+                for pr in c.get("probables", []) or []:
+                    era = next((s.get("displayValue") for s in pr.get("statistics", []) or [] if (s.get("name") or "").upper() == "ERA"), None)
+                    nm = (pr.get("athlete") or {}).get("displayName")
+                    if nm:
+                        pitchers[ha] = {"name": nm, "era": era}
+                        break
+        if books and "home" in names and "away" in names:
+            g = {"sport": sport, "home": names["home"], "away": names["away"], "start": ev.get("date"), "books": books}
+            if pitchers:
+                g["pitchers"] = pitchers
+            out.append(g)
     return out
 
 
@@ -152,9 +260,17 @@ def espn_via_skills(sport):
 
 # ---------- prediction markets -> [{source,title,yes,no,url}] (prices as 0..1 probabilities) ----------
 def kalshi_direct():
-    data = http_json("https://api.elections.kalshi.com/trade-api/v2/markets?status=open&limit=1000")
-    out = []
-    for m in data.get("markets", []):
+    out, cursor = [], ""
+    pages = []
+    for _ in range(5):  # a few pages; the first one alone is mostly multi-leg parlays
+        data = http_json("https://api.elections.kalshi.com/trade-api/v2/markets?status=open&limit=1000" + (f"&cursor={cursor}" if cursor else ""))
+        pages += data.get("markets", [])
+        cursor = data.get("cursor") or ""
+        if not cursor:
+            break
+    for m in pages:
+        if m.get("mve_collection_ticker") or m.get("mve_selected_legs"):
+            continue  # multi-leg combo market, not a single-game price
         y = m.get("yes_ask_dollars")
         n = m.get("no_ask_dollars")
         if y is None:
@@ -230,12 +346,22 @@ def last_word(name):
     return name.lower().split()[-1]
 
 
+BAD_TITLE = re.compile(r"\bby (over|more|at least)\b|\bspread\b|\btotal\b|\bo/u\b|\bover \d|\bunder \d|\bpoints?\b|\bruns?\b|\bgoals?\b|\bcover\b|,|\bmvp\b|\bchampion|\bplayoffs?\b|\bseries\b|\bseason\b", re.I)
+
+
+def _has_word(text, word):
+    return bool(word) and re.search(r"(?<![a-z])" + re.escape(word) + r"(?![a-z])", text) is not None
+
+
 def match_pm(game, pms):
+    """Prediction-market titles that look like a plain who-wins question about exactly these two teams."""
     h, a = last_word(game["home"]), last_word(game["away"])
     hits = []
     for m in pms:
         t = m["title"].lower()
-        if h in t and a in t:
+        if BAD_TITLE.search(t):
+            continue  # spreads, totals, props, multi-leg or futures: not a moneyline price
+        if _has_word(t, h) and _has_word(t, a):
             hits.append(m)
     return hits
 
@@ -243,63 +369,111 @@ def match_pm(game, pms):
 def pm_prob_for(m, team):
     """Return the market's price (0..1) of `team` winning, if determinable."""
     t, w = m["title"].lower(), last_word(team)
+    if BAD_TITLE.search(t):
+        return None
     if m["source"] == "polymarket":
         for n, p in zip(m["outcomes"], m["prices"]):
-            if w in n.lower():
+            if _has_word(n.lower(), w):
                 return p
         return None
     # kalshi yes/no market: only usable if the title asks "will <team> win"
-    if m.get("yes") is not None and f"{w}" in t.split(" win")[0] and "win" in t:
-        first = t.split(" win")[0]
-        if w in first and last_word(team) == first.split()[-1]:
-            return m["yes"]
+    mt = re.match(r"^will (?:the )?(.+?) (?:win|beat|defeat)\b", t)
+    if m.get("yes") is not None and mt and last_word(mt.group(1)) == w:
+        return m["yes"]
     return None
 
 
-def analyze(games, pms, models=None, injuries=None):
+def analyze(games, pms, models=None, injuries=None, now=None):
+    now = now or datetime.now(timezone.utc)
     models = models or {}
     injuries = injuries or {}
     rows = []
     for g in games:
-        sides = {"home": [], "away": []}
-        fair_by_book = []
-        for book, px in g["books"].items():
-            dh, da = am_to_dec(px["home"]), am_to_dec(px["away"])
-            if not dh or not da:
-                continue
-            fh, fa = devig_shin([1 / dh, 1 / da])
-            fair_by_book.append((fh, fa))
-            sides["home"].append((dh, book, px["home"]))
-            sides["away"].append((da, book, px["away"]))
-        if not fair_by_book:
+        books = {k: v for k, v in g["books"].items() if am_to_dec(v.get("home")) and am_to_dec(v.get("away"))}
+        if not books:
             continue
+        if g.get("start"):
+            try:
+                if now >= datetime.fromisoformat(g["start"].replace("Z", "+00:00")):
+                    continue  # started or finished: live prices disagree wildly and are not a pre-game edge
+            except ValueError:
+                pass
+        draws = {k: v for k, v in books.items() if v.get("draw") is not None and am_to_dec(v["draw"])}
+        if draws or g["sport"] in THREE_WAY:
+            books = draws  # a three-outcome sport needs a draw price from every book used; never fall back to two-way
+            if not books:
+                continue
+        three = all("draw" in v and am_to_dec(v["draw"]) for v in books.values())
+        outcomes = ["home", "away"] + (["draw"] if three else [])
+        label = lambda k: g[k] if k in ("home", "away") else "Draw"
+        sides = {k: [] for k in outcomes}
+        fair_by_book = []
+        for book, px in books.items():
+            decs = [am_to_dec(px[k]) for k in outcomes]
+            fair_by_book.append(devig_shin([1 / d for d in decs]))
+            for k, d in zip(outcomes, decs):
+                sides[k].append((d, book, px[k]))
         n = len(fair_by_book)
-        fair = {"home": sum(f[0] for f in fair_by_book) / n, "away": sum(f[1] for f in fair_by_book) / n}
+        wts = [book_weight(bk) for bk in books]
+        wsum = sum(wts)
+        fair = {k: sum(w * f[i] for w, f in zip(wts, fair_by_book)) / wsum for i, k in enumerate(outcomes)}
+        sharp = [bk for bk, w in zip(books, wts) if w > 1]
         best = {k: max(v) for k, v in sides.items()}
-        implied_sum = 1 / best["home"][0] + 1 / best["away"][0]
+        implied_sum = sum(1 / best[k][0] for k in outcomes)
         row = {"key": hist_mod.game_key(g["sport"], g["away"], g["home"], g["start"]) if hist_mod else None,
-               "sport": g["sport"], "home": g["home"], "away": g["away"], "start": g["start"], "nBooks": n,
+               "sport": g["sport"], "home": g["home"], "away": g["away"], "start": g["start"], "nBooks": n, "threeWay": three,
                "fair": {k: round(v, 4) for k, v in fair.items()},
                "best": {k: {"book": best[k][1], "american": best[k][2], "decimal": round(best[k][0], 3)} for k in best},
                "arb": implied_sum < 1, "impliedSum": round(implied_sum, 4), "bets": [], "pm": []}
+        if sharp:
+            row["sharpBooks"] = sharp
         if row["arb"]:
             row["arbRoiPct"] = round((1 / implied_sum - 1) * 100, 2)
-        for k in ("home", "away"):
-            ev = fair[k] * best[k][0] - 1
-            if n >= 2 and ev >= MIN_EDGE:
+        names_ = list(books)
+
+        def fair_excl(k):
+            """Consensus fair price WITHOUT the book that offers the best price, so that price is not judged against its own opinion."""
+            i = outcomes.index(k)
+            pairs = [(w, f[i]) for w, f, nm in zip(wts, fair_by_book, names_) if nm != best[k][1]]
+            ws = sum(w for w, _ in pairs)
+            return sum(w * x for w, x in pairs) / ws if ws else fair[k]
+        for k in outcomes:
+            fx = min(fair[k], fair_excl(k))  # the lower of the two: a price must beat the consensus with AND without the book offering it
+            ev = fx * best[k][0] - 1
+            if n >= MIN_BOOKS and ev >= MIN_EDGE:
                 b = best[k][0] - 1
-                kelly = max(0.0, (b * fair[k] - (1 - fair[k])) / b)
+                kelly = max(0.0, (b * fx - (1 - fx)) / b)
                 pct = min(kelly * KELLY_FRAC * 100, MAX_STAKE_PCT)
-                row["bets"].append({"side": g[k], "book": best[k][1], "american": best[k][2], "fair": round(fair[k], 4),
+                row["bets"].append({"side": label(k), "book": best[k][1], "american": best[k][2], "fair": round(fx, 4),
                                     "evPct": round(ev * 100, 2), "stakePct": round(pct, 2), "stake": round(BANKROLL * pct / 100, 2)})
         mdl = models.get(g["sport"])
-        if mdl and elo:
+        if mdl and mdl.get("kind") == "soccer" and soccer_mod and elo and three:
+            pr = soccer_mod.predict(mdl, g["home"], g["away"])
+            if pr:
+                mp = dict(zip(("home", "draw", "away"), pr))
+                bl3 = {k: elo.blend(mp[k], fair[k]) for k in outcomes}
+                row["model"] = {"home": round(mp["home"], 4), "draw": round(mp["draw"], 4), "away": round(mp["away"], 4),
+                                "blendHome": round(bl3["home"], 4), "gapPp": round((mp["home"] - fair["home"]) * 100, 1), "weight": elo.MODEL_WEIGHT}
+                for k in outcomes:
+                    evm = bl3[k] * best[k][0] - 1
+                    if evm >= MIN_EDGE and not any(x["side"] == label(k) for x in row["bets"]):
+                        b_ = best[k][0] - 1
+                        kelly = max(0.0, (b_ * bl3[k] - (1 - bl3[k])) / b_)
+                        pct = min(kelly * KELLY_FRAC * 100, MAX_STAKE_PCT)
+                        row["bets"].append({"side": label(k), "book": best[k][1], "american": best[k][2], "fair": round(bl3[k], 4),
+                                            "evPct": round(evm * 100, 2), "stakePct": round(pct, 2), "stake": round(BANKROLL * pct / 100, 2), "basis": "model-blend"})
+        elif mdl and elo and not three and mdl.get("kind") != "soccer":
             try:
                 start = datetime.fromisoformat(g["start"].replace("Z", "+00:00")).date() if g.get("start") else None
             except ValueError:
                 start = None
             inj = injuries.get(g["sport"], {})
             adj = {t: v[0] for t, v in inj.items()}
+            pnotes = []
+            if g.get("pitchers") and hasattr(elo, "pitcher_adj"):
+                pa, pnotes = elo.pitcher_adj(g["pitchers"])
+                adj[g["home"]] = adj.get(g["home"], 0) + pa["home"]
+                adj[g["away"]] = adj.get(g["away"], 0) + pa["away"]
             pm_home = elo.predict(g["sport"], mdl, g["home"], g["away"], start, adj)
             if pm_home is not None:
                 bl = elo.blend(pm_home, fair["home"])
@@ -311,6 +485,8 @@ def analyze(games, pms, models=None, injuries=None):
                         notes.append(f"{t}: {inj[t][0]:+.0f} Elo" + (" (" + "; ".join(inj[t][1]) + ")" if inj[t][1] else ""))
                 if notes:
                     row["model"]["injuries"] = notes
+                if pnotes:
+                    row["model"]["pitchers"] = pnotes
                 for k, pk in (("home", bl), ("away", 1 - bl)):
                     evm = pk * best[k][0] - 1
                     if evm >= MIN_EDGE and not any(b["side"] == g[k] for b in row["bets"]):
@@ -319,14 +495,22 @@ def analyze(games, pms, models=None, injuries=None):
                         pct = min(kelly * KELLY_FRAC * 100, MAX_STAKE_PCT)
                         row["bets"].append({"side": g[k], "book": best[k][1], "american": best[k][2], "fair": round(pk, 4),
                                             "evPct": round(evm * 100, 2), "stakePct": round(pct, 2), "stake": round(BANKROLL * pct / 100, 2), "basis": "model-blend"})
+        pm_hits = []
         for m in match_pm(g, pms)[:4]:
             e = {"source": m["source"], "title": m["title"], "url": m.get("url", "")}
             for k in ("home", "away"):
                 p = pm_prob_for(m, g[k])
+                if p is not None and abs(p - fair[k]) > 0.12:
+                    e["suspect"] = True  # a price this far from every book is more likely a mismatched market than a real edge
+                    p = None
                 if p is not None:
                     e[k] = round(p, 3)
                     e[k + "EdgePp"] = round((fair[k] - p) * 100, 1)
             row["pm"].append(e)
+            pm_hits.append(e)
+        if mk:
+            row["crossArbs"] = mk.cross_arbs(row, pm_hits)
+            row["middles"] = mk.find_middles(g, g["sport"])
         rows.append(row)
     return rows
 
@@ -376,13 +560,101 @@ def simulate_day(rows, rho=0.25, N=20000, seed=7):
             "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."}
 
 
+def models_ran(sp):
+    return any(l["source"] == f"model[{sp}]" and l["ok"] for l in LOG)
+
+
+def diagnostics(games, rows, pms):
+    """Counts that make a broken live source obvious on the first run."""
+    d = {"predictionMarketsFetched": len(pms), "bySport": {}, "warnings": []}
+    for sp in sorted({g["sport"] for g in games}):
+        gs = [g for g in games if g["sport"] == sp]
+        rs = [r for r in rows if r["sport"] == sp]
+        e = {"games": len(gs), "withOdds": len(rs), "avgBooks": round(sum(r["nBooks"] for r in rs) / len(rs), 1) if rs else 0,
+             "withModel": sum(1 for r in rs if r.get("model")), "withPmMatch": sum(1 for r in rs if r.get("pm")),
+             "edgeBets": sum(len(r["bets"]) for r in rs)}
+        if sp == "mlb":
+            e["withPitchers"] = sum(1 for g in gs if g.get("pitchers"))
+        d["bySport"][sp] = e
+        if gs and not rs:
+            d["warnings"].append(f"{sp}: {len(gs)} games but none had usable odds")
+        if rs and e["avgBooks"] < 2:
+            d["warnings"].append(f"{sp}: only one book per game, so edge bets, arbitrage and middles cannot appear")
+        if rs and (sp in (elo.CFG if elo else {}) or (soccer_mod and sp in soccer_mod.LEAGUES)) and models_ran(sp) and e["withModel"] < 0.9 * len(rs):
+            d["warnings"].append(f"{sp}: model matched only {e['withModel']} of {len(rs)} games; team names may differ between sources")
+    if pms and not any(e["withPmMatch"] for e in d["bySport"].values()):
+        d["warnings"].append("prediction markets fetched but none matched a game (matching is conservative)")
+    if not pms:
+        d["warnings"].append("no prediction-market data from any source")
+    return d
+
+
+def enrich_pitchers(games):
+    """The Odds API has no starting pitchers; attach ESPN's probables to MLB games that lack them."""
+    todo = [g for g in games if g["sport"] == "mlb" and not g.get("pitchers")]
+    if not todo:
+        return
+    try:
+        espn = [e for e in espn_direct("mlb") if e.get("pitchers")]
+    except Exception as e:  # noqa
+        log("pitchers[mlb]", False, repr(e))
+        return
+    n = 0
+    for g in todo:
+        for e in espn:
+            if last_word(e["home"]) == last_word(g["home"]) and last_word(e["away"]) == last_word(g["away"]) and (e.get("start") or "")[:10] == (g.get("start") or "")[:10]:
+                g["pitchers"] = e["pitchers"]
+                n += 1
+                break
+    log("pitchers[mlb]", n > 0, f"{n} games matched")
+
+
+def grade_step(rows, closing, capture_only, now):
+    """Record new edge bets (full runs only), settle finished games, attach CLV, write record.json."""
+    if not grader:
+        return
+    ppath = os.environ.get("PICKS_PATH", "picks.json")
+    picks = grader.load(ppath)
+    added = 0 if capture_only else grader.record_picks(picks, rows, now)
+    need = {}
+    for p in picks.values():
+        if p["res"] is None and p["sport"] in SPORTS:
+            try:
+                st = datetime.fromisoformat(p["start"].replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if st < now:
+                for dd in (-1, 0, 1):
+                    need.setdefault(p["sport"], set()).add((st + timedelta(days=dd)).strftime("%Y%m%d"))
+    finals = {}
+    for sp, dates in need.items():
+        try:
+            finals[sp] = grader.fetch_finals(sp, SPORTS[sp][1], sorted(dates), http_json)
+        except Exception as e:  # noqa
+            log(f"finals[{sp}]", False, repr(e))
+    n_set = grader.settle(picks, finals, now)
+    n_clv = grader.attach_clv(picks, closing)
+    grader.prune(picks)
+    grader.save(ppath, picks)
+    rpath = os.environ.get("RECORD_PATH", "record.json")
+    summary = grader.summarize(picks)
+    try:
+        prev = grader.load(rpath)
+    except RuntimeError:
+        prev = {}
+    if {k: v for k, v in prev.items() if k != "generatedAt"} != summary:   # only rewrite when something changed: no commit and deploy every 30 minutes
+        grader.save(rpath, {"generatedAt": now.isoformat(timespec="seconds"), **summary})
+    log("grading", True, f"{added} picks added, {n_set} settled, {n_clv} CLV, {len(picks)} total")
+
+
 def main():
-    sports = [s for s in os.environ.get("SPORTS", "nfl,nba,mlb,nhl").split(",") if s in SPORTS]
+    sports = [s for s in os.environ.get("SPORTS", "nfl,nba,mlb,nhl").replace("all", ALL_SPORTS).split(",") if s in SPORTS]
     games = []
     for s in sports:
         got = try_sources(f"odds[{s}]", [("oddsapi", lambda s=s: odds_api(s)), ("espn", lambda s=s: espn_direct(s)),
                                           ("sports-skills", lambda s=s: espn_via_skills(s))])
         games += got
+    enrich_pitchers(games)
     pms = try_sources("kalshi", [("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
     pms += try_sources("polymarket", [("direct", polymarket_direct), ("sports-skills", polymarket_via_skills)])
     capture_only = os.environ.get("CAPTURE_ONLY") == "1"
@@ -403,22 +675,44 @@ def main():
                                                        ("sports-skills", lambda sp=sp: [skills_injuries(sp)])])
                 if got and got[0]:
                     injuries[sp] = got[0]
-    rows = analyze(games, pms, models, injuries)
+    if soccer_mod and elo and not capture_only:
+        for sp in [x for x in sports if x in soccer_mod.LEAGUES]:
+            try:
+                res = elo.fetch_results(sp, path=soccer_mod.LEAGUES[sp])
+                if len(res) < soccer_mod.MIN_GAMES:
+                    raise RuntimeError(f"only {len(res)} completed games found")
+                mdl_ = soccer_mod.build(res)
+                bt_ = mdl_["backtest"]
+                if not bt_ or bt_["brier"] >= bt_["coinFlipBrier"]:
+                    raise RuntimeError(f"model does not beat the league-frequency baseline ({bt_ and bt_['brier']} vs {bt_ and bt_['coinFlipBrier']}); not used")
+                models[sp] = mdl_
+                backtests[sp] = bt_
+                log(f"model[{sp}]", True, f"{len(res)} games, 3-way brier {backtests[sp] and backtests[sp]['brier']}")
+            except Exception as e:  # noqa
+                log(f"model[{sp}]", False, repr(e))
+    now = datetime.fromisoformat(os.environ["ASOF"]) if os.environ.get("ASOF") else datetime.now(timezone.utc)
+    rows = analyze(games, pms, models, injuries, now)
     rows.sort(key=lambda r: -max([b["evPct"] for b in r["bets"]] + [r.get("arbRoiPct", 0), -99]))
-    slate = {"generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    slate = {"generatedAt": now.isoformat(timespec="seconds"),
              "settings": {"bankroll": BANKROLL, "kellyFrac": KELLY_FRAC, "maxStakePct": MAX_STAKE_PCT, "dayBudget": DAY_BUDGET, "minEdge": MIN_EDGE},
-             "sources": LOG, "modelBacktest": backtests, "games": rows, "day": None if capture_only else simulate_day(rows),
+             "sources": LOG, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "day": None if capture_only else simulate_day(rows),
              "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only."}
     closing = {}
     if hist_mod:
         hpath = os.environ.get("HISTORY_PATH", "history.json")
-        now = datetime.now(timezone.utc)
         h = hist_mod.load(hpath)
         n_added = hist_mod.record(h, rows, now)
         hist_mod.prune(h, now)
         hist_mod.save(hpath, h)
         closing = hist_mod.closing(h, now)
         log("history", True, f"{n_added} snapshots added, {len(closing)} closing lines available")
+    try:
+        grade_step(rows, closing, capture_only, now)
+    except Exception as e:  # noqa
+        log("grading", False, repr(e))
+    if notifier:
+        found, sent_n, status = notifier.run(rows, now)
+        log("alerts", not status.startswith("failed"), f"{found} found, {sent_n} sent: {status}")
     if capture_only:
         print(f"capture-only: {len(rows)} games snapshotted")
         for l in LOG:

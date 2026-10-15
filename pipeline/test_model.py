@@ -42,9 +42,35 @@ assert M.predict("nba", m, "Nobody", worst) is None
 assert abs(M.blend(0.8, 0.5) - 0.575) < 1e-9
 # integration: single book game still gets a model bet when the book underprices the favourite
 g = [{"sport": "nba", "home": best, "away": worst, "start": f"{today}T00:00:00Z", "books": {"OnlyBook": {"home": 100, "away": -120}}}]
-rows = b.analyze(g, [], {"nba": m})
+from datetime import datetime as _dt, timezone as _tz, timedelta as _td
+rows = b.analyze(g, [], {"nba": m}, now=_dt(2026, 2, 28, tzinfo=_tz.utc))
 r = rows[0]; print(r["model"], r["bets"])
 assert "model" in r and any(x.get("basis") == "model-blend" and x["side"] == best for x in r["bets"])
 # rest rule: back-to-back hurts
 assert M._rest_adj("nba", 1) < 0 < M._rest_adj("nba", 4)
 print("MODEL TESTS PASS")
+
+# ---- fetch_results: diagnostics instead of silent empties
+import model as M2
+from datetime import date as _d
+def boom(u): raise OSError("HTTP Error 400: Bad Request")
+try:
+    M2.fetch_results("nba", today=_d(2026, 1, 1), getter=boom); raise SystemExit("should raise")
+except RuntimeError as e:
+    assert "first error" in str(e) and "400" in str(e) and "errors" in str(e), e
+empty = lambda u: {"events": []}
+try:
+    M2.fetch_results("nba", today=_d(2026, 1, 1), getter=empty); raise SystemExit("should raise")
+except RuntimeError as e:
+    assert "0 had events" in str(e) and "0 errors" in str(e), e
+ev = lambda i: {"id": str(i), "date": "2025-12-01T00:00Z", "status": {"type": {"completed": True}},
+                "competitions": [{"competitors": [{"homeAway": "home", "score": "100", "team": {"displayName": "A"}}, {"homeAway": "away", "score": "90", "team": {"displayName": "B"}}]}]}
+calls = {"n": 0}
+def flaky(u):
+    calls["n"] += 1
+    if calls["n"] == 1: raise OSError("blip")          # one failure is retried and recovered
+    return {"events": [ev(calls["n"])]}
+st = {}
+r = M2.fetch_results("nba", today=_d(2026, 1, 1), getter=flaky, stats=st)
+assert r and st["errors"] == 0 and st["completed"] >= 1, st
+print("FETCH DIAG PASS")

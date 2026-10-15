@@ -1,5 +1,6 @@
 """Offline test: fake sources, verifies analysis, arb detection, PM matching, sim, and fallback order."""
 import os, sys, json
+from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(__file__))
 import build_slate as b
 
@@ -10,7 +11,8 @@ games = [
   "books":{"A":{"home":+105,"away":+105},"B":{"home":-110,"away":-110}}},
 ]
 pms=[{"source":"polymarket","title":"Chiefs vs. Bills","outcomes":["Chiefs","Bills"],"prices":[0.55,0.45],"url":"u"}]
-rows=b.analyze(games,pms)
+rows=b.analyze(games,pms,now=datetime(2026,10,11,tzinfo=timezone.utc))
+assert b.analyze(games,pms,now=datetime(2026,10,12,1,tzinfo=timezone.utc))[0:1] and all(r['home']!='Kansas City Chiefs' for r in b.analyze(games,pms,now=datetime(2026,10,12,1,tzinfo=timezone.utc))), 'started game must be dropped'
 r0,r1=rows
 assert r0["nBooks"]==3 and abs(r0["fair"]["home"]+r0["fair"]["away"]-1)<1e-6
 assert r0["best"]["away"]["book"]=="BetMGM" and r0["best"]["away"]["american"]==150

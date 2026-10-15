@@ -78,33 +78,35 @@ th{color:var(--sub);font-weight:700;font-size:.66rem;text-transform:uppercase;}
 input[type=color]{padding:2px;height:34px;min-width:44px;}
 input[type=checkbox]{width:auto;}
 .inline{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--sub);}
-@media(max-width:600px){.row .field{min-width:112px;}}
+@media(max-width:600px){.row .field{min-width:112px;} button.act,.mini,nav button,.chip button,input,select{min-height:44px;} .mini{min-width:44px;} .row>button.act{flex:1 1 140px;}}
 </style>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="wrap">
   <div class="brand"><h1>Edge Suite</h1><span>Sportsbook · Prediction Market · Portfolio Risk</span></div>
-  <p class="lede">Fourteen tools, one workflow: shop lines against a sharp book, de-vig the market, size bets together, cap the day’s downside, track closing line value and ROI, check for arbitrage, and break down game film.</p>
-  <div class="callout">Only Arbitrage and Hedge can lock a profit regardless of outcome. Everything else works on expected value and risk. Portfolio Kelly and Day Risk show the odds of a break-even day; they cannot promise one.</div>
+  <p class="lede">Sixteen tools, one workflow: shop lines against a sharp book, de-vig the market, size bets together, cap the day’s downside, track closing line value and ROI, check for arbitrage, and break down game film.</p>
+  <div class="callout">Only arbitrage and hedging can lock a profit. Everything else is expected value and risk: estimates, not promises.</div>
 
   <nav id="tabNav">
-    <button data-tab="legs" class="active">Leg Builder</button>
-    <button data-tab="fair">Fair Odds</button>
+    <button class="active" data-tab="slate">Today's Slate</button>
+    <button data-tab="record">Track Record</button>
+    <button data-tab="ledger">Bet Ledger</button>
+    <button data-tab="shop">Line Shop</button>
+    <button data-tab="arb">Arbitrage</button>
+    <button data-tab="promo">Promo Converter</button>
+    <button data-tab="ranker">EV Ranker</button>
+    <button data-tab="hedge">Hedge Calc</button>
+    <button data-tab="legs">Leg Builder</button>
     <button data-tab="pk">Portfolio Kelly</button>
     <button data-tab="day">Day Risk</button>
     <button data-tab="sim">Portfolio Sim</button>
-    <button data-tab="arb">Arbitrage</button>
-    <button data-tab="hedge">Hedge Calc</button>
-    <button data-tab="ranker">EV Ranker</button>
+    <button data-tab="fair">Fair Odds</button>
     <button data-tab="cal">Calibration</button>
-    <button data-tab="shop">Line Shop</button>
     <button data-tab="clv">Line Move &amp; CLV</button>
-    <button data-tab="ledger">Bet Ledger</button>
     <button data-tab="film">Film Room</button>
-    <button data-tab="slate">Today's Slate</button>
   </nav>
 
   <!-- LEG BUILDER -->
-  <div class="tab active" id="tab-legs">
+  <div class="tab" id="tab-legs">
     <div class="card">
       <h2>Bankroll &amp; Risk</h2>
       <div class="row">
@@ -346,12 +348,54 @@ input[type=checkbox]{width:auto;}
       <div class="scroll-box"><table><thead><tr><th>Date</th><th>Bet</th><th>Sport</th><th>Odds</th><th>Stake</th><th>Result</th><th>P&amp;L</th><th></th></tr></thead><tbody id="lgBody"></tbody></table></div>
       <div class="row" style="margin-top:10px;"><button class="act btn-ghost" onclick="exportLedger()">Copy CSV</button><button class="act btn-ghost" onclick="clearLedger()">Clear all rows</button></div>
     </div>
+    <div class="card">
+      <h2>Bankroll Guardrails</h2>
+      <p class="desc">Hard limits that apply to bets you log from the slate, and a warning for bets you add by hand. Losses count settled losses plus money still open today or this week. Set a limit to 0 to switch it off. After a drawdown from your peak bankroll, slate stakes are cut automatically.</p>
+      <div class="row">
+        <div class="field" style="max-width:150px"><label>Daily loss stop (% of bankroll)</label><input id="gDay" type="number" value="6" step="0.5" oninput="guardSave()"></div>
+        <div class="field" style="max-width:150px"><label>Weekly loss stop (%)</label><input id="gWeek" type="number" value="15" step="1" oninput="guardSave()"></div>
+        <div class="field" style="max-width:150px"><label>Halve stakes at drawdown (%)</label><input id="gDd1" type="number" value="10" step="1" oninput="guardSave()"></div>
+        <div class="field" style="max-width:150px"><label>Quarter stakes at drawdown (%)</label><input id="gDd2" type="number" value="20" step="1" oninput="guardSave()"></div>
+      </div>
+      <div class="callout" id="gBanner" style="margin:12px 0 0;display:none;"></div>
+      <div class="stat-grid" id="gStats"></div>
+    </div>
   </div>
 
-  <!-- FILM ROOM -->
+    <!-- FILM ROOM -->
 
   <!-- TODAY'S SLATE -->
-  <div class="tab" id="tab-slate">
+  <!-- PROMO -->
+  <div class="tab" id="tab-promo">
+    <div class="card">
+      <h2>Promo &amp; Bonus-Bet Converter</h2>
+      <p class="desc">Turns a sportsbook promo into locked cash by hedging the other side at a different book or a prediction market. This is one of the few structurally positive-expectation plays: you are converting a gift, not predicting a game. Prediction-market fees and book limits are not modeled; treat results as an estimate.</p>
+      <div class="row">
+        <div class="field"><label>Promo type</label><select id="pmType" onchange="promoRun()">
+          <option value="free">Free bet (stake not returned)</option>
+          <option value="match">Deposit match (bonus as free bet)</option>
+          <option value="risk">Risk-free bet (refunded as free bet)</option>
+          <option value="boost">Profit boost</option></select></div>
+        <div class="field"><label id="pmAmtL">Free bet amount ($)</label><input id="pmAmt" type="number" value="50" oninput="promoRun()"></div>
+        <div class="field" id="pmXw"><label id="pmXL">Match % / boost %</label><input id="pmX" type="number" value="100" oninput="promoRun()"></div>
+        <div class="field" id="pmCapW"><label>Bonus cap ($)</label><input id="pmCap" type="number" value="100" oninput="promoRun()"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Promo-side odds (Am.)</label><input id="pmBack" type="number" value="250" oninput="promoRun()"></div>
+        <div class="field"><label>Hedge odds (Am.)</label><input id="pmHedge" type="number" value="-280" oninput="promoRun()"></div>
+        <div class="field"><label>or hedge price on Kalshi/Polymarket (¢)</label><input id="pmCents" type="number" placeholder="e.g. 72" oninput="promoRun()"></div>
+        <div class="field" id="pmCW"><label>Free-bet conversion if you can't hedge (%)</label><input id="pmConv" type="number" value="70" oninput="promoRun()"></div>
+      </div>
+      <div class="stat-grid" id="pmStats"></div>
+      <div class="callout" id="pmNote" style="margin:12px 0 0;"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Why long odds convert better</h2>
+      <p class="desc">Free-bet conversion % by promo-side odds, assuming the hedge book charges this hold:</p>
+      <div class="row"><div class="field" style="max-width:150px"><label>Hedge hold (%)</label><input id="pmHold" type="number" value="4.5" oninput="promoRun()"></div></div>
+      <table><thead><tr><th>Promo-side odds</th><th>Hedge odds (est.)</th><th>Hedge stake per $100 free</th><th>Locked profit</th><th>Conversion</th></tr></thead><tbody id="pmCurve"></tbody></table>
+    </div>
+  </div>
+
+  <div class="tab active" id="tab-slate">
     <div class="card">
       <h2>Today's Slate</h2>
       <p class="desc">Reads the <code>slate.json</code> built by the scheduled pipeline: DraftKings and other books, Kalshi and Polymarket, with fair prices, arbitrage, edge bets and a one-day simulation. On your Netlify site it loads by itself. Here, load the file by hand.</p>
@@ -365,10 +409,32 @@ input[type=checkbox]{width:auto;}
       <div class="stat-grid" id="slStats"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Data sources used</h2>
       <div id="slSources" class="desc"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Health check</h2>
+      <div id="slDiag" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Our own model (Elo + rest, built from free results)</h2>
       <div id="slModel" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Games</h2>
-      <table><thead><tr><th>Game</th><th>Books</th><th>Fair (home / away)</th><th>Best home</th><th>Best away</th><th>Arb</th><th>Model P(home)</th><th>Edge bets</th><th>Prediction mkt gap</th></tr></thead><tbody id="slBody"></tbody></table>
+      <table><thead><tr><th>Game</th><th>Books</th><th>Fair (home / draw / away)</th><th>Best prices</th><th>Arb</th><th>Cross arbs &amp; middles</th><th>Model P(home)</th><th>Edge bets</th><th>Prediction mkt gap</th></tr></thead><tbody id="slBody"></tbody></table>
+    </div>
+  </div>
+
+  <div class="tab" id="tab-record">
+    <div class="card">
+      <h2>Track Record</h2>
+      <p class="desc">Every edge bet the pipeline flags is saved the first time it appears (at the price then), settled from final scores, and measured. This is the test of whether the model beats the market. It reads <code>record.json</code> on your site; here, load the file by hand.</p>
+      <div class="row">
+        <div class="field" style="max-width:320px"><label>Load record.json</label><input id="rcFile" type="file" accept=".json,application/json"></div>
+        <button class="act btn-ghost" onclick="recordFetch(true)">Reload from site</button>
+        <button class="act btn-ghost" onclick="recordExample()">Show example</button>
+      </div>
+      <div class="callout" id="rcNote" style="margin:12px 0 0;"></div>
+      <div class="stat-grid" id="rcStats"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">By sport</h2>
+      <div class="scroll-box"><table><thead><tr><th>Sport</th><th>Settled</th><th>Staked</th><th>P&amp;L</th><th>ROI</th><th>Wins vs expected</th><th>Avg CLV</th></tr></thead><tbody id="rcSport"></tbody></table></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Consensus bets vs model-blend bets</h2>
+      <div class="scroll-box"><table><thead><tr><th>Basis</th><th>Settled</th><th>P&amp;L</th><th>ROI</th><th>Avg CLV</th></tr></thead><tbody id="rcBasis"></tbody></table></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Recent settled picks</h2>
+      <div class="scroll-box"><table><thead><tr><th>Game</th><th>Pick</th><th>Odds</th><th>Stake</th><th>Result</th><th>CLV</th></tr></thead><tbody id="rcRecent"></tbody></table></div>
     </div>
   </div>
 
@@ -661,6 +727,54 @@ function calcHedge(){
     <div class="stat"><div class="v ${locked>=0?'pos':'neg'}">${locked>=0?'+':''}$${locked.toFixed(2)}</div><div class="k">${locked>=0?'Locked profit':'Locked loss'}</div></div>
     <div class="stat"><div class="v">$${P.toFixed(2)}</div><div class="k">Payout if parlay hits</div></div>
     <div class="stat"><div class="v">$${(stake+H).toFixed(2)}</div><div class="k">Total risked</div></div>`;
+}
+
+
+// ---- Promo / bonus-bet converter ----
+// Free bet F (stake not returned) at decimal dB, hedged H at dH: equal outcome when H = F(dB-1)/dH.
+function promoFree(F,dB,dH){const H=F*(dB-1)/dH;return{H,profit:H*(dH-1)};}
+// Real-money qualifying bet S at dA, hedge H at dH: equal outcome when H = S*dA/dH, profit = S*dA - S - H.
+function promoQual(S,dA,dH){const H=S*dA/dH;return{H,profit:S*(dA-1)-H};}
+// Risk-free: if S loses, refund min(S,cap) as a free bet worth c per $. Solve H = (S*dA - c*ref)/dH.
+function promoRisk(S,cap,c,dA,dH){const ref=Math.min(S,cap),H=(S*dA-c*ref)/dH;return{H,ref,profit:S*(dA-1)-H};}
+function pUsd(x){return (x>=0?'+$':'-$')+Math.abs(x).toFixed(2);}
+function promoRun(){
+  const g=id=>document.getElementById(id), t=g('pmType').value;
+  const amt=Number(g('pmAmt').value), x=Number(g('pmX').value), cap=Number(g('pmCap').value), conv=Number(g('pmConv').value)/100;
+  const cents=Number(g('pmCents').value);
+  const dB=amToDec(g('pmBack').value), dH=cents>0&&cents<100?100/cents:amToDec(g('pmHedge').value);
+  g('pmXw').style.display=(t==='match'||t==='boost')?'':'none';
+  g('pmCapW').style.display=(t==='match'||t==='risk')?'':'none';
+  g('pmCW').style.display=(t==='free'||t==='match'||t==='risk')?'':'none';
+  g('pmAmtL').textContent={free:'Free bet amount ($)',match:'Deposit / qualifying bet ($)',risk:'Risk-free stake ($)',boost:'Boosted bet stake ($)'}[t];
+  g('pmXL').textContent=t==='boost'?'Profit boost (%)':'Match (%)';
+  const st=g('pmStats'), note=g('pmNote');
+  // curve
+  const h=Number(g('pmHold').value)/100||0, rows=[];
+  for(const a of [150,200,250,300,400,500,700]){const d=1+a/100,imp=Math.min(.98,Math.max(.02,1-1/d+h)),dh=1/imp,r=promoFree(100,d,dh);
+    rows.push(`<tr><td>+${a}</td><td>${fmtOdds(probToAm(imp))}</td><td>$${r.H.toFixed(2)}</td><td>$${r.profit.toFixed(2)}</td><td>${r.profit.toFixed(0)}%</td></tr>`);}
+  g('pmCurve').innerHTML=rows.join('');
+  if(!amt||!dB||!dH){st.innerHTML='';note.textContent='Enter the amount and both odds.';return;}
+  const stat=(v,k,cls)=>`<div class="stat"><div class="v ${cls||''}">${v}</div><div class="k">${k}</div></div>`;
+  let out='',msg='';
+  if(t==='free'){
+    const r=promoFree(amt,dB,dH);
+    out=stat('$'+r.H.toFixed(2),'Hedge stake (real money)')+stat(pUsd(r.profit),'Locked profit',r.profit>=0?'pos':'neg')+stat((100*r.profit/amt).toFixed(1)+'%','Conversion of free bet')+stat('$'+(amt*(dB-1)).toFixed(2),'Free-bet win payout');
+    msg='Place the free bet on the promo side, then stake the hedge on the opposite outcome. Same profit whichever side wins. Higher promo-side odds convert better because the hedge stake is smaller.';
+  }else if(t==='match'){
+    const bonus=Math.min(amt*x/100,cap), q=promoQual(amt,dB,dH), f=promoFree(bonus,dB,dH), net=q.profit+f.profit;
+    out=stat('$'+bonus.toFixed(2),'Bonus received')+stat(pUsd(q.profit),'Qualifying bet (locked, cost of hold)',q.profit>=0?'pos':'neg')+stat(pUsd(f.profit),'Bonus converted (locked)','pos')+stat(pUsd(net),'Net after both steps',net>=0?'pos':'neg');
+    msg='Step 1: place the deposit as a qualifying bet and hedge it, which costs only the hold. Step 2: when the bonus arrives as a free bet, convert it with the second hedge. This view reuses the same odds for both steps; real prices will differ. Check rollover terms: many bonuses require playthrough that breaks this math.';
+  }else if(t==='risk'){
+    const r=promoRisk(amt,cap,conv,dB,dH);
+    out=stat('$'+r.H.toFixed(2),'Hedge stake')+stat(pUsd(r.profit),'Locked profit (assumes '+(conv*100).toFixed(0)+'% value on the refund)',r.profit>=0?'pos':'neg')+stat('$'+r.ref.toFixed(2),'Max refund as free bet');
+    msg='Because the refund comes back as a free bet, it is worth only the conversion rate you enter. Use the same conversion % you realized on past free bets (typically 60 to 80%).';
+  }else{
+    const bd=1+(dB-1)*(1+x/100), r=promoQual(amt,bd,dH);
+    out=stat(fmtOdds(probToAm(1/bd)),'Boosted odds')+stat('$'+r.H.toFixed(2),'Hedge stake')+stat(pUsd(r.profit),'Locked profit',r.profit>=0?'pos':'neg');
+    msg='A boost only locks profit when the boosted price beats the best opposite price by more than the combined hold. If the result is negative, skip the hedge or skip the boost.';
+  }
+  st.innerHTML=out; note.textContent=msg+(cents?' Hedge priced from the prediction market at '+cents+'¢ (fees not included; Kalshi charges about 7% of p(1-p) per contract).':'');
 }
 
 // ---- EV Ranker ----
@@ -1003,6 +1117,7 @@ function agg(rows){
   return {n:s.length,staked,pnl,roi:staked?pnl/staked:0,hit:w+l?w/(w+l):null,w,l};
 }
 function renderLedger(){
+  if(typeof renderGuard==='function'&&document.getElementById('gStats'))renderGuard();
   const hasEx=lgRows.some(r=>r.ex),bn=$('lgBanner');
   bn.style.display=hasEx?'block':'none';bn.textContent='These 40 rows are example data so you can see the charts. Your first logged bet replaces them.';
   const A=agg(lgRows),bank=Number($('bankroll').value)||0;
@@ -1160,8 +1275,10 @@ function slatePullClv(){
     if(!r.gk){noKey++;return;}
     const c=slateClosing[r.gk];if(!c){waiting++;return;}
     const src='slate:'+r.gk+':'+r.side;if(clvRows.some(x=>x.src===src))return;
-    const f=r.side==='home'?c.fairHome:c.fairAway;
-    fresh.push({d:r.desc,open:null,bet:Number(r.odds),close:probToAm(f),other:probToAm(1-f),src,mins:c.minutesBeforeStart});
+    const f=r.side==='home'?c.fairHome:r.side==='draw'?c.fairDraw:c.fairAway;
+    if(!(f>0&&f<1)){waiting++;return;}
+    const three=c.fairDraw!=null;
+    fresh.push({d:r.desc,open:null,bet:Number(r.odds),close:probToAm(f),other:three?null:probToAm(1-f),src,mins:c.minutesBeforeStart});
   });
   if(!fresh.length){notify(waiting?waiting+' logged bet(s) have no closing line yet (game not started or not captured).':'No new closing lines. Log bets from the slate first.');return;}
   clvRows=clvRows.filter(r=>!r.ex).concat(fresh);saveClv();renderClv();
@@ -1171,37 +1288,52 @@ function slateLog(k){
   const b=slateBets[k];if(!b||!(b.stake>0)){notify('This bet has no stake to log.');return;}
   lgRows=lgRows.filter(r=>!r.ex);
   if(lgRows.some(r=>r.date===b.date&&r.desc===b.desc)){notify('Already in your ledger today.');return;}
-  lgRows.push({date:b.date,desc:b.desc,sport:b.sport,odds:b.odds,stake:b.stake,res:null,gk:b.gk,side:b.side});
-  saveLedger();renderLedger();notify('Logged to Bet Ledger. Settle it there after the game.');
+  const g=guardNow();let stake=Math.round(b.stake*g.mult*100)/100,trimmed=false;
+  if(g.remaining<=0.005){notify((g.stopWeek?'Weekly':'Daily')+' loss stop reached. Raise the limit in Bankroll Guardrails (Bet Ledger tab) if you really want this bet.');return;}
+  if(stake>g.remaining){stake=Math.floor(g.remaining*100)/100;trimmed=true;}
+  if(!(stake>0)){notify('Stake rounds to zero under your guardrails.');return;}
+  lgRows.push({date:b.date,desc:b.desc,sport:b.sport,odds:b.odds,stake,res:null,gk:b.gk,side:b.side});
+  saveLedger();renderLedger();
+  notify('Logged '+usd(stake)+(trimmed?' (trimmed to fit your loss budget)':g.mult<1?' (cut by drawdown rule)':'')+'. Settle it in the ledger after the game.');
 }
 function slateRender(d,label){
   slateBets=[];slateClosing=d.closing||{};
-  $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, which has no injury or lineup data.';
+  $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
   const day=d.day,g=d.games||[];
-  const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length;
+  const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
    <div class="stat"><div class="v ${nb?'pos':''}">${nb}</div><div class="k">Edge bets</div></div>
-   <div class="stat"><div class="v ${na?'pos':''}">${na}</div><div class="k">Arbitrage</div></div>`+(day?`
+   <div class="stat"><div class="v ${na?'pos':''}">${na}</div><div class="k">Arbitrage</div></div>
+   <div class="stat"><div class="v ${nx?'pos':''}">${nx}</div><div class="k">Book vs prediction-market arbs</div></div>
+   <div class="stat"><div class="v ${nm?'pos':''}">${nm}</div><div class="k">Middles</div></div>`+(day?`
    <div class="stat"><div class="v">${usd(day.totalStake)}</div><div class="k">Total staked</div></div>
    <div class="stat"><div class="v ${day.meanPnl>=0?'pos':'neg'}">${usd(day.meanPnl)}</div><div class="k">Expected day</div></div>
    <div class="stat"><div class="v">${(day.pBreakEven*100).toFixed(0)}%</div><div class="k">P(day ≥ break-even)</div></div>
    <div class="stat"><div class="v warnc">${usd(-day.var95)}</div><div class="k">95% worst day</div></div>`:'');
   const mb=d.modelBacktest||{};
-  $('slModel').innerHTML=Object.keys(mb).filter(k=>mb[k]).map(k=>{const b=mb[k];return `<b>${esc(k.toUpperCase())}</b>: walk-forward on ${b.n} past games, Brier ${b.brier} (coin flip ${b.coinFlipBrier}), picked the winner ${(b.accuracy*100).toFixed(0)}% of the time.`;}).join('<br>')||'No model ran for this slate. Bets shown come from the books\' consensus only.';
+  $('slModel').innerHTML=Object.keys(mb).filter(k=>mb[k]).map(k=>{const b=mb[k];return `<b>${esc(k.toUpperCase())}</b>: walk-forward on ${b.n} past games, Brier ${b.brier} (naive baseline ${b.coinFlipBrier}), picked the winner ${(b.accuracy*100).toFixed(0)}% of the time.`;}).join('<br>')||'No model ran for this slate. Bets shown come from the books\' consensus only.';
+  const dg=d.diagnostics;
+  $('slDiag').innerHTML=dg?((dg.warnings||[]).map(w=>'<div class="warnc">⚠ '+esc(w)+'</div>').join('')||'<div class="pos">No warnings.</div>')+Object.keys(dg.bySport||{}).map(k=>{const e=dg.bySport[k];return '<span class="chip">'+esc(k.toUpperCase())+'<span class="n">'+e.games+' games · '+e.withOdds+' odds · '+e.avgBooks+' books'+(e.withModel?' · model '+e.withModel:'')+(e.withPitchers!=null?' · starters '+e.withPitchers:'')+(e.withPmMatch?' · pm '+e.withPmMatch:'')+'</span></span>';}).join(' '):'—';
   $('slSources').innerHTML=(d.sources||[]).map(s=>`<span class="chip" style="${s.ok?'':'opacity:.6'}">${s.ok?'✓':'✗'} ${esc(s.source)}<span class="n">${esc(s.ok?s.detail:(s.detail||'').slice(0,40))}</span></span>`).join(' ')||'—';
   $('slBody').innerHTML=g.map(r=>{
-    const bets=r.bets.map(b=>{const k=slateBets.push({date:ymd(new Date()),desc:`${b.side} ML @ ${b.book}`,sport:r.sport.toUpperCase(),odds:Number(b.american),stake:b.stake,gk:r.key||null,side:b.side===r.home?'home':'away'})-1;
+    const bets=r.bets.map(b=>{const k=slateBets.push({date:ymd(new Date()),desc:`${b.side} ML @ ${b.book}`,sport:r.sport.toUpperCase(),odds:Number(b.american),stake:b.stake,gk:r.key||null,side:b.side===r.home?'home':b.side===r.away?'away':'draw'})-1;
       return `${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)} <button class="mini" onclick="slateLog(${k})">Log bet</button>`;}).join('<br>')||'—';
     const pm=r.pm.map(m=>`${esc(m.source)}: ${m.homeEdgePp!=null?'home '+signed(m.homeEdgePp,1)+'pp':''} ${m.awayEdgePp!=null?'away '+signed(m.awayEdgePp,1)+'pp':''}`).join('<br>')||'—';
-    return `<tr><td>${esc(r.away)} @ ${esc(r.home)}<br><span class="desc" style="margin:0">${esc(r.sport.toUpperCase())}</span></td><td>${r.nBooks}</td>
-    <td>${(r.fair.home*100).toFixed(1)}% / ${(r.fair.away*100).toFixed(1)}%</td>
-    <td>${fmtOdds(r.best.home.american)} ${esc(r.best.home.book)}</td><td>${fmtOdds(r.best.away.american)} ${esc(r.best.away.book)}</td>
-    <td class="${r.arb?'pos':''}">${r.arb?'+'+r.arbRoiPct+'%':'No'}</td><td style="white-space:normal;min-width:150px">${r.model?(r.model.home*100).toFixed(1)+'% <span class="desc" style="margin:0">('+signed(r.model.gapPp,1)+'pp vs market)</span>'+(r.model.injuries?'<br><span class="desc" style="margin:0">Injuries: '+r.model.injuries.map(esc).join(' | ')+'</span>':''):'—'}</td><td style="white-space:normal;min-width:200px">${bets}</td><td>${pm}</td></tr>`;}).join('')||'<tr><td colspan="9">No games in this slate.</td></tr>';
+    const fr=r.fair||{},pc=x=>x==null?'—':(x*100).toFixed(1)+'%';
+    const fairTxt=r.threeWay?`${pc(fr.home)} / ${pc(fr.draw)} / ${pc(fr.away)}`:`${pc(fr.home)} / ${pc(fr.away)}`;
+    const bp=k=>r.best&&r.best[k]?`${fmtOdds(r.best[k].american)} ${esc(r.best[k].book)}`:'—';
+    const bestTxt=`H ${bp('home')}<br>`+(r.threeWay?`D ${bp('draw')}<br>`:'')+`A ${bp('away')}`;
+    const lock=[];
+    (r.crossArbs||[]).forEach(a=>lock.push(`<b class="pos">Cross arb +${a.roiPct}%</b>: ${esc(a.bookSide)} ${fmtOdds(a.american)} @ ${esc(a.book)} vs ${esc(a.pmSource)} ${esc(a.pmSide)} at ${(a.pmPrice*100).toFixed(0)}¢ (est., fees included)`));
+    (r.middles||[]).forEach(m=>lock.push(`<b>${m.kind==='total'?'Total':'Spread'} middle</b> ${m.gap} pt: ${esc(m.legA)} + ${esc(m.legB)}. Hit ${(m.pMiddle*100).toFixed(1)}%, EV <span class="${m.evPct>=0?'pos':'neg'}">${signed(m.evPct,2,'%')}</span>, outer ${signed(m.outerPct,1,'%')}, stake split ${(m.splitA*100).toFixed(0)}/${(m.splitB*100).toFixed(0)}`));
+    return `<tr><td>${esc(r.away)} @ ${esc(r.home)}<br><span class="desc" style="margin:0">${esc(r.sport.toUpperCase())}${r.threeWay?' · 3-way':''}</span></td><td>${r.nBooks}</td>
+    <td>${fairTxt}</td><td>${bestTxt}</td>
+    <td class="${r.arb?'pos':''}">${r.arb?'+'+r.arbRoiPct+'%':'No'}</td><td style="white-space:normal;min-width:220px">${lock.join('<br>')||'—'}</td><td style="white-space:normal;min-width:150px">${r.model?(r.model.draw!=null?(r.model.home*100).toFixed(0)+' / '+(r.model.draw*100).toFixed(0)+' / '+(r.model.away*100).toFixed(0)+'%':(r.model.home*100).toFixed(1)+'%')+' <span class="desc" style="margin:0">('+signed(r.model.gapPp,1)+'pp home vs market)</span>'+(r.model.injuries?'<br><span class="desc" style="margin:0">Injuries: '+r.model.injuries.map(esc).join(' | ')+'</span>':'')+(r.model.pitchers?'<br><span class="desc" style="margin:0">Starters: '+r.model.pitchers.map(esc).join(' | ')+'</span>':''):'—'}</td><td style="white-space:normal;min-width:200px">${bets}</td><td>${pm}</td></tr>`;}).join('')||'<tr><td colspan="9">No games in this slate.</td></tr>';
 }
 function slateExample(){
   slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],
-   day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},
-   games:[{sport:'nfl',home:'Example Home',away:'Example Away',nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,stake:1.2}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}]}]},'EXAMPLE DATA, not real games.');
+   day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},diagnostics:{warnings:['EXAMPLE: nfl: only one book per game, so edge bets, arbitrage and middles cannot appear'],bySport:{nfl:{games:14,withOdds:14,avgBooks:1,withModel:14,withPmMatch:2,edgeBets:0}}},
+   games:[{sport:'nfl',home:'Example Home',away:'Example Away',nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,stake:1.2}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}]},{sport:'epl',home:'Example FC',away:'Sample United',nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'FanDuel'},away:{american:260,book:'BetMGM'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[],pm:[]}]},'EXAMPLE DATA, not real games.');
 }
 async function slateFetch(manual){
   try{const r=await fetch('slate.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);slateRender(await r.json(),'Loaded from this site.');}
@@ -1210,6 +1342,68 @@ async function slateFetch(manual){
 $('slFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const fr=new FileReader();
   fr.onload=()=>{try{slateRender(JSON.parse(fr.result),'Loaded from '+f.name+'.');}catch(x){notify('That file is not a valid slate.json.');}};fr.readAsText(f);});
 slateFetch(false);
+
+// ===================== Track Record =====================
+function recordRender(d,label){
+  const o=d.overall||{};
+  $('rcNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'. ':' ')+(d.note||'');
+  const pc=(x,dg)=>x==null?'—':signed(x*100,dg,'%');
+  const z=o.flatRoi!=null&&o.flatRoiSE?o.flatRoi/o.flatRoiSE:null;
+  $('rcStats').innerHTML=`<div class="stat"><div class="v">${o.n||0}</div><div class="k">Settled picks</div></div>
+   <div class="stat"><div class="v ${o.pnl>=0?'pos':'neg'}">${usd(o.pnl||0)}</div><div class="k">P&amp;L on staked ${usd(o.staked||0)}</div></div>
+   <div class="stat"><div class="v ${o.roi>=0?'pos':'neg'}">${pc(o.roi,1)}</div><div class="k">ROI</div></div>
+   <div class="stat"><div class="v ${o.avgClv>0?'pos':o.avgClv<0?'neg':''}">${pc(o.avgClv,2)}</div><div class="k">Average CLV (${o.nClv||0} picks)</div></div>
+   <div class="stat"><div class="v">${o.wins||0} vs ${o.expectedWins!=null?o.expectedWins:'—'}</div><div class="k">Wins vs wins implied by fair price</div></div>
+   <div class="stat"><div class="v">${z==null?'—':z.toFixed(1)}</div><div class="k">ROI in standard errors (need above 2)</div></div>
+   <div class="stat"><div class="v">${o.open||0}</div><div class="k">Open picks</div></div>`;
+  const row=(k,g,full)=>`<tr><td>${esc(k.toUpperCase())}</td><td>${g.n}</td>${full?`<td>${usd(g.staked)}</td>`:''}<td class="${g.pnl>=0?'pos':'neg'}">${usd(g.pnl)}</td><td class="${g.roi>=0?'pos':'neg'}">${pc(g.roi,1)}</td>${full?`<td>${g.wins} vs ${g.expectedWins}</td>`:''}<td class="${g.avgClv>0?'pos':g.avgClv<0?'neg':''}">${pc(g.avgClv,2)}</td></tr>`;
+  $('rcSport').innerHTML=Object.keys(d.bySport||{}).map(k=>row(k,d.bySport[k],true)).join('')||'<tr><td colspan="7">No settled picks yet.</td></tr>';
+  $('rcBasis').innerHTML=Object.keys(d.byBasis||{}).map(k=>row(k,d.byBasis[k],false)).join('')||'<tr><td colspan="5">No settled picks yet.</td></tr>';
+  $('rcRecent').innerHTML=(d.recent||[]).map(r=>`<tr><td>${esc(r.away)} @ ${esc(r.home)}${r.score?' ('+esc(r.score)+')':''}</td><td>${esc(r.team)} @ ${esc(r.book)}</td><td>${fmtOdds(r.american)}</td><td>${usd(r.stake)}</td><td><b class="${r.res==='W'?'pos':r.res==='L'?'neg':''}">${r.res==='W'?'Won':r.res==='L'?'Lost':'Push'}</b></td><td>${r.clv!=null?signed(r.clv*100,1,'%'):'—'}</td></tr>`).join('')||'<tr><td colspan="6">No settled picks yet.</td></tr>';
+}
+function recordExample(){
+  recordRender({generatedAt:new Date().toISOString(),note:'EXAMPLE DATA, not real picks.',
+   overall:{n:120,open:3,staked:240,pnl:-4.8,roi:-0.02,flatRoi:-0.02,flatRoiSE:0.09,wins:52,expectedWins:53.1,avgClv:0.006,nClv:90},
+   bySport:{nba:{n:70,staked:140,pnl:-1.4,roi:-0.01,wins:31,expectedWins:31.5,avgClv:0.01},nfl:{n:50,staked:100,pnl:-3.4,roi:-0.034,wins:21,expectedWins:21.6,avgClv:0.0}},
+   byBasis:{consensus:{n:80,pnl:-2.1,roi:-0.017,avgClv:0.004},'model-blend':{n:40,pnl:-2.7,roi:-0.034,avgClv:0.01}},
+   recent:[{away:'Example Away',home:'Example Home',score:'20-24',team:'Example Away',book:'BookX',american:150,stake:2,res:'L',clv:0.03}]},'EXAMPLE DATA, not real picks.');
+}
+async function recordFetch(manual){
+  try{const r=await fetch('record.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);recordRender(await r.json(),'Loaded from this site.');}
+  catch(e){if(manual)notify('No record.json found next to this page. Load the file by hand.');else recordRender({note:'No record.json yet. It appears after the first scheduled run settles a game.'},'Nothing to show yet.');}
+}
+$('rcFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const fr=new FileReader();
+  fr.onload=()=>{try{recordRender(JSON.parse(fr.result),'Loaded from '+f.name+'.');}catch(x){notify('That file is not a valid record.json.');}};fr.readAsText(f);});
+recordFetch(false);
+
+// ===================== Bankroll guardrails =====================
+function guardCfg(){return {day:Number($('gDay').value)||0,week:Number($('gWeek').value)||0,dd1:Number($('gDd1').value)||0,dd2:Number($('gDd2').value)||0};}
+function guardSave(){save('edgeSuiteGuard',guardCfg());renderGuard();}
+function guardStatus(rows,bank0,cfg,today){
+  const real=rows.filter(r=>!r.ex),settled=real.filter(r=>r.res),open=real.filter(r=>!r.res);
+  const wk=cycleKey(today,'week');
+  const todayPnl=settled.filter(r=>r.date===today).reduce((a,r)=>a+lgPnl(r),0),weekPnl=settled.filter(r=>cycleKey(r.date,'week')===wk).reduce((a,r)=>a+lgPnl(r),0);
+  const openDay=open.filter(r=>r.date===today).reduce((a,r)=>a+r.stake,0),openWeek=open.filter(r=>cycleKey(r.date,'week')===wk).reduce((a,r)=>a+r.stake,0);
+  let run=bank0,peak=bank0;settled.slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0).forEach(r=>{run+=lgPnl(r);peak=Math.max(peak,run);});
+  const dd=peak>0?(peak-run)/peak:0,dayLimit=cfg.day>0?run*cfg.day/100:null,weekLimit=cfg.week>0?run*cfg.week/100:null;
+  const dayUsed=Math.max(0,-todayPnl)+openDay,weekUsed=Math.max(0,-weekPnl)+openWeek;
+  const mult=cfg.dd2>0&&dd*100>=cfg.dd2?0.25:cfg.dd1>0&&dd*100>=cfg.dd1?0.5:1;
+  const rem=[dayLimit==null?Infinity:dayLimit-dayUsed,weekLimit==null?Infinity:weekLimit-weekUsed].reduce((a,b)=>Math.min(a,b));
+  return {bank:run,peak,dd,mult,dayLimit,weekLimit,dayUsed,weekUsed,remaining:rem,stopDay:dayLimit!=null&&dayUsed>=dayLimit,stopWeek:weekLimit!=null&&weekUsed>=weekLimit};
+}
+function guardNow(){return guardStatus(lgRows,Number($('bankroll').value)||0,guardCfg(),ymd(new Date()));}
+function renderGuard(){
+  const g=guardNow(),bn=$('gBanner');
+  const msg=g.stopWeek?'Weekly loss stop reached. Slate bets are blocked until next week.':g.stopDay?'Daily loss stop reached. Slate bets are blocked until tomorrow.':g.mult<1?'Drawdown is '+(g.dd*100).toFixed(1)+'% from your peak, so slate stakes are cut to '+(g.mult*100)+'%.':'';
+  bn.style.display=msg?'block':'none';bn.textContent=msg;
+  $('gStats').innerHTML=`<div class="stat"><div class="v">${usd(g.bank)}</div><div class="k">Bankroll now (peak ${usd(g.peak)})</div></div>
+   <div class="stat"><div class="v ${g.dd>=0.1?'warnc':''}">${(g.dd*100).toFixed(1)}%</div><div class="k">Drawdown from peak</div></div>
+   <div class="stat"><div class="v ${g.stopDay?'neg':''}">${g.dayLimit==null?'Off':usd(g.dayUsed)+' of '+usd(g.dayLimit)}</div><div class="k">Daily loss budget used</div></div>
+   <div class="stat"><div class="v ${g.stopWeek?'neg':''}">${g.weekLimit==null?'Off':usd(g.weekUsed)+' of '+usd(g.weekLimit)}</div><div class="k">Weekly loss budget used</div></div>
+   <div class="stat"><div class="v">${(g.mult*100)}%</div><div class="k">Stake multiplier</div></div>`;
+}
+{const c=store('edgeSuiteGuard');if(c){$('gDay').value=c.day;$('gWeek').value=c.week;$('gDd1').value=c.dd1;$('gDd2').value=c.dd2;}}
+renderGuard();
 
 // ===================== init =====================
 $('lgDate').value=ymd(new Date());

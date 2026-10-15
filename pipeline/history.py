@@ -9,11 +9,18 @@ import json, os
 from datetime import datetime, timedelta, timezone
 
 MAX_SNAPS = 80
+MIN_REPEAT_MIN = 60
 KEEP_DAYS = 5
 
 
+try:
+    from names import canon
+except ImportError:  # pragma: no cover
+    from pipeline.names import canon
+
+
 def game_key(sport, away, home, start):
-    return f"{sport}|{away}|{home}|{(start or '')[:16]}"
+    return f"{sport}|{canon(away)}|{canon(home)}|{(start or '')[:16]}"
 
 
 def _parse(t):
@@ -24,8 +31,10 @@ def load(path):
     try:
         with open(path) as f:
             return json.load(f)
-    except (OSError, ValueError):
+    except FileNotFoundError:
         return {}
+    except (OSError, ValueError) as e:
+        raise RuntimeError(f"{path} exists but cannot be read ({type(e).__name__}); not overwriting it") from e
 
 
 def save(path, hist):
@@ -47,8 +56,14 @@ def record(hist, rows, now):
             continue  # never record in-play lines as a close
         k = game_key(r["sport"], r["away"], r["home"], r["start"])
         g = hist.setdefault(k, {"sport": r["sport"], "home": r["home"], "away": r["away"], "start": r["start"], "snaps": []})
+        last = g["snaps"][-1] if g["snaps"] else None
+        if last and last["fairHome"] == r["fair"]["home"] and last["bestHome"] == r["best"]["home"]["american"] \
+                and last["bestAway"] == r["best"]["away"]["american"] and last["nBooks"] == r["nBooks"] \
+                and (now - _parse(last["t"])).total_seconds() < MIN_REPEAT_MIN * 60:
+            continue  # nothing moved: do not grow the file and churn the repo
         g["snaps"].append({"t": now.isoformat(timespec="seconds"), "fairHome": r["fair"]["home"], "fairAway": r["fair"]["away"],
-                           "bestHome": r["best"]["home"]["american"], "bestAway": r["best"]["away"]["american"], "nBooks": r["nBooks"]})
+                           "bestHome": r["best"]["home"]["american"], "bestAway": r["best"]["away"]["american"], "nBooks": r["nBooks"],
+                           **({"fairDraw": r["fair"]["draw"]} if "draw" in r["fair"] else {})})
         if len(g["snaps"]) > MAX_SNAPS:  # thin the middle, keep first and the most recent
             g["snaps"] = g["snaps"][:1] + g["snaps"][-(MAX_SNAPS - 1):]
         added += 1
@@ -81,5 +96,6 @@ def closing(hist, now):
         out[k] = {"sport": g["sport"], "home": g["home"], "away": g["away"], "start": g["start"], "capturedAt": last["t"],
                   "minutesBeforeStart": round((start - _parse(last["t"])).total_seconds() / 60), "fairHome": last["fairHome"],
                   "fairAway": last["fairAway"], "bestHome": last["bestHome"], "bestAway": last["bestAway"], "nBooks": last["nBooks"],
-                  "firstFairHome": pre[0]["fairHome"], "snaps": len(pre)}
+                  "firstFairHome": pre[0]["fairHome"], "snaps": len(pre),
+                  **({"fairDraw": last["fairDraw"]} if "fairDraw" in last else {})}
     return out

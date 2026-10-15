@@ -1,7 +1,7 @@
 name: Build slate
 on:
   schedule:
-    - cron: "0 15,19,23 * * *"           # full runs: odds API + model + slate.json (3/day keeps the free Odds API tier safe)
+    - cron: "0 15,23 * * *"              # full runs: odds API + model + slate.json (2/day x 4 sports = about 240 of the 500 free credits a month)
     - cron: "*/30 16-23,0-4 * * *"       # capture runs: free sources only, snapshot lines for closing-line value
   workflow_dispatch: {}
 permissions:
@@ -13,31 +13,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FULL_RUN: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 15,19,23 * * *' }}
+      FULL_RUN: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 15,23 * * *' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install sports-skills
-      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py
+      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py && python pipeline/test_markets.py && python pipeline/test_grade.py && python pipeline/test_notify.py && python pipeline/test_soccer.py && python pipeline/test_review.py
       - name: Build slate.json (full run)
         if: env.FULL_RUN == 'true'
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-          SPORTS: "nfl,nba,mlb,nhl"
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          SPORTS: "all"
           SLATE_OUT: slate.json
           HISTORY_PATH: history.json
         run: python pipeline/build_slate.py
       - name: Snapshot lines (capture run, no Odds API credits)
         if: env.FULL_RUN != 'true'
         env:
-          SPORTS: "nfl,nba,mlb,nhl"
+          SPORTS: "all"
           CAPTURE_ONLY: "1"
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           HISTORY_PATH: history.json
         run: python pipeline/build_slate.py
       - name: Commit if changed
         run: |
           git config user.name "slate-bot"
           git config user.email "slate-bot@users.noreply.github.com"
-          git add slate.json history.json 2>/dev/null || true
+          git add slate.json history.json picks.json record.json alerts.json 2>/dev/null || true
           git diff --cached --quiet || (git commit -m "Update slate data" && git pull --rebase -q && git push)
