@@ -344,8 +344,8 @@
   "sample": {
    "market": "0xa467b14d51f01b957109d9cbb1d6c124fab2a089d52ed8f471d23c2812e743b7",
    "asset_id": "32338220190071351435772801779725302244575775216413325951443816017994629993401",
-   "timestamp": "1792052229505",
-   "hash": "cfe4002b7b9c2d92ed8735c901ff46a71dc1ad78",
+   "timestamp": "1792052263023",
+   "hash": "25e4629c3bbfd459e57c6a8673a4e5f746968bdf",
    "bids": [
     {
      "price": "0.001",
@@ -353,7 +353,7 @@
     },
     {
      "price": "0.002",
-     "size": "2219085.01"
+     "size": "2181585.01"
     },
     {
      "price": "0.003",
@@ -365,7 +365,7 @@
     },
     {
      "price": "0.005",
-     "size": "147508.84"
+     "size": "147532.08"
     },
     {
      "price": "0.006",
@@ -421,7 +421,7 @@
     },
     {
      "price": "0.019",
-     "size": "106853.28"
+     "size": "107153.28"
     },
     {
      "price": "0.02",
@@ -738,10 +738,6 @@
      "size": "1000"
     },
     {
-     "price": "0.272",
-     "size": "762.36"
-    },
-    {
      "price": "0.255",
      "size": "402.68"
     },
@@ -943,7 +939,7 @@
     },
     {
      "price": "0.044",
-     "size": "27499.12"
+     "size": "27799.12"
     },
     {
      "price": "0.043",
@@ -959,7 +955,7 @@
     },
     {
      "price": "0.04",
-     "size": "5511.99"
+     "size": "5517.55"
     },
     {
      "price": "0.039",
@@ -1016,5 +1012,143 @@
   "status": 404,
   "n": "404 page not found\n",
   "sample": "404 page not found\n"
+ },
+ "poly_data_trades": {
+  "status": 200,
+  "n": 50,
+  "sample": [
+   {
+    "proxyWallet": "0x0705f583abb7d79e7c0e608be2f678bf78991175",
+    "side": "SELL",
+    "asset": "32338220190071351435772801779725302244575775216413325951443816017994629993401",
+    "conditionId": "0xa467b14d51f01b957109d9cbb1d6c124fab2a089d52ed8f471d23c2812e743b7",
+    "size": 5999.99,
+    "price": 0.028,
+    "timestamp": 1792052081,
+    "title": "Xi Jinping out before 2027?",
+    "slug": "xi-jinping-out-before-2027",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/xi-jinping-out-in-2025-EjF4SM20eaa3.jpg",
+    "eventSlug": "xi-jinping-out-before-2027",
+    "outcome": "Yes",
+    "outcomeIndex": 0,
+    "name": "Kuukskes",
+    "pseudonym": "Anguished-Perception",
+    "bio": "Turning uncertainty into alpha",
+    "profileImage": "https://polymarket-upload.s3.us-east-2.amazonaws.com/Kuuk_387cb7d2-4b12-420d-be01-a343dbf06cdf_1737743289226.png",
+    "profileImageOptimized": "",
+    "transactionHash": "0xa741de8eebe2caf84d35a8406aef0fef38bdeac00f5aea73c436fdd12c306fdb"
+   },
+   {
+    "proxyWallet": "0x86ba3bf9ad2daaafd6937d53dcec1254b25b3694",
+    "side": "BUY",
+    "asset": "25659310674993675562345759665114759892400026242514633218387667107987341231962",
+    "conditionId": "0xa467b14d51f01b957109d9cbb1d6c124fab2a089d52ed8f471d23c2812e743b7",
+    "size": 10.288066,
+    "price": 0.9719999852,
+    "timestamp": 1792051244,
+    "title": "Xi Jinping out before 2027?",
+    "slug": "xi-jinping-out-before-2027",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/xi-jinping-out-in-2025-EjF4SM20eaa3.jpg",
+    "eventSlug": "xi-jinping-out-before-2027",
+    "outcome": "No",
+    "outcomeIndex": 1,
+    "name": "Basilomo",
+    "pseudonym": "Playful-Badger",
+    "bio": "",
+    "profileImage": "",
+    "profileImageOptimized": "",
+    "transactionHash": "0x1eabb516ee6e58345f68578fbdd157b21f892339c33d10cc31ac9c13ad940990"
+   },
+   {
+    "proxyWallet": "0x4c9ef5aa21840180f0dacaeed6ab8d1978658a70",
+    "side": "BUY",
+    "asset": "32338220190071351435772801779725302244575775216413325951443816017994629993401",
+    "conditionId": "0xa467b14d51f01b957109d9cbb1d6c124fab2a089d52ed8f471d23c2812e743b7",
+    "size": 400,
+    "price": 0.029,
+    "timestamp": 1792051220,
+    "title": "Xi Jinping out before 2027?",
+    "slug": "xi-jinping-out-before-2027",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/xi-jinping-out-in-2025-EjF4SM20eaa3.jpg",
+    "eventSlug": "xi-jinping-out-before-2027",
+    "outcome": "Yes",
+    "outcomeIndex": 0,
+    "name": "bafuf",
+    "pseudonym": "Absolute-Bellows",
+    "bio": "",
+    "profileImage": "https://polymarket-upload.s3.us-east-2.amazonaws.com/profile-image-1554086-abe25bac-9bcc-4802-a029-11d2532961ba.jpg",
+    "profileImageOptimized": "",
+    "transactionHash": "0xca486f94107b9703706bdc18ae3e8859877139f5306aa23f4e2fb7705f4daf8e"
+   }
+  ]
+ },
+ "poly_data_large_trades": {
+  "status": 200,
+  "n": 50,
+  "sample": [
+   {
+    "proxyWallet": "0x58b3380f71bd6c706dd398a5e60bde55fa3a653c",
+    "side": "BUY",
+    "asset": "62240076426776607710384962652381399560527701084611731661749968769534159238583",
+    "conditionId": "0x7cd2030d18d2e207e4e6a98824923e60149e02b1227e4a92e0ef4d6dda0e82c5",
+    "size": 11415,
+    "price": 0.8806276102,
+    "timestamp": 1792051870,
+    "title": "Will there be no Hormuz agreement?",
+    "slug": "no-hormuz-agreement-by-nov-2",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/who-wins-the-senate-pending-hormuz-agreement-HBNHKI_PkU4H.jpg",
+    "eventSlug": "who-wins-the-senate-pending-hormuz-agreement-before-the-midterms",
+    "outcome": "Yes",
+    "outcomeIndex": 0,
+    "name": "timetowander",
+    "pseudonym": "Moist-Dame",
+    "bio": "",
+    "profileImage": "",
+    "profileImageOptimized": "",
+    "transactionHash": "0xf21e4a363e308f669f5ebe3c81829c4b5443611b44f8d7111931b2d745c13ed2"
+   },
+   {
+    "proxyWallet": "0x2117ae94a97d69b78cbc81b6680a62deb1955c26",
+    "side": "BUY",
+    "asset": "26299892850480572107164921716536909337457606964789336968200386935575980408146",
+    "conditionId": "0x6dc12db5b8692fa786a3a34f37890a59d6c2a24c05e3b63b2548b6d0fc92cb80",
+    "size": 9900,
+    "price": 0.777823596,
+    "timestamp": 1792051847,
+    "title": "Games Total: O/U 3.5",
+    "slug": "lol-we-bro2-2026-10-15-total-games-3pt5",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/league-of-legends-61a4f083a6.png",
+    "eventSlug": "lol-we-bro2-2026-10-15",
+    "outcome": "Over",
+    "outcomeIndex": 0,
+    "name": "Zzzz87",
+    "pseudonym": "Kosher-Refuse",
+    "bio": "",
+    "profileImage": "",
+    "profileImageOptimized": "",
+    "transactionHash": "0x79e1c5b12381d1a0b7227bbcaab9b2ef86959bb54d09e5578131a685783f6b51"
+   },
+   {
+    "proxyWallet": "0x3f02a8b650d4b30449e83616f2165460209ca51c",
+    "side": "BUY",
+    "asset": "78632395083310670734315205502061249602319069653915932320155846460019107676757",
+    "conditionId": "0x12aa13b3da17ceae1b0a59b5d5b77121e91bb79b4bb0b52bf6543ed3f8d0953b",
+    "size": 10000,
+    "price": 0.75,
+    "timestamp": 1792051730,
+    "title": "Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
+    "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-the-october-2026-meeting-20260617190324032",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/fed-decision-in-september-762-c4RyWuxRPo1L.jpg",
+    "eventSlug": "fed-decision-in-october-20260617190323537",
+    "outcome": "No",
+    "outcomeIndex": 1,
+    "name": "m00n",
+    "pseudonym": "Tough-Snuck",
+    "bio": "",
+    "profileImage": "",
+    "profileImageOptimized": "",
+    "transactionHash": "0x809bbc289e7eac7f09758cc5a29538a76a82d9beb9defb76189092304dfa80d4"
+   }
+  ]
  }
 }
