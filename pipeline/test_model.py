@@ -22,8 +22,8 @@ def mk_events(start, end):
     return ev
 ALL = mk_events(today - timedelta(days=M.LOOKBACK_DAYS), today)
 def getter(url):
-    rng_ = url.split("dates=")[1].split("&")[0]; s, e = rng_.split("-")
-    s = f"{s[:4]}-{s[4:6]}-{s[6:]}"; e = f"{e[:4]}-{e[4:6]}-{e[6:]}"
+    s = url.split("dates=")[1].split("&")[0]; assert "-" not in s, "ESPN rejects ranges"
+    s = e = f"{s[:4]}-{s[4:6]}-{s[6:]}"
     return {"events": [x for x in ALL if s <= x["date"][:10] <= e]}
 
 res = M.fetch_results("nba", today, getter)

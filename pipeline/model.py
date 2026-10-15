@@ -37,24 +37,26 @@ def fetch_results(sport, today=None, getter=_get, path=None, stats=None):
     path = path or CFG[sport]["espn"]
     today = today or date.today()
     start = today - timedelta(days=LOOKBACK_DAYS)
-    out, seen, errors, windows, with_events, completed = [], set(), [], 0, 0, 0
-    d = start
-    while d <= today:
-        e = min(d + timedelta(days=WINDOW_DAYS - 1), today)
-        url = f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard?dates={d:%Y%m%d}-{e:%Y%m%d}&limit=1000"
-        windows += 1
-        data = None
+    out, seen, errors, with_events, completed = [], set(), [], 0, 0
+    # ESPN rejects date ranges (HTTP 400, verified from a real Actions run), so ask one day at a time, in parallel
+    days = [start + timedelta(days=i) for i in range((today - start).days + 1)]
+    windows = len(days)
+
+    def one(d):
+        url = f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard?dates={d:%Y%m%d}&limit=300"
         for attempt in (0, 1):
             try:
-                data = getter(url)
-                break
+                return d, getter(url), None
             except Exception as ex:  # noqa
                 if attempt == 1:
-                    errors.append(f"{d:%Y%m%d}: {ex!r}"[:160])
-                else:
-                    time.sleep(0.5)
-        if data is None:
-            d = e + timedelta(days=1)
+                    return d, None, f"{d:%Y%m%d}: {ex!r}"[:160]
+                time.sleep(0.5)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        fetched = list(pool.map(one, days))
+    for d, data, err in fetched:
+        if err:
+            errors.append(err)
             continue
         evs = data.get("events", [])
         with_events += bool(evs)
@@ -72,7 +74,6 @@ def fetch_results(sport, today=None, getter=_get, path=None, stats=None):
             if g["id"] not in seen:
                 seen.add(g["id"])
                 out.append(g)
-        d = e + timedelta(days=1)
     if stats is not None:
         stats.update({"windows": windows, "withEvents": with_events, "completed": completed, "errors": len(errors)})
     if not out:
