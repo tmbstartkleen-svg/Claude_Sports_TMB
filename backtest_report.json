@@ -1,11 +1,11 @@
 {
  "nfl": {
   "matched": 78,
-  "unmatched": 0,
+  "unmatchedRows": 0,
   "ourModel": {
    "n": 78,
-   "brier": 0.1739,
-   "logLoss": 0.5292
+   "brier": 0.2199,
+   "logLoss": 0.6285
   },
   "market": {
    "n": 78,
@@ -13,68 +13,75 @@
    "logLoss": 0.6508
   },
   "bestBlendWeight": 1.0,
-  "bestBlendLogLoss": 0.5292,
+  "bestBlendLogLoss": 0.6285,
   "currentFixedWeight": 0.25,
-  "currentBlendLogLoss": 0.6141
+  "currentBlendLogLoss": 0.6407,
+  "note": "point-in-time: each game used only ratings built from earlier games, like a live run would have"
  },
  "nhl": {
   "matched": 1394,
-  "unmatched": 0,
+  "unmatchedRows": 0,
   "ourModel": {
    "n": 1394,
-   "brier": 0.2417,
-   "logLoss": 0.6762
+   "brier": 0.2462,
+   "logLoss": 0.6854
   },
   "market": {
    "n": 1394,
    "brier": 0.244,
    "logLoss": 0.6808
   },
-  "bestBlendWeight": 0.75,
-  "bestBlendLogLoss": 0.6756,
+  "bestBlendWeight": 0.25,
+  "bestBlendLogLoss": 0.6803,
   "currentFixedWeight": 0.25,
-  "currentBlendLogLoss": 0.6778
+  "currentBlendLogLoss": 0.6803,
+  "note": "point-in-time: each game used only ratings built from earlier games, like a live run would have"
  },
  "mlb": {
-  "matched": 2477,
-  "unmatched": 0,
+  "matched": 690,
+  "unmatchedRows": 1787,
   "ourModel": {
-   "n": 2477,
-   "brier": 0.2464,
-   "logLoss": 0.686
+   "n": 690,
+   "brier": 0.2458,
+   "logLoss": 0.6847
   },
   "market": {
-   "n": 2477,
-   "brier": 0.2418,
-   "logLoss": 0.6762
+   "n": 690,
+   "brier": 0.2416,
+   "logLoss": 0.6759
   },
-  "bestBlendWeight": 0.2,
-  "bestBlendLogLoss": 0.6755,
+  "bestBlendWeight": 0.1,
+  "bestBlendLogLoss": 0.6757,
   "currentFixedWeight": 0.25,
-  "currentBlendLogLoss": 0.6755
+  "currentBlendLogLoss": 0.676,
+  "note": "point-in-time: each game used only ratings built from earlier games, like a live run would have"
  },
  "epl": {
-  "matched": 342,
-  "unmatched": 38,
-  "ourModelLogLoss": 0.9941,
-  "marketLogLoss": 1.0041
+  "matched": 370,
+  "unmatchedRows": 10,
+  "ourModelLogLoss": 1.0395,
+  "marketLogLoss": 1.0154,
+  "note": "point-in-time: each game used only ratings built from earlier games, like a live run would have"
  },
  "laliga": {
-  "matched": 240,
-  "unmatched": 140,
-  "ourModelLogLoss": 0.98,
-  "marketLogLoss": 0.9643
+  "matched": 234,
+  "unmatchedRows": 146,
+  "ourModelLogLoss": 1.0263,
+  "marketLogLoss": 0.9655,
+  "note": "point-in-time: each game used only ratings built from earlier games, like a live run would have"
  },
  "seriea": {
-  "matched": 342,
-  "unmatched": 38,
-  "ourModelLogLoss": 0.9871,
-  "marketLogLoss": 0.9779
+  "matched": 333,
+  "unmatchedRows": 47,
+  "ourModelLogLoss": 1.0357,
+  "marketLogLoss": 0.9764,
+  "note": "point-in-time: each game used only ratings built from earlier games, like a live run would have"
  },
  "bundesliga": {
-  "matched": 90,
-  "unmatched": 216,
-  "ourModelLogLoss": 0.8834,
-  "marketLogLoss": 0.8971
+  "matched": 203,
+  "unmatchedRows": 103,
+  "ourModelLogLoss": 0.9901,
+  "marketLogLoss": 0.934,
+  "note": "point-in-time: each game used only ratings built from earlier games, like a live run would have"
  }
 }
