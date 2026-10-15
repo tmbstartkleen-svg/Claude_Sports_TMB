@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-15T01:25:03+00:00",
+ "generatedAt": "2026-10-15T04:26:26+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -25,8 +25,13 @@
   },
   {
    "source": "odds[nba]:espn",
-   "ok": true,
-   "detail": "1 items"
+   "ok": false,
+   "detail": "empty"
+  },
+  {
+   "source": "odds[nba]:sports-skills",
+   "ok": false,
+   "detail": "KeyError('competitions')"
   },
   {
    "source": "odds[mlb]:oddsapi",
@@ -150,8 +155,13 @@
   },
   {
    "source": "odds[mls]:espn",
-   "ok": true,
-   "detail": "15 items"
+   "ok": false,
+   "detail": "AttributeError(\"'NoneType' object has no attribute 'get'\")"
+  },
+  {
+   "source": "odds[mls]:sports-skills",
+   "ok": false,
+   "detail": "AttributeError(\"module 'sports_skills' has no attribute 'mls'\")"
   },
   {
    "source": "odds[ucl]:oddsapi",
@@ -189,14 +199,9 @@
    "detail": "mlb_probables:ok, nhl_schedule:ok, nfl_injuries:ok, soccer_fixtures:ok"
   },
   {
-   "source": "kalshi:direct",
-   "ok": false,
-   "detail": "empty"
-  },
-  {
-   "source": "kalshi:sports-skills",
-   "ok": false,
-   "detail": "empty"
+   "source": "kalshi:games",
+   "ok": true,
+   "detail": "508 items"
   },
   {
    "source": "polymarket:direct",
@@ -216,7 +221,7 @@
   {
    "source": "model[nba]",
    "ok": true,
-   "detail": "1443 games, brier 0.2199"
+   "detail": "1449 games, brier 0.2199"
   },
   {
    "source": "injuries[nba]:espn",
@@ -226,7 +231,7 @@
   {
    "source": "model[mlb]",
    "ok": true,
-   "detail": "3612 games, brier 0.2464"
+   "detail": "3613 games, brier 0.2464"
   },
   {
    "source": "injuries[mlb]:espn",
@@ -236,7 +241,7 @@
   {
    "source": "model[nhl]",
    "ok": true,
-   "detail": "1668 games, brier 0.2453"
+   "detail": "1670 games, brier 0.2453"
   },
   {
    "source": "injuries[nhl]:espn",
@@ -271,22 +276,22 @@
   {
    "source": "model[mls]",
    "ok": true,
-   "detail": "583 games, 3-way brier 0.631"
+   "detail": "595 games, 3-way brier 0.6309"
   },
   {
    "source": "history",
    "ok": true,
-   "detail": "1 snapshots added, 39 closing lines available"
+   "detail": "40 snapshots added, 46 closing lines available"
   },
   {
    "source": "grading",
    "ok": true,
-   "detail": "10 picks added, 0 settled, 0 CLV, 10 total"
+   "detail": "0 picks added, 1 settled, 0 CLV, 10 total"
   },
   {
    "source": "alerts",
    "ok": true,
-   "detail": "0 found, 0 sent: no NTFY_TOPIC set; alerts not sent"
+   "detail": "1 found, 0 sent: no NTFY_TOPIC set; alerts not sent"
   }
  ],
  "network": [
@@ -348,21 +353,21 @@
    "coinFlipBrier": 0.25
   },
   "nba": {
-   "n": 1417,
+   "n": 1423,
    "brier": 0.2199,
-   "logLoss": 0.6345,
-   "accuracy": 0.659,
+   "logLoss": 0.6346,
+   "accuracy": 0.658,
    "coinFlipBrier": 0.25
   },
   "mlb": {
-   "n": 3575,
+   "n": 3576,
    "brier": 0.2464,
    "logLoss": 0.686,
-   "accuracy": 0.549,
+   "accuracy": 0.548,
    "coinFlipBrier": 0.25
   },
   "nhl": {
-   "n": 1651,
+   "n": 1653,
    "brier": 0.2453,
    "logLoss": 0.6836,
    "accuracy": 0.553,
@@ -414,17 +419,17 @@
    "baseline": "league-to-date frequencies (3-way)"
   },
   "mls": {
-   "n": 552,
-   "brier": 0.631,
-   "coinFlipBrier": 0.6449,
-   "logLoss": 1.0504,
-   "accuracy": 0.484,
-   "drawRate": 0.25,
+   "n": 564,
+   "brier": 0.6309,
+   "coinFlipBrier": 0.6453,
+   "logLoss": 1.0502,
+   "accuracy": 0.48,
+   "drawRate": 0.252,
    "baseline": "league-to-date frequencies (3-way)"
   }
  },
  "diagnostics": {
-  "predictionMarketsFetched": 576,
+  "predictionMarketsFetched": 1084,
   "bySport": {
    "bundesliga": {
     "games": 1,
@@ -439,7 +444,7 @@
     "withOdds": 5,
     "avgBooks": 1.0,
     "withModel": 5,
-    "withPmMatch": 0,
+    "withPmMatch": 5,
     "edgeBets": 3
    },
    "laliga": {
@@ -455,31 +460,15 @@
     "withOdds": 1,
     "avgBooks": 1.0,
     "withModel": 1,
-    "withPmMatch": 0,
+    "withPmMatch": 1,
     "edgeBets": 1
-   },
-   "mls": {
-    "games": 15,
-    "withOdds": 5,
-    "avgBooks": 1.0,
-    "withModel": 5,
-    "withPmMatch": 0,
-    "edgeBets": 1
-   },
-   "nba": {
-    "games": 1,
-    "withOdds": 1,
-    "avgBooks": 1.0,
-    "withModel": 1,
-    "withPmMatch": 0,
-    "edgeBets": 0
    },
    "ncaaf": {
     "games": 16,
     "withOdds": 16,
     "avgBooks": 1.0,
     "withModel": 0,
-    "withPmMatch": 0,
+    "withPmMatch": 10,
     "edgeBets": 0
    },
    "nfl": {
@@ -487,7 +476,7 @@
     "withOdds": 14,
     "avgBooks": 1.0,
     "withModel": 14,
-    "withPmMatch": 0,
+    "withPmMatch": 14,
     "edgeBets": 4
    },
    "seriea": {
@@ -495,7 +484,7 @@
     "withOdds": 1,
     "avgBooks": 1.0,
     "withModel": 1,
-    "withPmMatch": 0,
+    "withPmMatch": 1,
     "edgeBets": 1
    },
    "wnba": {
@@ -503,7 +492,7 @@
     "withOdds": 1,
     "avgBooks": 1.0,
     "withModel": 0,
-    "withPmMatch": 0,
+    "withPmMatch": 1,
     "edgeBets": 0
    }
   },
@@ -512,13 +501,10 @@
    "epl: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "laliga: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "ligue1: only one book per game, so edge bets, arbitrage and middles cannot appear",
-   "mls: only one book per game, so edge bets, arbitrage and middles cannot appear",
-   "nba: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "ncaaf: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "nfl: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "seriea: only one book per game, so edge bets, arbitrage and middles cannot appear",
-   "wnba: only one book per game, so edge bets, arbitrage and middles cannot appear",
-   "prediction markets fetched but none matched a game (matching is conservative)"
+   "wnba: only one book per game, so edge bets, arbitrage and middles cannot appear"
   ]
  },
  "games": [
@@ -531,104 +517,58 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.5653,
-    "away": 0.1989,
-    "draw": 0.2357
+    "home": 0.557,
+    "away": 0.2038,
+    "draw": 0.2392
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -140.0,
-     "decimal": 1.714
+     "american": -135.0,
+     "decimal": 1.741
     },
     "away": {
      "book": "DraftKings",
-     "american": 370.0,
-     "decimal": 4.7
+     "american": 360.0,
+     "decimal": 4.6
     },
     "draw": {
      "book": "DraftKings",
-     "american": 300.0,
-     "decimal": 4.0
+     "american": 295.0,
+     "decimal": 3.95
     }
    },
    "arb": false,
-   "impliedSum": 1.0461,
+   "impliedSum": 1.045,
    "bets": [
     {
      "side": "Hull City",
      "book": "DraftKings",
-     "american": 370.0,
-     "fair": 0.2455,
-     "evPct": 15.38,
-     "stakePct": 1.45,
-     "stake": 1.45,
+     "american": 360.0,
+     "fair": 0.2492,
+     "evPct": 14.61,
+     "stakePct": 1.42,
+     "stake": 1.42,
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Hull City vs Fulham",
+     "url": "https://kalshi.com/markets/kxeplgame",
+     "home": 0.56,
+     "homeEdgePp": -0.3,
+     "away": 0.21,
+     "awayEdgePp": -0.6
+    }
+   ],
    "model": {
     "home": 0.3358,
     "draw": 0.2791,
     "away": 0.3851,
-    "blendHome": 0.5079,
-    "gapPp": -23.0,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "mls|sanjoseearthquakes|realsaltlake|2026-10-15T01:30",
-   "sport": "mls",
-   "home": "Real Salt Lake",
-   "away": "San Jose Earthquakes",
-   "start": "2026-10-15T01:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.5607,
-    "away": 0.2255,
-    "draw": 0.2138
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -145.0,
-     "decimal": 1.69
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 300.0,
-     "decimal": 4.0
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 320.0,
-     "decimal": 4.2
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0799,
-   "bets": [
-    {
-     "side": "San Jose Earthquakes",
-     "book": "DraftKings",
-     "american": 300.0,
-     "fair": 0.2744,
-     "evPct": 9.76,
-     "stakePct": 1.14,
-     "stake": 1.14,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.3296,
-    "draw": 0.2492,
-    "away": 0.4212,
-    "blendHome": 0.5029,
-    "gapPp": -23.1,
+    "blendHome": 0.5017,
+    "gapPp": -22.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -678,7 +618,17 @@
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Everton vs Chelsea",
+     "url": "https://kalshi.com/markets/kxeplgame",
+     "home": 0.3,
+     "homeEdgePp": 0.1,
+     "away": 0.46,
+     "awayEdgePp": -1.3
+    }
+   ],
    "model": {
     "home": 0.4508,
     "draw": 0.2743,
@@ -734,7 +684,17 @@
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Toulouse vs Le Mans",
+     "url": "https://kalshi.com/markets/kxligue1game",
+     "home": 0.32,
+     "homeEdgePp": 0.2,
+     "away": 0.42,
+     "awayEdgePp": -0.3
+    }
+   ],
    "model": {
     "home": 0.4775,
     "draw": 0.2395,
@@ -755,45 +715,55 @@
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.4887,
-    "away": 0.5113
+    "home": 0.4955,
+    "away": 0.5045
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
-     "american": -105.0,
-     "decimal": 1.952
+     "book": "DraftKings",
+     "american": -108.0,
+     "decimal": 1.926
     },
     "away": {
-     "book": "Draft Kings",
-     "american": -115.0,
-     "decimal": 1.87
+     "book": "DraftKings",
+     "american": -112.0,
+     "decimal": 1.893
     }
    },
    "arb": false,
-   "impliedSum": 1.0471,
+   "impliedSum": 1.0475,
    "bets": [
     {
      "side": "New York Giants",
-     "book": "Draft Kings",
-     "american": -105.0,
-     "fair": 0.5446,
-     "evPct": 6.34,
-     "stakePct": 2.33,
-     "stake": 2.33,
+     "book": "DraftKings",
+     "american": -108.0,
+     "fair": 0.5515,
+     "evPct": 6.22,
+     "stakePct": 2.35,
+     "stake": 2.35,
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "New York G vs New Orleans",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.49,
+     "homeEdgePp": 0.5,
+     "away": 0.51,
+     "awayEdgePp": -0.5
+    }
+   ],
    "model": {
-    "home": 0.7126,
-    "away": 0.2874,
-    "blendHome": 0.5446,
+    "home": 0.7196,
+    "away": 0.2804,
+    "blendHome": 0.5515,
     "gapPp": 22.4,
     "weight": 0.25,
     "injuries": [
      "New York Giants: -26 Elo",
-     "New Orleans Saints: -20 Elo"
+     "New Orleans Saints: -26 Elo"
     ]
    },
    "crossArbs": [],
@@ -813,12 +783,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -828,7 +798,7 @@
    "bets": [
     {
      "side": "Jacksonville Jaguars",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "fair": 0.6131,
      "evPct": 4.49,
@@ -837,7 +807,17 @@
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Jacksonville vs Houston",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.57,
+     "homeEdgePp": -0.4,
+     "away": 0.44,
+     "awayEdgePp": -0.6
+    }
+   ],
    "model": {
     "home": 0.754,
     "away": 0.246,
@@ -896,7 +876,17 @@
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Sassuolo vs Frosinone",
+     "url": "https://kalshi.com/markets/kxserieagame",
+     "home": 0.38,
+     "homeEdgePp": 0.1,
+     "away": 0.37,
+     "awayEdgePp": -1.2
+    }
+   ],
    "model": {
     "home": 0.5309,
     "draw": 0.2383,
@@ -952,7 +942,17 @@
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Manchester City vs Ipswich Town",
+     "url": "https://kalshi.com/markets/kxeplgame",
+     "home": 0.81,
+     "homeEdgePp": -1.5,
+     "away": 0.08,
+     "awayEdgePp": -0.3
+    }
+   ],
    "model": {
     "home": 0.7264,
     "draw": 0.1958,
@@ -978,12 +978,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     }
@@ -993,7 +993,7 @@
    "bets": [
     {
      "side": "Denver Broncos",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "fair": 0.4607,
      "evPct": 1.34,
@@ -1002,7 +1002,17 @@
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Seattle vs Denver",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.44,
+     "homeEdgePp": -0.6,
+     "away": 0.57,
+     "awayEdgePp": -0.4
+    }
+   ],
    "model": {
     "home": 0.541,
     "away": 0.459,
@@ -1031,12 +1041,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -425.0,
      "decimal": 1.235
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 330.0,
      "decimal": 4.3
     }
@@ -1046,7 +1056,7 @@
    "bets": [
     {
      "side": "San Francisco 49ers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -425.0,
      "fair": 0.8185,
      "evPct": 1.11,
@@ -1055,7 +1065,17 @@
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Washington vs San Francisco",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.78,
+     "homeEdgePp": 0.8,
+     "away": 0.23,
+     "awayEdgePp": -1.8
+    }
+   ],
    "model": {
     "home": 0.9085,
     "away": 0.0915,
@@ -1084,12 +1104,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -105.0,
      "decimal": 1.952
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -115.0,
      "decimal": 1.87
     }
@@ -1097,7 +1117,17 @@
    "arb": false,
    "impliedSum": 1.0471,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Chicago vs Atlanta",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.49,
+     "homeEdgePp": -0.1,
+     "away": 0.52,
+     "awayEdgePp": -0.9
+    }
+   ],
    "model": {
     "home": 0.5787,
     "away": 0.4213,
@@ -1126,12 +1156,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -1139,7 +1169,17 @@
    "arb": false,
    "impliedSum": 1.0433,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Cleveland vs Baltimore",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.33,
+     "homeEdgePp": -2.9,
+     "away": 0.69,
+     "awayEdgePp": 0.9
+    }
+   ],
    "model": {
     "home": 0.2556,
     "away": 0.7444,
@@ -1163,30 +1203,40 @@
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.7435,
-    "away": 0.2565
+    "home": 0.7512,
+    "away": 0.2488
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
-     "american": -325.0,
-     "decimal": 1.308
+     "book": "DraftKings",
+     "american": -340.0,
+     "decimal": 1.294
     },
     "away": {
-     "book": "Draft Kings",
-     "american": 260.0,
-     "decimal": 3.6
+     "book": "DraftKings",
+     "american": 270.0,
+     "decimal": 3.7
     }
    },
    "arb": false,
-   "impliedSum": 1.0425,
+   "impliedSum": 1.043,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Tennessee vs Indianapolis",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.75,
+     "homeEdgePp": 0.1,
+     "away": 0.26,
+     "awayEdgePp": -1.1
+    }
+   ],
    "model": {
     "home": 0.6698,
     "away": 0.3302,
-    "blendHome": 0.7251,
-    "gapPp": -7.4,
+    "blendHome": 0.7309,
+    "gapPp": -8.1,
     "weight": 0.25,
     "injuries": [
      "Indianapolis Colts: -27 Elo",
@@ -1210,12 +1260,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -1223,7 +1273,17 @@
    "arb": false,
    "impliedSum": 1.043,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "New York J vs New England",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.76,
+     "homeEdgePp": -0.9,
+     "away": 0.25,
+     "awayEdgePp": -0.1
+    }
+   ],
    "model": {
     "home": 0.7935,
     "away": 0.2065,
@@ -1252,12 +1312,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -105.0,
      "decimal": 1.952
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -115.0,
      "decimal": 1.87
     }
@@ -1265,7 +1325,17 @@
    "arb": false,
    "impliedSum": 1.0471,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Philadelphia vs Carolina",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.51,
+     "homeEdgePp": -2.1,
+     "away": 0.5,
+     "awayEdgePp": 1.1
+    }
+   ],
    "model": {
     "home": 0.4132,
     "away": 0.5868,
@@ -1294,12 +1364,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     }
@@ -1307,7 +1377,17 @@
    "arb": false,
    "impliedSum": 1.0413,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Tampa Bay vs Pittsburgh",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.44,
+     "homeEdgePp": -0.6,
+     "away": 0.57,
+     "awayEdgePp": -0.4
+    }
+   ],
    "model": {
     "home": 0.4064,
     "away": 0.5936,
@@ -1336,12 +1416,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -900.0,
      "decimal": 1.111
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "decimal": 7.0
     }
@@ -1349,16 +1429,26 @@
    "arb": false,
    "impliedSum": 1.0429,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Los Angeles R vs Arizona",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.88,
+     "homeEdgePp": -0.1,
+     "away": 0.13,
+     "awayEdgePp": -0.9
+    }
+   ],
    "model": {
-    "home": 0.8189,
-    "away": 0.1811,
-    "blendHome": 0.8637,
-    "gapPp": -6.0,
+    "home": 0.824,
+    "away": 0.176,
+    "blendHome": 0.8649,
+    "gapPp": -5.5,
     "weight": 0.25,
     "injuries": [
      "Los Angeles Rams: -18 Elo",
-     "Arizona Cardinals: -22 Elo"
+     "Arizona Cardinals: -28 Elo"
     ]
    },
    "crossArbs": [],
@@ -1378,12 +1468,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -485.0,
      "decimal": 1.206
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 370.0,
      "decimal": 4.7
     }
@@ -1391,7 +1481,17 @@
    "arb": false,
    "impliedSum": 1.0418,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Los Angeles C vs Kansas City",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.79,
+     "homeEdgePp": 1.8,
+     "away": 0.22,
+     "awayEdgePp": -2.8
+    }
+   ],
    "model": {
     "home": 0.7708,
     "away": 0.2292,
@@ -1420,12 +1520,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -1433,7 +1533,17 @@
    "arb": false,
    "impliedSum": 1.0433,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Las Vegas vs Buffalo",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.33,
+     "homeEdgePp": -2.9,
+     "away": 0.68,
+     "awayEdgePp": 1.9
+    }
+   ],
    "model": {
     "home": 0.2776,
     "away": 0.7224,
@@ -1462,12 +1572,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -122.0,
      "decimal": 1.82
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 102.0,
      "decimal": 2.02
     }
@@ -1475,7 +1585,17 @@
    "arb": false,
    "impliedSum": 1.0446,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Green Bay vs Dallas",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "home": 0.53,
+     "homeEdgePp": -0.3,
+     "away": 0.48,
+     "awayEdgePp": -0.7
+    }
+   ],
    "model": {
     "home": 0.6039,
     "away": 0.3961,
@@ -1485,48 +1605,6 @@
     "injuries": [
      "Green Bay Packers: -36 Elo",
      "Dallas Cowboys: -8 Elo"
-    ]
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "nba|denvernuggets|laclippers|2026-10-15T02:30",
-   "sport": "nba",
-   "home": "LA Clippers",
-   "away": "Denver Nuggets",
-   "start": "2026-10-15T02:30Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.3723,
-    "away": 0.6277
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": 154.0,
-     "decimal": 2.54
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": -185.0,
-     "decimal": 1.541
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0428,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.449,
-    "away": 0.551,
-    "blendHome": 0.3915,
-    "gapPp": 7.7,
-    "weight": 0.25,
-    "injuries": [
-     "LA Clippers: -50 Elo",
-     "Denver Nuggets: -5 Elo"
     ]
    },
    "crossArbs": [],
@@ -1546,12 +1624,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 150.0,
      "decimal": 2.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -180.0,
      "decimal": 1.556
     }
@@ -1577,12 +1655,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -440.0,
      "decimal": 1.227
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 340.0,
      "decimal": 4.4
     }
@@ -1590,7 +1668,17 @@
    "arb": false,
    "impliedSum": 1.0421,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Texas vs Florida",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.8,
+     "homeEdgePp": -0.6,
+     "away": 0.22,
+     "awayEdgePp": -1.4
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1608,12 +1696,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -600.0,
      "decimal": 1.167
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 440.0,
      "decimal": 5.4
     }
@@ -1639,12 +1727,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -1652,7 +1740,17 @@
    "arb": false,
    "impliedSum": 1.043,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Virginia vs SMU",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.76,
+     "homeEdgePp": -0.9,
+     "away": 0.26,
+     "awayEdgePp": -1.1
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1670,12 +1768,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -1701,12 +1799,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1450.0,
      "decimal": 1.069
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 850.0,
      "decimal": 9.5
     }
@@ -1714,7 +1812,17 @@
    "arb": false,
    "impliedSum": 1.0407,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Georgia vs Auburn",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.92,
+     "homeEdgePp": -0.5,
+     "away": 0.09,
+     "awayEdgePp": -0.5
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1732,12 +1840,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -1745,7 +1853,17 @@
    "arb": false,
    "impliedSum": 1.0418,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Tennessee vs Alabama",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.25,
+     "homeEdgePp": 1.5,
+     "away": 0.76,
+     "awayEdgePp": -2.5
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1763,12 +1881,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -225.0,
      "decimal": 1.444
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 185.0,
      "decimal": 2.85
     }
@@ -1776,7 +1894,17 @@
    "arb": false,
    "impliedSum": 1.0432,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Missouri vs Ole Miss",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.66,
+     "homeEdgePp": 1.1,
+     "away": 0.34,
+     "awayEdgePp": -1.1
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1794,12 +1922,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -700.0,
      "decimal": 1.143
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 500.0,
      "decimal": 6.0
     }
@@ -1825,12 +1953,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1800.0,
      "decimal": 1.056
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 1000.0,
      "decimal": 11.0
     }
@@ -1856,12 +1984,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 310.0,
      "decimal": 4.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -395.0,
      "decimal": 1.253
     }
@@ -1869,7 +1997,17 @@
    "arb": false,
    "impliedSum": 1.0419,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Notre Dame vs BYU",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.22,
+     "homeEdgePp": 0.3,
+     "away": 0.79,
+     "awayEdgePp": -1.3
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1887,12 +2025,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -1900,7 +2038,17 @@
    "arb": false,
    "impliedSum": 1.0413,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Wisconsin vs UCLA",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.57,
+     "homeEdgePp": -0.4,
+     "away": 0.44,
+     "awayEdgePp": -0.6
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1918,12 +2066,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -238.0,
      "decimal": 1.42
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 195.0,
      "decimal": 2.95
     }
@@ -1931,7 +2079,17 @@
    "arb": false,
    "impliedSum": 1.0431,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Kentucky vs Oklahoma",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.68,
+     "homeEdgePp": 0.3,
+     "away": 0.32,
+     "awayEdgePp": -0.3
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -1949,12 +2107,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -192.0,
      "decimal": 1.521
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 160.0,
      "decimal": 2.6
     }
@@ -1980,12 +2138,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 525.0,
      "decimal": 6.25
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -750.0,
      "decimal": 1.133
     }
@@ -1993,7 +2151,17 @@
    "arb": false,
    "impliedSum": 1.0424,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Utah vs Colorado",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.14,
+     "homeEdgePp": -0.1,
+     "away": 0.87,
+     "awayEdgePp": -0.9
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -2011,12 +2179,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 275.0,
      "decimal": 3.75
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -345.0,
      "decimal": 1.29
     }
@@ -2024,7 +2192,17 @@
    "arb": false,
    "impliedSum": 1.0419,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Wake Forest vs California",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "home": 0.25,
+     "homeEdgePp": -0.4,
+     "away": 0.76,
+     "awayEdgePp": -0.6
+    }
+   ],
    "crossArbs": [],
    "middles": []
   },
@@ -2055,8 +2233,58 @@
    "arb": false,
    "impliedSum": 1.0413,
    "bets": [],
-   "pm": [],
-   "crossArbs": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Golden State vs Atlanta",
+     "url": "https://kalshi.com/markets/kxwnbagame",
+     "home": 0.58,
+     "homeEdgePp": -1.4,
+     "suspect": true
+    },
+    {
+     "source": "kalshi",
+     "title": "Golden State vs Atlanta",
+     "url": "https://kalshi.com/markets/kxwnbagame",
+     "home": 0.48,
+     "homeEdgePp": 8.6,
+     "suspect": true
+    },
+    {
+     "source": "kalshi",
+     "title": "Golden State vs Atlanta",
+     "url": "https://kalshi.com/markets/kxwnbagame",
+     "home": 0.61,
+     "homeEdgePp": -4.4,
+     "away": 0.45,
+     "awayEdgePp": -1.6
+    },
+    {
+     "source": "kalshi",
+     "title": "Golden State vs Atlanta",
+     "url": "https://kalshi.com/markets/kxwnbagame",
+     "home": 0.57,
+     "homeEdgePp": -0.4,
+     "away": 0.43,
+     "awayEdgePp": 0.4
+    }
+   ],
+   "crossArbs": [
+    {
+     "bookSide": "away",
+     "book": "DraftKings",
+     "american": 120.0,
+     "pmSide": "home",
+     "pmSource": "kalshi",
+     "pmTitle": "Golden State vs Atlanta",
+     "pmPrice": 0.48,
+     "url": "https://kalshi.com/markets/kxwnbagame",
+     "allInCost": 0.962,
+     "roiPct": 3.95,
+     "suspect": false,
+     "note": "Estimate: includes approximate fees and 1c slippage. Confirm both prices before acting."
+    }
+   ],
    "middles": []
   },
   {
@@ -2092,7 +2320,17 @@
    "arb": false,
    "impliedSum": 1.0481,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Liverpool vs Brentford",
+     "url": "https://kalshi.com/markets/kxeplgame",
+     "home": 0.41,
+     "homeEdgePp": -0.1,
+     "away": 0.34,
+     "awayEdgePp": -1.1
+    }
+   ],
    "model": {
     "home": 0.4604,
     "draw": 0.2732,
@@ -2137,7 +2375,17 @@
    "arb": false,
    "impliedSum": 1.0444,
    "bets": [],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Newcastle vs Aston Villa",
+     "url": "https://kalshi.com/markets/kxeplgame",
+     "home": 0.43,
+     "homeEdgePp": -0.1,
+     "away": 0.33,
+     "awayEdgePp": -1.1
+    }
+   ],
    "model": {
     "home": 0.4248,
     "draw": 0.2769,
@@ -2238,198 +2486,18 @@
    },
    "crossArbs": [],
    "middles": []
-  },
-  {
-   "key": "mls|minnesotaunited|coloradorapids|2026-10-15T01:30",
-   "sport": "mls",
-   "home": "Colorado Rapids",
-   "away": "Minnesota United FC",
-   "start": "2026-10-15T01:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.5142,
-    "away": 0.2376,
-    "draw": 0.2482
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -120.0,
-     "decimal": 1.833
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 280.0,
-     "decimal": 3.8
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 265.0,
-     "decimal": 3.65
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0826,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.5224,
-    "draw": 0.2381,
-    "away": 0.2395,
-    "blendHome": 0.5163,
-    "gapPp": 0.8,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "mls|portlandtimbers|lagalaxy|2026-10-15T02:30",
-   "sport": "mls",
-   "home": "LA Galaxy",
-   "away": "Portland Timbers",
-   "start": "2026-10-15T02:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.4458,
-    "away": 0.3171,
-    "draw": 0.2371
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 110.0,
-     "decimal": 2.1
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 190.0,
-     "decimal": 2.9
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 280.0,
-     "decimal": 3.8
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0842,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.5124,
-    "draw": 0.2397,
-    "away": 0.2479,
-    "blendHome": 0.4624,
-    "gapPp": 6.7,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "mls|austin|lafc|2026-10-15T02:30",
-   "sport": "mls",
-   "home": "LAFC",
-   "away": "Austin FC",
-   "start": "2026-10-15T02:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.6747,
-    "away": 0.1424,
-    "draw": 0.183
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -245.0,
-     "decimal": 1.408
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 500.0,
-     "decimal": 6.0
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 380.0,
-     "decimal": 4.8
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0851,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.5786,
-    "draw": 0.2271,
-    "away": 0.1943,
-    "blendHome": 0.6507,
-    "gapPp": -9.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "mls|houstondynamo|sandiego|2026-10-15T02:30",
-   "sport": "mls",
-   "home": "San Diego FC",
-   "away": "Houston Dynamo FC",
-   "start": "2026-10-15T02:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.4703,
-    "away": 0.2772,
-    "draw": 0.2525
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 100.0,
-     "decimal": 2.0
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 230.0,
-     "decimal": 3.3
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 260.0,
-     "decimal": 3.6
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0808,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.3688,
-    "draw": 0.2504,
-    "away": 0.3808,
-    "blendHome": 0.445,
-    "gapPp": -10.2,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
   }
  ],
  "day": {
-  "nBets": 10,
-  "scale": 0.594,
-  "totalStake": 7.21,
-  "meanPnl": 0.43,
+  "nBets": 9,
+  "scale": 0.67,
+  "totalStake": 7.37,
+  "meanPnl": 0.41,
   "var95": 6.0,
-  "pBreakEven": 0.494,
-  "pProfit": 0.494,
-  "best": 11.56,
-  "worst": -7.21,
+  "pBreakEven": 0.51,
+  "pProfit": 0.51,
+  "best": 10.55,
+  "worst": -7.37,
   "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."
  },
  "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
@@ -2974,6 +3042,21 @@
    "firstFairHome": 0.6082,
    "snaps": 3
   },
+  "nba|Denver Nuggets|LA Clippers|2026-10-15T02:30": {
+   "sport": "nba",
+   "home": "LA Clippers",
+   "away": "Denver Nuggets",
+   "start": "2026-10-15T02:30Z",
+   "capturedAt": "2026-10-14T22:49:15+00:00",
+   "minutesBeforeStart": 221,
+   "fairHome": 0.3859,
+   "fairAway": 0.6141,
+   "bestHome": 145.0,
+   "bestAway": -175.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4248,
+   "snaps": 3
+  },
   "mlb|Milwaukee Brewers|Los Angeles Dodgers|2026-10-15T00:00": {
    "sport": "mlb",
    "home": "Los Angeles Dodgers",
@@ -3018,6 +3101,101 @@
    "nBooks": 1,
    "firstFairHome": 0.5536,
    "snaps": 3
+  },
+  "nba|denvernuggets|laclippers|2026-10-15T02:30": {
+   "sport": "nba",
+   "home": "LA Clippers",
+   "away": "Denver Nuggets",
+   "start": "2026-10-15T02:30Z",
+   "capturedAt": "2026-10-15T01:25:03+00:00",
+   "minutesBeforeStart": 65,
+   "fairHome": 0.3723,
+   "fairAway": 0.6277,
+   "bestHome": 154.0,
+   "bestAway": -185.0,
+   "nBooks": 1,
+   "firstFairHome": 0.3918,
+   "snaps": 2
+  },
+  "mls|minnesotaunited|coloradorapids|2026-10-15T01:30": {
+   "sport": "mls",
+   "home": "Colorado Rapids",
+   "away": "Minnesota United FC",
+   "start": "2026-10-15T01:30Z",
+   "capturedAt": "2026-10-15T01:20:48+00:00",
+   "minutesBeforeStart": 9,
+   "fairHome": 0.5142,
+   "fairAway": 0.2376,
+   "bestHome": -120.0,
+   "bestAway": 280.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5142,
+   "snaps": 1,
+   "fairDraw": 0.2482
+  },
+  "mls|sanjoseearthquakes|realsaltlake|2026-10-15T01:30": {
+   "sport": "mls",
+   "home": "Real Salt Lake",
+   "away": "San Jose Earthquakes",
+   "start": "2026-10-15T01:30Z",
+   "capturedAt": "2026-10-15T01:20:48+00:00",
+   "minutesBeforeStart": 9,
+   "fairHome": 0.5607,
+   "fairAway": 0.2255,
+   "bestHome": -145.0,
+   "bestAway": 300.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5607,
+   "snaps": 1,
+   "fairDraw": 0.2138
+  },
+  "mls|portlandtimbers|lagalaxy|2026-10-15T02:30": {
+   "sport": "mls",
+   "home": "LA Galaxy",
+   "away": "Portland Timbers",
+   "start": "2026-10-15T02:30Z",
+   "capturedAt": "2026-10-15T01:20:48+00:00",
+   "minutesBeforeStart": 69,
+   "fairHome": 0.4458,
+   "fairAway": 0.3171,
+   "bestHome": 110.0,
+   "bestAway": 190.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4458,
+   "snaps": 1,
+   "fairDraw": 0.2371
+  },
+  "mls|austin|lafc|2026-10-15T02:30": {
+   "sport": "mls",
+   "home": "LAFC",
+   "away": "Austin FC",
+   "start": "2026-10-15T02:30Z",
+   "capturedAt": "2026-10-15T01:20:48+00:00",
+   "minutesBeforeStart": 69,
+   "fairHome": 0.6747,
+   "fairAway": 0.1424,
+   "bestHome": -245.0,
+   "bestAway": 500.0,
+   "nBooks": 1,
+   "firstFairHome": 0.6747,
+   "snaps": 1,
+   "fairDraw": 0.183
+  },
+  "mls|houstondynamo|sandiego|2026-10-15T02:30": {
+   "sport": "mls",
+   "home": "San Diego FC",
+   "away": "Houston Dynamo FC",
+   "start": "2026-10-15T02:30Z",
+   "capturedAt": "2026-10-15T01:20:48+00:00",
+   "minutesBeforeStart": 69,
+   "fairHome": 0.4703,
+   "fairAway": 0.2772,
+   "bestHome": 100.0,
+   "bestAway": 230.0,
+   "nBooks": 1,
+   "firstFairHome": 0.4703,
+   "snaps": 1,
+   "fairDraw": 0.2525
   }
  }
 }
