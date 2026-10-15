@@ -272,15 +272,24 @@ def espn_direct(sport, today=None, getter=None):
         pages = list(pool.map(one, urls))
     if not any(isinstance(p, dict) for p in pages):
         raise RuntimeError(f"ESPN returned nothing usable for {sport} on {len(urls)} days")
-    out, seen = [], set()
+    out, seen, bad = [], set(), []
     for d in pages:
         if not isinstance(d, dict):
             continue
-        for g in _espn_events(sport, d):
+        try:
+            parsed = _espn_events(sport, d)
+        except Exception as e:  # noqa  one odd event must not hide a whole day; keep the exact line for diagnosis
+            import traceback
+            tb = traceback.extract_tb(e.__traceback__)[-1]
+            bad.append(f"{type(e).__name__}: {e} at line {tb.lineno}: {(tb.line or '')[:90]}")
+            continue
+        for g in parsed:
             k = (g.get("home"), g.get("away"), g.get("start"))
             if k not in seen:
                 seen.add(k)
                 out.append(g)
+    if bad and not out:
+        raise RuntimeError(f"ESPN parse failed for {sport}: {bad[0]}")
     return out
 
 
