@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-15T07:45:55+00:00",
+ "checkedAt": "2026-10-15T08:16:58+00:00",
  "nfl": {
   "events": 14,
   "withOdds": 14,
@@ -66,6 +66,17 @@
    "NCAA Men's Basketball"
   ]
  },
+ "wncaab": {
+  "events": 2,
+  "withOdds": 0,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-11-01T04:00Z",
+  "leagues": [
+   "NCAA Women's Basketball"
+  ]
+ },
  "wnba": {
   "events": 1,
   "withOdds": 1,
@@ -75,6 +86,72 @@
   "firstStart": "2026-10-17T19:30Z",
   "leagues": [
    "Women's National Basketball Association"
+  ]
+ },
+ "ufl": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-06-13T19:00Z",
+  "leagues": [
+   "United Football League"
+  ]
+ },
+ "cfl": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2022-11-20T23:00Z",
+  "leagues": [
+   "Canadian Football League"
+  ]
+ },
+ "afl": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-09-26T04:30Z",
+  "leagues": [
+   "AFL"
+  ]
+ },
+ "cbb": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-06-22T23:00Z",
+  "leagues": [
+   "NCAA Baseball"
+  ]
+ },
+ "mma": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T21:00Z",
+  "leagues": [
+   "Ultimate Fighting Championship"
+  ]
+ },
+ "bellator": {
+  "events": 1,
+  "withOdds": 0,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2024-09-14T16:30Z",
+  "leagues": [
+   "Bellator Fighting Championship"
   ]
  },
  "epl": {
@@ -88,6 +165,61 @@
    "English Premier League"
   ]
  },
+ "championship": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T19:00Z",
+  "leagues": [
+   "English League Championship"
+  ]
+ },
+ "league1": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-15T19:00Z",
+  "leagues": [
+   "English League One"
+  ]
+ },
+ "league2": {
+  "events": 12,
+  "withOdds": 12,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T11:30Z",
+  "leagues": [
+   "English League Two"
+  ]
+ },
+ "facup": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-05-16T14:00Z",
+  "leagues": [
+   "English FA Cup"
+  ]
+ },
+ "eflcup": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-27T19:45Z",
+  "leagues": [
+   "English Carabao Cup"
+  ]
+ },
  "laliga": {
   "events": 1,
   "withOdds": 1,
@@ -97,6 +229,28 @@
   "firstStart": "2026-10-16T19:00Z",
   "leagues": [
    "Spanish LALIGA"
+  ]
+ },
+ "laliga2": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:30Z",
+  "leagues": [
+   "Spanish LALIGA 2"
+  ]
+ },
+ "copadelrey": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-11T11:00Z",
+  "leagues": [
+   "Spanish Copa del Rey"
   ]
  },
  "bundesliga": {
@@ -110,6 +264,28 @@
    "German Bundesliga"
   ]
  },
+ "bundesliga2": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T16:30Z",
+  "leagues": [
+   "German 2. Bundesliga"
+  ]
+ },
+ "dfbpokal": {
+  "events": 8,
+  "withOdds": 8,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-27T17:00Z",
+  "leagues": [
+   "German Cup"
+  ]
+ },
  "seriea": {
   "events": 1,
   "withOdds": 1,
@@ -119,6 +295,28 @@
   "firstStart": "2026-10-16T18:45Z",
   "leagues": [
    "Italian Serie A"
+  ]
+ },
+ "serieb": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:30Z",
+  "leagues": [
+   "Italian Serie B"
+  ]
+ },
+ "coppaitalia": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-09-15T16:00Z",
+  "leagues": [
+   "Coppa Italia"
   ]
  },
  "ligue1": {
@@ -132,6 +330,214 @@
    "French Ligue 1"
   ]
  },
+ "ligue2": {
+  "events": 5,
+  "withOdds": 5,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:00Z",
+  "leagues": [
+   "French Ligue 2"
+  ]
+ },
+ "coupefrance": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-05-22T19:00Z",
+  "leagues": [
+   "Coupe de France"
+  ]
+ },
+ "scotprem": {
+  "events": 5,
+  "withOdds": 5,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T14:00Z",
+  "leagues": [
+   "Scottish Premiership"
+  ]
+ },
+ "scotchamp": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:30Z",
+  "leagues": [
+   "Scottish Championship"
+  ]
+ },
+ "eredivisie": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:00Z",
+  "leagues": [
+   "Dutch Eredivisie"
+  ]
+ },
+ "eerstedivisie": {
+  "events": 4,
+  "withOdds": 4,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:00Z",
+  "leagues": [
+   "Dutch Keuken Kampioen Divisie"
+  ]
+ },
+ "primeira": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-12T19:15Z",
+  "leagues": [
+   "Portuguese Primeira Liga"
+  ]
+ },
+ "belgium": {
+  "events": 4,
+  "withOdds": 4,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-11T11:30Z",
+  "leagues": [
+   "Belgian Pro League"
+  ]
+ },
+ "superlig": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T17:00Z",
+  "leagues": [
+   "Turkish Super Lig"
+  ]
+ },
+ "greece": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "post",
+   "pre"
+  ],
+  "firstStart": "2026-10-17T14:00Z",
+  "leagues": [
+   "Greek Super League"
+  ]
+ },
+ "russia": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T11:00Z",
+  "leagues": [
+   "Russian Premier League"
+  ]
+ },
+ "austria": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T17:30Z",
+  "leagues": [
+   "Austrian Bundesliga"
+  ]
+ },
+ "swiss": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2025-09-28T12:00Z",
+  "leagues": [
+   "Swiss Super League"
+  ]
+ },
+ "denmark": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T17:00Z",
+  "leagues": [
+   "Danish Superliga"
+  ]
+ },
+ "sweden": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T17:00Z",
+  "leagues": [
+   "Swedish Allsvenskan"
+  ]
+ },
+ "norway": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T12:00Z",
+  "leagues": [
+   "Norwegian Eliteserien"
+  ]
+ },
+ "czech": {
+  "events": 0,
+  "withOdds": 0,
+  "states": [],
+  "firstStart": null,
+  "leagues": [
+   "Gambrinus Liga"
+  ]
+ },
+ "romania": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2025-09-29T15:00Z",
+  "leagues": [
+   "Romanian Liga 1"
+  ]
+ },
+ "israel": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2025-05-24T17:30Z",
+  "leagues": [
+   "Israeli Premier League"
+  ]
+ },
  "mls": {
   "events": 14,
   "withOdds": 14,
@@ -141,6 +547,215 @@
   "firstStart": "2026-10-17T18:30Z",
   "leagues": [
    "MLS"
+  ]
+ },
+ "nwsl": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T00:00Z",
+  "leagues": [
+   "NWSL"
+  ]
+ },
+ "usl": {
+  "events": 11,
+  "withOdds": 11,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T23:00Z",
+  "leagues": [
+   "USL Championship"
+  ]
+ },
+ "usopen": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-22T00:00Z",
+  "leagues": [
+   "U.S. Open Cup"
+  ]
+ },
+ "ligamx": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T01:00Z",
+  "leagues": [
+   "Mexican Liga BBVA MX"
+  ]
+ },
+ "brasileirao": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T23:00Z",
+  "leagues": [
+   "Brazilian Serie A"
+  ]
+ },
+ "brasileirao2": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T22:30Z",
+  "leagues": [
+   "Brazilian Serie B"
+  ]
+ },
+ "argentina": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-15T23:00Z",
+  "leagues": [
+   "Argentine Liga Profesional de F\u00fatbol"
+  ]
+ },
+ "colombia": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T20:00Z",
+  "leagues": [
+   "Colombian Primera A"
+  ]
+ },
+ "chile": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-12T20:00Z",
+  "leagues": [
+   "Chilean Primera Divisi\u00f3n"
+  ]
+ },
+ "uruguay": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T22:00Z",
+  "leagues": [
+   "Liga AUF Uruguaya"
+  ]
+ },
+ "peru": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T18:00Z",
+  "leagues": [
+   "Peruvian Liga 1"
+  ]
+ },
+ "ecuador": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T20:30Z",
+  "leagues": [
+   "LigaPro Ecuador"
+  ]
+ },
+ "paraguay": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T22:20Z",
+  "leagues": [
+   "Paraguayan Primera Divisi\u00f3n"
+  ]
+ },
+ "venezuela": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T20:00Z",
+  "leagues": [
+   "Venezuelan Primera Divisi\u00f3n"
+  ]
+ },
+ "bolivia": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T19:00Z",
+  "leagues": [
+   "Bolivian Liga Profesional"
+  ]
+ },
+ "aleague": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T09:00Z",
+  "leagues": [
+   "Australian A-League Men"
+  ]
+ },
+ "jleague": {
+  "events": 8,
+  "withOdds": 8,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-17T04:00Z",
+  "leagues": [
+   "Japanese J.League"
+  ]
+ },
+ "csl": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T11:35Z",
+  "leagues": [
+   "Chinese Super League"
+  ]
+ },
+ "isl": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T14:00Z",
+  "leagues": [
+   "Indian Super League"
   ]
  },
  "ucl": {
@@ -154,15 +769,158 @@
    "UEFA Champions League"
   ]
  },
- "mma": {
-  "events": 1,
-  "withOdds": 0,
+ "uel": {
+  "events": 18,
+  "withOdds": 18,
   "states": [
    "pre"
   ],
-  "firstStart": "2026-10-17T21:00Z",
+  "firstStart": "2026-10-15T16:45Z",
   "leagues": [
-   "Ultimate Fighting Championship"
+   "UEFA Europa League"
+  ]
+ },
+ "uecl": {
+  "events": 18,
+  "withOdds": 18,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-15T16:45Z",
+  "leagues": [
+   "UEFA Conference League"
+  ]
+ },
+ "libertadores": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "pre"
+  ],
+  "firstStart": "2026-10-16T00:30Z",
+  "leagues": [
+   "CONMEBOL Libertadores"
+  ]
+ },
+ "sudamericana": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-14T22:00Z",
+  "leagues": [
+   "CONMEBOL Sudamericana"
+  ]
+ },
+ "concacafcl": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-05-31T00:00Z",
+  "leagues": [
+   "Concacaf Champions Cup"
+  ]
+ },
+ "leaguescup": {
+  "events": 2,
+  "withOdds": 2,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-09-06T22:00Z",
+  "leagues": [
+   "Leagues Cup"
+  ]
+ },
+ "nations": {
+  "events": 10,
+  "withOdds": 10,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-06T14:00Z",
+  "leagues": [
+   "UEFA Nations League"
+  ]
+ },
+ "euroq": {
+  "events": 3,
+  "withOdds": 3,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2024-03-26T17:00Z",
+  "leagues": [
+   "UEFA European Championship Qualifying"
+  ]
+ },
+ "wcq_uefa": {
+  "events": 4,
+  "withOdds": 4,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-03-31T18:45Z",
+  "leagues": [
+   "FIFA World Cup Qualifying - UEFA"
+  ]
+ },
+ "wcq_conmebol": {
+  "events": 5,
+  "withOdds": 5,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2025-09-09T23:00Z",
+  "leagues": [
+   "FIFA World Cup Qualifying - CONMEBOL"
+  ]
+ },
+ "wcq_concacaf": {
+  "events": 6,
+  "withOdds": 6,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2025-11-19T01:00Z",
+  "leagues": [
+   "FIFA World Cup Qualifying - Concacaf"
+  ]
+ },
+ "friendlies": {
+  "events": 10,
+  "withOdds": 10,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-10-06T11:00Z",
+  "leagues": [
+   "International Friendly"
+  ]
+ },
+ "worldcup": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2026-07-19T19:00Z",
+  "leagues": [
+   "FIFA World Cup"
+  ]
+ },
+ "clubworldcup": {
+  "events": 1,
+  "withOdds": 1,
+  "states": [
+   "post"
+  ],
+  "firstStart": "2025-07-13T19:00Z",
+  "leagues": [
+   "FIFA Club World Cup"
   ]
  }
 }
