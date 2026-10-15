@@ -59,7 +59,7 @@ for i in range(200): H.record(long, [row(.5)], now - timedelta(days=1) + timedel
 assert len(next(iter(long.values()))["snaps"]) <= H.MAX_SNAPS
 
 # ---- end-to-end main(): fallbacks, injuries, model, history, capture-only
-tmp = tempfile.mkdtemp(); os.environ.update({"SLATE_OUT": f"{tmp}/slate.json", "HISTORY_PATH": f"{tmp}/history.json", "ALERTS_PATH": f"{tmp}/al.json", "PICKS_PATH": f"{tmp}/picks.json", "RECORD_PATH": f"{tmp}/record.json", "SPORTS": "nhl", "NETWORK_HEALTH": f"{tmp}/nh.json", "NO_NETWORK": "1"})
+tmp = tempfile.mkdtemp(); os.environ.update({"SLATE_OUT": f"{tmp}/slate.json", "HISTORY_PATH": f"{tmp}/history.json", "ALERTS_PATH": f"{tmp}/al.json", "PICKS_PATH": f"{tmp}/picks.json", "RECORD_PATH": f"{tmp}/record.json", "SPORTS": "nhl", "NETWORK_HEALTH": f"{tmp}/nh.json", "NO_NETWORK": "1", "NO_WHALES": "1"})
 start = (datetime.now(timezone.utc) + timedelta(hours=2)).strftime("%Y-%m-%dT%H:%M:%SZ")
 games = [{"sport": "nhl", "home": "T1", "away": "T2", "start": start, "books": {"DK": {"home": -120, "away": 100}, "FD": {"home": -125, "away": 105}}}]
 b.odds_api = lambda sport: (_ for _ in ()).throw(RuntimeError("no key"))   # primary fails

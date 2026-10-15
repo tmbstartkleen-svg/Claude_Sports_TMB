@@ -49,6 +49,10 @@ try:
     import network as net_mod
 except ImportError:  # pragma: no cover
     net_mod = None
+try:
+    import whales as whale_mod
+except ImportError:  # pragma: no cover
+    whale_mod = None
 
 try:
     import leagues as _lg
@@ -339,19 +343,21 @@ def kalshi_games():
         except Exception as e:  # noqa
             errs.append(f"{ser}: {e!r}"[:80])
             continue
-        ev = {}
+        ev, tk = {}, {}
         for m in data.get("markets", []):
             nm, y = m.get("yes_sub_title"), m.get("yes_ask_dollars")
             if not nm or y is None:
                 continue
             try:
-                ev.setdefault(m.get("event_ticker") or m.get("ticker"), {})[nm] = float(y)
+                et_ = m.get("event_ticker") or m.get("ticker")
+                ev.setdefault(et_, {})[nm] = float(y)
+                tk.setdefault(et_, {})[nm] = m.get("ticker")   # per-team market ticker, needed to pull that leg's own trade feed
             except ValueError:
                 continue
         for et, teams in ev.items():
             names = [n for n in teams if n.lower() not in ("tie", "draw")]
             if len(names) == 2:
-                out.append({"source": "kalshi", "title": " vs ".join(names), "teams": teams, "yes": None, "date": _kalshi_date(et),
+                out.append({"source": "kalshi", "title": " vs ".join(names), "teams": teams, "tickers": tk.get(et, {}), "yes": None, "date": _kalshi_date(et),
                             "url": f"https://kalshi.com/markets/{ser.lower()}"})
     if not out:
         raise RuntimeError("no Kalshi game markets returned" + (f" ({'; '.join(errs[:3])})" if errs else ""))
@@ -387,7 +393,7 @@ def polymarket_direct():
                 continue
             if len(names) == 2 and len(prices) == 2:
                 out.append({"source": "polymarket", "title": m.get("question") or e.get("title", ""), "outcomes": names, "prices": prices,
-                            "url": f"https://polymarket.com/event/{e.get('slug','')}"})
+                            "conditionId": m.get("conditionId"), "url": f"https://polymarket.com/event/{e.get('slug','')}"})
     return out
 
 
@@ -831,6 +837,12 @@ def main():
         grade_step(rows, closing, capture_only, now)
     except Exception as e:  # noqa
         log("grading", False, repr(e))
+    if whale_mod and not capture_only and os.environ.get("NO_WHALES") != "1":
+        try:
+            n_q = whale_mod.attach_whales(rows, http_json)
+            log("whales", True, f"{n_q} markets checked, {sum(1 for r in rows if r.get('whales'))} games with a notable trade")
+        except Exception as e:  # noqa
+            log("whales", False, repr(e))
     if notifier:
         found, sent_n, status = notifier.run(rows, now)
         log("alerts", not status.startswith("failed"), f"{found} found, {sent_n} sent: {status}")

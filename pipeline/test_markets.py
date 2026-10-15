@@ -62,7 +62,7 @@ m2 = b._espn_events("mma", mma)[0]; assert m2["home"] == "Fighter A" and m2["boo
 assert b._am("EVEN") == 100.0 and b._am("+130") == 130.0 and b._am("-50") is None and b._am(None) is None
 
 # ---- end-to-end with SPORTS=all via free fallback, and credit guard
-tmp = tempfile.mkdtemp(); os.environ.update({"ASOF": "2026-10-01T00:00:00+00:00", "SLATE_OUT": f"{tmp}/s.json", "HISTORY_PATH": f"{tmp}/h.json", "ALERTS_PATH": f"{tmp}/al.json", "PICKS_PATH": f"{tmp}/p.json", "RECORD_PATH": f"{tmp}/r.json", "SPORTS": "all", "ODDS_API_KEY": "x", "NETWORK_HEALTH": f"{tmp}/nh.json", "NO_NETWORK": "1"})
+tmp = tempfile.mkdtemp(); os.environ.update({"ASOF": "2026-10-01T00:00:00+00:00", "SLATE_OUT": f"{tmp}/s.json", "HISTORY_PATH": f"{tmp}/h.json", "ALERTS_PATH": f"{tmp}/al.json", "PICKS_PATH": f"{tmp}/p.json", "RECORD_PATH": f"{tmp}/r.json", "SPORTS": "all", "ODDS_API_KEY": "x", "NETWORK_HEALTH": f"{tmp}/nh.json", "NO_NETWORK": "1", "NO_WHALES": "1"})
 calls = []
 def fake_odds(sport):
     calls.append(sport)
