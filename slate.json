@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-15T04:26:26+00:00",
+ "generatedAt": "2026-10-15T04:29:55+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -281,17 +281,17 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "40 snapshots added, 46 closing lines available"
+   "detail": "0 snapshots added, 46 closing lines available"
   },
   {
    "source": "grading",
    "ok": true,
-   "detail": "0 picks added, 1 settled, 0 CLV, 10 total"
+   "detail": "0 picks added, 0 settled, 0 CLV, 10 total"
   },
   {
    "source": "alerts",
    "ok": true,
-   "detail": "1 found, 0 sent: no NTFY_TOPIC set; alerts not sent"
+   "detail": "0 found, 0 sent: no NTFY_TOPIC set; alerts not sent"
   }
  ],
  "network": [
@@ -468,7 +468,7 @@
     "withOdds": 16,
     "avgBooks": 1.0,
     "withModel": 0,
-    "withPmMatch": 10,
+    "withPmMatch": 8,
     "edgeBets": 0
    },
    "nfl": {
@@ -2151,17 +2151,7 @@
    "arb": false,
    "impliedSum": 1.0424,
    "bets": [],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Utah vs Colorado",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "home": 0.14,
-     "homeEdgePp": -0.1,
-     "away": 0.87,
-     "awayEdgePp": -0.9
-    }
-   ],
+   "pm": [],
    "crossArbs": [],
    "middles": []
   },
@@ -2192,17 +2182,7 @@
    "arb": false,
    "impliedSum": 1.0419,
    "bets": [],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Wake Forest vs California",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "home": 0.25,
-     "homeEdgePp": -0.4,
-     "away": 0.76,
-     "awayEdgePp": -0.6
-    }
-   ],
+   "pm": [],
    "crossArbs": [],
    "middles": []
   },
@@ -2238,53 +2218,13 @@
      "source": "kalshi",
      "title": "Golden State vs Atlanta",
      "url": "https://kalshi.com/markets/kxwnbagame",
-     "home": 0.58,
-     "homeEdgePp": -1.4,
-     "suspect": true
-    },
-    {
-     "source": "kalshi",
-     "title": "Golden State vs Atlanta",
-     "url": "https://kalshi.com/markets/kxwnbagame",
-     "home": 0.48,
-     "homeEdgePp": 8.6,
-     "suspect": true
-    },
-    {
-     "source": "kalshi",
-     "title": "Golden State vs Atlanta",
-     "url": "https://kalshi.com/markets/kxwnbagame",
-     "home": 0.61,
-     "homeEdgePp": -4.4,
-     "away": 0.45,
-     "awayEdgePp": -1.6
-    },
-    {
-     "source": "kalshi",
-     "title": "Golden State vs Atlanta",
-     "url": "https://kalshi.com/markets/kxwnbagame",
      "home": 0.57,
      "homeEdgePp": -0.4,
      "away": 0.43,
      "awayEdgePp": 0.4
     }
    ],
-   "crossArbs": [
-    {
-     "bookSide": "away",
-     "book": "DraftKings",
-     "american": 120.0,
-     "pmSide": "home",
-     "pmSource": "kalshi",
-     "pmTitle": "Golden State vs Atlanta",
-     "pmPrice": 0.48,
-     "url": "https://kalshi.com/markets/kxwnbagame",
-     "allInCost": 0.962,
-     "roiPct": 3.95,
-     "suspect": false,
-     "note": "Estimate: includes approximate fees and 1c slippage. Confirm both prices before acting."
-    }
-   ],
+   "crossArbs": [],
    "middles": []
   },
   {
