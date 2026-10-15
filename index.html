@@ -415,6 +415,11 @@ input[type=checkbox]{width:auto;}
       <div id="slNet" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Our own model (Elo + rest, built from free results)</h2>
       <div id="slModel" class="desc"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Opportunities by day</h2>
+      <div class="desc">Every game with its best moneyline, the market's fair chance, our model's chance and any prediction-market price. Flagged = clears the edge bar with enough books.</div>
+      <div id="slOpp"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Parlay candidates (built only from flagged legs)</h2>
+      <div id="slParlay" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Games</h2>
       <table><thead><tr><th>Game</th><th>Books</th><th>Fair (home / draw / away)</th><th>Best prices</th><th>Arb</th><th>Cross arbs &amp; middles</th><th>Model P(home)</th><th>Edge bets</th><th>Prediction mkt gap</th></tr></thead><tbody id="slBody"></tbody></table>
     </div>
@@ -1298,10 +1303,25 @@ function slateLog(k){
   saveLedger();renderLedger();
   notify('Logged '+usd(stake)+(trimmed?' (trimmed to fit your loss budget)':g.mult<1?' (cut by drawdown rule)':'')+'. Settle it in the ledger after the game.');
 }
+function am2dec(a){a=+a;return a>0?1+a/100:1+100/Math.abs(a);}
+function oppRender(g){
+  const am=a=>a==null?'—':(a>0?'+':'')+Math.round(a),pct=x=>x==null?'—':(x*100).toFixed(0)+'%';
+  const days={};g.forEach(r=>{const t0=new Date(r.start),k=isNaN(t0)?'TBD':t0.getFullYear()+'-'+String(t0.getMonth()+1).padStart(2,'0')+'-'+String(t0.getDate()).padStart(2,'0');(days[k]=days[k]||[]).push(r);});
+  const dayName=k=>{const t=new Date(k+'T12:00:00');return isNaN(t)?k:t.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});};
+  $('slOpp').innerHTML=Object.keys(days).sort().map(k=>'<h3 style="font-size:.85rem;margin:12px 0 4px">'+esc(dayName(k))+'</h3><div style="overflow-x:auto"><table><thead><tr><th>Game</th><th>Away ML</th><th>Home ML</th><th>Market fair (home)</th><th>Model (home)</th><th>Pred. market</th><th>Flagged</th></tr></thead><tbody>'+days[k].map(r=>{
+    const b=r.best||{},pm=(r.pm||[])[0],fl=(r.bets||[]).map(x=>esc(x.side)+' '+am(x.american)+' ('+signed(x.evPct,1,'%')+' EV)').join('<br>');
+    return '<tr><td style="white-space:normal;min-width:180px">'+esc(r.sport.toUpperCase())+' · '+esc(r.away)+' @ '+esc(r.home)+'</td><td>'+am(b.away&&b.away.american)+'</td><td>'+am(b.home&&b.home.american)+'</td><td>'+pct(r.fair&&r.fair.home)+'</td><td>'+(r.model?pct(r.model.home):'—')+'</td><td>'+(pm&&pm.home!=null?pct(pm.home):'—')+'</td><td class="'+(fl?'pos':'')+'" style="white-space:normal">'+(fl||'—')+'</td></tr>';}).join('')+'</tbody></table></div>').join('')||'<div class="desc">No games.</div>';
+  const legs=[];g.forEach((r,i)=>(r.bets||[]).forEach(b=>legs.push({gi:i,r,b,p:b.fair,d:am2dec(b.american)})));
+  legs.sort((a,c)=>c.b.evPct-a.b.evPct);const top=legs.slice(0,6),combos=[];
+  for(let i=0;i<top.length;i++)for(let j=i+1;j<top.length;j++){if(top[i].gi!==top[j].gi){combos.push([top[i],top[j]]);for(let k=j+1;k<top.length;k++)if(top[k].gi!==top[i].gi&&top[k].gi!==top[j].gi)combos.push([top[i],top[j],top[k]]);}}
+  const sc=combos.map(c=>{const p=c.reduce((a,x)=>a*x.p,1),d=c.reduce((a,x)=>a*x.d,1);return{c,p,d,ev:p*d-1};}).sort((a,b)=>b.ev-a.ev).slice(0,5);
+  $('slParlay').innerHTML=sc.length?sc.map(x=>'<div style="margin:6px 0"><b>'+x.c.length+'-leg</b> · pays '+(x.d>=2?'+'+Math.round((x.d-1)*100):'−'+Math.round(100/(x.d-1)))+' · fair win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+'<br>'+x.c.map(l=>esc(l.b.side)+' '+am(l.b.american)+' ('+esc(l.r.start.slice(5,10))+')').join(' + ')+'</div>').join('')+'<div class="warnc">Each leg multiplies the book margin and the error in our fair price, so parlays are riskier than the same legs bet singly. Assumes legs are independent.</div>':'No parlay candidates: fewer than two flagged legs in different games. Nothing is forced when there is no edge.';
+}
 function slateRender(d,label){
   slateBets=[];slateClosing=d.closing||{};
   $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
   const day=d.day,g=d.games||[];
+  oppRender(g);
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
    <div class="stat"><div class="v ${nb?'pos':''}">${nb}</div><div class="k">Edge bets</div></div>
