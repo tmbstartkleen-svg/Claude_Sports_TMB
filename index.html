@@ -425,7 +425,7 @@ input[type=checkbox]{width:auto;}
     <div class="card">
       <p class="desc">Loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty.</p>
       <h2 style="font-size:1rem">Opportunities by day</h2>
-      <div class="desc">Every game with its best moneyline, the market's fair chance, our model's chance and any prediction-market price. Flagged = clears the edge bar with enough books.</div>
+      <div class="desc">Every game with its best moneyline, the market's fair chance, our model's chance and any prediction-market price. Flagged = clears the edge bar. Dollar figures are for a $100 bet: what you win if it hits, −$100 if it misses, and the expected profit per $100.</div>
       <div id="slOpp"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Parlay candidates (built only from flagged legs)</h2>
       <div id="slParlay" class="desc"></div>
@@ -1310,19 +1310,23 @@ function slateLog(k){
   saveLedger();renderLedger();
   notify('Logged '+usd(stake)+(trimmed?' (trimmed to fit your loss budget)':g.mult<1?' (cut by drawdown rule)':'')+'. Settle it in the ledger after the game.');
 }
+function win100(a){a=+a;return a>0?a:10000/Math.abs(a);}
+function d100(x){return (x<0?'−$':'+$')+Math.abs(x).toFixed(2);}
+function c100(a){return '<span class="pos">win '+d100(win100(a))+'</span> / <span class="warnc">lose −$100</span>';}
+function ev100(p,a){return p*win100(a)-(1-p)*100;}
 function am2dec(a){a=+a;return a>0?1+a/100:1+100/Math.abs(a);}
 function oppRender(g){
   const am=a=>a==null?'—':(a>0?'+':'')+Math.round(a),pct=x=>x==null?'—':(x*100).toFixed(0)+'%';
   const days={};g.forEach(r=>{const t0=new Date(r.start),k=isNaN(t0)?'TBD':t0.getFullYear()+'-'+String(t0.getMonth()+1).padStart(2,'0')+'-'+String(t0.getDate()).padStart(2,'0');(days[k]=days[k]||[]).push(r);});
   const dayName=k=>{const t=new Date(k+'T12:00:00');return isNaN(t)?k:t.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});};
   $('slOpp').innerHTML=Object.keys(days).sort().map(k=>'<h3 style="font-size:.85rem;margin:12px 0 4px">'+esc(dayName(k))+'</h3><div style="overflow-x:auto"><table><thead><tr><th>Game</th><th>Away ML</th><th>Home ML</th><th>Market fair (home)</th><th>Model (home)</th><th>Pred. market</th><th>Flagged</th></tr></thead><tbody>'+days[k].map(r=>{
-    const b=r.best||{},pm=(r.pm||[])[0],fl=(r.bets||[]).map(x=>esc(x.side)+' '+am(x.american)+' ('+signed(x.evPct,1,'%')+' EV)').join('<br>');
-    return '<tr><td style="white-space:normal;min-width:180px">'+esc(r.sport.toUpperCase())+' · '+esc(r.away)+' @ '+esc(r.home)+'</td><td>'+am(b.away&&b.away.american)+'</td><td>'+am(b.home&&b.home.american)+'</td><td>'+pct(r.fair&&r.fair.home)+'</td><td>'+(r.model?pct(r.model.home):'—')+'</td><td>'+(pm&&pm.home!=null?pct(pm.home):'—')+'</td><td class="'+(fl?'pos':'')+'" style="white-space:normal">'+(fl||'—')+'</td></tr>';}).join('')+'</tbody></table></div>').join('')||'<div class="desc">No games.</div>';
+    const b=r.best||{},pm=(r.pm||[])[0],fl=(r.bets||[]).map(x=>esc(x.side)+' '+am(x.american)+' ('+signed(x.evPct,1,'%')+' EV)<br><span class="desc" style="margin:0">$100: win '+d100(win100(x.american))+' / lose −$100 · EV '+d100(ev100(x.fair,x.american))+'</span>').join('<br><br>');
+    return '<tr><td style="white-space:normal;min-width:180px">'+esc(r.sport.toUpperCase())+' · '+esc(r.away)+' @ '+esc(r.home)+'</td><td>'+am(b.away&&b.away.american)+(b.away?'<br><span class="desc" style="margin:0">$100 wins '+d100(win100(b.away.american))+'</span>':'')+'</td><td>'+am(b.home&&b.home.american)+(b.home?'<br><span class="desc" style="margin:0">$100 wins '+d100(win100(b.home.american))+'</span>':'')+'</td><td>'+pct(r.fair&&r.fair.home)+'</td><td>'+(r.model?pct(r.model.home):'—')+'</td><td>'+(pm&&pm.home!=null?pct(pm.home):'—')+'</td><td class="'+(fl?'pos':'')+'" style="white-space:normal">'+(fl||'—')+'</td></tr>';}).join('')+'</tbody></table></div>').join('')||'<div class="desc">No games.</div>';
   const legs=[];g.forEach((r,i)=>(r.bets||[]).forEach(b=>legs.push({gi:i,r,b,p:b.fair,d:am2dec(b.american)})));
   legs.sort((a,c)=>c.b.evPct-a.b.evPct);const top=legs.slice(0,6),combos=[];
   for(let i=0;i<top.length;i++)for(let j=i+1;j<top.length;j++){if(top[i].gi!==top[j].gi){combos.push([top[i],top[j]]);for(let k=j+1;k<top.length;k++)if(top[k].gi!==top[i].gi&&top[k].gi!==top[j].gi)combos.push([top[i],top[j],top[k]]);}}
   const sc=combos.map(c=>{const p=c.reduce((a,x)=>a*x.p,1),d=c.reduce((a,x)=>a*x.d,1);return{c,p,d,ev:p*d-1};}).sort((a,b)=>b.ev-a.ev).slice(0,5);
-  $('slParlay').innerHTML=sc.length?sc.map(x=>'<div style="margin:6px 0"><b>'+x.c.length+'-leg</b> · pays '+(x.d>=2?'+'+Math.round((x.d-1)*100):'−'+Math.round(100/(x.d-1)))+' · fair win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+'<br>'+x.c.map(l=>esc(l.b.side)+' '+am(l.b.american)+' ('+esc(l.r.start.slice(5,10))+')').join(' + ')+'</div>').join('')+'<div class="warnc">Each leg multiplies the book margin and the error in our fair price, so parlays are riskier than the same legs bet singly. Assumes legs are independent. Flagged legs without a multi-book consensus come from our model blend, whose weight is unproven, so treat EV here as a hypothesis the Track Record has to confirm.</div>':'No parlay candidates: fewer than two flagged legs in different games. Nothing is forced when there is no edge.';
+  $('slParlay').innerHTML=sc.length?sc.map(x=>'<div style="margin:6px 0"><b>'+x.c.length+'-leg</b> · pays '+(x.d>=2?'+'+Math.round((x.d-1)*100):'−'+Math.round(100/(x.d-1)))+' · fair win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+'<br><b>$100 parlay: win '+d100((x.d-1)*100)+' / lose −$100 · EV '+d100(x.ev*100)+' per $100</b><br>'+x.c.map(l=>esc(l.b.side)+' '+am(l.b.american)+' ('+esc(l.r.start.slice(5,10))+')').join(' + ')+'</div>').join('')+'<div class="warnc">Each leg multiplies the book margin and the error in our fair price, so parlays are riskier than the same legs bet singly. Assumes legs are independent. Flagged legs without a multi-book consensus come from our model blend, whose weight is unproven, so treat EV here as a hypothesis the Track Record has to confirm.</div>':'No parlay candidates: fewer than two flagged legs in different games. Nothing is forced when there is no edge.';
 }
 function slateRender(d,label){
   slateBets=[];slateClosing=d.closing||{};
@@ -1347,7 +1351,7 @@ function slateRender(d,label){
   $('slSources').innerHTML=(d.sources||[]).map(s=>`<span class="chip" style="${s.ok?'':'opacity:.6'}">${s.ok?'✓':'✗'} ${esc(s.source)}<span class="n">${esc(s.ok?s.detail:(s.detail||'').slice(0,40))}</span></span>`).join(' ')||'—';
   $('slBody').innerHTML=g.map(r=>{
     const bets=r.bets.map(b=>{const k=slateBets.push({date:ymd(new Date()),desc:`${b.side} ML @ ${b.book}`,sport:r.sport.toUpperCase(),odds:Number(b.american),stake:b.stake,gk:r.key||null,side:b.side===r.home?'home':b.side===r.away?'away':'draw'})-1;
-      return `${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)} <button class="mini" onclick="slateLog(${k})">Log bet</button>`;}).join('<br>')||'—';
+      return `${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)}<br><span class="desc" style="margin:0">Per $100: ${c100(b.american)} · EV ${d100(ev100(b.fair,b.american))}</span> <button class="mini" onclick="slateLog(${k})">Log bet</button>`;}).join('<br>')||'—';
     const pm=r.pm.map(m=>`${esc(m.source)}: ${m.homeEdgePp!=null?'home '+signed(m.homeEdgePp,1)+'pp':''} ${m.awayEdgePp!=null?'away '+signed(m.awayEdgePp,1)+'pp':''}`).join('<br>')||'—';
     const fr=r.fair||{},pc=x=>x==null?'—':(x*100).toFixed(1)+'%';
     const fairTxt=r.threeWay?`${pc(fr.home)} / ${pc(fr.draw)} / ${pc(fr.away)}`:`${pc(fr.home)} / ${pc(fr.away)}`;
