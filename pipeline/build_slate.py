@@ -209,6 +209,8 @@ def _am(x):
 
 
 def _espn_events(sport, data):
+    if not isinstance(data, dict):
+        raise RuntimeError(f"ESPN returned no usable data for {sport} (got {type(data).__name__})")
     out = []
     for ev in data.get("events", []):
         comp = ev["competitions"][0]
@@ -281,6 +283,39 @@ def kalshi_direct():
             continue
         out.append({"source": "kalshi", "title": m.get("title", ""), "yes": float(y), "no": float(n) if n is not None else None,
                     "url": f"https://kalshi.com/markets/{(m.get('series_ticker') or '').lower()}"})
+    return out
+
+
+KALSHI_GAME_SERIES = ("KXNFLGAME", "KXNBAGAME", "KXNHLGAME", "KXMLBGAME", "KXNCAAFGAME", "KXNCAABGAME", "KXWNBAGAME", "KXEPLGAME",
+                      "KXLALIGAGAME", "KXBUNDESLIGAGAME", "KXSERIEAGAME", "KXLIGUE1GAME", "KXMLSGAME", "KXUCLGAME")
+
+
+def kalshi_games():
+    """Single-game win markets (series KX<LEAGUE>GAME; shapes verified from a real Actions probe). One item per game:
+    {source:'kalshi', title:'A vs B', teams:{name: yes ask 0..1}} so both teams are known and nothing is guessed from a one-sided title."""
+    out, errs = [], []
+    for ser in KALSHI_GAME_SERIES:
+        try:
+            data = http_json(f"https://api.elections.kalshi.com/trade-api/v2/markets?status=open&limit=500&series_ticker={ser}")
+        except Exception as e:  # noqa
+            errs.append(f"{ser}: {e!r}"[:80])
+            continue
+        ev = {}
+        for m in data.get("markets", []):
+            nm, y = m.get("yes_sub_title"), m.get("yes_ask_dollars")
+            if not nm or y is None:
+                continue
+            try:
+                ev.setdefault(m.get("event_ticker") or m.get("ticker"), {})[nm] = float(y)
+            except ValueError:
+                continue
+        for et, teams in ev.items():
+            names = [n for n in teams if n.lower() not in ("tie", "draw")]
+            if len(names) == 2:
+                out.append({"source": "kalshi", "title": " vs ".join(names), "teams": teams, "yes": None,
+                            "url": f"https://kalshi.com/markets/{ser.lower()}"})
+    if not out:
+        raise RuntimeError("no Kalshi game markets returned" + (f" ({'; '.join(errs[:3])})" if errs else ""))
     return out
 
 
@@ -357,11 +392,33 @@ def _has_word(text, word):
     return bool(word) and re.search(r"(?<![a-z])" + re.escape(word) + r"(?![a-z])", text) is not None
 
 
+def kalshi_name_matches(kname, full):
+    """Kalshi uses short names ('Philadelphia', 'Los Angeles C', 'Crystal Palace'). Match a city/club prefix; a trailing initial must match the nickname."""
+    k, f = kname.lower().strip(), full.lower().strip()
+    if k == f or f.startswith(k + " "):
+        mt = re.match(r"^(.+) (\w)$", k)
+        if not (mt and len(k.split()[-1]) == 1):
+            return True
+    mt = re.match(r"^(.+) (\w)$", k)
+    if mt and len(k.split()[-1]) == 1 and f.startswith(mt.group(1) + " "):
+        return f[len(mt.group(1)) + 1:][:1] == mt.group(2)
+    return False
+
+
+def _kalshi_pick(m, team):
+    hits = [v for n, v in m["teams"].items() if n.lower() not in ("tie", "draw") and kalshi_name_matches(n, team)]
+    return hits[0] if len(hits) == 1 else None
+
+
 def match_pm(game, pms):
     """Prediction-market titles that look like a plain who-wins question about exactly these two teams."""
     h, a = last_word(game["home"]), last_word(game["away"])
     hits = []
     for m in pms:
+        if m.get("teams"):
+            if _kalshi_pick(m, game["home"]) is not None and _kalshi_pick(m, game["away"]) is not None:
+                hits.append(m)
+            continue
         t = m["title"].lower()
         if BAD_TITLE.search(t):
             continue  # spreads, totals, props, multi-leg or futures: not a moneyline price
@@ -372,6 +429,8 @@ def match_pm(game, pms):
 
 def pm_prob_for(m, team):
     """Return the market's price (0..1) of `team` winning, if determinable."""
+    if m.get("teams"):
+        return _kalshi_pick(m, team)
     t, w = m["title"].lower(), last_word(team)
     if BAD_TITLE.search(t):
         return None
@@ -666,7 +725,7 @@ def main():
             log("collectors", True, ", ".join(f"{r['id']}:{r['status']}" for r in net_rows) or "none enabled")
         except Exception as e:  # noqa
             log("collectors", False, repr(e))
-    pms = try_sources("kalshi", [("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
+    pms = try_sources("kalshi", [("games", kalshi_games), ("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
     pms += try_sources("polymarket", [("direct", polymarket_direct), ("sports-skills", polymarket_via_skills)])
     capture_only = os.environ.get("CAPTURE_ONLY") == "1"
     models, backtests, injuries = {}, {}, {}
