@@ -6,9 +6,10 @@ import json
 
 KALSHI_TRADES = "https://api.elections.kalshi.com/trade-api/v2/markets/trades"
 POLY_TRADES = "https://data-api.polymarket.com/trades"
-MAX_MARKETS = int(__import__("os").environ.get("WHALE_MAX_MARKETS", 40))
-KALSHI_MIN_NOTIONAL = 1500.0   # dollars risked on one trade
-POLY_MIN_NOTIONAL = 2000.0
+import os
+MAX_MARKETS = int(os.environ.get("WHALE_MAX_MARKETS", 40))
+KALSHI_MIN_NOTIONAL = float(os.environ.get("WHALE_KALSHI_MIN", 1500.0))   # dollars risked on one trade
+POLY_MIN_NOTIONAL = float(os.environ.get("WHALE_POLY_MIN", 2000.0))
 
 
 def kalshi_whale_trades(ticker, getter, limit=100, min_notional=KALSHI_MIN_NOTIONAL):
