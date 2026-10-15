@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-15T07:32:31+00:00",
+ "generatedAt": "2026-10-15T07:35:01+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -140,13 +140,8 @@
   },
   {
    "source": "odds[mls]:espn",
-   "ok": false,
-   "detail": "AttributeError(\"'NoneType' object has no attribute 'get'\")"
-  },
-  {
-   "source": "odds[mls]:sports-skills",
-   "ok": false,
-   "detail": "AttributeError(\"module 'sports_skills' has no attribute 'mls'\")"
+   "ok": true,
+   "detail": "15 items"
   },
   {
    "source": "odds[ucl]:oddsapi",
@@ -155,13 +150,8 @@
   },
   {
    "source": "odds[ucl]:espn",
-   "ok": false,
-   "detail": "AttributeError(\"'NoneType' object has no attribute 'get'\")"
-  },
-  {
-   "source": "odds[ucl]:sports-skills",
-   "ok": false,
-   "detail": "AttributeError(\"module 'sports_skills' has no attribute 'ucl'\")"
+   "ok": true,
+   "detail": "17 items"
   },
   {
    "source": "odds[mma]:oddsapi",
@@ -266,12 +256,12 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "147 snapshots added, 46 closing lines available"
+   "detail": "33 snapshots added, 46 closing lines available"
   },
   {
    "source": "grading",
    "ok": true,
-   "detail": "20 picks added, 0 settled, 0 CLV, 30 total"
+   "detail": "1 picks added, 0 settled, 0 CLV, 31 total"
   },
   {
    "source": "alerts",
@@ -457,6 +447,14 @@
     "edgeBets": 0,
     "withPitchers": 2
    },
+   "mls": {
+    "games": 15,
+    "withOdds": 15,
+    "avgBooks": 1.0,
+    "withModel": 15,
+    "withPmMatch": 5,
+    "edgeBets": 1
+   },
    "nba": {
     "games": 16,
     "withOdds": 16,
@@ -497,6 +495,14 @@
     "withPmMatch": 6,
     "edgeBets": 2
    },
+   "ucl": {
+    "games": 17,
+    "withOdds": 17,
+    "avgBooks": 1.0,
+    "withModel": 0,
+    "withPmMatch": 10,
+    "edgeBets": 0
+   },
    "wnba": {
     "games": 1,
     "withOdds": 1,
@@ -512,11 +518,13 @@
    "laliga: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "ligue1: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "mlb: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "mls: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "nba: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "ncaaf: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "nfl: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "nhl: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "seriea: only one book per game, so edge bets, arbitrage and middles cannot appear",
+   "ucl: only one book per game, so edge bets, arbitrage and middles cannot appear",
    "wnba: only one book per game, so edge bets, arbitrage and middles cannot appear"
   ]
  },
@@ -601,12 +609,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 130.0,
      "decimal": 2.3
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -155.0,
      "decimal": 1.645
     }
@@ -616,7 +624,7 @@
    "bets": [
     {
      "side": "New Orleans Pelicans",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 130.0,
      "fair": 0.5055,
      "evPct": 16.27,
@@ -974,12 +982,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -155.0,
      "decimal": 1.645
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 130.0,
      "decimal": 2.3
     }
@@ -989,7 +997,7 @@
    "bets": [
     {
      "side": "LA Clippers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -155.0,
      "fair": 0.6497,
      "evPct": 6.89,
@@ -1159,12 +1167,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -108.0,
      "decimal": 1.926
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -112.0,
      "decimal": 1.893
     }
@@ -1174,7 +1182,7 @@
    "bets": [
     {
      "side": "New York Giants",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -108.0,
      "fair": 0.5515,
      "evPct": 6.22,
@@ -1209,6 +1217,62 @@
    "middles": []
   },
   {
+   "key": "mls|stlouiscity|minnesotaunited|2026-10-17T20:30",
+   "sport": "mls",
+   "home": "Minnesota United FC",
+   "away": "St. Louis CITY SC",
+   "start": "2026-10-17T20:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3795,
+    "away": 0.3795,
+    "draw": 0.241
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 145.0,
+     "decimal": 2.45
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 145.0,
+     "decimal": 2.45
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.083,
+   "bets": [
+    {
+     "side": "St. Louis CITY SC",
+     "book": "DraftKings",
+     "american": 145.0,
+     "fair": 0.4278,
+     "evPct": 4.8,
+     "stakePct": 1.16,
+     "stake": 1.16,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.1974,
+    "draw": 0.2301,
+    "away": 0.5725,
+    "blendHome": 0.334,
+    "gapPp": -18.2,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
    "key": "nfl|houstontexans|jacksonvillejaguars|2026-10-18T13:30",
    "sport": "nfl",
    "home": "Jacksonville Jaguars",
@@ -1222,12 +1286,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -1237,7 +1301,7 @@
    "bets": [
     {
      "side": "Jacksonville Jaguars",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "fair": 0.6131,
      "evPct": 4.49,
@@ -1351,12 +1415,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -162.0,
      "decimal": 1.617
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 136.0,
      "decimal": 2.36
     }
@@ -1366,7 +1430,7 @@
    "bets": [
     {
      "side": "Portland Trail Blazers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -162.0,
      "fair": 0.6414,
      "evPct": 3.73,
@@ -1414,12 +1478,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -130.0,
      "decimal": 1.769
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 110.0,
      "decimal": 2.1
     }
@@ -1429,7 +1493,7 @@
    "bets": [
     {
      "side": "Orlando Magic",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -130.0,
      "fair": 0.585,
      "evPct": 3.5,
@@ -1477,12 +1541,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 136.0,
      "decimal": 2.36
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -162.0,
      "decimal": 1.617
     }
@@ -1492,7 +1556,7 @@
    "bets": [
     {
      "side": "Houston Rockets",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 136.0,
      "fair": 0.4374,
      "evPct": 3.22,
@@ -1540,12 +1604,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 114.0,
      "decimal": 2.14
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -135.0,
      "decimal": 1.741
     }
@@ -1555,7 +1619,7 @@
    "bets": [
     {
      "side": "Memphis Grizzlies",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 114.0,
      "fair": 0.4808,
      "evPct": 2.88,
@@ -1603,12 +1667,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 114.0,
      "decimal": 2.14
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -135.0,
      "decimal": 1.741
     }
@@ -1618,7 +1682,7 @@
    "bets": [
     {
      "side": "Chicago Blackhawks",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 114.0,
      "fair": 0.4806,
      "evPct": 2.85,
@@ -1966,12 +2030,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     }
@@ -1981,7 +2045,7 @@
    "bets": [
     {
      "side": "Denver Broncos",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "fair": 0.4607,
      "evPct": 1.34,
@@ -2029,12 +2093,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -130.0,
      "decimal": 1.769
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 110.0,
      "decimal": 2.1
     }
@@ -2044,7 +2108,7 @@
    "bets": [
     {
      "side": "San Antonio Spurs",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -130.0,
      "fair": 0.5722,
      "evPct": 1.24,
@@ -2204,12 +2268,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -425.0,
      "decimal": 1.235
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 330.0,
      "decimal": 4.3
     }
@@ -2219,7 +2283,7 @@
    "bets": [
     {
      "side": "San Francisco 49ers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -425.0,
      "fair": 0.8185,
      "evPct": 1.11,
@@ -2267,12 +2331,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -105.0,
      "decimal": 1.952
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -115.0,
      "decimal": 1.87
     }
@@ -2319,12 +2383,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -2371,12 +2435,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -2423,12 +2487,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -2475,12 +2539,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -105.0,
      "decimal": 1.952
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -115.0,
      "decimal": 1.87
     }
@@ -2527,12 +2591,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     }
@@ -2579,12 +2643,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -900.0,
      "decimal": 1.111
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "decimal": 7.0
     }
@@ -2631,12 +2695,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -485.0,
      "decimal": 1.206
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 370.0,
      "decimal": 4.7
     }
@@ -2683,12 +2747,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -2735,12 +2799,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -122.0,
      "decimal": 1.82
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 102.0,
      "decimal": 2.02
     }
@@ -2787,12 +2851,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -218.0,
      "decimal": 1.459
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 180.0,
      "decimal": 2.8
     }
@@ -2839,12 +2903,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -115.0,
      "decimal": 1.87
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -105.0,
      "decimal": 1.952
     }
@@ -2890,12 +2954,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -2942,12 +3006,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -2994,12 +3058,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -125.0,
      "decimal": 1.8
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 105.0,
      "decimal": 2.05
     }
@@ -3046,12 +3110,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 110.0,
      "decimal": 2.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -130.0,
      "decimal": 1.769
     }
@@ -3098,12 +3162,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -345.0,
      "decimal": 1.29
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 275.0,
      "decimal": 3.75
     }
@@ -3150,12 +3214,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     }
@@ -3202,12 +3266,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -185.0,
      "decimal": 1.541
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 154.0,
      "decimal": 2.54
     }
@@ -3370,12 +3434,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -118.0,
      "decimal": 1.847
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -102.0,
      "decimal": 1.98
     }
@@ -3422,12 +3486,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -166.0,
      "decimal": 1.602
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 140.0,
      "decimal": 2.4
     }
@@ -3474,12 +3538,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     }
@@ -3526,12 +3590,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -298.0,
      "decimal": 1.336
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 240.0,
      "decimal": 3.4
     }
@@ -3551,9 +3615,9 @@
     }
    ],
    "model": {
-    "home": 0.7135,
-    "away": 0.2865,
-    "blendHome": 0.7239,
+    "home": 0.7134,
+    "away": 0.2866,
+    "blendHome": 0.7238,
     "gapPp": -1.4,
     "weight": 0.25,
     "injuries": [
@@ -3578,12 +3642,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -3630,12 +3694,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -3677,23 +3741,23 @@
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.5752,
-    "away": 0.4248
+    "home": 0.5661,
+    "away": 0.4339
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
-     "american": -148.0,
-     "decimal": 1.676
+     "book": "DraftKings",
+     "american": -142.0,
+     "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
-     "american": 124.0,
-     "decimal": 2.24
+     "book": "DraftKings",
+     "american": 120.0,
+     "decimal": 2.2
     }
    },
    "arb": false,
-   "impliedSum": 1.0432,
+   "impliedSum": 1.0413,
    "bets": [],
    "pm": [
     {
@@ -3701,24 +3765,24 @@
      "title": "San Jose vs Nashville",
      "url": "https://kalshi.com/markets/kxnhlgame",
      "home": 0.57,
-     "homeEdgePp": 0.5,
+     "homeEdgePp": -0.4,
      "away": 0.44,
-     "awayEdgePp": -1.5
+     "awayEdgePp": -0.6
     },
     {
      "source": "kalshi",
      "title": "San Jose vs Nashville",
      "url": "https://kalshi.com/markets/kxmlsgame",
      "home": 0.49,
-     "homeEdgePp": 8.5,
+     "homeEdgePp": 7.6,
      "suspect": true
     }
    ],
    "model": {
     "home": 0.633,
     "away": 0.367,
-    "blendHome": 0.5896,
-    "gapPp": 5.8,
+    "blendHome": 0.5828,
+    "gapPp": 6.7,
     "weight": 0.25,
     "injuries": [
      "Nashville Predators: -1 Elo",
@@ -3728,15 +3792,15 @@
    "crossArbs": [
     {
      "bookSide": "away",
-     "book": "Draft Kings",
-     "american": 124.0,
+     "book": "DraftKings",
+     "american": 120.0,
      "pmSide": "home",
      "pmSource": "kalshi",
      "pmTitle": "San Jose vs Nashville",
      "pmPrice": 0.49,
      "url": "https://kalshi.com/markets/kxmlsgame",
-     "allInCost": 0.9639,
-     "roiPct": 3.74,
+     "allInCost": 0.972,
+     "roiPct": 2.88,
      "suspect": false,
      "note": "Estimate: includes approximate fees and 1c slippage. Confirm both prices before acting."
     }
@@ -3757,12 +3821,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -148.0,
      "decimal": 1.676
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 124.0,
      "decimal": 2.24
     }
@@ -3809,12 +3873,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -125.0,
      "decimal": 1.8
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 105.0,
      "decimal": 2.05
     }
@@ -3843,10 +3907,10 @@
     }
    ],
    "model": {
-    "home": 0.4639,
-    "away": 0.5361,
-    "blendHome": 0.5164,
-    "gapPp": -7.0,
+    "home": 0.4648,
+    "away": 0.5352,
+    "blendHome": 0.5166,
+    "gapPp": -6.9,
     "weight": 0.25,
     "injuries": [
      "Edmonton Oilers: -72 Elo (Frederik Andersen (G) injured reserve)",
@@ -3870,12 +3934,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -305.0,
      "decimal": 1.328
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 245.0,
      "decimal": 3.45
     }
@@ -3895,9 +3959,9 @@
     }
    ],
    "model": {
-    "home": 0.6918,
-    "away": 0.3082,
-    "blendHome": 0.7217,
+    "home": 0.6917,
+    "away": 0.3083,
+    "blendHome": 0.7216,
     "gapPp": -4.0,
     "weight": 0.25,
     "injuries": [
@@ -3922,12 +3986,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 170.0,
      "decimal": 2.7
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -205.0,
      "decimal": 1.488
     }
@@ -3963,12 +4027,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 150.0,
      "decimal": 2.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -180.0,
      "decimal": 1.556
     }
@@ -4004,12 +4068,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -600.0,
      "decimal": 1.167
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 440.0,
      "decimal": 5.4
     }
@@ -4035,12 +4099,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 215.0,
      "decimal": 3.15
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -265.0,
      "decimal": 1.377
     }
@@ -4076,12 +4140,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -170.0,
      "decimal": 1.588
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 142.0,
      "decimal": 2.42
     }
@@ -4117,12 +4181,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -102.0,
      "decimal": 1.98
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -118.0,
      "decimal": 1.847
     }
@@ -4148,12 +4212,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 150.0,
      "decimal": 2.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -180.0,
      "decimal": 1.556
     }
@@ -4179,12 +4243,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -440.0,
      "decimal": 1.227
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 340.0,
      "decimal": 4.4
     }
@@ -4220,12 +4284,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -600.0,
      "decimal": 1.167
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 440.0,
      "decimal": 5.4
     }
@@ -4251,12 +4315,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -4292,12 +4356,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -4323,12 +4387,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -122.0,
      "decimal": 1.82
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 102.0,
      "decimal": 2.02
     }
@@ -4364,12 +4428,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -4404,12 +4468,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 195.0,
      "decimal": 2.95
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -238.0,
      "decimal": 1.42
     }
@@ -4445,12 +4509,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -4486,12 +4550,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     }
@@ -4517,12 +4581,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -455.0,
      "decimal": 1.22
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 350.0,
      "decimal": 4.5
     }
@@ -4548,12 +4612,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -4589,12 +4653,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1800.0,
      "decimal": 1.056
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 1000.0,
      "decimal": 11.0
     }
@@ -4630,12 +4694,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -250.0,
      "decimal": 1.4
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 205.0,
      "decimal": 3.05
     }
@@ -4661,12 +4725,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -4702,12 +4766,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1450.0,
      "decimal": 1.069
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 850.0,
      "decimal": 9.5
     }
@@ -4743,12 +4807,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -4784,12 +4848,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -225.0,
      "decimal": 1.444
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 185.0,
      "decimal": 2.85
     }
@@ -4825,12 +4889,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -700.0,
      "decimal": 1.143
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 500.0,
      "decimal": 6.0
     }
@@ -4856,12 +4920,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -375.0,
      "decimal": 1.267
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 295.0,
      "decimal": 3.95
     }
@@ -4897,12 +4961,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -162.0,
      "decimal": 1.617
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 136.0,
      "decimal": 2.36
     }
@@ -4938,12 +5002,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -245.0,
      "decimal": 1.408
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 200.0,
      "decimal": 3.0
     }
@@ -4969,12 +5033,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -305.0,
      "decimal": 1.328
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 245.0,
      "decimal": 3.45
     }
@@ -5010,12 +5074,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -108.0,
      "decimal": 1.926
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -112.0,
      "decimal": 1.893
     }
@@ -5051,12 +5115,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 200.0,
      "decimal": 3.0
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -245.0,
      "decimal": 1.408
     }
@@ -5092,12 +5156,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -360.0,
      "decimal": 1.278
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 285.0,
      "decimal": 3.85
     }
@@ -5133,12 +5197,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 160.0,
      "decimal": 2.6
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -192.0,
      "decimal": 1.521
     }
@@ -5174,12 +5238,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -180.0,
      "decimal": 1.556
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 150.0,
      "decimal": 2.5
     }
@@ -5215,12 +5279,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1050.0,
      "decimal": 1.095
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 675.0,
      "decimal": 7.75
     }
@@ -5246,12 +5310,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1800.0,
      "decimal": 1.056
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 1000.0,
      "decimal": 11.0
     }
@@ -5277,12 +5341,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -225.0,
      "decimal": 1.444
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 185.0,
      "decimal": 2.85
     }
@@ -5318,12 +5382,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -218.0,
      "decimal": 1.459
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 180.0,
      "decimal": 2.8
     }
@@ -5359,12 +5423,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1450.0,
      "decimal": 1.069
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 850.0,
      "decimal": 9.5
     }
@@ -5390,12 +5454,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -700.0,
      "decimal": 1.143
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 500.0,
      "decimal": 6.0
     }
@@ -5421,12 +5485,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 215.0,
      "decimal": 3.15
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -265.0,
      "decimal": 1.377
     }
@@ -5452,12 +5516,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 310.0,
      "decimal": 4.1
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -395.0,
      "decimal": 1.253
     }
@@ -5493,12 +5557,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -5534,12 +5598,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -238.0,
      "decimal": 1.42
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 195.0,
      "decimal": 2.95
     }
@@ -5575,12 +5639,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -192.0,
      "decimal": 1.521
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 160.0,
      "decimal": 2.6
     }
@@ -5606,12 +5670,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 470.0,
      "decimal": 5.7
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -650.0,
      "decimal": 1.154
     }
@@ -5647,12 +5711,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     }
@@ -5678,12 +5742,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 525.0,
      "decimal": 6.25
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -750.0,
      "decimal": 1.133
     }
@@ -5709,12 +5773,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 235.0,
      "decimal": 3.35
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -290.0,
      "decimal": 1.345
     }
@@ -5740,12 +5804,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 490.0,
      "decimal": 5.9
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -675.0,
      "decimal": 1.148
     }
@@ -5771,12 +5835,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 525.0,
      "decimal": 6.25
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -750.0,
      "decimal": 1.133
     }
@@ -5802,12 +5866,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 275.0,
      "decimal": 3.75
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -345.0,
      "decimal": 1.29
     }
@@ -5833,12 +5897,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -5864,12 +5928,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 490.0,
      "decimal": 5.9
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -675.0,
      "decimal": 1.148
     }
@@ -5895,12 +5959,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -270.0,
      "decimal": 1.37
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 220.0,
      "decimal": 3.2
     }
@@ -7561,18 +7625,1423 @@
    },
    "crossArbs": [],
    "middles": []
+  },
+  {
+   "key": "mls|charlotte|philadelphiaunion|2026-10-17T18:30",
+   "sport": "mls",
+   "home": "Philadelphia Union",
+   "away": "Charlotte FC",
+   "start": "2026-10-17T18:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.6096,
+    "away": 0.1881,
+    "draw": 0.2023
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -180.0,
+     "decimal": 1.556
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 370.0,
+     "decimal": 4.7
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 340.0,
+     "decimal": 4.4
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0829,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Philadelphia vs Charlotte",
+     "url": "https://kalshi.com/markets/kxmlsgame",
+     "home": 0.62,
+     "homeEdgePp": -1.0,
+     "away": 0.2,
+     "awayEdgePp": -1.2
+    }
+   ],
+   "model": {
+    "home": 0.5722,
+    "draw": 0.2302,
+    "away": 0.1976,
+    "blendHome": 0.6003,
+    "gapPp": -3.7,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|intermiami|atlantaunited|2026-10-17T23:30",
+   "sport": "mls",
+   "home": "Atlanta United FC",
+   "away": "Inter Miami CF",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.2918,
+    "away": 0.4942,
+    "draw": 0.214
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 215.0,
+     "decimal": 3.15
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -110.0,
+     "decimal": 1.909
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 320.0,
+     "decimal": 4.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0794,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.2043,
+    "draw": 0.2321,
+    "away": 0.5636,
+    "blendHome": 0.2699,
+    "gapPp": -8.7,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|chicagofire|newenglandrevolution|2026-10-17T23:30",
+   "sport": "mls",
+   "home": "New England Revolution",
+   "away": "Chicago Fire FC",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4045,
+    "away": 0.3483,
+    "draw": 0.2471
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 130.0,
+     "decimal": 2.3
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 165.0,
+     "decimal": 2.65
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 265.0,
+     "decimal": 3.65
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0861,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "New England vs Chicago Fire",
+     "url": "https://kalshi.com/markets/kxmlsgame",
+     "home": 0.41,
+     "homeEdgePp": -0.5,
+     "away": 0.36,
+     "awayEdgePp": -1.2
+    }
+   ],
+   "model": {
+    "home": 0.4177,
+    "draw": 0.2514,
+    "away": 0.3309,
+    "blendHome": 0.4078,
+    "gapPp": 1.3,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|lafc|newyorkcity|2026-10-17T23:30",
+   "sport": "mls",
+   "home": "New York City FC",
+   "away": "LAFC",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3445,
+    "away": 0.3816,
+    "draw": 0.274
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 170.0,
+     "decimal": 2.7
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 145.0,
+     "decimal": 2.45
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 235.0,
+     "decimal": 3.35
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.077,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.3693,
+    "draw": 0.2525,
+    "away": 0.3782,
+    "blendHome": 0.3507,
+    "gapPp": 2.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|dcunited|orlandocity|2026-10-17T23:30",
+   "sport": "mls",
+   "home": "Orlando City SC",
+   "away": "D.C. United",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.5148,
+    "away": 0.2601,
+    "draw": 0.2251
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -120.0,
+     "decimal": 1.833
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 300.0,
+     "decimal": 4.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0812,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.5475,
+    "draw": 0.2354,
+    "away": 0.2171,
+    "blendHome": 0.523,
+    "gapPp": 3.3,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|toronto|redbullnewyork|2026-10-17T23:30",
+   "sport": "mls",
+   "home": "Red Bull New York",
+   "away": "Toronto FC",
+   "start": "2026-10-17T23:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4704,
+    "away": 0.2914,
+    "draw": 0.2382
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 100.0,
+     "decimal": 2.0
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 215.0,
+     "decimal": 3.15
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 280.0,
+     "decimal": 3.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0806,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.4069,
+    "draw": 0.2519,
+    "away": 0.3413,
+    "blendHome": 0.4545,
+    "gapPp": -6.4,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|vancouverwhitecaps|austin|2026-10-18T00:30",
+   "sport": "mls",
+   "home": "Austin FC",
+   "away": "Vancouver Whitecaps",
+   "start": "2026-10-18T00:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.192,
+    "away": 0.5958,
+    "draw": 0.2122
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 360.0,
+     "decimal": 4.6
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -170.0,
+     "decimal": 1.588
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 320.0,
+     "decimal": 4.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0851,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Vancouver vs Austin",
+     "url": "https://kalshi.com/markets/kxmlsgame",
+     "home": 0.2,
+     "homeEdgePp": -0.8,
+     "away": 0.61,
+     "awayEdgePp": -1.4
+    }
+   ],
+   "model": {
+    "home": 0.2553,
+    "draw": 0.2432,
+    "away": 0.5015,
+    "blendHome": 0.2078,
+    "gapPp": 6.3,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|dallas|houstondynamo|2026-10-18T00:30",
+   "sport": "mls",
+   "home": "Houston Dynamo FC",
+   "away": "FC Dallas",
+   "start": "2026-10-18T00:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4691,
+    "away": 0.2717,
+    "draw": 0.2592
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 100.0,
+     "decimal": 2.0
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 235.0,
+     "decimal": 3.35
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0842,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.364,
+    "draw": 0.2525,
+    "away": 0.3835,
+    "blendHome": 0.4428,
+    "gapPp": -10.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|realsaltlake|sportingkansascity|2026-10-18T00:30",
+   "sport": "mls",
+   "home": "Sporting Kansas City",
+   "away": "Real Salt Lake",
+   "start": "2026-10-18T00:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3287,
+    "away": 0.4345,
+    "draw": 0.2368
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 180.0,
+     "decimal": 2.8
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 115.0,
+     "decimal": 2.15
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 280.0,
+     "decimal": 3.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0854,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.3903,
+    "draw": 0.2523,
+    "away": 0.3574,
+    "blendHome": 0.3441,
+    "gapPp": 6.2,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|sandiego|lagalaxy|2026-10-18T02:30",
+   "sport": "mls",
+   "home": "LA Galaxy",
+   "away": "San Diego FC",
+   "start": "2026-10-18T02:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4575,
+    "away": 0.3117,
+    "draw": 0.2308
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 105.0,
+     "decimal": 2.05
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 195.0,
+     "decimal": 2.95
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 290.0,
+     "decimal": 3.9
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0832,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.5326,
+    "draw": 0.2382,
+    "away": 0.2292,
+    "blendHome": 0.4763,
+    "gapPp": 7.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|coloradorapids|portlandtimbers|2026-10-18T02:30",
+   "sport": "mls",
+   "home": "Portland Timbers",
+   "away": "Colorado Rapids",
+   "start": "2026-10-18T02:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4578,
+    "away": 0.301,
+    "draw": 0.2411
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 105.0,
+     "decimal": 2.05
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 205.0,
+     "decimal": 3.05
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0823,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Portland vs Colorado",
+     "url": "https://kalshi.com/markets/kxmlsgame",
+     "home": 0.46,
+     "homeEdgePp": -0.2,
+     "away": 0.31,
+     "awayEdgePp": -0.9
+    }
+   ],
+   "model": {
+    "home": 0.4364,
+    "draw": 0.2502,
+    "away": 0.3134,
+    "blendHome": 0.4525,
+    "gapPp": -2.1,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|nashville|sanjoseearthquakes|2026-10-18T02:30",
+   "sport": "mls",
+   "home": "San Jose Earthquakes",
+   "away": "Nashville SC",
+   "start": "2026-10-18T02:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.2815,
+    "away": 0.47,
+    "draw": 0.2485
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 225.0,
+     "decimal": 3.25
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 100.0,
+     "decimal": 2.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 265.0,
+     "decimal": 3.65
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0817,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "San Jose vs Nashville",
+     "url": "https://kalshi.com/markets/kxmlsgame",
+     "home": 0.29,
+     "homeEdgePp": -0.9,
+     "away": 0.49,
+     "awayEdgePp": -2.0
+    }
+   ],
+   "model": {
+    "home": 0.2563,
+    "draw": 0.2433,
+    "away": 0.5003,
+    "blendHome": 0.2752,
+    "gapPp": -2.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|montreal|seattlesounders|2026-10-18T02:30",
+   "sport": "mls",
+   "home": "Seattle Sounders FC",
+   "away": "CF Montr\u00e9al",
+   "start": "2026-10-18T02:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.6441,
+    "away": 0.1582,
+    "draw": 0.1977
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -210.0,
+     "decimal": 1.476
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 450.0,
+     "decimal": 5.5
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 350.0,
+     "decimal": 4.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0815,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.6653,
+    "draw": 0.2042,
+    "away": 0.1305,
+    "blendHome": 0.6494,
+    "gapPp": 2.1,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "mls|columbuscrew|cincinnati|2026-10-18T21:00",
+   "sport": "mls",
+   "home": "FC Cincinnati",
+   "away": "Columbus Crew",
+   "start": "2026-10-18T21:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4551,
+    "away": 0.3095,
+    "draw": 0.2354
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 105.0,
+     "decimal": 2.05
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 195.0,
+     "decimal": 2.95
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 280.0,
+     "decimal": 3.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0899,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.511,
+    "draw": 0.2418,
+    "away": 0.2472,
+    "blendHome": 0.4691,
+    "gapPp": 5.6,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|slaviaprague|fenerbahce|2026-10-20T16:45",
+   "sport": "ucl",
+   "home": "Fenerbahce",
+   "away": "Slavia Prague",
+   "start": "2026-10-20T16:45Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.5941,
+    "away": 0.1842,
+    "draw": 0.2217
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -160.0,
+     "decimal": 1.625
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 400.0,
+     "decimal": 5.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 320.0,
+     "decimal": 4.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0535,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Slavia Prague vs Fenerbahce",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.61,
+     "homeEdgePp": -1.6,
+     "away": 0.2,
+     "awayEdgePp": -1.6
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|borussiadortmund|sabahfk|2026-10-20T16:45",
+   "sport": "ucl",
+   "home": "Sabah FK",
+   "away": "Borussia Dortmund",
+   "start": "2026-10-20T16:45Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.1179,
+    "away": 0.7166,
+    "draw": 0.1656
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 650.0,
+     "decimal": 7.5
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -285.0,
+     "decimal": 1.351
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 450.0,
+     "decimal": 5.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0554,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|slovanbratislava|asroma|2026-10-20T19:00",
+   "sport": "ucl",
+   "home": "AS Roma",
+   "away": "Slovan Bratislava",
+   "start": "2026-10-20T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.8643,
+    "away": 0.0453,
+    "draw": 0.0904
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -800.0,
+     "decimal": 1.125
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 1600.0,
+     "decimal": 17.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 850.0,
+     "decimal": 9.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.053,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|psveindhoven|porto|2026-10-20T19:00",
+   "sport": "ucl",
+   "home": "FC Porto",
+   "away": "PSV Eindhoven",
+   "start": "2026-10-20T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.5579,
+    "away": 0.2239,
+    "draw": 0.2182
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -140.0,
+     "decimal": 1.714
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 310.0,
+     "decimal": 4.1
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 320.0,
+     "decimal": 4.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0653,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|villarreal|liverpool|2026-10-20T19:00",
+   "sport": "ucl",
+   "home": "Liverpool",
+   "away": "Villarreal",
+   "start": "2026-10-20T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.633,
+    "away": 0.166,
+    "draw": 0.201
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -190.0,
+     "decimal": 1.526
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 450.0,
+     "decimal": 5.5
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 360.0,
+     "decimal": 4.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0544,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Villarreal vs Liverpool",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.67,
+     "homeEdgePp": -3.7,
+     "away": 0.16,
+     "awayEdgePp": 0.6
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|aekathens|manchestercity|2026-10-20T19:00",
+   "sport": "ucl",
+   "home": "Manchester City",
+   "away": "AEK Athens",
+   "start": "2026-10-20T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.9193,
+    "away": 0.0205,
+    "draw": 0.0602
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -1800.0,
+     "decimal": 1.056
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 2800.0,
+     "decimal": 29.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 1200.0,
+     "decimal": 13.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0588,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Manchester City vs AEK Athens",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.93,
+     "homeEdgePp": -1.1,
+     "away": 0.04,
+     "awayEdgePp": -1.9
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|bodoglimt|napoli|2026-10-20T19:00",
+   "sport": "ucl",
+   "home": "Napoli",
+   "away": "Bodo/Glimt",
+   "start": "2026-10-20T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.6128,
+    "away": 0.1827,
+    "draw": 0.2045
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -175.0,
+     "decimal": 1.571
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 400.0,
+     "decimal": 5.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 350.0,
+     "decimal": 4.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0586,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|barcelona|parisstgermain|2026-10-20T19:00",
+   "sport": "ucl",
+   "home": "Paris Saint-Germain",
+   "away": "Barcelona",
+   "start": "2026-10-20T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4041,
+    "away": 0.387,
+    "draw": 0.2089
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 135.0,
+     "decimal": 2.35
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 145.0,
+     "decimal": 2.45
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 340.0,
+     "decimal": 4.4
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.061,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|atleticodemadrid|vfbstuttgart|2026-10-20T19:00",
+   "sport": "ucl",
+   "home": "VfB Stuttgart",
+   "away": "Atl\u00e9tico Madrid",
+   "start": "2026-10-20T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3251,
+    "away": 0.4233,
+    "draw": 0.2516
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 190.0,
+     "decimal": 2.9
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 125.0,
+     "decimal": 2.25
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 270.0,
+     "decimal": 3.7
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0595,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|manchesterunited|como|2026-10-21T16:45",
+   "sport": "ucl",
+   "home": "Como",
+   "away": "Manchester United",
+   "start": "2026-10-21T16:45Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4245,
+    "away": 0.3263,
+    "draw": 0.2492
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 125.0,
+     "decimal": 2.25
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 190.0,
+     "decimal": 2.9
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0559,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Manchester United vs Como",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.43,
+     "homeEdgePp": -0.5,
+     "suspect": true
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|galatasaray|lille|2026-10-21T16:45",
+   "sport": "ucl",
+   "home": "Lille",
+   "away": "Galatasaray",
+   "start": "2026-10-21T16:45Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4415,
+    "away": 0.3013,
+    "draw": 0.2572
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 115.0,
+     "decimal": 2.15
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 210.0,
+     "decimal": 3.1
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 260.0,
+     "decimal": 3.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0655,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Lille vs Galatasaray",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.45,
+     "homeEdgePp": -0.8,
+     "suspect": true
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|vikingfk|astonvilla|2026-10-21T19:00",
+   "sport": "ucl",
+   "home": "Aston Villa",
+   "away": "Viking FK",
+   "start": "2026-10-21T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.7629,
+    "away": 0.0663,
+    "draw": 0.1708
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -380.0,
+     "decimal": 1.263
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 1100.0,
+     "decimal": 12.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 425.0,
+     "decimal": 5.25
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0655,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Viking vs Aston Villa",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.79,
+     "homeEdgePp": -2.7,
+     "away": 0.08,
+     "awayEdgePp": -1.4
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|arsenal|bayernmunich|2026-10-21T19:00",
+   "sport": "ucl",
+   "home": "Bayern Munich",
+   "away": "Arsenal",
+   "start": "2026-10-21T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4436,
+    "away": 0.3083,
+    "draw": 0.2481
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 115.0,
+     "decimal": 2.15
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 205.0,
+     "decimal": 3.05
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0597,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Bayern Munich vs Arsenal",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.45,
+     "homeEdgePp": -0.6,
+     "away": 0.32,
+     "awayEdgePp": -1.2
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|lens|clubbrugge|2026-10-21T19:00",
+   "sport": "ucl",
+   "home": "Club Brugge",
+   "away": "Lens",
+   "start": "2026-10-21T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4638,
+    "away": 0.2865,
+    "draw": 0.2497
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 105.0,
+     "decimal": 2.05
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 225.0,
+     "decimal": 3.25
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 270.0,
+     "decimal": 3.7
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0658,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Lens vs Club Brugge",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.58,
+     "homeEdgePp": -11.6,
+     "away": 0.32,
+     "awayEdgePp": -3.3
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|feyenoordrotterdam|realbetis|2026-10-21T19:00",
+   "sport": "ucl",
+   "home": "Real Betis",
+   "away": "Feyenoord Rotterdam",
+   "start": "2026-10-21T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.6364,
+    "away": 0.1643,
+    "draw": 0.1993
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -195.0,
+     "decimal": 1.513
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 450.0,
+     "decimal": 5.5
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 360.0,
+     "decimal": 4.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0602,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Real Betis vs Feyenoord",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.65,
+     "homeEdgePp": -1.4,
+     "suspect": true
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|rbleipzig|realmadrid|2026-10-21T19:00",
+   "sport": "ucl",
+   "home": "Real Madrid",
+   "away": "RB Leipzig",
+   "start": "2026-10-21T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.7507,
+    "away": 0.1006,
+    "draw": 0.1486
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -350.0,
+     "decimal": 1.286
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 750.0,
+     "decimal": 8.5
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 500.0,
+     "decimal": 6.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0621,
+   "bets": [],
+   "pm": [],
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ucl|lasklinz|sportingcp|2026-10-21T19:00",
+   "sport": "ucl",
+   "home": "Sporting CP",
+   "away": "LASK Linz",
+   "start": "2026-10-21T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.7668,
+    "away": 0.0957,
+    "draw": 0.1376
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -380.0,
+     "decimal": 1.263
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 800.0,
+     "decimal": 9.0
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 550.0,
+     "decimal": 6.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0566,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Sporting CP vs LASK",
+     "url": "https://kalshi.com/markets/kxuclgame",
+     "home": 0.79,
+     "homeEdgePp": -2.3,
+     "suspect": true
+    }
+   ],
+   "crossArbs": [],
+   "middles": []
   }
  ],
  "day": {
-  "nBets": 29,
-  "scale": 0.244,
-  "totalStake": 8.07,
-  "meanPnl": 0.62,
+  "nBets": 30,
+  "scale": 0.234,
+  "totalStake": 8.02,
+  "meanPnl": 0.6,
   "var95": 6.0,
-  "pBreakEven": 0.523,
-  "pProfit": 0.523,
-  "best": 13.88,
-  "worst": -8.07,
+  "pBreakEven": 0.522,
+  "pProfit": 0.522,
+  "best": 13.72,
+  "worst": -8.02,
   "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."
  },
  "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
