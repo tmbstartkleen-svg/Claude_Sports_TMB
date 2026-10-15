@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-15T08:12:12+00:00",
+ "generatedAt": "2026-10-15T08:22:47+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -491,7 +491,7 @@
   {
    "source": "odds[russia]:espn",
    "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for russia: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 216: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
+   "detail": "RuntimeError('ESPN parse failed for russia: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 220: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
   },
   {
    "source": "odds[russia]:sports-skills",
@@ -616,7 +616,7 @@
   {
    "source": "odds[nwsl]:espn",
    "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for nwsl: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 216: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
+   "detail": "RuntimeError('ESPN parse failed for nwsl: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 220: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
   },
   {
    "source": "odds[nwsl]:sports-skills",
@@ -641,7 +641,7 @@
   {
    "source": "odds[usopen]:espn",
    "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for usopen: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 216: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
+   "detail": "RuntimeError('ESPN parse failed for usopen: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 220: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
   },
   {
    "source": "odds[usopen]:sports-skills",
@@ -761,7 +761,7 @@
   {
    "source": "odds[venezuela]:espn",
    "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for venezuela: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 216: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
+   "detail": "RuntimeError('ESPN parse failed for venezuela: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 220: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
   },
   {
    "source": "odds[venezuela]:sports-skills",
@@ -776,7 +776,7 @@
   {
    "source": "odds[bolivia]:espn",
    "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for bolivia: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 216: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
+   "detail": "RuntimeError('ESPN parse failed for bolivia: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 220: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
   },
   {
    "source": "odds[bolivia]:sports-skills",
@@ -821,7 +821,7 @@
   {
    "source": "odds[isl]:espn",
    "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for isl: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 216: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
+   "detail": "RuntimeError('ESPN parse failed for isl: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 220: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
   },
   {
    "source": "odds[isl]:sports-skills",
@@ -856,7 +856,7 @@
   {
    "source": "odds[uecl]:espn",
    "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for uecl: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 216: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
+   "detail": "RuntimeError('ESPN parse failed for uecl: AttributeError: \\'NoneType\\' object has no attribute \\'get\\' at line 220: name = (o.get(\"provider\") or {}).get(\"name\", \"ESPN\")')"
   },
   {
    "source": "odds[uecl]:sports-skills",
@@ -1096,17 +1096,17 @@
   {
    "source": "model[championship]",
    "ok": true,
-   "detail": "628 games, 3-way brier 0.6394"
+   "detail": "664 games, 3-way brier 0.6437"
   },
   {
    "source": "model[league1]",
    "ok": true,
-   "detail": "580 games, 3-way brier 0.6366"
+   "detail": "635 games, 3-way brier 0.632"
   },
   {
    "source": "model[league2]",
    "ok": true,
-   "detail": "588 games, 3-way brier 0.6337"
+   "detail": "647 games, 3-way brier 0.6346"
   },
   {
    "source": "model[laliga]",
@@ -1116,7 +1116,7 @@
   {
    "source": "model[laliga2]",
    "ok": true,
-   "detail": "523 games, 3-way brier 0.6214"
+   "detail": "567 games, 3-way brier 0.6284"
   },
   {
    "source": "model[bundesliga]",
@@ -1126,7 +1126,7 @@
   {
    "source": "model[bundesliga2]",
    "ok": true,
-   "detail": "333 games, 3-way brier 0.6427"
+   "detail": "351 games, 3-way brier 0.6392"
   },
   {
    "source": "model[seriea]",
@@ -1136,67 +1136,67 @@
   {
    "source": "model[serieb]",
    "ok": true,
-   "detail": "430 games, 3-way brier 0.6177"
+   "detail": "450 games, 3-way brier 0.6167"
   },
   {
    "source": "model[ligue1]",
    "ok": true,
-   "detail": "332 games, 3-way brier 0.6196"
+   "detail": "359 games, 3-way brier 0.6153"
   },
   {
    "source": "model[ligue2]",
    "ok": true,
-   "detail": "343 games, 3-way brier 0.6512"
+   "detail": "371 games, 3-way brier 0.655"
   },
   {
    "source": "model[scotprem]",
    "ok": true,
-   "detail": "254 games, 3-way brier 0.5842"
+   "detail": "264 games, 3-way brier 0.5845"
   },
   {
    "source": "model[scotchamp]",
    "ok": true,
-   "detail": "206 games, 3-way brier 0.6305"
+   "detail": "218 games, 3-way brier 0.63"
   },
   {
    "source": "model[eredivisie]",
    "ok": true,
-   "detail": "347 games, 3-way brier 0.6172"
+   "detail": "372 games, 3-way brier 0.6155"
   },
   {
    "source": "model[eerstedivisie]",
    "ok": true,
-   "detail": "442 games, 3-way brier 0.6326"
+   "detail": "473 games, 3-way brier 0.6354"
   },
   {
    "source": "model[primeira]",
    "ok": true,
-   "detail": "342 games, 3-way brier 0.5768"
+   "detail": "371 games, 3-way brier 0.5723"
   },
   {
    "source": "model[belgium]",
    "ok": true,
-   "detail": "340 games, 3-way brier 0.6199"
+   "detail": "361 games, 3-way brier 0.6221"
   },
   {
    "source": "model[superlig]",
    "ok": true,
-   "detail": "339 games, 3-way brier 0.6211"
+   "detail": "364 games, 3-way brier 0.6177"
   },
   {
    "source": "model[greece]",
    "ok": true,
-   "detail": "265 games, 3-way brier 0.6015"
+   "detail": "278 games, 3-way brier 0.5976"
   },
   {
    "source": "model[russia]",
    "ok": true,
-   "detail": "264 games, 3-way brier 0.6117"
+   "detail": "288 games, 3-way brier 0.6047"
   },
   {
    "source": "model[austria]",
    "ok": true,
-   "detail": "214 games, 3-way brier 0.6313"
+   "detail": "231 games, 3-way brier 0.6361"
   },
   {
    "source": "model[swiss]",
@@ -1206,17 +1206,17 @@
   {
    "source": "model[denmark]",
    "ok": true,
-   "detail": "211 games, 3-way brier 0.6404"
+   "detail": "230 games, 3-way brier 0.6288"
   },
   {
    "source": "model[sweden]",
    "ok": true,
-   "detail": "248 games, 3-way brier 0.6285"
+   "detail": "274 games, 3-way brier 0.6253"
   },
   {
    "source": "model[norway]",
    "ok": true,
-   "detail": "258 games, 3-way brier 0.5794"
+   "detail": "277 games, 3-way brier 0.571"
   },
   {
    "source": "model[czech]",
@@ -1236,77 +1236,77 @@
   {
    "source": "model[mls]",
    "ok": true,
-   "detail": "553 games, 3-way brier 0.6275"
+   "detail": "598 games, 3-way brier 0.6302"
   },
   {
    "source": "model[nwsl]",
    "ok": true,
-   "detail": "272 games, 3-way brier 0.6116"
+   "detail": "300 games, 3-way brier 0.6155"
   },
   {
    "source": "model[usl]",
    "ok": true,
-   "detail": "453 games, 3-way brier 0.6302"
+   "detail": "501 games, 3-way brier 0.6377"
   },
   {
    "source": "model[ligamx]",
    "ok": true,
-   "detail": "372 games, 3-way brier 0.6281"
+   "detail": "402 games, 3-way brier 0.6309"
   },
   {
    "source": "model[brasileirao]",
    "ok": true,
-   "detail": "470 games, 3-way brier 0.61"
+   "detail": "502 games, 3-way brier 0.6096"
   },
   {
    "source": "model[brasileirao2]",
    "ok": true,
-   "detail": "460 games, 3-way brier 0.6301"
+   "detail": "503 games, 3-way brier 0.6278"
   },
   {
    "source": "model[argentina]",
    "ok": true,
-   "detail": "587 games, 3-way brier 0.6518"
+   "detail": "631 games, 3-way brier 0.652"
   },
   {
    "source": "model[colombia]",
    "ok": true,
-   "detail": "461 games, 3-way brier 0.6236"
+   "detail": "505 games, 3-way brier 0.6239"
   },
   {
    "source": "model[chile]",
    "ok": true,
-   "detail": "257 games, 3-way brier 0.6212"
+   "detail": "282 games, 3-way brier 0.6135"
   },
   {
    "source": "model[uruguay]",
    "ok": true,
-   "detail": "332 games, 3-way brier 0.6605"
+   "detail": "365 games, 3-way brier 0.6554"
   },
   {
    "source": "model[peru]",
    "ok": true,
-   "detail": "351 games, 3-way brier 0.6003"
+   "detail": "371 games, 3-way brier 0.6013"
   },
   {
    "source": "model[ecuador]",
    "ok": true,
-   "detail": "351 games, 3-way brier 0.6153"
+   "detail": "376 games, 3-way brier 0.621"
   },
   {
    "source": "model[paraguay]",
    "ok": true,
-   "detail": "283 games, 3-way brier 0.6392"
+   "detail": "306 games, 3-way brier 0.6344"
   },
   {
    "source": "model[venezuela]",
    "ok": true,
-   "detail": "253 games, 3-way brier 0.6183"
+   "detail": "276 games, 3-way brier 0.6232"
   },
   {
    "source": "model[bolivia]",
    "ok": true,
-   "detail": "264 games, 3-way brier 0.5493"
+   "detail": "276 games, 3-way brier 0.5497"
   },
   {
    "source": "model[aleague]",
@@ -1316,12 +1316,12 @@
   {
    "source": "model[jleague]",
    "ok": true,
-   "detail": "388 games, 3-way brier 0.6358"
+   "detail": "421 games, 3-way brier 0.6326"
   },
   {
    "source": "model[csl]",
    "ok": true,
-   "detail": "273 games, 3-way brier 0.6458"
+   "detail": "296 games, 3-way brier 0.645"
   },
   {
    "source": "model[isl]",
@@ -1331,12 +1331,17 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "3 snapshots added, 46 closing lines available"
+   "detail": "5 snapshots added, 46 closing lines available"
   },
   {
    "source": "grading",
    "ok": true,
-   "detail": "17 picks added, 0 settled, 0 CLV, 122 total"
+   "detail": "3 picks added, 0 settled, 0 CLV, 125 total"
+  },
+  {
+   "source": "whales",
+   "ok": true,
+   "detail": "0 markets checked, 0 games with a notable trade"
   },
   {
    "source": "alerts",
@@ -1519,30 +1524,30 @@
    "baseline": "league-to-date frequencies (3-way)"
   },
   "championship": {
-   "n": 593,
-   "brier": 0.6394,
-   "coinFlipBrier": 0.6576,
-   "logLoss": 1.0582,
-   "accuracy": 0.438,
-   "drawRate": 0.269,
+   "n": 629,
+   "brier": 0.6437,
+   "coinFlipBrier": 0.6598,
+   "logLoss": 1.0646,
+   "accuracy": 0.437,
+   "drawRate": 0.268,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "league1": {
-   "n": 545,
-   "brier": 0.6366,
-   "coinFlipBrier": 0.6582,
-   "logLoss": 1.0562,
-   "accuracy": 0.448,
-   "drawRate": 0.269,
+   "n": 600,
+   "brier": 0.632,
+   "coinFlipBrier": 0.653,
+   "logLoss": 1.0495,
+   "accuracy": 0.453,
+   "drawRate": 0.266,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "league2": {
-   "n": 552,
-   "brier": 0.6337,
-   "coinFlipBrier": 0.6561,
-   "logLoss": 1.0506,
-   "accuracy": 0.482,
-   "drawRate": 0.269,
+   "n": 611,
+   "brier": 0.6346,
+   "coinFlipBrier": 0.6568,
+   "logLoss": 1.0525,
+   "accuracy": 0.484,
+   "drawRate": 0.266,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "laliga": {
@@ -1555,12 +1560,12 @@
    "baseline": "league-to-date frequencies (3-way)"
   },
   "laliga2": {
-   "n": 486,
-   "brier": 0.6214,
-   "coinFlipBrier": 0.6445,
-   "logLoss": 1.0318,
-   "accuracy": 0.494,
-   "drawRate": 0.237,
+   "n": 530,
+   "brier": 0.6284,
+   "coinFlipBrier": 0.6473,
+   "logLoss": 1.0421,
+   "accuracy": 0.477,
+   "drawRate": 0.245,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "bundesliga": {
@@ -1573,12 +1578,12 @@
    "baseline": "league-to-date frequencies (3-way)"
   },
   "bundesliga2": {
-   "n": 299,
-   "brier": 0.6427,
-   "coinFlipBrier": 0.6597,
-   "logLoss": 1.0644,
-   "accuracy": 0.428,
-   "drawRate": 0.258,
+   "n": 317,
+   "brier": 0.6392,
+   "coinFlipBrier": 0.6547,
+   "logLoss": 1.0591,
+   "accuracy": 0.435,
+   "drawRate": 0.256,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "seriea": {
@@ -1591,300 +1596,300 @@
    "baseline": "league-to-date frequencies (3-way)"
   },
   "serieb": {
-   "n": 394,
-   "brier": 0.6177,
-   "coinFlipBrier": 0.6491,
-   "logLoss": 1.0266,
-   "accuracy": 0.49,
-   "drawRate": 0.3,
+   "n": 414,
+   "brier": 0.6167,
+   "coinFlipBrier": 0.6511,
+   "logLoss": 1.0253,
+   "accuracy": 0.483,
+   "drawRate": 0.307,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "ligue1": {
-   "n": 300,
-   "brier": 0.6196,
-   "coinFlipBrier": 0.6533,
-   "logLoss": 1.0305,
-   "accuracy": 0.493,
-   "drawRate": 0.259,
+   "n": 327,
+   "brier": 0.6153,
+   "coinFlipBrier": 0.6589,
+   "logLoss": 1.0251,
+   "accuracy": 0.502,
+   "drawRate": 0.245,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "ligue2": {
-   "n": 309,
-   "brier": 0.6512,
-   "coinFlipBrier": 0.6757,
-   "logLoss": 1.0716,
-   "accuracy": 0.437,
-   "drawRate": 0.303,
+   "n": 337,
+   "brier": 0.655,
+   "coinFlipBrier": 0.6688,
+   "logLoss": 1.078,
+   "accuracy": 0.43,
+   "drawRate": 0.307,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "scotprem": {
-   "n": 223,
-   "brier": 0.5842,
-   "coinFlipBrier": 0.6445,
-   "logLoss": 0.9825,
-   "accuracy": 0.538,
-   "drawRate": 0.228,
+   "n": 233,
+   "brier": 0.5845,
+   "coinFlipBrier": 0.6503,
+   "logLoss": 0.9828,
+   "accuracy": 0.536,
+   "drawRate": 0.242,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "scotchamp": {
-   "n": 173,
-   "brier": 0.6305,
-   "coinFlipBrier": 0.663,
-   "logLoss": 1.0439,
-   "accuracy": 0.468,
-   "drawRate": 0.301,
+   "n": 185,
+   "brier": 0.63,
+   "coinFlipBrier": 0.6654,
+   "logLoss": 1.0414,
+   "accuracy": 0.459,
+   "drawRate": 0.307,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "eredivisie": {
-   "n": 314,
-   "brier": 0.6172,
-   "coinFlipBrier": 0.666,
-   "logLoss": 1.0275,
-   "accuracy": 0.484,
-   "drawRate": 0.274,
+   "n": 339,
+   "brier": 0.6155,
+   "coinFlipBrier": 0.6635,
+   "logLoss": 1.0248,
+   "accuracy": 0.481,
+   "drawRate": 0.269,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "eerstedivisie": {
-   "n": 409,
-   "brier": 0.6326,
-   "coinFlipBrier": 0.6442,
-   "logLoss": 1.0504,
-   "accuracy": 0.489,
-   "drawRate": 0.215,
+   "n": 439,
+   "brier": 0.6354,
+   "coinFlipBrier": 0.6455,
+   "logLoss": 1.0534,
+   "accuracy": 0.476,
+   "drawRate": 0.211,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "primeira": {
-   "n": 310,
-   "brier": 0.5768,
-   "coinFlipBrier": 0.6602,
-   "logLoss": 0.9681,
-   "accuracy": 0.535,
-   "drawRate": 0.266,
+   "n": 339,
+   "brier": 0.5723,
+   "coinFlipBrier": 0.6627,
+   "logLoss": 0.9617,
+   "accuracy": 0.546,
+   "drawRate": 0.272,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "belgium": {
-   "n": 307,
-   "brier": 0.6199,
-   "coinFlipBrier": 0.6576,
-   "logLoss": 1.0305,
-   "accuracy": 0.489,
+   "n": 328,
+   "brier": 0.6221,
+   "coinFlipBrier": 0.6558,
+   "logLoss": 1.0336,
+   "accuracy": 0.473,
    "drawRate": 0.238,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "superlig": {
-   "n": 307,
-   "brier": 0.6211,
-   "coinFlipBrier": 0.6576,
-   "logLoss": 1.0295,
-   "accuracy": 0.459,
+   "n": 332,
+   "brier": 0.6177,
+   "coinFlipBrier": 0.6592,
+   "logLoss": 1.025,
+   "accuracy": 0.476,
    "drawRate": 0.283,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "greece": {
-   "n": 233,
-   "brier": 0.6015,
-   "coinFlipBrier": 0.6616,
-   "logLoss": 1.0055,
-   "accuracy": 0.502,
-   "drawRate": 0.279,
+   "n": 246,
+   "brier": 0.5976,
+   "coinFlipBrier": 0.6612,
+   "logLoss": 0.9997,
+   "accuracy": 0.5,
+   "drawRate": 0.273,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "russia": {
-   "n": 232,
-   "brier": 0.6117,
-   "coinFlipBrier": 0.6603,
-   "logLoss": 1.0187,
-   "accuracy": 0.496,
-   "drawRate": 0.284,
+   "n": 256,
+   "brier": 0.6047,
+   "coinFlipBrier": 0.6609,
+   "logLoss": 1.0093,
+   "accuracy": 0.516,
+   "drawRate": 0.288,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "austria": {
-   "n": 183,
-   "brier": 0.6313,
-   "coinFlipBrier": 0.6449,
-   "logLoss": 1.0481,
-   "accuracy": 0.464,
-   "drawRate": 0.248,
+   "n": 200,
+   "brier": 0.6361,
+   "coinFlipBrier": 0.65,
+   "logLoss": 1.0556,
+   "accuracy": 0.475,
+   "drawRate": 0.251,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "denmark": {
-   "n": 179,
-   "brier": 0.6404,
-   "coinFlipBrier": 0.6687,
-   "logLoss": 1.0626,
-   "accuracy": 0.441,
-   "drawRate": 0.265,
+   "n": 198,
+   "brier": 0.6288,
+   "coinFlipBrier": 0.6649,
+   "logLoss": 1.0456,
+   "accuracy": 0.46,
+   "drawRate": 0.248,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "sweden": {
-   "n": 216,
-   "brier": 0.6285,
-   "coinFlipBrier": 0.655,
-   "logLoss": 1.0448,
-   "accuracy": 0.458,
-   "drawRate": 0.226,
+   "n": 242,
+   "brier": 0.6253,
+   "coinFlipBrier": 0.6517,
+   "logLoss": 1.0403,
+   "accuracy": 0.459,
+   "drawRate": 0.219,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "norway": {
-   "n": 225,
-   "brier": 0.5794,
-   "coinFlipBrier": 0.6307,
-   "logLoss": 0.9751,
-   "accuracy": 0.538,
-   "drawRate": 0.194,
+   "n": 244,
+   "brier": 0.571,
+   "coinFlipBrier": 0.6228,
+   "logLoss": 0.9635,
+   "accuracy": 0.545,
+   "drawRate": 0.202,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "mls": {
-   "n": 522,
-   "brier": 0.6275,
-   "coinFlipBrier": 0.6437,
-   "logLoss": 1.0452,
-   "accuracy": 0.49,
-   "drawRate": 0.25,
+   "n": 567,
+   "brier": 0.6302,
+   "coinFlipBrier": 0.6449,
+   "logLoss": 1.0492,
+   "accuracy": 0.481,
+   "drawRate": 0.253,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "nwsl": {
-   "n": 240,
-   "brier": 0.6116,
-   "coinFlipBrier": 0.6341,
-   "logLoss": 1.0158,
-   "accuracy": 0.492,
-   "drawRate": 0.195,
+   "n": 268,
+   "brier": 0.6155,
+   "coinFlipBrier": 0.6445,
+   "logLoss": 1.0245,
+   "accuracy": 0.5,
+   "drawRate": 0.217,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "usl": {
-   "n": 421,
-   "brier": 0.6302,
-   "coinFlipBrier": 0.6531,
-   "logLoss": 1.0492,
-   "accuracy": 0.473,
+   "n": 469,
+   "brier": 0.6377,
+   "coinFlipBrier": 0.6552,
+   "logLoss": 1.0597,
+   "accuracy": 0.446,
    "drawRate": 0.291,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "ligamx": {
-   "n": 341,
-   "brier": 0.6281,
-   "coinFlipBrier": 0.6485,
-   "logLoss": 1.0464,
-   "accuracy": 0.504,
-   "drawRate": 0.263,
+   "n": 371,
+   "brier": 0.6309,
+   "coinFlipBrier": 0.6523,
+   "logLoss": 1.0505,
+   "accuracy": 0.499,
+   "drawRate": 0.259,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "brasileirao": {
-   "n": 436,
-   "brier": 0.61,
-   "coinFlipBrier": 0.6307,
-   "logLoss": 1.0158,
-   "accuracy": 0.514,
-   "drawRate": 0.268,
+   "n": 468,
+   "brier": 0.6096,
+   "coinFlipBrier": 0.6296,
+   "logLoss": 1.015,
+   "accuracy": 0.498,
+   "drawRate": 0.265,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "brasileirao2": {
-   "n": 423,
-   "brier": 0.6301,
-   "coinFlipBrier": 0.6531,
-   "logLoss": 1.0452,
-   "accuracy": 0.47,
-   "drawRate": 0.285,
+   "n": 466,
+   "brier": 0.6278,
+   "coinFlipBrier": 0.6536,
+   "logLoss": 1.0429,
+   "accuracy": 0.474,
+   "drawRate": 0.286,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "argentina": {
-   "n": 555,
-   "brier": 0.6518,
-   "coinFlipBrier": 0.661,
-   "logLoss": 1.0769,
-   "accuracy": 0.432,
-   "drawRate": 0.3,
+   "n": 599,
+   "brier": 0.652,
+   "coinFlipBrier": 0.6603,
+   "logLoss": 1.0784,
+   "accuracy": 0.427,
+   "drawRate": 0.298,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "colombia": {
-   "n": 429,
-   "brier": 0.6236,
-   "coinFlipBrier": 0.6456,
-   "logLoss": 1.0341,
-   "accuracy": 0.462,
+   "n": 473,
+   "brier": 0.6239,
+   "coinFlipBrier": 0.6446,
+   "logLoss": 1.0343,
+   "accuracy": 0.484,
    "drawRate": 0.291,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "chile": {
-   "n": 225,
-   "brier": 0.6212,
-   "coinFlipBrier": 0.6395,
-   "logLoss": 1.0299,
-   "accuracy": 0.471,
-   "drawRate": 0.191,
+   "n": 250,
+   "brier": 0.6135,
+   "coinFlipBrier": 0.6342,
+   "logLoss": 1.0199,
+   "accuracy": 0.496,
+   "drawRate": 0.188,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "uruguay": {
-   "n": 299,
-   "brier": 0.6605,
-   "coinFlipBrier": 0.6693,
-   "logLoss": 1.0917,
-   "accuracy": 0.425,
-   "drawRate": 0.28,
+   "n": 332,
+   "brier": 0.6554,
+   "coinFlipBrier": 0.6714,
+   "logLoss": 1.0849,
+   "accuracy": 0.44,
+   "drawRate": 0.263,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "peru": {
-   "n": 319,
-   "brier": 0.6003,
-   "coinFlipBrier": 0.6223,
-   "logLoss": 1.007,
-   "accuracy": 0.514,
-   "drawRate": 0.231,
+   "n": 339,
+   "brier": 0.6013,
+   "coinFlipBrier": 0.625,
+   "logLoss": 1.008,
+   "accuracy": 0.522,
+   "drawRate": 0.24,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "ecuador": {
-   "n": 319,
-   "brier": 0.6153,
-   "coinFlipBrier": 0.6455,
-   "logLoss": 1.0258,
-   "accuracy": 0.483,
-   "drawRate": 0.254,
+   "n": 344,
+   "brier": 0.621,
+   "coinFlipBrier": 0.6479,
+   "logLoss": 1.0336,
+   "accuracy": 0.474,
+   "drawRate": 0.253,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "paraguay": {
-   "n": 251,
-   "brier": 0.6392,
-   "coinFlipBrier": 0.6672,
-   "logLoss": 1.0587,
-   "accuracy": 0.446,
-   "drawRate": 0.279,
+   "n": 274,
+   "brier": 0.6344,
+   "coinFlipBrier": 0.6633,
+   "logLoss": 1.053,
+   "accuracy": 0.453,
+   "drawRate": 0.284,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "venezuela": {
-   "n": 222,
-   "brier": 0.6183,
-   "coinFlipBrier": 0.6656,
-   "logLoss": 1.0311,
-   "accuracy": 0.455,
-   "drawRate": 0.273,
+   "n": 245,
+   "brier": 0.6232,
+   "coinFlipBrier": 0.6681,
+   "logLoss": 1.0384,
+   "accuracy": 0.473,
+   "drawRate": 0.261,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "bolivia": {
-   "n": 233,
-   "brier": 0.5493,
-   "coinFlipBrier": 0.6023,
-   "logLoss": 0.9349,
-   "accuracy": 0.614,
-   "drawRate": 0.193,
+   "n": 245,
+   "brier": 0.5497,
+   "coinFlipBrier": 0.6047,
+   "logLoss": 0.9348,
+   "accuracy": 0.604,
+   "drawRate": 0.188,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "jleague": {
-   "n": 355,
-   "brier": 0.6358,
-   "coinFlipBrier": 0.659,
-   "logLoss": 1.0563,
-   "accuracy": 0.459,
-   "drawRate": 0.268,
+   "n": 388,
+   "brier": 0.6326,
+   "coinFlipBrier": 0.6594,
+   "logLoss": 1.0516,
+   "accuracy": 0.446,
+   "drawRate": 0.271,
    "baseline": "league-to-date frequencies (3-way)"
   },
   "csl": {
-   "n": 241,
-   "brier": 0.6458,
-   "coinFlipBrier": 0.6583,
-   "logLoss": 1.0668,
-   "accuracy": 0.444,
-   "drawRate": 0.286,
+   "n": 264,
+   "brier": 0.645,
+   "coinFlipBrier": 0.6652,
+   "logLoss": 1.066,
+   "accuracy": 0.439,
+   "drawRate": 0.284,
    "baseline": "league-to-date frequencies (3-way)"
   }
  },
@@ -1905,7 +1910,7 @@
     "avgBooks": 1.0,
     "withModel": 15,
     "withPmMatch": 0,
-    "edgeBets": 3
+    "edgeBets": 4
    },
    "austria": {
     "games": 6,
@@ -1913,7 +1918,7 @@
     "avgBooks": 1.0,
     "withModel": 6,
     "withPmMatch": 0,
-    "edgeBets": 1
+    "edgeBets": 2
    },
    "brasileirao": {
     "games": 10,
@@ -1929,7 +1934,7 @@
     "avgBooks": 1.0,
     "withModel": 10,
     "withPmMatch": 0,
-    "edgeBets": 1
+    "edgeBets": 0
    },
    "bundesliga": {
     "games": 8,
@@ -1993,7 +1998,7 @@
     "avgBooks": 1.0,
     "withModel": 10,
     "withPmMatch": 0,
-    "edgeBets": 4
+    "edgeBets": 5
    },
    "epl": {
     "games": 10,
@@ -2081,7 +2086,7 @@
     "avgBooks": 1.0,
     "withModel": 9,
     "withPmMatch": 5,
-    "edgeBets": 5
+    "edgeBets": 4
    },
    "ligue2": {
     "games": 6,
@@ -2226,7 +2231,7 @@
     "avgBooks": 1.0,
     "withModel": 8,
     "withPmMatch": 0,
-    "edgeBets": 3
+    "edgeBets": 4
    },
    "ucl": {
     "games": 17,
@@ -2357,20 +2362,20 @@
      "side": "Fredrikstad",
      "book": "DraftKings",
      "american": 700.0,
-     "fair": 0.1577,
-     "evPct": 26.15,
-     "stakePct": 1.31,
-     "stake": 1.31,
+     "fair": 0.1569,
+     "evPct": 25.54,
+     "stakePct": 1.28,
+     "stake": 1.28,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.5015,
-    "draw": 0.1895,
-    "away": 0.3091,
-    "blendHome": 0.6839,
-    "gapPp": -24.3,
+    "home": 0.4963,
+    "draw": 0.1977,
+    "away": 0.306,
+    "blendHome": 0.6826,
+    "gapPp": -24.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -2440,62 +2445,6 @@
    "middles": []
   },
   {
-   "key": "csl|liaoningtieren|qingdaohainiu|2026-10-17T11:35",
-   "sport": "csl",
-   "home": "Qingdao Hainiu",
-   "away": "Liaoning Tieren",
-   "start": "2026-10-17T11:35Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.1689,
-    "away": 0.6311,
-    "draw": 0.2
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 425.0,
-     "decimal": 5.25
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -195.0,
-     "decimal": 1.513
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 350.0,
-     "decimal": 4.5
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0737,
-   "bets": [
-    {
-     "side": "Qingdao Hainiu",
-     "book": "DraftKings",
-     "american": 425.0,
-     "fair": 0.2181,
-     "evPct": 14.49,
-     "stakePct": 1.19,
-     "stake": 1.19,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.3655,
-    "draw": 0.2857,
-    "away": 0.3488,
-    "blendHome": 0.2181,
-    "gapPp": 19.7,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
    "key": "ligue1|parisstgermain|strasbourg|2026-10-17T15:15",
    "sport": "ligue1",
    "home": "Strasbourg",
@@ -2532,30 +2481,76 @@
      "side": "Strasbourg",
      "book": "DraftKings",
      "american": 500.0,
-     "fair": 0.1907,
-     "evPct": 14.41,
-     "stakePct": 1.01,
-     "stake": 1.01,
-     "basis": "model-blend"
-    },
-    {
-     "side": "Draw",
-     "book": "DraftKings",
-     "american": 425.0,
-     "fair": 0.1941,
-     "evPct": 1.92,
-     "stakePct": 0.16,
-     "stake": 0.16,
+     "fair": 0.1905,
+     "evPct": 14.33,
+     "stakePct": 1.0,
+     "stake": 1.0,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.3133,
-    "draw": 0.2569,
-    "away": 0.4297,
-    "blendHome": 0.1907,
-    "gapPp": 16.4,
+    "home": 0.3128,
+    "draw": 0.2426,
+    "away": 0.4447,
+    "blendHome": 0.1905,
+    "gapPp": 16.3,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "csl|liaoningtieren|qingdaohainiu|2026-10-17T11:35",
+   "sport": "csl",
+   "home": "Qingdao Hainiu",
+   "away": "Liaoning Tieren",
+   "start": "2026-10-17T11:35Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.1689,
+    "away": 0.6311,
+    "draw": 0.2
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 425.0,
+     "decimal": 5.25
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -195.0,
+     "decimal": 1.513
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 350.0,
+     "decimal": 4.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0737,
+   "bets": [
+    {
+     "side": "Qingdao Hainiu",
+     "book": "DraftKings",
+     "american": 425.0,
+     "fair": 0.217,
+     "evPct": 13.95,
+     "stakePct": 1.15,
+     "stake": 1.15,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.3614,
+    "draw": 0.2838,
+    "away": 0.3548,
+    "blendHome": 0.217,
+    "gapPp": 19.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -2598,76 +2593,20 @@
      "side": "Belgrano (C\u00f3rdoba)",
      "book": "DraftKings",
      "american": 230.0,
-     "fair": 0.3459,
-     "evPct": 14.14,
-     "stakePct": 2.15,
-     "stake": 2.15,
+     "fair": 0.3417,
+     "evPct": 12.77,
+     "stakePct": 1.94,
+     "stake": 1.94,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.5535,
-    "draw": 0.2726,
-    "away": 0.1739,
-    "blendHome": 0.3459,
-    "gapPp": 27.7,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "scotprem|rangers|dundee|2026-10-17T19:00",
-   "sport": "scotprem",
-   "home": "Dundee",
-   "away": "Rangers",
-   "start": "2026-10-17T19:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.1226,
-    "away": 0.699,
-    "draw": 0.1784
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 600.0,
-     "decimal": 7.0
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -270.0,
-     "decimal": 1.37
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 400.0,
-     "decimal": 5.0
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0726,
-   "bets": [
-    {
-     "side": "Dundee",
-     "book": "DraftKings",
-     "american": 600.0,
-     "fair": 0.1614,
-     "evPct": 12.99,
-     "stakePct": 0.76,
-     "stake": 0.76,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.278,
-    "draw": 0.2215,
-    "away": 0.5006,
-    "blendHome": 0.1614,
-    "gapPp": 15.5,
+    "home": 0.537,
+    "draw": 0.2753,
+    "away": 0.1878,
+    "blendHome": 0.3417,
+    "gapPp": 26.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -2773,76 +2712,76 @@
      "side": "Helmond Sport",
      "book": "DraftKings",
      "american": 425.0,
-     "fair": 0.2119,
-     "evPct": 11.24,
-     "stakePct": 0.93,
-     "stake": 0.93,
+     "fair": 0.2123,
+     "evPct": 11.47,
+     "stakePct": 0.94,
+     "stake": 0.94,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.3375,
-    "draw": 0.2133,
-    "away": 0.4491,
-    "blendHome": 0.2119,
-    "gapPp": 16.8,
+    "home": 0.3393,
+    "draw": 0.2098,
+    "away": 0.4509,
+    "blendHome": 0.2123,
+    "gapPp": 16.9,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": []
   },
   {
-   "key": "ligamx|pachuca|monterrey|2026-10-19T01:00",
-   "sport": "ligamx",
-   "home": "Monterrey",
-   "away": "Pachuca",
-   "start": "2026-10-19T01:00Z",
+   "key": "scotprem|rangers|dundee|2026-10-17T19:00",
+   "sport": "scotprem",
+   "home": "Dundee",
+   "away": "Rangers",
+   "start": "2026-10-17T19:00Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.5631,
-    "away": 0.2156,
-    "draw": 0.2213
+    "home": 0.1226,
+    "away": 0.699,
+    "draw": 0.1784
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -145.0,
-     "decimal": 1.69
+     "american": 600.0,
+     "decimal": 7.0
     },
     "away": {
      "book": "DraftKings",
-     "american": 320.0,
-     "decimal": 4.2
+     "american": -270.0,
+     "decimal": 1.37
     },
     "draw": {
      "book": "DraftKings",
-     "american": 310.0,
-     "decimal": 4.1
+     "american": 400.0,
+     "decimal": 5.0
     }
    },
    "arb": false,
-   "impliedSum": 1.0738,
+   "impliedSum": 1.0726,
    "bets": [
     {
-     "side": "Pachuca",
+     "side": "Dundee",
      "book": "DraftKings",
-     "american": 320.0,
-     "fair": 0.2628,
-     "evPct": 10.39,
-     "stakePct": 1.14,
-     "stake": 1.14,
+     "american": 600.0,
+     "fair": 0.1588,
+     "evPct": 11.13,
+     "stakePct": 0.65,
+     "stake": 0.65,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.3329,
-    "draw": 0.2626,
-    "away": 0.4045,
-    "blendHome": 0.5055,
-    "gapPp": -23.0,
+    "home": 0.2674,
+    "draw": 0.2346,
+    "away": 0.4981,
+    "blendHome": 0.1588,
+    "gapPp": 14.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -2885,20 +2824,132 @@
      "side": "Swansea City",
      "book": "DraftKings",
      "american": 215.0,
-     "fair": 0.3501,
-     "evPct": 10.28,
-     "stakePct": 1.67,
-     "stake": 1.67,
+     "fair": 0.3512,
+     "evPct": 10.63,
+     "stakePct": 1.73,
+     "stake": 1.73,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.4961,
-    "draw": 0.2588,
-    "away": 0.2451,
-    "blendHome": 0.3501,
-    "gapPp": 19.5,
+    "home": 0.5005,
+    "draw": 0.2572,
+    "away": 0.2424,
+    "blendHome": 0.3512,
+    "gapPp": 19.9,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "denmark|randers|achorsens|2026-10-16T17:00",
+   "sport": "denmark",
+   "home": "AC Horsens",
+   "away": "Randers FC",
+   "start": "2026-10-16T17:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3399,
+    "away": 0.4007,
+    "draw": 0.2594
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 175.0,
+     "decimal": 2.75
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 135.0,
+     "decimal": 2.35
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 255.0,
+     "decimal": 3.55
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0709,
+   "bets": [
+    {
+     "side": "AC Horsens",
+     "book": "DraftKings",
+     "american": 175.0,
+     "fair": 0.4015,
+     "evPct": 10.41,
+     "stakePct": 2.08,
+     "stake": 2.08,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.5863,
+    "draw": 0.2232,
+    "away": 0.1905,
+    "blendHome": 0.4015,
+    "gapPp": 24.6,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "austria|lasklinz|austrialustenau|2026-10-17T15:00",
+   "sport": "austria",
+   "home": "Austria Lustenau",
+   "away": "LASK Linz",
+   "start": "2026-10-17T15:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.1139,
+    "away": 0.707,
+    "draw": 0.1791
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 650.0,
+     "decimal": 7.5
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -280.0,
+     "decimal": 1.357
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 400.0,
+     "decimal": 5.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0702,
+   "bets": [
+    {
+     "side": "Austria Lustenau",
+     "book": "DraftKings",
+     "american": 650.0,
+     "fair": 0.1458,
+     "evPct": 9.38,
+     "stakePct": 0.5,
+     "stake": 0.5,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.2417,
+    "draw": 0.2392,
+    "away": 0.5191,
+    "blendHome": 0.1458,
+    "gapPp": 12.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -2968,118 +3019,6 @@
    "middles": []
   },
   {
-   "key": "denmark|randers|achorsens|2026-10-16T17:00",
-   "sport": "denmark",
-   "home": "AC Horsens",
-   "away": "Randers FC",
-   "start": "2026-10-16T17:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3399,
-    "away": 0.4007,
-    "draw": 0.2594
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 175.0,
-     "decimal": 2.75
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 135.0,
-     "decimal": 2.35
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 255.0,
-     "decimal": 3.55
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0709,
-   "bets": [
-    {
-     "side": "AC Horsens",
-     "book": "DraftKings",
-     "american": 175.0,
-     "fair": 0.3968,
-     "evPct": 9.12,
-     "stakePct": 1.82,
-     "stake": 1.82,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5675,
-    "draw": 0.2417,
-    "away": 0.1908,
-    "blendHome": 0.3968,
-    "gapPp": 22.8,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "austria|lasklinz|austrialustenau|2026-10-17T15:00",
-   "sport": "austria",
-   "home": "Austria Lustenau",
-   "away": "LASK Linz",
-   "start": "2026-10-17T15:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.1139,
-    "away": 0.707,
-    "draw": 0.1791
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 650.0,
-     "decimal": 7.5
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -280.0,
-     "decimal": 1.357
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 400.0,
-     "decimal": 5.0
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0702,
-   "bets": [
-    {
-     "side": "Austria Lustenau",
-     "book": "DraftKings",
-     "american": 650.0,
-     "fair": 0.1454,
-     "evPct": 9.08,
-     "stakePct": 0.49,
-     "stake": 0.49,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.2401,
-    "draw": 0.2353,
-    "away": 0.5246,
-    "blendHome": 0.1454,
-    "gapPp": 12.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
    "key": "laliga2|mallorca|eibar|2026-10-17T14:15",
    "sport": "laliga2",
    "home": "Eibar",
@@ -3117,17 +3056,17 @@
      "book": "DraftKings",
      "american": 160.0,
      "fair": 0.4167,
-     "evPct": 8.34,
-     "stakePct": 1.82,
-     "stake": 1.82,
+     "evPct": 8.35,
+     "stakePct": 1.83,
+     "stake": 1.83,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.5832,
-    "draw": 0.2153,
-    "away": 0.2015,
+    "home": 0.5833,
+    "draw": 0.2218,
+    "away": 0.1949,
     "blendHome": 0.4167,
     "gapPp": 22.2,
     "weight": 0.25
@@ -3136,56 +3075,56 @@
    "middles": []
   },
   {
-   "key": "scotchamp|raithrovers|stenhousemuir|2026-10-17T14:00",
-   "sport": "scotchamp",
-   "home": "Stenhousemuir",
-   "away": "Raith Rovers",
-   "start": "2026-10-17T14:00Z",
+   "key": "ligamx|pachuca|monterrey|2026-10-19T01:00",
+   "sport": "ligamx",
+   "home": "Monterrey",
+   "away": "Pachuca",
+   "start": "2026-10-19T01:00Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.2968,
-    "away": 0.4163,
-    "draw": 0.2869
+    "home": 0.5631,
+    "away": 0.2156,
+    "draw": 0.2213
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 210.0,
-     "decimal": 3.1
+     "american": -145.0,
+     "decimal": 1.69
     },
     "away": {
      "book": "DraftKings",
-     "american": 125.0,
-     "decimal": 2.25
+     "american": 320.0,
+     "decimal": 4.2
     },
     "draw": {
      "book": "DraftKings",
-     "american": 220.0,
-     "decimal": 3.2
+     "american": 310.0,
+     "decimal": 4.1
     }
    },
    "arb": false,
-   "impliedSum": 1.0795,
+   "impliedSum": 1.0738,
    "bets": [
     {
-     "side": "Stenhousemuir",
+     "side": "Pachuca",
      "book": "DraftKings",
-     "american": 210.0,
-     "fair": 0.3486,
-     "evPct": 8.07,
-     "stakePct": 1.35,
-     "stake": 1.35,
+     "american": 320.0,
+     "fair": 0.2575,
+     "evPct": 8.14,
+     "stakePct": 0.89,
+     "stake": 0.89,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.5041,
-    "draw": 0.285,
-    "away": 0.2109,
-    "blendHome": 0.3486,
-    "gapPp": 20.7,
+    "home": 0.3584,
+    "draw": 0.2586,
+    "away": 0.383,
+    "blendHome": 0.5119,
+    "gapPp": -20.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -3228,20 +3167,76 @@
      "side": "Degerfors IF",
      "book": "DraftKings",
      "american": 190.0,
-     "fair": 0.3724,
-     "evPct": 8.0,
-     "stakePct": 1.47,
-     "stake": 1.47,
+     "fair": 0.3715,
+     "evPct": 7.73,
+     "stakePct": 1.42,
+     "stake": 1.42,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.5333,
-    "draw": 0.2148,
-    "away": 0.2518,
-    "blendHome": 0.3724,
-    "gapPp": 21.5,
+    "home": 0.5296,
+    "draw": 0.2093,
+    "away": 0.2611,
+    "blendHome": 0.3715,
+    "gapPp": 21.1,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "scotchamp|raithrovers|stenhousemuir|2026-10-17T14:00",
+   "sport": "scotchamp",
+   "home": "Stenhousemuir",
+   "away": "Raith Rovers",
+   "start": "2026-10-17T14:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.2968,
+    "away": 0.4163,
+    "draw": 0.2869
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 210.0,
+     "decimal": 3.1
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 125.0,
+     "decimal": 2.25
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 220.0,
+     "decimal": 3.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0795,
+   "bets": [
+    {
+     "side": "Stenhousemuir",
+     "book": "DraftKings",
+     "american": 210.0,
+     "fair": 0.3472,
+     "evPct": 7.65,
+     "stakePct": 1.27,
+     "stake": 1.27,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.4986,
+    "draw": 0.2916,
+    "away": 0.2098,
+    "blendHome": 0.3472,
+    "gapPp": 20.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -3301,56 +3296,66 @@
    "middles": []
   },
   {
-   "key": "ligue2|asnancylorraine|annecy|2026-10-16T18:00",
-   "sport": "ligue2",
-   "home": "Annecy",
-   "away": "AS Nancy Lorraine",
-   "start": "2026-10-16T18:00Z",
+   "key": "ligue1|toulouse|lemans|2026-10-16T18:45",
+   "sport": "ligue1",
+   "home": "Le Mans",
+   "away": "Toulouse",
+   "start": "2026-10-16T18:45Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.3528,
-    "away": 0.3674,
-    "draw": 0.2798
+    "home": 0.3219,
+    "away": 0.4165,
+    "draw": 0.2615
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 165.0,
-     "decimal": 2.65
+     "american": 195.0,
+     "decimal": 2.95
     },
     "away": {
      "book": "DraftKings",
-     "american": 155.0,
-     "decimal": 2.55
+     "american": 130.0,
+     "decimal": 2.3
     },
     "draw": {
      "book": "DraftKings",
-     "american": 230.0,
-     "decimal": 3.3
+     "american": 260.0,
+     "decimal": 3.6
     }
    },
    "arb": false,
-   "impliedSum": 1.0725,
+   "impliedSum": 1.0515,
    "bets": [
     {
-     "side": "Annecy",
+     "side": "Le Mans",
      "book": "DraftKings",
-     "american": 165.0,
-     "fair": 0.4024,
-     "evPct": 6.63,
-     "stakePct": 1.41,
-     "stake": 1.41,
+     "american": 195.0,
+     "fair": 0.3608,
+     "evPct": 6.45,
+     "stakePct": 1.16,
+     "stake": 1.16,
      "basis": "model-blend"
     }
    ],
-   "pm": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Toulouse vs Le Mans",
+     "url": "https://kalshi.com/markets/kxligue1game",
+     "home": 0.33,
+     "homeEdgePp": -0.8,
+     "away": 0.43,
+     "awayEdgePp": -1.3
+    }
+   ],
    "model": {
-    "home": 0.5511,
-    "draw": 0.2759,
-    "away": 0.173,
-    "blendHome": 0.4024,
-    "gapPp": 19.8,
+    "home": 0.4775,
+    "draw": 0.2395,
+    "away": 0.2829,
+    "blendHome": 0.3608,
+    "gapPp": 15.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -3423,290 +3428,56 @@
    "middles": []
   },
   {
-   "key": "ligue1|toulouse|lemans|2026-10-16T18:45",
-   "sport": "ligue1",
-   "home": "Le Mans",
-   "away": "Toulouse",
-   "start": "2026-10-16T18:45Z",
+   "key": "ligue2|asnancylorraine|annecy|2026-10-16T18:00",
+   "sport": "ligue2",
+   "home": "Annecy",
+   "away": "AS Nancy Lorraine",
+   "start": "2026-10-16T18:00Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.3219,
-    "away": 0.4165,
-    "draw": 0.2615
+    "home": 0.3528,
+    "away": 0.3674,
+    "draw": 0.2798
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 195.0,
-     "decimal": 2.95
+     "american": 165.0,
+     "decimal": 2.65
     },
     "away": {
      "book": "DraftKings",
-     "american": 130.0,
-     "decimal": 2.3
+     "american": 155.0,
+     "decimal": 2.55
     },
     "draw": {
      "book": "DraftKings",
-     "american": 260.0,
-     "decimal": 3.6
+     "american": 230.0,
+     "decimal": 3.3
     }
    },
    "arb": false,
-   "impliedSum": 1.0515,
+   "impliedSum": 1.0725,
    "bets": [
     {
-     "side": "Le Mans",
+     "side": "Annecy",
      "book": "DraftKings",
-     "american": 195.0,
-     "fair": 0.3597,
-     "evPct": 6.12,
-     "stakePct": 1.1,
-     "stake": 1.1,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Toulouse vs Le Mans",
-     "url": "https://kalshi.com/markets/kxligue1game",
-     "home": 0.33,
-     "homeEdgePp": -0.8,
-     "away": 0.43,
-     "awayEdgePp": -1.3
-    }
-   ],
-   "model": {
-    "home": 0.4732,
-    "draw": 0.2528,
-    "away": 0.274,
-    "blendHome": 0.3597,
-    "gapPp": 15.1,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "mls|stlouiscity|minnesotaunited|2026-10-17T20:30",
-   "sport": "mls",
-   "home": "Minnesota United FC",
-   "away": "St. Louis CITY SC",
-   "start": "2026-10-17T20:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3795,
-    "away": 0.3795,
-    "draw": 0.241
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 145.0,
-     "decimal": 2.45
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 145.0,
-     "decimal": 2.45
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 275.0,
-     "decimal": 3.75
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.083,
-   "bets": [
-    {
-     "side": "St. Louis CITY SC",
-     "book": "DraftKings",
-     "american": 145.0,
-     "fair": 0.4321,
-     "evPct": 5.87,
-     "stakePct": 1.42,
-     "stake": 1.42,
+     "american": 165.0,
+     "fair": 0.4006,
+     "evPct": 6.15,
+     "stakePct": 1.3,
+     "stake": 1.3,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.1864,
-    "draw": 0.2237,
-    "away": 0.5899,
-    "blendHome": 0.3312,
-    "gapPp": -19.3,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "league1|huddersfieldtown|plymouthargyle|2026-10-17T14:00",
-   "sport": "league1",
-   "home": "Plymouth Argyle",
-   "away": "Huddersfield Town",
-   "start": "2026-10-17T14:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3472,
-    "away": 0.3927,
-    "draw": 0.2601
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 170.0,
-     "decimal": 2.7
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 140.0,
-     "decimal": 2.4
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 255.0,
-     "decimal": 3.55
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0687,
-   "bets": [
-    {
-     "side": "Plymouth Argyle",
-     "book": "DraftKings",
-     "american": 170.0,
-     "fair": 0.3913,
-     "evPct": 5.66,
-     "stakePct": 1.16,
-     "stake": 1.16,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5237,
-    "draw": 0.2539,
-    "away": 0.2224,
-    "blendHome": 0.3913,
-    "gapPp": 17.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "jleague|kawasakifrontale|cerezoosaka|2026-10-17T06:00",
-   "sport": "jleague",
-   "home": "Cerezo Osaka",
-   "away": "Kawasaki Frontale",
-   "start": "2026-10-17T06:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3412,
-    "away": 0.4021,
-    "draw": 0.2568
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 175.0,
-     "decimal": 2.75
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 135.0,
-     "decimal": 2.35
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 260.0,
-     "decimal": 3.6
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0669,
-   "bets": [
-    {
-     "side": "Cerezo Osaka",
-     "book": "DraftKings",
-     "american": 175.0,
-     "fair": 0.384,
-     "evPct": 5.61,
-     "stakePct": 1.12,
-     "stake": 1.12,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5126,
-    "draw": 0.2551,
-    "away": 0.2323,
-    "blendHome": 0.384,
-    "gapPp": 17.1,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "sweden|mjallbyaif|vasterassk|2026-10-18T12:00",
-   "sport": "sweden",
-   "home": "V\u00e4ster\u00e5s SK",
-   "away": "Mj\u00e4llby AIF",
-   "start": "2026-10-18T12:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3965,
-    "away": 0.3358,
-    "draw": 0.2677
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 135.0,
-     "decimal": 2.35
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 175.0,
-     "decimal": 2.75
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 240.0,
-     "decimal": 3.4
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0833,
-   "bets": [
-    {
-     "side": "V\u00e4ster\u00e5s SK",
-     "book": "DraftKings",
-     "american": 135.0,
-     "fair": 0.4487,
-     "evPct": 5.45,
-     "stakePct": 1.41,
-     "stake": 1.41,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.6055,
-    "draw": 0.2014,
-    "away": 0.1932,
-    "blendHome": 0.4487,
-    "gapPp": 20.9,
+    "home": 0.5438,
+    "draw": 0.281,
+    "away": 0.1751,
+    "blendHome": 0.4006,
+    "gapPp": 19.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -3749,19 +3520,19 @@
      "side": "Vit\u00f3ria",
      "book": "DraftKings",
      "american": 425.0,
-     "fair": 0.2008,
-     "evPct": 5.44,
-     "stakePct": 0.45,
-     "stake": 0.45,
+     "fair": 0.2016,
+     "evPct": 5.83,
+     "stakePct": 0.48,
+     "stake": 0.48,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.433,
-    "draw": 0.2653,
-    "away": 0.3016,
-    "blendHome": 0.5461,
+    "home": 0.4331,
+    "draw": 0.2623,
+    "away": 0.3046,
+    "blendHome": 0.5462,
     "gapPp": -15.1,
     "weight": 0.25
    },
@@ -3805,8 +3576,232 @@
      "side": "Lan\u00fas",
      "book": "DraftKings",
      "american": 180.0,
-     "fair": 0.3759,
+     "fair": 0.3774,
+     "evPct": 5.67,
+     "stakePct": 1.1,
+     "stake": 1.1,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.2137,
+    "draw": 0.2825,
+    "away": 0.5038,
+    "blendHome": 0.3096,
+    "gapPp": -12.8,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "ligamx|queretaro|santos|2026-10-17T23:00",
+   "sport": "ligamx",
+   "home": "Santos",
+   "away": "Quer\u00e9taro",
+   "start": "2026-10-17T23:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3937,
+    "away": 0.3415,
+    "draw": 0.2648
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 140.0,
+     "decimal": 2.4
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 175.0,
+     "decimal": 2.75
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.066,
+   "bets": [
+    {
+     "side": "Quer\u00e9taro",
+     "book": "DraftKings",
+     "american": 175.0,
+     "fair": 0.3841,
+     "evPct": 5.62,
+     "stakePct": 1.12,
+     "stake": 1.12,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.241,
+    "draw": 0.2471,
+    "away": 0.5119,
+    "blendHome": 0.3555,
+    "gapPp": -15.3,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "league1|huddersfieldtown|plymouthargyle|2026-10-17T14:00",
+   "sport": "league1",
+   "home": "Plymouth Argyle",
+   "away": "Huddersfield Town",
+   "start": "2026-10-17T14:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3472,
+    "away": 0.3927,
+    "draw": 0.2601
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 170.0,
+     "decimal": 2.7
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 140.0,
+     "decimal": 2.4
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 255.0,
+     "decimal": 3.55
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0687,
+   "bets": [
+    {
+     "side": "Plymouth Argyle",
+     "book": "DraftKings",
+     "american": 170.0,
+     "fair": 0.3909,
+     "evPct": 5.55,
+     "stakePct": 1.14,
+     "stake": 1.14,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.5221,
+    "draw": 0.2518,
+    "away": 0.2261,
+    "blendHome": 0.3909,
+    "gapPp": 17.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "sweden|mjallbyaif|vasterassk|2026-10-18T12:00",
+   "sport": "sweden",
+   "home": "V\u00e4ster\u00e5s SK",
+   "away": "Mj\u00e4llby AIF",
+   "start": "2026-10-18T12:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3965,
+    "away": 0.3358,
+    "draw": 0.2677
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 135.0,
+     "decimal": 2.35
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 175.0,
+     "decimal": 2.75
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 240.0,
+     "decimal": 3.4
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0833,
+   "bets": [
+    {
+     "side": "V\u00e4ster\u00e5s SK",
+     "book": "DraftKings",
+     "american": 135.0,
+     "fair": 0.4479,
      "evPct": 5.25,
+     "stakePct": 1.36,
+     "stake": 1.36,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.6021,
+    "draw": 0.1967,
+    "away": 0.2013,
+    "blendHome": 0.4479,
+    "gapPp": 20.6,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "jleague|kawasakifrontale|cerezoosaka|2026-10-17T06:00",
+   "sport": "jleague",
+   "home": "Cerezo Osaka",
+   "away": "Kawasaki Frontale",
+   "start": "2026-10-17T06:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3412,
+    "away": 0.4021,
+    "draw": 0.2568
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 175.0,
+     "decimal": 2.75
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 135.0,
+     "decimal": 2.35
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 260.0,
+     "decimal": 3.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0669,
+   "bets": [
+    {
+     "side": "Cerezo Osaka",
+     "book": "DraftKings",
+     "american": 175.0,
+     "fair": 0.3822,
+     "evPct": 5.1,
      "stakePct": 1.02,
      "stake": 1.02,
      "basis": "model-blend"
@@ -3814,123 +3809,67 @@
    ],
    "pm": [],
    "model": {
-    "home": 0.2169,
-    "draw": 0.2853,
-    "away": 0.4978,
-    "blendHome": 0.3104,
-    "gapPp": -12.5,
+    "home": 0.5052,
+    "draw": 0.2588,
+    "away": 0.2361,
+    "blendHome": 0.3822,
+    "gapPp": 16.4,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": []
   },
   {
-   "key": "greece|olympiacos|panetolikos|2026-10-18T14:00",
-   "sport": "greece",
-   "home": "Panetolikos",
-   "away": "Olympiacos",
-   "start": "2026-10-18T14:00Z",
+   "key": "ligue2|boulogne|grenoble|2026-10-16T18:00",
+   "sport": "ligue2",
+   "home": "Grenoble",
+   "away": "Boulogne",
+   "start": "2026-10-16T18:00Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.0961,
-    "away": 0.7277,
-    "draw": 0.1762
+    "home": 0.3536,
+    "away": 0.3467,
+    "draw": 0.2997
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 750.0,
-     "decimal": 8.5
+     "american": 165.0,
+     "decimal": 2.65
     },
     "away": {
      "book": "DraftKings",
-     "american": -320.0,
-     "decimal": 1.312
+     "american": 170.0,
+     "decimal": 2.7
     },
     "draw": {
      "book": "DraftKings",
-     "american": 400.0,
-     "decimal": 5.0
+     "american": 210.0,
+     "decimal": 3.1
     }
    },
    "arb": false,
-   "impliedSum": 1.0796,
+   "impliedSum": 1.0703,
    "bets": [
     {
-     "side": "Panetolikos",
+     "side": "Grenoble",
      "book": "DraftKings",
-     "american": 750.0,
-     "fair": 0.1237,
-     "evPct": 5.13,
-     "stakePct": 0.24,
-     "stake": 0.24,
+     "american": 165.0,
+     "fair": 0.3964,
+     "evPct": 5.05,
+     "stakePct": 1.07,
+     "stake": 1.07,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.2065,
-    "draw": 0.2608,
-    "away": 0.5327,
-    "blendHome": 0.1237,
-    "gapPp": 11.0,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "sweden|djurgarden|ifbrommapojkarna|2026-10-16T17:00",
-   "sport": "sweden",
-   "home": "IF Brommapojkarna",
-   "away": "Djurg\u00e5rden",
-   "start": "2026-10-16T17:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.1541,
-    "away": 0.6492,
-    "draw": 0.1967
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 475.0,
-     "decimal": 5.75
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -210.0,
-     "decimal": 1.476
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 360.0,
-     "decimal": 4.6
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0687,
-   "bets": [
-    {
-     "side": "IF Brommapojkarna",
-     "book": "DraftKings",
-     "american": 475.0,
-     "fair": 0.1824,
-     "evPct": 4.9,
-     "stakePct": 0.36,
-     "stake": 0.36,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.2675,
-    "draw": 0.2174,
-    "away": 0.5152,
-    "blendHome": 0.1824,
-    "gapPp": 11.3,
+    "home": 0.525,
+    "draw": 0.2857,
+    "away": 0.1893,
+    "blendHome": 0.3964,
+    "gapPp": 17.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -4000,168 +3939,56 @@
    "middles": []
   },
   {
-   "key": "ligue2|boulogne|grenoble|2026-10-16T18:00",
-   "sport": "ligue2",
-   "home": "Grenoble",
-   "away": "Boulogne",
-   "start": "2026-10-16T18:00Z",
+   "key": "mls|stlouiscity|minnesotaunited|2026-10-17T20:30",
+   "sport": "mls",
+   "home": "Minnesota United FC",
+   "away": "St. Louis CITY SC",
+   "start": "2026-10-17T20:30Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.3536,
-    "away": 0.3467,
-    "draw": 0.2997
+    "home": 0.3651,
+    "away": 0.3892,
+    "draw": 0.2457
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 165.0,
-     "decimal": 2.65
+     "american": 155.0,
+     "decimal": 2.55
     },
     "away": {
-     "book": "DraftKings",
-     "american": 170.0,
-     "decimal": 2.7
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 210.0,
-     "decimal": 3.1
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0703,
-   "bets": [
-    {
-     "side": "Grenoble",
-     "book": "DraftKings",
-     "american": 165.0,
-     "fair": 0.3952,
-     "evPct": 4.73,
-     "stakePct": 1.0,
-     "stake": 1.0,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5201,
-    "draw": 0.2835,
-    "away": 0.1964,
-    "blendHome": 0.3952,
-    "gapPp": 16.7,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "ligamx|queretaro|santos|2026-10-17T23:00",
-   "sport": "ligamx",
-   "home": "Santos",
-   "away": "Quer\u00e9taro",
-   "start": "2026-10-17T23:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3937,
-    "away": 0.3415,
-    "draw": 0.2648
-   },
-   "best": {
-    "home": {
      "book": "DraftKings",
      "american": 140.0,
      "decimal": 2.4
     },
-    "away": {
-     "book": "DraftKings",
-     "american": 175.0,
-     "decimal": 2.75
-    },
     "draw": {
      "book": "DraftKings",
-     "american": 250.0,
-     "decimal": 3.5
+     "american": 270.0,
+     "decimal": 3.7
     }
    },
    "arb": false,
-   "impliedSum": 1.066,
+   "impliedSum": 1.0791,
    "bets": [
     {
-     "side": "Quer\u00e9taro",
+     "side": "St. Louis CITY SC",
      "book": "DraftKings",
-     "american": 175.0,
-     "fair": 0.3808,
-     "evPct": 4.72,
-     "stakePct": 0.94,
-     "stake": 0.94,
+     "american": 140.0,
+     "fair": 0.435,
+     "evPct": 4.4,
+     "stakePct": 1.1,
+     "stake": 1.1,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.2479,
-    "draw": 0.2533,
-    "away": 0.4988,
-    "blendHome": 0.3572,
-    "gapPp": -14.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "scotchamp|livingston|dunfermlineathletic|2026-10-17T14:00",
-   "sport": "scotchamp",
-   "home": "Dunfermline Athletic",
-   "away": "Livingston",
-   "start": "2026-10-17T14:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3532,
-    "away": 0.3754,
-    "draw": 0.2714
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 165.0,
-     "decimal": 2.65
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 150.0,
-     "decimal": 2.5
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 240.0,
-     "decimal": 3.4
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0715,
-   "bets": [
-    {
-     "side": "Dunfermline Athletic",
-     "book": "DraftKings",
-     "american": 165.0,
-     "fair": 0.3942,
-     "evPct": 4.46,
-     "stakePct": 0.95,
-     "stake": 0.95,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5173,
-    "draw": 0.2823,
-    "away": 0.2004,
-    "blendHome": 0.3942,
-    "gapPp": 16.4,
+    "home": 0.1974,
+    "draw": 0.2301,
+    "away": 0.5725,
+    "blendHome": 0.3232,
+    "gapPp": -16.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -4204,20 +4031,20 @@
      "side": "Machida Zelvia",
      "book": "DraftKings",
      "american": -120.0,
-     "fair": 0.5687,
-     "evPct": 4.26,
-     "stakePct": 1.79,
-     "stake": 1.79,
+     "fair": 0.5695,
+     "evPct": 4.4,
+     "stakePct": 1.85,
+     "stake": 1.85,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.711,
-    "draw": 0.1964,
-    "away": 0.0926,
-    "blendHome": 0.5687,
-    "gapPp": 19.0,
+    "home": 0.7142,
+    "draw": 0.1966,
+    "away": 0.0893,
+    "blendHome": 0.5695,
+    "gapPp": 19.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -4282,6 +4109,118 @@
      "Indianapolis Colts: -27 Elo",
      "Tennessee Titans: -16 Elo"
     ]
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "scotchamp|livingston|dunfermlineathletic|2026-10-17T14:00",
+   "sport": "scotchamp",
+   "home": "Dunfermline Athletic",
+   "away": "Livingston",
+   "start": "2026-10-17T14:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3532,
+    "away": 0.3754,
+    "draw": 0.2714
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 165.0,
+     "decimal": 2.65
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 150.0,
+     "decimal": 2.5
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 240.0,
+     "decimal": 3.4
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0715,
+   "bets": [
+    {
+     "side": "Dunfermline Athletic",
+     "book": "DraftKings",
+     "american": 165.0,
+     "fair": 0.3927,
+     "evPct": 4.08,
+     "stakePct": 0.86,
+     "stake": 0.86,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.5114,
+    "draw": 0.2889,
+    "away": 0.1997,
+    "blendHome": 0.3927,
+    "gapPp": 15.8,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "greece|olympiacos|panetolikos|2026-10-18T14:00",
+   "sport": "greece",
+   "home": "Panetolikos",
+   "away": "Olympiacos",
+   "start": "2026-10-18T14:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.0961,
+    "away": 0.7277,
+    "draw": 0.1762
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 750.0,
+     "decimal": 8.5
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -320.0,
+     "decimal": 1.312
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 400.0,
+     "decimal": 5.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0796,
+   "bets": [
+    {
+     "side": "Panetolikos",
+     "book": "DraftKings",
+     "american": 750.0,
+     "fair": 0.1223,
+     "evPct": 3.92,
+     "stakePct": 0.18,
+     "stake": 0.18,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.2008,
+    "draw": 0.253,
+    "away": 0.5462,
+    "blendHome": 0.1223,
+    "gapPp": 10.5,
+    "weight": 0.25
    },
    "crossArbs": [],
    "middles": []
@@ -4416,6 +4355,62 @@
    "middles": []
   },
   {
+   "key": "uruguay|defensorsporting|bostonriver|2026-10-17T19:00",
+   "sport": "uruguay",
+   "home": "Boston River",
+   "away": "Defensor Sporting",
+   "start": "2026-10-17T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3453,
+    "away": 0.3524,
+    "draw": 0.3023
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 165.0,
+     "decimal": 2.65
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 160.0,
+     "decimal": 2.6
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 200.0,
+     "decimal": 3.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0953,
+   "bets": [
+    {
+     "side": "Boston River",
+     "book": "DraftKings",
+     "american": 165.0,
+     "fair": 0.3909,
+     "evPct": 3.58,
+     "stakePct": 0.76,
+     "stake": 0.76,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.5275,
+    "draw": 0.2481,
+    "away": 0.2244,
+    "blendHome": 0.3909,
+    "gapPp": 18.2,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
    "key": "nba|atlantahawks|orlandomagic|2026-10-21T23:00",
    "sport": "nba",
    "home": "Orlando Magic",
@@ -4474,6 +4469,118 @@
      "Orlando Magic: -18 Elo",
      "Atlanta Hawks: -30 Elo"
     ]
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "eerstedivisie|dordrecht|jongpsv|2026-10-19T18:00",
+   "sport": "eerstedivisie",
+   "home": "Jong PSV",
+   "away": "FC Dordrecht",
+   "start": "2026-10-19T18:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4376,
+    "away": 0.3195,
+    "draw": 0.2429
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 115.0,
+     "decimal": 2.15
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 190.0,
+     "decimal": 2.9
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0766,
+   "bets": [
+    {
+     "side": "Jong PSV",
+     "book": "DraftKings",
+     "american": 115.0,
+     "fair": 0.4811,
+     "evPct": 3.44,
+     "stakePct": 1.05,
+     "stake": 1.05,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.6117,
+    "draw": 0.1886,
+    "away": 0.1998,
+    "blendHome": 0.4811,
+    "gapPp": 17.4,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "sweden|djurgarden|ifbrommapojkarna|2026-10-16T17:00",
+   "sport": "sweden",
+   "home": "IF Brommapojkarna",
+   "away": "Djurg\u00e5rden",
+   "start": "2026-10-16T17:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.1541,
+    "away": 0.6492,
+    "draw": 0.1967
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 475.0,
+     "decimal": 5.75
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -210.0,
+     "decimal": 1.476
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 360.0,
+     "decimal": 4.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0687,
+   "bets": [
+    {
+     "side": "IF Brommapojkarna",
+     "book": "DraftKings",
+     "american": 475.0,
+     "fair": 0.1798,
+     "evPct": 3.41,
+     "stakePct": 0.25,
+     "stake": 0.25,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.2571,
+    "draw": 0.2087,
+    "away": 0.5343,
+    "blendHome": 0.1798,
+    "gapPp": 10.3,
+    "weight": 0.25
    },
    "crossArbs": [],
    "middles": []
@@ -4542,62 +4649,6 @@
    "middles": []
   },
   {
-   "key": "uruguay|defensorsporting|bostonriver|2026-10-17T19:00",
-   "sport": "uruguay",
-   "home": "Boston River",
-   "away": "Defensor Sporting",
-   "start": "2026-10-17T19:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3453,
-    "away": 0.3524,
-    "draw": 0.3023
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 165.0,
-     "decimal": 2.65
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 160.0,
-     "decimal": 2.6
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 200.0,
-     "decimal": 3.0
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0953,
-   "bets": [
-    {
-     "side": "Boston River",
-     "book": "DraftKings",
-     "american": 165.0,
-     "fair": 0.3896,
-     "evPct": 3.24,
-     "stakePct": 0.69,
-     "stake": 0.69,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5224,
-    "draw": 0.2637,
-    "away": 0.214,
-    "blendHome": 0.3896,
-    "gapPp": 17.7,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
    "key": "nba|oklahomacitythunder|houstonrockets|2026-10-16T00:30",
    "sport": "nba",
    "home": "Houston Rockets",
@@ -4661,112 +4712,56 @@
    "middles": []
   },
   {
-   "key": "eredivisie|azalkmaar|cambuur|2026-10-18T12:30",
-   "sport": "eredivisie",
-   "home": "SC Cambuur",
-   "away": "AZ Alkmaar",
-   "start": "2026-10-18T12:30Z",
+   "key": "superlig|besiktas|trabzonspor|2026-10-19T17:00",
+   "sport": "superlig",
+   "home": "Trabzonspor",
+   "away": "Besiktas",
+   "start": "2026-10-19T17:00Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.1579,
-    "away": 0.6583,
-    "draw": 0.1838
+    "home": 0.3287,
+    "away": 0.4345,
+    "draw": 0.2368
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 450.0,
-     "decimal": 5.5
+     "american": 180.0,
+     "decimal": 2.8
     },
     "away": {
-     "book": "DraftKings",
-     "american": -225.0,
-     "decimal": 1.444
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 380.0,
-     "decimal": 4.8
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0825,
-   "bets": [
-    {
-     "side": "SC Cambuur",
-     "book": "DraftKings",
-     "american": 450.0,
-     "fair": 0.1876,
-     "evPct": 3.19,
-     "stakePct": 0.25,
-     "stake": 0.25,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.2767,
-    "draw": 0.2685,
-    "away": 0.4548,
-    "blendHome": 0.1876,
-    "gapPp": 11.9,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "eerstedivisie|dordrecht|jongpsv|2026-10-19T18:00",
-   "sport": "eerstedivisie",
-   "home": "Jong PSV",
-   "away": "FC Dordrecht",
-   "start": "2026-10-19T18:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.4376,
-    "away": 0.3195,
-    "draw": 0.2429
-   },
-   "best": {
-    "home": {
      "book": "DraftKings",
      "american": 115.0,
      "decimal": 2.15
     },
-    "away": {
-     "book": "DraftKings",
-     "american": 190.0,
-     "decimal": 2.9
-    },
     "draw": {
      "book": "DraftKings",
-     "american": 275.0,
-     "decimal": 3.75
+     "american": 280.0,
+     "decimal": 3.8
     }
    },
    "arb": false,
-   "impliedSum": 1.0766,
+   "impliedSum": 1.0854,
    "bets": [
     {
-     "side": "Jong PSV",
+     "side": "Trabzonspor",
      "book": "DraftKings",
-     "american": 115.0,
-     "fair": 0.4793,
-     "evPct": 3.04,
-     "stakePct": 0.93,
-     "stake": 0.93,
+     "american": 180.0,
+     "fair": 0.3686,
+     "evPct": 3.2,
+     "stakePct": 0.62,
+     "stake": 0.62,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.6043,
-    "draw": 0.1929,
-    "away": 0.2027,
-    "blendHome": 0.4793,
-    "gapPp": 16.7,
+    "home": 0.4881,
+    "draw": 0.2723,
+    "away": 0.2396,
+    "blendHome": 0.3686,
+    "gapPp": 15.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -4809,20 +4804,76 @@
      "side": "FC Groningen",
      "book": "DraftKings",
      "american": 265.0,
-     "fair": 0.2822,
-     "evPct": 3.0,
-     "stakePct": 0.4,
-     "stake": 0.4,
+     "fair": 0.2826,
+     "evPct": 3.16,
+     "stakePct": 0.42,
+     "stake": 0.42,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.3794,
-    "draw": 0.2736,
-    "away": 0.347,
-    "blendHome": 0.2822,
-    "gapPp": 13.0,
+    "home": 0.3812,
+    "draw": 0.2687,
+    "away": 0.3501,
+    "blendHome": 0.2826,
+    "gapPp": 13.1,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "eredivisie|azalkmaar|cambuur|2026-10-18T12:30",
+   "sport": "eredivisie",
+   "home": "SC Cambuur",
+   "away": "AZ Alkmaar",
+   "start": "2026-10-18T12:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.1579,
+    "away": 0.6583,
+    "draw": 0.1838
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 450.0,
+     "decimal": 5.5
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -225.0,
+     "decimal": 1.444
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 380.0,
+     "decimal": 4.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0825,
+   "bets": [
+    {
+     "side": "SC Cambuur",
+     "book": "DraftKings",
+     "american": 450.0,
+     "fair": 0.1875,
+     "evPct": 3.1,
+     "stakePct": 0.24,
+     "stake": 0.24,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.276,
+    "draw": 0.2633,
+    "away": 0.4607,
+    "blendHome": 0.1875,
+    "gapPp": 11.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -4955,112 +5006,56 @@
    "middles": []
   },
   {
-   "key": "league2|yorkcity|newportcounty|2026-10-17T14:00",
-   "sport": "league2",
-   "home": "Newport County",
-   "away": "York City",
-   "start": "2026-10-17T14:00Z",
+   "key": "ligue1|brest|lille|2026-10-17T18:45",
+   "sport": "ligue1",
+   "home": "Lille",
+   "away": "Brest",
+   "start": "2026-10-17T18:45Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.2574,
-    "away": 0.4996,
-    "draw": 0.243
+    "home": 0.5292,
+    "away": 0.2308,
+    "draw": 0.24
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 260.0,
-     "decimal": 3.6
+     "american": -120.0,
+     "decimal": 1.833
     },
     "away": {
      "book": "DraftKings",
-     "american": -110.0,
-     "decimal": 1.909
+     "american": 310.0,
+     "decimal": 4.1
     },
     "draw": {
      "book": "DraftKings",
-     "american": 280.0,
-     "decimal": 3.8
+     "american": 295.0,
+     "decimal": 3.95
     }
    },
    "arb": false,
-   "impliedSum": 1.0647,
+   "impliedSum": 1.0425,
    "bets": [
     {
-     "side": "Newport County",
+     "side": "Lille",
      "book": "DraftKings",
-     "american": 260.0,
-     "fair": 0.2851,
-     "evPct": 2.63,
-     "stakePct": 0.35,
-     "stake": 0.35,
+     "american": -120.0,
+     "fair": 0.5602,
+     "evPct": 2.7,
+     "stakePct": 1.13,
+     "stake": 1.13,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.3682,
-    "draw": 0.2687,
-    "away": 0.3631,
-    "blendHome": 0.2851,
-    "gapPp": 11.1,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "scotprem|dundeeunited|stjohnstone|2026-10-17T14:00",
-   "sport": "scotprem",
-   "home": "St Johnstone",
-   "away": "Dundee United",
-   "start": "2026-10-17T14:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3656,
-    "away": 0.3733,
-    "draw": 0.2612
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 155.0,
-     "decimal": 2.55
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 150.0,
-     "decimal": 2.5
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 250.0,
-     "decimal": 3.5
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0779,
-   "bets": [
-    {
-     "side": "St Johnstone",
-     "book": "DraftKings",
-     "american": 155.0,
-     "fair": 0.4024,
-     "evPct": 2.61,
-     "stakePct": 0.59,
-     "stake": 0.59,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5128,
-    "draw": 0.22,
-    "away": 0.2672,
-    "blendHome": 0.4024,
-    "gapPp": 14.7,
+    "home": 0.653,
+    "draw": 0.2031,
+    "away": 0.1438,
+    "blendHome": 0.5602,
+    "gapPp": 12.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -5103,20 +5098,132 @@
      "side": "Tianjin Jinmen Tiger",
      "book": "DraftKings",
      "american": 330.0,
-     "fair": 0.2385,
-     "evPct": 2.56,
-     "stakePct": 0.27,
-     "stake": 0.27,
+     "fair": 0.2387,
+     "evPct": 2.63,
+     "stakePct": 0.28,
+     "stake": 0.28,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.3901,
-    "draw": 0.285,
-    "away": 0.3249,
-    "blendHome": 0.4997,
-    "gapPp": -14.6,
+    "home": 0.3914,
+    "draw": 0.283,
+    "away": 0.3256,
+    "blendHome": 0.5,
+    "gapPp": -14.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "league2|barnet|tranmererovers|2026-10-17T14:00",
+   "sport": "league2",
+   "home": "Tranmere Rovers",
+   "away": "Barnet",
+   "start": "2026-10-17T14:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.278,
+    "away": 0.4644,
+    "draw": 0.2576
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 235.0,
+     "decimal": 3.35
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 105.0,
+     "decimal": 2.05
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 260.0,
+     "decimal": 3.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0641,
+   "bets": [
+    {
+     "side": "Barnet",
+     "book": "DraftKings",
+     "american": 105.0,
+     "fair": 0.5,
+     "evPct": 2.51,
+     "stakePct": 0.84,
+     "stake": 0.84,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.1612,
+    "draw": 0.2318,
+    "away": 0.6071,
+    "blendHome": 0.2488,
+    "gapPp": -11.7,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "laliga2|albacete|sportinggijon|2026-10-17T16:30",
+   "sport": "laliga2",
+   "home": "Sporting Gij\u00f3n",
+   "away": "Albacete",
+   "start": "2026-10-17T16:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4855,
+    "away": 0.2515,
+    "draw": 0.263
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -105.0,
+     "decimal": 1.952
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 265.0,
+     "decimal": 3.65
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 250.0,
+     "decimal": 3.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0719,
+   "bets": [
+    {
+     "side": "Sporting Gij\u00f3n",
+     "book": "DraftKings",
+     "american": -105.0,
+     "fair": 0.5247,
+     "evPct": 2.44,
+     "stakePct": 0.9,
+     "stake": 0.9,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.6421,
+    "draw": 0.2064,
+    "away": 0.1515,
+    "blendHome": 0.5247,
+    "gapPp": 15.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -5186,118 +5293,6 @@
    "middles": []
   },
   {
-   "key": "superlig|besiktas|trabzonspor|2026-10-19T17:00",
-   "sport": "superlig",
-   "home": "Trabzonspor",
-   "away": "Besiktas",
-   "start": "2026-10-19T17:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3287,
-    "away": 0.4345,
-    "draw": 0.2368
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 180.0,
-     "decimal": 2.8
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 115.0,
-     "decimal": 2.15
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 280.0,
-     "decimal": 3.8
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0854,
-   "bets": [
-    {
-     "side": "Trabzonspor",
-     "book": "DraftKings",
-     "american": 180.0,
-     "fair": 0.3658,
-     "evPct": 2.43,
-     "stakePct": 0.47,
-     "stake": 0.47,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.4771,
-    "draw": 0.2742,
-    "away": 0.2487,
-    "blendHome": 0.3658,
-    "gapPp": 14.8,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "league2|barnet|tranmererovers|2026-10-17T14:00",
-   "sport": "league2",
-   "home": "Tranmere Rovers",
-   "away": "Barnet",
-   "start": "2026-10-17T14:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.278,
-    "away": 0.4644,
-    "draw": 0.2576
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 235.0,
-     "decimal": 3.35
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 105.0,
-     "decimal": 2.05
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 260.0,
-     "decimal": 3.6
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0641,
-   "bets": [
-    {
-     "side": "Barnet",
-     "book": "DraftKings",
-     "american": 105.0,
-     "fair": 0.4993,
-     "evPct": 2.36,
-     "stakePct": 0.79,
-     "stake": 0.79,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.1611,
-    "draw": 0.2347,
-    "away": 0.6042,
-    "blendHome": 0.2488,
-    "gapPp": -11.7,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
    "key": "argentina|rosariocentral|atleticotucuman|2026-10-17T23:00",
    "sport": "argentina",
    "home": "Atl\u00e9tico Tucum\u00e1n",
@@ -5334,18 +5329,18 @@
      "side": "Rosario Central",
      "book": "DraftKings",
      "american": 140.0,
-     "fair": 0.4256,
-     "evPct": 2.15,
-     "stakePct": 0.54,
-     "stake": 0.54,
+     "fair": 0.4261,
+     "evPct": 2.25,
+     "stakePct": 0.56,
+     "stake": 0.56,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.1925,
-    "draw": 0.2787,
-    "away": 0.5288,
+    "home": 0.1927,
+    "draw": 0.2768,
+    "away": 0.5305,
     "blendHome": 0.2685,
     "gapPp": -10.1,
     "weight": 0.25
@@ -5354,28 +5349,28 @@
    "middles": []
   },
   {
-   "key": "laliga2|albacete|sportinggijon|2026-10-17T16:30",
-   "sport": "laliga2",
-   "home": "Sporting Gij\u00f3n",
-   "away": "Albacete",
-   "start": "2026-10-17T16:30Z",
+   "key": "scotprem|dundeeunited|stjohnstone|2026-10-17T14:00",
+   "sport": "scotprem",
+   "home": "St Johnstone",
+   "away": "Dundee United",
+   "start": "2026-10-17T14:00Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.4855,
-    "away": 0.2515,
-    "draw": 0.263
+    "home": 0.3656,
+    "away": 0.3733,
+    "draw": 0.2612
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -105.0,
-     "decimal": 1.952
+     "american": 155.0,
+     "decimal": 2.55
     },
     "away": {
      "book": "DraftKings",
-     "american": 265.0,
-     "decimal": 3.65
+     "american": 150.0,
+     "decimal": 2.5
     },
     "draw": {
      "book": "DraftKings",
@@ -5384,26 +5379,138 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.0719,
+   "impliedSum": 1.0779,
    "bets": [
     {
-     "side": "Sporting Gij\u00f3n",
+     "side": "St Johnstone",
      "book": "DraftKings",
-     "american": -105.0,
-     "fair": 0.5223,
-     "evPct": 1.97,
-     "stakePct": 0.72,
-     "stake": 0.72,
+     "american": 155.0,
+     "fair": 0.3999,
+     "evPct": 1.96,
+     "stakePct": 0.44,
+     "stake": 0.44,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.6326,
-    "draw": 0.2033,
-    "away": 0.1641,
-    "blendHome": 0.5223,
-    "gapPp": 14.7,
+    "home": 0.5027,
+    "draw": 0.234,
+    "away": 0.2633,
+    "blendHome": 0.3999,
+    "gapPp": 13.7,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "league2|yorkcity|newportcounty|2026-10-17T14:00",
+   "sport": "league2",
+   "home": "Newport County",
+   "away": "York City",
+   "start": "2026-10-17T14:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.2574,
+    "away": 0.4996,
+    "draw": 0.243
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 260.0,
+     "decimal": 3.6
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -110.0,
+     "decimal": 1.909
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 280.0,
+     "decimal": 3.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0647,
+   "bets": [
+    {
+     "side": "Newport County",
+     "book": "DraftKings",
+     "american": 260.0,
+     "fair": 0.2827,
+     "evPct": 1.78,
+     "stakePct": 0.24,
+     "stake": 0.24,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.3587,
+    "draw": 0.2658,
+    "away": 0.3755,
+    "blendHome": 0.2827,
+    "gapPp": 10.1,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "eerstedivisie|jongaz|vvvvenlo|2026-10-16T18:00",
+   "sport": "eerstedivisie",
+   "home": "VVV-Venlo",
+   "away": "Jong AZ",
+   "start": "2026-10-16T18:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4472,
+    "away": 0.3243,
+    "draw": 0.2286
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 110.0,
+     "decimal": 2.1
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 185.0,
+     "decimal": 2.85
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 295.0,
+     "decimal": 3.95
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0802,
+   "bets": [
+    {
+     "side": "VVV-Venlo",
+     "book": "DraftKings",
+     "american": 110.0,
+     "fair": 0.4844,
+     "evPct": 1.71,
+     "stakePct": 0.55,
+     "stake": 0.55,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.5959,
+    "draw": 0.1918,
+    "away": 0.2123,
+    "blendHome": 0.4844,
+    "gapPp": 14.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -5446,188 +5553,20 @@
      "side": "Portsmouth",
      "book": "DraftKings",
      "american": 390.0,
-     "fair": 0.208,
-     "evPct": 1.94,
-     "stakePct": 0.17,
-     "stake": 0.17,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.4776,
-    "draw": 0.2614,
-    "away": 0.2609,
-    "blendHome": 0.5498,
-    "gapPp": -9.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "ligue1|brest|lille|2026-10-17T18:45",
-   "sport": "ligue1",
-   "home": "Lille",
-   "away": "Brest",
-   "start": "2026-10-17T18:45Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.5292,
-    "away": 0.2308,
-    "draw": 0.24
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -120.0,
-     "decimal": 1.833
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 310.0,
-     "decimal": 4.1
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 295.0,
-     "decimal": 3.95
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0425,
-   "bets": [
-    {
-     "side": "Lille",
-     "book": "DraftKings",
-     "american": -120.0,
-     "fair": 0.5551,
-     "evPct": 1.76,
-     "stakePct": 0.74,
-     "stake": 0.74,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.6326,
-    "draw": 0.2193,
-    "away": 0.1482,
-    "blendHome": 0.5551,
-    "gapPp": 10.3,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "laliga2|almeria|realsociedadii|2026-10-17T12:00",
-   "sport": "laliga2",
-   "home": "Real Sociedad II",
-   "away": "Almer\u00eda",
-   "start": "2026-10-17T12:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.2768,
-    "away": 0.463,
-    "draw": 0.2603
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 235.0,
-     "decimal": 3.35
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 105.0,
-     "decimal": 2.05
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 255.0,
-     "decimal": 3.55
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.068,
-   "bets": [
-    {
-     "side": "Almer\u00eda",
-     "book": "DraftKings",
-     "american": 105.0,
-     "fair": 0.4958,
-     "evPct": 1.63,
-     "stakePct": 0.54,
-     "stake": 0.54,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.193,
-    "draw": 0.2129,
-    "away": 0.5941,
-    "blendHome": 0.2558,
-    "gapPp": -8.4,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "colombia|independientesantafe|llaneros|2026-10-18T23:05",
-   "sport": "colombia",
-   "home": "Llaneros FC",
-   "away": "Independiente Santa Fe",
-   "start": "2026-10-18T23:05Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3357,
-    "away": 0.3646,
-    "draw": 0.2996
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 170.0,
-     "decimal": 2.7
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 150.0,
-     "decimal": 2.5
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 200.0,
-     "decimal": 3.0
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.1037,
-   "bets": [
-    {
-     "side": "Independiente Santa Fe",
-     "book": "DraftKings",
-     "american": 150.0,
-     "fair": 0.4064,
+     "fair": 0.2073,
      "evPct": 1.6,
-     "stakePct": 0.37,
-     "stake": 0.37,
+     "stakePct": 0.14,
+     "stake": 0.14,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.1978,
-    "draw": 0.2705,
-    "away": 0.5317,
-    "blendHome": 0.3012,
-    "gapPp": -13.8,
+    "home": 0.482,
+    "draw": 0.2599,
+    "away": 0.2581,
+    "blendHome": 0.5508,
+    "gapPp": -9.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -5697,140 +5636,140 @@
    "middles": []
   },
   {
-   "key": "ligue1|asmonaco|lorient|2026-10-18T15:15",
-   "sport": "ligue1",
-   "home": "Lorient",
-   "away": "AS Monaco",
-   "start": "2026-10-18T15:15Z",
+   "key": "uruguay|cerrolargo|cerro|2026-10-16T22:00",
+   "sport": "uruguay",
+   "home": "Cerro",
+   "away": "Cerro Largo",
+   "start": "2026-10-16T22:00Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.2501,
-    "away": 0.4763,
-    "draw": 0.2736
+    "home": 0.382,
+    "away": 0.3119,
+    "draw": 0.3062
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 270.0,
-     "decimal": 3.7
+     "american": 140.0,
+     "decimal": 2.4
     },
     "away": {
      "book": "DraftKings",
-     "american": 100.0,
-     "decimal": 2.0
+     "american": 190.0,
+     "decimal": 2.9
     },
     "draw": {
-     "book": "DraftKings",
-     "american": 240.0,
-     "decimal": 3.4
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0644,
-   "bets": [
-    {
-     "side": "Lorient",
-     "book": "DraftKings",
-     "american": 270.0,
-     "fair": 0.2741,
-     "evPct": 1.4,
-     "stakePct": 0.18,
-     "stake": 0.18,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.3458,
-    "draw": 0.2587,
-    "away": 0.3955,
-    "blendHome": 0.2741,
-    "gapPp": 9.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "eerstedivisie|jongaz|vvvvenlo|2026-10-16T18:00",
-   "sport": "eerstedivisie",
-   "home": "VVV-Venlo",
-   "away": "Jong AZ",
-   "start": "2026-10-16T18:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.4472,
-    "away": 0.3243,
-    "draw": 0.2286
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 110.0,
-     "decimal": 2.1
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 185.0,
-     "decimal": 2.85
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 295.0,
-     "decimal": 3.95
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0802,
-   "bets": [
-    {
-     "side": "VVV-Venlo",
-     "book": "DraftKings",
-     "american": 110.0,
-     "fair": 0.4827,
-     "evPct": 1.37,
-     "stakePct": 0.44,
-     "stake": 0.44,
-     "basis": "model-blend"
-    }
-   ],
-   "pm": [],
-   "model": {
-    "home": 0.5893,
-    "draw": 0.196,
-    "away": 0.2147,
-    "blendHome": 0.4827,
-    "gapPp": 14.2,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "brasileirao2|criciuma|saobernardo|2026-10-18T19:00",
-   "sport": "brasileirao2",
-   "home": "S\u00e3o Bernardo",
-   "away": "Crici\u00fama",
-   "start": "2026-10-18T19:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.3126,
-    "away": 0.3804,
-    "draw": 0.307
-   },
-   "best": {
-    "home": {
      "book": "DraftKings",
      "american": 195.0,
      "decimal": 2.95
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.1005,
+   "bets": [
+    {
+     "side": "Cerro",
+     "book": "DraftKings",
+     "american": 140.0,
+     "fair": 0.4229,
+     "evPct": 1.51,
+     "stakePct": 0.38,
+     "stake": 0.38,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.5459,
+    "draw": 0.2445,
+    "away": 0.2096,
+    "blendHome": 0.4229,
+    "gapPp": 16.4,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "laliga2|almeria|realsociedadii|2026-10-17T12:00",
+   "sport": "laliga2",
+   "home": "Real Sociedad II",
+   "away": "Almer\u00eda",
+   "start": "2026-10-17T12:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.2768,
+    "away": 0.463,
+    "draw": 0.2603
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 235.0,
+     "decimal": 3.35
     },
     "away": {
      "book": "DraftKings",
-     "american": 145.0,
-     "decimal": 2.45
+     "american": 105.0,
+     "decimal": 2.05
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 255.0,
+     "decimal": 3.55
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.068,
+   "bets": [
+    {
+     "side": "Almer\u00eda",
+     "book": "DraftKings",
+     "american": 105.0,
+     "fair": 0.4951,
+     "evPct": 1.5,
+     "stakePct": 0.5,
+     "stake": 0.5,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.1885,
+    "draw": 0.2198,
+    "away": 0.5917,
+    "blendHome": 0.2547,
+    "gapPp": -8.8,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "colombia|independientesantafe|llaneros|2026-10-18T23:05",
+   "sport": "colombia",
+   "home": "Llaneros FC",
+   "away": "Independiente Santa Fe",
+   "start": "2026-10-18T23:05Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3357,
+    "away": 0.3646,
+    "draw": 0.2996
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 170.0,
+     "decimal": 2.7
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 150.0,
+     "decimal": 2.5
     },
     "draw": {
      "book": "DraftKings",
@@ -5839,26 +5778,138 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.0805,
+   "impliedSum": 1.1037,
    "bets": [
     {
-     "side": "S\u00e3o Bernardo",
+     "side": "Independiente Santa Fe",
      "book": "DraftKings",
-     "american": 195.0,
-     "fair": 0.3434,
-     "evPct": 1.31,
-     "stakePct": 0.23,
-     "stake": 0.23,
+     "american": 150.0,
+     "fair": 0.4058,
+     "evPct": 1.45,
+     "stakePct": 0.34,
+     "stake": 0.34,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.4359,
-    "draw": 0.2808,
-    "away": 0.2833,
-    "blendHome": 0.3434,
-    "gapPp": 12.3,
+    "home": 0.1992,
+    "draw": 0.2714,
+    "away": 0.5294,
+    "blendHome": 0.3016,
+    "gapPp": -13.6,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "sweden|ifelfsborg|iksirius|2026-10-18T12:00",
+   "sport": "sweden",
+   "home": "IK Sirius",
+   "away": "IF Elfsborg",
+   "start": "2026-10-18T12:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4797,
+    "away": 0.2662,
+    "draw": 0.2541
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -105.0,
+     "decimal": 1.952
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 240.0,
+     "decimal": 3.4
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 255.0,
+     "decimal": 3.55
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.088,
+   "bets": [
+    {
+     "side": "IK Sirius",
+     "book": "DraftKings",
+     "american": -105.0,
+     "fair": 0.5192,
+     "evPct": 1.37,
+     "stakePct": 0.5,
+     "stake": 0.5,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.6378,
+    "draw": 0.1884,
+    "away": 0.1738,
+    "blendHome": 0.5192,
+    "gapPp": 15.8,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "eerstedivisie|almerecity|emmen|2026-10-17T14:30",
+   "sport": "eerstedivisie",
+   "home": "FC Emmen",
+   "away": "Almere City",
+   "start": "2026-10-17T14:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.427,
+    "away": 0.3194,
+    "draw": 0.2536
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 120.0,
+     "decimal": 2.2
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 190.0,
+     "decimal": 2.9
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 260.0,
+     "decimal": 3.6
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0772,
+   "bets": [
+    {
+     "side": "Almere City",
+     "book": "DraftKings",
+     "american": 190.0,
+     "fair": 0.3493,
+     "evPct": 1.28,
+     "stakePct": 0.24,
+     "stake": 0.24,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.3506,
+    "draw": 0.2104,
+    "away": 0.4389,
+    "blendHome": 0.4079,
+    "gapPp": -7.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -5991,56 +6042,112 @@
    "middles": []
   },
   {
-   "key": "uruguay|cerrolargo|cerro|2026-10-16T22:00",
-   "sport": "uruguay",
-   "home": "Cerro",
-   "away": "Cerro Largo",
-   "start": "2026-10-16T22:00Z",
+   "key": "ligue1|asmonaco|lorient|2026-10-18T15:15",
+   "sport": "ligue1",
+   "home": "Lorient",
+   "away": "AS Monaco",
+   "start": "2026-10-18T15:15Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.382,
-    "away": 0.3119,
-    "draw": 0.3062
+    "home": 0.2501,
+    "away": 0.4763,
+    "draw": 0.2736
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 140.0,
-     "decimal": 2.4
+     "american": 270.0,
+     "decimal": 3.7
     },
     "away": {
      "book": "DraftKings",
-     "american": 190.0,
-     "decimal": 2.9
+     "american": 100.0,
+     "decimal": 2.0
     },
     "draw": {
      "book": "DraftKings",
-     "american": 195.0,
-     "decimal": 2.95
+     "american": 240.0,
+     "decimal": 3.4
     }
    },
    "arb": false,
-   "impliedSum": 1.1005,
+   "impliedSum": 1.0644,
    "bets": [
     {
-     "side": "Cerro",
+     "side": "Lorient",
      "book": "DraftKings",
-     "american": 140.0,
-     "fair": 0.4218,
-     "evPct": 1.23,
-     "stakePct": 0.31,
-     "stake": 0.31,
+     "american": 270.0,
+     "fair": 0.2736,
+     "evPct": 1.24,
+     "stakePct": 0.16,
+     "stake": 0.16,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.5412,
-    "draw": 0.2597,
-    "away": 0.1991,
-    "blendHome": 0.4218,
-    "gapPp": 15.9,
+    "home": 0.3441,
+    "draw": 0.2445,
+    "away": 0.4115,
+    "blendHome": 0.2736,
+    "gapPp": 9.4,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "eerstedivisie|heraclesalmelo|mvvmaastricht|2026-10-18T14:45",
+   "sport": "eerstedivisie",
+   "home": "MVV Maastricht",
+   "away": "Heracles Almelo",
+   "start": "2026-10-18T14:45Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.1509,
+    "away": 0.6727,
+    "draw": 0.1764
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 475.0,
+     "decimal": 5.75
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -240.0,
+     "decimal": 1.417
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 400.0,
+     "decimal": 5.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0798,
+   "bets": [
+    {
+     "side": "MVV Maastricht",
+     "book": "DraftKings",
+     "american": 475.0,
+     "fair": 0.176,
+     "evPct": 1.19,
+     "stakePct": 0.09,
+     "stake": 0.09,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.2511,
+    "draw": 0.1998,
+    "away": 0.5491,
+    "blendHome": 0.176,
+    "gapPp": 10.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -6103,28 +6210,84 @@
    "middles": []
   },
   {
-   "key": "eerstedivisie|almerecity|emmen|2026-10-17T14:30",
-   "sport": "eerstedivisie",
-   "home": "FC Emmen",
-   "away": "Almere City",
-   "start": "2026-10-17T14:30Z",
+   "key": "austria|austriavienna|svjoskoried|2026-10-17T17:30",
+   "sport": "austria",
+   "home": "SV Josko Ried",
+   "away": "Austria Vienna",
+   "start": "2026-10-17T17:30Z",
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.427,
-    "away": 0.3194,
-    "draw": 0.2536
+    "home": 0.403,
+    "away": 0.3356,
+    "draw": 0.2614
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 120.0,
-     "decimal": 2.2
+     "american": 135.0,
+     "decimal": 2.35
     },
     "away": {
      "book": "DraftKings",
-     "american": 190.0,
-     "decimal": 2.9
+     "american": 180.0,
+     "decimal": 2.8
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 255.0,
+     "decimal": 3.55
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0644,
+   "bets": [
+    {
+     "side": "SV Josko Ried",
+     "book": "DraftKings",
+     "american": 135.0,
+     "fair": 0.4301,
+     "evPct": 1.07,
+     "stakePct": 0.28,
+     "stake": 0.28,
+     "basis": "model-blend"
+    }
+   ],
+   "pm": [],
+   "model": {
+    "home": 0.5115,
+    "draw": 0.2404,
+    "away": 0.2481,
+    "blendHome": 0.4301,
+    "gapPp": 10.9,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "argentina|tallerescordoba|bocajuniors|2026-10-17T00:30",
+   "sport": "argentina",
+   "home": "Boca Juniors",
+   "away": "Talleres (C\u00f3rdoba)",
+   "start": "2026-10-17T00:30Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.5695,
+    "away": 0.1772,
+    "draw": 0.2533
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -150.0,
+     "decimal": 1.667
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 400.0,
+     "decimal": 5.0
     },
     "draw": {
      "book": "DraftKings",
@@ -6133,26 +6296,26 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.0772,
+   "impliedSum": 1.0778,
    "bets": [
     {
-     "side": "Almere City",
+     "side": "Boca Juniors",
      "book": "DraftKings",
-     "american": 190.0,
-     "fair": 0.3484,
-     "evPct": 1.03,
-     "stakePct": 0.19,
-     "stake": 0.19,
+     "american": -150.0,
+     "fair": 0.6061,
+     "evPct": 1.01,
+     "stakePct": 0.53,
+     "stake": 0.53,
      "basis": "model-blend"
     }
    ],
    "pm": [],
    "model": {
-    "home": 0.3506,
-    "draw": 0.214,
-    "away": 0.4354,
-    "blendHome": 0.4079,
-    "gapPp": -7.6,
+    "home": 0.7156,
+    "draw": 0.2108,
+    "away": 0.0736,
+    "blendHome": 0.6061,
+    "gapPp": 14.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10125,11 +10288,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4026,
-    "draw": 0.2682,
-    "away": 0.3291,
-    "blendHome": 0.3421,
-    "gapPp": 8.1,
+    "home": 0.4036,
+    "draw": 0.2672,
+    "away": 0.3292,
+    "blendHome": 0.3424,
+    "gapPp": 8.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10170,11 +10333,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6334,
-    "draw": 0.2262,
-    "away": 0.1404,
-    "blendHome": 0.629,
-    "gapPp": 0.6,
+    "home": 0.6397,
+    "draw": 0.2234,
+    "away": 0.1369,
+    "blendHome": 0.6306,
+    "gapPp": 1.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10215,11 +10378,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5825,
-    "draw": 0.2409,
-    "away": 0.1766,
-    "blendHome": 0.5814,
-    "gapPp": 0.1,
+    "home": 0.5806,
+    "draw": 0.2406,
+    "away": 0.1788,
+    "blendHome": 0.5809,
+    "gapPp": -0.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10260,11 +10423,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3557,
-    "draw": 0.269,
-    "away": 0.3753,
-    "blendHome": 0.3772,
-    "gapPp": -2.9,
+    "home": 0.3628,
+    "draw": 0.2681,
+    "away": 0.3691,
+    "blendHome": 0.379,
+    "gapPp": -2.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10305,11 +10468,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5244,
-    "draw": 0.2539,
-    "away": 0.2217,
-    "blendHome": 0.4839,
-    "gapPp": 5.4,
+    "home": 0.5282,
+    "draw": 0.2523,
+    "away": 0.2195,
+    "blendHome": 0.4849,
+    "gapPp": 5.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10350,11 +10513,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4404,
-    "draw": 0.2656,
-    "away": 0.294,
-    "blendHome": 0.4617,
-    "gapPp": -2.8,
+    "home": 0.4471,
+    "draw": 0.264,
+    "away": 0.2889,
+    "blendHome": 0.4634,
+    "gapPp": -2.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10395,11 +10558,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4208,
-    "draw": 0.2672,
-    "away": 0.312,
-    "blendHome": 0.3824,
-    "gapPp": 5.1,
+    "home": 0.4166,
+    "draw": 0.2665,
+    "away": 0.3169,
+    "blendHome": 0.3814,
+    "gapPp": 4.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10440,10 +10603,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6818,
-    "draw": 0.209,
-    "away": 0.1092,
-    "blendHome": 0.6591,
+    "home": 0.6817,
+    "draw": 0.2084,
+    "away": 0.1099,
+    "blendHome": 0.659,
     "gapPp": 3.0,
     "weight": 0.25
    },
@@ -10485,11 +10648,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4678,
-    "draw": 0.2627,
-    "away": 0.2695,
-    "blendHome": 0.4954,
-    "gapPp": -3.7,
+    "home": 0.4757,
+    "draw": 0.2608,
+    "away": 0.2636,
+    "blendHome": 0.4974,
+    "gapPp": -2.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10530,10 +10693,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6603,
-    "draw": 0.217,
-    "away": 0.1227,
-    "blendHome": 0.5957,
+    "home": 0.6601,
+    "draw": 0.2164,
+    "away": 0.1235,
+    "blendHome": 0.5956,
     "gapPp": 8.6,
     "weight": 0.25
    },
@@ -10575,11 +10738,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4196,
-    "draw": 0.2671,
-    "away": 0.3132,
-    "blendHome": 0.4163,
-    "gapPp": 0.4,
+    "home": 0.4265,
+    "draw": 0.264,
+    "away": 0.3095,
+    "blendHome": 0.418,
+    "gapPp": 1.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10620,11 +10783,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.309,
-    "draw": 0.2668,
-    "away": 0.4242,
-    "blendHome": 0.3194,
-    "gapPp": -1.4,
+    "home": 0.3081,
+    "draw": 0.2638,
+    "away": 0.4281,
+    "blendHome": 0.3192,
+    "gapPp": -1.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10665,11 +10828,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3993,
-    "draw": 0.2682,
-    "away": 0.3324,
-    "blendHome": 0.4813,
-    "gapPp": -10.9,
+    "home": 0.3987,
+    "draw": 0.2655,
+    "away": 0.3358,
+    "blendHome": 0.4811,
+    "gapPp": -11.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10710,11 +10873,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3089,
-    "draw": 0.2668,
-    "away": 0.4243,
-    "blendHome": 0.371,
-    "gapPp": -8.3,
+    "home": 0.3127,
+    "draw": 0.2642,
+    "away": 0.423,
+    "blendHome": 0.372,
+    "gapPp": -7.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10755,10 +10918,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4963,
-    "draw": 0.2586,
-    "away": 0.2451,
-    "blendHome": 0.4958,
+    "home": 0.4971,
+    "draw": 0.256,
+    "away": 0.2469,
+    "blendHome": 0.496,
     "gapPp": 0.1,
     "weight": 0.25
    },
@@ -10800,11 +10963,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4526,
-    "draw": 0.2643,
-    "away": 0.2831,
-    "blendHome": 0.5025,
-    "gapPp": -6.7,
+    "home": 0.4497,
+    "draw": 0.262,
+    "away": 0.2883,
+    "blendHome": 0.5018,
+    "gapPp": -6.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10845,11 +11008,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4188,
-    "draw": 0.2672,
-    "away": 0.314,
-    "blendHome": 0.4265,
-    "gapPp": -1.0,
+    "home": 0.424,
+    "draw": 0.2641,
+    "away": 0.3118,
+    "blendHome": 0.4278,
+    "gapPp": -0.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10890,11 +11053,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6123,
-    "draw": 0.2326,
-    "away": 0.1551,
-    "blendHome": 0.5818,
-    "gapPp": 4.1,
+    "home": 0.616,
+    "draw": 0.2294,
+    "away": 0.1546,
+    "blendHome": 0.5828,
+    "gapPp": 4.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10935,11 +11098,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.638,
-    "draw": 0.2246,
-    "away": 0.1374,
-    "blendHome": 0.7322,
-    "gapPp": -12.6,
+    "home": 0.637,
+    "draw": 0.2229,
+    "away": 0.1401,
+    "blendHome": 0.7319,
+    "gapPp": -12.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -10980,11 +11143,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2469,
-    "draw": 0.2589,
-    "away": 0.4941,
-    "blendHome": 0.2661,
-    "gapPp": -2.6,
+    "home": 0.2482,
+    "draw": 0.2562,
+    "away": 0.4956,
+    "blendHome": 0.2664,
+    "gapPp": -2.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11025,10 +11188,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4799,
-    "draw": 0.261,
-    "away": 0.2591,
-    "blendHome": 0.4841,
+    "home": 0.4792,
+    "draw": 0.2585,
+    "away": 0.2623,
+    "blendHome": 0.4839,
     "gapPp": -0.6,
     "weight": 0.25
    },
@@ -11070,11 +11233,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4832,
-    "draw": 0.2603,
-    "away": 0.2565,
-    "blendHome": 0.4357,
-    "gapPp": 6.3,
+    "home": 0.4808,
+    "draw": 0.2581,
+    "away": 0.2612,
+    "blendHome": 0.4351,
+    "gapPp": 6.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11115,11 +11278,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3502,
-    "draw": 0.2686,
-    "away": 0.3812,
-    "blendHome": 0.3136,
-    "gapPp": 4.9,
+    "home": 0.3449,
+    "draw": 0.2655,
+    "away": 0.3896,
+    "blendHome": 0.3123,
+    "gapPp": 4.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11160,11 +11323,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4081,
-    "draw": 0.2676,
-    "away": 0.3243,
-    "blendHome": 0.4093,
-    "gapPp": -0.2,
+    "home": 0.3997,
+    "draw": 0.2652,
+    "away": 0.3351,
+    "blendHome": 0.4072,
+    "gapPp": -1.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11205,11 +11368,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4551,
-    "draw": 0.2638,
-    "away": 0.2811,
-    "blendHome": 0.4507,
-    "gapPp": 0.6,
+    "home": 0.4537,
+    "draw": 0.2613,
+    "away": 0.285,
+    "blendHome": 0.4504,
+    "gapPp": 0.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11250,11 +11413,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5497,
-    "draw": 0.2484,
-    "away": 0.2018,
-    "blendHome": 0.5209,
-    "gapPp": 3.9,
+    "home": 0.5514,
+    "draw": 0.2457,
+    "away": 0.2029,
+    "blendHome": 0.5213,
+    "gapPp": 4.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11295,11 +11458,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5607,
-    "draw": 0.2459,
-    "away": 0.1933,
-    "blendHome": 0.5572,
-    "gapPp": 0.5,
+    "home": 0.5665,
+    "draw": 0.2423,
+    "away": 0.1912,
+    "blendHome": 0.5586,
+    "gapPp": 1.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11340,11 +11503,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4439,
-    "draw": 0.2649,
-    "away": 0.2912,
-    "blendHome": 0.5352,
-    "gapPp": -12.2,
+    "home": 0.448,
+    "draw": 0.2619,
+    "away": 0.2901,
+    "blendHome": 0.5362,
+    "gapPp": -11.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11385,11 +11548,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.331,
-    "draw": 0.2679,
-    "away": 0.4011,
-    "blendHome": 0.3431,
-    "gapPp": -1.6,
+    "home": 0.333,
+    "draw": 0.2651,
+    "away": 0.4019,
+    "blendHome": 0.3436,
+    "gapPp": -1.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11430,11 +11593,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.7355,
-    "draw": 0.1857,
-    "away": 0.0788,
-    "blendHome": 0.7156,
-    "gapPp": 2.7,
+    "home": 0.74,
+    "draw": 0.1821,
+    "away": 0.0779,
+    "blendHome": 0.7167,
+    "gapPp": 3.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -11475,11 +11638,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3991,
-    "draw": 0.268,
-    "away": 0.3329,
-    "blendHome": 0.3646,
-    "gapPp": 4.6,
+    "home": 0.4017,
+    "draw": 0.2651,
+    "away": 0.3332,
+    "blendHome": 0.3652,
+    "gapPp": 4.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12000,11 +12163,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4144,
-    "draw": 0.2365,
-    "away": 0.3491,
-    "blendHome": 0.4181,
-    "gapPp": -0.5,
+    "home": 0.4135,
+    "draw": 0.2444,
+    "away": 0.3421,
+    "blendHome": 0.4178,
+    "gapPp": -0.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12045,11 +12208,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3373,
-    "draw": 0.236,
-    "away": 0.4267,
-    "blendHome": 0.2887,
-    "gapPp": 6.5,
+    "home": 0.3413,
+    "draw": 0.2444,
+    "away": 0.4143,
+    "blendHome": 0.2897,
+    "gapPp": 6.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12389,20 +12552,20 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.3155,
-    "away": 0.4554,
-    "draw": 0.2291
+    "home": 0.3077,
+    "away": 0.4651,
+    "draw": 0.2272
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 190.0,
-     "decimal": 2.9
+     "american": 195.0,
+     "decimal": 2.95
     },
     "away": {
      "book": "DraftKings",
-     "american": 105.0,
-     "decimal": 2.05
+     "american": 100.0,
+     "decimal": 2.0
     },
     "draw": {
      "book": "DraftKings",
@@ -12411,15 +12574,15 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.089,
+   "impliedSum": 1.0954,
    "bets": [],
    "pm": [],
    "model": {
     "home": 0.3604,
     "draw": 0.2391,
     "away": 0.4005,
-    "blendHome": 0.3209,
-    "gapPp": 4.5,
+    "blendHome": 0.314,
+    "gapPp": 5.3,
     "weight": 0.12
    },
    "crossArbs": [],
@@ -12460,11 +12623,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3108,
-    "draw": 0.2559,
-    "away": 0.4333,
-    "blendHome": 0.294,
-    "gapPp": 2.2,
+    "home": 0.3146,
+    "draw": 0.2543,
+    "away": 0.4311,
+    "blendHome": 0.2949,
+    "gapPp": 2.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12505,11 +12668,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2367,
-    "draw": 0.2457,
-    "away": 0.5176,
-    "blendHome": 0.3131,
-    "gapPp": -10.2,
+    "home": 0.2423,
+    "draw": 0.2449,
+    "away": 0.5128,
+    "blendHome": 0.3146,
+    "gapPp": -9.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12550,11 +12713,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5396,
-    "draw": 0.2418,
-    "away": 0.2186,
-    "blendHome": 0.465,
-    "gapPp": 9.9,
+    "home": 0.5478,
+    "draw": 0.2386,
+    "away": 0.2136,
+    "blendHome": 0.4671,
+    "gapPp": 10.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12595,11 +12758,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4746,
-    "draw": 0.2519,
-    "away": 0.2735,
-    "blendHome": 0.4474,
-    "gapPp": 3.6,
+    "home": 0.4782,
+    "draw": 0.2498,
+    "away": 0.272,
+    "blendHome": 0.4483,
+    "gapPp": 4.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12640,11 +12803,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4759,
-    "draw": 0.2518,
-    "away": 0.2723,
-    "blendHome": 0.5426,
-    "gapPp": -8.9,
+    "home": 0.4776,
+    "draw": 0.2499,
+    "away": 0.2725,
+    "blendHome": 0.543,
+    "gapPp": -8.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12685,11 +12848,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4765,
-    "draw": 0.2517,
-    "away": 0.2718,
-    "blendHome": 0.4489,
-    "gapPp": 3.7,
+    "home": 0.4835,
+    "draw": 0.2491,
+    "away": 0.2673,
+    "blendHome": 0.4506,
+    "gapPp": 4.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12704,37 +12867,37 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.5595,
-    "away": 0.2129,
-    "draw": 0.2276
+    "home": 0.5456,
+    "away": 0.2211,
+    "draw": 0.2333
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -145.0,
-     "decimal": 1.69
+     "american": -135.0,
+     "decimal": 1.741
     },
     "away": {
      "book": "DraftKings",
-     "american": 320.0,
-     "decimal": 4.2
+     "american": 310.0,
+     "decimal": 4.1
     },
     "draw": {
      "book": "DraftKings",
-     "american": 295.0,
-     "decimal": 3.95
+     "american": 290.0,
+     "decimal": 3.9
     }
    },
    "arb": false,
-   "impliedSum": 1.0831,
+   "impliedSum": 1.0748,
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4672,
-    "draw": 0.2528,
-    "away": 0.28,
-    "blendHome": 0.5365,
-    "gapPp": -9.2,
+    "home": 0.4656,
+    "draw": 0.2513,
+    "away": 0.2831,
+    "blendHome": 0.5256,
+    "gapPp": -8.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12775,11 +12938,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3604,
-    "draw": 0.2582,
-    "away": 0.3815,
-    "blendHome": 0.375,
-    "gapPp": -2.0,
+    "home": 0.3653,
+    "draw": 0.2564,
+    "away": 0.3783,
+    "blendHome": 0.3762,
+    "gapPp": -1.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -12794,9 +12957,9 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.4256,
-    "away": 0.3364,
-    "draw": 0.238
+    "home": 0.4253,
+    "away": 0.3299,
+    "draw": 0.2448
    },
    "best": {
     "home": {
@@ -12806,25 +12969,25 @@
     },
     "away": {
      "book": "DraftKings",
-     "american": 175.0,
-     "decimal": 2.75
+     "american": 180.0,
+     "decimal": 2.8
     },
     "draw": {
      "book": "DraftKings",
-     "american": 280.0,
-     "decimal": 3.8
+     "american": 270.0,
+     "decimal": 3.7
     }
    },
    "arb": false,
-   "impliedSum": 1.0813,
+   "impliedSum": 1.082,
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3893,
-    "draw": 0.2581,
-    "away": 0.3527,
-    "blendHome": 0.4165,
-    "gapPp": -3.6,
+    "home": 0.3961,
+    "draw": 0.2561,
+    "away": 0.3478,
+    "blendHome": 0.418,
+    "gapPp": -2.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13374,11 +13537,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4776,
-    "draw": 0.2891,
-    "away": 0.2333,
-    "blendHome": 0.5181,
-    "gapPp": -5.4,
+    "home": 0.474,
+    "draw": 0.2956,
+    "away": 0.2304,
+    "blendHome": 0.5172,
+    "gapPp": -5.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13419,11 +13582,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5766,
-    "draw": 0.2663,
-    "away": 0.1571,
-    "blendHome": 0.533,
-    "gapPp": 5.8,
+    "home": 0.574,
+    "draw": 0.2721,
+    "away": 0.1539,
+    "blendHome": 0.5324,
+    "gapPp": 5.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13464,11 +13627,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5325,
-    "draw": 0.278,
-    "away": 0.1895,
-    "blendHome": 0.4895,
-    "gapPp": 5.7,
+    "home": 0.5301,
+    "draw": 0.284,
+    "away": 0.1859,
+    "blendHome": 0.4889,
+    "gapPp": 5.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13509,11 +13672,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3042,
-    "draw": 0.2984,
-    "away": 0.3973,
-    "blendHome": 0.2337,
-    "gapPp": 9.4,
+    "home": 0.3013,
+    "draw": 0.3051,
+    "away": 0.3936,
+    "blendHome": 0.233,
+    "gapPp": 9.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13554,11 +13717,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4376,
-    "draw": 0.2948,
-    "away": 0.2676,
-    "blendHome": 0.4028,
-    "gapPp": 4.6,
+    "home": 0.432,
+    "draw": 0.3016,
+    "away": 0.2664,
+    "blendHome": 0.4014,
+    "gapPp": 4.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13599,11 +13762,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3245,
-    "draw": 0.2995,
-    "away": 0.376,
-    "blendHome": 0.2913,
-    "gapPp": 4.4,
+    "home": 0.32,
+    "draw": 0.3061,
+    "away": 0.3739,
+    "blendHome": 0.2902,
+    "gapPp": 4.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13644,11 +13807,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5045,
-    "draw": 0.2841,
-    "away": 0.2114,
-    "blendHome": 0.4481,
-    "gapPp": 7.5,
+    "home": 0.5011,
+    "draw": 0.2905,
+    "away": 0.2084,
+    "blendHome": 0.4473,
+    "gapPp": 7.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13689,11 +13852,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4375,
-    "draw": 0.2948,
-    "away": 0.2677,
-    "blendHome": 0.4442,
-    "gapPp": -0.9,
+    "home": 0.4315,
+    "draw": 0.3017,
+    "away": 0.2668,
+    "blendHome": 0.4427,
+    "gapPp": -1.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13734,11 +13897,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3546,
-    "draw": 0.3,
-    "away": 0.3455,
-    "blendHome": 0.3996,
-    "gapPp": -6.0,
+    "home": 0.3572,
+    "draw": 0.3066,
+    "away": 0.3362,
+    "blendHome": 0.4002,
+    "gapPp": -5.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13779,11 +13942,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.396,
-    "draw": 0.2985,
-    "away": 0.3054,
-    "blendHome": 0.493,
-    "gapPp": -12.9,
+    "home": 0.3853,
+    "draw": 0.3056,
+    "away": 0.3091,
+    "blendHome": 0.4903,
+    "gapPp": -14.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13834,11 +13997,11 @@
     }
    ],
    "model": {
-    "home": 0.2908,
-    "draw": 0.2549,
-    "away": 0.4543,
-    "blendHome": 0.2497,
-    "gapPp": 5.5,
+    "home": 0.2939,
+    "draw": 0.2408,
+    "away": 0.4653,
+    "blendHome": 0.2504,
+    "gapPp": 5.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13889,11 +14052,11 @@
     }
    ],
    "model": {
-    "home": 0.3302,
-    "draw": 0.258,
-    "away": 0.4118,
-    "blendHome": 0.3026,
-    "gapPp": 3.7,
+    "home": 0.3369,
+    "draw": 0.2441,
+    "away": 0.419,
+    "blendHome": 0.3043,
+    "gapPp": 4.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13934,11 +14097,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4165,
-    "draw": 0.2578,
-    "away": 0.3257,
-    "blendHome": 0.4152,
-    "gapPp": 0.2,
+    "home": 0.4231,
+    "draw": 0.2439,
+    "away": 0.3329,
+    "blendHome": 0.4168,
+    "gapPp": 0.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -13989,11 +14152,11 @@
     }
    ],
    "model": {
-    "home": 0.4171,
-    "draw": 0.2577,
-    "away": 0.3252,
-    "blendHome": 0.4215,
-    "gapPp": -0.6,
+    "home": 0.4191,
+    "draw": 0.2441,
+    "away": 0.3368,
+    "blendHome": 0.422,
+    "gapPp": -0.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14044,11 +14207,11 @@
     }
    ],
    "model": {
-    "home": 0.64,
-    "draw": 0.217,
-    "away": 0.143,
-    "blendHome": 0.5883,
-    "gapPp": 6.9,
+    "home": 0.6573,
+    "draw": 0.2018,
+    "away": 0.1409,
+    "blendHome": 0.5926,
+    "gapPp": 8.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14089,11 +14252,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3931,
-    "draw": 0.3018,
-    "away": 0.3051,
-    "blendHome": 0.4453,
-    "gapPp": -7.0,
+    "home": 0.3832,
+    "draw": 0.3063,
+    "away": 0.3105,
+    "blendHome": 0.4429,
+    "gapPp": -8.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14134,11 +14297,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.568,
-    "draw": 0.2713,
-    "away": 0.1608,
-    "blendHome": 0.5594,
-    "gapPp": 1.1,
+    "home": 0.5689,
+    "draw": 0.2741,
+    "away": 0.157,
+    "blendHome": 0.5596,
+    "gapPp": 1.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14179,11 +14342,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3881,
-    "draw": 0.3021,
-    "away": 0.3098,
-    "blendHome": 0.4341,
-    "gapPp": -6.1,
+    "home": 0.3822,
+    "draw": 0.3064,
+    "away": 0.3115,
+    "blendHome": 0.4327,
+    "gapPp": -6.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14224,11 +14387,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3738,
-    "draw": 0.3027,
-    "away": 0.3235,
-    "blendHome": 0.337,
-    "gapPp": 4.9,
+    "home": 0.3694,
+    "draw": 0.3069,
+    "away": 0.3237,
+    "blendHome": 0.3359,
+    "gapPp": 4.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14269,11 +14432,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5194,
-    "draw": 0.2191,
-    "away": 0.2615,
-    "blendHome": 0.5181,
-    "gapPp": 0.2,
+    "home": 0.509,
+    "draw": 0.2331,
+    "away": 0.2579,
+    "blendHome": 0.5155,
+    "gapPp": -0.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14314,11 +14477,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5456,
-    "draw": 0.2151,
-    "away": 0.2393,
-    "blendHome": 0.5785,
-    "gapPp": -4.4,
+    "home": 0.5358,
+    "draw": 0.2289,
+    "away": 0.2352,
+    "blendHome": 0.5761,
+    "gapPp": -5.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14359,11 +14522,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3737,
-    "draw": 0.2283,
-    "away": 0.398,
-    "blendHome": 0.3074,
-    "gapPp": 8.8,
+    "home": 0.3665,
+    "draw": 0.2423,
+    "away": 0.3911,
+    "blendHome": 0.3056,
+    "gapPp": 8.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14404,11 +14567,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5669,
-    "draw": 0.2114,
-    "away": 0.2218,
-    "blendHome": 0.599,
-    "gapPp": -4.3,
+    "home": 0.56,
+    "draw": 0.2245,
+    "away": 0.2155,
+    "blendHome": 0.5973,
+    "gapPp": -5.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14449,11 +14612,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2214,
-    "draw": 0.2876,
-    "away": 0.491,
-    "blendHome": 0.2091,
-    "gapPp": 1.6,
+    "home": 0.2127,
+    "draw": 0.2923,
+    "away": 0.495,
+    "blendHome": 0.207,
+    "gapPp": 0.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14494,11 +14657,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3906,
-    "draw": 0.2998,
-    "away": 0.3096,
-    "blendHome": 0.3611,
-    "gapPp": 3.9,
+    "home": 0.3835,
+    "draw": 0.3064,
+    "away": 0.3101,
+    "blendHome": 0.3593,
+    "gapPp": 3.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14539,11 +14702,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5079,
-    "draw": 0.2843,
-    "away": 0.2078,
-    "blendHome": 0.5965,
-    "gapPp": -11.8,
+    "home": 0.5026,
+    "draw": 0.2908,
+    "away": 0.2067,
+    "blendHome": 0.5952,
+    "gapPp": -12.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14584,10 +14747,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.493,
-    "draw": 0.2634,
-    "away": 0.2436,
-    "blendHome": 0.5634,
+    "home": 0.4933,
+    "draw": 0.2589,
+    "away": 0.2477,
+    "blendHome": 0.5635,
     "gapPp": -9.4,
     "weight": 0.25
    },
@@ -14629,10 +14792,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.1171,
-    "draw": 0.2186,
-    "away": 0.6642,
-    "blendHome": 0.1084,
+    "home": 0.1177,
+    "draw": 0.2139,
+    "away": 0.6684,
+    "blendHome": 0.1086,
     "gapPp": 1.2,
     "weight": 0.25
    },
@@ -14674,11 +14837,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.1819,
-    "draw": 0.2477,
-    "away": 0.5704,
-    "blendHome": 0.1307,
-    "gapPp": 6.8,
+    "home": 0.1779,
+    "draw": 0.2411,
+    "away": 0.581,
+    "blendHome": 0.1296,
+    "gapPp": 6.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14719,11 +14882,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4866,
-    "draw": 0.2644,
-    "away": 0.249,
-    "blendHome": 0.5624,
-    "gapPp": -10.1,
+    "home": 0.4894,
+    "draw": 0.2595,
+    "away": 0.2511,
+    "blendHome": 0.563,
+    "gapPp": -9.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14764,11 +14927,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2816,
-    "draw": 0.2691,
-    "away": 0.4493,
-    "blendHome": 0.267,
-    "gapPp": 1.9,
+    "home": 0.2893,
+    "draw": 0.2649,
+    "away": 0.4459,
+    "blendHome": 0.2689,
+    "gapPp": 2.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14809,11 +14972,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6234,
-    "draw": 0.2327,
-    "away": 0.1439,
-    "blendHome": 0.7095,
-    "gapPp": -11.5,
+    "home": 0.6154,
+    "draw": 0.2315,
+    "away": 0.153,
+    "blendHome": 0.7075,
+    "gapPp": -12.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14854,11 +15017,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5181,
-    "draw": 0.2591,
-    "away": 0.2228,
-    "blendHome": 0.5823,
-    "gapPp": -8.6,
+    "home": 0.5264,
+    "draw": 0.2533,
+    "away": 0.2203,
+    "blendHome": 0.5844,
+    "gapPp": -7.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14899,11 +15062,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4683,
-    "draw": 0.2121,
-    "away": 0.3197,
-    "blendHome": 0.5394,
-    "gapPp": -9.5,
+    "home": 0.4784,
+    "draw": 0.208,
+    "away": 0.3136,
+    "blendHome": 0.5419,
+    "gapPp": -8.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14944,11 +15107,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3449,
-    "draw": 0.2137,
-    "away": 0.4414,
-    "blendHome": 0.2891,
-    "gapPp": 7.4,
+    "home": 0.3495,
+    "draw": 0.2104,
+    "away": 0.4401,
+    "blendHome": 0.2902,
+    "gapPp": 7.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14989,56 +15152,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5329,
-    "draw": 0.2053,
-    "away": 0.2618,
-    "blendHome": 0.5028,
-    "gapPp": 4.0,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "eerstedivisie|heraclesalmelo|mvvmaastricht|2026-10-18T14:45",
-   "sport": "eerstedivisie",
-   "home": "MVV Maastricht",
-   "away": "Heracles Almelo",
-   "start": "2026-10-18T14:45Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.1509,
-    "away": 0.6727,
-    "draw": 0.1764
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 475.0,
-     "decimal": 5.75
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -240.0,
-     "decimal": 1.417
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 400.0,
-     "decimal": 5.0
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0798,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.2489,
-    "draw": 0.2031,
-    "away": 0.5481,
-    "blendHome": 0.1754,
-    "gapPp": 9.8,
+    "home": 0.5386,
+    "draw": 0.2013,
+    "away": 0.2601,
+    "blendHome": 0.5042,
+    "gapPp": 4.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15079,11 +15197,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3185,
-    "draw": 0.212,
-    "away": 0.4695,
-    "blendHome": 0.3531,
-    "gapPp": -4.6,
+    "home": 0.3283,
+    "draw": 0.2091,
+    "away": 0.4626,
+    "blendHome": 0.3556,
+    "gapPp": -3.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15124,10 +15242,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3294,
-    "draw": 0.2128,
-    "away": 0.4577,
-    "blendHome": 0.274,
+    "home": 0.3298,
+    "draw": 0.2092,
+    "away": 0.4609,
+    "blendHome": 0.2741,
     "gapPp": 7.4,
     "weight": 0.25
    },
@@ -15169,11 +15287,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5371,
-    "draw": 0.2489,
-    "away": 0.2141,
-    "blendHome": 0.5821,
-    "gapPp": -6.0,
+    "home": 0.5407,
+    "draw": 0.2533,
+    "away": 0.2061,
+    "blendHome": 0.583,
+    "gapPp": -5.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15214,11 +15332,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5068,
-    "draw": 0.2693,
-    "away": 0.224,
-    "blendHome": 0.4735,
-    "gapPp": 4.4,
+    "home": 0.5088,
+    "draw": 0.2687,
+    "away": 0.2225,
+    "blendHome": 0.474,
+    "gapPp": 4.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15259,11 +15377,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5989,
-    "draw": 0.2471,
-    "away": 0.154,
-    "blendHome": 0.5965,
-    "gapPp": 0.3,
+    "home": 0.5994,
+    "draw": 0.2468,
+    "away": 0.1538,
+    "blendHome": 0.5967,
+    "gapPp": 0.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15304,11 +15422,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6134,
-    "draw": 0.2426,
-    "away": 0.144,
-    "blendHome": 0.527,
-    "gapPp": 11.5,
+    "home": 0.6089,
+    "draw": 0.2439,
+    "away": 0.1472,
+    "blendHome": 0.5258,
+    "gapPp": 11.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15349,11 +15467,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2097,
-    "draw": 0.2658,
-    "away": 0.5245,
-    "blendHome": 0.1533,
-    "gapPp": 7.5,
+    "home": 0.191,
+    "draw": 0.2603,
+    "away": 0.5486,
+    "blendHome": 0.1487,
+    "gapPp": 5.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15394,11 +15512,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6541,
-    "draw": 0.2285,
-    "away": 0.1173,
-    "blendHome": 0.7258,
-    "gapPp": -9.6,
+    "home": 0.6615,
+    "draw": 0.2256,
+    "away": 0.1129,
+    "blendHome": 0.7277,
+    "gapPp": -8.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15439,10 +15557,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4572,
-    "draw": 0.2733,
-    "away": 0.2695,
-    "blendHome": 0.3772,
+    "home": 0.4576,
+    "draw": 0.2678,
+    "away": 0.2745,
+    "blendHome": 0.3773,
     "gapPp": 10.7,
     "weight": 0.25
    },
@@ -15484,11 +15602,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.7029,
-    "draw": 0.2064,
-    "away": 0.0908,
-    "blendHome": 0.7797,
-    "gapPp": -10.2,
+    "home": 0.7114,
+    "draw": 0.1993,
+    "away": 0.0893,
+    "blendHome": 0.7819,
+    "gapPp": -9.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15529,11 +15647,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3568,
-    "draw": 0.2792,
-    "away": 0.364,
-    "blendHome": 0.3285,
-    "gapPp": 3.8,
+    "home": 0.3583,
+    "draw": 0.2734,
+    "away": 0.3683,
+    "blendHome": 0.3289,
+    "gapPp": 3.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15574,11 +15692,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.584,
-    "draw": 0.2484,
-    "away": 0.1676,
-    "blendHome": 0.7256,
-    "gapPp": -18.9,
+    "home": 0.5931,
+    "draw": 0.2414,
+    "away": 0.1655,
+    "blendHome": 0.7278,
+    "gapPp": -18.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15619,56 +15737,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6017,
-    "draw": 0.2194,
-    "away": 0.1789,
-    "blendHome": 0.7174,
-    "gapPp": -15.4,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "austria|austriavienna|svjoskoried|2026-10-17T17:30",
-   "sport": "austria",
-   "home": "SV Josko Ried",
-   "away": "Austria Vienna",
-   "start": "2026-10-17T17:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.403,
-    "away": 0.3356,
-    "draw": 0.2614
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 135.0,
-     "decimal": 2.35
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 180.0,
-     "decimal": 2.8
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 255.0,
-     "decimal": 3.55
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0644,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.5085,
-    "draw": 0.2378,
-    "away": 0.2537,
-    "blendHome": 0.4293,
-    "gapPp": 10.6,
+    "home": 0.6076,
+    "draw": 0.2205,
+    "away": 0.1719,
+    "blendHome": 0.7189,
+    "gapPp": -14.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15709,11 +15782,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.686,
-    "draw": 0.1938,
-    "away": 0.1202,
-    "blendHome": 0.6895,
-    "gapPp": -0.5,
+    "home": 0.6952,
+    "draw": 0.1926,
+    "away": 0.1122,
+    "blendHome": 0.6918,
+    "gapPp": 0.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15754,11 +15827,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4362,
-    "draw": 0.2456,
-    "away": 0.3182,
-    "blendHome": 0.4136,
-    "gapPp": 3.0,
+    "home": 0.4338,
+    "draw": 0.249,
+    "away": 0.3172,
+    "blendHome": 0.413,
+    "gapPp": 2.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15799,11 +15872,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6151,
-    "draw": 0.2159,
-    "away": 0.169,
-    "blendHome": 0.5741,
-    "gapPp": 5.5,
+    "home": 0.6292,
+    "draw": 0.2145,
+    "away": 0.1563,
+    "blendHome": 0.5776,
+    "gapPp": 6.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15844,11 +15917,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2638,
-    "draw": 0.258,
-    "away": 0.4782,
-    "blendHome": 0.252,
-    "gapPp": 1.6,
+    "home": 0.269,
+    "draw": 0.2404,
+    "away": 0.4905,
+    "blendHome": 0.2534,
+    "gapPp": 2.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15889,11 +15962,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3726,
-    "draw": 0.2654,
-    "away": 0.362,
-    "blendHome": 0.3841,
-    "gapPp": -1.5,
+    "home": 0.391,
+    "draw": 0.2477,
+    "away": 0.3613,
+    "blendHome": 0.3887,
+    "gapPp": 0.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15934,11 +16007,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4036,
-    "draw": 0.2646,
-    "away": 0.3318,
-    "blendHome": 0.335,
-    "gapPp": 9.1,
+    "home": 0.4056,
+    "draw": 0.2473,
+    "away": 0.3471,
+    "blendHome": 0.3355,
+    "gapPp": 9.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15979,11 +16052,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5905,
-    "draw": 0.236,
-    "away": 0.1735,
-    "blendHome": 0.5799,
-    "gapPp": 1.4,
+    "home": 0.5897,
+    "draw": 0.2224,
+    "away": 0.1879,
+    "blendHome": 0.5797,
+    "gapPp": 1.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16024,56 +16097,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4022,
-    "draw": 0.2257,
-    "away": 0.3721,
-    "blendHome": 0.3815,
-    "gapPp": 2.8,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "sweden|ifelfsborg|iksirius|2026-10-18T12:00",
-   "sport": "sweden",
-   "home": "IK Sirius",
-   "away": "IF Elfsborg",
-   "start": "2026-10-18T12:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.4797,
-    "away": 0.2662,
-    "draw": 0.2541
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -105.0,
-     "decimal": 1.952
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 240.0,
-     "decimal": 3.4
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 255.0,
-     "decimal": 3.55
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.088,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.618,
-    "draw": 0.1984,
-    "away": 0.1835,
-    "blendHome": 0.5143,
-    "gapPp": 13.8,
+    "home": 0.4004,
+    "draw": 0.2189,
+    "away": 0.3807,
+    "blendHome": 0.381,
+    "gapPp": 2.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16114,11 +16142,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.1646,
-    "draw": 0.192,
-    "away": 0.6434,
-    "blendHome": 0.1037,
-    "gapPp": 8.1,
+    "home": 0.165,
+    "draw": 0.1853,
+    "away": 0.6497,
+    "blendHome": 0.1038,
+    "gapPp": 8.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16159,11 +16187,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4151,
-    "draw": 0.2254,
-    "away": 0.3595,
-    "blendHome": 0.3828,
-    "gapPp": 4.3,
+    "home": 0.4257,
+    "draw": 0.2183,
+    "away": 0.3559,
+    "blendHome": 0.3854,
+    "gapPp": 5.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16204,11 +16232,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2727,
-    "draw": 0.2181,
-    "away": 0.5092,
-    "blendHome": 0.2212,
-    "gapPp": 6.9,
+    "home": 0.2774,
+    "draw": 0.2117,
+    "away": 0.5109,
+    "blendHome": 0.2223,
+    "gapPp": 7.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16249,11 +16277,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.1726,
-    "draw": 0.1631,
-    "away": 0.6643,
-    "blendHome": 0.1113,
-    "gapPp": 8.2,
+    "home": 0.1612,
+    "draw": 0.1673,
+    "away": 0.6715,
+    "blendHome": 0.1085,
+    "gapPp": 7.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16294,11 +16322,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4662,
-    "draw": 0.192,
-    "away": 0.3418,
-    "blendHome": 0.4113,
-    "gapPp": 7.3,
+    "home": 0.4655,
+    "draw": 0.2001,
+    "away": 0.3344,
+    "blendHome": 0.4111,
+    "gapPp": 7.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16339,11 +16367,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3991,
-    "draw": 0.1938,
-    "away": 0.4071,
-    "blendHome": 0.3796,
-    "gapPp": 2.6,
+    "home": 0.3933,
+    "draw": 0.2022,
+    "away": 0.4046,
+    "blendHome": 0.3781,
+    "gapPp": 2.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16384,11 +16412,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.7123,
-    "draw": 0.1501,
-    "away": 0.1376,
-    "blendHome": 0.7192,
-    "gapPp": -0.9,
+    "home": 0.7092,
+    "draw": 0.1566,
+    "away": 0.1343,
+    "blendHome": 0.7184,
+    "gapPp": -1.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16429,11 +16457,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4836,
-    "draw": 0.1909,
-    "away": 0.3255,
-    "blendHome": 0.393,
-    "gapPp": 12.1,
+    "home": 0.4736,
+    "draw": 0.1996,
+    "away": 0.3269,
+    "blendHome": 0.3905,
+    "gapPp": 11.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16448,9 +16476,9 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.3807,
-    "away": 0.3807,
-    "draw": 0.2386
+    "home": 0.3823,
+    "away": 0.3743,
+    "draw": 0.2434
    },
    "best": {
     "home": {
@@ -16460,25 +16488,25 @@
     },
     "away": {
      "book": "DraftKings",
-     "american": 145.0,
-     "decimal": 2.45
+     "american": 150.0,
+     "decimal": 2.5
     },
     "draw": {
      "book": "DraftKings",
-     "american": 280.0,
-     "decimal": 3.8
+     "american": 275.0,
+     "decimal": 3.75
     }
    },
    "arb": false,
-   "impliedSum": 1.0795,
+   "impliedSum": 1.0748,
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3669,
-    "draw": 0.1932,
-    "away": 0.44,
-    "blendHome": 0.3772,
-    "gapPp": -1.4,
+    "home": 0.3694,
+    "draw": 0.2017,
+    "away": 0.4288,
+    "blendHome": 0.3791,
+    "gapPp": -1.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16519,11 +16547,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6371,
-    "draw": 0.1693,
-    "away": 0.1937,
-    "blendHome": 0.6278,
-    "gapPp": 1.2,
+    "home": 0.635,
+    "draw": 0.1762,
+    "away": 0.1888,
+    "blendHome": 0.6273,
+    "gapPp": 1.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16574,11 +16602,11 @@
     }
    ],
    "model": {
-    "home": 0.5766,
-    "draw": 0.2268,
-    "away": 0.1966,
-    "blendHome": 0.6014,
-    "gapPp": -3.3,
+    "home": 0.5722,
+    "draw": 0.2302,
+    "away": 0.1976,
+    "blendHome": 0.6003,
+    "gapPp": -3.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16619,11 +16647,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2081,
-    "draw": 0.23,
-    "away": 0.5619,
-    "blendHome": 0.2708,
-    "gapPp": -8.4,
+    "home": 0.2043,
+    "draw": 0.2321,
+    "away": 0.5636,
+    "blendHome": 0.2699,
+    "gapPp": -8.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16674,11 +16702,11 @@
     }
    ],
    "model": {
-    "home": 0.4287,
-    "draw": 0.2479,
-    "away": 0.3234,
-    "blendHome": 0.4106,
-    "gapPp": 2.4,
+    "home": 0.4177,
+    "draw": 0.2514,
+    "away": 0.3309,
+    "blendHome": 0.4078,
+    "gapPp": 1.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16719,11 +16747,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3633,
-    "draw": 0.2495,
-    "away": 0.3872,
-    "blendHome": 0.3492,
-    "gapPp": 1.9,
+    "home": 0.3693,
+    "draw": 0.2525,
+    "away": 0.3782,
+    "blendHome": 0.3507,
+    "gapPp": 2.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16764,11 +16792,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5574,
-    "draw": 0.2309,
-    "away": 0.2117,
-    "blendHome": 0.5254,
-    "gapPp": 4.3,
+    "home": 0.5475,
+    "draw": 0.2354,
+    "away": 0.2171,
+    "blendHome": 0.523,
+    "gapPp": 3.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16809,11 +16837,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4071,
-    "draw": 0.249,
-    "away": 0.344,
-    "blendHome": 0.4546,
-    "gapPp": -6.3,
+    "home": 0.4069,
+    "draw": 0.2519,
+    "away": 0.3413,
+    "blendHome": 0.4545,
+    "gapPp": -6.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16864,10 +16892,10 @@
     }
    ],
    "model": {
-    "home": 0.255,
-    "draw": 0.24,
-    "away": 0.505,
-    "blendHome": 0.2077,
+    "home": 0.2553,
+    "draw": 0.2432,
+    "away": 0.5015,
+    "blendHome": 0.2078,
     "gapPp": 6.3,
     "weight": 0.25
    },
@@ -16909,11 +16937,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3686,
-    "draw": 0.2495,
-    "away": 0.3819,
-    "blendHome": 0.444,
-    "gapPp": -10.1,
+    "home": 0.364,
+    "draw": 0.2525,
+    "away": 0.3835,
+    "blendHome": 0.4428,
+    "gapPp": -10.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16954,11 +16982,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3936,
-    "draw": 0.2493,
-    "away": 0.357,
-    "blendHome": 0.3449,
-    "gapPp": 6.5,
+    "home": 0.3903,
+    "draw": 0.2523,
+    "away": 0.3574,
+    "blendHome": 0.3441,
+    "gapPp": 6.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16999,11 +17027,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5403,
-    "draw": 0.2342,
-    "away": 0.2255,
-    "blendHome": 0.4782,
-    "gapPp": 8.3,
+    "home": 0.5326,
+    "draw": 0.2382,
+    "away": 0.2292,
+    "blendHome": 0.4763,
+    "gapPp": 7.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17054,11 +17082,11 @@
     }
    ],
    "model": {
-    "home": 0.4341,
-    "draw": 0.2475,
-    "away": 0.3184,
-    "blendHome": 0.4519,
-    "gapPp": -2.4,
+    "home": 0.4364,
+    "draw": 0.2502,
+    "away": 0.3134,
+    "blendHome": 0.4525,
+    "gapPp": -2.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17109,11 +17137,11 @@
     }
    ],
    "model": {
-    "home": 0.2615,
-    "draw": 0.2411,
-    "away": 0.4974,
-    "blendHome": 0.2765,
-    "gapPp": -2.0,
+    "home": 0.2563,
+    "draw": 0.2433,
+    "away": 0.5003,
+    "blendHome": 0.2752,
+    "gapPp": -2.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17154,11 +17182,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6695,
-    "draw": 0.2008,
-    "away": 0.1297,
-    "blendHome": 0.6504,
-    "gapPp": 2.5,
+    "home": 0.6653,
+    "draw": 0.2042,
+    "away": 0.1305,
+    "blendHome": 0.6494,
+    "gapPp": 2.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17199,11 +17227,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5133,
-    "draw": 0.2388,
-    "away": 0.2479,
-    "blendHome": 0.4697,
-    "gapPp": 5.8,
+    "home": 0.511,
+    "draw": 0.2418,
+    "away": 0.2472,
+    "blendHome": 0.4691,
+    "gapPp": 5.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17244,11 +17272,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.7196,
-    "draw": 0.2054,
-    "away": 0.075,
-    "blendHome": 0.6776,
-    "gapPp": 5.6,
+    "home": 0.7233,
+    "draw": 0.2036,
+    "away": 0.0731,
+    "blendHome": 0.6786,
+    "gapPp": 6.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17289,11 +17317,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.616,
-    "draw": 0.2476,
-    "away": 0.1364,
-    "blendHome": 0.5792,
-    "gapPp": 4.9,
+    "home": 0.631,
+    "draw": 0.2425,
+    "away": 0.1265,
+    "blendHome": 0.5829,
+    "gapPp": 6.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17334,11 +17362,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3445,
-    "draw": 0.2913,
-    "away": 0.3641,
-    "blendHome": 0.2816,
-    "gapPp": 8.4,
+    "home": 0.3236,
+    "draw": 0.2907,
+    "away": 0.3857,
+    "blendHome": 0.2763,
+    "gapPp": 6.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17379,11 +17407,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4686,
-    "draw": 0.2828,
-    "away": 0.2486,
-    "blendHome": 0.5123,
-    "gapPp": -5.8,
+    "home": 0.4647,
+    "draw": 0.2834,
+    "away": 0.2519,
+    "blendHome": 0.5113,
+    "gapPp": -6.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17424,11 +17452,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4832,
-    "draw": 0.2806,
-    "away": 0.2362,
-    "blendHome": 0.507,
-    "gapPp": -3.2,
+    "home": 0.4676,
+    "draw": 0.283,
+    "away": 0.2494,
+    "blendHome": 0.5031,
+    "gapPp": -4.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17469,11 +17497,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6044,
-    "draw": 0.2514,
-    "away": 0.1442,
-    "blendHome": 0.4983,
-    "gapPp": 14.2,
+    "home": 0.6091,
+    "draw": 0.2499,
+    "away": 0.141,
+    "blendHome": 0.4994,
+    "gapPp": 14.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17514,11 +17542,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3162,
-    "draw": 0.2904,
-    "away": 0.3934,
-    "blendHome": 0.4582,
-    "gapPp": -18.9,
+    "home": 0.3098,
+    "draw": 0.29,
+    "away": 0.4002,
+    "blendHome": 0.4566,
+    "gapPp": -19.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17559,11 +17587,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4502,
-    "draw": 0.2853,
-    "away": 0.2645,
-    "blendHome": 0.3757,
-    "gapPp": 9.9,
+    "home": 0.441,
+    "draw": 0.2864,
+    "away": 0.2726,
+    "blendHome": 0.3734,
+    "gapPp": 9.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17604,11 +17632,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2506,
-    "draw": 0.2832,
-    "away": 0.4663,
-    "blendHome": 0.2381,
-    "gapPp": 1.7,
+    "home": 0.2461,
+    "draw": 0.2824,
+    "away": 0.4715,
+    "blendHome": 0.237,
+    "gapPp": 1.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17649,11 +17677,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3993,
-    "draw": 0.29,
-    "away": 0.3107,
-    "blendHome": 0.3245,
-    "gapPp": 10.0,
+    "home": 0.3938,
+    "draw": 0.2904,
+    "away": 0.3159,
+    "blendHome": 0.3232,
+    "gapPp": 9.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17694,11 +17722,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3342,
-    "draw": 0.2911,
-    "away": 0.3747,
-    "blendHome": 0.3057,
-    "gapPp": 3.8,
+    "home": 0.3298,
+    "draw": 0.291,
+    "away": 0.3792,
+    "blendHome": 0.3047,
+    "gapPp": 3.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17739,11 +17767,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4384,
-    "draw": 0.2867,
-    "away": 0.2749,
-    "blendHome": 0.4641,
-    "gapPp": -3.4,
+    "home": 0.4315,
+    "draw": 0.2874,
+    "away": 0.281,
+    "blendHome": 0.4624,
+    "gapPp": -4.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17784,11 +17812,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2994,
-    "draw": 0.2603,
-    "away": 0.4403,
-    "blendHome": 0.3575,
-    "gapPp": -7.7,
+    "home": 0.2963,
+    "draw": 0.2551,
+    "away": 0.4486,
+    "blendHome": 0.3567,
+    "gapPp": -8.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17829,11 +17857,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3566,
-    "draw": 0.2634,
-    "away": 0.3801,
-    "blendHome": 0.3775,
-    "gapPp": -2.8,
+    "home": 0.3548,
+    "draw": 0.2585,
+    "away": 0.3867,
+    "blendHome": 0.3771,
+    "gapPp": -3.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17874,11 +17902,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6245,
-    "draw": 0.2249,
-    "away": 0.1506,
-    "blendHome": 0.5455,
-    "gapPp": 10.5,
+    "home": 0.6441,
+    "draw": 0.2154,
+    "away": 0.1405,
+    "blendHome": 0.5504,
+    "gapPp": 12.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17919,11 +17947,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5791,
-    "draw": 0.2373,
-    "away": 0.1836,
-    "blendHome": 0.5342,
-    "gapPp": 6.0,
+    "home": 0.5764,
+    "draw": 0.2342,
+    "away": 0.1894,
+    "blendHome": 0.5335,
+    "gapPp": 5.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -17964,11 +17992,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3094,
-    "draw": 0.2612,
-    "away": 0.4294,
-    "blendHome": 0.2964,
-    "gapPp": 1.7,
+    "home": 0.3004,
+    "draw": 0.2555,
+    "away": 0.4441,
+    "blendHome": 0.2941,
+    "gapPp": 0.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18009,11 +18037,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6777,
-    "draw": 0.207,
-    "away": 0.1154,
-    "blendHome": 0.7135,
-    "gapPp": -4.8,
+    "home": 0.6937,
+    "draw": 0.1979,
+    "away": 0.1084,
+    "blendHome": 0.7176,
+    "gapPp": -3.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18054,11 +18082,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.7774,
-    "draw": 0.1623,
-    "away": 0.0603,
-    "blendHome": 0.7384,
-    "gapPp": 5.2,
+    "home": 0.7842,
+    "draw": 0.1566,
+    "away": 0.0593,
+    "blendHome": 0.7401,
+    "gapPp": 5.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18099,11 +18127,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5346,
-    "draw": 0.251,
-    "away": 0.2143,
-    "blendHome": 0.4633,
-    "gapPp": 9.5,
+    "home": 0.5481,
+    "draw": 0.2456,
+    "away": 0.2063,
+    "blendHome": 0.4666,
+    "gapPp": 10.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18144,11 +18172,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6525,
-    "draw": 0.2191,
-    "away": 0.1284,
-    "blendHome": 0.6948,
-    "gapPp": -5.6,
+    "home": 0.6602,
+    "draw": 0.2143,
+    "away": 0.1255,
+    "blendHome": 0.6968,
+    "gapPp": -4.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18189,11 +18217,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6064,
-    "draw": 0.2336,
-    "away": 0.16,
-    "blendHome": 0.6255,
-    "gapPp": -2.5,
+    "home": 0.5991,
+    "draw": 0.2333,
+    "away": 0.1676,
+    "blendHome": 0.6237,
+    "gapPp": -3.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18234,11 +18262,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.344,
-    "draw": 0.2678,
-    "away": 0.3882,
-    "blendHome": 0.3235,
-    "gapPp": 2.7,
+    "home": 0.3384,
+    "draw": 0.2644,
+    "away": 0.3973,
+    "blendHome": 0.3221,
+    "gapPp": 2.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18279,11 +18307,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4475,
-    "draw": 0.264,
-    "away": 0.2885,
-    "blendHome": 0.4581,
-    "gapPp": -1.4,
+    "home": 0.4469,
+    "draw": 0.2611,
+    "away": 0.292,
+    "blendHome": 0.4579,
+    "gapPp": -1.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18324,11 +18352,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5408,
-    "draw": 0.2498,
-    "away": 0.2094,
-    "blendHome": 0.4871,
-    "gapPp": 7.2,
+    "home": 0.5514,
+    "draw": 0.2449,
+    "away": 0.2037,
+    "blendHome": 0.4897,
+    "gapPp": 8.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18369,11 +18397,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2569,
-    "draw": 0.2597,
-    "away": 0.4833,
-    "blendHome": 0.3076,
-    "gapPp": -6.8,
+    "home": 0.2581,
+    "draw": 0.2566,
+    "away": 0.4852,
+    "blendHome": 0.3079,
+    "gapPp": -6.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18414,11 +18442,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2623,
-    "draw": 0.2606,
-    "away": 0.4772,
-    "blendHome": 0.2844,
-    "gapPp": -3.0,
+    "home": 0.2589,
+    "draw": 0.2568,
+    "away": 0.4843,
+    "blendHome": 0.2836,
+    "gapPp": -3.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18459,11 +18487,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3328,
-    "draw": 0.2674,
+    "home": 0.3358,
+    "draw": 0.2643,
     "away": 0.3999,
-    "blendHome": 0.3036,
-    "gapPp": 3.9,
+    "blendHome": 0.3044,
+    "gapPp": 4.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18504,11 +18532,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.0931,
-    "draw": 0.2139,
-    "away": 0.6931,
-    "blendHome": 0.0753,
-    "gapPp": 2.4,
+    "home": 0.0919,
+    "draw": 0.2146,
+    "away": 0.6935,
+    "blendHome": 0.075,
+    "gapPp": 2.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18549,11 +18577,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3979,
-    "draw": 0.2837,
-    "away": 0.3184,
-    "blendHome": 0.3978,
-    "gapPp": 0.0,
+    "home": 0.3966,
+    "draw": 0.2852,
+    "away": 0.3182,
+    "blendHome": 0.3975,
+    "gapPp": -0.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18594,10 +18622,10 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2879,
-    "draw": 0.2813,
-    "away": 0.4308,
-    "blendHome": 0.3261,
+    "home": 0.2874,
+    "draw": 0.2828,
+    "away": 0.4298,
+    "blendHome": 0.3259,
     "gapPp": -5.1,
     "weight": 0.25
    },
@@ -18639,11 +18667,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2417,
-    "draw": 0.2746,
-    "away": 0.4836,
-    "blendHome": 0.2881,
-    "gapPp": -6.2,
+    "home": 0.2375,
+    "draw": 0.2754,
+    "away": 0.4871,
+    "blendHome": 0.287,
+    "gapPp": -6.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18684,11 +18712,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4018,
-    "draw": 0.2835,
-    "away": 0.3147,
-    "blendHome": 0.4288,
-    "gapPp": -3.6,
+    "home": 0.4009,
+    "draw": 0.285,
+    "away": 0.3141,
+    "blendHome": 0.4285,
+    "gapPp": -3.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18729,11 +18757,56 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5871,
-    "draw": 0.2517,
-    "away": 0.1611,
-    "blendHome": 0.5952,
+    "home": 0.5867,
+    "draw": 0.253,
+    "away": 0.1603,
+    "blendHome": 0.595,
     "gapPp": -1.1,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": []
+  },
+  {
+   "key": "brasileirao2|criciuma|saobernardo|2026-10-18T19:00",
+   "sport": "brasileirao2",
+   "home": "S\u00e3o Bernardo",
+   "away": "Crici\u00fama",
+   "start": "2026-10-18T19:00Z",
+   "nBooks": 1,
+   "threeWay": true,
+   "fair": {
+    "home": 0.3126,
+    "away": 0.3804,
+    "draw": 0.307
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 195.0,
+     "decimal": 2.95
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 145.0,
+     "decimal": 2.45
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 200.0,
+     "decimal": 3.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0805,
+   "bets": [],
+   "pm": [],
+   "model": {
+    "home": 0.4261,
+    "draw": 0.2831,
+    "away": 0.2908,
+    "blendHome": 0.341,
+    "gapPp": 11.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18774,11 +18847,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.377,
-    "draw": 0.2845,
-    "away": 0.3385,
-    "blendHome": 0.3506,
-    "gapPp": 3.5,
+    "home": 0.3866,
+    "draw": 0.2857,
+    "away": 0.3277,
+    "blendHome": 0.353,
+    "gapPp": 4.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18819,11 +18892,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5209,
-    "draw": 0.2679,
-    "away": 0.2112,
-    "blendHome": 0.5381,
-    "gapPp": -2.3,
+    "home": 0.5155,
+    "draw": 0.2702,
+    "away": 0.2142,
+    "blendHome": 0.5368,
+    "gapPp": -2.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18864,11 +18937,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2712,
-    "draw": 0.2793,
-    "away": 0.4495,
-    "blendHome": 0.3352,
-    "gapPp": -8.5,
+    "home": 0.2678,
+    "draw": 0.2804,
+    "away": 0.4518,
+    "blendHome": 0.3343,
+    "gapPp": -8.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18909,11 +18982,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4104,
-    "draw": 0.2973,
-    "away": 0.2923,
-    "blendHome": 0.3764,
-    "gapPp": 4.5,
+    "home": 0.4174,
+    "draw": 0.2949,
+    "away": 0.2877,
+    "blendHome": 0.3781,
+    "gapPp": 5.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18954,56 +19027,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.382,
-    "draw": 0.2991,
-    "away": 0.3189,
-    "blendHome": 0.3699,
-    "gapPp": 1.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": []
-  },
-  {
-   "key": "argentina|tallerescordoba|bocajuniors|2026-10-17T00:30",
-   "sport": "argentina",
-   "home": "Boca Juniors",
-   "away": "Talleres (C\u00f3rdoba)",
-   "start": "2026-10-17T00:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.5695,
-    "away": 0.1772,
-    "draw": 0.2533
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -150.0,
-     "decimal": 1.667
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 400.0,
-     "decimal": 5.0
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 260.0,
-     "decimal": 3.6
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0778,
-   "bets": [],
-   "pm": [],
-   "model": {
-    "home": 0.6938,
-    "draw": 0.2222,
-    "away": 0.0839,
-    "blendHome": 0.6006,
-    "gapPp": 12.4,
+    "home": 0.4007,
+    "draw": 0.2962,
+    "away": 0.303,
+    "blendHome": 0.3745,
+    "gapPp": 3.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19044,11 +19072,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2317,
-    "draw": 0.2886,
-    "away": 0.4797,
-    "blendHome": 0.2557,
-    "gapPp": -3.2,
+    "home": 0.2355,
+    "draw": 0.2873,
+    "away": 0.4772,
+    "blendHome": 0.2567,
+    "gapPp": -2.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19089,11 +19117,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5622,
-    "draw": 0.2703,
-    "away": 0.1675,
-    "blendHome": 0.5056,
-    "gapPp": 7.5,
+    "home": 0.5584,
+    "draw": 0.2698,
+    "away": 0.1717,
+    "blendHome": 0.5047,
+    "gapPp": 7.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19134,11 +19162,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5179,
-    "draw": 0.2812,
-    "away": 0.2009,
-    "blendHome": 0.5323,
-    "gapPp": -1.9,
+    "home": 0.5337,
+    "draw": 0.276,
+    "away": 0.1903,
+    "blendHome": 0.5363,
+    "gapPp": -0.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19179,11 +19207,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4004,
-    "draw": 0.2981,
-    "away": 0.3015,
-    "blendHome": 0.4419,
-    "gapPp": -5.5,
+    "home": 0.3904,
+    "draw": 0.2969,
+    "away": 0.3128,
+    "blendHome": 0.4394,
+    "gapPp": -6.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19224,11 +19252,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5444,
-    "draw": 0.275,
-    "away": 0.1807,
-    "blendHome": 0.4627,
-    "gapPp": 10.9,
+    "home": 0.5423,
+    "draw": 0.2739,
+    "away": 0.1837,
+    "blendHome": 0.4622,
+    "gapPp": 10.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19269,11 +19297,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3465,
-    "draw": 0.2998,
-    "away": 0.3537,
-    "blendHome": 0.3481,
-    "gapPp": -0.2,
+    "home": 0.3563,
+    "draw": 0.2979,
+    "away": 0.3458,
+    "blendHome": 0.3505,
+    "gapPp": 0.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19314,11 +19342,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5436,
-    "draw": 0.2751,
-    "away": 0.1812,
-    "blendHome": 0.4886,
-    "gapPp": 7.3,
+    "home": 0.5247,
+    "draw": 0.2781,
+    "away": 0.1972,
+    "blendHome": 0.4839,
+    "gapPp": 5.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19359,11 +19387,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4445,
-    "draw": 0.2938,
-    "away": 0.2617,
-    "blendHome": 0.423,
-    "gapPp": 2.9,
+    "home": 0.4333,
+    "draw": 0.2934,
+    "away": 0.2734,
+    "blendHome": 0.4201,
+    "gapPp": 1.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19404,11 +19432,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3815,
-    "draw": 0.2991,
-    "away": 0.3194,
-    "blendHome": 0.4056,
-    "gapPp": -3.2,
+    "home": 0.3847,
+    "draw": 0.2972,
+    "away": 0.3181,
+    "blendHome": 0.4064,
+    "gapPp": -2.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19449,11 +19477,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3805,
-    "draw": 0.2902,
-    "away": 0.3292,
-    "blendHome": 0.3409,
-    "gapPp": 5.3,
+    "home": 0.371,
+    "draw": 0.2909,
+    "away": 0.3381,
+    "blendHome": 0.3385,
+    "gapPp": 4.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19494,11 +19522,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4208,
-    "draw": 0.2878,
-    "away": 0.2914,
-    "blendHome": 0.367,
-    "gapPp": 7.2,
+    "home": 0.4342,
+    "draw": 0.2869,
+    "away": 0.2789,
+    "blendHome": 0.3704,
+    "gapPp": 8.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19539,11 +19567,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5053,
-    "draw": 0.276,
-    "away": 0.2187,
-    "blendHome": 0.4992,
-    "gapPp": 0.8,
+    "home": 0.5009,
+    "draw": 0.2772,
+    "away": 0.222,
+    "blendHome": 0.4981,
+    "gapPp": 0.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19584,11 +19612,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4572,
-    "draw": 0.2838,
-    "away": 0.259,
-    "blendHome": 0.5218,
-    "gapPp": -8.6,
+    "home": 0.4495,
+    "draw": 0.2851,
+    "away": 0.2654,
+    "blendHome": 0.5198,
+    "gapPp": -9.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19629,11 +19657,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3275,
-    "draw": 0.2794,
-    "away": 0.3931,
-    "blendHome": 0.2985,
-    "gapPp": 3.9,
+    "home": 0.3303,
+    "draw": 0.2621,
+    "away": 0.4076,
+    "blendHome": 0.2992,
+    "gapPp": 4.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19674,11 +19702,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4864,
-    "draw": 0.27,
-    "away": 0.2435,
-    "blendHome": 0.4854,
-    "gapPp": 0.1,
+    "home": 0.482,
+    "draw": 0.2553,
+    "away": 0.2626,
+    "blendHome": 0.4843,
+    "gapPp": -0.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19719,11 +19747,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4229,
-    "draw": 0.2776,
-    "away": 0.2995,
-    "blendHome": 0.5008,
-    "gapPp": -10.4,
+    "home": 0.4402,
+    "draw": 0.2599,
+    "away": 0.2999,
+    "blendHome": 0.5051,
+    "gapPp": -8.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19764,11 +19792,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4151,
-    "draw": 0.2303,
-    "away": 0.3546,
-    "blendHome": 0.4993,
-    "gapPp": -11.2,
+    "home": 0.4063,
+    "draw": 0.2395,
+    "away": 0.3542,
+    "blendHome": 0.4971,
+    "gapPp": -12.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19809,11 +19837,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5526,
-    "draw": 0.216,
-    "away": 0.2314,
-    "blendHome": 0.4828,
-    "gapPp": 9.3,
+    "home": 0.5573,
+    "draw": 0.2229,
+    "away": 0.2198,
+    "blendHome": 0.484,
+    "gapPp": 9.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19854,11 +19882,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6093,
-    "draw": 0.2044,
-    "away": 0.1863,
-    "blendHome": 0.723,
-    "gapPp": -15.2,
+    "home": 0.6096,
+    "draw": 0.2114,
+    "away": 0.179,
+    "blendHome": 0.7231,
+    "gapPp": -15.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19899,11 +19927,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4236,
-    "draw": 0.2299,
-    "away": 0.3464,
-    "blendHome": 0.4273,
-    "gapPp": -0.5,
+    "home": 0.4268,
+    "draw": 0.2387,
+    "away": 0.3345,
+    "blendHome": 0.4281,
+    "gapPp": -0.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19944,11 +19972,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4975,
-    "draw": 0.224,
-    "away": 0.2784,
-    "blendHome": 0.5605,
-    "gapPp": -8.4,
+    "home": 0.4936,
+    "draw": 0.2328,
+    "away": 0.2735,
+    "blendHome": 0.5595,
+    "gapPp": -8.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -19989,11 +20017,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.7269,
-    "draw": 0.1682,
-    "away": 0.1049,
-    "blendHome": 0.7186,
-    "gapPp": 1.1,
+    "home": 0.7299,
+    "draw": 0.1723,
+    "away": 0.0978,
+    "blendHome": 0.7194,
+    "gapPp": 1.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20034,11 +20062,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5329,
-    "draw": 0.239,
-    "away": 0.2281,
-    "blendHome": 0.5136,
-    "gapPp": 2.6,
+    "home": 0.5479,
+    "draw": 0.2354,
+    "away": 0.2167,
+    "blendHome": 0.5174,
+    "gapPp": 4.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20079,11 +20107,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.538,
-    "draw": 0.2381,
-    "away": 0.2239,
-    "blendHome": 0.507,
-    "gapPp": 4.1,
+    "home": 0.5404,
+    "draw": 0.2369,
+    "away": 0.2228,
+    "blendHome": 0.5076,
+    "gapPp": 4.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20124,11 +20152,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3246,
-    "draw": 0.2521,
-    "away": 0.4234,
-    "blendHome": 0.2725,
-    "gapPp": 6.9,
+    "home": 0.3231,
+    "draw": 0.2511,
+    "away": 0.4258,
+    "blendHome": 0.2722,
+    "gapPp": 6.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20169,11 +20197,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.403,
-    "draw": 0.253,
-    "away": 0.3439,
-    "blendHome": 0.3039,
-    "gapPp": 13.2,
+    "home": 0.3992,
+    "draw": 0.2523,
+    "away": 0.3486,
+    "blendHome": 0.3029,
+    "gapPp": 12.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20214,11 +20242,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4777,
-    "draw": 0.2473,
-    "away": 0.275,
-    "blendHome": 0.5,
-    "gapPp": -3.0,
+    "home": 0.4793,
+    "draw": 0.2462,
+    "away": 0.2744,
+    "blendHome": 0.5004,
+    "gapPp": -2.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20259,11 +20287,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5053,
-    "draw": 0.2436,
-    "away": 0.2511,
-    "blendHome": 0.4457,
-    "gapPp": 7.9,
+    "home": 0.5014,
+    "draw": 0.2433,
+    "away": 0.2552,
+    "blendHome": 0.4448,
+    "gapPp": 7.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20304,11 +20332,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4148,
-    "draw": 0.2525,
-    "away": 0.3326,
-    "blendHome": 0.4174,
-    "gapPp": -0.3,
+    "home": 0.4073,
+    "draw": 0.252,
+    "away": 0.3407,
+    "blendHome": 0.4155,
+    "gapPp": -1.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20349,11 +20377,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3995,
-    "draw": 0.2782,
-    "away": 0.3223,
-    "blendHome": 0.3617,
-    "gapPp": 5.0,
+    "home": 0.3971,
+    "draw": 0.2833,
+    "away": 0.3196,
+    "blendHome": 0.3611,
+    "gapPp": 4.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20394,11 +20422,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3523,
-    "draw": 0.2791,
-    "away": 0.3686,
-    "blendHome": 0.3563,
-    "gapPp": -0.5,
+    "home": 0.355,
+    "draw": 0.2843,
+    "away": 0.3606,
+    "blendHome": 0.357,
+    "gapPp": -0.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20439,11 +20467,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5757,
-    "draw": 0.2505,
-    "away": 0.1738,
-    "blendHome": 0.6372,
-    "gapPp": -8.2,
+    "home": 0.5727,
+    "draw": 0.2554,
+    "away": 0.172,
+    "blendHome": 0.6364,
+    "gapPp": -8.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20484,11 +20512,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5265,
-    "draw": 0.262,
-    "away": 0.2115,
-    "blendHome": 0.5731,
-    "gapPp": -6.2,
+    "home": 0.5252,
+    "draw": 0.2666,
+    "away": 0.2082,
+    "blendHome": 0.5728,
+    "gapPp": -6.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20529,11 +20557,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5344,
-    "draw": 0.2604,
-    "away": 0.2052,
-    "blendHome": 0.5199,
-    "gapPp": 1.9,
+    "home": 0.5294,
+    "draw": 0.2657,
+    "away": 0.2049,
+    "blendHome": 0.5186,
+    "gapPp": 1.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20574,9 +20602,9 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4375,
-    "draw": 0.2754,
-    "away": 0.2871,
+    "home": 0.4374,
+    "draw": 0.2802,
+    "away": 0.2824,
     "blendHome": 0.3458,
     "gapPp": 12.2,
     "weight": 0.25
@@ -20804,11 +20832,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4755,
-    "draw": 0.2608,
-    "away": 0.2638,
-    "blendHome": 0.4407,
-    "gapPp": 4.6,
+    "home": 0.4709,
+    "draw": 0.2638,
+    "away": 0.2652,
+    "blendHome": 0.4396,
+    "gapPp": 4.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20849,11 +20877,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2205,
-    "draw": 0.2525,
-    "away": 0.527,
-    "blendHome": 0.2486,
-    "gapPp": -3.7,
+    "home": 0.2176,
+    "draw": 0.2547,
+    "away": 0.5277,
+    "blendHome": 0.2478,
+    "gapPp": -4.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20894,11 +20922,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.7225,
-    "draw": 0.1913,
-    "away": 0.0862,
-    "blendHome": 0.7181,
-    "gapPp": 0.6,
+    "home": 0.7169,
+    "draw": 0.1954,
+    "away": 0.0878,
+    "blendHome": 0.7167,
+    "gapPp": 0.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20939,11 +20967,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.1862,
-    "draw": 0.243,
-    "away": 0.5707,
-    "blendHome": 0.206,
-    "gapPp": -2.6,
+    "home": 0.1837,
+    "draw": 0.2451,
+    "away": 0.5712,
+    "blendHome": 0.2054,
+    "gapPp": -2.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -20984,11 +21012,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6778,
-    "draw": 0.2099,
-    "away": 0.1124,
-    "blendHome": 0.6487,
-    "gapPp": 3.9,
+    "home": 0.6787,
+    "draw": 0.2112,
+    "away": 0.1101,
+    "blendHome": 0.6489,
+    "gapPp": 4.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21029,11 +21057,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3479,
-    "draw": 0.2678,
-    "away": 0.3842,
-    "blendHome": 0.2832,
-    "gapPp": 8.6,
+    "home": 0.3454,
+    "draw": 0.2705,
+    "away": 0.384,
+    "blendHome": 0.2826,
+    "gapPp": 8.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21074,11 +21102,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.6025,
-    "draw": 0.2347,
-    "away": 0.1628,
-    "blendHome": 0.6017,
-    "gapPp": 0.1,
+    "home": 0.6075,
+    "draw": 0.2353,
+    "away": 0.1571,
+    "blendHome": 0.603,
+    "gapPp": 0.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21119,11 +21147,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.3236,
-    "draw": 0.2669,
-    "away": 0.4095,
-    "blendHome": 0.3212,
-    "gapPp": 0.3,
+    "home": 0.3209,
+    "draw": 0.2695,
+    "away": 0.4096,
+    "blendHome": 0.3205,
+    "gapPp": 0.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21164,11 +21192,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5891,
-    "draw": 0.2518,
-    "away": 0.159,
-    "blendHome": 0.5709,
-    "gapPp": 2.4,
+    "home": 0.5859,
+    "draw": 0.2513,
+    "away": 0.1628,
+    "blendHome": 0.5701,
+    "gapPp": 2.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21209,11 +21237,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5506,
-    "draw": 0.2621,
-    "away": 0.1874,
-    "blendHome": 0.5751,
-    "gapPp": -3.3,
+    "home": 0.5481,
+    "draw": 0.2611,
+    "away": 0.1908,
+    "blendHome": 0.5744,
+    "gapPp": -3.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21254,11 +21282,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5402,
-    "draw": 0.2645,
-    "away": 0.1953,
-    "blendHome": 0.5451,
-    "gapPp": -0.6,
+    "home": 0.5497,
+    "draw": 0.2607,
+    "away": 0.1895,
+    "blendHome": 0.5474,
+    "gapPp": 0.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21299,11 +21327,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.2692,
-    "draw": 0.28,
-    "away": 0.4508,
-    "blendHome": 0.325,
-    "gapPp": -7.4,
+    "home": 0.2641,
+    "draw": 0.2773,
+    "away": 0.4586,
+    "blendHome": 0.3238,
+    "gapPp": -8.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21344,11 +21372,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.5817,
-    "draw": 0.254,
-    "away": 0.1644,
-    "blendHome": 0.6575,
-    "gapPp": -10.1,
+    "home": 0.5938,
+    "draw": 0.249,
+    "away": 0.1571,
+    "blendHome": 0.6605,
+    "gapPp": -8.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21389,11 +21417,11 @@
    "bets": [],
    "pm": [],
    "model": {
-    "home": 0.4842,
-    "draw": 0.2754,
-    "away": 0.2404,
-    "blendHome": 0.4812,
-    "gapPp": 0.4,
+    "home": 0.4721,
+    "draw": 0.2755,
+    "away": 0.2524,
+    "blendHome": 0.4782,
+    "gapPp": -0.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -22939,15 +22967,15 @@
   }
  ],
  "day": {
-  "nBets": 67,
-  "scale": 0.125,
-  "totalStake": 8.46,
-  "meanPnl": 0.66,
+  "nBets": 69,
+  "scale": 0.124,
+  "totalStake": 8.5,
+  "meanPnl": 0.63,
   "var95": 6.0,
-  "pBreakEven": 0.522,
-  "pProfit": 0.522,
-  "best": 14.9,
-  "worst": -8.46,
+  "pBreakEven": 0.527,
+  "pProfit": 0.527,
+  "best": 14.73,
+  "worst": -8.5,
   "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."
  },
  "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
