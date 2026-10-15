@@ -41,4 +41,26 @@ try:
     B._espn_events("mma", None); raise SystemExit("should raise")
 except RuntimeError as e:
     assert "no usable data" in str(e)
+
+
+# ---- ESPN: one request per day, merged and de-duplicated
+from datetime import date, timedelta
+def ev(home, away, start):
+    return {"date": start, "competitions": [{"competitors": [{"homeAway": "home", "team": {"displayName": home}}, {"homeAway": "away", "team": {"displayName": away}}],
+            "odds": [{"provider": {"name": "DraftKings"}, "homeTeamOdds": {"moneyLine": -150}, "awayTeamOdds": {"moneyLine": 130}}]}]}
+asked = []
+def espn_get(u):
+    asked.append(u); assert "dates=" in u and "-" not in u.split("dates=")[1]
+    d = u.split("dates=")[1]
+    if d.endswith("20"): raise OSError("one day fails")
+    return {"events": [ev("Home " + d, "Away " + d, f"{d[:4]}-{d[4:6]}-{d[6:]}T23:00Z"), ev("Same", "Game", "2026-10-21T23:00Z")]}
+games = B.espn_direct("nba", today=date(2026, 10, 18), getter=espn_get)
+assert len(asked) == B.ESPN_DAYS + 1, asked
+assert len({(g["home"], g["start"]) for g in games}) == len(games) and sum(1 for g in games if g["home"] == "Same") == 1, "duplicates merged"
+assert len(games) >= B.ESPN_DAYS, len(games)
+try:
+    B.espn_direct("nba", today=date(2026, 10, 18), getter=lambda u: (_ for _ in ()).throw(OSError("down"))); raise SystemExit("should raise")
+except RuntimeError as e:
+    assert "nothing usable" in str(e)
+print("OK espn week")
 print("KALSHI TESTS PASS")

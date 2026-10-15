@@ -251,8 +251,37 @@ def _espn_events(sport, data):
     return out
 
 
-def espn_direct(sport):
-    return _espn_events(sport, http_json(f"https://site.api.espn.com/apis/site/v2/sports/{SPORTS[sport][1]}/scoreboard"))
+ESPN_DAYS = int(os.environ.get("ESPN_DAYS", 7))
+
+
+def espn_direct(sport, today=None, getter=None):
+    """ESPN's undated scoreboard only lists the current day (verified from a real probe: NBA/NHL/MLB showed only finished games, no odds).
+    Ask for each of the next ESPN_DAYS days, one request per day (ranges return HTTP 400), and merge."""
+    from concurrent.futures import ThreadPoolExecutor
+    getter = getter or http_json
+    today = today or datetime.now(timezone.utc).date()
+    base = f"https://site.api.espn.com/apis/site/v2/sports/{SPORTS[sport][1]}/scoreboard"
+    urls = [f"{base}?dates={(today + timedelta(days=i)):%Y%m%d}" for i in range(-1, ESPN_DAYS)]
+
+    def one(u):
+        try:
+            return getter(u)
+        except Exception:  # noqa
+            return None
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        pages = list(pool.map(one, urls))
+    if not any(isinstance(p, dict) for p in pages):
+        raise RuntimeError(f"ESPN returned nothing usable for {sport} on {len(urls)} days")
+    out, seen = [], set()
+    for d in pages:
+        if not isinstance(d, dict):
+            continue
+        for g in _espn_events(sport, d):
+            k = (g.get("home"), g.get("away"), g.get("start"))
+            if k not in seen:
+                seen.add(k)
+                out.append(g)
+    return out
 
 
 def espn_via_skills(sport):
