@@ -88,6 +88,7 @@ input[type=checkbox]{width:auto;}
 
   <nav id="tabNav">
     <button class="active" data-tab="slate">Today's Slate</button>
+    <button data-tab="opps">Opportunities</button>
     <button data-tab="record">Track Record</button>
     <button data-tab="ledger">Bet Ledger</button>
     <button data-tab="shop">Line Shop</button>
@@ -415,13 +416,19 @@ input[type=checkbox]{width:auto;}
       <div id="slNet" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Our own model (Elo + rest, built from free results)</h2>
       <div id="slModel" class="desc"></div>
-      <h2 style="margin-top:16px;font-size:.9rem">Opportunities by day</h2>
+      <h2 style="margin-top:16px;font-size:.9rem">Games</h2>
+      <table><thead><tr><th>Game</th><th>Books</th><th>Fair (home / draw / away)</th><th>Best prices</th><th>Arb</th><th>Cross arbs &amp; middles</th><th>Model P(home)</th><th>Edge bets</th><th>Prediction mkt gap</th></tr></thead><tbody id="slBody"></tbody></table>
+    </div>
+  </div>
+
+  <div class="tab" id="tab-opps">
+    <div class="card">
+      <p class="desc">Loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty.</p>
+      <h2 style="font-size:1rem">Opportunities by day</h2>
       <div class="desc">Every game with its best moneyline, the market's fair chance, our model's chance and any prediction-market price. Flagged = clears the edge bar with enough books.</div>
       <div id="slOpp"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Parlay candidates (built only from flagged legs)</h2>
       <div id="slParlay" class="desc"></div>
-      <h2 style="margin-top:16px;font-size:.9rem">Games</h2>
-      <table><thead><tr><th>Game</th><th>Books</th><th>Fair (home / draw / away)</th><th>Best prices</th><th>Arb</th><th>Cross arbs &amp; middles</th><th>Model P(home)</th><th>Edge bets</th><th>Prediction mkt gap</th></tr></thead><tbody id="slBody"></tbody></table>
     </div>
   </div>
 
