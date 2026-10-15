@@ -38,3 +38,7 @@ Read-only: nothing here places bets.
 
 
 See `SETUP.md` (no-terminal setup), `TEAM.md` (specialist roles) and `RESEARCH.md` (what the team found, with sources).
+
+## Collector network (pipeline/network.json)
+Each data feed is a JSON spec (url with {date}/{season}, `items` path, `fields` map, `required`). `network.py` runs them every build, records health in `network_health.json` (pauses a collector for 24h after 5 straight failures) and stores the response shape on failure so a bad spec can be fixed from the real run. Results show in Today's Slate > Data collectors. Specs marked `verified: false` have not been tested against the live endpoint.
+Add a feed: `python pipeline/spawn.py add --id ... --sport ... --kind ... --url https://... --items ... --field name=path` (https only, no credentials, duplicate ids refused). Probe first with `spawn.py probe URL`.

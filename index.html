@@ -411,6 +411,8 @@ input[type=checkbox]{width:auto;}
       <div id="slSources" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Health check</h2>
       <div id="slDiag" class="desc"></div>
+      <h2 style="margin-top:16px;font-size:.9rem">Data collectors</h2>
+      <div id="slNet" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Our own model (Elo + rest, built from free results)</h2>
       <div id="slModel" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Games</h2>
@@ -1313,6 +1315,7 @@ function slateRender(d,label){
   const mb=d.modelBacktest||{};
   $('slModel').innerHTML=Object.keys(mb).filter(k=>mb[k]).map(k=>{const b=mb[k];return `<b>${esc(k.toUpperCase())}</b>: walk-forward on ${b.n} past games, Brier ${b.brier} (naive baseline ${b.coinFlipBrier}), picked the winner ${(b.accuracy*100).toFixed(0)}% of the time.`;}).join('<br>')||'No model ran for this slate. Bets shown come from the books\' consensus only.';
   const dg=d.diagnostics;
+  $('slNet').innerHTML=(d.network&&d.network.length)?d.network.map(c=>'<span class="chip">'+esc(c.id)+'<span class="n">'+(c.status==='ok'?'<span class="pos">ok</span> · '+c.n+' items':'<span class="warnc">'+esc(c.status)+'</span> '+esc((c.error||'').slice(0,60)))+(c.verified?'':' · unverified')+'</span></span>').join(' '):'No collectors ran.';
   $('slDiag').innerHTML=dg?((dg.warnings||[]).map(w=>'<div class="warnc">⚠ '+esc(w)+'</div>').join('')||'<div class="pos">No warnings.</div>')+Object.keys(dg.bySport||{}).map(k=>{const e=dg.bySport[k];return '<span class="chip">'+esc(k.toUpperCase())+'<span class="n">'+e.games+' games · '+e.withOdds+' odds · '+e.avgBooks+' books'+(e.withModel?' · model '+e.withModel:'')+(e.withPitchers!=null?' · starters '+e.withPitchers:'')+(e.withPmMatch?' · pm '+e.withPmMatch:'')+'</span></span>';}).join(' '):'—';
   $('slSources').innerHTML=(d.sources||[]).map(s=>`<span class="chip" style="${s.ok?'':'opacity:.6'}">${s.ok?'✓':'✗'} ${esc(s.source)}<span class="n">${esc(s.ok?s.detail:(s.detail||'').slice(0,40))}</span></span>`).join(' ')||'—';
   $('slBody').innerHTML=g.map(r=>{

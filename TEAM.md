@@ -14,3 +14,6 @@ These are roles, not running services. Each is a focused brief that Claude runs 
 More roles worth adding when needed: one per sport (a deep dive on one league's data and model), a tax and bookkeeping role, a security reviewer for secrets and tokens, and a data-quality auditor that checks the first live slate against the real games.
 
 How findings get used: Claude reads all six reports, drops anything without a source, fixes real bugs, and changes the product only where the evidence supports it.
+
+## Roles vs the persistent network
+The agent roles above exist only inside a working session. The collector network is the part that persists: specs in network.json run in GitHub Actions on every build and can be extended with spawn.py.

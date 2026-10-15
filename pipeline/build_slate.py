@@ -45,6 +45,10 @@ try:
 except Exception:  # pragma: no cover
     canon = lambda s: str(s).lower()
 import re
+try:
+    import network as net_mod
+except ImportError:  # pragma: no cover
+    net_mod = None
 
 SPORTS = {  # key -> (Odds API key, ESPN path)
     "nfl": ("americanfootball_nfl", "football/nfl"),
@@ -655,6 +659,13 @@ def main():
                                           ("sports-skills", lambda s=s: espn_via_skills(s))])
         games += got
     enrich_pitchers(games)
+    net_rows = []
+    if net_mod and os.environ.get("NO_NETWORK") != "1":
+        try:
+            _res, net_rows = net_mod.run_all(net_mod.load_specs(), sports=set(sports))
+            log("collectors", True, ", ".join(f"{r['id']}:{r['status']}" for r in net_rows) or "none enabled")
+        except Exception as e:  # noqa
+            log("collectors", False, repr(e))
     pms = try_sources("kalshi", [("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
     pms += try_sources("polymarket", [("direct", polymarket_direct), ("sports-skills", polymarket_via_skills)])
     capture_only = os.environ.get("CAPTURE_ONLY") == "1"
@@ -695,7 +706,7 @@ def main():
     rows.sort(key=lambda r: -max([b["evPct"] for b in r["bets"]] + [r.get("arbRoiPct", 0), -99]))
     slate = {"generatedAt": now.isoformat(timespec="seconds"),
              "settings": {"bankroll": BANKROLL, "kellyFrac": KELLY_FRAC, "maxStakePct": MAX_STAKE_PCT, "dayBudget": DAY_BUDGET, "minEdge": MIN_EDGE},
-             "sources": LOG, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "day": None if capture_only else simulate_day(rows),
+             "sources": LOG, "network": net_rows, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "day": None if capture_only else simulate_day(rows),
              "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only."}
     closing = {}
     if hist_mod:
