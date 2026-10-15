@@ -1,0 +1,525 @@
+{
+ "kalshi_plain": {
+  "status": 200,
+  "n": 200,
+  "sample": [
+   {
+    "ticker": "KXMVECROSSCATEGORY-S202634LX7JZMNN2ZDGX7-7I3CZ7Q6P",
+    "event_ticker": "KXMVECROSSCATEGORY-S202634LX7JZMNN2ZDGX7",
+    "series_ticker": null,
+    "title": "yes Kristjan Tamm,yes Arthur Weber,yes Adithya Karunaratne,yes Los Angeles F,yes Los Angeles G,yes Los Angeles C,yes Diana Shnaider",
+    "yes_ask_dollars": "0.0000",
+    "yes_ask": null,
+    "mve_collection_ticker": "KXMVECROSSCATEGORY-R"
+   },
+   {
+    "ticker": "KXMVECROSSCATEGORY0-S2026CIRGYJUOMVIIQ6U3-JDFXYEOVC",
+    "event_ticker": "KXMVECROSSCATEGORY0-S2026CIRGYJUOMVIIQ6U3",
+    "series_ticker": null,
+    "title": "no Seattle wins by over 3.5 points,yes Baltimore wins by over 5.5 points,no Carolina wins by over 1.5 points,yes Jacksonville wins by over 2.5 points,no New Orleans wins by over 1.5 points,yes Pittsburgh wins by over 2.5 points,no Indianapolis wins by over 7.5 points",
+    "yes_ask_dollars": "0.0000",
+    "yes_ask": null,
+    "mve_collection_ticker": "KXMVECROSSCATEGORY-R"
+   },
+   {
+    "ticker": "KXMVECROSSCATEGORY-S2026U4ZOZWC2A6NFBW47-N6TEGOT2V",
+    "event_ticker": "KXMVECROSSCATEGORY-S2026U4ZOZWC2A6NFBW47",
+    "series_ticker": null,
+    "title": "yes Denver,no Bo Nix: 3+,yes Courtland Sutton: 3+",
+    "yes_ask_dollars": "0.0000",
+    "yes_ask": null,
+    "mve_collection_ticker": "KXMVECROSSCATEGORY-R"
+   },
+   {
+    "ticker": "KXMVECROSSCATEGORY-S2026GCMV7HBUVKIIGQUM-XSEOBVWTQ",
+    "event_ticker": "KXMVECROSSCATEGORY-S2026GCMV7HBUVKIIGQUM",
+    "series_ticker": null,
+    "title": "yes Erin Blanchfield,yes Cristian Perez,yes KO/TKO/DQ,yes Joaquin Buckley by KO/TKO/DQ,yes Nick Galanti by Submission,yes Mandel Nallo by KO/TKO/DQ",
+    "yes_ask_dollars": "0.0000",
+    "yes_ask": null,
+    "mve_collection_ticker": "KXMVECROSSCATEGORY-R"
+   },
+   {
+    "ticker": "KXMVECROSSCATEGORY-S2026ZB343BJ4YCOZK7HE-OV3TELIKX",
+    "event_ticker": "KXMVECROSSCATEGORY-S2026ZB343BJ4YCOZK7HE",
+    "series_ticker": null,
+    "title": "yes Aleksandr Shevchenko,yes Christian Harrison / Neal Skupski,yes Arthur Gea,yes Alexander Zverev,yes Adhithya Ganesan,yes Digvijay Pratap Singh,yes Pawit Sornlaksup,yes Anton Shepp,yes Arthur Weber,yes Samir Banerjee,yes Sergey Fomin,yes Dhakshineswar Suresh,yes Thea Frodin,yes Junhan Zhang,yes Sijia Wei,yes Hong Yi Cody Wong,yes Clara Burel,yes Diana Shnaider,yes Iga Swiatek",
+    "yes_ask_dollars": "0.0000",
+    "yes_ask": null,
+    "mve_collection_ticker": "KXMVECROSSCATEGORY-R"
+   }
+  ]
+ },
+ "KXNFLGAME": {
+  "status": 200,
+  "n": 56,
+  "sample": [
+   {
+    "ticker": "KXNFLGAME-26OCT26DALPHI-PHI",
+    "title": "Philadelphia wins",
+    "yes_sub_title": "Philadelphia",
+    "yes_ask_dollars": "0.5300",
+    "yes_ask": null,
+    "no_ask_dollars": "0.5000",
+    "close_time": "2026-10-29T00:15:00Z"
+   },
+   {
+    "ticker": "KXNFLGAME-26OCT26DALPHI-DAL",
+    "title": "Dallas wins",
+    "yes_sub_title": "Dallas",
+    "yes_ask_dollars": "0.5000",
+    "yes_ask": null,
+    "no_ask_dollars": "0.5100",
+    "close_time": "2026-10-29T00:15:00Z"
+   },
+   {
+    "ticker": "KXNFLGAME-26OCT25KCSEA-SEA",
+    "title": "Seattle wins",
+    "yes_sub_title": "Seattle",
+    "yes_ask_dollars": "0.5800",
+    "yes_ask": null,
+    "no_ask_dollars": "0.4500",
+    "close_time": "2026-10-28T00:20:00Z"
+   },
+   {
+    "ticker": "KXNFLGAME-26OCT25KCSEA-KC",
+    "title": "Kansas City wins",
+    "yes_sub_title": "Kansas City",
+    "yes_ask_dollars": "0.4600",
+    "yes_ask": null,
+    "no_ask_dollars": "0.5800",
+    "close_time": "2026-10-28T00:20:00Z"
+   }
+  ]
+ },
+ "KXNBAGAME": {
+  "status": 200,
+  "n": 58,
+  "sample": [
+   {
+    "ticker": "KXNBAGAME-26OCT21SACLAC-SAC",
+    "title": "Sacramento wins",
+    "yes_sub_title": "Sacramento",
+    "yes_ask_dollars": "0.4300",
+    "yes_ask": null,
+    "no_ask_dollars": "0.6000",
+    "close_time": "2026-10-24T02:30:00Z"
+   },
+   {
+    "ticker": "KXNBAGAME-26OCT21SACLAC-LAC",
+    "title": "Los Angeles C wins",
+    "yes_sub_title": "Los Angeles C",
+    "yes_ask_dollars": "0.6100",
+    "yes_ask": null,
+    "no_ask_dollars": "0.4300",
+    "close_time": "2026-10-24T02:30:00Z"
+   },
+   {
+    "ticker": "KXNBAGAME-26OCT21PHXPOR-POR",
+    "title": "Portland wins",
+    "yes_sub_title": "Portland",
+    "yes_ask_dollars": "0.6200",
+    "yes_ask": null,
+    "no_ask_dollars": "0.4200",
+    "close_time": "2026-10-24T02:00:00Z"
+   },
+   {
+    "ticker": "KXNBAGAME-26OCT21PHXPOR-PHX",
+    "title": "Phoenix wins",
+    "yes_sub_title": "Phoenix",
+    "yes_ask_dollars": "0.4100",
+    "yes_ask": null,
+    "no_ask_dollars": "0.6200",
+    "close_time": "2026-10-24T02:00:00Z"
+   }
+  ]
+ },
+ "KXNHLGAME": {
+  "status": 200,
+  "n": 92,
+  "sample": [
+   {
+    "ticker": "KXNHLGAME-26OCT21FLAOTT-OTT",
+    "title": "Ottawa wins",
+    "yes_sub_title": "Ottawa",
+    "yes_ask_dollars": "0.5200",
+    "yes_ask": null,
+    "no_ask_dollars": "0.5700",
+    "close_time": "2026-10-23T23:30:00Z"
+   },
+   {
+    "ticker": "KXNHLGAME-26OCT21FLAOTT-FLA",
+    "title": "Florida wins",
+    "yes_sub_title": "Florida",
+    "yes_ask_dollars": "0.5100",
+    "yes_ask": null,
+    "no_ask_dollars": "0.6500",
+    "close_time": "2026-10-23T23:30:00Z"
+   },
+   {
+    "ticker": "KXNHLGAME-26OCT21PHIBUF-PHI",
+    "title": "Philadelphia wins",
+    "yes_sub_title": "Philadelphia",
+    "yes_ask_dollars": "0.4200",
+    "yes_ask": null,
+    "no_ask_dollars": "0.6600",
+    "close_time": "2026-10-23T23:30:00Z"
+   },
+   {
+    "ticker": "KXNHLGAME-26OCT21PHIBUF-BUF",
+    "title": "Buffalo wins",
+    "yes_sub_title": "Buffalo",
+    "yes_ask_dollars": "0.6500",
+    "yes_ask": null,
+    "no_ask_dollars": "0.4300",
+    "close_time": "2026-10-23T23:30:00Z"
+   }
+  ]
+ },
+ "KXMLBGAME": {
+  "status": 200,
+  "n": 8,
+  "sample": [
+   {
+    "ticker": "KXMLBGAME-26OCT172000TBCLE-TB",
+    "title": "Tampa Bay wins",
+    "yes_sub_title": "Tampa Bay",
+    "yes_ask_dollars": "0.5500",
+    "yes_ask": null,
+    "no_ask_dollars": "0.4600",
+    "close_time": "2026-10-21T00:00:00Z"
+   },
+   {
+    "ticker": "KXMLBGAME-26OCT172000TBCLE-CLE",
+    "title": "Cleveland wins",
+    "yes_sub_title": "Cleveland",
+    "yes_ask_dollars": "0.4700",
+    "yes_ask": null,
+    "no_ask_dollars": "0.5500",
+    "close_time": "2026-10-21T00:00:00Z"
+   },
+   {
+    "ticker": "KXMLBGAME-26OCT161800TBCLE-TB",
+    "title": "Tampa Bay wins",
+    "yes_sub_title": "Tampa Bay",
+    "yes_ask_dollars": "0.5200",
+    "yes_ask": null,
+    "no_ask_dollars": "0.5000",
+    "close_time": "2026-10-19T22:00:00Z"
+   },
+   {
+    "ticker": "KXMLBGAME-26OCT161800TBCLE-CLE",
+    "title": "Cleveland wins",
+    "yes_sub_title": "Cleveland",
+    "yes_ask_dollars": "0.5000",
+    "yes_ask": null,
+    "no_ask_dollars": "0.5200",
+    "close_time": "2026-10-19T22:00:00Z"
+   }
+  ]
+ },
+ "KXEPLGAME": {
+  "status": 200,
+  "n": 60,
+  "sample": [
+   {
+    "ticker": "KXEPLGAME-26OCT25CRYNEW-TIE",
+    "title": "Tie is the result",
+    "yes_sub_title": "Tie",
+    "yes_ask_dollars": "0.2800",
+    "yes_ask": null,
+    "no_ask_dollars": "0.7500",
+    "close_time": "2026-10-27T14:00:00Z"
+   },
+   {
+    "ticker": "KXEPLGAME-26OCT25CRYNEW-NEW",
+    "title": "Newcastle wins",
+    "yes_sub_title": "Newcastle",
+    "yes_ask_dollars": "0.3900",
+    "yes_ask": null,
+    "no_ask_dollars": "0.6400",
+    "close_time": "2026-10-27T14:00:00Z"
+   },
+   {
+    "ticker": "KXEPLGAME-26OCT25CRYNEW-CRY",
+    "title": "Crystal Palace wins",
+    "yes_sub_title": "Crystal Palace",
+    "yes_ask_dollars": "0.3700",
+    "yes_ask": null,
+    "no_ask_dollars": "0.6600",
+    "close_time": "2026-10-27T14:00:00Z"
+   },
+   {
+    "ticker": "KXEPLGAME-26OCT25HULBRE-TIE",
+    "title": "Tie is the result",
+    "yes_sub_title": "Tie",
+    "yes_ask_dollars": "0.2500",
+    "yes_ask": null,
+    "no_ask_dollars": "0.7700",
+    "close_time": "2026-10-27T14:00:00Z"
+   }
+  ]
+ },
+ "KXMLSGAME": {
+  "status": 200,
+  "n": 100,
+  "sample": [
+   {
+    "ticker": "KXMLSGAME-26OCT28ATXRSL-TIE",
+    "title": "Tie is the result",
+    "yes_sub_title": "Tie",
+    "yes_ask_dollars": "0.7000",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9500",
+    "close_time": "2026-10-31T00:30:00Z"
+   },
+   {
+    "ticker": "KXMLSGAME-26OCT28ATXRSL-RSL",
+    "title": "Salt Lake wins",
+    "yes_sub_title": "Salt Lake",
+    "yes_ask_dollars": "0.7000",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9500",
+    "close_time": "2026-10-31T00:30:00Z"
+   },
+   {
+    "ticker": "KXMLSGAME-26OCT28ATXRSL-ATX",
+    "title": "Austin wins",
+    "yes_sub_title": "Austin",
+    "yes_ask_dollars": "0.7000",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9500",
+    "close_time": "2026-10-31T00:30:00Z"
+   },
+   {
+    "ticker": "KXMLSGAME-26OCT28CHIORL-TIE",
+    "title": "Tie is the result",
+    "yes_sub_title": "Tie",
+    "yes_ask_dollars": "0.7000",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9500",
+    "close_time": "2026-10-31T00:30:00Z"
+   }
+  ]
+ },
+ "KXNCAAFGAME": {
+  "status": 200,
+  "n": 100,
+  "sample": [
+   {
+    "ticker": "KXNCAAFGAME-26OCT28JVSTNMSU-NMSU",
+    "title": "New Mexico St. wins",
+    "yes_sub_title": "New Mexico St.",
+    "yes_ask_dollars": "0.9200",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9000",
+    "close_time": "2026-10-31T00:00:00Z"
+   },
+   {
+    "ticker": "KXNCAAFGAME-26OCT28JVSTNMSU-JVST",
+    "title": "Jacksonville St. wins",
+    "yes_sub_title": "Jacksonville St.",
+    "yes_ask_dollars": "0.9300",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9000",
+    "close_time": "2026-10-31T00:00:00Z"
+   },
+   {
+    "ticker": "KXNCAAFGAME-26OCT28KENNMTU-MTU",
+    "title": "Middle Tennessee wins",
+    "yes_sub_title": "Middle Tennessee",
+    "yes_ask_dollars": "0.9200",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9000",
+    "close_time": "2026-10-30T23:00:00Z"
+   },
+   {
+    "ticker": "KXNCAAFGAME-26OCT28KENNMTU-KENN",
+    "title": "Kennesaw St. wins",
+    "yes_sub_title": "Kennesaw St.",
+    "yes_ask_dollars": "0.9300",
+    "yes_ask": null,
+    "no_ask_dollars": "0.9000",
+    "close_time": "2026-10-30T23:00:00Z"
+   }
+  ]
+ },
+ "kalshi_series": {
+  "status": 200,
+  "n": 3978,
+  "tickers": [
+   "KXNBADRAFT4",
+   "KXMLSASTSPREAD",
+   "KXNFLDIVLEASTWINS",
+   "KXCFBCOTY",
+   "KXUEFASC2HSPREAD",
+   "KXESPSUPERCUP1HSPREAD",
+   "KXDOTA2TOTALMAPS",
+   "KXMADMEN",
+   "KXISRPLSPREAD",
+   "KXUECLTEAMTOTAL",
+   "KXSTARLADDERBUDAPESTMAJOR",
+   "KXMLBNLCY",
+   "KXWBCGAME",
+   "KXBRASILEIROCTOTAL",
+   "KXLALIGASPREAD",
+   "KXMARMADPTS",
+   "KXUEL16FTCRSO",
+   "KXFACUP1HSCORE",
+   "KXCONCACAFNL1H",
+   "KXEFLCHAMPIONSHIP1HSPREAD",
+   "KXEWSLGAME",
+   "KXNBA2QTOTAL",
+   "KXFROPLSPREAD",
+   "KXTESTINNINGTOTAL",
+   "KXWC2HSPREAD",
+   "KXUCLCORNERS",
+   "KXF1QUALIFY",
+   "KXNFLDEBUT",
+   "KXWTAIT",
+   "KXAFCONTEAMTOTAL",
+   "KXNFLCOACHOUTFIRST",
+   "KXSVK2LBTTS",
+   "KXNBATOP3",
+   "KXNCAAMBUSA",
+   "KXWCADVANCE",
+   "KXNBAEFINMVP",
+   "KXNWSLBTTS",
+   "KXNCAAMIVYLEAGUE",
+   "KXUSOPENCUPBTTS",
+   "KXDPWTTOP10",
+   "KXPGAR2TOP5",
+   "KXNFLEXACTWINSNYG",
+   "KXUCLSOT",
+   "KXPGLMASTERSBUCHAREST",
+   "KXFACUP1HBTTS",
+   "KXBALLERLEAGUE",
+   "KXLALIGAPOINTMARGIN",
+   "KXMLBDIVWINNER",
+   "KXNBAPLAYERSPECIALS",
+   "KXLVAVIRTOTAL",
+   "KXNBANEWCHAMP",
+   "KXWCTEAMSOG",
+   "KXTHAIL1ADVANCE",
+   "KXNPBRFI",
+   "KXGERSCSPREAD",
+   "KXNHLGAME",
+   "KXLIGUE1GOAL",
+   "KXNCAAF1Q",
+   "KXBUNDESLIGABTTS",
+   "KXWNBADRAFT2",
+   "KXCLUBWC1HTOTAL",
+   "KXCARDPRESENCEUFCWH",
+   "KXNHLLINDSAY",
+   "KXWNBAWEST",
+   "KXNFLSBOUTCOME",
+   "KXTACAPORT",
+   "KXBRASILEIROBADVANCE",
+   "KXSAUDIPLTEAMTOTAL",
+   "KXEWCRAINBOW6SEIGE",
+   "KXPDCDARTS",
+   "KXCHLLDPGAME",
+   "KXNCAAFSTADIUM",
+   "KXUSOPENCUPTEAMTOTAL",
+   "KXLOSEBARCA",
+   "KXWCGOLDENBOOTCLEAT",
+   "KXPGAWINNERREGION",
+   "KXRECORDNBABEST",
+   "KXNCAAMBA10",
+   "KXMLSEAST",
+   "KXPGAROUNDSCORE"
+  ]
+ },
+ "poly_sports_events": {
+  "status": 200,
+  "n": 100,
+  "sample": [
+   {
+    "title": "Ballon d'Or Winner 2026",
+    "slug": "ballon-dor-winner-2026",
+    "markets": [
+     {
+      "q": "Will Kylian Mbapp\u00e9 win the 2026 Ballon d'Or?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.0385\", \"0.9615\"]"
+     },
+     {
+      "q": "Will Erling Haaland win the 2026 Ballon d'Or?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.0015\", \"0.9985\"]"
+     }
+    ]
+   },
+   {
+    "title": "Russia x Ukraine Peace Combo",
+    "slug": "russia-x-ukraine-peace-parlay",
+    "markets": [
+     {
+      "q": "Russia x Ukraine Peace Combo",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.0375\", \"0.9625\"]"
+     }
+    ]
+   },
+   {
+    "title": "Will LeBron James retire before next NBA season?",
+    "slug": "will-lebron-james-retire-before-next-nba-season",
+    "markets": [
+     {
+      "q": "Will LeBron James retire before next NBA season?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.002\", \"0.998\"]"
+     }
+    ]
+   },
+   {
+    "title": "F1 Drivers' Champion",
+    "slug": "2026-f1-drivers-champion",
+    "markets": [
+     {
+      "q": "Will Lando Norris be the 2026 F1 Drivers' Champion?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.0015\", \"0.9985\"]"
+     },
+     {
+      "q": "Will Oscar Piastri be the 2026 F1 Drivers' Champion?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0\", \"1\"]"
+     }
+    ]
+   },
+   {
+    "title": "F1 Constructors' Champion",
+    "slug": "f1-constructors-champion",
+    "markets": [
+     {
+      "q": "Will McLaren be the 2026 F1 Constructors' Champion?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.0015\", \"0.9985\"]"
+     },
+     {
+      "q": "Will Mercedes be the 2026 F1 Constructors' Champion?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.9935\", \"0.0065\"]"
+     }
+    ]
+   },
+   {
+    "title": "Worlds 2026 Winning Region",
+    "slug": "lol-worlds-2026-winning-region-226",
+    "markets": [
+     {
+      "q": "Will a team from LCK (South Korea) win LoL Worlds 2026?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.685\", \"0.315\"]"
+     },
+     {
+      "q": "Will a team from LPL (China) win LoL Worlds 2026?",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "prices": "[\"0.235\", \"0.765\"]"
+     }
+    ]
+   }
+  ]
+ }
+}
