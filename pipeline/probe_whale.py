@@ -38,3 +38,12 @@ st, d = get(f"{P}/trades?limit=50&takerOnly=true")
 out["poly_gamma_trades"] = {"status": st, "n": len(d) if isinstance(d, list) else d, "sample": d[:3] if isinstance(d, list) else d}
 json.dump(out, open("probe_whale.json", "w"), indent=1)
 print(json.dumps({k: (v.get("status") if isinstance(v, dict) else v) for k, v in out.items()}))
+# data-api.polymarket.com is a separate public service for trade activity (no key), distinct from the CLOB
+D = "https://data-api.polymarket.com"
+cond = out.get("poly_market_sample", {}).get("conditionId")
+if cond:
+    st, d = get(f"{D}/trades?market={cond}&limit=50")
+    out["poly_data_trades"] = {"status": st, "n": len(d) if isinstance(d, list) else d, "sample": d[:3] if isinstance(d, list) else d}
+st, d = get(f"{D}/trades?limit=50&filterType=CASH&filterAmount=5000")
+out["poly_data_large_trades"] = {"status": st, "n": len(d) if isinstance(d, list) else d, "sample": d[:3] if isinstance(d, list) else d}
+json.dump(out, open("probe_whale.json", "w"), indent=1)
