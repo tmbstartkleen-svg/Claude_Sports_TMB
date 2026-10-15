@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-15T08:22:47+00:00",
+ "generatedAt": "2026-10-15T08:26:58+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -1331,17 +1331,17 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "5 snapshots added, 46 closing lines available"
+   "detail": "0 snapshots added, 46 closing lines available"
   },
   {
    "source": "grading",
    "ok": true,
-   "detail": "3 picks added, 0 settled, 0 CLV, 125 total"
+   "detail": "0 picks added, 0 settled, 0 CLV, 125 total"
   },
   {
    "source": "whales",
    "ok": true,
-   "detail": "0 markets checked, 0 games with a notable trade"
+   "detail": "40 markets checked, 0 games with a notable trade"
   },
   {
    "source": "alerts",
@@ -2395,12 +2395,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 130.0,
      "decimal": 2.3
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -155.0,
      "decimal": 1.645
     }
@@ -2410,7 +2410,7 @@
    "bets": [
     {
      "side": "New Orleans Pelicans",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 130.0,
      "fair": 0.5055,
      "evPct": 16.27,
@@ -2424,6 +2424,10 @@
      "source": "kalshi",
      "title": "New Orleans vs Indiana",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "New Orleans": "KXNBAGAME-26OCT21INDNOP-NOP",
+      "Indiana": "KXNBAGAME-26OCT21INDNOP-IND"
+     },
      "home": 0.44,
      "homeEdgePp": -2.7,
      "away": 0.63,
@@ -2626,12 +2630,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -108.0,
      "decimal": 1.926
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -112.0,
      "decimal": 1.893
     }
@@ -2641,7 +2645,7 @@
    "bets": [
     {
      "side": "New York Giants",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -108.0,
      "fair": 0.5851,
      "evPct": 12.69,
@@ -2655,6 +2659,10 @@
      "source": "kalshi",
      "title": "New York G vs New Orleans",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "New York G": "KXNFLGAME-26OCT18NONYG-NYG",
+      "New Orleans": "KXNFLGAME-26OCT18NONYG-NO"
+     },
      "home": 0.5,
      "homeEdgePp": -0.5,
      "away": 0.51,
@@ -2969,12 +2977,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -2984,7 +2992,7 @@
    "bets": [
     {
      "side": "Jacksonville Jaguars",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "fair": 0.6413,
      "evPct": 9.29,
@@ -2998,6 +3006,10 @@
      "source": "kalshi",
      "title": "Jacksonville vs Houston",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Jacksonville": "KXNFLGAME-26OCT18HOUJAC-JAC",
+      "Houston": "KXNFLGAME-26OCT18HOUJAC-HOU"
+     },
      "home": 0.57,
      "homeEdgePp": -0.4,
      "away": 0.44,
@@ -3256,12 +3268,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -155.0,
      "decimal": 1.645
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 130.0,
      "decimal": 2.3
     }
@@ -3271,7 +3283,7 @@
    "bets": [
     {
      "side": "LA Clippers",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -155.0,
      "fair": 0.6497,
      "evPct": 6.89,
@@ -3344,6 +3356,11 @@
      "source": "kalshi",
      "title": "Toulouse vs Le Mans",
      "url": "https://kalshi.com/markets/kxligue1game",
+     "tickers": {
+      "Tie": "KXLIGUE1GAME-26OCT16MANTFC-TIE",
+      "Toulouse": "KXLIGUE1GAME-26OCT16MANTFC-TFC",
+      "Le Mans": "KXLIGUE1GAME-26OCT16MANTFC-MAN"
+     },
      "home": 0.33,
      "homeEdgePp": -0.8,
      "away": 0.43,
@@ -3410,6 +3427,11 @@
      "source": "kalshi",
      "title": "Tottenham vs Coventry",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tottenham": "KXEPLGAME-26OCT19TOTCOV-TOT",
+      "Tie": "KXEPLGAME-26OCT19TOTCOV-TIE",
+      "Coventry": "KXEPLGAME-26OCT19TOTCOV-COV"
+     },
      "home": 0.66,
      "homeEdgePp": -0.8,
      "away": 0.16,
@@ -3889,12 +3911,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     }
@@ -3904,7 +3926,7 @@
    "bets": [
     {
      "side": "Denver Broncos",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "fair": 0.4767,
      "evPct": 4.88,
@@ -3918,6 +3940,10 @@
      "source": "kalshi",
      "title": "Seattle vs Denver",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Seattle": "KXNFLGAME-26OCT15SEADEN-SEA",
+      "Denver": "KXNFLGAME-26OCT15SEADEN-DEN"
+     },
      "home": 0.44,
      "homeEdgePp": -0.6,
      "away": 0.57,
@@ -4064,12 +4090,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -4079,7 +4105,7 @@
    "bets": [
     {
      "side": "Tennessee Titans",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 270.0,
      "fair": 0.2813,
      "evPct": 4.09,
@@ -4093,6 +4119,10 @@
      "source": "kalshi",
      "title": "Tennessee vs Indianapolis",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Tennessee": "KXNFLGAME-26OCT18TENIND-TEN",
+      "Indianapolis": "KXNFLGAME-26OCT18TENIND-IND"
+     },
      "home": 0.75,
      "homeEdgePp": 0.1,
      "away": 0.26,
@@ -4274,6 +4304,11 @@
      "source": "kalshi",
      "title": "Hull City vs Fulham",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT17FULHUL-TIE",
+      "Hull City": "KXEPLGAME-26OCT17FULHUL-HUL",
+      "Fulham": "KXEPLGAME-26OCT17FULHUL-FUL"
+     },
      "home": 0.57,
      "homeEdgePp": -1.3,
      "away": 0.21,
@@ -4305,12 +4340,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -162.0,
      "decimal": 1.617
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 136.0,
      "decimal": 2.36
     }
@@ -4320,7 +4355,7 @@
    "bets": [
     {
      "side": "Portland Trail Blazers",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -162.0,
      "fair": 0.6414,
      "evPct": 3.73,
@@ -4334,6 +4369,10 @@
      "source": "kalshi",
      "title": "Portland vs Phoenix",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Portland": "KXNBAGAME-26OCT21PHXPOR-POR",
+      "Phoenix": "KXNBAGAME-26OCT21PHXPOR-PHX"
+     },
      "home": 0.62,
      "homeEdgePp": -2.3,
      "away": 0.43,
@@ -4424,12 +4463,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -130.0,
      "decimal": 1.769
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 110.0,
      "decimal": 2.1
     }
@@ -4439,7 +4478,7 @@
    "bets": [
     {
      "side": "Orlando Magic",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -130.0,
      "fair": 0.585,
      "evPct": 3.5,
@@ -4453,6 +4492,10 @@
      "source": "kalshi",
      "title": "Orlando vs Atlanta",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Orlando": "KXNBAGAME-26OCT21ATLORL-ORL",
+      "Atlanta": "KXNBAGAME-26OCT21ATLORL-ATL"
+     },
      "home": 0.6,
      "homeEdgePp": -5.5,
      "away": 0.47,
@@ -4599,12 +4642,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -425.0,
      "decimal": 1.235
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 330.0,
      "decimal": 4.3
     }
@@ -4614,7 +4657,7 @@
    "bets": [
     {
      "side": "San Francisco 49ers",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -425.0,
      "fair": 0.8365,
      "evPct": 3.33,
@@ -4628,6 +4671,10 @@
      "source": "kalshi",
      "title": "Washington vs San Francisco",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Washington": "KXNFLGAME-26OCT19WASSF-WAS",
+      "San Francisco": "KXNFLGAME-26OCT19WASSF-SF"
+     },
      "home": 0.78,
      "homeEdgePp": 0.8,
      "away": 0.23,
@@ -4662,12 +4709,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 136.0,
      "decimal": 2.36
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -162.0,
      "decimal": 1.617
     }
@@ -4677,7 +4724,7 @@
    "bets": [
     {
      "side": "Houston Rockets",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 136.0,
      "fair": 0.4374,
      "evPct": 3.22,
@@ -4691,6 +4738,10 @@
      "source": "kalshi",
      "title": "Oklahoma City vs Houston",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Oklahoma City": "KXNBAGAME-26OCT15OKCHOU-OKC",
+      "Houston": "KXNBAGAME-26OCT15OKCHOU-HOU"
+     },
      "home": 0.45,
      "homeEdgePp": -4.7,
      "away": 0.65,
@@ -4893,12 +4944,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 114.0,
      "decimal": 2.14
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -135.0,
      "decimal": 1.741
     }
@@ -4908,7 +4959,7 @@
    "bets": [
     {
      "side": "Memphis Grizzlies",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 114.0,
      "fair": 0.4808,
      "evPct": 2.88,
@@ -4922,6 +4973,10 @@
      "source": "kalshi",
      "title": "Utah vs Memphis",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Utah": "KXNBAGAME-26OCT21UTAMEM-UTA",
+      "Memphis": "KXNBAGAME-26OCT21UTAMEM-MEM"
+     },
      "home": 0.5,
      "homeEdgePp": -5.4,
      "away": 0.57,
@@ -4956,12 +5011,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 114.0,
      "decimal": 2.14
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -135.0,
      "decimal": 1.741
     }
@@ -4971,7 +5026,7 @@
    "bets": [
     {
      "side": "Chicago Blackhawks",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 114.0,
      "fair": 0.4806,
      "evPct": 2.85,
@@ -4985,6 +5040,10 @@
      "source": "kalshi",
      "title": "Winnipeg vs Chicago",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Winnipeg": "KXNHLGAME-26OCT15WPGCHI-WPG",
+      "Chicago": "KXNHLGAME-26OCT15WPGCHI-CHI"
+     },
      "home": 0.46,
      "homeEdgePp": -1.4,
      "away": 0.57,
@@ -5243,12 +5302,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -105.0,
      "decimal": 1.952
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -115.0,
      "decimal": 1.87
     }
@@ -5258,7 +5317,7 @@
    "bets": [
     {
      "side": "Atlanta Falcons",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -105.0,
      "fair": 0.5247,
      "evPct": 2.43,
@@ -5272,6 +5331,10 @@
      "source": "kalshi",
      "title": "Chicago vs Atlanta",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Chicago": "KXNFLGAME-26OCT18CHIATL-CHI",
+      "Atlanta": "KXNFLGAME-26OCT18CHIATL-ATL"
+     },
      "home": 0.49,
      "homeEdgePp": -0.1,
      "away": 0.52,
@@ -5586,12 +5649,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -122.0,
      "decimal": 1.82
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 102.0,
      "decimal": 2.02
     }
@@ -5601,7 +5664,7 @@
    "bets": [
     {
      "side": "Green Bay Packers",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -122.0,
      "fair": 0.5579,
      "evPct": 1.52,
@@ -5615,6 +5678,10 @@
      "source": "kalshi",
      "title": "Green Bay vs Dallas",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Green Bay": "KXNFLGAME-26OCT18DALGB-GB",
+      "Dallas": "KXNFLGAME-26OCT18DALGB-DAL"
+     },
      "home": 0.54,
      "homeEdgePp": -1.3,
      "away": 0.48,
@@ -5929,12 +5996,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -105.0,
      "decimal": 1.952
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -115.0,
      "decimal": 1.87
     }
@@ -5944,7 +6011,7 @@
    "bets": [
     {
      "side": "Carolina Panthers",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -115.0,
      "fair": 0.5415,
      "evPct": 1.24,
@@ -5958,6 +6025,10 @@
      "source": "kalshi",
      "title": "Philadelphia vs Carolina",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Philadelphia": "KXNFLGAME-26OCT18CARPHI-PHI",
+      "Carolina": "KXNFLGAME-26OCT18CARPHI-CAR"
+     },
      "home": 0.51,
      "homeEdgePp": -2.1,
      "away": 0.5,
@@ -5992,12 +6063,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -130.0,
      "decimal": 1.769
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 110.0,
      "decimal": 2.1
     }
@@ -6007,7 +6078,7 @@
    "bets": [
     {
      "side": "San Antonio Spurs",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -130.0,
      "fair": 0.5722,
      "evPct": 1.24,
@@ -6021,6 +6092,10 @@
      "source": "kalshi",
      "title": "San Antonio vs Oklahoma City",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "San Antonio": "KXNBAGAME-26OCT20OKCSAS-SAS",
+      "Oklahoma City": "KXNBAGAME-26OCT20OKCSAS-OKC"
+     },
      "home": 0.55,
      "homeEdgePp": -0.5,
      "away": 0.49,
@@ -6335,12 +6410,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -6353,6 +6428,10 @@
      "source": "kalshi",
      "title": "Cleveland vs Baltimore",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Cleveland": "KXNFLGAME-26OCT18BALCLE-CLE",
+      "Baltimore": "KXNFLGAME-26OCT18BALCLE-BAL"
+     },
      "home": 0.33,
      "homeEdgePp": -2.9,
      "away": 0.69,
@@ -6387,12 +6466,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -6405,6 +6484,10 @@
      "source": "kalshi",
      "title": "New York J vs New England",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "New York J": "KXNFLGAME-26OCT18NYJNE-NYJ",
+      "New England": "KXNFLGAME-26OCT18NYJNE-NE"
+     },
      "home": 0.76,
      "homeEdgePp": -0.9,
      "away": 0.25,
@@ -6439,12 +6522,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     }
@@ -6457,6 +6540,10 @@
      "source": "kalshi",
      "title": "Tampa Bay vs Pittsburgh",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Tampa Bay": "KXNFLGAME-26OCT18PITTB-TB",
+      "Pittsburgh": "KXNFLGAME-26OCT18PITTB-PIT"
+     },
      "home": 0.44,
      "homeEdgePp": -0.6,
      "away": 0.58,
@@ -6491,12 +6578,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -900.0,
      "decimal": 1.111
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 600.0,
      "decimal": 7.0
     }
@@ -6509,6 +6596,10 @@
      "source": "kalshi",
      "title": "Los Angeles R vs Arizona",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Los Angeles R": "KXNFLGAME-26OCT18ARILAR-LAR",
+      "Arizona": "KXNFLGAME-26OCT18ARILAR-ARI"
+     },
      "home": 0.88,
      "homeEdgePp": -0.1,
      "away": 0.13,
@@ -6543,12 +6634,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -485.0,
      "decimal": 1.206
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 370.0,
      "decimal": 4.7
     }
@@ -6561,6 +6652,10 @@
      "source": "kalshi",
      "title": "Los Angeles C vs Kansas City",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Los Angeles C": "KXNFLGAME-26OCT18LACKC-LAC",
+      "Kansas City": "KXNFLGAME-26OCT18LACKC-KC"
+     },
      "home": 0.79,
      "homeEdgePp": 1.8,
      "away": 0.22,
@@ -6595,12 +6690,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -6613,6 +6708,10 @@
      "source": "kalshi",
      "title": "Las Vegas vs Buffalo",
      "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Las Vegas": "KXNFLGAME-26OCT18BUFLV-LV",
+      "Buffalo": "KXNFLGAME-26OCT18BUFLV-BUF"
+     },
      "home": 0.33,
      "homeEdgePp": -2.9,
      "away": 0.68,
@@ -6647,12 +6746,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -218.0,
      "decimal": 1.459
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 180.0,
      "decimal": 2.8
     }
@@ -6665,6 +6764,10 @@
      "source": "kalshi",
      "title": "Toronto vs New York",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Toronto": "KXNBAGAME-26OCT15TORNYK-TOR",
+      "New York": "KXNBAGAME-26OCT15TORNYK-NYK"
+     },
      "home": 0.75,
      "homeEdgePp": -8.6,
      "away": 0.38,
@@ -6699,12 +6802,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -115.0,
      "decimal": 1.87
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -105.0,
      "decimal": 1.952
     }
@@ -6717,6 +6820,10 @@
      "source": "kalshi",
      "title": "Detroit vs Boston",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Detroit": "KXNBAGAME-26OCT20BOSDET-DET",
+      "Boston": "KXNBAGAME-26OCT20BOSDET-BOS"
+     },
      "home": 0.51,
      "homeEdgePp": 0.1,
      "away": 0.53,
@@ -6750,12 +6857,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -6768,6 +6875,10 @@
      "source": "kalshi",
      "title": "Philadelphia vs New York",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Philadelphia": "KXNBAGAME-26OCT20PHINYK-PHI",
+      "New York": "KXNBAGAME-26OCT20PHINYK-NYK"
+     },
      "home": 0.63,
      "homeEdgePp": 1.3,
      "away": 0.37,
@@ -6802,12 +6913,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -6820,6 +6931,10 @@
      "source": "kalshi",
      "title": "Washington vs Milwaukee",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Washington": "KXNBAGAME-26OCT21MILWAS-WAS",
+      "Milwaukee": "KXNBAGAME-26OCT21MILWAS-MIL"
+     },
      "home": 0.71,
      "homeEdgePp": -6.7,
      "away": 0.36,
@@ -6854,12 +6969,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -125.0,
      "decimal": 1.8
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 105.0,
      "decimal": 2.05
     }
@@ -6872,6 +6987,10 @@
      "source": "kalshi",
      "title": "Minnesota vs Miami",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Minnesota": "KXNBAGAME-26OCT21MINMIA-MIN",
+      "Miami": "KXNBAGAME-26OCT21MINMIA-MIA"
+     },
      "home": 0.56,
      "homeEdgePp": -2.6,
      "away": 0.49,
@@ -6906,12 +7025,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 110.0,
      "decimal": 2.1
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -130.0,
      "decimal": 1.769
     }
@@ -6924,6 +7043,10 @@
      "source": "kalshi",
      "title": "Charlotte vs Brooklyn",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Charlotte": "KXNBAGAME-26OCT21CHABKN-CHA",
+      "Brooklyn": "KXNBAGAME-26OCT21CHABKN-BKN"
+     },
      "home": 0.49,
      "homeEdgePp": -3.5,
      "away": 0.58,
@@ -6958,12 +7081,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -345.0,
      "decimal": 1.29
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 275.0,
      "decimal": 3.75
     }
@@ -6976,6 +7099,10 @@
      "source": "kalshi",
      "title": "Toronto vs Chicago",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Toronto": "KXNBAGAME-26OCT21CHITOR-TOR",
+      "Chicago": "KXNBAGAME-26OCT21CHITOR-CHI"
+     },
      "home": 0.79,
      "homeEdgePp": -3.6,
      "away": 0.27,
@@ -7010,12 +7137,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -310.0,
      "decimal": 1.323
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 250.0,
      "decimal": 3.5
     }
@@ -7028,6 +7155,10 @@
      "source": "kalshi",
      "title": "Houston vs Dallas",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Houston": "KXNBAGAME-26OCT21DALHOU-HOU",
+      "Dallas": "KXNBAGAME-26OCT21DALHOU-DAL"
+     },
      "home": 0.77,
      "homeEdgePp": -3.5,
      "away": 0.29,
@@ -7062,12 +7193,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -185.0,
      "decimal": 1.541
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 154.0,
      "decimal": 2.54
     }
@@ -7080,6 +7211,10 @@
      "source": "kalshi",
      "title": "Los Angeles L vs Golden State",
      "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Los Angeles L": "KXNBAGAME-26OCT21GSWLAL-LAL",
+      "Golden State": "KXNBAGAME-26OCT21GSWLAL-GSW"
+     },
      "home": 0.66,
      "homeEdgePp": -3.2,
      "away": 0.35,
@@ -7132,6 +7267,10 @@
      "source": "kalshi",
      "title": "Tampa Bay vs Cleveland",
      "url": "https://kalshi.com/markets/kxmlbgame",
+     "tickers": {
+      "Tampa Bay": "KXMLBGAME-26OCT161800TBCLE-TB",
+      "Cleveland": "KXMLBGAME-26OCT161800TBCLE-CLE"
+     },
      "home": 0.5,
      "homeEdgePp": 4.9,
      "away": 0.53,
@@ -7141,6 +7280,10 @@
      "source": "kalshi",
      "title": "Tampa Bay vs Cleveland",
      "url": "https://kalshi.com/markets/kxmlbgame",
+     "tickers": {
+      "Tampa Bay": "KXMLBGAME-26OCT151800TBCLE-TB",
+      "Cleveland": "KXMLBGAME-26OCT151800TBCLE-CLE"
+     },
      "home": 0.55,
      "homeEdgePp": -0.1,
      "away": 0.46,
@@ -7197,6 +7340,10 @@
      "source": "kalshi",
      "title": "Milwaukee vs Los Angeles D",
      "url": "https://kalshi.com/markets/kxmlbgame",
+     "tickers": {
+      "Milwaukee": "KXMLBGAME-26OCT152000MILLAD-MIL",
+      "Los Angeles D": "KXMLBGAME-26OCT152000MILLAD-LAD"
+     },
      "home": 0.59,
      "homeEdgePp": 0.5,
      "away": 0.43,
@@ -7230,12 +7377,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -118.0,
      "decimal": 1.847
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -102.0,
      "decimal": 1.98
     }
@@ -7248,6 +7395,10 @@
      "source": "kalshi",
      "title": "Toronto vs Buffalo",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Toronto": "KXNHLGAME-26OCT15BUFTOR-TOR",
+      "Buffalo": "KXNHLGAME-26OCT15BUFTOR-BUF"
+     },
      "home": 0.52,
      "homeEdgePp": -0.2,
      "away": 0.49,
@@ -7282,12 +7433,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -155.0,
      "decimal": 1.645
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 130.0,
      "decimal": 2.3
     }
@@ -7300,6 +7451,10 @@
      "source": "kalshi",
      "title": "Ottawa vs New York I",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Ottawa": "KXNHLGAME-26OCT15NYIOTT-OTT",
+      "New York I": "KXNHLGAME-26OCT15NYIOTT-NYI"
+     },
      "home": 0.6,
      "homeEdgePp": -1.3,
      "away": 0.41,
@@ -7334,12 +7489,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -258.0,
      "decimal": 1.388
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 210.0,
      "decimal": 3.1
     }
@@ -7352,6 +7507,10 @@
      "source": "kalshi",
      "title": "Tampa Bay vs Seattle",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Tampa Bay": "KXNHLGAME-26OCT15SEATB-TB",
+      "Seattle": "KXNHLGAME-26OCT15SEATB-SEA"
+     },
      "home": 0.7,
      "homeEdgePp": -0.1,
      "away": 0.31,
@@ -7386,12 +7545,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -298.0,
      "decimal": 1.336
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 240.0,
      "decimal": 3.4
     }
@@ -7404,6 +7563,10 @@
      "source": "kalshi",
      "title": "Vancouver vs Florida",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Vancouver": "KXNHLGAME-26OCT15VANFLA-VAN",
+      "Florida": "KXNHLGAME-26OCT15VANFLA-FLA"
+     },
      "home": 0.74,
      "homeEdgePp": -1.3,
      "away": 0.28,
@@ -7438,12 +7601,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -7456,6 +7619,10 @@
      "source": "kalshi",
      "title": "New York R vs New Jersey",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "New York R": "KXNHLGAME-26OCT15NYRNJ-NYR",
+      "New Jersey": "KXNHLGAME-26OCT15NYRNJ-NJ"
+     },
      "home": 0.56,
      "homeEdgePp": 0.6,
      "away": 0.44,
@@ -7490,12 +7657,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -7508,6 +7675,10 @@
      "source": "kalshi",
      "title": "Philadelphia vs Detroit",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Philadelphia": "KXNHLGAME-26OCT15PHIDET-PHI",
+      "Detroit": "KXNHLGAME-26OCT15PHIDET-DET"
+     },
      "home": 0.56,
      "homeEdgePp": 0.6,
      "away": 0.45,
@@ -7542,12 +7713,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -7560,6 +7731,10 @@
      "source": "kalshi",
      "title": "San Jose vs Nashville",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "San Jose": "KXNHLGAME-26OCT15SJNSH-SJ",
+      "Nashville": "KXNHLGAME-26OCT15SJNSH-NSH"
+     },
      "home": 0.57,
      "homeEdgePp": -0.4,
      "away": 0.44,
@@ -7569,6 +7744,11 @@
      "source": "kalshi",
      "title": "San Jose vs Nashville",
      "url": "https://kalshi.com/markets/kxmlsgame",
+     "tickers": {
+      "Tie": "KXMLSGAME-26OCT17SJNSH-TIE",
+      "San Jose": "KXMLSGAME-26OCT17SJNSH-SJ",
+      "Nashville": "KXMLSGAME-26OCT17SJNSH-NSH"
+     },
      "home": 0.49,
      "homeEdgePp": 7.6,
      "suspect": true
@@ -7588,7 +7768,7 @@
    "crossArbs": [
     {
      "bookSide": "away",
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "pmSide": "home",
      "pmSource": "kalshi",
@@ -7617,12 +7797,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -148.0,
      "decimal": 1.676
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 124.0,
      "decimal": 2.24
     }
@@ -7635,6 +7815,10 @@
      "source": "kalshi",
      "title": "St. Louis vs Minnesota",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "St. Louis": "KXNHLGAME-26OCT15STLMIN-STL",
+      "Minnesota": "KXNHLGAME-26OCT15STLMIN-MIN"
+     },
      "home": 0.58,
      "homeEdgePp": -0.5,
      "away": 0.43,
@@ -7669,12 +7853,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -125.0,
      "decimal": 1.8
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 105.0,
      "decimal": 2.05
     }
@@ -7687,6 +7871,10 @@
      "source": "kalshi",
      "title": "Utah vs Edmonton",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Utah": "KXNHLGAME-26OCT17EDMUTA-UTA",
+      "Edmonton": "KXNHLGAME-26OCT17EDMUTA-EDM"
+     },
      "home": 0.52,
      "homeEdgePp": 1.4,
      "away": 0.56,
@@ -7696,6 +7884,10 @@
      "source": "kalshi",
      "title": "Utah vs Edmonton",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Utah": "KXNHLGAME-26OCT15UTAEDM-UTA",
+      "Edmonton": "KXNHLGAME-26OCT15UTAEDM-EDM"
+     },
      "home": 0.55,
      "homeEdgePp": -1.6,
      "away": 0.47,
@@ -7730,12 +7922,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -305.0,
      "decimal": 1.328
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 245.0,
      "decimal": 3.45
     }
@@ -7748,6 +7940,10 @@
      "source": "kalshi",
      "title": "Vegas vs Calgary",
      "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Vegas": "KXNHLGAME-26OCT15CGYVGK-VGK",
+      "Calgary": "KXNHLGAME-26OCT15CGYVGK-CGY"
+     },
      "home": 0.75,
      "homeEdgePp": -1.8,
      "away": 0.27,
@@ -7782,12 +7978,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 170.0,
      "decimal": 2.7
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -205.0,
      "decimal": 1.488
     }
@@ -7800,6 +7996,10 @@
      "source": "kalshi",
      "title": "UAB vs East Carolina",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "UAB": "KXNCAAFGAME-26OCT15ECUUAB-UAB",
+      "East Carolina": "KXNCAAFGAME-26OCT15ECUUAB-ECU"
+     },
      "home": 0.36,
      "homeEdgePp": -1.1,
      "away": 0.66,
@@ -7823,12 +8023,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 150.0,
      "decimal": 2.5
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -180.0,
      "decimal": 1.556
     }
@@ -7841,6 +8041,10 @@
      "source": "kalshi",
      "title": "Old Dominion vs Georgia Southern",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Old Dominion": "KXNCAAFGAME-26OCT15GASOODU-ODU",
+      "Georgia Southern": "KXNCAAFGAME-26OCT15GASOODU-GASO"
+     },
      "home": 0.4,
      "homeEdgePp": -2.1,
      "away": 0.61,
@@ -7864,12 +8068,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -600.0,
      "decimal": 1.167
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 440.0,
      "decimal": 5.4
     }
@@ -7895,12 +8099,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 215.0,
      "decimal": 3.15
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -265.0,
      "decimal": 1.377
     }
@@ -7913,6 +8117,10 @@
      "source": "kalshi",
      "title": "Tulane vs Memphis",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Tulane": "KXNCAAFGAME-26OCT16MEMTULN-TULN",
+      "Memphis": "KXNCAAFGAME-26OCT16MEMTULN-MEM"
+     },
      "home": 0.3,
      "homeEdgePp": -0.4,
      "away": 0.72,
@@ -7936,12 +8144,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -170.0,
      "decimal": 1.588
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 142.0,
      "decimal": 2.42
     }
@@ -7954,6 +8162,10 @@
      "source": "kalshi",
      "title": "Washington vs Purdue",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Washington": "KXNCAAFGAME-26OCT16WASHPUR-WASH",
+      "Purdue": "KXNCAAFGAME-26OCT16WASHPUR-PUR"
+     },
      "home": 0.62,
      "homeEdgePp": -1.2,
      "away": 0.39,
@@ -7977,12 +8189,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -102.0,
      "decimal": 1.98
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -118.0,
      "decimal": 1.847
     }
@@ -8008,12 +8220,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 150.0,
      "decimal": 2.5
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -180.0,
      "decimal": 1.556
     }
@@ -8039,12 +8251,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -440.0,
      "decimal": 1.227
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 340.0,
      "decimal": 4.4
     }
@@ -8057,6 +8269,10 @@
      "source": "kalshi",
      "title": "Texas vs Florida",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Texas": "KXNCAAFGAME-26OCT16FLATEX-TEX",
+      "Florida": "KXNCAAFGAME-26OCT16FLATEX-FLA"
+     },
      "home": 0.79,
      "homeEdgePp": 0.4,
      "away": 0.22,
@@ -8080,12 +8296,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -600.0,
      "decimal": 1.167
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 440.0,
      "decimal": 5.4
     }
@@ -8111,12 +8327,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -340.0,
      "decimal": 1.294
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 270.0,
      "decimal": 3.7
     }
@@ -8129,6 +8345,10 @@
      "source": "kalshi",
      "title": "Virginia vs SMU",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Virginia": "KXNCAAFGAME-26OCT16UVASMU-UVA",
+      "SMU": "KXNCAAFGAME-26OCT16UVASMU-SMU"
+     },
      "home": 0.76,
      "homeEdgePp": -0.9,
      "away": 0.26,
@@ -8152,12 +8372,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -8183,12 +8403,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -122.0,
      "decimal": 1.82
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 102.0,
      "decimal": 2.02
     }
@@ -8201,6 +8421,10 @@
      "source": "kalshi",
      "title": "West Virginia vs Cincinnati",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "West Virginia": "KXNCAAFGAME-26OCT16CINWVU-WVU",
+      "Cincinnati": "KXNCAAFGAME-26OCT16CINWVU-CIN"
+     },
      "home": 0.54,
      "homeEdgePp": -1.3,
      "away": 0.48,
@@ -8224,12 +8448,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -8242,6 +8466,10 @@
      "source": "kalshi",
      "title": "Kansas vs Kansas St.",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Kansas": "KXNCAAFGAME-26OCT17KUKSU-KU",
+      "Kansas St.": "KXNCAAFGAME-26OCT17KUKSU-KSU"
+     },
      "suspect": true,
      "away": 0.36,
      "awayEdgePp": -0.3
@@ -8264,12 +8492,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 195.0,
      "decimal": 2.95
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -238.0,
      "decimal": 1.42
     }
@@ -8282,6 +8510,10 @@
      "source": "kalshi",
      "title": "Pittsburgh vs Boston College",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Pittsburgh": "KXNCAAFGAME-26OCT16PITTBC-PITT",
+      "Boston College": "KXNCAAFGAME-26OCT16PITTBC-BC"
+     },
      "home": 0.33,
      "homeEdgePp": -1.3,
      "away": 0.68,
@@ -8305,12 +8537,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -8323,6 +8555,10 @@
      "source": "kalshi",
      "title": "Florida Atlantic vs Army",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Florida Atlantic": "KXNCAAFGAME-26OCT17FAUARMY-FAU",
+      "Army": "KXNCAAFGAME-26OCT17FAUARMY-ARMY"
+     },
      "home": 0.58,
      "homeEdgePp": -1.4,
      "away": 0.44,
@@ -8346,12 +8582,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -258.0,
      "decimal": 1.388
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 210.0,
      "decimal": 3.1
     }
@@ -8377,12 +8613,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -455.0,
      "decimal": 1.22
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 350.0,
      "decimal": 4.5
     }
@@ -8408,12 +8644,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -198.0,
      "decimal": 1.505
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 164.0,
      "decimal": 2.64
     }
@@ -8426,6 +8662,10 @@
      "source": "kalshi",
      "title": "Rutgers vs Maryland",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Rutgers": "KXNCAAFGAME-26OCT16RUTGMD-RUTG",
+      "Maryland": "KXNCAAFGAME-26OCT16RUTGMD-MD"
+     },
      "home": 0.65,
      "homeEdgePp": -0.7,
      "away": 0.37,
@@ -8449,12 +8689,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -1800.0,
      "decimal": 1.056
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 1000.0,
      "decimal": 11.0
     }
@@ -8467,6 +8707,10 @@
      "source": "kalshi",
      "title": "Temple vs Charlotte",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Temple": "KXNCAAFGAME-26OCT16CHARTEM-TEM",
+      "Charlotte": "KXNCAAFGAME-26OCT16CHARTEM-CHAR"
+     },
      "home": 0.93,
      "homeEdgePp": -0.2,
      "away": 0.08,
@@ -8490,12 +8734,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -250.0,
      "decimal": 1.4
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 205.0,
      "decimal": 3.05
     }
@@ -8521,12 +8765,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 210.0,
      "decimal": 3.1
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -8539,6 +8783,10 @@
      "source": "kalshi",
      "title": "Western Michigan vs Central Michigan",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Western Michigan": "KXNCAAFGAME-26OCT16WMUCMU-WMU",
+      "Central Michigan": "KXNCAAFGAME-26OCT16WMUCMU-CMU"
+     },
      "home": 0.31,
      "homeEdgePp": -0.9,
      "away": 0.71,
@@ -8562,12 +8810,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -1450.0,
      "decimal": 1.069
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 850.0,
      "decimal": 9.5
     }
@@ -8580,6 +8828,10 @@
      "source": "kalshi",
      "title": "Georgia vs Auburn",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Georgia": "KXNCAAFGAME-26OCT17AUBUGA-UGA",
+      "Auburn": "KXNCAAFGAME-26OCT17AUBUGA-AUB"
+     },
      "home": 0.92,
      "homeEdgePp": -0.5,
      "away": 0.09,
@@ -8603,12 +8855,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -8621,6 +8873,10 @@
      "source": "kalshi",
      "title": "Tennessee vs Alabama",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Tennessee": "KXNCAAFGAME-26OCT17ALATENN-TENN",
+      "Alabama": "KXNCAAFGAME-26OCT17ALATENN-ALA"
+     },
      "home": 0.25,
      "homeEdgePp": 1.5,
      "away": 0.76,
@@ -8644,12 +8900,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -225.0,
      "decimal": 1.444
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 185.0,
      "decimal": 2.85
     }
@@ -8662,6 +8918,10 @@
      "source": "kalshi",
      "title": "Missouri vs Ole Miss",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Missouri": "KXNCAAFGAME-26OCT16MIZZMISS-MIZZ",
+      "Ole Miss": "KXNCAAFGAME-26OCT16MIZZMISS-MISS"
+     },
      "home": 0.66,
      "homeEdgePp": 1.1,
      "away": 0.34,
@@ -8685,12 +8945,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -700.0,
      "decimal": 1.143
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 500.0,
      "decimal": 6.0
     }
@@ -8716,12 +8976,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -375.0,
      "decimal": 1.267
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 295.0,
      "decimal": 3.95
     }
@@ -8734,6 +8994,10 @@
      "source": "kalshi",
      "title": "Virginia Tech vs Georgia Tech",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Virginia Tech": "KXNCAAFGAME-26OCT16GTVT-VT",
+      "Georgia Tech": "KXNCAAFGAME-26OCT16GTVT-GT"
+     },
      "home": 0.77,
      "homeEdgePp": -0.2,
      "away": 0.23,
@@ -8757,12 +9021,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -162.0,
      "decimal": 1.617
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 136.0,
      "decimal": 2.36
     }
@@ -8775,6 +9039,10 @@
      "source": "kalshi",
      "title": "North Carolina vs Duke",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "North Carolina": "KXNCAAFGAME-26OCT17UNCDUKE-UNC",
+      "Duke": "KXNCAAFGAME-26OCT17UNCDUKE-DUKE"
+     },
      "home": 0.61,
      "homeEdgePp": -1.3,
      "away": 0.41,
@@ -8798,12 +9066,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -245.0,
      "decimal": 1.408
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 200.0,
      "decimal": 3.0
     }
@@ -8829,12 +9097,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -305.0,
      "decimal": 1.328
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 245.0,
      "decimal": 3.45
     }
@@ -8847,6 +9115,10 @@
      "source": "kalshi",
      "title": "Wyoming vs Northern Illinois",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Wyoming": "KXNCAAFGAME-26OCT17NIUWYO-WYO",
+      "Northern Illinois": "KXNCAAFGAME-26OCT17NIUWYO-NIU"
+     },
      "home": 0.74,
      "homeEdgePp": -0.8,
      "away": 0.27,
@@ -8870,12 +9142,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -108.0,
      "decimal": 1.926
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -112.0,
      "decimal": 1.893
     }
@@ -8888,6 +9160,10 @@
      "source": "kalshi",
      "title": "UNLV vs Air Force",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "UNLV": "KXNCAAFGAME-26OCT17UNLVAFA-UNLV",
+      "Air Force": "KXNCAAFGAME-26OCT17UNLVAFA-AFA"
+     },
      "home": 0.5,
      "homeEdgePp": -0.5,
      "away": 0.5,
@@ -8911,12 +9187,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 200.0,
      "decimal": 3.0
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -245.0,
      "decimal": 1.408
     }
@@ -8929,6 +9205,10 @@
      "source": "kalshi",
      "title": "Toledo vs Eastern Michigan",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Toledo": "KXNCAAFGAME-26OCT17TOLEMU-TOL",
+      "Eastern Michigan": "KXNCAAFGAME-26OCT17TOLEMU-EMU"
+     },
      "home": 0.32,
      "homeEdgePp": -0.8,
      "away": 0.7,
@@ -8952,12 +9232,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -360.0,
      "decimal": 1.278
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 285.0,
      "decimal": 3.85
     }
@@ -8970,6 +9250,10 @@
      "source": "kalshi",
      "title": "Miami (OH) vs Akron",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Miami (OH)": "KXNCAAFGAME-26OCT16AKRMOH-MOH",
+      "Akron": "KXNCAAFGAME-26OCT16AKRMOH-AKR"
+     },
      "home": 0.78,
      "homeEdgePp": -1.9,
      "away": 0.24,
@@ -8993,12 +9277,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 160.0,
      "decimal": 2.6
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -192.0,
      "decimal": 1.521
     }
@@ -9011,6 +9295,10 @@
      "source": "kalshi",
      "title": "Tulsa vs Rice",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Tulsa": "KXNCAAFGAME-26OCT16TLSARICE-TLSA",
+      "Rice": "KXNCAAFGAME-26OCT16TLSARICE-RICE"
+     },
      "home": 0.38,
      "homeEdgePp": -1.6,
      "away": 0.64,
@@ -9034,12 +9322,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -180.0,
      "decimal": 1.556
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 150.0,
      "decimal": 2.5
     }
@@ -9052,6 +9340,10 @@
      "source": "kalshi",
      "title": "Louisiana vs Troy",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Louisiana": "KXNCAAFGAME-26OCT16TROYULL-ULL",
+      "Troy": "KXNCAAFGAME-26OCT16TROYULL-TROY"
+     },
      "home": 0.63,
      "homeEdgePp": -0.9,
      "away": 0.39,
@@ -9075,12 +9367,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -1050.0,
      "decimal": 1.095
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 675.0,
      "decimal": 7.75
     }
@@ -9106,12 +9398,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -1800.0,
      "decimal": 1.056
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 1000.0,
      "decimal": 11.0
     }
@@ -9137,12 +9429,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -225.0,
      "decimal": 1.444
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 185.0,
      "decimal": 2.85
     }
@@ -9155,6 +9447,10 @@
      "source": "kalshi",
      "title": "Vanderbilt vs Arkansas",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Vanderbilt": "KXNCAAFGAME-26OCT16ARKVAN-VAN",
+      "Arkansas": "KXNCAAFGAME-26OCT16ARKVAN-ARK"
+     },
      "home": 0.69,
      "homeEdgePp": -1.9,
      "away": 0.34,
@@ -9178,12 +9474,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -218.0,
      "decimal": 1.459
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 180.0,
      "decimal": 2.8
     }
@@ -9196,6 +9492,10 @@
      "source": "kalshi",
      "title": "TCU vs Baylor",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "TCU": "KXNCAAFGAME-26OCT16TCUBAY-TCU",
+      "Baylor": "KXNCAAFGAME-26OCT16TCUBAY-BAY"
+     },
      "home": 0.68,
      "homeEdgePp": -1.6,
      "away": 0.34,
@@ -9219,12 +9519,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -1450.0,
      "decimal": 1.069
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 850.0,
      "decimal": 9.5
     }
@@ -9250,12 +9550,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -700.0,
      "decimal": 1.143
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 500.0,
      "decimal": 6.0
     }
@@ -9281,12 +9581,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 215.0,
      "decimal": 3.15
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -265.0,
      "decimal": 1.377
     }
@@ -9312,12 +9612,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 310.0,
      "decimal": 4.1
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -395.0,
      "decimal": 1.253
     }
@@ -9330,6 +9630,10 @@
      "source": "kalshi",
      "title": "Notre Dame vs BYU",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Notre Dame": "KXNCAAFGAME-26OCT17NDBYU-ND",
+      "BYU": "KXNCAAFGAME-26OCT17NDBYU-BYU"
+     },
      "home": 0.22,
      "homeEdgePp": 0.3,
      "away": 0.79,
@@ -9353,12 +9657,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -142.0,
      "decimal": 1.704
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 120.0,
      "decimal": 2.2
     }
@@ -9371,6 +9675,10 @@
      "source": "kalshi",
      "title": "Wisconsin vs UCLA",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Wisconsin": "KXNCAAFGAME-26OCT16WISUCLA-WIS",
+      "UCLA": "KXNCAAFGAME-26OCT16WISUCLA-UCLA"
+     },
      "home": 0.57,
      "homeEdgePp": -0.4,
      "away": 0.44,
@@ -9394,12 +9702,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -238.0,
      "decimal": 1.42
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 195.0,
      "decimal": 2.95
     }
@@ -9412,6 +9720,10 @@
      "source": "kalshi",
      "title": "Kentucky vs Oklahoma",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Kentucky": "KXNCAAFGAME-26OCT16UKOKLA-UK",
+      "Oklahoma": "KXNCAAFGAME-26OCT16UKOKLA-OKLA"
+     },
      "home": 0.68,
      "homeEdgePp": 0.3,
      "away": 0.32,
@@ -9435,12 +9747,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -192.0,
      "decimal": 1.521
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 160.0,
      "decimal": 2.6
     }
@@ -9466,12 +9778,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 470.0,
      "decimal": 5.7
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -650.0,
      "decimal": 1.154
     }
@@ -9484,6 +9796,10 @@
      "source": "kalshi",
      "title": "Syracuse vs Louisville",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Syracuse": "KXNCAAFGAME-26OCT16LOUSYR-SYR",
+      "Louisville": "KXNCAAFGAME-26OCT16LOUSYR-LOU"
+     },
      "home": 0.16,
      "homeEdgePp": -0.6,
      "away": 0.85,
@@ -9507,12 +9823,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -258.0,
      "decimal": 1.388
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 210.0,
      "decimal": 3.1
     }
@@ -9538,12 +9854,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 525.0,
      "decimal": 6.25
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -750.0,
      "decimal": 1.133
     }
@@ -9569,12 +9885,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 235.0,
      "decimal": 3.35
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -290.0,
      "decimal": 1.345
     }
@@ -9600,12 +9916,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 490.0,
      "decimal": 5.9
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -675.0,
      "decimal": 1.148
     }
@@ -9631,12 +9947,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 525.0,
      "decimal": 6.25
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -750.0,
      "decimal": 1.133
     }
@@ -9662,12 +9978,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 275.0,
      "decimal": 3.75
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -345.0,
      "decimal": 1.29
     }
@@ -9693,12 +10009,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 250.0,
      "decimal": 3.5
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -310.0,
      "decimal": 1.323
     }
@@ -9724,12 +10040,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 490.0,
      "decimal": 5.9
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -675.0,
      "decimal": 1.148
     }
@@ -9755,12 +10071,12 @@
    },
    "best": {
     "home": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": -270.0,
      "decimal": 1.37
     },
     "away": {
-     "book": "DraftKings",
+     "book": "Draft Kings",
      "american": 220.0,
      "decimal": 3.2
     }
@@ -9773,6 +10089,10 @@
      "source": "kalshi",
      "title": "Oregon vs Nebraska",
      "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Oregon": "KXNCAAFGAME-26OCT17NEBORE-ORE",
+      "Nebraska": "KXNCAAFGAME-26OCT17NEBORE-NEB"
+     },
      "home": 0.71,
      "homeEdgePp": -0.1,
      "away": 0.3,
@@ -9814,6 +10134,10 @@
      "source": "kalshi",
      "title": "Golden State vs Atlanta",
      "url": "https://kalshi.com/markets/kxwnbagame",
+     "tickers": {
+      "Golden State": "KXWNBAGAME-26OCT17ATLGS-GS",
+      "Atlanta": "KXWNBAGAME-26OCT17ATLGS-ATL"
+     },
      "home": 0.6,
      "homeEdgePp": -3.4,
      "away": 0.43,
@@ -9861,6 +10185,11 @@
      "source": "kalshi",
      "title": "Everton vs Chelsea",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT17EVECFC-TIE",
+      "Everton": "KXEPLGAME-26OCT17EVECFC-EVE",
+      "Chelsea": "KXEPLGAME-26OCT17EVECFC-CFC"
+     },
      "home": 0.3,
      "homeEdgePp": 0.1,
      "away": 0.46,
@@ -9916,6 +10245,11 @@
      "source": "kalshi",
      "title": "Liverpool vs Brentford",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT17BRELFC-TIE",
+      "Liverpool": "KXEPLGAME-26OCT17BRELFC-LFC",
+      "Brentford": "KXEPLGAME-26OCT17BRELFC-BRE"
+     },
      "home": 0.41,
      "homeEdgePp": -0.1,
      "away": 0.34,
@@ -9971,6 +10305,11 @@
      "source": "kalshi",
      "title": "Manchester City vs Ipswich Town",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT17MCIIPS-TIE",
+      "Manchester City": "KXEPLGAME-26OCT17MCIIPS-MCI",
+      "Ipswich Town": "KXEPLGAME-26OCT17MCIIPS-IPS"
+     },
      "home": 0.81,
      "homeEdgePp": -1.5,
      "away": 0.08,
@@ -10026,6 +10365,11 @@
      "source": "kalshi",
      "title": "Newcastle vs Aston Villa",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT17NEWAVL-TIE",
+      "Newcastle": "KXEPLGAME-26OCT17NEWAVL-NEW",
+      "Aston Villa": "KXEPLGAME-26OCT17NEWAVL-AVL"
+     },
      "home": 0.43,
      "homeEdgePp": -0.1,
      "away": 0.33,
@@ -10126,6 +10470,11 @@
      "source": "kalshi",
      "title": "Crystal Palace vs Brighton",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT18BRICRY-TIE",
+      "Crystal Palace": "KXEPLGAME-26OCT18BRICRY-CRY",
+      "Brighton": "KXEPLGAME-26OCT18BRICRY-BRI"
+     },
      "home": 0.64,
      "homeEdgePp": -2.0,
      "away": 0.17,
@@ -10181,6 +10530,11 @@
      "source": "kalshi",
      "title": "Manchester United vs Leeds United",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT18LEEMUN-TIE",
+      "Manchester United": "KXEPLGAME-26OCT18LEEMUN-MUN",
+      "Leeds United": "KXEPLGAME-26OCT18LEEMUN-LEE"
+     },
      "home": 0.42,
      "homeEdgePp": -1.5,
      "away": 0.34,
@@ -10236,6 +10590,11 @@
      "source": "kalshi",
      "title": "Nottingham Forest vs Arsenal",
      "url": "https://kalshi.com/markets/kxeplgame",
+     "tickers": {
+      "Tie": "KXEPLGAME-26OCT18NFOARS-TIE",
+      "Nottingham Forest": "KXEPLGAME-26OCT18NFOARS-NFO",
+      "Arsenal": "KXEPLGAME-26OCT18NFOARS-ARS"
+     },
      "home": 0.16,
      "homeEdgePp": -0.9,
      "away": 0.61,
@@ -11776,6 +12135,11 @@
      "source": "kalshi",
      "title": "Villarreal vs Elche",
      "url": "https://kalshi.com/markets/kxlaligagame",
+     "tickers": {
+      "Villarreal": "KXLALIGAGAME-26OCT17VILELC-VIL",
+      "Tie": "KXLALIGAGAME-26OCT17VILELC-TIE",
+      "Elche": "KXLALIGAGAME-26OCT17VILELC-ELC"
+     },
      "home": 0.69,
      "homeEdgePp": -1.7,
      "away": 0.15,
@@ -11831,6 +12195,11 @@
      "source": "kalshi",
      "title": "Real Betis vs Barcelona",
      "url": "https://kalshi.com/markets/kxlaligagame",
+     "tickers": {
+      "Tie": "KXLALIGAGAME-26OCT17RBBBAR-TIE",
+      "Real Betis": "KXLALIGAGAME-26OCT17RBBBAR-RBB",
+      "Barcelona": "KXLALIGAGAME-26OCT17RBBBAR-BAR"
+     },
      "home": 0.15,
      "homeEdgePp": 0.2,
      "away": 0.72,
@@ -12066,6 +12435,11 @@
      "source": "kalshi",
      "title": "Sevilla vs Real Madrid",
      "url": "https://kalshi.com/markets/kxlaligagame",
+     "tickers": {
+      "Tie": "KXLALIGAGAME-26OCT18RMASEV-TIE",
+      "Sevilla": "KXLALIGAGAME-26OCT18RMASEV-SEV",
+      "Real Madrid": "KXLALIGAGAME-26OCT18RMASEV-RMA"
+     },
      "home": 0.78,
      "homeEdgePp": -1.6,
      "away": 0.1,
@@ -12346,6 +12720,11 @@
      "source": "kalshi",
      "title": "Schalke vs Mainz",
      "url": "https://kalshi.com/markets/kxbundesligagame",
+     "tickers": {
+      "Tie": "KXBUNDESLIGAGAME-26OCT17SCHM05-TIE",
+      "Schalke": "KXBUNDESLIGAGAME-26OCT17SCHM05-SCH",
+      "Mainz": "KXBUNDESLIGAGAME-26OCT17SCHM05-M05"
+     },
      "home": 0.32,
      "homeEdgePp": -0.8,
      "away": 0.44,
@@ -13031,6 +13410,11 @@
      "source": "kalshi",
      "title": "Sassuolo vs Frosinone",
      "url": "https://kalshi.com/markets/kxserieagame",
+     "tickers": {
+      "Tie": "KXSERIEAGAME-26OCT16FROSAS-TIE",
+      "Sassuolo": "KXSERIEAGAME-26OCT16FROSAS-SAS",
+      "Frosinone": "KXSERIEAGAME-26OCT16FROSAS-FRO"
+     },
      "home": 0.38,
      "homeEdgePp": 0.1,
      "away": 0.38,
@@ -13086,6 +13470,11 @@
      "source": "kalshi",
      "title": "Venezia vs Napoli",
      "url": "https://kalshi.com/markets/kxserieagame",
+     "tickers": {
+      "Venezia": "KXSERIEAGAME-26OCT17VENNAP-VEN",
+      "Tie": "KXSERIEAGAME-26OCT17VENNAP-TIE",
+      "Napoli": "KXSERIEAGAME-26OCT17VENNAP-NAP"
+     },
      "home": 0.21,
      "homeEdgePp": -0.6,
      "away": 0.59,
@@ -13231,6 +13620,11 @@
      "source": "kalshi",
      "title": "Udinese vs Lecce",
      "url": "https://kalshi.com/markets/kxserieagame",
+     "tickers": {
+      "Udinese": "KXSERIEAGAME-26OCT18UDILEC-UDI",
+      "Tie": "KXSERIEAGAME-26OCT18UDILEC-TIE",
+      "Lecce": "KXSERIEAGAME-26OCT18UDILEC-LEC"
+     },
      "home": 0.52,
      "homeEdgePp": -1.1,
      "away": 0.23,
@@ -13286,6 +13680,11 @@
      "source": "kalshi",
      "title": "Fiorentina vs Como",
      "url": "https://kalshi.com/markets/kxserieagame",
+     "tickers": {
+      "Tie": "KXSERIEAGAME-26OCT18FIOCOM-TIE",
+      "Fiorentina": "KXSERIEAGAME-26OCT18FIOCOM-FIO",
+      "Como": "KXSERIEAGAME-26OCT18FIOCOM-COM"
+     },
      "home": 0.3,
      "homeEdgePp": -1.2,
      "away": 0.47,
@@ -13386,6 +13785,11 @@
      "source": "kalshi",
      "title": "Lazio vs Juventus",
      "url": "https://kalshi.com/markets/kxserieagame",
+     "tickers": {
+      "Tie": "KXSERIEAGAME-26OCT18JUVLAZ-TIE",
+      "Lazio": "KXSERIEAGAME-26OCT18JUVLAZ-LAZ",
+      "Juventus": "KXSERIEAGAME-26OCT18JUVLAZ-JUV"
+     },
      "home": 0.59,
      "homeEdgePp": -1.1,
      "away": 0.2,
@@ -13441,6 +13845,11 @@
      "source": "kalshi",
      "title": "Monza vs Cagliari",
      "url": "https://kalshi.com/markets/kxserieagame",
+     "tickers": {
+      "Tie": "KXSERIEAGAME-26OCT19MONCAG-TIE",
+      "Monza": "KXSERIEAGAME-26OCT19MONCAG-MON",
+      "Cagliari": "KXSERIEAGAME-26OCT19MONCAG-CAG"
+     },
      "home": 0.41,
      "homeEdgePp": -0.7,
      "suspect": true
@@ -13990,6 +14399,11 @@
      "source": "kalshi",
      "title": "Lens vs Troyes",
      "url": "https://kalshi.com/markets/kxligue1game",
+     "tickers": {
+      "Tie": "KXLIGUE1GAME-26OCT17ESTRCL-TIE",
+      "Lens": "KXLIGUE1GAME-26OCT17ESTRCL-RCL",
+      "Troyes": "KXLIGUE1GAME-26OCT17ESTRCL-EST"
+     },
      "home": 0.24,
      "homeEdgePp": -0.4,
      "away": 0.54,
@@ -14045,6 +14459,11 @@
      "source": "kalshi",
      "title": "Marseille vs Angers",
      "url": "https://kalshi.com/markets/kxligue1game",
+     "tickers": {
+      "Tie": "KXLIGUE1GAME-26OCT18ANGOLM-TIE",
+      "Marseille": "KXLIGUE1GAME-26OCT18ANGOLM-OLM",
+      "Angers": "KXLIGUE1GAME-26OCT18ANGOLM-ANG"
+     },
      "home": 0.29,
      "homeEdgePp": 0.3,
      "away": 0.48,
@@ -14145,6 +14564,11 @@
      "source": "kalshi",
      "title": "Stade Rennais vs Paris FC",
      "url": "https://kalshi.com/markets/kxligue1game",
+     "tickers": {
+      "Tie": "KXLIGUE1GAME-26OCT18PARREN-TIE",
+      "Stade Rennais": "KXLIGUE1GAME-26OCT18PARREN-REN",
+      "Paris FC": "KXLIGUE1GAME-26OCT18PARREN-PAR"
+     },
      "home": 0.43,
      "homeEdgePp": -0.7,
      "away": 0.31,
@@ -14200,6 +14624,11 @@
      "source": "kalshi",
      "title": "Lyon vs Nice",
      "url": "https://kalshi.com/markets/kxligue1game",
+     "tickers": {
+      "Tie": "KXLIGUE1GAME-26OCT18OLNIC-TIE",
+      "Lyon": "KXLIGUE1GAME-26OCT18OLNIC-OL",
+      "Nice": "KXLIGUE1GAME-26OCT18OLNIC-NIC"
+     },
      "home": 0.58,
      "homeEdgePp": -0.9,
      "away": 0.2,
@@ -16595,6 +17024,11 @@
      "source": "kalshi",
      "title": "Philadelphia vs Charlotte",
      "url": "https://kalshi.com/markets/kxmlsgame",
+     "tickers": {
+      "Tie": "KXMLSGAME-26OCT17PHICLT-TIE",
+      "Philadelphia": "KXMLSGAME-26OCT17PHICLT-PHI",
+      "Charlotte": "KXMLSGAME-26OCT17PHICLT-CLT"
+     },
      "home": 0.62,
      "homeEdgePp": -1.0,
      "away": 0.2,
@@ -16695,6 +17129,11 @@
      "source": "kalshi",
      "title": "New England vs Chicago Fire",
      "url": "https://kalshi.com/markets/kxmlsgame",
+     "tickers": {
+      "Tie": "KXMLSGAME-26OCT17NECHI-TIE",
+      "New England": "KXMLSGAME-26OCT17NECHI-NE",
+      "Chicago Fire": "KXMLSGAME-26OCT17NECHI-CHI"
+     },
      "home": 0.41,
      "homeEdgePp": -0.5,
      "away": 0.36,
@@ -16885,6 +17324,11 @@
      "source": "kalshi",
      "title": "Vancouver vs Austin",
      "url": "https://kalshi.com/markets/kxmlsgame",
+     "tickers": {
+      "Vancouver": "KXMLSGAME-26OCT17ATXVAN-VAN",
+      "Tie": "KXMLSGAME-26OCT17ATXVAN-TIE",
+      "Austin": "KXMLSGAME-26OCT17ATXVAN-ATX"
+     },
      "home": 0.2,
      "homeEdgePp": -0.8,
      "away": 0.61,
@@ -17075,6 +17519,11 @@
      "source": "kalshi",
      "title": "Portland vs Colorado",
      "url": "https://kalshi.com/markets/kxmlsgame",
+     "tickers": {
+      "Tie": "KXMLSGAME-26OCT17PORCOL-TIE",
+      "Portland": "KXMLSGAME-26OCT17PORCOL-POR",
+      "Colorado": "KXMLSGAME-26OCT17PORCOL-COL"
+     },
      "home": 0.46,
      "homeEdgePp": -0.2,
      "away": 0.31,
@@ -17130,6 +17579,11 @@
      "source": "kalshi",
      "title": "San Jose vs Nashville",
      "url": "https://kalshi.com/markets/kxmlsgame",
+     "tickers": {
+      "Tie": "KXMLSGAME-26OCT17SJNSH-TIE",
+      "San Jose": "KXMLSGAME-26OCT17SJNSH-SJ",
+      "Nashville": "KXMLSGAME-26OCT17SJNSH-NSH"
+     },
      "home": 0.29,
      "homeEdgePp": -0.9,
      "away": 0.49,
@@ -21465,6 +21919,11 @@
      "source": "kalshi",
      "title": "Slavia Prague vs Fenerbahce",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT20FENSLA-TIE",
+      "Slavia Prague": "KXUCLGAME-26OCT20FENSLA-SLA",
+      "Fenerbahce": "KXUCLGAME-26OCT20FENSLA-FEN"
+     },
      "home": 0.61,
      "homeEdgePp": -1.6,
      "away": 0.2,
@@ -21623,6 +22082,11 @@
      "source": "kalshi",
      "title": "Villarreal vs Liverpool",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Villarreal": "KXUCLGAME-26OCT20LFCVIL-VIL",
+      "Tie": "KXUCLGAME-26OCT20LFCVIL-TIE",
+      "Liverpool": "KXUCLGAME-26OCT20LFCVIL-LFC"
+     },
      "home": 0.67,
      "homeEdgePp": -3.7,
      "away": 0.16,
@@ -21670,6 +22134,11 @@
      "source": "kalshi",
      "title": "Manchester City vs AEK Athens",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT20MCIAEK-TIE",
+      "Manchester City": "KXUCLGAME-26OCT20MCIAEK-MCI",
+      "AEK Athens": "KXUCLGAME-26OCT20MCIAEK-AEK"
+     },
      "home": 0.93,
      "homeEdgePp": -1.1,
      "away": 0.04,
@@ -21828,6 +22297,11 @@
      "source": "kalshi",
      "title": "Manchester United vs Como",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT21COMMUN-TIE",
+      "Manchester United": "KXUCLGAME-26OCT21COMMUN-MUN",
+      "Como": "KXUCLGAME-26OCT21COMMUN-COM"
+     },
      "home": 0.44,
      "homeEdgePp": -1.5,
      "suspect": true
@@ -21874,6 +22348,11 @@
      "source": "kalshi",
      "title": "Lille vs Galatasaray",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT21LILGAL-TIE",
+      "Lille": "KXUCLGAME-26OCT21LILGAL-LIL",
+      "Galatasaray": "KXUCLGAME-26OCT21LILGAL-GAL"
+     },
      "home": 0.45,
      "homeEdgePp": -0.8,
      "suspect": true
@@ -21920,6 +22399,11 @@
      "source": "kalshi",
      "title": "Viking vs Aston Villa",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Viking": "KXUCLGAME-26OCT21AVLVIK-VIK",
+      "Tie": "KXUCLGAME-26OCT21AVLVIK-TIE",
+      "Aston Villa": "KXUCLGAME-26OCT21AVLVIK-AVL"
+     },
      "home": 0.8,
      "homeEdgePp": -3.7,
      "suspect": true
@@ -21966,6 +22450,11 @@
      "source": "kalshi",
      "title": "Bayern Munich vs Arsenal",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT21BMUARS-TIE",
+      "Bayern Munich": "KXUCLGAME-26OCT21BMUARS-BMU",
+      "Arsenal": "KXUCLGAME-26OCT21BMUARS-ARS"
+     },
      "home": 0.45,
      "homeEdgePp": -0.6,
      "away": 0.32,
@@ -22013,6 +22502,11 @@
      "source": "kalshi",
      "title": "Lens vs Club Brugge",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT21BRURCL-TIE",
+      "Lens": "KXUCLGAME-26OCT21BRURCL-RCL",
+      "Club Brugge": "KXUCLGAME-26OCT21BRURCL-BRU"
+     },
      "home": 0.58,
      "homeEdgePp": -11.6,
      "away": 0.32,
@@ -22060,6 +22554,11 @@
      "source": "kalshi",
      "title": "Real Betis vs Feyenoord",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT21RBBFEY-TIE",
+      "Real Betis": "KXUCLGAME-26OCT21RBBFEY-RBB",
+      "Feyenoord": "KXUCLGAME-26OCT21RBBFEY-FEY"
+     },
      "home": 0.65,
      "homeEdgePp": -1.4,
      "suspect": true
@@ -22143,6 +22642,11 @@
      "source": "kalshi",
      "title": "Sporting CP vs LASK",
      "url": "https://kalshi.com/markets/kxuclgame",
+     "tickers": {
+      "Tie": "KXUCLGAME-26OCT21SPOASK-TIE",
+      "Sporting CP": "KXUCLGAME-26OCT21SPOASK-SPO",
+      "LASK": "KXUCLGAME-26OCT21SPOASK-ASK"
+     },
      "home": 0.79,
      "homeEdgePp": -2.3,
      "suspect": true
