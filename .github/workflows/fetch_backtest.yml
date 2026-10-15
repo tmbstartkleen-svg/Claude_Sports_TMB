@@ -1,0 +1,15 @@
+name: Fetch backtest datasets
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python pipeline/fetch_hf_backtest.py
+      - run: |
+          git config user.name "slate-bot"; git config user.email "slate-bot@users.noreply.github.com"
+          git add backtest; git diff --cached --quiet || (git commit -m "Fetch HF backtest datasets" && git pull --rebase -q && git push)
