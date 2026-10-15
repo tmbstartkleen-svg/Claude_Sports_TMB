@@ -41,5 +41,5 @@ jobs:
         run: |
           git config user.name "slate-bot"
           git config user.email "slate-bot@users.noreply.github.com"
-          git add slate.json history.json picks.json record.json alerts.json network_health.json 2>/dev/null || true
+          for f in slate.json history.json picks.json record.json alerts.json network_health.json; do [ -f "$f" ] && git add "$f"; done; true
           git diff --cached --quiet || (git commit -m "Update slate data" && git pull --rebase -q && git push)
