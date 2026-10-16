@@ -74,6 +74,7 @@ assert s["games"][0]["model"].get("injuries") and "T1" in s["games"][0]["model"]
 assert any(x["source"] == "odds[nhl]:espn" and x["ok"] for x in s["sources"]), s["sources"]
 assert json.load(open(f"{tmp}/history.json")), "history written"
 assert "closing" in s
+assert any(x["source"] == "steam" and x["ok"] for x in s["sources"]), s["sources"]  # ran, even with only 1 snapshot so far to look at
 os.remove(f"{tmp}/slate.json"); os.environ["CAPTURE_ONLY"] = "1"
 assert b.main() == 0 and not os.path.exists(f"{tmp}/slate.json")          # capture-only writes history only
 assert len(list(json.load(open(f"{tmp}/history.json")).values())[0]["snaps"]) == 1, "unchanged price within an hour is not re-snapshotted"

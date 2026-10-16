@@ -475,6 +475,9 @@ input[type=checkbox]{width:auto;}
       <h2 style="font-size:1rem">Notable trades (whale tracking)</h2>
       <div class="desc">Unusually large real trades on Kalshi and Polymarket for games in this slate (Kalshi: flagged block trades or over $1,500 risked on one trade; Polymarket: over $2,000). Checked for a capped number of markets each run, picked from the games with a flagged bet or cross-arb first. Not insider detection — just size.</div>
       <div id="slWhales" class="desc"></div>
+      <h2 style="font-size:1rem">Line moves (steam)</h2>
+      <div class="desc">Built from our own closing-line history, not a paid betting-percentage feed: a big jump between two snapshots (≈30 min apart) is "steam" — a book got hit hard enough to reprice fast. A smaller move spread across many snapshots is "drift" — the market easing one way as news comes in. Direction shown is who gained value.</div>
+      <div id="slSteam" class="desc"></div>
       <h2 style="font-size:1rem">Opportunities by day</h2>
       <div class="desc">Every game with its best moneyline, the market's fair chance, our model's chance and any prediction-market price. Flagged = clears the edge bar. Dollar figures are for a $100 bet: what you win if it hits, −$100 if it misses, and the expected profit per $100.</div>
       <div id="slOpp"></div>
@@ -1394,8 +1397,19 @@ function whaleRender(g){
     r.whales.map(w=>'\uD83D\uDC0B '+esc(w.source)+(w.team?' · '+esc(w.team):'')+' · $'+Math.round(w.notional).toLocaleString()+' at '+(w.price!=null?(w.price*100).toFixed(0)+'\u00a2':'')+(w.block?' · block trade':'')).join('<br>')+'</div>').join('')
     :'No large trades found on the markets checked this run.';
 }
+function steamRender(g){
+  const rows=(g||[]).filter(r=>r.steam);
+  $('slSteam').innerHTML=rows.length?rows.map(r=>{
+    const s=r.steam,toward=s.side==='home'?r.home:r.away,icon=s.kind==='steam'?'🔥':'↗️',
+      pts=Math.abs(s.kind==='steam'?s.biggestMovePts:s.totalDriftPts).toFixed(1);
+    return '<div style="margin:6px 0"><b>'+esc(r.sport.toUpperCase())+' '+esc(r.away)+' @ '+esc(r.home)+'</b><br>'+
+      icon+' '+(s.kind==='steam'?'Steam':'Drift')+' toward '+esc(toward)+' · '+pts+' pts'+(s.kind==='steam'?' in one update':' since first seen')+
+      ' · '+s.snapshots+' snapshots tracked</div>';
+  }).join(''):'No notable pre-game moves yet — either lines are steady, or there is not enough snapshot history on these games yet.';
+}
 function oppRender(g){
   whaleRender(g);
+  steamRender(g);
   const am=a=>a==null?'—':(a>0?'+':'')+Math.round(a),pct=x=>x==null?'—':(x*100).toFixed(0)+'%';
   const days={};g.forEach(r=>{const t0=new Date(r.start),k=isNaN(t0)?'TBD':t0.getFullYear()+'-'+String(t0.getMonth()+1).padStart(2,'0')+'-'+String(t0.getDate()).padStart(2,'0');(days[k]=days[k]||[]).push(r);});
   const dayName=k=>{const t=new Date(k+'T12:00:00');return isNaN(t)?k:t.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});};

@@ -11,6 +11,7 @@ MIN_ARB_ROI = float(os.environ.get("ALERT_MIN_ARB", 0.5))        # percent
 MIN_CROSS_ROI = float(os.environ.get("ALERT_MIN_CROSS", 1.0))    # percent, after estimated fees and slippage
 MIN_MIDDLE_EV = float(os.environ.get("ALERT_MIN_MIDDLE", 2.0))   # percent expected value
 MIN_EDGE_EV = float(os.environ.get("ALERT_MIN_EDGE", 6.0))       # percent, needs 3+ books
+MIN_STEAM_PP = float(os.environ.get("ALERT_MIN_STEAM", 5.0))     # fair-probability points in one snapshot gap; "drift" never alerts, only fast "steam"
 RESEND_HOURS = 6
 MAX_LINES = 8
 
@@ -36,6 +37,11 @@ def build_alerts(rows):
             for b in r.get("bets", []):
                 if b["evPct"] >= MIN_EDGE_EV:
                     out.append((b["evPct"], f"edge|{gk}|{b['side']}", f"EDGE +{b['evPct']}% EV: {game}: {b['side']} {b['american']:+g} @ {b['book']} (may be a stale line, check first)"))
+        st = r.get("steam")
+        if st and st["kind"] == "steam" and abs(st["biggestMovePts"]) >= MIN_STEAM_PP:
+            toward = r["home"] if st["side"] == "home" else r["away"]
+            out.append((abs(st["biggestMovePts"]) + 40, f"steam|{gk}|{st['biggestMoveAt']}",
+                        f"STEAM {abs(st['biggestMovePts'])}pts toward {toward}: {game} (from our own line history, not a betting-% feed)"))
     out.sort(key=lambda x: -x[0])
     return out
 

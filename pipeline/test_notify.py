@@ -15,6 +15,17 @@ assert kinds == ["arb", "xarb", "mid", "edge"], kinds                   # thresh
 assert N.build_alerts([dict(row, nBooks=2)])[-1][1].startswith("mid"), "edge alert needs 3+ books"
 print("OK thresholds/order")
 
+# ---- steam: only the fast "steam" kind alerts, never the slower "drift"; below-threshold moves are silent
+steamed_row = {**row, "arb": False, "crossArbs": [], "middles": [], "bets": [], "nBooks": 1,
+               "steam": {"kind": "steam", "side": "home", "biggestMovePts": 6.1, "biggestMoveAt": "2026-10-12T20:00:00", "totalDriftPts": 6.1, "snapshots": 4}}
+a2 = N.build_alerts([steamed_row])
+assert len(a2) == 1 and a2[0][1].startswith("steam|") and "STEAM 6.1pts toward H" in a2[0][2], a2
+drift_row = {**steamed_row, "steam": {**steamed_row["steam"], "kind": "drift", "totalDriftPts": 8.0}}
+assert N.build_alerts([drift_row]) == [], "drift never alerts, only fast steam moves"
+small_row = {**steamed_row, "steam": {**steamed_row["steam"], "biggestMovePts": 2.0}}
+assert N.build_alerts([small_row]) == [], "below ALERT_MIN_STEAM: silent"
+print("OK steam alerts")
+
 sent = {}
 fresh = N.filter_new(a, sent, now)
 assert len(fresh) == 4 and N.filter_new(a, sent, now + timedelta(hours=1)) == [], "no repeat within 6h"

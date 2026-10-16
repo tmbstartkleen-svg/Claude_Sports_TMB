@@ -60,6 +60,10 @@ try:
     import whales as whale_mod
 except ImportError:  # pragma: no cover
     whale_mod = None
+try:
+    import steam as steam_mod
+except ImportError:  # pragma: no cover
+    steam_mod = None
 
 try:
     import leagues as _lg
@@ -792,6 +796,12 @@ def main():
         hist_mod.save(hpath, h)
         closing = hist_mod.closing(h, now)
         log("history", True, f"{n_added} snapshots added, {len(closing)} closing lines available")
+        if steam_mod:
+            try:
+                n_steam = steam_mod.attach(rows, h, now)
+                log("steam", True, f"{n_steam} games with a notable pre-game move")
+            except Exception as e:  # noqa
+                log("steam", False, repr(e))
     try:
         grade_step(rows, closing, capture_only, now)
     except Exception as e:  # noqa
