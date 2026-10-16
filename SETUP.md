@@ -24,7 +24,7 @@ After it works, the repo gets new files: `slate.json`, `history.json`, `picks.js
 
 ## 5. Optional extras
 - **Phone alerts:** install the free **ntfy** app, subscribe to a long random topic name (30 random letters), then in the repo **Settings, Secrets and variables, Actions, New repository secret**: name `NTFY_TOPIC`, value is that same topic name.
-- **More sportsbooks:** a new Odds API key goes in the same place as a secret named `ODDS_API_KEY`. Never paste a key into a chat, a file or a normal variable.
+- No odds API key to add, now or ever — the pipeline runs entirely on ESPN, Kalshi, Polymarket and our own collector network, all free and keyless. If a repo secret named `ODDS_API_KEY` is still sitting in **Settings, Secrets and variables, Actions** from an earlier setup, it's safe to delete; nothing reads it anymore.
 
 ## 6. Send me this
 On your Netlify site open **Today's Slate** and copy the text under **Health check** and **Data sources used**. That shows which sources worked on real data, and it is what I need to fix anything that did not.

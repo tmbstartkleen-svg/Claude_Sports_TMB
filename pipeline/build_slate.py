@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
 """Builds slate.json: odds + prediction markets + edge/arb/sim analysis.
 
-Every data need has a PRIMARY source and one or more FALLBACKS. The first source
-that returns usable data wins; every attempt is logged in slate["sources"] so you
-can see which one served the numbers.
+No paid API key, anywhere. Every data need runs off our own collector network
+and public, keyless endpoints, with fallbacks in case one is down; every
+attempt is logged in slate["sources"] so you can see which one served the
+numbers.
 
-  Sportsbook odds : The Odds API (needs ODDS_API_KEY; includes DraftKings)
-                    -> ESPN scoreboard odds (free; provider is usually DraftKings)
+  Sportsbook odds : ESPN scoreboard odds (free; provider is usually DraftKings)
                     -> sports-skills scoreboard odds (free, optional pip package)
+                    -> our collector network (network.py/network.json)
   Kalshi          : public Kalshi API -> sports-skills kalshi
   Polymarket      : public gamma API  -> sports-skills polymarket
+
+Moneyline only: without a paid odds feed there is no spread/total middle
+scanner for American sports (markets.find_middles degrades to "none found"
+when a game carries no spreads/totals, rather than erroring). Cross-book and
+cross-venue (sportsbook vs. Kalshi/Polymarket) arbitrage still runs off
+moneylines alone.
 
 Read-only. No bets are placed. Stdlib only, plus optional `sports-skills`.
 """
@@ -58,14 +65,11 @@ try:
     import leagues as _lg
 except ImportError:  # pragma: no cover
     from pipeline import leagues as _lg
-SPORTS = {k: (v[1], v[2]) for k, v in _lg.OTHER.items()}  # key -> (Odds API key, ESPN path)
-SPORTS.update({k: (v[1], "soccer/" + v[2]) for k, v in _lg.SOCCER.items()})
+SPORTS = {k: v[2] for k, v in _lg.OTHER.items()}  # key -> ESPN path
+SPORTS.update({k: "soccer/" + v[2] for k, v in _lg.SOCCER.items()})
 LABELS = {**{k: v[0] for k, v in _lg.OTHER.items()}, **{k: v[0] for k, v in _lg.SOCCER.items()}}
 ALL_SPORTS = ",".join(SPORTS)
 THREE_WAY = set(_lg.SOCCER)  # soccer: always home / draw / away
-# The Odds API charges 1 credit per sport per market per region. Sports outside this list skip it and use the free sources.
-ODDS_API_SPORTS = set(os.environ.get("ODDS_API_SPORTS", "nfl,nba,mlb,nhl").split(","))  # 4 sports x 1 market x 1 region = 4 credits per run; 2 runs a day = about 240 of the 500 free credits a month
-REGIONS = os.environ.get("REGIONS", "us")  # "us,eu" adds Pinnacle and other sharp books but doubles Odds API credit use
 # Books whose prices count more in the consensus fair price (substring match on the book name, case-insensitive).
 SHARP_WEIGHTS = {"pinnacle": 4.0, "circa": 3.0, "betonline": 2.0, "lowvig": 2.0, "bookmaker": 2.0, "betcris": 2.0}
 for _kv in filter(None, os.environ.get("SHARP_BOOKS", "").split(",")):  # e.g. SHARP_BOOKS="pinnacle=5,circa=3"
@@ -74,7 +78,6 @@ for _kv in filter(None, os.environ.get("SHARP_BOOKS", "").split(",")):  # e.g. S
         SHARP_WEIGHTS[_k.strip().lower()] = float(_v)
     except ValueError:
         pass
-MARKETS = os.environ.get("MARKETS", "h2h")  # add ",spreads,totals" to enable the middle scanner (costs more credits)
 BANKROLL = float(os.environ.get("BANKROLL", 100))
 KELLY_FRAC = float(os.environ.get("KELLY_FRAC", 0.35))
 MAX_STAKE_PCT = float(os.environ.get("MAX_STAKE_PCT", 3))
@@ -142,54 +145,6 @@ def devig_shin(q):
 
 
 # ---------- sportsbook sources -> [{sport,home,away,start,books:{name:{home:am,away:am}}}] ----------
-def odds_api(sport):
-    key = os.environ.get("ODDS_API_KEY")
-    if not key:
-        raise RuntimeError("ODDS_API_KEY not set")
-    if sport not in ODDS_API_SPORTS:
-        raise RuntimeError("skipped to save Odds API credits (not in ODDS_API_SPORTS)")
-    u = f"https://api.the-odds-api.com/v4/sports/{SPORTS[sport][0]}/odds/?" + urllib.parse.urlencode(
-        {"apiKey": key, "regions": REGIONS, "markets": MARKETS, "oddsFormat": "american"})
-    return parse_odds_api(sport, http_json(u))
-
-
-def parse_odds_api(sport, data):
-    out = []
-    for g in data:
-        books, spreads, totals = {}, {}, {}
-        for b in g.get("bookmakers", []):
-            for m in b.get("markets", []):
-                outs = m.get("outcomes", [])
-                if m["key"] == "h2h":
-                    px = {o["name"]: o["price"] for o in outs}
-                    if g["home_team"] in px and g["away_team"] in px:
-                        d = {"home": px[g["home_team"]], "away": px[g["away_team"]]}
-                        if "Draw" in px:
-                            d["draw"] = px["Draw"]
-                        books[b["title"]] = d
-                elif m["key"] == "spreads":
-                    d = {}
-                    for o in outs:
-                        if o.get("point") is None:
-                            continue
-                        side = "home" if o["name"] == g["home_team"] else "away" if o["name"] == g["away_team"] else None
-                        if side:
-                            d[side] = (float(o["point"]), o["price"])
-                    if len(d) == 2:
-                        spreads[b["title"]] = d
-                elif m["key"] == "totals":
-                    d = {}
-                    for o in outs:
-                        if o.get("point") is not None and o["name"] in ("Over", "Under"):
-                            d[o["name"].lower()] = (float(o["point"]), o["price"])
-                    if len(d) == 2:
-                        totals[b["title"]] = d
-        if books:
-            out.append({"sport": sport, "home": g["home_team"], "away": g["away_team"], "start": g["commence_time"],
-                        "books": books, "spreads": spreads, "totals": totals})
-    return out
-
-
 def _am(x):
     """ESPN odds value -> float American odds, or None."""
     if x is None:
@@ -254,7 +209,7 @@ def espn_direct(sport, today=None, getter=None):
     from concurrent.futures import ThreadPoolExecutor
     getter = getter or http_json
     today = today or datetime.now(timezone.utc).date()
-    base = f"https://site.api.espn.com/apis/site/v2/sports/{SPORTS[sport][1]}/scoreboard"
+    base = f"https://site.api.espn.com/apis/site/v2/sports/{SPORTS[sport]}/scoreboard"
     urls = [f"{base}?dates={(today + timedelta(days=i)):%Y%m%d}" for i in range(-1, ESPN_DAYS)]
 
     def one(u):
@@ -753,7 +708,7 @@ def grade_step(rows, closing, capture_only, now):
     finals = {}
     for sp, dates in need.items():
         try:
-            finals[sp] = grader.fetch_finals(sp, SPORTS[sp][1], sorted(dates), http_json)
+            finals[sp] = grader.fetch_finals(sp, SPORTS[sp], sorted(dates), http_json)
         except Exception as e:  # noqa
             log(f"finals[{sp}]", False, repr(e))
     n_set = grader.settle(picks, finals, now)
@@ -775,7 +730,7 @@ def main():
     sports = [s for s in os.environ.get("SPORTS", "nfl,nba,mlb,nhl").replace("all", ALL_SPORTS).split(",") if s in SPORTS]
     games = []
     for s in sports:
-        got = try_sources(f"odds[{s}]", [("oddsapi", lambda s=s: odds_api(s)), ("espn", lambda s=s: espn_direct(s)),
+        got = try_sources(f"odds[{s}]", [("espn", lambda s=s: espn_direct(s)),
                                           ("sports-skills", lambda s=s: espn_via_skills(s))])
         games += got
     enrich_pitchers(games)

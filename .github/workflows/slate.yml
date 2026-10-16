@@ -1,8 +1,8 @@
 name: Build slate
 on:
   schedule:
-    - cron: "0 15,23 * * *"              # full runs: odds API + model + slate.json (2/day x 4 sports = about 240 of the 500 free credits a month)
-    - cron: "*/30 16-23,0-4 * * *"       # capture runs: free sources only, snapshot lines for closing-line value
+    - cron: "0 15,23 * * *"              # full runs: model rebuild + slate.json + grading + whales (expensive, so 2/day)
+    - cron: "*/30 16-23,0-4 * * *"       # capture runs: just snapshot lines for closing-line value, no model rebuild
   workflow_dispatch: {}
 permissions:
   contents: write
@@ -23,13 +23,12 @@ jobs:
       - name: Build slate.json (full run)
         if: env.FULL_RUN == 'true'
         env:
-          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           SPORTS: "all"
           SLATE_OUT: slate.json
           HISTORY_PATH: history.json
         run: python pipeline/build_slate.py
-      - name: Snapshot lines (capture run, no Odds API credits)
+      - name: Snapshot lines (capture run, no model rebuild)
         if: env.FULL_RUN != 'true'
         env:
           SPORTS: "all"

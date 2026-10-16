@@ -4,19 +4,21 @@ Builds `slate.json` (odds, de-vigged fair prices, best price per side, arbitrage
 Edge Suite's **Today's Slate** tab reads it.
 
 ## Sources (first that works wins; every attempt is logged in `slate.json -> sources`)
+No paid key, anywhere. Every source below is either our own collector network (`network.py`/`network.json`)
+or a public, keyless endpoint.
+
 | Need | Primary | Fallback 1 | Fallback 2 |
 |---|---|---|---|
-| Sportsbook odds | The Odds API (DraftKings, FanDuel, BetMGM...) | ESPN scoreboard odds | sports-skills scoreboard |
+| Sportsbook odds | ESPN scoreboard odds | sports-skills scoreboard | our collector network |
 | Kalshi | Kalshi public API | sports-skills kalshi | |
 | Polymarket | Polymarket gamma API | sports-skills polymarket | |
 
 ## Setup
 1. Copy `pipeline/`, `.github/workflows/slate.yml` into the repo root (Claude_Sports).
-2. Repo -> Settings -> Secrets and variables -> Actions -> New secret: `ODDS_API_KEY` (use a NEW key, not the one pasted in chat).
-3. Actions tab -> "Build slate" -> Run workflow. A `slate.json` is committed; Netlify redeploys.
-4. Without the secret it still runs on ESPN and the prediction markets.
+2. Actions tab -> "Build slate" -> Run workflow. A `slate.json` is committed; Netlify redeploys.
+3. Nothing to add as a secret for odds: no key is read anywhere in the pipeline. `NTFY_TOPIC` (optional, see Alerts below) is the only secret this workflow uses.
 
-Run locally: `ODDS_API_KEY=... python pipeline/build_slate.py`
+Run locally: `python pipeline/build_slate.py`
 Read-only: nothing here places bets.
 
 ## Models and extras
@@ -26,8 +28,8 @@ Read-only: nothing here places bets.
 - **Closing lines:** capture runs every 30 minutes on game days (free sources only) save each game's market price to `history.json`.
   The last price seen before the start is the "closing line", so it can be up to ~30 min early. Edge Suite's Today's Slate tab can copy those into the CLV tab for bets you logged from the slate.
 - **Netlify:** `netlify.toml` skips deploys when only `history.json` changed.
-- **All sports:** `SPORTS=all` covers NFL, NBA, MLB, NHL, NCAAF/NCAAB, WNBA, six soccer leagues (3-way markets with draw) and UFC via ESPN (free). The Odds API only spends credits on sports in `ODDS_API_SPORTS`.
-- **Scanner:** `markets.py` finds 2- and 3-way arbs, cross-book vs Kalshi/Polymarket arbs (fees and 1c slippage included) and spread/total middles with exact EV. Middles need `MARKETS=h2h,spreads,totals` and an Odds API key.
+- **All sports:** `SPORTS=all` covers NFL, NBA, MLB, NHL, NCAAF/NCAAB, WNBA and 70+ soccer leagues (3-way markets with draw) via ESPN (free) — all of it, every run, since there's no paid-credit budget to ration.
+- **Scanner:** `markets.py` finds 2- and 3-way arbs and cross-book vs Kalshi/Polymarket arbs (fees and 1c slippage included). Spread/total middles need per-book spread and total lines, which only a paid odds feed carries; without one, `find_middles` degrades to "none found" rather than erroring.
 - **Promo Converter tab:** free bet, deposit match, risk-free and profit-boost hedge math.
 - **MLB starting pitchers (rough):** ESPN's probable starters and ERA adjust the Elo model (half the ERA gap vs a 4.2 league average, about 35 Elo per run, capped at 40). ERA is noisy and starters can change late; TBD starters get no adjustment. NHL goalies have no free feed wired in yet.
 - **Alerts (optional):** set a repo secret `NTFY_TOPIC` to a long random string and subscribe to that topic in the free ntfy app. You get one push per run listing new arbitrage (0.5%+), book-vs-Kalshi/Polymarket arbs (1%+ after estimated fees), middles (+2% EV) and 3-book edges of 6%+ EV, never repeated within 6 hours. Anyone who knows the topic name can read it, so treat it like a password. Without the secret nothing is sent.

@@ -33,15 +33,14 @@ assert k and k[0]["allInCost"] > a[0]["allInCost"] and 0.5 < k[0]["roiPct"] < 2,
 assert mk.cross_arbs(row, [{"source": "polymarket", "title": "t", "home": None, "away": 0.49}]) == []   # edge gone after slippage
 assert mk.cross_arbs({"best": {**row["best"], "draw": {"decimal": 3}}}, [{"source": "kalshi", "title": "t", "away": .3}]) == []  # 3-way skipped
 
-# ---- Odds API payload with draw + spreads + totals
-payload = [{"home_team": "Arsenal", "away_team": "Chelsea", "commence_time": "2026-10-12T14:00:00Z", "bookmakers": [
-  {"title": "DraftKings", "markets": [
-    {"key": "h2h", "outcomes": [{"name": "Arsenal", "price": 120}, {"name": "Chelsea", "price": 240}, {"name": "Draw", "price": 230}]},
-    {"key": "spreads", "outcomes": [{"name": "Arsenal", "price": -110, "point": -0.5}, {"name": "Chelsea", "price": -110, "point": 0.5}]},
-    {"key": "totals", "outcomes": [{"name": "Over", "price": -105, "point": 2.5}, {"name": "Under", "price": -115, "point": 2.5}]}]},
-  {"title": "FanDuel", "markets": [{"key": "h2h", "outcomes": [{"name": "Arsenal", "price": 130}, {"name": "Chelsea", "price": 230}, {"name": "Draw", "price": 235}]}]}]}]
-ev = b.parse_odds_api("epl", payload)[0]
-assert ev["books"]["DraftKings"]["draw"] == 230 and ev["spreads"]["DraftKings"]["home"] == (-0.5, -110) and ev["totals"]["DraftKings"]["under"] == (2.5, -115)
+# ---- ESPN-shaped soccer payload with draw, two books (no paid odds feed anywhere in this pipeline)
+soccer2 = {"events": [{"date": "2026-10-12T14:00:00Z", "competitions": [{"competitors": [
+    {"homeAway": "home", "team": {"displayName": "Arsenal"}}, {"homeAway": "away", "team": {"displayName": "Chelsea"}}],
+   "odds": [
+     {"provider": {"name": "DraftKings"}, "homeTeamOdds": {"moneyLine": 120}, "awayTeamOdds": {"moneyLine": 240}, "drawOdds": {"moneyLine": 230}},
+     {"provider": {"name": "FanDuel"}, "homeTeamOdds": {"moneyLine": 130}, "awayTeamOdds": {"moneyLine": 230}, "drawOdds": {"moneyLine": 235}}]}]}]}
+ev = b._espn_events("epl", soccer2)[0]
+assert ev["books"]["DraftKings"]["draw"] == 230.0 and ev["books"]["FanDuel"]["draw"] == 235.0, ev
 rows = b.analyze([ev], [], now=NOW)
 r = rows[0]; assert r["threeWay"] and set(r["fair"]) == {"home", "away", "draw"} and abs(sum(r["fair"].values()) - 1) < 1e-3, r["fair"]
 assert r["best"]["home"]["book"] == "FanDuel" and "model" not in r
@@ -61,19 +60,18 @@ mma = {"events": [{"date": "d", "competitions": [{"competitors": [{"athlete": {"
 m2 = b._espn_events("mma", mma)[0]; assert m2["home"] == "Fighter A" and m2["books"]["DraftKings"]["away"] == 150.0, m2
 assert b._am("EVEN") == 100.0 and b._am("+130") == 130.0 and b._am("-50") is None and b._am(None) is None
 
-# ---- end-to-end with SPORTS=all via free fallback, and credit guard
-tmp = tempfile.mkdtemp(); os.environ.update({"ASOF": "2026-10-01T00:00:00+00:00", "SLATE_OUT": f"{tmp}/s.json", "HISTORY_PATH": f"{tmp}/h.json", "ALERTS_PATH": f"{tmp}/al.json", "PICKS_PATH": f"{tmp}/p.json", "RECORD_PATH": f"{tmp}/r.json", "SPORTS": "all", "ODDS_API_KEY": "x", "NETWORK_HEALTH": f"{tmp}/nh.json", "NO_NETWORK": "1", "NO_WHALES": "1"})
+# ---- end-to-end with SPORTS=all, no key anywhere, straight off ESPN
+tmp = tempfile.mkdtemp(); os.environ.update({"ASOF": "2026-10-01T00:00:00+00:00", "SLATE_OUT": f"{tmp}/s.json", "HISTORY_PATH": f"{tmp}/h.json", "ALERTS_PATH": f"{tmp}/al.json", "PICKS_PATH": f"{tmp}/p.json", "RECORD_PATH": f"{tmp}/r.json", "SPORTS": "all", "NETWORK_HEALTH": f"{tmp}/nh.json", "NO_NETWORK": "1", "NO_WHALES": "1"})
 calls = []
-def fake_odds(sport):
+def fake_espn(sport):
     calls.append(sport)
-    if sport not in b.ODDS_API_SPORTS: raise RuntimeError("skipped to save Odds API credits")
-    raise RuntimeError("down")
-b.odds_api = fake_odds
-b.espn_direct = lambda sport: [{"sport": sport, "home": "H" + sport, "away": "A" + sport, "start": "2099-01-01T00:00:00Z", "books": {"DraftKings": {"home": -150, "away": 130}}}]
+    return [{"sport": sport, "home": "H" + sport, "away": "A" + sport, "start": "2099-01-01T00:00:00Z", "books": {"DraftKings": {"home": -150, "away": 130}}}]
+b.espn_direct = fake_espn
 b.kalshi_direct = lambda: []; b.kalshi_via_skills = lambda: []; b.polymarket_direct = lambda: []; b.polymarket_via_skills = lambda: []
 import model as M; M.fetch_results = lambda *a, **k: []
 assert b.main() == 0
 sl = json.load(open(f"{tmp}/s.json")); sports = {g["sport"] for g in sl["games"]}
-assert sports == set(b.SPORTS) - b.THREE_WAY, sports                       # every sport reached the slate through the free fallback
-assert len(calls) == len(b.SPORTS)
+assert sports == set(b.SPORTS) - b.THREE_WAY, sports                       # every sport reached the slate straight off ESPN
+assert set(calls) == set(b.SPORTS)                                         # ESPN was hit for every sport (mlb twice: odds, then pitcher enrichment)
+assert not any("oddsapi" in x["source"] for x in sl["sources"]), "no paid odds feed anywhere in the pipeline"
 print("MARKETS TESTS PASS")
