@@ -1,8 +1,8 @@
 name: Build slate
 on:
   schedule:
-    - cron: "0 15,23 * * *"              # full runs: model rebuild + slate.json + grading + whales (expensive, so 2/day)
-    - cron: "*/30 16-23,0-4 * * *"       # capture runs: just snapshot lines for closing-line value, no model rebuild
+    - cron: "5 11,17,23 * * *"           # full runs: model rebuild + slate.json + grading + whales (expensive, so 3/day)
+    - cron: "*/15 * * * *"               # capture runs: snapshot lines + check arb/edge/steam alerts, no model rebuild, every 15 min all day so no blind window
   workflow_dispatch: {}
 permissions:
   contents: write
@@ -13,13 +13,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FULL_RUN: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 15,23 * * *' }}
+      FULL_RUN: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '5 11,17,23 * * *' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install sports-skills
-      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py && python pipeline/test_markets.py && python pipeline/test_grade.py && python pipeline/test_notify.py && python pipeline/test_soccer.py && python pipeline/test_review.py && python pipeline/test_network.py && python pipeline/test_kalshi.py && python pipeline/test_cache.py && python pipeline/test_whales.py && python pipeline/test_steam.py
+      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py && python pipeline/test_markets.py && python pipeline/test_grade.py && python pipeline/test_notify.py && python pipeline/test_soccer.py && python pipeline/test_review.py && python pipeline/test_network.py && python pipeline/test_kalshi.py && python pipeline/test_cache.py && python pipeline/test_whales.py && python pipeline/test_steam.py && python pipeline/test_scores.py
       - name: Build slate.json (full run)
         if: env.FULL_RUN == 'true'
         env:
