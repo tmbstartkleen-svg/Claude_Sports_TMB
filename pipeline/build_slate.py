@@ -68,6 +68,10 @@ try:
     import scores as scores_mod
 except ImportError:  # pragma: no cover
     scores_mod = None
+try:
+    import teaminfo as teaminfo_mod
+except ImportError:  # pragma: no cover
+    teaminfo_mod = None
 
 try:
     import leagues as _lg
@@ -173,11 +177,15 @@ def _espn_events(sport, data):
         comp = ev["competitions"][0]
         comps = comp.get("competitors", [])
         names = {}
+        meta = {}
         for i, c in enumerate(comps):
-            nm = (c.get("team") or {}).get("displayName") or (c.get("athlete") or {}).get("displayName")
+            team = c.get("team") or {}
+            nm = team.get("displayName") or (c.get("athlete") or {}).get("displayName")
             ha = c.get("homeAway") or ("home" if i == 0 else "away")  # combat sports have no home/away; keep ESPN order
             if nm:
                 names[ha] = nm
+                if team.get("logo") or team.get("color"):
+                    meta[ha] = {"logo": team.get("logo"), "color": team.get("color")}
         books = {}
         for o in comp.get("odds", []) or []:
             name = (o.get("provider") or {}).get("name", "ESPN")
@@ -204,6 +212,8 @@ def _espn_events(sport, data):
             g = {"sport": sport, "home": names["home"], "away": names["away"], "start": ev.get("date"), "books": books}
             if pitchers:
                 g["pitchers"] = pitchers
+            if meta:
+                g["teamMeta"] = meta
             out.append(g)
     return out
 
@@ -510,6 +520,8 @@ def analyze(games, pms, models=None, injuries=None, now=None):
                "arb": implied_sum < 1, "impliedSum": round(implied_sum, 4), "bets": [], "pm": []}
         if sharp:
             row["sharpBooks"] = sharp
+        if g.get("teamMeta"):
+            row["teamMeta"] = g["teamMeta"]
         if row["arb"]:
             row["arbRoiPct"] = round((1 / implied_sum - 1) * 100, 2)
         names_ = list(books)
@@ -752,11 +764,12 @@ def main():
     pms = try_sources("kalshi", [("games", kalshi_games), ("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
     pms += try_sources("polymarket", [("direct", polymarket_direct), ("sports-skills", polymarket_via_skills)])
     capture_only = os.environ.get("CAPTURE_ONLY") == "1"
-    models, backtests, injuries = {}, {}, {}
+    models, backtests, injuries, results_by_sport = {}, {}, {}, {}
     if elo and not capture_only:
         for sp in [x for x in sports if x in elo.CFG]:
             try:
                 res = elo.fetch_results(sp, cache=True)
+                results_by_sport[sp] = res
                 if len(res) < 50:
                     raise RuntimeError(f"only {len(res)} completed games found")
                 models[sp] = elo.build(sp, res)
@@ -773,6 +786,7 @@ def main():
         for sp in [x for x in sports if x in soccer_mod.LEAGUES]:
             try:
                 res = elo.fetch_results(sp, path=soccer_mod.LEAGUES[sp], cache=True)
+                results_by_sport[sp] = res
                 if len(res) < soccer_mod.MIN_GAMES:
                     raise RuntimeError(f"only {len(res)} completed games found")
                 mdl_ = soccer_mod.build(res)
@@ -787,6 +801,12 @@ def main():
     now = datetime.fromisoformat(os.environ["ASOF"]) if os.environ.get("ASOF") else datetime.now(timezone.utc)
     rows = analyze(games, pms, models, injuries, now)
     rows.sort(key=lambda r: -max([b["evPct"] for b in r["bets"]] + [r.get("arbRoiPct", 0), -99]))
+    if teaminfo_mod and results_by_sport:
+        try:
+            n_mu = teaminfo_mod.attach(rows, results_by_sport)
+            log("matchup", True, f"{n_mu} games with head-to-head/form history")
+        except Exception as e:  # noqa
+            log("matchup", False, repr(e))
     week_scores = []
     if scores_mod and not capture_only:
         try:
