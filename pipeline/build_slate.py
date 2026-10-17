@@ -64,6 +64,10 @@ try:
     import steam as steam_mod
 except ImportError:  # pragma: no cover
     steam_mod = None
+try:
+    import scores as scores_mod
+except ImportError:  # pragma: no cover
+    scores_mod = None
 
 try:
     import leagues as _lg
@@ -783,9 +787,16 @@ def main():
     now = datetime.fromisoformat(os.environ["ASOF"]) if os.environ.get("ASOF") else datetime.now(timezone.utc)
     rows = analyze(games, pms, models, injuries, now)
     rows.sort(key=lambda r: -max([b["evPct"] for b in r["bets"]] + [r.get("arbRoiPct", 0), -99]))
+    week_scores = []
+    if scores_mod and not capture_only:
+        try:
+            week_scores = scores_mod.fetch_week(sports, SPORTS, today=now.date(), getter=http_json)
+            log("weekScores", True, f"{len(week_scores)} games across {scores_mod.WEEK_DAYS} days")
+        except Exception as e:  # noqa
+            log("weekScores", False, repr(e))
     slate = {"generatedAt": now.isoformat(timespec="seconds"),
              "settings": {"bankroll": BANKROLL, "kellyFrac": KELLY_FRAC, "maxStakePct": MAX_STAKE_PCT, "dayBudget": DAY_BUDGET, "minEdge": MIN_EDGE},
-             "sources": LOG, "labels": LABELS, "network": net_rows, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "day": None if capture_only else simulate_day(rows),
+             "sources": LOG, "labels": LABELS, "network": net_rows, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "weekScores": week_scores, "day": None if capture_only else simulate_day(rows),
              "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only."}
     closing = {}
     if hist_mod:

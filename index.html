@@ -126,6 +126,7 @@ input[type=checkbox]{width:auto;}
   <div class="nav-wrap">
   <nav id="tabNav">
     <button class="active" data-tab="slate">Today's Slate</button>
+    <button data-tab="scores">This Week</button>
     <button data-tab="opps">Opportunities</button>
     <button data-tab="week">Weekly Parlays</button>
     <span class="navdiv"></span>
@@ -469,6 +470,18 @@ input[type=checkbox]{width:auto;}
     </div>
   </div>
 
+  <div class="tab" id="tab-scores">
+    <div class="card">
+      <h2>This Week</h2>
+      <p class="desc">Every game the next 7 days, earliest first, starting today — loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty. Live games show the current score and update whenever you reload the slate; games already finished are hidden by default so this stays a look-ahead, not a history. Search a team below to pull up its finished games too, each with the final score and a link to the box score.</p>
+      <div class="row">
+        <div class="field" style="max-width:320px"><label>Search a team (also shows finished games)</label><input id="scSearch" type="text" placeholder="e.g. Chiefs"></div>
+      </div>
+      <div id="scStatus" class="desc"></div>
+      <div id="scWeek"></div>
+    </div>
+  </div>
+
   <div class="tab" id="tab-opps">
     <div class="card">
       <p class="desc">Loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty.</p>
@@ -693,7 +706,7 @@ document.getElementById('tabNav').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   document.querySelectorAll('#tabNav button').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active'); document.getElementById('tab-'+b.dataset.tab).classList.add('active'); if(b.dataset.tab==='week'&&typeof wkRender==='function')wkRender();
+  b.classList.add('active'); document.getElementById('tab-'+b.dataset.tab).classList.add('active'); if(b.dataset.tab==='week'&&typeof wkRender==='function')wkRender(); if(b.dataset.tab==='scores'&&typeof scoresRender==='function')scoresRender();
 });
 
 function americanToDecimal(a){ a=Number(a); if(!a) return null; return a>0?1+a/100:1+100/Math.abs(a); }
@@ -1488,6 +1501,34 @@ function wkRender(){
 function am(a){return a==null?'—':(a>0?'+':'')+Math.round(a);}
 setTimeout(()=>{['wkLegs','wkPmin','wkPmax','wkLegP','wkLegEv','wkOdds','wkPool','wkSpread','wkHail'].forEach(i=>{const e=document.getElementById(i);if(e)e.addEventListener('input',wkRender);});},0);
 
+// ---------- This Week (week-of scoreboard: live scores, finished games hidden unless searched) ----------
+let weekScores=[];
+function scDayKey(t){return t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');}
+function scoresRender(){
+  const el=$('scWeek');if(!el)return;
+  if(!weekScores.length){$('scStatus').textContent='No slate loaded yet. Open Today\'s Slate first, or load a slate.json there.';el.innerHTML='';return;}
+  const q=($('scSearch').value||'').trim().toLowerCase();
+  const matches=g=>q&&((g.home||'').toLowerCase().includes(q)||(g.away||'').toLowerCase().includes(q));
+  const visible=weekScores.filter(g=>!g.completed||matches(g));
+  const today=new Date(),start=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+  const days=[];for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);days.push({d,k:scDayKey(d),games:[]});}
+  visible.forEach(g=>{const t=new Date(g.start);if(isNaN(t))return;const dk=days.find(x=>x.k===scDayKey(t));if(dk)dk.games.push({g,t});});
+  days.forEach(x=>x.games.sort((a,b)=>a.t-b.t));
+  const nHidden=weekScores.length-visible.length;
+  $('scStatus').textContent=(visible.length)+' games shown over the next 7 days'+(nHidden?' · '+nHidden+' already-finished game'+(nHidden===1?'':'s')+' hidden (search a team to show them)':'')+'.';
+  el.innerHTML=days.map(x=>{
+    const rows=x.games.map(({g,t})=>{
+      const live=g.state==='in',done=g.completed;
+      const score=(g.homeScore!=null&&g.awayScore!=null)?esc(g.away)+' '+g.awayScore+' — '+g.homeScore+' '+esc(g.home):esc(g.away)+' @ '+esc(g.home);
+      const status=live?'<span class="pos">'+esc(g.detail||'Live')+'</span>':done?'<span class="desc" style="margin:0">Final'+(g.detail&&g.detail!=='Final'?' · '+esc(g.detail):'')+'</span>':t.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+      const link=g.link?' · <a href="'+esc(g.link)+'" target="_blank" rel="noopener">box score</a>':'';
+      return '<div style="font-size:.82rem;margin:3px 0;padding:4px 0;border-bottom:1px solid var(--border,#8884)"><b>'+score+'</b><br><span class="desc" style="margin:0">'+esc(SN(g.sport))+' · '+status+(done?link:'')+'</span></div>';
+    }).join('');
+    return '<div style="border:1px solid var(--border,#8884);border-radius:8px;padding:8px;margin:6px 0"><b>'+esc(x.d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}))+(scDayKey(x.d)===scDayKey(today)?' · Today':'')+'</b><div class="desc" style="margin:2px 0 6px">'+x.games.length+' game'+(x.games.length===1?'':'s')+'</div>'+(rows||'<div class="desc" style="margin:0">No games'+(q?' matching "'+esc(q)+'"':'')+'.</div>')+'</div>';
+  }).join('');
+}
+setTimeout(()=>{const e=document.getElementById('scSearch');if(e)e.addEventListener('input',scoresRender);},0);
+
 let SPORT_LABELS={};
 function SN(k){return SPORT_LABELS[k]||String(k).toUpperCase();}
 function btRender(){
@@ -1506,6 +1547,7 @@ function slateRender(d,label){
   btRender();
   SPORT_LABELS=d.labels||{};
   wkSlate=d;if($('tab-week')&&$('tab-week').classList.contains('active'))wkRender();
+  weekScores=d.weekScores||[];if($('tab-scores')&&$('tab-scores').classList.contains('active'))scoresRender();
   slateBets=[];slateClosing=d.closing||{};
   $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
   const day=d.day,g=d.games||[];
@@ -1544,7 +1586,10 @@ function slateRender(d,label){
 function slateExample(){
   slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],
    day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},diagnostics:{warnings:['EXAMPLE: nfl: only one book per game, so edge bets, arbitrage and middles cannot appear'],bySport:{nfl:{games:14,withOdds:14,avgBooks:1,withModel:14,withPmMatch:2,edgeBets:0}}},
-   games:[{sport:'nfl',home:'Example Home',away:'Example Away',nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,stake:1.2}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}]},{sport:'epl',home:'Example FC',away:'Sample United',nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'FanDuel'},away:{american:260,book:'BetMGM'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[],pm:[]}]},'EXAMPLE DATA, not real games.');
+   games:[{sport:'nfl',home:'Example Home',away:'Example Away',nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,stake:1.2}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}]},{sport:'epl',home:'Example FC',away:'Sample United',nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'FanDuel'},away:{american:260,book:'BetMGM'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[],pm:[]}],
+   weekScores:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),state:'pre',completed:false,homeScore:null,awayScore:null,detail:'',link:null},
+    {sport:'nba',home:'Sample City',away:'Demo United',start:new Date(Date.now()-1800e3).toISOString(),state:'in',completed:false,homeScore:61,awayScore:58,detail:'Q3 6:42',link:null},
+    {sport:'nhl',home:'Test Town',away:'Practice FC',start:new Date(Date.now()-5*3600e3).toISOString(),state:'post',completed:true,homeScore:4,awayScore:2,detail:'Final',link:'https://www.espn.com/'}]},'EXAMPLE DATA, not real games.');
 }
 async function slateFetch(manual){
   try{const r=await fetch('slate.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);slateRender(await r.json(),'Loaded from this site.');}
