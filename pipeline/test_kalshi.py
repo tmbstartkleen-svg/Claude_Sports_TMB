@@ -7,7 +7,7 @@ def mk(et, nm, y):  # event tickers carry the game date like the real ones
 fake = {"KXNFLGAME": [mk("KXNFLGAME-26OCT26DALPHI", "Philadelphia", "0.5300"), mk("KXNFLGAME-26OCT26DALPHI", "Dallas", "0.5000")],
         "KXNBAGAME": [mk("KXNBAGAME-26OCT26SACLAC", "Sacramento", "0.4300"), mk("KXNBAGAME-26OCT26SACLAC", "Los Angeles C", "0.6100")],
         "KXEPLGAME": [mk("KXEPLGAME-26OCT26CRYNEW", "Crystal Palace", "0.3700"), mk("KXEPLGAME-26OCT26CRYNEW", "Newcastle", "0.3900"), mk("KXEPLGAME-26OCT26CRYNEW", "Tie", "0.2800")]}
-def fake_http(u):
+def fake_http(u, headers=None):
     ser = u.split("series_ticker=")[1]
     return {"markets": fake.get(ser, [])}
 B.http_json = fake_http

@@ -18,12 +18,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
-      - run: pip install sports-skills
-      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py && python pipeline/test_markets.py && python pipeline/test_grade.py && python pipeline/test_notify.py && python pipeline/test_soccer.py && python pipeline/test_review.py && python pipeline/test_network.py && python pipeline/test_kalshi.py && python pipeline/test_cache.py && python pipeline/test_whales.py && python pipeline/test_steam.py && python pipeline/test_scores.py && python pipeline/test_teaminfo.py
+      - run: pip install sports-skills cryptography
+      - run: python pipeline/test_offline.py && python pipeline/test_model.py && python pipeline/test_extras.py && python pipeline/test_markets.py && python pipeline/test_grade.py && python pipeline/test_notify.py && python pipeline/test_soccer.py && python pipeline/test_review.py && python pipeline/test_network.py && python pipeline/test_kalshi.py && python pipeline/test_cache.py && python pipeline/test_whales.py && python pipeline/test_steam.py && python pipeline/test_scores.py && python pipeline/test_teaminfo.py && python pipeline/test_kalshi_auth.py
       - name: Build slate.json (full run)
         if: env.FULL_RUN == 'true'
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          KALSHI_KEY_ID: ${{ secrets.KALSHI_KEY_ID }}
+          KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
           SPORTS: "all"
           SLATE_OUT: slate.json
           HISTORY_PATH: history.json
@@ -34,6 +36,8 @@ jobs:
           SPORTS: "all"
           CAPTURE_ONLY: "1"
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          KALSHI_KEY_ID: ${{ secrets.KALSHI_KEY_ID }}
+          KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
           HISTORY_PATH: history.json
         run: python pipeline/build_slate.py
       - name: Commit if changed

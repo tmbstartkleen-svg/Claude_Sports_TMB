@@ -72,6 +72,22 @@ try:
     import teaminfo as teaminfo_mod
 except ImportError:  # pragma: no cover
     teaminfo_mod = None
+try:
+    import kalshi_auth
+except ImportError:  # pragma: no cover
+    kalshi_auth = None
+
+KALSHI_MARKETS_PATH = "/trade-api/v2/markets"
+
+
+def _kalshi_headers():
+    """Sign Kalshi requests when KALSHI_KEY_ID/KALSHI_PRIVATE_KEY are set; {} (plain, unauthenticated) otherwise."""
+    if not kalshi_auth:
+        return {}
+    try:
+        return kalshi_auth.headers("GET", KALSHI_MARKETS_PATH)
+    except Exception:  # noqa  never let an auth hiccup break the free, unauthenticated fallback
+        return {}
 
 try:
     import leagues as _lg
@@ -274,7 +290,7 @@ def kalshi_direct():
     out, cursor = [], ""
     pages = []
     for _ in range(5):  # a few pages; the first one alone is mostly multi-leg parlays
-        data = http_json("https://api.elections.kalshi.com/trade-api/v2/markets?status=open&limit=1000" + (f"&cursor={cursor}" if cursor else ""))
+        data = http_json("https://api.elections.kalshi.com/trade-api/v2/markets?status=open&limit=1000" + (f"&cursor={cursor}" if cursor else ""), headers=_kalshi_headers())
         pages += data.get("markets", [])
         cursor = data.get("cursor") or ""
         if not cursor:
@@ -312,7 +328,7 @@ def kalshi_games():
     out, errs = [], []
     for ser in KALSHI_GAME_SERIES:
         try:
-            data = http_json(f"https://api.elections.kalshi.com/trade-api/v2/markets?status=open&limit=500&series_ticker={ser}")
+            data = http_json(f"https://api.elections.kalshi.com/trade-api/v2/markets?status=open&limit=500&series_ticker={ser}", headers=_kalshi_headers())
         except Exception as e:  # noqa
             errs.append(f"{ser}: {e!r}"[:80])
             continue
@@ -761,6 +777,8 @@ def main():
             log("collectors", True, ", ".join(f"{r['id']}:{r['status']}" for r in net_rows) or "none enabled")
         except Exception as e:  # noqa
             log("collectors", False, repr(e))
+    if kalshi_auth:
+        log("kalshi-auth", kalshi_auth.available(), "signed requests (higher rate limit)" if kalshi_auth.available() else "no key set, unauthenticated (still free)")
     pms = try_sources("kalshi", [("games", kalshi_games), ("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
     pms += try_sources("polymarket", [("direct", polymarket_direct), ("sports-skills", polymarket_via_skills)])
     capture_only = os.environ.get("CAPTURE_ONLY") == "1"
