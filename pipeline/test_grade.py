@@ -90,4 +90,17 @@ assert abs(o["flatRoiSE"] - sd / 20) < 1e-3
 assert abs(o["wins"] - o["expectedWins"]) < 4 * math.sqrt(400 * 0.25), "wins track the probabilities they were drawn from"
 assert "standard error" in s["note"]
 print("OK summary", o["roi"], o["flatRoiSE"])
+
+# timeline: oldest-first, cumulative, independent of stake size
+tl = s["timeline"]
+assert all(tl[i]["date"] <= tl[i + 1]["date"] for i in range(len(tl) - 1)), "timeline must be oldest-first"
+assert len(tl) == min(400, g.MAX_TIMELINE), "timeline caps to MAX_TIMELINE most-recent settled picks"
+small = g.summarize({"a": {"sport": "nfl", "home": "H", "away": "A", "start": start, "side": "home", "american": 150, "fairAtPick": 0.4,
+                            "stake": 1, "res": "W", "clv": 0.1, "basis": "consensus"},
+                      "b": {"sport": "nfl", "home": "H", "away": "A", "start": (now + timedelta(days=1)).isoformat(), "side": "home",
+                            "american": -110, "fairAtPick": 0.5, "stake": 1, "res": "L", "clv": 0.2, "basis": "consensus"}})["timeline"]
+assert len(small) == 2 and small[0]["cumPnl"] == 1.5 and abs(small[1]["cumPnl"] - 0.5) < 1e-9
+assert small[0]["cumAvgClv"] == 0.1 and abs(small[1]["cumAvgClv"] - 0.15) < 1e-9, small
+assert g.summarize({})["timeline"] == []
+print("OK timeline")
 print("GRADE TESTS PASS")

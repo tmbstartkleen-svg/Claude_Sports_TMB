@@ -186,6 +186,30 @@ def summarize(picks):
                    if n < 100 else "Judge ROI against its standard error (flatRoiSE): a result inside two standard errors of zero is not evidence of an edge.")
     out["recent"] = sorted([{k: p[k] for k in ("sport", "home", "away", "start", "team", "book", "american", "stake", "res", "clv", "score") if k in p}
                             for p in ps if p["res"] in ("W", "L", "P")], key=lambda x: x["start"], reverse=True)[:40]
+    out["timeline"] = _timeline(ps)
+    return out
+
+
+MAX_TIMELINE = 300
+
+
+def _timeline(ps):
+    """Oldest-first running P&L and CLV, for the Track Record chart. Flat units (not $) so it
+    reads the same regardless of stake sizing; cumPnl is in units of 1 (i.e. flat-staked P&L),
+    cumAvgClv is the running mean of every CLV seen so far (independent of pnl/settlement)."""
+    settled = sorted([p for p in ps if p["res"] in ("W", "L", "P")], key=lambda p: p["start"])
+    if len(settled) > MAX_TIMELINE:
+        settled = settled[-MAX_TIMELINE:]
+    out, cum, clv_sum, clv_n = [], 0.0, 0.0, 0
+    for p in settled:
+        d = am_to_dec(p["american"])
+        unit_pnl = (d - 1 if p["res"] == "W" else -1.0 if p["res"] == "L" else 0.0) if d else 0.0
+        cum += unit_pnl
+        if "clv" in p:
+            clv_sum += p["clv"]
+            clv_n += 1
+        out.append({"date": p["start"][:10], "cumPnl": round(cum, 3),
+                     "cumAvgClv": round(clv_sum / clv_n, 4) if clv_n else None})
     return out
 
 

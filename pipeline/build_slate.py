@@ -923,6 +923,12 @@ def main():
         return 0
     slate["closing"] = closing
     slate["liveEdges"] = live_edges
+    if parlay_mod:
+        try:
+            slate["suggestions"] = parlay_mod.build(rows, BANKROLL, KELLY_FRAC, MAX_STAKE_PCT)
+            log("suggestions", True, f"{len(slate['suggestions']['singles'])} top singles, {len(slate['suggestions']['parlays'])} parlays suggested")
+        except Exception as e:  # noqa
+            log("suggestions", False, repr(e))
     out = os.environ.get("SLATE_OUT", "slate.json")
     with open(out, "w") as f:
         json.dump(slate, f, indent=1)

@@ -485,6 +485,18 @@ input[type=checkbox]{width:auto;}
   <div class="tab" id="tab-opps">
     <div class="card">
       <p class="desc">Loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty.</p>
+      <h2 style="font-size:1rem">Today's best bets</h2>
+      <div class="desc">A server-ranked shortlist of what's already flagged below — nothing new is computed here. Top singles are every flagged bet across every game, best EV first. Suggested parlays combine each game's single best-EV leg (never two legs from the same game) and are only shown when the combo is positive-EV. These don't account for correlation across different games (e.g. two teams from a bad-weather region both favored) — same caveat as building your own parlay.</div>
+      <div class="row" style="align-items:flex-start;gap:24px">
+        <div style="flex:1 1 300px;min-width:260px">
+          <h3 style="font-size:.85rem;margin:8px 0 4px">Top singles</h3>
+          <div id="slSuggSingles" class="desc"></div>
+        </div>
+        <div style="flex:1 1 300px;min-width:260px">
+          <h3 style="font-size:.85rem;margin:8px 0 4px">Suggested parlays</h3>
+          <div id="slSuggParlays" class="desc"></div>
+        </div>
+      </div>
       <h2 style="font-size:1rem">Live, in-game edges</h2>
       <div class="desc">Games in progress right now, tracked from Kalshi's own live-trading price (free, continuously updating, no live-odds feed needed) — checked every 15 minutes around the clock. "Live steam" is a fast in-game price jump, same logic as pre-game steam. "vs. close" is how far the live price has moved from where the market closed right before kickoff. This is not a play-by-play win model — just what the live market itself is doing.</div>
       <div id="slLive" class="desc"></div>
@@ -535,6 +547,8 @@ input[type=checkbox]{width:auto;}
       </div>
       <div class="callout" id="rcNote" style="margin:12px 0 0;"></div>
       <div class="stat-grid" id="rcStats"></div>
+      <p class="desc" id="rcTlNote" style="margin-top:12px;display:none;">Not enough settled history yet for a trend line.</p>
+      <div class="chart-wrap" id="rcTlWrap" style="display:none;"><canvas id="rcTlChart"></canvas></div>
       <h2 style="margin-top:16px;font-size:.9rem">By sport</h2>
       <div class="scroll-box"><table><thead><tr><th>Sport</th><th>Settled</th><th>Staked</th><th>P&amp;L</th><th>ROI</th><th>Wins vs expected</th><th>Avg CLV</th></tr></thead><tbody id="rcSport"></tbody></table></div>
       <h2 style="margin-top:16px;font-size:.9rem">Consensus bets vs model-blend bets</h2>
@@ -1445,6 +1459,21 @@ function timingChip(t){
   const title=(t.reasons||[]).join(' ').replace(/"/g,'&quot;');
   return ' <span class="chip '+cls+'" title="'+title+'" style="font-size:.68rem;padding:1px 6px">'+icon+' '+label+(t.hoursToStart!=null?' · '+t.hoursToStart+'h':'')+'</span>';
 }
+function suggestionsRender(s){
+  const sEl=$('slSuggSingles'),pEl=$('slSuggParlays');if(!sEl||!pEl)return;
+  const singles=(s&&s.singles)||[],parlays=(s&&s.parlays)||[];
+  const when=iso=>{if(!iso)return'';const t=new Date(iso);return isNaN(t)?'':t.toLocaleString(undefined,{weekday:'short',hour:'numeric',minute:'2-digit'});};
+  sEl.innerHTML=singles.length?singles.map(x=>`<div style="margin:6px 0;padding:6px 8px;border-left:3px solid var(--pos,#1a7f37)">
+    <b>${esc(x.side)}</b> ${fmtOdds(x.american)} @ ${esc(x.book)} <span class="chip pos" style="font-size:.68rem;padding:1px 6px">+${x.evPct}% EV</span>${timingChip(x.timing)}<br>
+    <span class="desc" style="margin:0">${esc(SN(x.sport))} · ${esc(x.away)} @ ${esc(x.home)}${when(x.start)?' · '+esc(when(x.start)):''} · stake ${usd(x.stake)}</span></div>`).join('')
+    :'No flagged bets right now — check back as lines move, or open Today\'s Slate first if this is empty.';
+  pEl.innerHTML=parlays.length?parlays.map(p=>{
+    const legs=(p.legs||[]).map(l=>esc(l.side)+' <span class="desc" style="margin:0">('+esc(SN(l.sport))+' '+esc(l.away)+' @ '+esc(l.home)+')</span>').join('<br>+ ');
+    return `<div style="margin:6px 0;padding:6px 8px;border-left:3px solid var(--pos,#1a7f37)">
+    <b>${p.nLegs}-leg parlay</b><br>${legs}<br>
+    <span class="desc" style="margin:0">Combined ${fmtOdds(p.combinedAmerican)} (${(p.combinedProb*100).toFixed(1)}% to hit) · <span class="pos">+${p.evPct}% EV</span> · stake ${usd(p.stake)}</span></div>`;
+  }).join(''):'No positive-EV parlay combo right now — needs 2+ games with a flagged bet.';
+}
 function liveRender(items){
   const el=$('slLive');if(!el)return;
   if(!items||!items.length){el.innerHTML='No games in progress right now (or Kalshi has no matching live market for them).';return;}
@@ -1644,6 +1673,7 @@ $('slFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return
 slateFetch(false);
 
 // ===================== Track Record =====================
+let rcTlChart=null;
 function recordRender(d,label){
   const o=d.overall||{};
   $('rcNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'. ':' ')+(d.note||'');
@@ -1656,6 +1686,18 @@ function recordRender(d,label){
    <div class="stat"><div class="v">${o.wins||0} vs ${o.expectedWins!=null?o.expectedWins:'—'}</div><div class="k">Wins vs wins implied by fair price</div></div>
    <div class="stat"><div class="v">${z==null?'—':z.toFixed(1)}</div><div class="k">ROI in standard errors (need above 2)</div></div>
    <div class="stat"><div class="v">${o.open||0}</div><div class="k">Open picks</div></div>`;
+  const tl=d.timeline||[];
+  if(rcTlChart){rcTlChart.destroy();rcTlChart=null;}
+  $('rcTlWrap').style.display=tl.length>1?'block':'none';$('rcTlNote').style.display=tl.length>1?'none':'block';
+  if(tl.length>1){
+    rcTlChart=new Chart($('rcTlChart'),{type:'line',data:{labels:tl.map(x=>x.date),datasets:[
+      {label:'Cumulative P&L (flat units)',data:tl.map(x=>x.cumPnl),yAxisID:'y',borderColor:tl[tl.length-1].cumPnl>=0?'#33e6a0':'#ff5c72',backgroundColor:'rgba(51,230,160,.08)',fill:true,pointRadius:0,borderWidth:2,tension:.15},
+      {label:'Running avg CLV (%)',data:tl.map(x=>x.cumAvgClv==null?null:x.cumAvgClv*100),yAxisID:'y1',borderColor:'#5b9dff',borderDash:[4,3],pointRadius:0,borderWidth:1.5,spanGaps:true,tension:.15}],
+    },options:{animation:false,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{color:'#8a97a8',boxWidth:12,font:{size:10}}},tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?'Avg CLV '+c.parsed.y.toFixed(2)+'%':'Cumulative P&L '+c.parsed.y.toFixed(2)+'u'}}},
+      scales:{x:{ticks:{maxTicksLimit:7,color:'#8a97a8'},grid:{display:false}},
+        y:{position:'left',title:{display:true,text:'Cumulative P&L (units)',color:'#8a97a8'},ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}},
+        y1:{position:'right',title:{display:true,text:'Avg CLV (%)',color:'#8a97a8'},ticks:{color:'#8a97a8'},grid:{display:false}}}}});
+  }
   const row=(k,g,full)=>`<tr><td>${esc(k.toUpperCase())}</td><td>${g.n}</td>${full?`<td>${usd(g.staked)}</td>`:''}<td class="${g.pnl>=0?'pos':'neg'}">${usd(g.pnl)}</td><td class="${g.roi>=0?'pos':'neg'}">${pc(g.roi,1)}</td>${full?`<td>${g.wins} vs ${g.expectedWins}</td>`:''}<td class="${g.avgClv>0?'pos':g.avgClv<0?'neg':''}">${pc(g.avgClv,2)}</td></tr>`;
   $('rcSport').innerHTML=Object.keys(d.bySport||{}).map(k=>row(k,d.bySport[k],true)).join('')||'<tr><td colspan="7">No settled picks yet.</td></tr>';
   $('rcBasis').innerHTML=Object.keys(d.byBasis||{}).map(k=>row(k,d.byBasis[k],false)).join('')||'<tr><td colspan="5">No settled picks yet.</td></tr>';
@@ -1666,7 +1708,8 @@ function recordExample(){
    overall:{n:120,open:3,staked:240,pnl:-4.8,roi:-0.02,flatRoi:-0.02,flatRoiSE:0.09,wins:52,expectedWins:53.1,avgClv:0.006,nClv:90},
    bySport:{nba:{n:70,staked:140,pnl:-1.4,roi:-0.01,wins:31,expectedWins:31.5,avgClv:0.01},nfl:{n:50,staked:100,pnl:-3.4,roi:-0.034,wins:21,expectedWins:21.6,avgClv:0.0}},
    byBasis:{consensus:{n:80,pnl:-2.1,roi:-0.017,avgClv:0.004},'model-blend':{n:40,pnl:-2.7,roi:-0.034,avgClv:0.01}},
-   recent:[{away:'Example Away',home:'Example Home',score:'20-24',team:'Example Away',book:'BookX',american:150,stake:2,res:'L',clv:0.03}]},'EXAMPLE DATA, not real picks.');
+   recent:[{away:'Example Away',home:'Example Home',score:'20-24',team:'Example Away',book:'BookX',american:150,stake:2,res:'L',clv:0.03}],
+   timeline:Array.from({length:30},(_,i)=>({date:'2026-09-'+String((i%28)+1).padStart(2,'0'),cumPnl:+(Math.sin(i/4)*2+i*0.03).toFixed(2),cumAvgClv:+(0.002+Math.cos(i/6)*0.01).toFixed(4)}))},'EXAMPLE DATA, not real picks.');
 }
 async function recordFetch(manual){
   try{const r=await fetch('record.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);recordRender(await r.json(),'Loaded from this site.');}
