@@ -845,6 +845,31 @@ def main():
             log("weekScores", True, f"{len(week_scores)} games across {scores_mod.WEEK_DAYS} days")
         except Exception as e:  # noqa
             log("weekScores", False, repr(e))
+    # Live in-game tracking: runs on EVERY run, including the 15-minute capture runs, since the
+    # whole point is 24/7 coverage. A full run already fetched the week's scores above (reuse
+    # them); a capture run fetches only today, per sport, to keep the frequent cadence cheap.
+    live_games = [g for g in week_scores if g.get("state") == "in"]
+    if not live_games and scores_mod and capture_only:
+        try:
+            today_games = []
+            for sp in sports:
+                if sp in SPORTS:
+                    today_games += scores_mod.fetch_day(sp, SPORTS[sp], now.date(), http_json)
+            live_games = [g for g in today_games if g.get("state") == "in"]
+            log("liveScores", True, f"{len(live_games)} live games right now (today only)")
+        except Exception as e:  # noqa
+            log("liveScores", False, repr(e))
+    live_store = {}
+    live_path = os.environ.get("LIVE_PATH", "live.json")
+    if live_mod:
+        try:
+            live_store = live_mod.load(live_path)
+            n_live = live_mod.record(live_store, live_games, pms, match_pm, pm_prob_for, now)
+            live_mod.prune(live_store, now)
+            live_mod.save(live_path, live_store)
+            log("live", True, f"{n_live} live snapshots added, {len(live_store)} games tracked in-play")
+        except Exception as e:  # noqa
+            log("live", False, repr(e))
     slate = {"generatedAt": now.isoformat(timespec="seconds"),
              "settings": {"bankroll": BANKROLL, "kellyFrac": KELLY_FRAC, "maxStakePct": MAX_STAKE_PCT, "dayBudget": DAY_BUDGET, "minEdge": MIN_EDGE},
              "sources": LOG, "labels": LABELS, "network": net_rows, "modelBacktest": backtests, "diagnostics": diagnostics(games, rows, pms), "games": rows, "weekScores": week_scores, "day": None if capture_only else simulate_day(rows),
@@ -864,6 +889,13 @@ def main():
                 log("steam", True, f"{n_steam} games with a notable pre-game move")
             except Exception as e:  # noqa
                 log("steam", False, repr(e))
+    live_edges = []
+    if live_mod:
+        try:
+            live_edges = live_mod.analyze(live_store, closing)
+            log("liveEdges", True, f"{len(live_edges)} live games tracked, {sum(1 for x in live_edges if x.get('swingPts') or x.get('move'))} with a notable signal")
+        except Exception as e:  # noqa
+            log("liveEdges", False, repr(e))
     grade_summary = {}
     try:
         grade_summary = grade_step(rows, closing, capture_only, now) or {}
@@ -882,7 +914,7 @@ def main():
         except Exception as e:  # noqa
             log("whales", False, repr(e))
     if notifier:
-        found, sent_n, status = notifier.run(rows, now)
+        found, sent_n, status = notifier.run(rows, now, live=live_edges)
         log("alerts", not status.startswith("failed"), f"{found} found, {sent_n} sent: {status}")
     if capture_only:
         print(f"capture-only: {len(rows)} games snapshotted")
@@ -890,6 +922,7 @@ def main():
             print(("OK  " if l["ok"] else "FAIL"), l["source"], l["detail"])
         return 0
     slate["closing"] = closing
+    slate["liveEdges"] = live_edges
     out = os.environ.get("SLATE_OUT", "slate.json")
     with open(out, "w") as f:
         json.dump(slate, f, indent=1)

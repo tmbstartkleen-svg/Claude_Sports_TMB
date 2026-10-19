@@ -485,6 +485,9 @@ input[type=checkbox]{width:auto;}
   <div class="tab" id="tab-opps">
     <div class="card">
       <p class="desc">Loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty.</p>
+      <h2 style="font-size:1rem">Live, in-game edges</h2>
+      <div class="desc">Games in progress right now, tracked from Kalshi's own live-trading price (free, continuously updating, no live-odds feed needed) — checked every 15 minutes around the clock. "Live steam" is a fast in-game price jump, same logic as pre-game steam. "vs. close" is how far the live price has moved from where the market closed right before kickoff. This is not a play-by-play win model — just what the live market itself is doing.</div>
+      <div id="slLive" class="desc"></div>
       <h2 style="font-size:1rem">Notable trades (whale tracking)</h2>
       <div class="desc">Unusually large real trades on Kalshi and Polymarket for games in this slate (Kalshi: flagged block trades or over $1,500 risked on one trade; Polymarket: over $2,000). Checked for a capped number of markets each run, picked from the games with a flagged bet or cross-arb first. Not insider detection — just size.</div>
       <div id="slWhales" class="desc"></div>
@@ -1442,6 +1445,19 @@ function timingChip(t){
   const title=(t.reasons||[]).join(' ').replace(/"/g,'&quot;');
   return ' <span class="chip '+cls+'" title="'+title+'" style="font-size:.68rem;padding:1px 6px">'+icon+' '+label+(t.hoursToStart!=null?' · '+t.hoursToStart+'h':'')+'</span>';
 }
+function liveRender(items){
+  const el=$('slLive');if(!el)return;
+  if(!items||!items.length){el.innerHTML='No games in progress right now (or Kalshi has no matching live market for them).';return;}
+  const score=x=>x.homeScore!=null?esc(x.away)+' '+x.awayScore+' — '+x.homeScore+' '+esc(x.home):esc(x.away)+' @ '+esc(x.home);
+  el.innerHTML=items.map(x=>{
+    const bits=[];
+    if(x.move&&x.move.kind==='steam'){const toward=x.move.side==='home'?x.home:x.away;bits.push('🔥 <b>Live steam</b>: '+Math.abs(x.move.biggestMovePts).toFixed(1)+' pts toward '+esc(toward)+' just now');}
+    else if(x.move){const toward=x.move.side==='home'?x.home:x.away;bits.push('↗️ Drifting toward '+esc(toward)+' · '+Math.abs(x.move.totalDriftPts).toFixed(1)+' pts since tracking started');}
+    if(x.swingPts!=null){const toward=x.swingSide==='home'?x.home:x.away;bits.push('<b>vs. close</b>: '+Math.abs(x.swingPts).toFixed(1)+'pp toward '+esc(toward)+' since pre-game ('+(x.closeHome*100).toFixed(0)+'% → '+(x.kalshiHome*100).toFixed(0)+'% home)');}
+    return '<div style="margin:8px 0;padding:6px 8px;border-left:3px solid '+(bits.length?'var(--pos,#1a7f37)':'#8884')+'"><b>'+esc((x.sport||'').toUpperCase())+'</b> '+score(x)+' <span class="desc" style="margin:0">'+esc(x.detail||'in progress')+'</span><br>'+
+      'Kalshi live: <b>'+(x.kalshiHome*100).toFixed(0)+'%</b> '+esc(x.home)+(bits.length?'<br>'+bits.join('<br>'):'<br><span class="desc" style="margin:0">No notable move yet — tracking.</span>')+'</div>';
+  }).join('');
+}
 function oppRender(g){
   whaleRender(g);
   steamRender(g);
@@ -1573,6 +1589,7 @@ function slateRender(d,label){
   slateBets=[];slateClosing=d.closing||{};
   $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
   const day=d.day,g=d.games||[];
+  liveRender(d.liveEdges||[]);
   oppRender(g);
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
@@ -1615,7 +1632,8 @@ function slateExample(){
    {sport:'epl',home:'Example FC',away:'Sample United',nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'FanDuel'},away:{american:260,book:'BetMGM'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[],pm:[]}],
    weekScores:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),state:'pre',completed:false,homeScore:null,awayScore:null,detail:'',link:null},
     {sport:'nba',home:'Sample City',away:'Demo United',start:new Date(Date.now()-1800e3).toISOString(),state:'in',completed:false,homeScore:61,awayScore:58,detail:'Q3 6:42',link:null},
-    {sport:'nhl',home:'Test Town',away:'Practice FC',start:new Date(Date.now()-5*3600e3).toISOString(),state:'post',completed:true,homeScore:4,awayScore:2,detail:'Final',link:'https://www.espn.com/'}]},'EXAMPLE DATA, not real games.');
+    {sport:'nhl',home:'Test Town',away:'Practice FC',start:new Date(Date.now()-5*3600e3).toISOString(),state:'post',completed:true,homeScore:4,awayScore:2,detail:'Final',link:'https://www.espn.com/'}],
+   liveEdges:[{sport:'nba',home:'Sample City',away:'Demo United',homeScore:61,awayScore:58,detail:'Q3 6:42',kalshiHome:.74,closeHome:.52,swingPts:22.0,swingSide:'home',move:{kind:'steam',side:'home',biggestMovePts:8.2}}]},'EXAMPLE DATA, not real games.');
 }
 async function slateFetch(manual){
   try{const r=await fetch('slate.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);slateRender(await r.json(),'Loaded from this site.');}

@@ -12,12 +12,14 @@ MIN_CROSS_ROI = float(os.environ.get("ALERT_MIN_CROSS", 1.0))    # percent, afte
 MIN_MIDDLE_EV = float(os.environ.get("ALERT_MIN_MIDDLE", 2.0))   # percent expected value
 MIN_EDGE_EV = float(os.environ.get("ALERT_MIN_EDGE", 6.0))       # percent, needs 3+ books
 MIN_STEAM_PP = float(os.environ.get("ALERT_MIN_STEAM", 5.0))     # fair-probability points in one snapshot gap; "drift" never alerts, only fast "steam"
+MIN_LIVE_STEAM_PP = float(os.environ.get("ALERT_MIN_LIVE_STEAM", 6.0))  # same idea, in-game: Kalshi's live price just jumped
+MIN_LIVE_SWING_PP = float(os.environ.get("ALERT_MIN_LIVE_SWING", 10.0))  # live price vs. the pre-game close, in-game
 RESEND_HOURS = 6
 MAX_LINES = 8
 
 
-def build_alerts(rows):
-    """[(value, id, text)] sorted best first."""
+def build_alerts(rows, live=None):
+    """[(value, id, text)] sorted best first. `live`: live.py's analyze() output (optional)."""
     out = []
     for r in rows:
         game = f"{r['away']} @ {r['home']} ({r['sport'].upper()})"
@@ -42,6 +44,19 @@ def build_alerts(rows):
             toward = r["home"] if st["side"] == "home" else r["away"]
             out.append((abs(st["biggestMovePts"]) + 40, f"steam|{gk}|{st['biggestMoveAt']}",
                         f"STEAM {abs(st['biggestMovePts'])}pts toward {toward}: {game} (from our own line history, not a betting-% feed)"))
+    for x in live or []:
+        game = f"{x['away']} @ {x['home']} ({x['sport'].upper()})"
+        gk = x.get("key") or game
+        score = f" {x.get('awayScore')}-{x.get('homeScore')}" if x.get("homeScore") is not None else ""
+        mv = x.get("move")
+        if mv and mv["kind"] == "steam" and abs(mv["biggestMovePts"]) >= MIN_LIVE_STEAM_PP:
+            toward = x["home"] if mv["side"] == "home" else x["away"]
+            out.append((abs(mv["biggestMovePts"]) + 60, f"livesteam|{gk}|{mv['biggestMoveAt']}",
+                        f"LIVE STEAM {abs(mv['biggestMovePts'])}pts toward {toward}: {game}{score} ({x.get('detail') or 'in progress'}) -- Kalshi price just jumped"))
+        if x.get("swingPts") is not None and abs(x["swingPts"]) >= MIN_LIVE_SWING_PP:
+            toward = x["home"] if x["swingSide"] == "home" else x["away"]
+            out.append((abs(x["swingPts"]) + 55, f"liveswing|{gk}|{x['lastSeen']}",
+                        f"LIVE SWING {abs(x['swingPts'])}pts toward {toward} since pre-game close: {game}{score} ({x.get('detail') or 'in progress'})"))
     out.sort(key=lambda x: -x[0])
     return out
 
@@ -69,7 +84,7 @@ def send(topic, lines, post=None):
     (post or urllib.request.urlopen)(req, timeout=15)
 
 
-def run(rows, now, path=None, topic=None, post=None):
+def run(rows, now, path=None, topic=None, post=None, live=None):
     """Returns (n_alerts_found, n_sent, status string). Never raises: alerts must not break the data build."""
     path = path or os.environ.get("ALERTS_PATH", "alerts.json")
     topic = (topic if topic is not None else os.environ.get("NTFY_TOPIC", "")).strip()
@@ -81,7 +96,7 @@ def run(rows, now, path=None, topic=None, post=None):
                 sent = json.load(f)
         except (OSError, ValueError):
             sent = {}
-        found = build_alerts(rows)
+        found = build_alerts(rows, live)
         if not topic:
             return len(found), 0, "no NTFY_TOPIC set; alerts not sent"
         fresh = filter_new(found, sent, now)

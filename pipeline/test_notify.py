@@ -26,6 +26,25 @@ small_row = {**steamed_row, "steam": {**steamed_row["steam"], "biggestMovePts": 
 assert N.build_alerts([small_row]) == [], "below ALERT_MIN_STEAM: silent"
 print("OK steam alerts")
 
+# ---- live edges: in-game steam and live-vs-close swing both alert, at/under threshold is silent
+live_steam = {"key": "nba|A|H|2026-10-12T23:00", "sport": "nba", "home": "H", "away": "A", "homeScore": 61, "awayScore": 58,
+              "detail": "Q3 6:42", "lastSeen": "2026-10-12T21:00:00",
+              "move": {"kind": "steam", "side": "home", "biggestMovePts": 8.0, "biggestMoveAt": "2026-10-12T21:00:00"}}
+a3 = N.build_alerts([], [live_steam])
+assert len(a3) == 1 and a3[0][1].startswith("livesteam|") and "LIVE STEAM 8.0pts toward H" in a3[0][2] and "61-58" not in a3[0][2] and "58-61" in a3[0][2], a3
+live_drift = {**live_steam, "move": {**live_steam["move"], "kind": "drift"}}
+assert N.build_alerts([], [live_drift]) == [], "drift in-game never alerts either, same as pre-game"
+live_small = {**live_steam, "move": {**live_steam["move"], "biggestMovePts": 2.0}}
+assert N.build_alerts([], [live_small]) == [], "below ALERT_MIN_LIVE_STEAM: silent"
+live_swing = {"key": "nba|B|C|2026-10-12T23:00", "sport": "nba", "home": "C", "away": "B", "homeScore": 90, "awayScore": 70,
+              "detail": "Q4 1:00", "lastSeen": "2026-10-12T22:30:00", "closeHome": 0.40, "swingPts": 22.0, "swingSide": "home"}
+a4 = N.build_alerts([], [live_swing])
+assert len(a4) == 1 and a4[0][1].startswith("liveswing|") and "LIVE SWING 22.0pts toward C" in a4[0][2], a4
+live_tiny_swing = {**live_swing, "swingPts": 3.0}
+assert N.build_alerts([], [live_tiny_swing]) == [], "below ALERT_MIN_LIVE_SWING: silent"
+assert N.build_alerts([row], [live_steam, live_swing])[0][1].startswith("arb"), "pre-game alerts still rank fine alongside live ones"
+print("OK live-game alerts")
+
 sent = {}
 fresh = N.filter_new(a, sent, now)
 assert len(fresh) == 4 and N.filter_new(a, sent, now + timedelta(hours=1)) == [], "no repeat within 6h"
