@@ -1435,6 +1435,13 @@ function matchupCell(r){
     '<div style="margin-top:2px">'+teamDot(hc)+'<b>'+esc(r.home)+'</b> '+esc(mu.home.record)+' '+formChips(mu.home.last.slice(-5))+'</div>'+
     '<details style="margin-top:4px"><summary class="desc" style="margin:0;cursor:pointer;display:inline">head-to-head ('+mu.h2h.length+')</summary>'+h2hRows+'</details></div>';
 }
+function timingChip(t){
+  if(!t||!t.advice||t.advice==='no_strong_signal')return '';
+  const map={buy_now:['🔒','Buy now','pos'],wait_ok:['⏳','Can wait',''],closing_soon:['⏰','Closing soon','warnc']};
+  const [icon,label,cls]=map[t.advice]||['','',''];
+  const title=(t.reasons||[]).join(' ').replace(/"/g,'&quot;');
+  return ' <span class="chip '+cls+'" title="'+title+'" style="font-size:.68rem;padding:1px 6px">'+icon+' '+label+(t.hoursToStart!=null?' · '+t.hoursToStart+'h':'')+'</span>';
+}
 function oppRender(g){
   whaleRender(g);
   steamRender(g);
@@ -1585,7 +1592,7 @@ function slateRender(d,label){
   $('slSources').innerHTML=(d.sources||[]).map(s=>`<span class="chip" style="${s.ok?'':'opacity:.6'}">${s.ok?'✓':'✗'} ${esc(s.source)}<span class="n">${esc(s.ok?s.detail:(s.detail||'').slice(0,40))}</span></span>`).join(' ')||'—';
   $('slBody').innerHTML=g.map(r=>{
     const bets=r.bets.map(b=>{const k=slateBets.push({date:ymd(new Date()),desc:`${b.side} ML @ ${b.book}`,sport:r.sport.toUpperCase(),odds:Number(b.american),stake:b.stake,gk:r.key||null,side:b.side===r.home?'home':b.side===r.away?'away':'draw'})-1;
-      return `${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)}<br><span class="desc" style="margin:0">Per $100: ${c100(b.american)} · EV ${d100(ev100(b.fair,b.american))}</span> <button class="mini" onclick="slateLog(${k})">Log bet</button>`;}).join('<br>')||'—';
+      return `${esc(b.side)} ${fmtOdds(b.american)} @ ${esc(b.book)}: +${b.evPct}% EV, stake ${usd(b.stake)}<br><span class="desc" style="margin:0">Per $100: ${c100(b.american)} · EV ${d100(ev100(b.fair,b.american))}</span> <button class="mini" onclick="slateLog(${k})">Log bet</button>${timingChip(b.timing)}`;}).join('<br>')||'—';
     const pm=r.pm.map(m=>`${esc(m.source)}: ${m.homeEdgePp!=null?'home '+signed(m.homeEdgePp,1)+'pp':''} ${m.awayEdgePp!=null?'away '+signed(m.awayEdgePp,1)+'pp':''}`).join('<br>')||'—';
     const fr=r.fair||{},pc=x=>x==null?'—':(x*100).toFixed(1)+'%';
     const fairTxt=r.threeWay?`${pc(fr.home)} / ${pc(fr.draw)} / ${pc(fr.away)}`:`${pc(fr.home)} / ${pc(fr.away)}`;
@@ -1601,7 +1608,7 @@ function slateRender(d,label){
 function slateExample(){
   slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],
    day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},diagnostics:{warnings:['EXAMPLE: nfl: only one book per game, so edge bets, arbitrage and middles cannot appear'],bySport:{nfl:{games:14,withOdds:14,avgBooks:1,withModel:14,withPmMatch:2,edgeBets:0}}},
-   games:[{sport:'nfl',home:'Example Home',away:'Example Away',nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,fair:.44,stake:1.2}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}],
+   games:[{sport:'nfl',home:'Example Home',away:'Example Away',nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,fair:.44,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved 4.5 pts toward this side.']}}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}],
     teamMeta:{home:{color:'e31837'},away:{color:'002244'}},
     matchup:{h2h:[{date:'2026-09-14',home:'Example Home',away:'Example Away',homeScore:24,awayScore:20},{date:'2025-11-02',home:'Example Away',away:'Example Home',homeScore:17,awayScore:27}],
       home:{name:'Example Home',record:'4-2',last:['W','W','L','W','T','W']},away:{name:'Example Away',record:'3-3',last:['L','W','L','L','W','W']}}},

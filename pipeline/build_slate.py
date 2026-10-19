@@ -76,6 +76,18 @@ try:
     import kalshi_auth
 except ImportError:  # pragma: no cover
     kalshi_auth = None
+try:
+    import timing as timing_mod
+except ImportError:  # pragma: no cover
+    timing_mod = None
+try:
+    import parlays as parlay_mod
+except ImportError:  # pragma: no cover
+    parlay_mod = None
+try:
+    import live as live_mod
+except ImportError:  # pragma: no cover
+    live_mod = None
 
 KALSHI_MARKETS_PATH = "/trade-api/v2/markets"
 
@@ -760,6 +772,7 @@ def grade_step(rows, closing, capture_only, now):
     if {k: v for k, v in prev.items() if k != "generatedAt"} != summary:   # only rewrite when something changed: no commit and deploy every 30 minutes
         grader.save(rpath, {"generatedAt": now.isoformat(timespec="seconds"), **summary})
     log("grading", True, f"{added} picks added, {n_set} settled, {n_clv} CLV, {len(picks)} total")
+    return summary
 
 
 def main():
@@ -851,10 +864,17 @@ def main():
                 log("steam", True, f"{n_steam} games with a notable pre-game move")
             except Exception as e:  # noqa
                 log("steam", False, repr(e))
+    grade_summary = {}
     try:
-        grade_step(rows, closing, capture_only, now)
+        grade_summary = grade_step(rows, closing, capture_only, now) or {}
     except Exception as e:  # noqa
         log("grading", False, repr(e))
+    if timing_mod:
+        try:
+            n_timing = timing_mod.attach(rows, grade_summary, now)
+            log("timing", True, f"{n_timing} bets with buy-now/wait guidance")
+        except Exception as e:  # noqa
+            log("timing", False, repr(e))
     if whale_mod and not capture_only and os.environ.get("NO_WHALES") != "1":
         try:
             n_q = whale_mod.attach_whales(rows, http_json)
