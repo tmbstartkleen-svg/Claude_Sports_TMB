@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+# local test-run artifact when scripts are run with cwd=pipeline/ -- the real one lives at repo root, written by CI
+pipeline/live.json
