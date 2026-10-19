@@ -65,11 +65,15 @@ closing = {p["key"]: {"fairHome": 0.55, "fairAway": 0.45}}
 assert g.attach_clv(picks, closing) == 0, "close with no book count or minutes info is refused"
 closing = {p["key"]: {"fairHome": 0.55, "fairAway": 0.45, "nBooks": 3, "minutesBeforeStart": 200}}
 assert g.attach_clv(picks, closing) == 0, "a close captured 200 minutes early is stale, so no CLV"
+# a single-book close IS accepted: devig_shin already produces a real fair price from one book's own
+# two-sided quote, and most games in this free pipeline only ever have one book, so refusing it here
+# would silently zero out CLV for nearly everything
 closing = {p["key"]: {"fairHome": 0.55, "fairAway": 0.45, "nBooks": 1, "minutesBeforeStart": 20}}
-assert g.attach_clv(picks, closing) == 0, "a single-book close is refused"
-closing = {p["key"]: {"fairHome": 0.55, "fairAway": 0.45, "nBooks": 3, "minutesBeforeStart": 20}}
-assert g.attach_clv(picks, closing) == 1 and abs(p["clv"] - 0.125) < 1e-9
+assert g.attach_clv(picks, closing) == 1 and abs(p["clv"] - 0.125) < 1e-9 and p["clvNBooks"] == 1
 assert g.attach_clv(picks, closing) == 0, "CLV set once"
+del p["clv"], p["clvNBooks"]
+closing = {p["key"]: {"fairHome": 0.55, "fairAway": 0.45, "nBooks": 3, "minutesBeforeStart": 20}}
+assert g.attach_clv(picks, closing) == 1 and abs(p["clv"] - 0.125) < 1e-9 and p["clvNBooks"] == 3
 print("OK clv")
 
 # summary math on a synthetic book of picks with a known true edge

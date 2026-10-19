@@ -539,7 +539,7 @@ input[type=checkbox]{width:auto;}
   <div class="tab" id="tab-record">
     <div class="card">
       <h2>Track Record</h2>
-      <p class="desc">Every edge bet the pipeline flags is saved the first time it appears (at the price then), settled from final scores, and measured. This is the test of whether the model beats the market. It reads <code>record.json</code> on your site; here, load the file by hand.</p>
+      <p class="desc">Every edge bet the pipeline flags is saved the first time it appears (at the price then), settled from final scores, and measured. This is the test of whether the model beats the market. It reads <code>record.json</code> on your site; here, load the file by hand. CLV uses the devigged closing price even when only one book covered a game, so it reflects that book's own line movement, not always a cross-market consensus.</p>
       <div class="row">
         <div class="field" style="max-width:320px"><label>Load record.json</label><input id="rcFile" type="file" accept=".json,application/json"></div>
         <button class="act btn-ghost" onclick="recordFetch(true)">Reload from site</button>

@@ -126,7 +126,14 @@ def settle(picks, finals_by_sport, now):
 
 
 def attach_clv(picks, closing):
-    """CLV = price you'd have got x closing fair probability - 1. Only set once, from the last pre-game snapshot."""
+    """CLV = price you'd have got x closing fair probability - 1. Only set once, from the last pre-game snapshot.
+
+    The closing "fair" price is already devigged (build_slate.py's devig_shin), which works fine on a single
+    book's own two-sided quote -- it just isn't a cross-market consensus. In practice this pipeline's free
+    data sources cover most games with exactly one book, so requiring nBooks>=2 here (as an earlier version
+    did) silently refused CLV for nearly every pick -- correct in principle, useless in practice. We now accept
+    any closing line that actually exists (nBooks>=1) and record nBooks on the pick so single- vs multi-book
+    CLV can be told apart later if that distinction turns out to matter."""
     n = 0
     for p in picks.values():
         if "clv" in p or not p.get("key"):
@@ -134,13 +141,14 @@ def attach_clv(picks, closing):
         c = closing.get(p["key"])
         if not c:
             continue
-        if c.get("minutesBeforeStart", 0) > MAX_CLOSE_AGE_MIN or c.get("nBooks", 0) < 2:
-            continue  # a stale or single-book "close" would make CLV look better or worse than it is
+        if c.get("minutesBeforeStart", 0) > MAX_CLOSE_AGE_MIN or c.get("nBooks", 0) < 1:
+            continue  # stale, or no closing line was ever captured
         fair = {"home": c.get("fairHome"), "away": c.get("fairAway"), "draw": c.get("fairDraw")}.get(p["side"])
         d = am_to_dec(p["american"])
         if fair and d:
             p["clv"] = round(d * fair - 1, 4)
             p["closeFair"] = round(fair, 4)
+            p["clvNBooks"] = c.get("nBooks")
             n += 1
     return n
 
