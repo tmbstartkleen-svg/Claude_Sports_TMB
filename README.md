@@ -15,7 +15,7 @@ or a public, keyless endpoint.
 
 ## Setup
 1. Copy `pipeline/`, `.github/workflows/slate.yml` into the repo root (Claude_Sports).
-2. Actions tab -> "Build slate" -> Run workflow. A `slate.json` is committed; Netlify redeploys.
+2. Actions tab -> "Build slate" -> Run workflow. A `slate.json` is committed; GitHub Pages (or Netlify, if used instead) picks it up automatically.
 3. Nothing to add as a secret for odds: no key is read anywhere in the pipeline. `NTFY_TOPIC` (optional, see Alerts below) is the only secret this workflow uses.
 
 Run locally: `python pipeline/build_slate.py`
@@ -27,7 +27,7 @@ Read-only: nothing here places bets.
 - **Injuries (rough):** ESPN's injury list, position-based and capped (NFL QB out = about -100 Elo; others small). It cannot tell NBA stars from bench players.
 - **Closing lines:** capture runs every 30 minutes on game days (free sources only) save each game's market price to `history.json`.
   The last price seen before the start is the "closing line", so it can be up to ~30 min early. Edge Suite's Today's Slate tab can copy those into the CLV tab for bets you logged from the slate.
-- **Netlify:** `netlify.toml` skips deploys when only `history.json` changed.
+- **Hosting:** GitHub Pages serves the repo root directly (no build step, so every commit is live within a minute or two) — see SETUP.md. `netlify.toml` is also kept for anyone who'd rather use Netlify, and skips deploys when only `history.json` changed.
 - **All sports:** `SPORTS=all` covers NFL, NBA, MLB, NHL, NCAAF/NCAAB, WNBA and 70+ soccer leagues (3-way markets with draw) via ESPN (free) — all of it, every run, since there's no paid-credit budget to ration.
 - **Scanner:** `markets.py` finds 2- and 3-way arbs and cross-book vs Kalshi/Polymarket arbs (fees and 1c slippage included). Spread/total middles need per-book spread and total lines, which only a paid odds feed carries; without one, `find_middles` degrades to "none found" rather than erroring.
 - **Promo Converter tab:** free bet, deposit match, risk-free and profit-boost hedge math.
