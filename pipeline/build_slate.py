@@ -288,13 +288,55 @@ def espn_direct(sport, today=None, getter=None):
     return out
 
 
+def _skills_events(sport, events):
+    """sports_skills normalizes ESPN's raw scoreboard shape (see each sport module's own
+    _normalize_event, which all share _espn_base.normalize_odds) into a DIFFERENT, flatter
+    shape than our own _espn_events() parses -- events here already have competitors[].team.name
+    /home_away and a single odds dict, not competitions[0].competitors/odds. Passing this through
+    _espn_events() used to blow up with KeyError('competitions'), silently killing this entire
+    fallback path for every sport it was ever needed for. This parses the normalized shape
+    directly instead. Like raw ESPN, normalize_odds explicitly returns only one provider
+    (ESPN's scoreboard itself never carries more than one book's price) -- this doesn't add
+    book coverage, it just makes the existing fallback actually work when direct ESPN fails."""
+    out = []
+    for ev in events or []:
+        names, meta = {}, {}
+        for c in ev.get("competitors", []) or []:
+            team = c.get("team") or {}
+            ha = c.get("home_away")
+            nm = team.get("name")
+            if ha in ("home", "away") and nm:
+                names[ha] = nm
+                if team.get("logo"):
+                    meta[ha] = {"logo": team.get("logo"), "color": None}
+        odds = ev.get("odds") or {}
+        ml = odds.get("moneyline") or {}
+        h, a = _am(ml.get("home")), _am(ml.get("away"))
+        books = {}
+        if h is not None and a is not None:
+            px = {"home": h, "away": a}
+            d = _am(ml.get("draw")) if ml.get("draw") not in (None, "") else None
+            if d is not None:
+                px["draw"] = d
+            books[odds.get("provider") or "ESPN"] = px
+        if books and "home" in names and "away" in names:
+            g = {"sport": sport, "home": names["home"], "away": names["away"], "start": ev.get("start_time"), "books": books}
+            if meta:
+                g["teamMeta"] = meta
+            out.append(g)
+    return out
+
+
 def espn_via_skills(sport):
     import sports_skills as ss
     mod = getattr(ss, {"ncaaf": "cfb", "ncaab": "cbb"}.get(sport, sport))
     r = mod.get_scoreboard()
     if not r.get("status"):
         raise RuntimeError(r.get("message"))
-    return _espn_events(sport, r["data"])
+    games = _skills_events(sport, (r.get("data") or {}).get("events"))
+    if not games:
+        raise RuntimeError(f"sports-skills returned no usable odds for {sport}")
+    return games
 
 
 # ---------- prediction markets -> [{source,title,yes,no,url}] (prices as 0..1 probabilities) ----------
