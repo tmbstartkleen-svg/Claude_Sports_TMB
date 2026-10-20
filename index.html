@@ -1473,19 +1473,26 @@ function timingChip(t){
   const title=(t.reasons||[]).join(' ').replace(/"/g,'&quot;');
   return ' <span class="chip '+cls+'" title="'+title+'" style="font-size:.68rem;padding:1px 6px">'+icon+' '+label+(t.hoursToStart!=null?' · '+t.hoursToStart+'h':'')+'</span>';
 }
+function tierChip(tier){
+  if(!tier)return'';
+  const map={high:['Market-backed','pos'],medium:['Single book','warnc'],low:['Our model','warnc']};
+  const [label,cls]=map[tier]||[tier,''];
+  return ' <span class="chip '+cls+'" title="How this price is backed: high = 2+ books agree, medium = one book\'s own de-vigged price, low = includes our own unproven Elo model. See Track Record." style="font-size:.68rem;padding:1px 6px">'+esc(label)+'</span>';
+}
 function suggestionsRender(s){
   const sEl=$('slSuggSingles'),pEl=$('slSuggParlays');if(!sEl||!pEl)return;
   const singles=(s&&s.singles)||[],parlays=(s&&s.parlays)||[];
   const when=iso=>{if(!iso)return'';const t=new Date(iso);return isNaN(t)?'':t.toLocaleString(undefined,{weekday:'short',hour:'numeric',minute:'2-digit'});};
   sEl.innerHTML=singles.length?singles.map(x=>`<div style="margin:6px 0;padding:6px 8px;border-left:3px solid var(--pos,#1a7f37)">
-    <b>${esc(x.side)}</b> ${fmtOdds(x.american)} @ ${esc(x.book)} <span class="chip pos" style="font-size:.68rem;padding:1px 6px">+${x.evPct}% EV</span>${timingChip(x.timing)}<br>
+    <b>${esc(x.side)}</b> ${fmtOdds(x.american)} @ ${esc(x.book)} <span class="chip pos" style="font-size:.68rem;padding:1px 6px">+${x.evPct}% EV</span>${tierChip(x.tier)}${timingChip(x.timing)}<br>
     <span class="desc" style="margin:0">${esc(SN(x.sport))} · ${esc(x.away)} @ ${esc(x.home)}${when(x.start)?' · '+esc(when(x.start)):''} · stake ${usd(x.stake)}</span></div>`).join('')
     :'No flagged bets right now — check back as lines move, or open Today\'s Slate first if this is empty.';
   pEl.innerHTML=parlays.length?parlays.map(p=>{
     const legs=(p.legs||[]).map(l=>esc(l.side)+' <span class="desc" style="margin:0">('+esc(SN(l.sport))+' '+esc(l.away)+' @ '+esc(l.home)+')</span>').join('<br>+ ');
     return `<div style="margin:6px 0;padding:6px 8px;border-left:3px solid var(--pos,#1a7f37)">
-    <b>${p.nLegs}-leg parlay</b><br>${legs}<br>
-    <span class="desc" style="margin:0">Combined ${fmtOdds(p.combinedAmerican)} (${(p.combinedProb*100).toFixed(1)}% to hit) · <span class="pos">+${p.evPct}% EV</span> · stake ${usd(p.stake)}</span></div>`;
+    <b>${p.nLegs}-leg parlay</b>${tierChip(p.tier)}<br>${legs}<br>
+    <span class="desc" style="margin:0">Combined ${fmtOdds(p.combinedAmerican)} (${(p.combinedProb*100).toFixed(1)}% to hit) · <span class="pos">+${p.evPct}% EV</span> · stake ${usd(p.stake)}</span>
+    ${p.correlationWarning?'<div class="warnc" style="margin-top:4px">⚠ '+esc(p.correlationWarning)+'</div>':''}</div>`;
   }).join(''):'No positive-EV parlay combo right now — needs 2+ games with a flagged bet.';
 }
 function heroRender(d){
@@ -1699,8 +1706,8 @@ function slateExample(){
     {sport:'nba',home:'Sample City',away:'Demo United',start:new Date(Date.now()-1800e3).toISOString(),state:'in',completed:false,homeScore:61,awayScore:58,detail:'Q3 6:42',link:null},
     {sport:'nhl',home:'Test Town',away:'Practice FC',start:new Date(Date.now()-5*3600e3).toISOString(),state:'post',completed:true,homeScore:4,awayScore:2,detail:'Final',link:'https://www.espn.com/'}],
    liveEdges:[{sport:'nba',home:'Sample City',away:'Demo United',homeScore:61,awayScore:58,detail:'Q3 6:42',kalshiHome:.74,closeHome:.52,swingPts:22.0,swingSide:'home',move:{kind:'steam',side:'home',biggestMovePts:8.2}}],
-   suggestions:{singles:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),side:'Example Away',book:'BetMGM',american:150,fair:.44,evPct:5,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved toward this side.']}}],
-     parlays:[{nLegs:2,combinedAmerican:450,combinedProb:.19,evPct:14.2,stake:.6,legs:[{sport:'nfl',home:'Example Home',away:'Example Away',side:'Example Away'},{sport:'epl',home:'Example FC',away:'Sample United',side:'Example FC'}]}]}},'EXAMPLE DATA, not real games.');
+   suggestions:{singles:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),side:'Example Away',book:'BetMGM',american:150,fair:.44,evPct:5,stake:1.2,tier:'high',timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved toward this side.']}}],
+     parlays:[{nLegs:2,combinedAmerican:450,combinedProb:.19,evPct:14.2,stake:.6,tier:'low',correlationWarning:'EXAMPLE: 2 of 2 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once.',legs:[{sport:'nfl',home:'Example Home',away:'Example Away',side:'Example Away'},{sport:'epl',home:'Example FC',away:'Sample United',side:'Example FC'}]}]}},'EXAMPLE DATA, not real games.');
 }
 async function slateFetch(manual){
   try{const r=await fetch('slate.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);slateRender(await r.json(),'Loaded from this site.');}

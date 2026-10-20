@@ -9,10 +9,12 @@ def row(sport, home, away, bets, start="2026-10-20T00:00:00Z"):
     return {"sport": sport, "home": home, "away": away, "start": start, "bets": bets}
 
 
-def bet(side, american, fair, ev_pct, timing=None):
+def bet(side, american, fair, ev_pct, timing=None, basis=None):
     b = {"side": side, "book": "X", "american": american, "fair": fair, "evPct": ev_pct, "stakePct": 1.0, "stake": 1.0}
     if timing:
         b["timing"] = timing
+    if basis:
+        b["basis"] = basis
     return b
 
 
@@ -76,6 +78,43 @@ neg_rows = [
 neg = P.build_parlays(neg_rows, 100, 0.35, 3)
 assert all(p["evPct"] >= 0 for p in neg), "parlays below MIN_PARLAY_EV must be filtered out"
 print("OK build_parlays: never suggests a negative-EV parlay")
+
+# ---- confidence_tier: plain mapping from what backs the price
+assert P.confidence_tier("consensus", 3) == "high"
+assert P.confidence_tier("consensus", 2) == "high"
+assert P.confidence_tier("consensus", 1) == "medium"
+assert P.confidence_tier(None, 1) == "medium", "missing basis defaults to consensus"
+assert P.confidence_tier("consensus", None) == "medium", "missing nBooks treated as not-enough"
+assert P.confidence_tier("model-blend", 5) == "low", "model-blend is always low, even with lots of book coverage on the row"
+print("OK confidence_tier")
+
+# ---- rank_singles / build_parlays: tier flows through onto each leg
+rows3 = [
+    row("nfl", "H1", "A1", [bet("A1", 150, 0.45, 5.0, basis="model-blend")]),
+    row("nba", "H2", "A2", [bet("H2", -130, 0.60, 4.0)]),
+]
+rows3[0]["nBooks"] = 1
+rows3[1]["nBooks"] = 3
+singles3 = P.rank_singles(rows3)
+by_side = {s["side"]: s for s in singles3}
+assert by_side["A1"]["tier"] == "low" and by_side["A1"]["basis"] == "model-blend"
+assert by_side["H2"]["tier"] == "high" and by_side["H2"]["basis"] == "consensus" and by_side["H2"]["nBooks"] == 3
+print("OK tier flows onto singles")
+
+# ---- build_parlays: a parlay's tier is its weakest leg's tier, and 2+ model-blend legs trigger a correlation warning
+rows4 = [
+    row("nfl", "H1", "A1", [bet("A1", 150, 0.45, 5.0, basis="model-blend")]),
+    row("nba", "H2", "A2", [bet("A2", 150, 0.45, 4.0, basis="model-blend")]),
+    row("mlb", "H3", "A3", [bet("A3", 150, 0.45, 3.0)]),  # consensus, but nBooks unset -> medium
+]
+for r in rows4:
+    r.setdefault("nBooks", 1)
+p4 = P.build_parlays(rows4, 100, 0.35, 3, sizes=(2,), pool=10, top_n=10)
+two_model = next(p for p in p4 if sum(1 for l in p["legs"] if l["basis"] == "model-blend") == 2)
+assert two_model["tier"] == "low" and "correlationWarning" in two_model and "2 of 2" in two_model["correlationWarning"]
+one_model = next(p for p in p4 if sum(1 for l in p["legs"] if l["basis"] == "model-blend") == 1)
+assert one_model["tier"] == "low" and "correlationWarning" not in one_model, "only one model-blend leg: no correlation warning, but still only as strong as its weakest leg"
+print("OK build_parlays: weakest-leg tier + correlation warning at 2+ model-blend legs")
 
 # ---- build(): wraps both together
 out = P.build(rows2, 100, 0.35, 3)
