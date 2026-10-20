@@ -44,6 +44,7 @@ body{margin:0;background:
 nav{display:flex;align-items:center;gap:2px;overflow-x:auto;padding:6px 16px 0;background:var(--bg);border-bottom:1px solid var(--border);scrollbar-width:none;}
 nav::-webkit-scrollbar{display:none;}
 nav button{background:transparent;border:none;color:var(--sub);font-size:.8rem;font-weight:600;padding:9px 13px;border-radius:7px 7px 0 0;cursor:pointer;white-space:nowrap;position:relative;transition:color .15s;}
+nav button.has-live-dot{padding-right:18px;}
 nav button:hover{color:var(--text);}
 nav button.active{color:var(--text);}
 nav button.active::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;background:var(--accent);border-radius:2px 2px 0 0;}
@@ -91,6 +92,18 @@ tbody tr:hover td{background:var(--panel2);}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:9px;padding:10px 16px;font-size:.82rem;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100vw - 32px);z-index:9;}
 .toast.show{opacity:1;transform:translate(-50%,0);}
 .stat-grid:empty{display:none;} #fairTable,#pkTable{display:none;}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--loss,#e8614f);margin-right:6px;box-shadow:0 0 0 0 rgba(232,97,79,.6);animation:live-pulse 1.6s infinite;}
+@keyframes live-pulse{0%{box-shadow:0 0 0 0 rgba(232,97,79,.55);}70%{box-shadow:0 0 0 7px rgba(232,97,79,0);}100%{box-shadow:0 0 0 0 rgba(232,97,79,0);}}
+@media (prefers-reduced-motion: reduce){.live-dot{animation:none;}}
+.nav-dot{display:none;position:absolute;top:5px;right:2px;width:7px;height:7px;border-radius:50%;background:var(--loss,#e8614f);box-shadow:0 0 0 0 rgba(232,97,79,.6);animation:live-pulse 1.6s infinite;}
+.nav-dot.on{display:block;}
+@media (prefers-reduced-motion: reduce){.nav-dot{animation:none;}}
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin:12px 0;}
+.hero-card{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+.hero-card h3{margin:0 0 8px;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--sub);font-weight:700;}
+.live-game{padding:7px 0;border-top:1px solid var(--border);}
+.live-game:first-child{border-top:none;padding-top:0;}
+.top-edge{border-left:3px solid var(--gain,#39c97e);padding:4px 0 4px 10px;}
 .pk-wide{}
 .scroll-box{max-height:340px;overflow:auto;border:1px solid var(--border);border-radius:9px;margin-top:10px;}
 .scroll-box table{margin-top:0;}
@@ -125,8 +138,8 @@ input[type=checkbox]{width:auto;}
 
   <div class="nav-wrap">
   <nav id="tabNav">
-    <button class="active" data-tab="slate">Today's Slate</button>
-    <button data-tab="scores">This Week</button>
+    <button class="active" data-tab="slate">Today's Slate<span class="nav-dot" id="navDotSlate" title="Live games right now"></span></button>
+    <button data-tab="scores">This Week<span class="nav-dot" id="navDotScores" title="Live games right now"></span></button>
     <button data-tab="opps">Opportunities</button>
     <button data-tab="week">Weekly Parlays</button>
     <span class="navdiv"></span>
@@ -453,6 +466,7 @@ input[type=checkbox]{width:auto;}
         <button class="act btn-ghost" onclick="slatePullClv()">Pull closing lines into CLV</button>
       </div>
       <div class="callout" id="slNote" style="margin:12px 0 0;"></div>
+      <div class="hero-grid" id="slHero"></div>
       <div class="stat-grid" id="slStats"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Data sources used</h2>
       <div id="slSources" class="desc"></div>
@@ -1474,6 +1488,22 @@ function suggestionsRender(s){
     <span class="desc" style="margin:0">Combined ${fmtOdds(p.combinedAmerican)} (${(p.combinedProb*100).toFixed(1)}% to hit) · <span class="pos">+${p.evPct}% EV</span> · stake ${usd(p.stake)}</span></div>`;
   }).join(''):'No positive-EV parlay combo right now — needs 2+ games with a flagged bet.';
 }
+function heroRender(d){
+  const el=$('slHero');if(!el)return;
+  const live=d.liveEdges||[],singles=(d.suggestions&&d.suggestions.singles)||[],top=singles[0];
+  const liveCard=`<div class="hero-card"><h3>${live.length?'<span class="live-dot"></span>':''}Live right now (${live.length})</h3>`+
+    (live.length?live.slice(0,4).map(x=>{
+      const score=x.homeScore!=null?esc(x.away)+' '+x.awayScore+' — '+x.homeScore+' '+esc(x.home):esc(x.away)+' @ '+esc(x.home);
+      const moved=x.move&&x.move.kind==='steam';
+      return `<div class="live-game"><b>${esc((x.sport||'').toUpperCase())}</b> ${score}<br><span class="desc" style="margin:0">${esc(x.detail||'in progress')}${moved?' · 🔥 live steam':''}</span></div>`;
+    }).join('')+(live.length>4?'<div class="desc" style="margin-top:4px">+'+(live.length-4)+' more in Opportunities →</div>':'')
+    :'<div class="desc" style="margin:0">No games in progress right now.</div>');
+  const edgeCard=`<div class="hero-card"><h3>Top edge right now</h3>`+
+    (top?`<div class="top-edge"><b>${esc(top.side)}</b> ${fmtOdds(top.american)} @ ${esc(top.book)} <span class="chip pos" style="font-size:.68rem;padding:1px 6px">+${top.evPct}% EV</span>${timingChip(top.timing)}<br>
+      <span class="desc" style="margin:0">${esc(SN(top.sport))} · ${esc(top.away)} @ ${esc(top.home)}</span></div>`
+    :'<div class="desc" style="margin:0">No flagged bets right now. Check back as lines move.</div>');
+  el.innerHTML=liveCard+edgeCard;
+}
 function liveRender(items){
   const el=$('slLive');if(!el)return;
   if(!items||!items.length){el.innerHTML='No games in progress right now (or Kalshi has no matching live market for them).';return;}
@@ -1610,6 +1640,9 @@ function btRender(){
     }).join(' ');
   }).catch(()=>{el.textContent='No validation report published yet.';});
 }
+function navLiveDot(on){
+  ['navDotSlate','navDotScores'].forEach(id=>{const el=$(id);if(el)el.classList.toggle('on',!!on);});
+}
 function slateRender(d,label){
   btRender();
   SPORT_LABELS=d.labels||{};
@@ -1618,7 +1651,10 @@ function slateRender(d,label){
   slateBets=[];slateClosing=d.closing||{};
   $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
   const day=d.day,g=d.games||[];
+  heroRender(d);
+  navLiveDot((d.liveEdges||[]).length>0);
   liveRender(d.liveEdges||[]);
+  suggestionsRender(d.suggestions||{});
   oppRender(g);
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
@@ -1662,7 +1698,9 @@ function slateExample(){
    weekScores:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),state:'pre',completed:false,homeScore:null,awayScore:null,detail:'',link:null},
     {sport:'nba',home:'Sample City',away:'Demo United',start:new Date(Date.now()-1800e3).toISOString(),state:'in',completed:false,homeScore:61,awayScore:58,detail:'Q3 6:42',link:null},
     {sport:'nhl',home:'Test Town',away:'Practice FC',start:new Date(Date.now()-5*3600e3).toISOString(),state:'post',completed:true,homeScore:4,awayScore:2,detail:'Final',link:'https://www.espn.com/'}],
-   liveEdges:[{sport:'nba',home:'Sample City',away:'Demo United',homeScore:61,awayScore:58,detail:'Q3 6:42',kalshiHome:.74,closeHome:.52,swingPts:22.0,swingSide:'home',move:{kind:'steam',side:'home',biggestMovePts:8.2}}]},'EXAMPLE DATA, not real games.');
+   liveEdges:[{sport:'nba',home:'Sample City',away:'Demo United',homeScore:61,awayScore:58,detail:'Q3 6:42',kalshiHome:.74,closeHome:.52,swingPts:22.0,swingSide:'home',move:{kind:'steam',side:'home',biggestMovePts:8.2}}],
+   suggestions:{singles:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),side:'Example Away',book:'BetMGM',american:150,fair:.44,evPct:5,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved toward this side.']}}],
+     parlays:[{nLegs:2,combinedAmerican:450,combinedProb:.19,evPct:14.2,stake:.6,legs:[{sport:'nfl',home:'Example Home',away:'Example Away',side:'Example Away'},{sport:'epl',home:'Example FC',away:'Sample United',side:'Example FC'}]}]}},'EXAMPLE DATA, not real games.');
 }
 async function slateFetch(manual){
   try{const r=await fetch('slate.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);slateRender(await r.json(),'Loaded from this site.');}
