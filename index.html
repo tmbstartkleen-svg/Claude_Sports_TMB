@@ -1686,7 +1686,7 @@ function slateRender(d,label){
     const fr=r.fair||{},pc=x=>x==null?'—':(x*100).toFixed(1)+'%';
     const fairTxt=r.threeWay?`${pc(fr.home)} / ${pc(fr.draw)} / ${pc(fr.away)}`:`${pc(fr.home)} / ${pc(fr.away)}`;
     const bp=k=>r.best&&r.best[k]?`${fmtOdds(r.best[k].american)} ${esc(r.best[k].book)}`:'—';
-    const bestTxt=`H ${bp('home')}<br>`+(r.threeWay?`D ${bp('draw')}<br>`:'')+`A ${bp('away')}`;
+    const bestTxt=`${esc(r.home)} ${bp('home')}<br>`+(r.threeWay?`Draw ${bp('draw')}<br>`:'')+`${esc(r.away)} ${bp('away')}`;
     const lock=[];
     (r.crossArbs||[]).forEach(a=>lock.push(`<b class="pos">Cross arb +${a.roiPct}%</b>: ${esc(a.bookSide)} ${fmtOdds(a.american)} @ ${esc(a.book)} vs ${esc(a.pmSource)} ${esc(a.pmSide)} at ${(a.pmPrice*100).toFixed(0)}¢ (est., fees included)`));
     (r.middles||[]).forEach(m=>lock.push(`<b>${m.kind==='total'?'Total':'Spread'} middle</b> ${m.gap} pt: ${esc(m.legA)} + ${esc(m.legB)}. Hit ${(m.pMiddle*100).toFixed(1)}%, EV <span class="${m.evPct>=0?'pos':'neg'}">${signed(m.evPct,2,'%')}</span>, outer ${signed(m.outerPct,1,'%')}, stake split ${(m.splitA*100).toFixed(0)}/${(m.splitB*100).toFixed(0)}`));
