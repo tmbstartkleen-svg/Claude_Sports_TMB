@@ -1716,6 +1716,7 @@ async function slateFetch(manual){
 $('slFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const fr=new FileReader();
   fr.onload=()=>{try{slateRender(JSON.parse(fr.result),'Loaded from '+f.name+'.');}catch(x){notify('That file is not a valid slate.json.');}};fr.readAsText(f);});
 slateFetch(false);
+promoRun();
 
 // ===================== Track Record =====================
 let rcTlChart=null;
