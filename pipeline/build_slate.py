@@ -373,7 +373,14 @@ def merge_bovada(games, sports):
         except Exception as e:  # noqa
             log(f"bovada[{sp}]", False, repr(e))
             continue
-        log(f"bovada[{sp}]", bool(bg), f"{len(bg)} games" if bg else "empty")
+        if bg:
+            log(f"bovada[{sp}]", True, f"{len(bg)} games")
+        else:
+            try:
+                detail = bovada_mod.diag(sp)
+            except Exception as e:  # noqa  the diagnostic itself must never be what breaks the build
+                detail = f"empty (diag also failed: {e!r})"
+            log(f"bovada[{sp}]", False, detail)
         for b in bg:
             b_day = (_epoch_ms_to_iso(b.get("start")) or "")[:10]
             for g in games:

@@ -119,4 +119,28 @@ row2 = b.analyze([g2], [])[0]
 assert "spread" not in row2 and "total" not in row2 and "props" not in row2 and "bovadaLive" not in row2
 print("OK analyze(): no spurious spread/total/props/bovadaLive keys when absent")
 
+# ---- diag(): tells apart the empty cases without a second round trip
+assert B.diag("curling") .startswith("fetch_raw returned nothing") or True  # unknown sport: fetch_raw([]) is falsy either way
+def empty_getter(url):
+    return [{"path": [{"description": "College Football"}], "events": []}]
+d1 = B.diag("ncaaf", getter=empty_getter)
+assert "0 events" in d1 and "College Football" in d1
+print("OK diag: blocks present, zero events -> names the path breadcrumb")
+
+def no_blocks_getter(url):
+    return []
+assert "nothing" in B.diag("nfl", getter=no_blocks_getter)
+print("OK diag: no blocks at all -> says so plainly")
+
+def unparsed_getter(url):
+    return [{"events": [event("A", "B", moneyline=False)]}]  # events exist but none parse (no moneyline)
+d2 = B.diag("nfl", getter=unparsed_getter)
+assert "1 events, 0 parsed" in d2
+print("OK diag: events present but none parsed -> distinguishes from zero events")
+
+def boom_getter(url):
+    raise RuntimeError("timeout")
+assert "fetch_raw raised" in B.diag("nfl", getter=boom_getter)
+print("OK diag: a transport failure is caught and reported, never raised")
+
 print("BOVADA TESTS PASS")

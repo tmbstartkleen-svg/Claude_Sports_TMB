@@ -165,3 +165,23 @@ def fetch(sport, getter=None):
                 g["sport"] = sport
                 games.append(g)
     return games
+
+
+def diag(sport, getter=None):
+    """One-line diagnostic for when fetch() comes back empty: tells apart 'no response', 'response
+    but no events' (wrong path segment, or genuinely no games) and 'events present but none parsed'
+    (shape guess is wrong -- outcome descriptions aren't matching home/away, or no moneyline market)
+    without needing a second live round trip to debug it."""
+    try:
+        raw = fetch_raw(sport, getter)
+    except Exception as e:  # noqa
+        return f"fetch_raw raised: {e!r}"
+    if not raw:
+        return "fetch_raw returned nothing (empty/non-list response -- check the path segment or query params)"
+    n_blocks = len(raw)
+    all_events = [ev for block in raw for ev in (block or {}).get("events") or []]
+    if not all_events:
+        paths = [p.get("description") for block in raw for p in (block or {}).get("path") or []]
+        return f"{n_blocks} block(s), 0 events (path breadcrumbs: {paths[:5]}) -- likely no games right now, or wrong path segment"
+    n_parsed = sum(1 for ev in all_events if parse_event(ev))
+    return f"{n_blocks} block(s), {len(all_events)} events, {n_parsed} parsed as usable games"
