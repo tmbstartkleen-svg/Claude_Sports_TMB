@@ -141,6 +141,7 @@ input[type=checkbox]{width:auto;}
     <button class="active" data-tab="slate">Today's Slate<span class="nav-dot" id="navDotSlate" title="Live games right now"></span></button>
     <button data-tab="scores">This Week<span class="nav-dot" id="navDotScores" title="Live games right now"></span></button>
     <button data-tab="opps">Opportunities</button>
+    <button data-tab="props">Props &amp; Alt Lines</button>
     <button data-tab="week">Weekly Parlays</button>
     <span class="navdiv"></span>
     <button data-tab="record">Track Record</button>
@@ -525,6 +526,17 @@ input[type=checkbox]{width:auto;}
       <div id="slOpp"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Parlay candidates (built only from flagged legs)</h2>
       <div id="slParlay" class="desc"></div>
+    </div>
+  </div>
+
+  <div class="tab" id="tab-props">
+    <div class="card">
+      <p class="desc">Loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty. Alternate spreads, totals and player-prop lines — none of this exists in ESPN's free feed, so everything here comes from Bovada's own public odds, our only source for it today. Single-book only: there's no de-vig or cross-book EV on these yet, just the raw line. Treat them as a market reference, not a flagged edge.</p>
+      <h2 style="font-size:1rem">Alternate lines (spread &amp; total)</h2>
+      <div id="slAltLines"></div>
+      <h2 style="font-size:1rem;margin-top:16px">Player props</h2>
+      <div class="field-row" style="display:flex;gap:10px;margin-bottom:8px"><div class="field" style="max-width:220px"><label>Search a player or market</label><input id="propSearch" type="text" placeholder="e.g. passing yards" oninput="propsRender(wkSlate&&wkSlate.games||[])"></div></div>
+      <div id="slProps"></div>
     </div>
   </div>
 
@@ -1540,6 +1552,28 @@ function oppRender(g){
   $('slParlay').innerHTML=sc.length?sc.map(x=>'<div style="margin:6px 0"><b>'+x.c.length+'-leg</b> · pays '+(x.d>=2?'+'+Math.round((x.d-1)*100):'−'+Math.round(100/(x.d-1)))+' · fair win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+'<br><b>$100 parlay: win '+d100((x.d-1)*100)+' / lose −$100 · EV '+d100(x.ev*100)+' per $100</b><br>'+x.c.map(l=>esc(l.b.side)+' '+am(l.b.american)+' ('+esc(l.r.start.slice(5,10))+')').join(' + ')+'</div>').join('')+'<div class="warnc">Each leg multiplies the book margin and the error in our fair price, so parlays are riskier than the same legs bet singly. Assumes legs are independent. Flagged legs without a multi-book consensus come from our model blend, whose weight is unproven, so treat EV here as a hypothesis the Track Record has to confirm.</div>':'No parlay candidates: fewer than two flagged legs in different games. Nothing is forced when there is no edge.';
 }
 
+// ---------- Props & Alt Lines (optional tab; data rides in on the same slate) ----------
+function propsRender(g){
+  const alt=(g||[]).filter(r=>r.spread||r.total);
+  $('slAltLines').innerHTML=alt.length?'<div style="overflow-x:auto"><table><thead><tr><th>Game</th><th>Spread</th><th>Total</th></tr></thead><tbody>'+alt.map(r=>{
+    const sp=r.spread||{},tt=r.total||{};
+    const spTxt=(sp.home||sp.away)?`${esc(r.home)} ${sp.home&&sp.home.handicap!=null?signed(sp.home.handicap,1):'—'} (${sp.home&&sp.home.american!=null?fmtOdds(sp.home.american):'—'})<br>${esc(r.away)} ${sp.away&&sp.away.handicap!=null?signed(sp.away.handicap,1):'—'} (${sp.away&&sp.away.american!=null?fmtOdds(sp.away.american):'—'})`:'—';
+    const ttTxt=(tt.over||tt.under)?`O ${tt.over&&tt.over.handicap!=null?tt.over.handicap:'—'} (${tt.over&&tt.over.american!=null?fmtOdds(tt.over.american):'—'})<br>U ${tt.under&&tt.under.handicap!=null?tt.under.handicap:'—'} (${tt.under&&tt.under.american!=null?fmtOdds(tt.under.american):'—'})`:'—';
+    return `<tr><td style="white-space:normal;min-width:180px">${esc(SN(r.sport))} · ${esc(r.away)} @ ${esc(r.home)}${r.bovadaLive?' <span class="chip" style="padding:0 6px">LIVE</span>':''}</td><td style="white-space:normal">${spTxt}</td><td style="white-space:normal">${ttTxt}</td></tr>`;
+  }).join('')+'</tbody></table></div>':'<div class="desc">No alternate lines in this slate.</div>';
+  const q=(($('propSearch')&&$('propSearch').value)||'').trim().toLowerCase();
+  const withProps=(g||[]).filter(r=>(r.props||[]).length);
+  const rows=[];
+  withProps.forEach(r=>(r.props||[]).forEach(p=>{
+    if(q&&!(p.market||'').toLowerCase().includes(q)&&!(p.legs||[]).some(l=>(l.name||'').toLowerCase().includes(q)))return;
+    rows.push({r,p});
+  }));
+  $('slProps').innerHTML=rows.length?'<div style="overflow-x:auto"><table><thead><tr><th>Game</th><th>Market</th><th>Lines</th></tr></thead><tbody>'+rows.map(({r,p})=>{
+    const legs=(p.legs||[]).map(l=>`${esc(l.name)}${l.handicap!=null?' '+l.handicap:''} ${l.american!=null?fmtOdds(l.american):'—'}`).join('<br>');
+    return `<tr><td style="white-space:normal;min-width:180px">${esc(SN(r.sport))} · ${esc(r.away)} @ ${esc(r.home)}</td><td style="white-space:normal;min-width:160px">${esc(p.market)}</td><td style="white-space:normal">${legs||'—'}</td></tr>`;
+  }).join('')+'</tbody></table></div>':(withProps.length?'<div class="desc">No props match that search.</div>':'<div class="desc">No player props in this slate — Bovada didn\'t carry any for today\'s games, or none have been fetched yet.</div>');
+}
+
 // ---------- Weekly Parlays (optional tab; rebuilt on every open) ----------
 let wkSlate=null;
 function wkLegs(g,now){
@@ -1663,6 +1697,7 @@ function slateRender(d,label){
   liveRender(d.liveEdges||[]);
   suggestionsRender(d.suggestions||{});
   oppRender(g);
+  propsRender(g);
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
    <div class="stat"><div class="v ${nb?'pos':''}">${nb}</div><div class="k">Edge bets</div></div>
@@ -1698,6 +1733,11 @@ function slateExample(){
   slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],
    day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},diagnostics:{warnings:['EXAMPLE: nfl: only one book per game, so edge bets, arbitrage and middles cannot appear'],bySport:{nfl:{games:14,withOdds:14,avgBooks:1,withModel:14,withPmMatch:2,edgeBets:0}}},
    games:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,fair:.44,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved 4.5 pts toward this side.']}}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}],
+    spread:{home:{handicap:-2.5,american:-110},away:{handicap:2.5,american:-110}},
+    total:{over:{handicap:47.5,american:-110},under:{handicap:47.5,american:-108}},
+    props:[{market:'EXAMPLE: Star QB Total Passing Yards',legs:[{name:'Over',handicap:265.5,american:-115},{name:'Under',handicap:265.5,american:-105}]},
+      {market:'EXAMPLE: Lead Back Rushing Yards',legs:[{name:'Over',handicap:78.5,american:-120},{name:'Under',handicap:78.5,american:100}]}],
+    bovadaLive:true,
     teamMeta:{home:{color:'e31837'},away:{color:'002244'}},
     matchup:{h2h:[{date:'2026-09-14',home:'Example Home',away:'Example Away',homeScore:24,awayScore:20},{date:'2025-11-02',home:'Example Away',away:'Example Home',homeScore:17,awayScore:27}],
       home:{name:'Example Home',record:'4-2',last:['W','W','L','W','T','W']},away:{name:'Example Away',record:'3-3',last:['L','W','L','L','W','W']}}},
