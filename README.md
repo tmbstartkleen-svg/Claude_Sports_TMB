@@ -9,9 +9,12 @@ or a public, keyless endpoint.
 
 | Need | Primary | Fallback 1 | Fallback 2 |
 |---|---|---|---|
-| Sportsbook odds | ESPN scoreboard odds | sports-skills scoreboard | our collector network |
+| Sportsbook odds (book 1) | ESPN scoreboard odds | sports-skills scoreboard | our collector network |
+| Sportsbook odds (book 2, additive) | Bovada's own public JSON feed (`bovada.py`) | | |
 | Kalshi | Kalshi public API | sports-skills kalshi | |
 | Polymarket | Polymarket gamma API | sports-skills polymarket | |
+
+**Bovada (`bovada.py`):** reads the same public JSON endpoint bovada.lv's own site calls to render its pages -- no account, no login, no key, same class of source as ESPN's scoreboard. It's merged into each ESPN-sourced game (matched by team name + day) as a second book, which is what actually makes cross-book EV, arbitrage and middles real instead of theoretical (ESPN alone only ever carries one book). It also carries spread, total and player-prop legs, none of which ESPN's feed has ever had -- these ride along on the same game object (`spread`, `total`, `props` fields) when present. Covers nfl, ncaaf, nba, ncaab, mlb, nhl. Unverified against the live endpoint from a dev sandbox; a live run's `slate.json -> sources` shows `bovada[sport]` health, and `bovada:merge` the count of games that actually gained a second book. If bovada.lv changes its response shape, this degrades to doing nothing (logged, not fatal) -- ESPN-only odds keep flowing either way.
 
 ## Setup
 1. Copy `pipeline/`, `.github/workflows/slate.yml` into the repo root (Claude_Sports).

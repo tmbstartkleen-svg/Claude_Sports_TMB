@@ -48,10 +48,15 @@ except Exception:
     grader = None
 from datetime import datetime, timedelta, timezone
 try:
-    from names import canon
+    from names import canon, same as names_same
 except Exception:  # pragma: no cover
     canon = lambda s: str(s).lower()
+    names_same = lambda a, b: canon(a) == canon(b)
 import re
+try:
+    import bovada as bovada_mod
+except ImportError:  # pragma: no cover
+    bovada_mod = None
 try:
     import network as net_mod
 except ImportError:  # pragma: no cover
@@ -337,6 +342,57 @@ def espn_via_skills(sport):
     if not games:
         raise RuntimeError(f"sports-skills returned no usable odds for {sport}")
     return games
+
+
+def _epoch_ms_to_iso(ms):
+    try:
+        return datetime.fromtimestamp(float(ms) / 1000, tz=timezone.utc).isoformat()
+    except (TypeError, ValueError, OSError):
+        return None
+
+
+def merge_bovada(games, sports):
+    """Fetch Bovada as a SECOND, independent book and merge it into the ESPN-sourced `games`
+    list in place: adds "Bovada" into each matching game's `books` dict (this is what actually
+    turns nBooks from 1 into 2+ and makes cross-book EV/arbitrage real instead of theoretical),
+    plus `spread`/`total`/`props`/`live` fields ESPN's feed never carries at all.
+
+    Matching is by sport + team-name equivalence (names.same, handles ESPN vs Bovada spelling
+    differences) + same UTC calendar day (start times from the two sources are rarely identical
+    to the minute). A Bovada game with no ESPN match is dropped -- it's not worth inventing a
+    row with no model/home-team metadata behind it. Never raises: any failure here is logged
+    and the slate carries on with ESPN-only odds, same as every other optional source."""
+    if not bovada_mod:
+        return 0
+    n_merged = 0
+    for sp in sports:
+        if sp not in bovada_mod.PATHS:
+            continue
+        try:
+            bg = bovada_mod.fetch(sp)
+        except Exception as e:  # noqa
+            log(f"bovada[{sp}]", False, repr(e))
+            continue
+        log(f"bovada[{sp}]", bool(bg), f"{len(bg)} games" if bg else "empty")
+        for b in bg:
+            b_day = (_epoch_ms_to_iso(b.get("start")) or "")[:10]
+            for g in games:
+                if g["sport"] != sp or not names_same(g["home"], b["home"]) or not names_same(g["away"], b["away"]):
+                    continue
+                if b_day and str(g.get("start") or "")[:10] not in (b_day, ""):
+                    continue
+                g["books"]["Bovada"] = b["books"]["Bovada"]
+                if b.get("spread") and "spread" not in g:
+                    g["spread"] = b["spread"]
+                if b.get("total") and "total" not in g:
+                    g["total"] = b["total"]
+                if b.get("props"):
+                    g["props"] = b["props"]
+                if b.get("live"):
+                    g["bovadaLive"] = True
+                n_merged += 1
+                break
+    return n_merged
 
 
 # ---------- prediction markets -> [{source,title,yes,no,url}] (prices as 0..1 probabilities) ----------
@@ -824,6 +880,12 @@ def main():
         got = try_sources(f"odds[{s}]", [("espn", lambda s=s: espn_direct(s)),
                                           ("sports-skills", lambda s=s: espn_via_skills(s))])
         games += got
+    try:
+        n_bov = merge_bovada(games, sports)
+        if n_bov:
+            log("bovada:merge", True, f"{n_bov} games gained a second book (+ spread/total/props where carried)")
+    except Exception as e:  # noqa  bovada is a bonus source; its failure must never break the ESPN-only slate
+        log("bovada:merge", False, repr(e))
     enrich_pitchers(games)
     net_rows = []
     if net_mod and os.environ.get("NO_NETWORK") != "1":
