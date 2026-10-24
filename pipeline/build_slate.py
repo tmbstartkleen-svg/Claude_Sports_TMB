@@ -648,6 +648,11 @@ def analyze(games, pms, models=None, injuries=None, now=None):
             row["sharpBooks"] = sharp
         if g.get("teamMeta"):
             row["teamMeta"] = g["teamMeta"]
+        for _extra in ("spread", "total", "props"):
+            if g.get(_extra):
+                row[_extra] = g[_extra]
+        if g.get("bovadaLive"):
+            row["bovadaLive"] = True
         if row["arb"]:
             row["arbRoiPct"] = round((1 / implied_sum - 1) * 100, 2)
         names_ = list(books)

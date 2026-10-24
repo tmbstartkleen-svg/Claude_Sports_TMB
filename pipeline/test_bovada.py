@@ -97,4 +97,26 @@ except RuntimeError:
     pass
 print("OK fetch: a transport failure propagates for try_sources to log")
 
+# ---- build_slate.analyze(): spread/total/props/bovadaLive ride through onto the output row
+import build_slate as b
+g = {"sport": "nfl", "home": "H", "away": "A", "start": "2099-01-01T00:00Z",
+     "books": {"DraftKings": {"home": -150, "away": 130}, "Bovada": {"home": -145, "away": 125}},
+     "spread": {"home": {"handicap": -3.5, "american": -110}, "away": {"handicap": 3.5, "american": -110}},
+     "total": {"over": {"handicap": 47.5, "american": -110}, "under": {"handicap": 47.5, "american": -110}},
+     "props": [{"market": "Star Player Passing Yards", "legs": [{"name": "Over", "handicap": 275.5, "american": -115}]}],
+     "bovadaLive": True}
+row = b.analyze([g], [])[0]
+assert row["spread"]["home"]["handicap"] == -3.5
+assert row["total"]["over"]["handicap"] == 47.5
+assert row["props"][0]["market"] == "Star Player Passing Yards"
+assert row["bovadaLive"] is True
+print("OK analyze(): spread/total/props/bovadaLive pass through onto the output row")
+
+# ---- and are absent (not even empty keys) when the source game doesn't carry them
+g2 = {"sport": "nfl", "home": "H", "away": "A", "start": "2099-01-01T00:00Z",
+      "books": {"DraftKings": {"home": -150, "away": 130}}}
+row2 = b.analyze([g2], [])[0]
+assert "spread" not in row2 and "total" not in row2 and "props" not in row2 and "bovadaLive" not in row2
+print("OK analyze(): no spurious spread/total/props/bovadaLive keys when absent")
+
 print("BOVADA TESTS PASS")
