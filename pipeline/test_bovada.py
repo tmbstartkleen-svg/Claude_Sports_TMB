@@ -144,3 +144,36 @@ assert "fetch_raw raised" in B.diag("nfl", getter=boom_getter)
 print("OK diag: a transport failure is caught and reported, never raised")
 
 print("BOVADA TESTS PASS")
+
+# ---- _bovada_team_match: school-name-only vs school+mascot (the real gap found in production:
+# ESPN "Baylor Bears" vs Bovada "Baylor" never matched under names.same()'s 8-char floor)
+assert b._bovada_team_match("Baylor Bears", "Baylor")
+assert b._bovada_team_match("UCF Knights", "UCF")
+assert b._bovada_team_match("Troy Trojans", "Troy")
+assert b._bovada_team_match("Notre Dame Fighting Irish", "Notre Dame")  # already worked via names.same
+print("OK _bovada_team_match: school name vs school+mascot")
+
+# ---- _bovada_team_match: still rejects unrelated teams, even short ones
+assert not b._bovada_team_match("Troy Trojans", "Temple Owls")
+assert not b._bovada_team_match("Houston Texans", "Houston Cougars")  # different teams, same city word
+assert not b._bovada_team_match("A", "Atlanta Falcons")  # below the 3-char floor: never matches
+print("OK _bovada_team_match: no false positives on unrelated or too-short names")
+
+# ---- merge_bovada: end-to-end with the school-name-only case, via a stubbed bovada.fetch
+import types
+def fake_fetch(sport, getter=None):
+    assert sport == "ncaaf"
+    return [{"sport": "ncaaf", "home": "Baylor", "away": "UCF", "start": 4102358400000,  # 2099-12-31T00:00:00Z
+             "books": {"Bovada": {"home": -150, "away": 130}}}]
+orig_fetch = b.bovada_mod.fetch
+b.bovada_mod.fetch = fake_fetch
+try:
+    gg = [{"sport": "ncaaf", "home": "Baylor Bears", "away": "UCF Knights", "start": "2099-12-31T00:00Z",
+           "books": {"DraftKings": {"home": -145, "away": 125}}}]
+    n = b.merge_bovada(gg, ["ncaaf"])
+    assert n == 1 and "Bovada" in gg[0]["books"], gg
+finally:
+    b.bovada_mod.fetch = orig_fetch
+print("OK merge_bovada: school-name-only Bovada game matches its school+mascot ESPN game")
+
+print("BOVADA TESTS PASS (name matching)")

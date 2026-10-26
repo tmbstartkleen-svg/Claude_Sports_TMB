@@ -351,17 +351,36 @@ def _epoch_ms_to_iso(ms):
         return None
 
 
+def _bovada_team_match(a, b):
+    """names.same() requires >=8 chars for its substring fallback, which is right for grading
+    (settling real money needs a strict match) but wrong here: college teams routinely show up
+    as just the school name on one side ("Baylor", "Troy", "UCF") and school+mascot on the other
+    ("Baylor Bears", "Troy Trojans", "UCF Knights") -- confirmed from a live run where this cost
+    ncaaf 38 of 56 games their Bovada match. A prefix match on the canon'd names (not an anywhere
+    substring, to avoid an unrelated name landing on a false hit in the middle) covers that
+    pattern safely. Kept local to the Bovada merge -- never touches names.same() itself, so
+    grading/settlement matching (which needs to stay strict) is unaffected."""
+    if names_same(a, b):
+        return True
+    ca, cb = canon(a), canon(b)
+    if len(ca) < 3 or len(cb) < 3:
+        return False
+    short, long_ = (ca, cb) if len(ca) <= len(cb) else (cb, ca)
+    return long_.startswith(short)
+
+
 def merge_bovada(games, sports):
     """Fetch Bovada as a SECOND, independent book and merge it into the ESPN-sourced `games`
     list in place: adds "Bovada" into each matching game's `books` dict (this is what actually
     turns nBooks from 1 into 2+ and makes cross-book EV/arbitrage real instead of theoretical),
     plus `spread`/`total`/`props`/`live` fields ESPN's feed never carries at all.
 
-    Matching is by sport + team-name equivalence (names.same, handles ESPN vs Bovada spelling
-    differences) + same UTC calendar day (start times from the two sources are rarely identical
-    to the minute). A Bovada game with no ESPN match is dropped -- it's not worth inventing a
-    row with no model/home-team metadata behind it. Never raises: any failure here is logged
-    and the slate carries on with ESPN-only odds, same as every other optional source."""
+    Matching is by sport + team-name equivalence (_bovada_team_match, handles ESPN vs Bovada
+    spelling differences including the school-name-only vs school+mascot pattern) + same UTC
+    calendar day (start times from the two sources are rarely identical to the minute). A
+    Bovada game with no ESPN match is dropped -- it's not worth inventing a row with no
+    model/home-team metadata behind it. Never raises: any failure here is logged and the slate
+    carries on with ESPN-only odds, same as every other optional source."""
     if not bovada_mod:
         return 0
     n_merged = 0
@@ -384,7 +403,7 @@ def merge_bovada(games, sports):
         for b in bg:
             b_day = (_epoch_ms_to_iso(b.get("start")) or "")[:10]
             for g in games:
-                if g["sport"] != sp or not names_same(g["home"], b["home"]) or not names_same(g["away"], b["away"]):
+                if g["sport"] != sp or not _bovada_team_match(g["home"], b["home"]) or not _bovada_team_match(g["away"], b["away"]):
                     continue
                 if b_day and str(g.get("start") or "")[:10] not in (b_day, ""):
                     continue
