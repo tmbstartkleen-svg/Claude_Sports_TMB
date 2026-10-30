@@ -18,14 +18,13 @@
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); box-sizing:border-box;
 }
-@media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]){
-    --bg:#f4f3ef; --panel:#fff; --panel2:#f1efe9; --border:#ddd9cf;
-    --text:#161511; --sub:#6b6457;
-    --accent:#a9710f; --accent2:#1c7686; --gain:#1f8f5c; --loss:#b8392a; --danger:#b8392a; --warn:#a9710f;
-  }
+/* Dark is the permanent default -- an odds board doesn't follow the OS, it's always lit up.
+   Light is an explicit opt-in only (data-theme="light"), not an OS-preference default. */
+:root[data-theme="light"]{
+  --bg:#f4f3ef; --panel:#fff; --panel2:#f1efe9; --border:#ddd9cf;
+  --text:#161511; --sub:#6b6457;
+  --accent:#a9710f; --accent2:#1c7686; --gain:#1f8f5c; --loss:#b8392a; --danger:#b8392a; --warn:#a9710f;
 }
-:root[data-theme="dark"]{ --bg:#0a0c10; --panel:#13161c; --panel2:#191d26; --border:#262b36; --text:#e9ecf2; --sub:#838d9c; --accent:#e8b64a; --accent2:#4fb6c6; --gain:#39c97e; --loss:#e8614f; }
 html{scroll-padding-top:env(safe-area-inset-top,0px);} *{box-sizing:border-box;}
 @media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms !important;transition-duration:.001ms !important;} }
 body{margin:0;background:
@@ -116,6 +115,25 @@ tbody tr:hover td{background:var(--panel2);}
 .chip button{background:transparent;border:none;color:var(--text);cursor:pointer;font-size:.8rem;padding:4px 6px;border-radius:999px;}
 .chip button.x{color:var(--sub);}
 .chip .n{background:var(--accent2);color:#06262b;border-radius:999px;padding:0 7px;font-size:.7rem;margin-left:4px;font-weight:700;}
+
+/* ---- signal card: one tradeable call, scannable at a glance (the big number IS the
+   headline -- no card needs a title to say what it is) ---------------------------- */
+.sig-feed{display:flex;flex-direction:column;gap:8px;}
+.sig-card{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:12px 14px;}
+.sig-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.sig-big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.3rem;font-weight:800;line-height:1;}
+.sig-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.sig-tag{font-size:.68rem;color:var(--sub);font-weight:600;}
+.sig-call{font-size:.68rem;font-weight:800;letter-spacing:.02em;border-radius:5px;padding:2px 7px;}
+.sig-call.buy{background:color-mix(in srgb,var(--gain) 18%,transparent);color:var(--gain);}
+.sig-call.sell{background:color-mix(in srgb,var(--loss) 16%,transparent);color:var(--loss);}
+.sig-match{font-size:.78rem;font-weight:700;margin-top:6px;}
+.sig-sub{font-size:.72rem;color:var(--sub);margin-top:1px;}
+.sig-div{height:1px;background:var(--border);margin:9px 0;}
+.sig-line{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.8rem;}
+.sig-side{min-width:0;}
+.sig-prices{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.sig-badge{background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:.74rem;font-weight:700;}
 .film-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
 .film-grid.single{grid-template-columns:1fr;}
 @media(max-width:700px){.film-grid{grid-template-columns:1fr;}}
@@ -1543,10 +1561,24 @@ function predictRender(g){
     });
   }));
   sigs.sort((a,b)=>b.absPp-a.absPp);
-  $('slPmSignals').innerHTML=sigs.length?'<div style="overflow-x:auto"><table><thead><tr><th>Game</th><th>Side</th><th>Source</th><th>Sportsbook fair</th><th>PM price</th><th>Edge</th><th>Call</th></tr></thead><tbody>'+sigs.slice(0,40).map(x=>{
+  const sigWhen=iso=>{if(!iso)return'';const t=new Date(iso);return isNaN(t)?'':t.toLocaleString(undefined,{weekday:'short',hour:'numeric',minute:'2-digit'});};
+  $('slPmSignals').innerHTML=sigs.length?'<div class="sig-feed">'+sigs.slice(0,24).map(x=>{
     const fair=x.r.fair&&x.r.fair[x.k];
-    return `<tr><td style="white-space:normal;min-width:170px">${esc(SN(x.r.sport))} · ${esc(x.r.away)} @ ${esc(x.r.home)}</td><td>${esc(x.side)}</td><td>${esc(x.m.source)}</td><td>${fair!=null?(fair*100).toFixed(1)+'%':'—'}</td><td>${x.m[x.k]!=null?(x.m[x.k]*100).toFixed(1)+'%':'—'}</td><td class="${x.pp>=0?'pos':'neg'}">${signed(x.pp,1)}pp</td><td class="${x.pp>=0?'pos':'neg'}"><b>${x.call}</b></td></tr>`;
-  }).join('')+'</tbody></table></div>':'<div class="desc">No prediction-market prices to compare yet in this slate.</div>';
+    const cls=x.pp>=0?'pos':'neg',callCls=x.pp>=0?'buy':'sell';
+    return `<div class="sig-card">
+      <div class="sig-top">
+        <span class="sig-big ${cls}">${signed(x.pp,1)}pp</span>
+        <span class="sig-meta"><span class="sig-call ${callCls}">${x.call}</span><span class="sig-tag">${esc(sigWhen(x.r.start))}</span></span>
+      </div>
+      <div class="sig-tag">${esc(SN(x.r.sport))}</div>
+      <div class="sig-match">${esc(x.r.away)} @ ${esc(x.r.home)}</div>
+      <div class="sig-div"></div>
+      <div class="sig-line">
+        <div class="sig-side"><b>${esc(x.side)}</b><div class="sig-sub">Sportsbook fair ${fair!=null?(fair*100).toFixed(1)+'%':'—'}</div></div>
+        <div class="sig-prices"><span class="sig-badge">${esc(x.m.source)}</span><b>${x.m[x.k]!=null?(x.m[x.k]*100).toFixed(1)+'%':'—'}</b></div>
+      </div>
+    </div>`;
+  }).join('')+'</div>':'<div class="desc">No prediction-market prices to compare yet in this slate.</div>';
   const buckets={buy_now:[],wait_ok:[],closing_soon:[]};
   (g||[]).forEach(r=>(r.bets||[]).forEach(b=>{
     const adv=b.timing&&b.timing.advice;
