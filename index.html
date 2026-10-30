@@ -134,7 +134,7 @@ input[type=checkbox]{width:auto;}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="wrap">
   <div class="brand"><h1>Edge Suite</h1><span>Sportsbook · Prediction Market · Portfolio Risk</span></div>
-  <p class="lede">Sixteen tools, one workflow: shop lines against a sharp book, de-vig the market, size bets together, cap the day’s downside, track closing line value and ROI, check for arbitrage, and break down game film.</p>
+  <p class="lede">One workflow: shop lines against a sharp book, de-vig the market, size bets together, cap the day’s downside, track closing line value and ROI, check for arbitrage, and break down game film.</p>
   <div class="callout">Only arbitrage and hedging can lock a profit. Everything else is expected value and risk: estimates, not promises.</div>
 
   <div class="nav-wrap">
@@ -157,7 +157,6 @@ input[type=checkbox]{width:auto;}
     <button data-tab="legs">Leg Builder</button>
     <button data-tab="pk">Portfolio Kelly</button>
     <button data-tab="day">Day Risk</button>
-    <button data-tab="sim">Portfolio Sim</button>
     <span class="navdiv"></span>
     <button data-tab="fair">Fair Odds</button>
     <button data-tab="cal">Calibration</button>
@@ -270,23 +269,6 @@ input[type=checkbox]{width:auto;}
   </div>
 
   <!-- PORTFOLIO SIM -->
-  <div class="tab" id="tab-sim">
-    <div class="card">
-      <h2>Portfolio Monte Carlo</h2>
-      <p class="desc">Multiple parlays, correlated week over week — see if diversification actually survives variance.</p>
-      <div id="portfolioContainer"></div>
-      <button class="act btn-ghost" onclick="addParlay()">+ Add parlay</button>
-      <div class="row" style="margin-top:12px;">
-        <div class="field" style="max-width:140px"><label>Correlation</label><input id="corr" type="number" value="0.2" step="0.05"></div>
-        <div class="field" style="max-width:110px"><label>Weeks</label><input id="weeks" type="number" value="26"></div>
-        <div class="field" style="max-width:110px"><label>Trials</label><input id="trials" type="number" value="3000" step="500"></div>
-        <button class="act btn-primary" onclick="runSim()">Run</button>
-      </div>
-      <div class="stat-grid" id="simStats" style="display:none;"></div>
-      <div class="chart-wrap"><canvas id="bkChart"></canvas></div>
-    </div>
-  </div>
-
   <!-- ARBITRAGE -->
   <div class="tab" id="tab-arb">
     <div class="card">
@@ -793,58 +775,6 @@ function recalcLegs(){
   } else { document.getElementById('combEdge').textContent='—'; document.getElementById('kellyStake').textContent='—'; }
 }
 
-// ---- Portfolio Sim ----
-let parlayIdx=0;
-function addParlay(prefill){
-  parlayIdx++; const id='pl'+parlayIdx;
-  const div=document.createElement('div'); div.className='leg-row'; div.id=id;
-  div.innerHTML=`<div class="field"><input placeholder="Parlay name" value="${prefill?.name||''}" class="pn"></div>
-    <div class="field"><input type="number" placeholder="Combined odds e.g. 4.5" value="${prefill?.odds??''}" class="po"></div>
-    <div class="field"><input type="number" placeholder="True win % e.g. 25" value="${prefill?.prob??''}" class="pp"></div>
-    <button class="act btn-danger" onclick="document.getElementById('${id}').remove()">✕</button>`;
-  document.getElementById('portfolioContainer').appendChild(div);
-}
-function normCdf(x){ const t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2);
-  let p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274)))); return x>0?1-p:p; }
-function randn(){ let u=0,v=0; while(u===0)u=Math.random(); while(v===0)v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
-let bkChart=null;
-function runSim(){
-  const parlays=[...document.querySelectorAll('#portfolioContainer .leg-row')].map(r=>({
-    name:r.querySelector('.pn').value||'Parlay', odds:Number(r.querySelector('.po').value), prob:Number(r.querySelector('.pp').value)/100
-  })).filter(p=>p.odds>1&&p.prob>0&&p.prob<1);
-  if(!parlays.length){ notify('Add at least one valid parlay.'); return; }
-  const bk0=Number(document.getElementById('bankroll').value)||100, kf=Number(document.getElementById('kellyFrac').value)||0.3;
-  const maxPct=(Number(document.getElementById('maxStake').value)||3)/100, rho=Math.min(0.9,Math.max(0,Number(document.getElementById('corr').value)));
-  const weeks=Math.max(1,Number(document.getElementById('weeks').value)||26), trials=Math.max(200,Number(document.getElementById('trials').value)||3000);
-  const stakes=parlays.map(p=>{ const b=p.odds-1,q=1-p.prob,raw=b>0?(b*p.prob-q)/b:0; return Math.min(Math.max(raw*kf,0),maxPct); });
-  const endings=[], trajectories=[], sampleEvery=Math.max(1,Math.floor(trials/40));
-  for(let t=0;t<trials;t++){
-    let bk=bk0; const traj=[bk];
-    for(let w=0;w<weeks;w++){
-      const Z=randn(); let weekPnl=0;
-      parlays.forEach((p,i)=>{ const zi=Math.sqrt(rho)*Z+Math.sqrt(1-rho)*randn(); const win=normCdf(zi)<p.prob; const stake=bk*stakes[i];
-        weekPnl+=win?stake*(p.odds-1):-stake; });
-      bk=Math.max(0,bk+weekPnl); traj.push(bk);
-    }
-    endings.push(bk); if(t%sampleEvery===0) trajectories.push(traj);
-  }
-  endings.sort((a,b)=>a-b);
-  const median=endings[Math.floor(trials*0.5)], p10=endings[Math.floor(trials*0.1)], ruin=endings.filter(e=>e<10).length/trials;
-  const medGrowth=Math.pow(median/bk0,1/weeks)-1;
-  const el=document.getElementById('simStats'); el.style.display='grid'; el.innerHTML=`
-    <div class="stat"><div class="v ${median>=bk0?'pos':'neg'}">$${median.toFixed(2)}</div><div class="k">Median ending</div></div>
-    <div class="stat"><div class="v ${p10>=bk0?'pos':'warnc'}">$${p10.toFixed(2)}</div><div class="k">10th pct</div></div>
-    <div class="stat"><div class="v ${ruin>0.1?'neg':(ruin>0.02?'warnc':'pos')}">${(ruin*100).toFixed(1)}%</div><div class="k">Prob. of ruin</div></div>
-    <div class="stat"><div class="v ${medGrowth>=0?'pos':'neg'}">${(medGrowth*100).toFixed(2)}%</div><div class="k">Median weekly growth</div></div>`;
-  const labels=Array.from({length:weeks+1},(_,i)=>'W'+i);
-  const datasets=trajectories.map(traj=>({data:traj,borderWidth:1,pointRadius:0,borderColor:'rgba(51,230,160,0.12)',fill:false,tension:.15}));
-  const medTraj=labels.map((_,w)=>{ const vals=trajectories.map(tr=>tr[w]).sort((a,b)=>a-b); return vals[Math.floor(vals.length*0.5)]||0; });
-  datasets.push({data:medTraj,borderColor:'#5b9dff',borderWidth:2.5,pointRadius:0,tension:.15});
-  if(bkChart) bkChart.destroy();
-  bkChart=new Chart(document.getElementById('bkChart'),{type:'line',data:{labels,datasets},options:{animation:false,
-    plugins:{legend:{display:false}}, scales:{x:{ticks:{maxTicksLimit:8,color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}, y:{ticks:{color:'#8a97a8'},grid:{color:'rgba(138,151,168,.08)'}}}}});
-}
-
 // ---- Arbitrage ----
 function calcArb(){
   const outs=[{src:document.getElementById('arbSrcA').value||'A',odds:document.getElementById('arbOddsA').value},
@@ -1088,7 +1018,6 @@ runFair();runPlan();
 
 // seed data
 addLeg({desc:'Team A ML',odds:-150,prob:64}); addLeg({desc:'Team B +3.5',odds:-110,prob:56});
-addParlay({name:'Conservative 2-leg',odds:2.1,prob:45}); addParlay({name:'Aggressive 4-leg',odds:9,prob:14});
 addPoolLeg({desc:'Team A ML',odds:-140,prob:62}); addPoolLeg({desc:'Team B +4.5',odds:-110,prob:56});
 addPoolLeg({desc:'Under 47.5',odds:-105,prob:53}); addPoolLeg({desc:'Team C ML',odds:120,prob:48});
 </script>
