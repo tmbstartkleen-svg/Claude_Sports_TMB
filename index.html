@@ -143,6 +143,7 @@ input[type=checkbox]{width:auto;}
     <button data-tab="scores">This Week<span class="nav-dot" id="navDotScores" title="Live games right now"></span></button>
     <button data-tab="opps">Opportunities</button>
     <button data-tab="props">Props &amp; Alt Lines</button>
+    <button data-tab="predict">Prediction Markets</button>
     <button data-tab="week">Weekly Parlays</button>
     <span class="navdiv"></span>
     <button data-tab="record">Track Record</button>
@@ -520,6 +521,31 @@ input[type=checkbox]{width:auto;}
       <h2 style="font-size:1rem;margin-top:16px">Player props</h2>
       <div class="field-row" style="display:flex;gap:10px;margin-bottom:8px"><div class="field" style="max-width:220px"><label>Search a player or market</label><input id="propSearch" type="text" placeholder="e.g. passing yards" oninput="propsRender(wkSlate&&wkSlate.games||[])"></div></div>
       <div id="slProps"></div>
+    </div>
+  </div>
+
+  <div class="tab" id="tab-predict">
+    <div class="card">
+      <p class="desc">Loaded from the same slate as Today's Slate. Open Today's Slate first if this is empty. Two signals, both free and built from data Edge Suite already has — no paid feed behind either one. <b>Buy / sell vs. the sportsbook</b> compares each prediction-market price (Kalshi, Polymarket) against what the sportsbooks' own de-vigged consensus thinks that side is worth: a gap means one side is priced differently on the tradeable market than the sportsbook sees it, which is the closest free equivalent to what paid "prediction-market trader" tools charge for. <b>Buy-now vs. wait</b> is pre-game timing for sportsbook bets already flagged elsewhere in the slate, pulled together here as one feed instead of scattered per game. Guaranteed cross-venue arbitrage (locked profit, not a probabilistic call) stays on the Opportunities tab — this tab is for probabilistic edges only.</p>
+      <h2 style="font-size:1rem">Buy / sell vs. the sportsbook</h2>
+      <div class="desc">Edge (pp) = sportsbook fair chance minus the prediction-market's own price for that side. Positive and large = the sportsbook thinks this side is more likely than the prediction market's price reflects (that side looks cheap to <b>buy</b> there); negative and large = the prediction market is pricing this side richer than the sportsbook does (treat it as a <b>fade</b> / sell candidate, or look at the other side instead). Markets flagged "suspect" (more than 12pp from every book) are left out — more likely a mismatched market than a real edge.</div>
+      <div id="slPmSignals"></div>
+      <h2 style="font-size:1rem;margin-top:16px">Buy-now vs. wait (sportsbook timing)</h2>
+      <div class="desc">Same timing logic already behind the 🔒/⏳/⏰ chips elsewhere in the slate, gathered into one feed: pre-game line movement on this exact game, plus (once there's enough graded history) whether edges like this one have historically beaten or lost to the closing line.</div>
+      <div class="row" style="align-items:flex-start;gap:24px;margin-top:8px">
+        <div style="flex:1 1 260px;min-width:220px">
+          <h3 style="font-size:.85rem;margin:4px 0">🔒 Buy now</h3>
+          <div id="slTimingBuy" class="desc"></div>
+        </div>
+        <div style="flex:1 1 260px;min-width:220px">
+          <h3 style="font-size:.85rem;margin:4px 0">⏳ Can wait</h3>
+          <div id="slTimingWait" class="desc"></div>
+        </div>
+        <div style="flex:1 1 260px;min-width:220px">
+          <h3 style="font-size:.85rem;margin:4px 0">⏰ Closing soon</h3>
+          <div id="slTimingClosing" class="desc"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1504,6 +1530,34 @@ function propsRender(g){
   }).join('')+'</tbody></table></div>':(withProps.length?'<div class="desc">No props match that search.</div>':'<div class="desc">No player props in this slate — Bovada didn\'t carry any for today\'s games, or none have been fetched yet.</div>');
 }
 
+// ---------- Prediction Markets: buy/sell vs. the sportsbook + timing feed ----------
+function predictRender(g){
+  const sigs=[];
+  (g||[]).forEach(r=>(r.pm||[]).forEach(m=>{
+    (['home','away']).forEach(k=>{
+      const pp=m[k+'EdgePp'];
+      if(pp==null)return;
+      const side=k==='home'?r.home:r.away;
+      const call=pp>=0?'BUY':'SELL/FADE';
+      sigs.push({r,m,k,side,pp,absPp:Math.abs(pp),call});
+    });
+  }));
+  sigs.sort((a,b)=>b.absPp-a.absPp);
+  $('slPmSignals').innerHTML=sigs.length?'<div style="overflow-x:auto"><table><thead><tr><th>Game</th><th>Side</th><th>Source</th><th>Sportsbook fair</th><th>PM price</th><th>Edge</th><th>Call</th></tr></thead><tbody>'+sigs.slice(0,40).map(x=>{
+    const fair=x.r.fair&&x.r.fair[x.k];
+    return `<tr><td style="white-space:normal;min-width:170px">${esc(SN(x.r.sport))} · ${esc(x.r.away)} @ ${esc(x.r.home)}</td><td>${esc(x.side)}</td><td>${esc(x.m.source)}</td><td>${fair!=null?(fair*100).toFixed(1)+'%':'—'}</td><td>${x.m[x.k]!=null?(x.m[x.k]*100).toFixed(1)+'%':'—'}</td><td class="${x.pp>=0?'pos':'neg'}">${signed(x.pp,1)}pp</td><td class="${x.pp>=0?'pos':'neg'}"><b>${x.call}</b></td></tr>`;
+  }).join('')+'</tbody></table></div>':'<div class="desc">No prediction-market prices to compare yet in this slate.</div>';
+  const buckets={buy_now:[],wait_ok:[],closing_soon:[]};
+  (g||[]).forEach(r=>(r.bets||[]).forEach(b=>{
+    const adv=b.timing&&b.timing.advice;
+    if(adv&&buckets[adv])buckets[adv].push({r,b});
+  }));
+  const fmt=list=>list.length?list.map(({r,b})=>`<div style="margin:4px 0"><b>${esc(b.side)}</b> ${fmtOdds(b.american)} @ ${esc(b.book)} <span class="desc" style="margin:0">(${esc(SN(r.sport))} · ${esc(r.away)} @ ${esc(r.home)}${b.timing.hoursToStart!=null?' · '+b.timing.hoursToStart+'h to start':''})</span><br><span class="desc" style="margin:0">${esc((b.timing.reasons||[]).join(' '))}</span></div>`).join(''):'<div class="desc">None right now.</div>';
+  $('slTimingBuy').innerHTML=fmt(buckets.buy_now);
+  $('slTimingWait').innerHTML=fmt(buckets.wait_ok);
+  $('slTimingClosing').innerHTML=fmt(buckets.closing_soon);
+}
+
 // ---------- Weekly Parlays (optional tab; rebuilt on every open) ----------
 let wkSlate=null;
 function wkLegs(g,now){
@@ -1628,6 +1682,7 @@ function slateRender(d,label){
   suggestionsRender(d.suggestions||{});
   oppRender(g);
   propsRender(g);
+  predictRender(g);
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
    <div class="stat"><div class="v ${nb?'pos':''}">${nb}</div><div class="k">Edge bets</div></div>
@@ -1662,7 +1717,7 @@ function slateRender(d,label){
 function slateExample(){
   slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],
    day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},diagnostics:{warnings:['EXAMPLE: nfl: only one book per game, so edge bets, arbitrage and middles cannot appear'],bySport:{nfl:{games:14,withOdds:14,avgBooks:1,withModel:14,withPmMatch:2,edgeBets:0}}},
-   games:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,fair:.44,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved 4.5 pts toward this side.']}}],pm:[{source:'polymarket',homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}],
+   games:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,fair:.44,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved 4.5 pts toward this side.']}}],pm:[{source:'polymarket',home:.559,away:.441,homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}],
     spread:{home:{handicap:-2.5,american:-110},away:{handicap:2.5,american:-110}},
     total:{over:{handicap:47.5,american:-110},under:{handicap:47.5,american:-108}},
     props:[{market:'EXAMPLE: Star QB Total Passing Yards',legs:[{name:'Over',handicap:265.5,american:-115},{name:'Under',handicap:265.5,american:-105}]},
@@ -1671,7 +1726,7 @@ function slateExample(){
     teamMeta:{home:{color:'e31837'},away:{color:'002244'}},
     matchup:{h2h:[{date:'2026-09-14',home:'Example Home',away:'Example Away',homeScore:24,awayScore:20},{date:'2025-11-02',home:'Example Away',away:'Example Home',homeScore:17,awayScore:27}],
       home:{name:'Example Home',record:'4-2',last:['W','W','L','W','T','W']},away:{name:'Example Away',record:'3-3',last:['L','W','L','L','W','W']}}},
-   {sport:'epl',home:'Example FC',away:'Sample United',start:new Date(Date.now()+26*3600e3).toISOString(),nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'FanDuel'},away:{american:260,book:'BetMGM'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[],pm:[]}],
+   {sport:'epl',home:'Example FC',away:'Sample United',start:new Date(Date.now()+26*3600e3).toISOString(),nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'FanDuel'},away:{american:260,book:'BetMGM'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[{side:'Example FC',american:120,book:'FanDuel',evPct:3.2,fair:.47,stake:0.8,timing:{advice:'wait_ok',hoursToStart:25.5,reasons:['EXAMPLE: this edge has historically gotten slightly better closer to kickoff.']}}],pm:[]}],
    weekScores:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),state:'pre',completed:false,homeScore:null,awayScore:null,detail:'',link:null},
     {sport:'nba',home:'Sample City',away:'Demo United',start:new Date(Date.now()-1800e3).toISOString(),state:'in',completed:false,homeScore:61,awayScore:58,detail:'Q3 6:42',link:null},
     {sport:'nhl',home:'Test Town',away:'Practice FC',start:new Date(Date.now()-5*3600e3).toISOString(),state:'post',completed:true,homeScore:4,awayScore:2,detail:'Final',link:'https://www.espn.com/'}],
