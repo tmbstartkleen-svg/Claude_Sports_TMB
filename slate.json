@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T13:50:27+00:00",
+ "generatedAt": "2026-10-31T13:56:23+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -119,26 +119,6 @@
    "detail": "AttributeError(\"module 'sports_skills' has no attribute 'bellator'\")"
   },
   {
-   "source": "odds[atp]:espn",
-   "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for atp: KeyError: \\'competitions\\' at line 210: comp = ev[\"competitions\"][0]')"
-  },
-  {
-   "source": "odds[atp]:sports-skills",
-   "ok": false,
-   "detail": "AttributeError(\"module 'sports_skills' has no attribute 'atp'\")"
-  },
-  {
-   "source": "odds[wta]:espn",
-   "ok": false,
-   "detail": "RuntimeError('ESPN parse failed for wta: KeyError: \\'competitions\\' at line 210: comp = ev[\"competitions\"][0]')"
-  },
-  {
-   "source": "odds[wta]:sports-skills",
-   "ok": false,
-   "detail": "AttributeError(\"module 'sports_skills' has no attribute 'wta'\")"
-  },
-  {
    "source": "odds[epl]:espn",
    "ok": true,
    "detail": "11 items"
@@ -206,7 +186,7 @@
   {
    "source": "odds[bundesliga2]:espn",
    "ok": true,
-   "detail": "7 items"
+   "detail": "3 items"
   },
   {
    "source": "odds[dfbpokal]:espn",
@@ -721,7 +701,7 @@
   {
    "source": "model[ncaaf]",
    "ok": true,
-   "detail": "575 games, brier 0.2211"
+   "detail": "1215 games, brier 0.2049"
   },
   {
    "source": "injuries[ncaaf]:espn",
@@ -741,7 +721,7 @@
   {
    "source": "model[wnba]",
    "ok": true,
-   "detail": "372 games, brier 0.2074"
+   "detail": "381 games, brier 0.2072"
   },
   {
    "source": "injuries[wnba]:espn",
@@ -786,7 +766,7 @@
   {
    "source": "model[bundesliga2]",
    "ok": true,
-   "detail": "362 games, 3-way brier 0.6382"
+   "detail": "363 games, 3-way brier 0.6372"
   },
   {
    "source": "model[seriea]",
@@ -881,7 +861,7 @@
   {
    "source": "model[czech]",
    "ok": false,
-   "detail": "RuntimeError(\"refusing to build a model, no completed games: 201 windows, 0 had events, 0 completed, 5 errors; first error 20260422: <HTTPError 504: 'Gateway Time-out'>\")"
+   "detail": "RuntimeError('refusing to build a model, no completed games: 201 windows, 0 had events, 0 completed, 0 errors')"
   },
   {
    "source": "model[romania]",
@@ -991,7 +971,7 @@
   {
    "source": "matchup",
    "ok": true,
-   "detail": "324 games with head-to-head/form history"
+   "detail": "323 games with head-to-head/form history"
   },
   {
    "source": "weekScores",
@@ -1006,12 +986,12 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "369 snapshots added, 281 closing lines available"
+   "detail": "6 snapshots added, 281 closing lines available"
   },
   {
    "source": "steam",
    "ok": true,
-   "detail": "21 games with a notable pre-game move"
+   "detail": "22 games with a notable pre-game move"
   },
   {
    "source": "liveEdges",
@@ -1021,22 +1001,22 @@
   {
    "source": "grading",
    "ok": true,
-   "detail": "36 picks added, 1 settled, 0 CLV, 528 total"
+   "detail": "1 picks added, 0 settled, 0 CLV, 529 total"
   },
   {
    "source": "timing",
    "ok": true,
-   "detail": "82 bets with buy-now/wait guidance"
+   "detail": "78 bets with buy-now/wait guidance"
   },
   {
    "source": "whales",
    "ok": true,
-   "detail": "40 markets checked, 6 games with a notable trade"
+   "detail": "41 markets checked, 7 games with a notable trade"
   },
   {
    "source": "alerts",
    "ok": true,
-   "detail": "8 found, 2 sent: sent"
+   "detail": "9 found, 8 sent: sent"
   },
   {
    "source": "suggestions",
@@ -1059,8 +1039,6 @@
   "cbb": "College Baseball",
   "mma": "UFC",
   "bellator": "Bellator",
-  "atp": "ATP Tennis",
-  "wta": "WTA Tennis",
   "epl": "English Premier League",
   "championship": "English Championship",
   "league1": "English League One",
@@ -1211,17 +1189,17 @@
    "coinFlipBrier": 0.25
   },
   "ncaaf": {
-   "n": 428,
-   "brier": 0.2211,
-   "logLoss": 0.6334,
-   "accuracy": 0.645,
+   "n": 1041,
+   "brier": 0.2049,
+   "logLoss": 0.5975,
+   "accuracy": 0.688,
    "coinFlipBrier": 0.25
   },
   "wnba": {
-   "n": 361,
-   "brier": 0.2074,
-   "logLoss": 0.6016,
-   "accuracy": 0.665,
+   "n": 368,
+   "brier": 0.2072,
+   "logLoss": 0.601,
+   "accuracy": 0.671,
    "coinFlipBrier": 0.25
   },
   "epl": {
@@ -1288,11 +1266,11 @@
    "baseline": "league-to-date frequencies (3-way)"
   },
   "bundesliga2": {
-   "n": 328,
-   "brier": 0.6382,
-   "coinFlipBrier": 0.6531,
-   "logLoss": 1.0581,
-   "accuracy": 0.436,
+   "n": 329,
+   "brier": 0.6372,
+   "coinFlipBrier": 0.6525,
+   "logLoss": 1.0566,
+   "accuracy": 0.438,
    "drawRate": 0.262,
    "baseline": "league-to-date frequencies (3-way)"
   },
@@ -1680,10 +1658,10 @@
     "edgeBets": 0
    },
    "bundesliga2": {
-    "games": 7,
-    "withOdds": 4,
+    "games": 3,
+    "withOdds": 3,
     "avgBooks": 1.0,
-    "withModel": 4,
+    "withModel": 3,
     "withPmMatch": 0,
     "edgeBets": 0
    },
@@ -1869,7 +1847,7 @@
     "avgBooks": 1.5,
     "withModel": 48,
     "withPmMatch": 28,
-    "edgeBets": 27
+    "edgeBets": 24
    },
    "nfl": {
     "games": 14,
@@ -1885,7 +1863,7 @@
     "avgBooks": 2.0,
     "withModel": 10,
     "withPmMatch": 10,
-    "edgeBets": 3
+    "edgeBets": 2
    },
    "norway": {
     "games": 7,
@@ -2099,14 +2077,14 @@
      "side": "Navy Midshipmen",
      "book": "DraftKings",
      "american": 2000.0,
-     "fair": 0.0879,
-     "evPct": 84.51,
-     "stakePct": 1.48,
-     "stake": 1.48,
+     "fair": 0.087,
+     "evPct": 82.69,
+     "stakePct": 1.45,
+     "stake": 1.45,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 2.2,
+      "hoursToStart": 2.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2139,20 +2117,31 @@
     }
    },
    "model": {
-    "home": 0.2573,
-    "away": 0.7427,
-    "blendHome": 0.0879,
-    "gapPp": 22.6,
+    "home": 0.2538,
+    "away": 0.7462,
+    "blendHome": 0.087,
+    "gapPp": 22.2,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-09",
+      "home": "Notre Dame Fighting Irish",
+      "away": "Navy Midshipmen",
+      "homeScore": 49.0,
+      "awayScore": 10.0
+     }
+    ],
     "home": {
      "name": "Navy Midshipmen",
-     "record": "2-5",
+     "record": "10-7",
      "last": [
+      "W",
+      "W",
+      "W",
       "W",
       "L",
       "L",
@@ -2164,8 +2153,11 @@
     },
     "away": {
      "name": "Notre Dame Fighting Irish",
-     "record": "6-1",
+     "record": "15-1",
      "last": [
+      "W",
+      "W",
+      "W",
       "W",
       "W",
       "W",
@@ -2230,14 +2222,14 @@
      "side": "Stanford Cardinal",
      "book": "DraftKings",
      "american": 1100.0,
-     "fair": 0.1182,
-     "evPct": 41.89,
-     "stakePct": 1.33,
-     "stake": 1.33,
+     "fair": 0.1173,
+     "evPct": 40.71,
+     "stakePct": 1.3,
+     "stake": 1.3,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 5.4,
+      "hoursToStart": 5.3,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2290,10 +2282,10 @@
     }
    },
    "model": {
-    "home": 0.7397,
-    "away": 0.2603,
-    "blendHome": 0.8818,
-    "gapPp": -18.9,
+    "home": 0.7437,
+    "away": 0.2563,
+    "blendHome": 0.8827,
+    "gapPp": -18.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -2302,8 +2294,11 @@
     "h2h": [],
     "home": {
      "name": "Louisville Cardinals",
-     "record": "4-3",
+     "record": "10-7",
      "last": [
+      "L",
+      "W",
+      "W",
       "L",
       "W",
       "W",
@@ -2315,8 +2310,10 @@
     },
     "away": {
      "name": "Stanford Cardinal",
-     "record": "4-4",
+     "record": "7-9",
      "last": [
+      "W",
+      "L",
       "W",
       "L",
       "L",
@@ -2360,14 +2357,14 @@
      "side": "Rutgers Scarlet Knights",
      "book": "DraftKings",
      "american": 525.0,
-     "fair": 0.2262,
-     "evPct": 41.37,
-     "stakePct": 2.76,
-     "stake": 2.76,
+     "fair": 0.2159,
+     "evPct": 34.93,
+     "stakePct": 2.33,
+     "stake": 2.33,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 2.7,
+      "hoursToStart": 2.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2420,10 +2417,10 @@
     }
    },
    "model": {
-    "home": 0.4778,
-    "away": 0.5222,
-    "blendHome": 0.2262,
-    "gapPp": 33.5,
+    "home": 0.4366,
+    "away": 0.5634,
+    "blendHome": 0.2159,
+    "gapPp": 29.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -2432,8 +2429,11 @@
     "h2h": [],
     "home": {
      "name": "Rutgers Scarlet Knights",
-     "record": "2-5",
+     "record": "4-11",
      "last": [
+      "W",
+      "L",
+      "L",
       "L",
       "L",
       "L",
@@ -2445,109 +2445,17 @@
     },
     "away": {
      "name": "Michigan Wolverines",
-     "record": "4-3",
+     "record": "10-6",
      "last": [
       "W",
+      "L",
+      "L",
+      "W",
       "W",
       "W",
       "L",
       "L",
       "W",
-      "L"
-     ]
-    }
-   }
-  },
-  {
-   "key": "ncaaf|mississippistatebulldogs|texaslonghorns|2026-10-31T23:30",
-   "sport": "ncaaf",
-   "home": "Texas Longhorns",
-   "away": "Mississippi State Bulldogs",
-   "start": "2026-10-31T23:30Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.9206,
-    "away": 0.0794
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -1600.0,
-     "decimal": 1.062
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 900.0,
-     "decimal": 10.0
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0412,
-   "bets": [
-    {
-     "side": "Mississippi State Bulldogs",
-     "book": "DraftKings",
-     "american": 900.0,
-     "fair": 0.1305,
-     "evPct": 30.52,
-     "stakePct": 1.19,
-     "stake": 1.19,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 9.7,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png",
-     "color": "af5c37"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/344.png",
-     "color": "5d1725"
-    }
-   },
-   "model": {
-    "home": 0.7162,
-    "away": 0.2838,
-    "blendHome": 0.8695,
-    "gapPp": -20.4,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Texas Longhorns",
-     "record": "5-2",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "Mississippi State Bulldogs",
-     "record": "4-3",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
       "L"
      ]
     }
@@ -2597,7 +2505,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 11.2,
+      "hoursToStart": 11.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2677,89 +2585,83 @@
    }
   },
   {
-   "key": "ncaaf|minnesotagoldengophers|indianahoosiers|2026-10-31T19:30",
+   "key": "ncaaf|mississippistatebulldogs|texaslonghorns|2026-10-31T23:30",
    "sport": "ncaaf",
-   "home": "Indiana Hoosiers",
-   "away": "Minnesota Golden Gophers",
-   "start": "2026-10-31T19:30Z",
+   "home": "Texas Longhorns",
+   "away": "Mississippi State Bulldogs",
+   "start": "2026-10-31T23:30Z",
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.9151,
-    "away": 0.0849
+    "home": 0.9206,
+    "away": 0.0794
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -1450.0,
-     "decimal": 1.069
+     "american": -1600.0,
+     "decimal": 1.062
     },
     "away": {
      "book": "DraftKings",
-     "american": 850.0,
-     "decimal": 9.5
+     "american": 900.0,
+     "decimal": 10.0
     }
    },
    "arb": false,
-   "impliedSum": 1.0407,
+   "impliedSum": 1.0412,
    "bets": [
     {
-     "side": "Minnesota Golden Gophers",
+     "side": "Mississippi State Bulldogs",
      "book": "DraftKings",
-     "american": 850.0,
-     "fair": 0.1227,
-     "evPct": 16.57,
-     "stakePct": 0.68,
-     "stake": 0.68,
+     "american": 900.0,
+     "fair": 0.1162,
+     "evPct": 16.2,
+     "stakePct": 0.63,
+     "stake": 0.63,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 5.7,
+      "hoursToStart": 9.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
      }
     }
    ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Minnesota vs Indiana",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "Minnesota": "KXNCAAFGAME-26OCT30MINNIND-MINN",
-      "Indiana": "KXNCAAFGAME-26OCT30MINNIND-IND"
-     },
-     "home": 0.92,
-     "homeEdgePp": -0.5,
-     "away": 0.08,
-     "awayEdgePp": 0.5
-    }
-   ],
+   "pm": [],
    "teamMeta": {
     "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/84.png",
-     "color": "970310"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png",
+     "color": "af5c37"
     },
     "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/135.png",
-     "color": "5e0a2f"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/344.png",
+     "color": "5d1725"
     }
    },
    "model": {
-    "home": 0.7639,
-    "away": 0.2361,
-    "blendHome": 0.8773,
-    "gapPp": -15.1,
+    "home": 0.7734,
+    "away": 0.2266,
+    "blendHome": 0.8838,
+    "gapPp": -14.7,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-10-25",
+      "home": "Mississippi State Bulldogs",
+      "away": "Texas Longhorns",
+      "homeScore": 38.0,
+      "awayScore": 45.0
+     }
+    ],
     "home": {
-     "name": "Indiana Hoosiers",
-     "record": "7-1",
+     "name": "Texas Longhorns",
+     "record": "12-4",
      "last": [
       "W",
       "W",
@@ -2767,21 +2669,26 @@
       "W",
       "W",
       "W",
+      "W",
+      "L",
       "L",
       "W"
      ]
     },
     "away": {
-     "name": "Minnesota Golden Gophers",
-     "record": "5-2",
+     "name": "Mississippi State Bulldogs",
+     "record": "5-11",
      "last": [
-      "W",
+      "L",
+      "L",
       "L",
       "W",
       "W",
       "W",
+      "W",
       "L",
-      "W"
+      "L",
+      "L"
      ]
     }
    }
@@ -2830,7 +2737,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 10.7,
+      "hoursToStart": 10.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2903,122 +2810,6 @@
    }
   },
   {
-   "key": "ncaaf|newmexicolobos|sanjosestatespartans|2026-10-31T20:00",
-   "sport": "ncaaf",
-   "home": "San Jos\u00e9 State Spartans",
-   "away": "New Mexico Lobos",
-   "start": "2026-10-31T20:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.154,
-    "away": 0.846
-   },
-   "best": {
-    "home": {
-     "book": "Bovada",
-     "american": 475,
-     "decimal": 5.75
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -650.0,
-     "decimal": 1.154
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0406,
-   "bets": [
-    {
-     "side": "San Jos\u00e9 State Spartans",
-     "book": "Bovada",
-     "american": 475,
-     "fair": 0.197,
-     "evPct": 13.27,
-     "stakePct": 0.98,
-     "stake": 0.98,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 6.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png",
-     "color": "0038a8"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
-     "color": "ba0c2f"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": -15.0,
-     "american": -110
-    },
-    "home": {
-     "handicap": 15.0,
-     "american": -110
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 42.5,
-     "american": -110
-    },
-    "under": {
-     "handicap": 42.5,
-     "american": -110
-    }
-   },
-   "model": {
-    "home": 0.326,
-    "away": 0.674,
-    "blendHome": 0.197,
-    "gapPp": 17.2,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "San Jos\u00e9 State Spartans",
-     "record": "4-4",
-     "last": [
-      "L",
-      "W",
-      "W",
-      "L",
-      "W",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "New Mexico Lobos",
-     "record": "6-1",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "eerstedivisie|nacbreda|jongpsv|2026-11-02T19:00",
    "sport": "eerstedivisie",
    "home": "Jong PSV",
@@ -3062,7 +2853,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 53.2,
+      "hoursToStart": 53.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3164,7 +2955,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 31.6,
+      "hoursToStart": 31.5,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3331,9 +3122,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.7,
+      "hoursToStart": 1.6,
       "reasons": [
-       "Game starts in 1.7h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.6h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -3411,6 +3202,115 @@
    }
   },
   {
+   "key": "ncaaf|oklahomastatecowboys|iowastatecyclones|2026-10-31T23:00",
+   "sport": "ncaaf",
+   "home": "Iowa State Cyclones",
+   "away": "Oklahoma State Cowboys",
+   "start": "2026-10-31T23:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.2386,
+    "away": 0.7614
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 285.0,
+     "decimal": 3.85
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -360.0,
+     "decimal": 1.278
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0423,
+   "bets": [
+    {
+     "side": "Iowa State Cyclones",
+     "book": "DraftKings",
+     "american": 285.0,
+     "fair": 0.2879,
+     "evPct": 10.84,
+     "stakePct": 1.33,
+     "stake": 1.33,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 9.1,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/66.png",
+     "color": "ae192d"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/197.png",
+     "color": "fe5c00"
+    }
+   },
+   "model": {
+    "home": 0.4359,
+    "away": 0.5641,
+    "blendHome": 0.2879,
+    "gapPp": 19.7,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-11-29",
+      "home": "Oklahoma State Cowboys",
+      "away": "Iowa State Cyclones",
+      "homeScore": 13.0,
+      "awayScore": 20.0
+     }
+    ],
+    "home": {
+     "name": "Iowa State Cyclones",
+     "record": "7-8",
+     "last": [
+      "W",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W",
+      "L",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Oklahoma State Cowboys",
+     "record": "5-11",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "nfl|minnesotavikings|detroitlions|2026-11-01T18:00",
    "sport": "nfl",
    "home": "Detroit Lions",
@@ -3448,7 +3348,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 28.2,
+      "hoursToStart": 28.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3565,101 +3465,6 @@
    }
   },
   {
-   "key": "ncaaf|miamihurricanes|northcarolinatarheels|2026-10-31T23:30",
-   "sport": "ncaaf",
-   "home": "North Carolina Tar Heels",
-   "away": "Miami Hurricanes",
-   "start": "2026-10-31T23:30Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.1591,
-    "away": 0.8409
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 455.0,
-     "decimal": 5.55
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -625.0,
-     "decimal": 1.16
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0422,
-   "bets": [
-    {
-     "side": "North Carolina Tar Heels",
-     "book": "DraftKings",
-     "american": 455.0,
-     "fair": 0.1988,
-     "evPct": 10.36,
-     "stakePct": 0.8,
-     "stake": 0.8,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 9.7,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/153.png",
-     "color": "7bafd4"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png",
-     "color": "f47423"
-    }
-   },
-   "model": {
-    "home": 0.3182,
-    "away": 0.6818,
-    "blendHome": 0.1988,
-    "gapPp": 15.9,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "North Carolina Tar Heels",
-     "record": "4-3",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Miami Hurricanes",
-     "record": "7-0",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "bolivia|sanantoniobulobulo|abb|2026-10-31T21:15",
    "sport": "bolivia",
    "home": "ABB",
@@ -3703,7 +3508,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 7.4,
+      "hoursToStart": 7.3,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3819,7 +3624,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 54.4,
+      "hoursToStart": 54.3,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3942,9 +3747,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.7,
+      "hoursToStart": 1.6,
       "reasons": [
-       "Game starts in 1.7h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.6h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -4022,80 +3827,225 @@
    }
   },
   {
-   "key": "ncaaf|missouritigers|arkansasrazorbacks|2026-10-31T23:45",
+   "key": "ncaaf|kansasstatewildcats|coloradobuffaloes|2026-10-31T18:00",
    "sport": "ncaaf",
-   "home": "Arkansas Razorbacks",
-   "away": "Missouri Tigers",
-   "start": "2026-10-31T23:45Z",
-   "nBooks": 1,
+   "home": "Colorado Buffaloes",
+   "away": "Kansas State Wildcats",
+   "start": "2026-10-31T18:00Z",
+   "nBooks": 2,
    "threeWay": false,
    "fair": {
-    "home": 0.2292,
-    "away": 0.7708
+    "home": 0.5818,
+    "away": 0.4182
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 300.0,
-     "decimal": 4.0
+     "american": -148.0,
+     "decimal": 1.676
     },
     "away": {
-     "book": "DraftKings",
-     "american": -380.0,
-     "decimal": 1.263
+     "book": "Bovada",
+     "american": 132,
+     "decimal": 2.32
     }
    },
    "arb": false,
-   "impliedSum": 1.0417,
+   "impliedSum": 1.0278,
    "bets": [
     {
-     "side": "Arkansas Razorbacks",
+     "side": "Kansas State Wildcats",
+     "book": "Bovada",
+     "american": 132,
+     "fair": 0.4663,
+     "evPct": 8.19,
+     "stakePct": 2.17,
+     "stake": 2.17,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "wait_ok",
+      "hoursToStart": 4.1,
+      "reasons": [
+       "The market has moved 3.8 pts toward the other side -- this price may hold or improve if your view is right."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/38.png",
+     "color": "cfb87c"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2306.png",
+     "color": "330a57"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": 3.0,
+     "american": -112
+    },
+    "home": {
+     "handicap": -3.0,
+     "american": -108
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 46.5,
+     "american": -112
+    },
+    "under": {
+     "handicap": 46.5,
+     "american": -108
+    }
+   },
+   "model": {
+    "home": 0.3893,
+    "away": 0.6107,
+    "blendHome": 0.5337,
+    "gapPp": -19.2,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-11-29",
+      "home": "Kansas State Wildcats",
+      "away": "Colorado Buffaloes",
+      "homeScore": 24.0,
+      "awayScore": 14.0
+     }
+    ],
+    "home": {
+     "name": "Colorado Buffaloes",
+     "record": "3-12",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "W",
+      "L",
+      "L",
+      "L",
+      "L",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Kansas State Wildcats",
+     "record": "9-6",
+     "last": [
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "L"
+     ]
+    }
+   },
+   "steam": {
+    "kind": "drift",
+    "side": "home",
+    "biggestMovePts": 3.8,
+    "biggestMoveAt": "2026-10-27T21:06:22+00:00",
+    "totalDriftPts": 11.6,
+    "snapshots": 38,
+    "firstSeen": "2026-10-25T17:10:02+00:00",
+    "lastSeen": "2026-10-31T13:50:27+00:00"
+   }
+  },
+  {
+   "key": "ncaaf|oregonstatebeavers|fresnostatebulldogs|2026-11-01T03:00",
+   "sport": "ncaaf",
+   "home": "Fresno State Bulldogs",
+   "away": "Oregon State Beavers",
+   "start": "2026-11-01T03:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.3239,
+    "away": 0.6761
+   },
+   "best": {
+    "home": {
      "book": "DraftKings",
-     "american": 300.0,
-     "fair": 0.2734,
-     "evPct": 9.36,
-     "stakePct": 1.09,
-     "stake": 1.09,
+     "american": 190.0,
+     "decimal": 2.9
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -230.0,
+     "decimal": 1.435
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0418,
+   "bets": [
+    {
+     "side": "Fresno State Bulldogs",
+     "book": "DraftKings",
+     "american": 190.0,
+     "fair": 0.3726,
+     "evPct": 8.06,
+     "stakePct": 1.48,
+     "stake": 1.48,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 9.9,
+      "hoursToStart": 13.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
      }
     }
    ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Missouri vs Arkansas",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "Missouri": "KXNCAAFGAME-26OCT30MIZZARK-MIZZ",
-      "Arkansas": "KXNCAAFGAME-26OCT30MIZZARK-ARK"
-     },
-     "home": 0.23,
-     "homeEdgePp": -0.1,
-     "away": 0.78,
-     "awayEdgePp": -0.9
-    }
-   ],
+   "pm": [],
    "teamMeta": {
     "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/8.png",
-     "color": "a32136"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
+     "color": "b1102b"
     },
     "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png",
-     "color": "f1b82d"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
+     "color": "dc4405"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": -6.0,
+     "american": -110
+    },
+    "home": {
+     "handicap": 6.0,
+     "american": -110
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 58.5,
+     "american": -108
+    },
+    "under": {
+     "handicap": 58.5,
+     "american": -112
     }
    },
    "model": {
-    "home": 0.4061,
-    "away": 0.5939,
-    "blendHome": 0.2734,
-    "gapPp": 17.7,
+    "home": 0.5187,
+    "away": 0.4813,
+    "blendHome": 0.3726,
+    "gapPp": 19.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -4103,29 +4053,35 @@
    "matchup": {
     "h2h": [],
     "home": {
-     "name": "Arkansas Razorbacks",
-     "record": "3-4",
+     "name": "Fresno State Bulldogs",
+     "record": "9-6",
      "last": [
-      "W",
-      "L",
       "L",
       "W",
+      "W",
       "L",
+      "W",
+      "W",
+      "W",
+      "W",
       "L",
-      "W"
+      "L"
      ]
     },
     "away": {
-     "name": "Missouri Tigers",
-     "record": "5-2",
+     "name": "Oregon State Beavers",
+     "record": "7-8",
      "last": [
-      "W",
-      "W",
-      "W",
+      "L",
+      "L",
+      "L",
+      "L",
       "L",
       "W",
       "W",
-      "L"
+      "W",
+      "W",
+      "W"
      ]
     }
    }
@@ -4161,14 +4117,14 @@
      "side": "South Alabama Jaguars",
      "book": "DraftKings",
      "american": 200.0,
-     "fair": 0.3637,
-     "evPct": 9.12,
-     "stakePct": 1.6,
-     "stake": 1.6,
+     "fair": 0.3597,
+     "evPct": 7.91,
+     "stakePct": 1.38,
+     "stake": 1.38,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 5.2,
+      "hoursToStart": 5.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4221,10 +4177,10 @@
     }
    },
    "model": {
-    "home": 0.517,
-    "away": 0.483,
-    "blendHome": 0.3637,
-    "gapPp": 20.4,
+    "home": 0.5009,
+    "away": 0.4991,
+    "blendHome": 0.3597,
+    "gapPp": 18.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -4233,8 +4189,11 @@
     "h2h": [],
     "home": {
      "name": "South Alabama Jaguars",
-     "record": "4-3",
+     "record": "7-8",
      "last": [
+      "W",
+      "W",
+      "L",
       "W",
       "L",
       "W",
@@ -4246,8 +4205,11 @@
     },
     "away": {
      "name": "Louisiana Tech Bulldogs",
-     "record": "5-2",
+     "record": "10-6",
      "last": [
+      "W",
+      "W",
+      "W",
       "W",
       "L",
       "L",
@@ -4292,44 +4254,167 @@
    ]
   },
   {
-   "key": "ncaaf|purdueboilermakers|pennstatenittanylions|2026-10-31T20:15",
+   "key": "ncaaf|missouritigers|arkansasrazorbacks|2026-10-31T23:45",
    "sport": "ncaaf",
-   "home": "Penn State Nittany Lions",
-   "away": "Purdue Boilermakers",
-   "start": "2026-10-31T20:15Z",
-   "nBooks": 2,
+   "home": "Arkansas Razorbacks",
+   "away": "Missouri Tigers",
+   "start": "2026-10-31T23:45Z",
+   "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.7687,
-    "away": 0.2313
+    "home": 0.2292,
+    "away": 0.7708
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -375.0,
-     "decimal": 1.267
+     "american": 300.0,
+     "decimal": 4.0
     },
     "away": {
      "book": "DraftKings",
-     "american": 295.0,
-     "decimal": 3.95
+     "american": -380.0,
+     "decimal": 1.263
     }
    },
    "arb": false,
-   "impliedSum": 1.0426,
+   "impliedSum": 1.0417,
    "bets": [
     {
-     "side": "Purdue Boilermakers",
+     "side": "Arkansas Razorbacks",
      "book": "DraftKings",
-     "american": 295.0,
-     "fair": 0.2753,
-     "evPct": 8.74,
-     "stakePct": 1.04,
-     "stake": 1.04,
+     "american": 300.0,
+     "fair": 0.2693,
+     "evPct": 7.73,
+     "stakePct": 0.9,
+     "stake": 0.9,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 6.4,
+      "hoursToStart": 9.8,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Missouri vs Arkansas",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Missouri": "KXNCAAFGAME-26OCT30MIZZARK-MIZZ",
+      "Arkansas": "KXNCAAFGAME-26OCT30MIZZARK-ARK"
+     },
+     "home": 0.23,
+     "homeEdgePp": -0.1,
+     "away": 0.78,
+     "awayEdgePp": -0.9
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/8.png",
+     "color": "a32136"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png",
+     "color": "f1b82d"
+    }
+   },
+   "model": {
+    "home": 0.3898,
+    "away": 0.6102,
+    "blendHome": 0.2693,
+    "gapPp": 16.1,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-11-29",
+      "home": "Arkansas Razorbacks",
+      "away": "Missouri Tigers",
+      "homeScore": 17.0,
+      "awayScore": 31.0
+     }
+    ],
+    "home": {
+     "name": "Arkansas Razorbacks",
+     "record": "3-12",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "Missouri Tigers",
+     "record": "9-7",
+     "last": [
+      "L",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "L"
+     ]
+    }
+   }
+  },
+  {
+   "key": "ncaaf|newmexicolobos|sanjosestatespartans|2026-10-31T20:00",
+   "sport": "ncaaf",
+   "home": "San Jos\u00e9 State Spartans",
+   "away": "New Mexico Lobos",
+   "start": "2026-10-31T20:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.154,
+    "away": 0.846
+   },
+   "best": {
+    "home": {
+     "book": "Bovada",
+     "american": 475,
+     "decimal": 5.75
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -650.0,
+     "decimal": 1.154
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0406,
+   "bets": [
+    {
+     "side": "San Jos\u00e9 State Spartans",
+     "book": "Bovada",
+     "american": 475,
+     "fair": 0.1867,
+     "evPct": 7.34,
+     "stakePct": 0.54,
+     "stake": 0.54,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 6.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4339,69 +4424,83 @@
    "pm": [],
    "teamMeta": {
     "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
-     "color": "061440"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png",
+     "color": "0038a8"
     },
     "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2509.png",
-     "color": "ceb888"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
+     "color": "ba0c2f"
     }
    },
    "spread": {
     "away": {
-     "handicap": 10.5,
-     "american": -115
+     "handicap": -15.0,
+     "american": -110
     },
     "home": {
-     "handicap": -10.5,
-     "american": -105
+     "handicap": 15.0,
+     "american": -110
     }
    },
    "total": {
     "over": {
-     "handicap": 55.0,
+     "handicap": 42.5,
      "american": -110
     },
     "under": {
-     "handicap": 55.0,
+     "handicap": 42.5,
      "american": -110
     }
    },
    "model": {
-    "home": 0.5927,
-    "away": 0.4073,
-    "blendHome": 0.7247,
-    "gapPp": -17.6,
+    "home": 0.2847,
+    "away": 0.7153,
+    "blendHome": 0.1867,
+    "gapPp": 13.1,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-10-04",
+      "home": "San Jos\u00e9 State Spartans",
+      "away": "New Mexico Lobos",
+      "homeScore": 35.0,
+      "awayScore": 28.0
+     }
+    ],
     "home": {
-     "name": "Penn State Nittany Lions",
-     "record": "3-4",
+     "name": "San Jos\u00e9 State Spartans",
+     "record": "6-11",
      "last": [
-      "W",
-      "W",
-      "W",
       "L",
       "L",
       "L",
+      "W",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W",
       "L"
      ]
     },
     "away": {
-     "name": "Purdue Boilermakers",
-     "record": "3-4",
+     "name": "New Mexico Lobos",
+     "record": "13-4",
      "last": [
       "W",
-      "L",
-      "L",
+      "W",
       "L",
       "W",
       "W",
-      "L"
+      "L",
+      "W",
+      "W",
+      "W",
+      "W"
      ]
     }
    }
@@ -4450,9 +4549,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.2,
+      "hoursToStart": 1.1,
       "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -4552,7 +4651,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 35.5,
+      "hoursToStart": 35.4,
       "reasons": [
        "The market has moved 1.5 pts toward the other side -- this price may hold or improve if your view is right."
       ]
@@ -4729,7 +4828,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 53.9,
+      "hoursToStart": 53.8,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4852,7 +4951,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 3.2,
+      "hoursToStart": 3.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4932,6 +5031,121 @@
    }
   },
   {
+   "key": "ncaaf|nevadawolfpack|uclabruins|2026-10-31T20:15",
+   "sport": "ncaaf",
+   "home": "UCLA Bruins",
+   "away": "Nevada Wolf Pack",
+   "start": "2026-10-31T20:15Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.9282,
+    "away": 0.0718
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -1800.0,
+     "decimal": 1.056
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 1000.0,
+     "decimal": 11.0
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0383,
+   "bets": [
+    {
+     "side": "Nevada Wolf Pack",
+     "book": "DraftKings",
+     "american": 1000.0,
+     "fair": 0.0963,
+     "evPct": 5.91,
+     "stakePct": 0.21,
+     "stake": 0.21,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 6.3,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "UCLA vs Nevada",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "UCLA": "KXNCAAFGAME-26OCT30NEVUCLA-UCLA",
+      "Nevada": "KXNCAAFGAME-26OCT30NEVUCLA-NEV"
+     },
+     "home": 0.93,
+     "homeEdgePp": -0.2,
+     "away": 0.08,
+     "awayEdgePp": -0.8
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
+     "color": "2774ae"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
+     "color": "041e42"
+    }
+   },
+   "model": {
+    "home": 0.8302,
+    "away": 0.1698,
+    "blendHome": 0.9037,
+    "gapPp": -9.8,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "UCLA Bruins",
+     "record": "10-6",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "Nevada Wolf Pack",
+     "record": "5-10",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "W",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "nfl|baltimoreravens|buffalobills|2026-11-01T18:00",
    "sport": "nfl",
    "home": "Buffalo Bills",
@@ -4969,7 +5183,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 28.2,
+      "hoursToStart": 28.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5154,7 +5368,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 52.2,
+      "hoursToStart": 52.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5270,7 +5484,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 24.2,
+      "hoursToStart": 24.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5343,246 +5557,6 @@
    }
   },
   {
-   "key": "ncaaf|coloradostaterams|utahstateaggies|2026-10-31T19:30",
-   "sport": "ncaaf",
-   "home": "Utah State Aggies",
-   "away": "Colorado State Rams",
-   "start": "2026-10-31T19:30Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.7297,
-    "away": 0.2703
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -298.0,
-     "decimal": 1.336
-    },
-    "away": {
-     "book": "Bovada",
-     "american": 250,
-     "decimal": 3.5
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0345,
-   "bets": [
-    {
-     "side": "Colorado State Rams",
-     "book": "Bovada",
-     "american": 250,
-     "fair": 0.3013,
-     "evPct": 5.44,
-     "stakePct": 0.76,
-     "stake": 0.76,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "wait_ok",
-      "hoursToStart": 5.7,
-      "reasons": [
-       "The market has moved 7.2 pts toward the other side -- this price may hold or improve if your view is right."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
-     "color": "0f2439"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/36.png",
-     "color": "004c23"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": 8.5,
-     "american": -112
-    },
-    "home": {
-     "handicap": -8.5,
-     "american": -108
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 60.5,
-     "american": -112
-    },
-    "under": {
-     "handicap": 60.5,
-     "american": -108
-    }
-   },
-   "model": {
-    "home": 0.6057,
-    "away": 0.3943,
-    "blendHome": 0.6987,
-    "gapPp": -12.4,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Utah State Aggies",
-     "record": "2-5",
-     "last": [
-      "L",
-      "L",
-      "L",
-      "W",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Colorado State Rams",
-     "record": "3-4",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "L",
-      "L",
-      "L",
-      "W"
-     ]
-    }
-   },
-   "steam": {
-    "kind": "steam",
-    "side": "home",
-    "biggestMovePts": 7.2,
-    "biggestMoveAt": "2026-10-25T22:04:26+00:00",
-    "totalDriftPts": 12.6,
-    "snapshots": 37,
-    "firstSeen": "2026-10-25T19:31:43+00:00",
-    "lastSeen": "2026-10-31T13:50:27+00:00"
-   }
-  },
-  {
-   "key": "ncaaf|oregonstatebeavers|fresnostatebulldogs|2026-11-01T03:00",
-   "sport": "ncaaf",
-   "home": "Fresno State Bulldogs",
-   "away": "Oregon State Beavers",
-   "start": "2026-11-01T03:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.3239,
-    "away": 0.6761
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 190.0,
-     "decimal": 2.9
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -230.0,
-     "decimal": 1.435
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0418,
-   "bets": [
-    {
-     "side": "Fresno State Bulldogs",
-     "book": "DraftKings",
-     "american": 190.0,
-     "fair": 0.3634,
-     "evPct": 5.4,
-     "stakePct": 0.99,
-     "stake": 0.99,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 13.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
-     "color": "b1102b"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
-     "color": "dc4405"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": -6.0,
-     "american": -110
-    },
-    "home": {
-     "handicap": 6.0,
-     "american": -110
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 58.5,
-     "american": -108
-    },
-    "under": {
-     "handicap": 58.5,
-     "american": -112
-    }
-   },
-   "model": {
-    "home": 0.482,
-    "away": 0.518,
-    "blendHome": 0.3634,
-    "gapPp": 15.8,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Fresno State Bulldogs",
-     "record": "4-3",
-     "last": [
-      "L",
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Oregon State Beavers",
-     "record": "5-2",
-     "last": [
-      "L",
-      "L",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "argentina|argentinosjuniors|atleticotucuman|2026-11-03T00:15",
    "sport": "argentina",
    "home": "Atl\u00e9tico Tucum\u00e1n",
@@ -5626,7 +5600,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 58.4,
+      "hoursToStart": 58.3,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5736,7 +5710,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 10.2,
+      "hoursToStart": 10.1,
       "reasons": [
        "Historically, NBA edges we've flagged have lost 1.6% to the closing line on average (n=38) -- the price has tended to improve by waiting."
       ]
@@ -5874,6 +5848,127 @@
    }
   },
   {
+   "key": "ncaaf|armyblackknights|memphistigers|2026-11-01T00:00",
+   "sport": "ncaaf",
+   "home": "Memphis Tigers",
+   "away": "Army Black Knights",
+   "start": "2026-11-01T00:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6675,
+    "away": 0.3325
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -218.0,
+     "decimal": 1.459
+    },
+    "away": {
+     "book": "Bovada",
+     "american": 185,
+     "decimal": 2.85
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0364,
+   "bets": [
+    {
+     "side": "Army Black Knights",
+     "book": "Bovada",
+     "american": 185,
+     "fair": 0.3688,
+     "evPct": 5.11,
+     "stakePct": 0.97,
+     "stake": 0.97,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 10.1,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png",
+     "color": "004991"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/349.png",
+     "color": "000000"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": 6.0,
+     "american": -108
+    },
+    "home": {
+     "handicap": -6.0,
+     "american": -112
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 60.0,
+     "american": -110
+    },
+    "under": {
+     "handicap": 60.0,
+     "american": -110
+    }
+   },
+   "model": {
+    "home": 0.5224,
+    "away": 0.4776,
+    "blendHome": 0.6312,
+    "gapPp": -14.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "Memphis Tigers",
+     "record": "10-7",
+     "last": [
+      "L",
+      "L",
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "Army Black Knights",
+     "record": "11-5",
+     "last": [
+      "W",
+      "L",
+      "W",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "eredivisie|willemii|psveindhoven|2026-10-31T17:45",
    "sport": "eredivisie",
    "home": "PSV Eindhoven",
@@ -5917,7 +6012,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 3.9,
+      "hoursToStart": 3.8,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5982,46 +6077,52 @@
    }
   },
   {
-   "key": "ncaaf|kansasstatewildcats|coloradobuffaloes|2026-10-31T18:00",
-   "sport": "ncaaf",
-   "home": "Colorado Buffaloes",
-   "away": "Kansas State Wildcats",
-   "start": "2026-10-31T18:00Z",
-   "nBooks": 2,
-   "threeWay": false,
+   "key": "championship|queensparkrangers|southampton|2026-10-31T15:00",
+   "sport": "championship",
+   "home": "Southampton",
+   "away": "Queens Park Rangers",
+   "start": "2026-10-31T15:00Z",
+   "nBooks": 1,
+   "threeWay": true,
    "fair": {
-    "home": 0.5818,
-    "away": 0.4182
+    "home": 0.4821,
+    "away": 0.2664,
+    "draw": 0.2515
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -148.0,
-     "decimal": 1.676
+     "american": 100.0,
+     "decimal": 2.0
     },
     "away": {
-     "book": "Bovada",
-     "american": 132,
-     "decimal": 2.32
+     "book": "DraftKings",
+     "american": 255.0,
+     "decimal": 3.55
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 275.0,
+     "decimal": 3.75
     }
    },
    "arb": false,
-   "impliedSum": 1.0278,
+   "impliedSum": 1.0484,
    "bets": [
     {
-     "side": "Kansas State Wildcats",
-     "book": "Bovada",
-     "american": 132,
-     "fair": 0.4523,
-     "evPct": 4.94,
-     "stakePct": 1.31,
-     "stake": 1.31,
+     "side": "Southampton",
+     "book": "DraftKings",
+     "american": 100.0,
+     "fair": 0.5252,
+     "evPct": 5.05,
+     "stakePct": 1.77,
+     "stake": 1.77,
      "basis": "model-blend",
      "timing": {
-      "advice": "wait_ok",
-      "hoursToStart": 4.2,
+      "advice": "closing_soon",
+      "hoursToStart": 1.1,
       "reasons": [
-       "The market has moved 3.8 pts toward the other side -- this price may hold or improve if your view is right."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -6029,38 +6130,294 @@
    "pm": [],
    "teamMeta": {
     "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/38.png",
-     "color": "cfb87c"
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/376.png",
+     "color": "ED1A3B"
     },
     "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2306.png",
-     "color": "330a57"
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/334.png",
+     "color": "0000d4"
+    }
+   },
+   "model": {
+    "home": 0.6547,
+    "draw": 0.2188,
+    "away": 0.1265,
+    "blendHome": 0.5252,
+    "gapPp": 17.3,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2026-02-24",
+      "home": "Southampton",
+      "away": "Queens Park Rangers",
+      "homeScore": 5.0,
+      "awayScore": 0.0
+     },
+     {
+      "date": "2025-11-05",
+      "home": "Queens Park Rangers",
+      "away": "Southampton",
+      "homeScore": 1.0,
+      "awayScore": 2.0
+     }
+    ],
+    "home": {
+     "name": "Southampton",
+     "record": "29-11-17",
+     "last": [
+      "W",
+      "T",
+      "T",
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "T",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "Queens Park Rangers",
+     "record": "21-20-14",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "T",
+      "T",
+      "T",
+      "T",
+      "W",
+      "L",
+      "W"
+     ]
+    }
+   },
+   "steam": {
+    "kind": "drift",
+    "side": "away",
+    "biggestMovePts": -1.8,
+    "biggestMoveAt": "2026-10-30T00:24:06+00:00",
+    "totalDriftPts": -7.4,
+    "snapshots": 44,
+    "firstSeen": "2026-10-25T01:01:36+00:00",
+    "lastSeen": "2026-10-31T13:56:23+00:00"
+   }
+  },
+  {
+   "key": "ncaaf|clemsontigers|floridastateseminoles|2026-10-31T23:00",
+   "sport": "ncaaf",
+   "home": "Florida State Seminoles",
+   "away": "Clemson Tigers",
+   "start": "2026-10-31T23:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6787,
+    "away": 0.3213
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -230.0,
+     "decimal": 1.435
+    },
+    "away": {
+     "book": "Bovada",
+     "american": 195,
+     "decimal": 2.95
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.036,
+   "bets": [
+    {
+     "side": "Clemson Tigers",
+     "book": "Bovada",
+     "american": 195,
+     "fair": 0.3556,
+     "evPct": 4.91,
+     "stakePct": 0.88,
+     "stake": 0.88,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 9.1,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/52.png",
+     "color": "782f40"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/228.png",
+     "color": "f56600"
     }
    },
    "spread": {
     "away": {
-     "handicap": 3.0,
-     "american": -112
+     "handicap": 6.5,
+     "american": -115
     },
     "home": {
-     "handicap": -3.0,
-     "american": -108
+     "handicap": -6.5,
+     "american": -105
     }
    },
    "total": {
     "over": {
-     "handicap": 46.5,
+     "handicap": 49.5,
      "american": -112
     },
     "under": {
-     "handicap": 46.5,
+     "handicap": 49.5,
      "american": -108
     }
    },
    "model": {
-    "home": 0.4453,
-    "away": 0.5547,
-    "blendHome": 0.5477,
+    "home": 0.5415,
+    "away": 0.4585,
+    "blendHome": 0.6444,
+    "gapPp": -13.7,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-11-09",
+      "home": "Clemson Tigers",
+      "away": "Florida State Seminoles",
+      "homeScore": 24.0,
+      "awayScore": 10.0
+     }
+    ],
+    "home": {
+     "name": "Florida State Seminoles",
+     "record": "5-11",
+     "last": [
+      "W",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "L",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Clemson Tigers",
+     "record": "10-6",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W",
+      "L"
+     ]
+    }
+   }
+  },
+  {
+   "key": "ncaaf|purdueboilermakers|pennstatenittanylions|2026-10-31T20:15",
+   "sport": "ncaaf",
+   "home": "Penn State Nittany Lions",
+   "away": "Purdue Boilermakers",
+   "start": "2026-10-31T20:15Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.7687,
+    "away": 0.2313
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -375.0,
+     "decimal": 1.267
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 295.0,
+     "decimal": 3.95
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0426,
+   "bets": [
+    {
+     "side": "Purdue Boilermakers",
+     "book": "DraftKings",
+     "american": 295.0,
+     "fair": 0.2655,
+     "evPct": 4.86,
+     "stakePct": 0.58,
+     "stake": 0.58,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 6.3,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
+     "color": "061440"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2509.png",
+     "color": "ceb888"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": 10.5,
+     "american": -115
+    },
+    "home": {
+     "handicap": -10.5,
+     "american": -105
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 55.0,
+     "american": -110
+    },
+    "under": {
+     "handicap": 55.0,
+     "american": -110
+    }
+   },
+   "model": {
+    "home": 0.6321,
+    "away": 0.3679,
+    "blendHome": 0.7345,
     "gapPp": -13.7,
     "weight": 0.25
    },
@@ -6069,12 +6426,15 @@
    "matchup": {
     "h2h": [],
     "home": {
-     "name": "Colorado Buffaloes",
-     "record": "2-5",
+     "name": "Penn State Nittany Lions",
+     "record": "7-10",
      "last": [
       "W",
       "W",
-      "L",
+      "W",
+      "W",
+      "W",
+      "W",
       "L",
       "L",
       "L",
@@ -6082,245 +6442,22 @@
      ]
     },
     "away": {
-     "name": "Kansas State Wildcats",
-     "record": "4-3",
+     "name": "Purdue Boilermakers",
+     "record": "3-12",
      "last": [
-      "W",
-      "W",
+      "L",
+      "L",
+      "L",
       "W",
       "L",
       "L",
+      "L",
+      "W",
       "W",
       "L"
-     ]
-    }
-   },
-   "steam": {
-    "kind": "drift",
-    "side": "home",
-    "biggestMovePts": 3.8,
-    "biggestMoveAt": "2026-10-27T21:06:22+00:00",
-    "totalDriftPts": 11.6,
-    "snapshots": 38,
-    "firstSeen": "2026-10-25T17:10:02+00:00",
-    "lastSeen": "2026-10-31T13:50:27+00:00"
-   }
-  },
-  {
-   "key": "ncaaf|oklahomastatecowboys|iowastatecyclones|2026-10-31T23:00",
-   "sport": "ncaaf",
-   "home": "Iowa State Cyclones",
-   "away": "Oklahoma State Cowboys",
-   "start": "2026-10-31T23:00Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.2386,
-    "away": 0.7614
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 285.0,
-     "decimal": 3.85
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -360.0,
-     "decimal": 1.278
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0423,
-   "bets": [
-    {
-     "side": "Iowa State Cyclones",
-     "book": "DraftKings",
-     "american": 285.0,
-     "fair": 0.2726,
-     "evPct": 4.94,
-     "stakePct": 0.61,
-     "stake": 0.61,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 9.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/66.png",
-     "color": "ae192d"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/197.png",
-     "color": "fe5c00"
-    }
-   },
-   "model": {
-    "home": 0.3746,
-    "away": 0.6254,
-    "blendHome": 0.2726,
-    "gapPp": 13.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Iowa State Cyclones",
-     "record": "3-4",
-     "last": [
-      "W",
-      "L",
-      "W",
-      "L",
-      "W",
-      "L",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Oklahoma State Cowboys",
-     "record": "5-2",
-     "last": [
-      "L",
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "W"
      ]
     }
    }
-  },
-  {
-   "key": "ncaaf|northwesternwildcats|oregonducks|2026-10-31T19:30",
-   "sport": "ncaaf",
-   "home": "Oregon Ducks",
-   "away": "Northwestern Wildcats",
-   "start": "2026-10-31T19:30Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.6214,
-    "away": 0.3786
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -180.0,
-     "decimal": 1.556
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 150.0,
-     "decimal": 2.5
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0429,
-   "bets": [
-    {
-     "side": "Northwestern Wildcats",
-     "book": "DraftKings",
-     "american": 150.0,
-     "fair": 0.4193,
-     "evPct": 4.83,
-     "stakePct": 1.13,
-     "stake": 1.13,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 5.7,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Oregon vs Northwestern",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "Oregon": "KXNCAAFGAME-26OCT30NWORE-ORE",
-      "Northwestern": "KXNCAAFGAME-26OCT30NWORE-NW"
-     },
-     "home": 0.63,
-     "homeEdgePp": -0.9,
-     "away": 0.38,
-     "awayEdgePp": -0.1
-    }
-   ],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2483.png",
-     "color": "00934b"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png",
-     "color": "492f92"
-    }
-   },
-   "model": {
-    "home": 0.4585,
-    "away": 0.5415,
-    "blendHome": 0.5807,
-    "gapPp": -16.3,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Oregon Ducks",
-     "record": "4-3",
-     "last": [
-      "W",
-      "L",
-      "W",
-      "W",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Northwestern Wildcats",
-     "record": "6-1",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    }
-   },
-   "whales": [
-    {
-     "side": "yes",
-     "notional": 2200.96,
-     "price": 0.38,
-     "contracts": 5792.0,
-     "block": false,
-     "time": "2026-10-31T13:35:55.095398Z",
-     "team": "Northwestern",
-     "source": "kalshi"
-    }
-   ]
   },
   {
    "key": "jleague|kawasakifrontale|yokohamafmarinos|2026-11-01T04:00",
@@ -6366,7 +6503,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 14.2,
+      "hoursToStart": 14.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6453,116 +6590,6 @@
    }
   },
   {
-   "key": "ncaaf|virginiatechhokies|smumustangs|2026-11-07T00:00",
-   "sport": "ncaaf",
-   "home": "SMU Mustangs",
-   "away": "Virginia Tech Hokies",
-   "start": "2026-11-07T00:00Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.7139,
-    "away": 0.2861
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -278.0,
-     "decimal": 1.36
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 225.0,
-     "decimal": 3.25
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0431,
-   "bets": [
-    {
-     "side": "Virginia Tech Hokies",
-     "book": "DraftKings",
-     "american": 225.0,
-     "fair": 0.3224,
-     "evPct": 4.77,
-     "stakePct": 0.74,
-     "stake": 0.74,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 154.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Virginia Tech vs SMU",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "Virginia Tech": "KXNCAAFGAME-26NOV06VTSMU-VT",
-      "SMU": "KXNCAAFGAME-26NOV06VTSMU-SMU"
-     },
-     "home": 0.72,
-     "homeEdgePp": -0.6,
-     "away": 0.31,
-     "awayEdgePp": -2.4
-    }
-   ],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png",
-     "color": "a80000"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/259.png",
-     "color": "6a2c3e"
-    }
-   },
-   "model": {
-    "home": 0.5689,
-    "away": 0.4311,
-    "blendHome": 0.6776,
-    "gapPp": -14.5,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "SMU Mustangs",
-     "record": "6-1",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "Virginia Tech Hokies",
-     "record": "6-2",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "nfl|jacksonvillejaguars|baltimoreravens|2026-11-06T01:15",
    "sport": "nfl",
    "home": "Baltimore Ravens",
@@ -6600,7 +6627,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 131.4,
+      "hoursToStart": 131.3,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6682,101 +6709,6 @@
    }
   },
   {
-   "key": "ncaaf|southernmissgoldeneagles|ulmonroewarhawks|2026-10-31T19:30",
-   "sport": "ncaaf",
-   "home": "UL Monroe Warhawks",
-   "away": "Southern Miss Golden Eagles",
-   "start": "2026-10-31T19:30Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.3963,
-    "away": 0.6037
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 140.0,
-     "decimal": 2.4
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -166.0,
-     "decimal": 1.602
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0407,
-   "bets": [
-    {
-     "side": "UL Monroe Warhawks",
-     "book": "DraftKings",
-     "american": 140.0,
-     "fair": 0.4361,
-     "evPct": 4.67,
-     "stakePct": 1.17,
-     "stake": 1.17,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 5.7,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png",
-     "color": "840029"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2572.png",
-     "color": "ffc72c"
-    }
-   },
-   "model": {
-    "home": 0.5556,
-    "away": 0.4444,
-    "blendHome": 0.4361,
-    "gapPp": 15.9,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "UL Monroe Warhawks",
-     "record": "1-6",
-     "last": [
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "Southern Miss Golden Eagles",
-     "record": "2-5",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "jleague|avispafukuoka|jefunitedichiharachiba|2026-11-01T05:00",
    "sport": "jleague",
    "home": "JEF United Ichihara-Chiba",
@@ -6820,7 +6752,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 15.2,
+      "hoursToStart": 15.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6937,7 +6869,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 5.2,
+      "hoursToStart": 5.1,
       "reasons": [
        "The market has moved 4.5 pts toward the other side -- this price may hold or improve if your view is right.",
        "Historically, NBA edges we've flagged have lost 1.6% to the closing line on average (n=38) -- the price has tended to improve by waiting."
@@ -6973,11 +6905,11 @@
    "spread": {
     "away": {
      "handicap": -8.5,
-     "american": -110
+     "american": -105
     },
     "home": {
      "handicap": 8.5,
-     "american": -110
+     "american": -115
     }
    },
    "total": {
@@ -7118,129 +7050,6 @@
    ]
   },
   {
-   "key": "championship|queensparkrangers|southampton|2026-10-31T15:00",
-   "sport": "championship",
-   "home": "Southampton",
-   "away": "Queens Park Rangers",
-   "start": "2026-10-31T15:00Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.4951,
-    "away": 0.2595,
-    "draw": 0.2454
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -105.0,
-     "decimal": 1.952
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 265.0,
-     "decimal": 3.65
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 285.0,
-     "decimal": 3.85
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0459,
-   "bets": [
-    {
-     "side": "Southampton",
-     "book": "DraftKings",
-     "american": -105.0,
-     "fair": 0.535,
-     "evPct": 4.45,
-     "stakePct": 1.63,
-     "stake": 1.63,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "closing_soon",
-      "hoursToStart": 1.2,
-      "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/376.png",
-     "color": "ED1A3B"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/334.png",
-     "color": "0000d4"
-    }
-   },
-   "model": {
-    "home": 0.6547,
-    "draw": 0.2188,
-    "away": 0.1265,
-    "blendHome": 0.535,
-    "gapPp": 16.0,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [
-     {
-      "date": "2026-02-24",
-      "home": "Southampton",
-      "away": "Queens Park Rangers",
-      "homeScore": 5.0,
-      "awayScore": 0.0
-     },
-     {
-      "date": "2025-11-05",
-      "home": "Queens Park Rangers",
-      "away": "Southampton",
-      "homeScore": 1.0,
-      "awayScore": 2.0
-     }
-    ],
-    "home": {
-     "name": "Southampton",
-     "record": "29-11-17",
-     "last": [
-      "W",
-      "T",
-      "T",
-      "W",
-      "W",
-      "L",
-      "W",
-      "W",
-      "T",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "Queens Park Rangers",
-     "record": "21-20-14",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "T",
-      "T",
-      "T",
-      "T",
-      "W",
-      "L",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "jleague|tokyoverdy1969|vvarennagasaki|2026-11-01T05:00",
    "sport": "jleague",
    "home": "V-Varen Nagasaki",
@@ -7284,7 +7093,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 15.2,
+      "hoursToStart": 15.1,
       "reasons": [
        "The market has moved 4.0 pts toward the other side -- this price may hold or improve if your view is right."
       ]
@@ -7359,139 +7168,44 @@
    }
   },
   {
-   "key": "ncaaf|arizonastatesundevils|byucougars|2026-10-31T19:30",
+   "key": "ncaaf|minnesotagoldengophers|indianahoosiers|2026-10-31T19:30",
    "sport": "ncaaf",
-   "home": "BYU Cougars",
-   "away": "Arizona State Sun Devils",
+   "home": "Indiana Hoosiers",
+   "away": "Minnesota Golden Gophers",
    "start": "2026-10-31T19:30Z",
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.8675,
-    "away": 0.1325
+    "home": 0.9151,
+    "away": 0.0849
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -800.0,
-     "decimal": 1.125
+     "american": -1450.0,
+     "decimal": 1.069
     },
     "away": {
      "book": "DraftKings",
-     "american": 550.0,
-     "decimal": 6.5
+     "american": 850.0,
+     "decimal": 9.5
     }
    },
    "arb": false,
-   "impliedSum": 1.0427,
+   "impliedSum": 1.0407,
    "bets": [
     {
-     "side": "Arizona State Sun Devils",
+     "side": "Minnesota Golden Gophers",
      "book": "DraftKings",
-     "american": 550.0,
-     "fair": 0.1603,
-     "evPct": 4.17,
-     "stakePct": 0.27,
-     "stake": 0.27,
+     "american": 850.0,
+     "fair": 0.1096,
+     "evPct": 4.13,
+     "stakePct": 0.17,
+     "stake": 0.17,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 5.7,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
-     "color": "0047ba"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/9.png",
-     "color": "ffc627"
-    }
-   },
-   "model": {
-    "home": 0.7564,
-    "away": 0.2436,
-    "blendHome": 0.8397,
-    "gapPp": -11.1,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "BYU Cougars",
-     "record": "6-1",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Arizona State Sun Devils",
-     "record": "4-3",
-     "last": [
-      "W",
-      "L",
-      "W",
-      "L",
-      "W",
-      "L",
-      "W"
-     ]
-    }
-   }
-  },
-  {
-   "key": "ncaaf|smumustangs|syracuseorange|2026-10-31T16:00",
-   "sport": "ncaaf",
-   "home": "Syracuse Orange",
-   "away": "SMU Mustangs",
-   "start": "2026-10-31T16:00Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.2415,
-    "away": 0.7585
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 280.0,
-     "decimal": 3.8
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -355.0,
-     "decimal": 1.282
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0434,
-   "bets": [
-    {
-     "side": "Syracuse Orange",
-     "book": "DraftKings",
-     "american": 280.0,
-     "fair": 0.274,
-     "evPct": 4.12,
-     "stakePct": 0.52,
-     "stake": 0.52,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 2.2,
+      "hoursToStart": 5.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7501,33 +7215,33 @@
    "pm": [
     {
      "source": "kalshi",
-     "title": "Syracuse vs SMU",
+     "title": "Minnesota vs Indiana",
      "url": "https://kalshi.com/markets/kxncaafgame",
      "tickers": {
-      "Syracuse": "KXNCAAFGAME-26OCT30SMUSYR-SYR",
-      "SMU": "KXNCAAFGAME-26OCT30SMUSYR-SMU"
+      "Minnesota": "KXNCAAFGAME-26OCT30MINNIND-MINN",
+      "Indiana": "KXNCAAFGAME-26OCT30MINNIND-IND"
      },
-     "home": 0.25,
-     "homeEdgePp": -0.9,
-     "away": 0.77,
-     "awayEdgePp": -1.1
+     "home": 0.92,
+     "homeEdgePp": -0.5,
+     "away": 0.08,
+     "awayEdgePp": 0.5
     }
    ],
    "teamMeta": {
     "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/183.png",
-     "color": "000e54"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/84.png",
+     "color": "970310"
     },
     "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png",
-     "color": "a80000"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/135.png",
+     "color": "5e0a2f"
     }
    },
    "model": {
-    "home": 0.3716,
-    "away": 0.6284,
-    "blendHome": 0.274,
-    "gapPp": 13.0,
+    "home": 0.8162,
+    "away": 0.1838,
+    "blendHome": 0.8904,
+    "gapPp": -9.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -7535,44 +7249,38 @@
    "matchup": {
     "h2h": [],
     "home": {
-     "name": "Syracuse Orange",
-     "record": "3-4",
+     "name": "Indiana Hoosiers",
+     "record": "19-1",
      "last": [
       "W",
-      "L",
-      "L",
       "W",
-      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
       "L",
       "W"
      ]
     },
     "away": {
-     "name": "SMU Mustangs",
-     "record": "6-1",
+     "name": "Minnesota Golden Gophers",
+     "record": "11-6",
      "last": [
+      "L",
+      "W",
       "W",
       "W",
       "L",
       "W",
       "W",
       "W",
+      "L",
       "W"
      ]
     }
-   },
-   "whales": [
-    {
-     "side": "yes",
-     "notional": 2012.6,
-     "price": 0.77,
-     "contracts": 2613.8,
-     "block": false,
-     "time": "2026-10-31T13:15:36.53792Z",
-     "team": "SMU",
-     "source": "kalshi"
-    }
-   ]
+   }
   },
   {
    "key": "brasileirao2|saobernardo|cuiaba|2026-11-01T21:30",
@@ -7618,7 +7326,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 31.7,
+      "hoursToStart": 31.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7691,115 +7399,6 @@
    }
   },
   {
-   "key": "ncaaf|utahutes|cincinnatibearcats|2026-10-31T19:45",
-   "sport": "ncaaf",
-   "home": "Cincinnati Bearcats",
-   "away": "Utah Utes",
-   "start": "2026-10-31T19:45Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.2861,
-    "away": 0.7139
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 225.0,
-     "decimal": 3.25
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -278.0,
-     "decimal": 1.36
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0431,
-   "bets": [
-    {
-     "side": "Cincinnati Bearcats",
-     "book": "DraftKings",
-     "american": 225.0,
-     "fair": 0.3201,
-     "evPct": 4.02,
-     "stakePct": 0.63,
-     "stake": 0.63,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 5.9,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Utah vs Cincinnati",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "Utah": "KXNCAAFGAME-26OCT30UTAHCIN-UTAH",
-      "Cincinnati": "KXNCAAFGAME-26OCT30UTAHCIN-CIN"
-     },
-     "home": 0.29,
-     "homeEdgePp": -0.4,
-     "away": 0.72,
-     "awayEdgePp": -0.6
-    }
-   ],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
-     "color": "000000"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
-     "color": "be0000"
-    }
-   },
-   "model": {
-    "home": 0.4219,
-    "away": 0.5781,
-    "blendHome": 0.3201,
-    "gapPp": 13.6,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Cincinnati Bearcats",
-     "record": "5-2",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "Utah Utes",
-     "record": "7-0",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "belgium|kvcwesterlo|anderlecht|2026-10-31T19:45",
    "sport": "belgium",
    "home": "Anderlecht",
@@ -7843,7 +7442,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 5.9,
+      "hoursToStart": 5.8,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7953,7 +7552,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 4.2,
+      "hoursToStart": 4.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8103,7 +7702,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 106.7,
+      "hoursToStart": 106.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8226,9 +7825,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.2,
+      "hoursToStart": 1.1,
       "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -8327,230 +7926,6 @@
    }
   },
   {
-   "key": "ncaaf|clemsontigers|floridastateseminoles|2026-10-31T23:00",
-   "sport": "ncaaf",
-   "home": "Florida State Seminoles",
-   "away": "Clemson Tigers",
-   "start": "2026-10-31T23:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.6787,
-    "away": 0.3213
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -230.0,
-     "decimal": 1.435
-    },
-    "away": {
-     "book": "Bovada",
-     "american": 195,
-     "decimal": 2.95
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.036,
-   "bets": [
-    {
-     "side": "Clemson Tigers",
-     "book": "Bovada",
-     "american": 195,
-     "fair": 0.3515,
-     "evPct": 3.69,
-     "stakePct": 0.66,
-     "stake": 0.66,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 9.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/52.png",
-     "color": "782f40"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/228.png",
-     "color": "f56600"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": 6.5,
-     "american": -115
-    },
-    "home": {
-     "handicap": -6.5,
-     "american": -105
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 49.5,
-     "american": -112
-    },
-    "under": {
-     "handicap": 49.5,
-     "american": -108
-    }
-   },
-   "model": {
-    "home": 0.558,
-    "away": 0.442,
-    "blendHome": 0.6485,
-    "gapPp": -12.1,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Florida State Seminoles",
-     "record": "3-4",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "W",
-      "W",
-      "L",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Clemson Tigers",
-     "record": "4-3",
-     "last": [
-      "L",
-      "W",
-      "W",
-      "W",
-      "L",
-      "W",
-      "L"
-     ]
-    }
-   }
-  },
-  {
-   "key": "ncaaf|nevadawolfpack|uclabruins|2026-10-31T20:15",
-   "sport": "ncaaf",
-   "home": "UCLA Bruins",
-   "away": "Nevada Wolf Pack",
-   "start": "2026-10-31T20:15Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.9282,
-    "away": 0.0718
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -1800.0,
-     "decimal": 1.056
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 1000.0,
-     "decimal": 11.0
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0383,
-   "bets": [
-    {
-     "side": "Nevada Wolf Pack",
-     "book": "DraftKings",
-     "american": 1000.0,
-     "fair": 0.094,
-     "evPct": 3.42,
-     "stakePct": 0.12,
-     "stake": 0.12,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 6.4,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "UCLA vs Nevada",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "UCLA": "KXNCAAFGAME-26OCT30NEVUCLA-UCLA",
-      "Nevada": "KXNCAAFGAME-26OCT30NEVUCLA-NEV"
-     },
-     "home": 0.93,
-     "homeEdgePp": -0.2,
-     "away": 0.08,
-     "awayEdgePp": -0.8
-    }
-   ],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
-     "color": "2774ae"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
-     "color": "041e42"
-    }
-   },
-   "model": {
-    "home": 0.8392,
-    "away": 0.1608,
-    "blendHome": 0.906,
-    "gapPp": -8.9,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "UCLA Bruins",
-     "record": "7-0",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "Nevada Wolf Pack",
-     "record": "3-4",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "L",
-      "W",
-      "L",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "primeira|rioave|academicodeviseu|2026-11-01T18:00",
    "sport": "primeira",
    "home": "Acad\u00e9mico de Viseu",
@@ -8594,7 +7969,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 28.2,
+      "hoursToStart": 28.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8658,46 +8033,46 @@
    }
   },
   {
-   "key": "ncaaf|armyblackknights|memphistigers|2026-11-01T00:00",
+   "key": "ncaaf|coloradostaterams|utahstateaggies|2026-10-31T19:30",
    "sport": "ncaaf",
-   "home": "Memphis Tigers",
-   "away": "Army Black Knights",
-   "start": "2026-11-01T00:00Z",
+   "home": "Utah State Aggies",
+   "away": "Colorado State Rams",
+   "start": "2026-10-31T19:30Z",
    "nBooks": 2,
    "threeWay": false,
    "fair": {
-    "home": 0.6675,
-    "away": 0.3325
+    "home": 0.7297,
+    "away": 0.2703
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -218.0,
-     "decimal": 1.459
+     "american": -298.0,
+     "decimal": 1.336
     },
     "away": {
      "book": "Bovada",
-     "american": 185,
-     "decimal": 2.85
+     "american": 250,
+     "decimal": 3.5
     }
    },
    "arb": false,
-   "impliedSum": 1.0364,
+   "impliedSum": 1.0345,
    "bets": [
     {
-     "side": "Army Black Knights",
+     "side": "Colorado State Rams",
      "book": "Bovada",
-     "american": 185,
-     "fair": 0.362,
-     "evPct": 3.16,
-     "stakePct": 0.6,
-     "stake": 0.6,
+     "american": 250,
+     "fair": 0.2949,
+     "evPct": 3.2,
+     "stakePct": 0.45,
+     "stake": 0.45,
      "basis": "model-blend",
      "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 10.2,
+      "advice": "wait_ok",
+      "hoursToStart": 5.6,
       "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+       "The market has moved 7.2 pts toward the other side -- this price may hold or improve if your view is right."
       ]
      }
     }
@@ -8705,39 +8080,39 @@
    "pm": [],
    "teamMeta": {
     "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png",
-     "color": "004991"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
+     "color": "0f2439"
     },
     "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/349.png",
-     "color": "000000"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/36.png",
+     "color": "004c23"
     }
    },
    "spread": {
     "away": {
-     "handicap": 6.0,
-     "american": -108
+     "handicap": 8.5,
+     "american": -112
     },
     "home": {
-     "handicap": -6.0,
-     "american": -112
+     "handicap": -8.5,
+     "american": -108
     }
    },
    "total": {
     "over": {
-     "handicap": 60.0,
-     "american": -110
+     "handicap": 60.5,
+     "american": -112
     },
     "under": {
-     "handicap": 60.0,
-     "american": -110
+     "handicap": 60.5,
+     "american": -108
     }
    },
    "model": {
-    "home": 0.5497,
-    "away": 0.4503,
-    "blendHome": 0.638,
-    "gapPp": -11.8,
+    "home": 0.6314,
+    "away": 0.3686,
+    "blendHome": 0.7051,
+    "gapPp": -9.8,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -8745,32 +8120,47 @@
    "matchup": {
     "h2h": [],
     "home": {
-     "name": "Memphis Tigers",
-     "record": "6-2",
+     "name": "Utah State Aggies",
+     "record": "5-11",
      "last": [
       "W",
+      "L",
+      "L",
+      "L",
+      "L",
+      "L",
       "W",
       "L",
       "W",
-      "W",
-      "W",
-      "L",
-      "W"
+      "L"
      ]
     },
     "away": {
-     "name": "Army Black Knights",
-     "record": "5-2",
+     "name": "Colorado State Rams",
+     "record": "4-12",
      "last": [
-      "W",
+      "L",
+      "L",
       "L",
       "W",
+      "W",
       "L",
-      "W",
-      "W",
+      "L",
+      "L",
+      "L",
       "W"
      ]
     }
+   },
+   "steam": {
+    "kind": "steam",
+    "side": "home",
+    "biggestMovePts": 7.2,
+    "biggestMoveAt": "2026-10-25T22:04:26+00:00",
+    "totalDriftPts": 12.6,
+    "snapshots": 37,
+    "firstSeen": "2026-10-25T19:31:43+00:00",
+    "lastSeen": "2026-10-31T13:50:27+00:00"
    }
   },
   {
@@ -8817,7 +8207,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 27.7,
+      "hoursToStart": 27.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8940,9 +8330,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.2,
+      "hoursToStart": 1.1,
       "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -9005,111 +8395,6 @@
    }
   },
   {
-   "key": "ncaaf|appstatemountaineers|georgiasoutherneagles|2026-10-31T22:30",
-   "sport": "ncaaf",
-   "home": "Georgia Southern Eagles",
-   "away": "App State Mountaineers",
-   "start": "2026-10-31T22:30Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.6642,
-    "away": 0.3358
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -218.0,
-     "decimal": 1.459
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 180.0,
-     "decimal": 2.8
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0427,
-   "bets": [
-    {
-     "side": "App State Mountaineers",
-     "book": "DraftKings",
-     "american": 180.0,
-     "fair": 0.3671,
-     "evPct": 2.79,
-     "stakePct": 0.54,
-     "stake": 0.54,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "wait_ok",
-      "hoursToStart": 8.7,
-      "reasons": [
-       "The market has moved 4.5 pts toward the other side -- this price may hold or improve if your view is right."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/290.png",
-     "color": "041e42"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2026.png",
-     "color": "000000"
-    }
-   },
-   "model": {
-    "home": 0.539,
-    "away": 0.461,
-    "blendHome": 0.6329,
-    "gapPp": -12.5,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Georgia Southern Eagles",
-     "record": "3-4",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "L",
-      "W",
-      "L",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "App State Mountaineers",
-     "record": "5-2",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "W"
-     ]
-    }
-   },
-   "steam": {
-    "kind": "steam",
-    "side": "home",
-    "biggestMovePts": 4.5,
-    "biggestMoveAt": "2026-10-25T22:04:26+00:00",
-    "totalDriftPts": 6.7,
-    "snapshots": 38,
-    "firstSeen": "2026-10-25T17:10:02+00:00",
-    "lastSeen": "2026-10-31T13:50:27+00:00"
-   }
-  },
-  {
    "key": "jleague|gambaosaka|machidazelvia|2026-11-01T06:00",
    "sport": "jleague",
    "home": "Machida Zelvia",
@@ -9153,7 +8438,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 16.2,
+      "hoursToStart": 16.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9218,6 +8503,107 @@
    }
   },
   {
+   "key": "ncaaf|miamihurricanes|northcarolinatarheels|2026-10-31T23:30",
+   "sport": "ncaaf",
+   "home": "North Carolina Tar Heels",
+   "away": "Miami Hurricanes",
+   "start": "2026-10-31T23:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.1591,
+    "away": 0.8409
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 455.0,
+     "decimal": 5.55
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -625.0,
+     "decimal": 1.16
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0422,
+   "bets": [
+    {
+     "side": "North Carolina Tar Heels",
+     "book": "DraftKings",
+     "american": 455.0,
+     "fair": 0.1851,
+     "evPct": 2.72,
+     "stakePct": 0.21,
+     "stake": 0.21,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 9.6,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/153.png",
+     "color": "7bafd4"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png",
+     "color": "f47423"
+    }
+   },
+   "model": {
+    "home": 0.2632,
+    "away": 0.7368,
+    "blendHome": 0.1851,
+    "gapPp": 10.4,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "North Carolina Tar Heels",
+     "record": "6-9",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Miami Hurricanes",
+     "record": "16-3",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "uruguay|juventud|liverpool|2026-11-01T23:00",
    "sport": "uruguay",
    "home": "Liverpool",
@@ -9261,7 +8647,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 33.2,
+      "hoursToStart": 33.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9384,7 +8770,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 28.2,
+      "hoursToStart": 28.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9464,6 +8850,121 @@
    }
   },
   {
+   "key": "ncaaf|northwesternwildcats|oregonducks|2026-10-31T19:30",
+   "sport": "ncaaf",
+   "home": "Oregon Ducks",
+   "away": "Northwestern Wildcats",
+   "start": "2026-10-31T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6214,
+    "away": 0.3786
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -180.0,
+     "decimal": 1.556
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 150.0,
+     "decimal": 2.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0429,
+   "bets": [
+    {
+     "side": "Northwestern Wildcats",
+     "book": "DraftKings",
+     "american": 150.0,
+     "fair": 0.4095,
+     "evPct": 2.37,
+     "stakePct": 0.55,
+     "stake": 0.55,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 5.6,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Oregon vs Northwestern",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Oregon": "KXNCAAFGAME-26OCT30NWORE-ORE",
+      "Northwestern": "KXNCAAFGAME-26OCT30NWORE-NW"
+     },
+     "home": 0.63,
+     "homeEdgePp": -0.9,
+     "away": 0.38,
+     "awayEdgePp": -0.1
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2483.png",
+     "color": "00934b"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png",
+     "color": "492f92"
+    }
+   },
+   "model": {
+    "home": 0.4977,
+    "away": 0.5023,
+    "blendHome": 0.5905,
+    "gapPp": -12.4,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "Oregon Ducks",
+     "record": "13-5",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W",
+      "W",
+      "L",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Northwestern Wildcats",
+     "record": "12-5",
+     "last": [
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "brasileirao|vascodagama|athleticopr|2026-11-04T22:30",
    "sport": "brasileirao",
    "home": "Athletico-PR",
@@ -9507,7 +9008,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 104.7,
+      "hoursToStart": 104.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9580,115 +9081,6 @@
    }
   },
   {
-   "key": "ncaaf|arizonawildcats|texastechredraiders|2026-10-31T16:00",
-   "sport": "ncaaf",
-   "home": "Texas Tech Red Raiders",
-   "away": "Arizona Wildcats",
-   "start": "2026-10-31T16:00Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.6214,
-    "away": 0.3786
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -180.0,
-     "decimal": 1.556
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 150.0,
-     "decimal": 2.5
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0429,
-   "bets": [
-    {
-     "side": "Arizona Wildcats",
-     "book": "DraftKings",
-     "american": 150.0,
-     "fair": 0.4088,
-     "evPct": 2.2,
-     "stakePct": 0.51,
-     "stake": 0.51,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 2.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Texas Tech vs Arizona",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "Texas Tech": "KXNCAAFGAME-26OCT30ARIZTTU-TTU",
-      "Arizona": "KXNCAAFGAME-26OCT30ARIZTTU-ARIZ"
-     },
-     "home": 0.63,
-     "homeEdgePp": -0.9,
-     "away": 0.38,
-     "awayEdgePp": -0.1
-    }
-   ],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
-     "color": "da291c"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-     "color": "cc0033"
-    }
-   },
-   "model": {
-    "home": 0.5005,
-    "away": 0.4995,
-    "blendHome": 0.5912,
-    "gapPp": -12.1,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Texas Tech Red Raiders",
-     "record": "6-1",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Arizona Wildcats",
-     "record": "6-1",
-     "last": [
-      "W",
-      "L",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "uruguay|defensorsporting|progreso|2026-11-01T13:00",
    "sport": "uruguay",
    "home": "Progreso",
@@ -9732,7 +9124,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 23.2,
+      "hoursToStart": 23.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9812,44 +9204,171 @@
    }
   },
   {
-   "key": "ncaaf|washingtonstatecougars|sandiegostateaztecs|2026-10-31T23:00",
+   "key": "ncaaf|arizonawildcats|texastechredraiders|2026-10-31T16:00",
    "sport": "ncaaf",
-   "home": "San Diego State Aztecs",
-   "away": "Washington State Cougars",
-   "start": "2026-10-31T23:00Z",
-   "nBooks": 2,
+   "home": "Texas Tech Red Raiders",
+   "away": "Arizona Wildcats",
+   "start": "2026-10-31T16:00Z",
+   "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.5604,
-    "away": 0.4396
+    "home": 0.6214,
+    "away": 0.3786
    },
    "best": {
     "home": {
-     "book": "Bovada",
-     "american": -135,
-     "decimal": 1.741
+     "book": "DraftKings",
+     "american": -180.0,
+     "decimal": 1.556
     },
     "away": {
      "book": "DraftKings",
-     "american": 120.0,
-     "decimal": 2.2
+     "american": 150.0,
+     "decimal": 2.5
     }
    },
    "arb": false,
-   "impliedSum": 1.029,
+   "impliedSum": 1.0429,
    "bets": [
     {
-     "side": "San Diego State Aztecs",
-     "book": "Bovada",
-     "american": -135,
-     "fair": 0.5865,
-     "evPct": 2.1,
-     "stakePct": 0.99,
-     "stake": 0.99,
+     "side": "Arizona Wildcats",
+     "book": "DraftKings",
+     "american": 150.0,
+     "fair": 0.4085,
+     "evPct": 2.11,
+     "stakePct": 0.49,
+     "stake": 0.49,
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 9.2,
+      "hoursToStart": 2.1,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Texas Tech vs Arizona",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Texas Tech": "KXNCAAFGAME-26OCT30ARIZTTU-TTU",
+      "Arizona": "KXNCAAFGAME-26OCT30ARIZTTU-ARIZ"
+     },
+     "home": 0.63,
+     "homeEdgePp": -0.9,
+     "away": 0.38,
+     "awayEdgePp": -0.1
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
+     "color": "da291c"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+     "color": "cc0033"
+    }
+   },
+   "model": {
+    "home": 0.5019,
+    "away": 0.4981,
+    "blendHome": 0.5915,
+    "gapPp": -12.0,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "Texas Tech Red Raiders",
+     "record": "14-3",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Arizona Wildcats",
+     "record": "12-5",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W"
+     ]
+    }
+   },
+   "whales": [
+    {
+     "side": "yes",
+     "notional": 1684.83,
+     "price": 0.63,
+     "contracts": 2674.3,
+     "block": false,
+     "time": "2026-10-31T13:54:30.653003Z",
+     "team": "Texas Tech",
+     "source": "kalshi"
+    }
+   ]
+  },
+  {
+   "key": "ncaaf|southernmissgoldeneagles|ulmonroewarhawks|2026-10-31T19:30",
+   "sport": "ncaaf",
+   "home": "UL Monroe Warhawks",
+   "away": "Southern Miss Golden Eagles",
+   "start": "2026-10-31T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.3963,
+    "away": 0.6037
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 140.0,
+     "decimal": 2.4
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -166.0,
+     "decimal": 1.602
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0407,
+   "bets": [
+    {
+     "side": "UL Monroe Warhawks",
+     "book": "DraftKings",
+     "american": 140.0,
+     "fair": 0.4253,
+     "evPct": 2.08,
+     "stakePct": 0.52,
+     "stake": 0.52,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 5.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9859,63 +9378,54 @@
    "pm": [],
    "teamMeta": {
     "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/21.png",
-     "color": "a6192e"
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png",
+     "color": "840029"
     },
     "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/265.png",
-     "color": "a60f2d"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": 2.5,
-     "american": -105
-    },
-    "home": {
-     "handicap": -2.5,
-     "american": -115
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 48.0,
-     "american": -108
-    },
-    "under": {
-     "handicap": 48.0,
-     "american": -112
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2572.png",
+     "color": "ffc72c"
     }
    },
    "model": {
-    "home": 0.6649,
-    "away": 0.3351,
-    "blendHome": 0.5865,
-    "gapPp": 10.5,
+    "home": 0.5124,
+    "away": 0.4876,
+    "blendHome": 0.4253,
+    "gapPp": 11.6,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-10-25",
+      "home": "Southern Miss Golden Eagles",
+      "away": "UL Monroe Warhawks",
+      "homeScore": 49.0,
+      "awayScore": 21.0
+     }
+    ],
     "home": {
-     "name": "San Diego State Aztecs",
-     "record": "3-5",
+     "name": "UL Monroe Warhawks",
+     "record": "2-14",
      "last": [
-      "W",
       "L",
       "L",
       "L",
-      "W",
       "L",
-      "W",
-      "L"
+      "L",
+      "L",
+      "L",
+      "L",
+      "L",
+      "W"
      ]
     },
     "away": {
-     "name": "Washington State Cougars",
-     "record": "1-7",
+     "name": "Southern Miss Golden Eagles",
+     "record": "7-9",
      "last": [
+      "L",
       "L",
       "L",
       "W",
@@ -9923,7 +9433,8 @@
       "L",
       "L",
       "L",
-      "L"
+      "L",
+      "W"
      ]
     }
    }
@@ -9972,9 +9483,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.2,
+      "hoursToStart": 1.1,
       "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -10037,121 +9548,6 @@
    }
   },
   {
-   "key": "ncaaf|coastalcarolinachanticleers|georgiastatepanthers|2026-10-31T18:00",
-   "sport": "ncaaf",
-   "home": "Georgia State Panthers",
-   "away": "Coastal Carolina Chanticleers",
-   "start": "2026-10-31T18:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.6251,
-    "away": 0.3749
-   },
-   "best": {
-    "home": {
-     "book": "Bovada",
-     "american": -178,
-     "decimal": 1.562
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 154.0,
-     "decimal": 2.54
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.034,
-   "bets": [
-    {
-     "side": "Georgia State Panthers",
-     "book": "Bovada",
-     "american": -178,
-     "fair": 0.6534,
-     "evPct": 2.05,
-     "stakePct": 1.28,
-     "stake": 1.28,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 4.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2247.png",
-     "color": "0039a6"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/324.png",
-     "color": "006f71"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": 4.0,
-     "american": -112
-    },
-    "home": {
-     "handicap": -4.0,
-     "american": -108
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 56.0,
-     "american": -108
-    },
-    "under": {
-     "handicap": 56.0,
-     "american": -112
-    }
-   },
-   "model": {
-    "home": 0.7382,
-    "away": 0.2618,
-    "blendHome": 0.6534,
-    "gapPp": 11.3,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Georgia State Panthers",
-     "record": "4-3",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "W",
-      "W",
-      "L",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Coastal Carolina Chanticleers",
-     "record": "2-5",
-     "last": [
-      "L",
-      "W",
-      "L",
-      "L",
-      "L",
-      "W",
-      "L"
-     ]
-    }
-   }
-  },
-  {
    "key": "primeira|famalicao|braga|2026-11-01T20:30",
    "sport": "primeira",
    "home": "Braga",
@@ -10195,7 +9591,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 30.7,
+      "hoursToStart": 30.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -10318,9 +9714,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.2,
+      "hoursToStart": 1.1,
       "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -10426,9 +9822,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.2,
+      "hoursToStart": 1.1,
       "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -10542,7 +9938,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 8.4,
+      "hoursToStart": 8.3,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -10615,6 +10011,135 @@
    }
   },
   {
+   "key": "ncaaf|coastalcarolinachanticleers|georgiastatepanthers|2026-10-31T18:00",
+   "sport": "ncaaf",
+   "home": "Georgia State Panthers",
+   "away": "Coastal Carolina Chanticleers",
+   "start": "2026-10-31T18:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6251,
+    "away": 0.3749
+   },
+   "best": {
+    "home": {
+     "book": "Bovada",
+     "american": -178,
+     "decimal": 1.562
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 154.0,
+     "decimal": 2.54
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.034,
+   "bets": [
+    {
+     "side": "Georgia State Panthers",
+     "book": "Bovada",
+     "american": -178,
+     "fair": 0.6517,
+     "evPct": 1.78,
+     "stakePct": 1.11,
+     "stake": 1.11,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 4.1,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2247.png",
+     "color": "0039a6"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/324.png",
+     "color": "006f71"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": 4.0,
+     "american": -112
+    },
+    "home": {
+     "handicap": -4.0,
+     "american": -108
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 56.0,
+     "american": -108
+    },
+    "under": {
+     "handicap": 56.0,
+     "american": -112
+    }
+   },
+   "model": {
+    "home": 0.7314,
+    "away": 0.2686,
+    "blendHome": 0.6517,
+    "gapPp": 10.6,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-11-08",
+      "home": "Coastal Carolina Chanticleers",
+      "away": "Georgia State Panthers",
+      "homeScore": 40.0,
+      "awayScore": 27.0
+     }
+    ],
+    "home": {
+     "name": "Georgia State Panthers",
+     "record": "4-11",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "L",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Coastal Carolina Chanticleers",
+     "record": "6-10",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L"
+     ]
+    }
+   }
+  },
+  {
    "key": "mls|houstondynamo|portlandtimbers|2026-11-02T02:45",
    "sport": "mls",
    "home": "Portland Timbers",
@@ -10658,7 +10183,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 36.9,
+      "hoursToStart": 36.8,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -10753,6 +10278,107 @@
    }
   },
   {
+   "key": "ncaaf|arizonastatesundevils|byucougars|2026-10-31T19:30",
+   "sport": "ncaaf",
+   "home": "BYU Cougars",
+   "away": "Arizona State Sun Devils",
+   "start": "2026-10-31T19:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.8675,
+    "away": 0.1325
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -800.0,
+     "decimal": 1.125
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 550.0,
+     "decimal": 6.5
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0427,
+   "bets": [
+    {
+     "side": "Arizona State Sun Devils",
+     "book": "DraftKings",
+     "american": 550.0,
+     "fair": 0.1565,
+     "evPct": 1.73,
+     "stakePct": 0.11,
+     "stake": 0.11,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 5.6,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
+     "color": "0047ba"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/9.png",
+     "color": "ffc627"
+    }
+   },
+   "model": {
+    "home": 0.7714,
+    "away": 0.2286,
+    "blendHome": 0.8435,
+    "gapPp": -9.6,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "BYU Cougars",
+     "record": "15-3",
+     "last": [
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Arizona State Sun Devils",
+     "record": "9-7",
+     "last": [
+      "W",
+      "L",
+      "L",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "eredivisie|goaheadeagles|cambuur|2026-10-31T20:00",
    "sport": "eredivisie",
    "home": "SC Cambuur",
@@ -10796,7 +10422,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 6.2,
+      "hoursToStart": 6.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -10861,150 +10487,6 @@
    }
   },
   {
-   "key": "nhl|torontomapleleafs|vancouvercanucks|2026-10-31T23:00",
-   "sport": "nhl",
-   "home": "Vancouver Canucks",
-   "away": "Toronto Maple Leafs",
-   "start": "2026-10-31T23:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.382,
-    "away": 0.618
-   },
-   "best": {
-    "home": {
-     "book": "Bovada",
-     "american": 160,
-     "decimal": 2.6
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": -166.0,
-     "decimal": 1.602
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0087,
-   "bets": [
-    {
-     "side": "Vancouver Canucks",
-     "book": "Bovada",
-     "american": 160,
-     "fair": 0.3911,
-     "evPct": 1.68,
-     "stakePct": 0.37,
-     "stake": 0.37,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 9.2,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Vancouver vs Toronto",
-     "url": "https://kalshi.com/markets/kxnhlgame",
-     "tickers": {
-      "Vancouver": "KXNHLGAME-26OCT31TORVAN-VAN",
-      "Toronto": "KXNHLGAME-26OCT31TORVAN-TOR"
-     },
-     "home": 0.37,
-     "homeEdgePp": 1.2,
-     "away": 0.63,
-     "awayEdgePp": -1.2
-    }
-   ],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/van.png",
-     "color": "003e7e"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/tor.png",
-     "color": "003e7e"
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 6.5,
-     "american": -128
-    },
-    "under": {
-     "handicap": 6.5,
-     "american": 107
-    }
-   },
-   "model": {
-    "home": 0.4182,
-    "away": 0.5818,
-    "blendHome": 0.3911,
-    "gapPp": 3.6,
-    "weight": 0.25,
-    "injuries": [
-     "Vancouver Canucks: -59 Elo (Thatcher Demko (G) injured reserve)",
-     "Toronto Maple Leafs: -74 Elo (Elvis Merzlikins (G) injured reserve)"
-    ]
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [
-     {
-      "date": "2026-02-01",
-      "home": "Vancouver Canucks",
-      "away": "Toronto Maple Leafs",
-      "homeScore": 2.0,
-      "awayScore": 3.0
-     },
-     {
-      "date": "2026-01-11",
-      "home": "Toronto Maple Leafs",
-      "away": "Vancouver Canucks",
-      "homeScore": 5.0,
-      "awayScore": 0.0
-     }
-    ],
-    "home": {
-     "name": "Vancouver Canucks",
-     "record": "33-74",
-     "last": [
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Toronto Maple Leafs",
-     "record": "43-64",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "L",
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L"
-     ]
-    }
-   }
-  },
-  {
    "key": "nba|sacramentokings|memphisgrizzlies|2026-11-01T00:00",
    "sport": "nba",
    "home": "Memphis Grizzlies",
@@ -11042,7 +10524,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 10.2,
+      "hoursToStart": 10.1,
       "reasons": [
        "The market has moved 4.8 pts toward the other side -- this price may hold or improve if your view is right.",
        "Historically, NBA edges we've flagged have lost 1.6% to the closing line on average (n=38) -- the price has tended to improve by waiting."
@@ -11087,11 +10569,11 @@
    },
    "total": {
     "over": {
-     "handicap": 232.0,
+     "handicap": 231.5,
      "american": -110
     },
     "under": {
-     "handicap": 232.0,
+     "handicap": 231.5,
      "american": -110
     }
    },
@@ -11188,7 +10670,19 @@
     "snapshots": 3,
     "firstSeen": "2026-10-31T01:48:47+00:00",
     "lastSeen": "2026-10-31T13:50:27+00:00"
-   }
+   },
+   "whales": [
+    {
+     "side": "yes",
+     "notional": 3936.62,
+     "price": 0.77,
+     "contracts": 5112.5,
+     "block": false,
+     "time": "2026-10-31T13:47:10.47761Z",
+     "team": "Memphis",
+     "source": "kalshi"
+    }
+   ]
   },
   {
    "key": "nfl|losangeleschargers|losangelesrams|2026-11-01T21:05",
@@ -11228,7 +10722,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 31.2,
+      "hoursToStart": 31.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -11348,6 +10842,159 @@
    }
   },
   {
+   "key": "ncaaf|templeowls|eastcarolinapirates|2026-10-31T19:00",
+   "sport": "ncaaf",
+   "home": "East Carolina Pirates",
+   "away": "Temple Owls",
+   "start": "2026-10-31T19:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6409,
+    "away": 0.3591
+   },
+   "best": {
+    "home": {
+     "book": "Bovada",
+     "american": -190,
+     "decimal": 1.526
+    },
+    "away": {
+     "book": "Bovada",
+     "american": 165,
+     "decimal": 2.65
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0325,
+   "bets": [
+    {
+     "side": "East Carolina Pirates",
+     "book": "Bovada",
+     "american": -190,
+     "fair": 0.6656,
+     "evPct": 1.6,
+     "stakePct": 1.06,
+     "stake": 1.06,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "buy_now",
+      "hoursToStart": 5.1,
+      "reasons": [
+       "The market has already moved 4.8 pts toward this side -- the price you're seeing is likely to get worse, not better."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Temple vs East Carolina",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Temple": "KXNCAAFGAME-26OCT30TEMECU-TEM",
+      "East Carolina": "KXNCAAFGAME-26OCT30TEMECU-ECU"
+     },
+     "home": 0.64,
+     "homeEdgePp": 0.1,
+     "away": 0.37,
+     "awayEdgePp": -1.1
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
+     "color": "582c83"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/218.png",
+     "color": "a41e35"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": 4.0,
+     "american": -105
+    },
+    "home": {
+     "handicap": -4.0,
+     "american": -115
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 50.5,
+     "american": -108
+    },
+    "under": {
+     "handicap": 50.5,
+     "american": -112
+    }
+   },
+   "model": {
+    "home": 0.7399,
+    "away": 0.2601,
+    "blendHome": 0.6656,
+    "gapPp": 9.9,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-11-01",
+      "home": "Temple Owls",
+      "away": "East Carolina Pirates",
+      "homeScore": 14.0,
+      "awayScore": 45.0
+     }
+    ],
+    "home": {
+     "name": "East Carolina Pirates",
+     "record": "9-6",
+     "last": [
+      "L",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Temple Owls",
+     "record": "5-10",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L"
+     ]
+    }
+   },
+   "steam": {
+    "kind": "steam",
+    "side": "home",
+    "biggestMovePts": 4.8,
+    "biggestMoveAt": "2026-10-25T22:04:26+00:00",
+    "totalDriftPts": 2.7,
+    "snapshots": 38,
+    "firstSeen": "2026-10-25T17:10:02+00:00",
+    "lastSeen": "2026-10-31T13:50:27+00:00"
+   }
+  },
+  {
    "key": "sweden|hammarbyif|malmoff|2026-11-01T13:00",
    "sport": "sweden",
    "home": "Malm\u00f6 FF",
@@ -11391,7 +11038,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 23.2,
+      "hoursToStart": 23.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -11514,7 +11161,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 77.9,
+      "hoursToStart": 77.8,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -11579,6 +11226,127 @@
    }
   },
   {
+   "key": "ncaaf|washingtonstatecougars|sandiegostateaztecs|2026-10-31T23:00",
+   "sport": "ncaaf",
+   "home": "San Diego State Aztecs",
+   "away": "Washington State Cougars",
+   "start": "2026-10-31T23:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.5604,
+    "away": 0.4396
+   },
+   "best": {
+    "home": {
+     "book": "Bovada",
+     "american": -135,
+     "decimal": 1.741
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 120.0,
+     "decimal": 2.2
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.029,
+   "bets": [
+    {
+     "side": "San Diego State Aztecs",
+     "book": "Bovada",
+     "american": -135,
+     "fair": 0.5828,
+     "evPct": 1.45,
+     "stakePct": 0.69,
+     "stake": 0.69,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 9.1,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/21.png",
+     "color": "a6192e"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/265.png",
+     "color": "a60f2d"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": 2.5,
+     "american": -105
+    },
+    "home": {
+     "handicap": -2.5,
+     "american": -115
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 48.0,
+     "american": -108
+    },
+    "under": {
+     "handicap": 48.0,
+     "american": -112
+    }
+   },
+   "model": {
+    "home": 0.65,
+    "away": 0.35,
+    "blendHome": 0.5828,
+    "gapPp": 9.0,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "San Diego State Aztecs",
+     "record": "10-8",
+     "last": [
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Washington State Cougars",
+     "record": "6-11",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "L",
+      "L",
+      "L"
+     ]
+    }
+   }
+  },
+  {
    "key": "ecuador|deportivocuenca|delfin|2026-10-31T16:30",
    "sport": "ecuador",
    "home": "Delf\u00edn",
@@ -11622,7 +11390,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 2.7,
+      "hoursToStart": 2.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -11759,9 +11527,9 @@
      "basis": "model-blend",
      "timing": {
       "advice": "closing_soon",
-      "hoursToStart": 1.2,
+      "hoursToStart": 1.1,
       "reasons": [
-       "Game starts in 1.2h -- lines tighten and liquidity dries up close to kickoff."
+       "Game starts in 1.1h -- lines tighten and liquidity dries up close to kickoff."
       ]
      }
     }
@@ -11778,8 +11546,8 @@
      },
      "home": 0.31,
      "homeEdgePp": -0.1,
-     "away": 0.41,
-     "awayEdgePp": -0.8
+     "away": 0.4,
+     "awayEdgePp": 0.2
     }
    ],
    "teamMeta": {
@@ -11880,7 +11648,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 26.2,
+      "hoursToStart": 26.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -11996,7 +11764,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 23.7,
+      "hoursToStart": 23.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -12098,7 +11866,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 6.2,
+      "hoursToStart": 6.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -12209,7 +11977,19 @@
       "L"
      ]
     }
-   }
+   },
+   "whales": [
+    {
+     "side": "no",
+     "notional": 1759.62,
+     "price": 0.57,
+     "contracts": 3087.1,
+     "block": false,
+     "time": "2026-10-31T13:26:18.435501Z",
+     "team": "San Jose",
+     "source": "kalshi"
+    }
+   ]
   },
   {
    "key": "nfl|tennesseetitans|cincinnatibengals|2026-11-01T18:00",
@@ -14521,6 +14301,132 @@
    }
   },
   {
+   "key": "nhl|torontomapleleafs|vancouvercanucks|2026-10-31T23:00",
+   "sport": "nhl",
+   "home": "Vancouver Canucks",
+   "away": "Toronto Maple Leafs",
+   "start": "2026-10-31T23:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.3732,
+    "away": 0.6268
+   },
+   "best": {
+    "home": {
+     "book": "Bovada",
+     "american": 160,
+     "decimal": 2.6
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -180.0,
+     "decimal": 1.556
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0275,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Vancouver vs Toronto",
+     "url": "https://kalshi.com/markets/kxnhlgame",
+     "tickers": {
+      "Vancouver": "KXNHLGAME-26OCT31TORVAN-VAN",
+      "Toronto": "KXNHLGAME-26OCT31TORVAN-TOR"
+     },
+     "home": 0.37,
+     "homeEdgePp": 0.3,
+     "away": 0.64,
+     "awayEdgePp": -1.3
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/van.png",
+     "color": "003e7e"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/tor.png",
+     "color": "003e7e"
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 6.5,
+     "american": -128
+    },
+    "under": {
+     "handicap": 6.5,
+     "american": 107
+    }
+   },
+   "model": {
+    "home": 0.4182,
+    "away": 0.5818,
+    "blendHome": 0.3844,
+    "gapPp": 4.5,
+    "weight": 0.25,
+    "injuries": [
+     "Vancouver Canucks: -59 Elo (Thatcher Demko (G) injured reserve)",
+     "Toronto Maple Leafs: -74 Elo (Elvis Merzlikins (G) injured reserve)"
+    ]
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2026-02-01",
+      "home": "Vancouver Canucks",
+      "away": "Toronto Maple Leafs",
+      "homeScore": 2.0,
+      "awayScore": 3.0
+     },
+     {
+      "date": "2026-01-11",
+      "home": "Toronto Maple Leafs",
+      "away": "Vancouver Canucks",
+      "homeScore": 5.0,
+      "awayScore": 0.0
+     }
+    ],
+    "home": {
+     "name": "Vancouver Canucks",
+     "record": "33-74",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "L",
+      "L",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Toronto Maple Leafs",
+     "record": "43-64",
+     "last": [
+      "W",
+      "L",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L"
+     ]
+    }
+   }
+  },
+  {
    "key": "nhl|columbusbluejackets|dallasstars|2026-11-01T00:00",
    "sport": "nhl",
    "home": "Dallas Stars",
@@ -14786,6 +14692,111 @@
    }
   },
   {
+   "key": "ncaaf|smumustangs|syracuseorange|2026-10-31T16:00",
+   "sport": "ncaaf",
+   "home": "Syracuse Orange",
+   "away": "SMU Mustangs",
+   "start": "2026-10-31T16:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.2415,
+    "away": 0.7585
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 280.0,
+     "decimal": 3.8
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -355.0,
+     "decimal": 1.282
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0434,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Syracuse vs SMU",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Syracuse": "KXNCAAFGAME-26OCT30SMUSYR-SYR",
+      "SMU": "KXNCAAFGAME-26OCT30SMUSYR-SMU"
+     },
+     "home": 0.25,
+     "homeEdgePp": -0.9,
+     "away": 0.77,
+     "awayEdgePp": -1.1
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/183.png",
+     "color": "000e54"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png",
+     "color": "a80000"
+    }
+   },
+   "model": {
+    "home": 0.286,
+    "away": 0.714,
+    "blendHome": 0.2526,
+    "gapPp": 4.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-10-04",
+      "home": "SMU Mustangs",
+      "away": "Syracuse Orange",
+      "homeScore": 31.0,
+      "awayScore": 18.0
+     }
+    ],
+    "home": {
+     "name": "Syracuse Orange",
+     "record": "3-12",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "SMU Mustangs",
+     "record": "13-3",
+     "last": [
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "ncaaf|wisconsinbadgers|iowahawkeyes|2026-10-31T16:00",
    "sport": "ncaaf",
    "home": "Iowa Hawkeyes",
@@ -14838,20 +14849,31 @@
     }
    },
    "model": {
-    "home": 0.5301,
-    "away": 0.4699,
-    "blendHome": 0.5477,
-    "gapPp": -2.3,
+    "home": 0.5763,
+    "away": 0.4237,
+    "blendHome": 0.5593,
+    "gapPp": 2.3,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-10-11",
+      "home": "Wisconsin Badgers",
+      "away": "Iowa Hawkeyes",
+      "homeScore": 0.0,
+      "awayScore": 37.0
+     }
+    ],
     "home": {
      "name": "Iowa Hawkeyes",
-     "record": "5-2",
+     "record": "11-5",
      "last": [
+      "W",
+      "W",
+      "W",
       "W",
       "W",
       "W",
@@ -14863,8 +14885,11 @@
     },
     "away": {
      "name": "Wisconsin Badgers",
-     "record": "5-2",
+     "record": "7-8",
      "last": [
+      "L",
+      "W",
+      "L",
       "L",
       "W",
       "W",
@@ -14945,10 +14970,10 @@
     }
    },
    "model": {
-    "home": 0.6716,
-    "away": 0.3284,
-    "blendHome": 0.7181,
-    "gapPp": -6.2,
+    "home": 0.6966,
+    "away": 0.3034,
+    "blendHome": 0.7244,
+    "gapPp": -3.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -14957,8 +14982,11 @@
     "h2h": [],
     "home": {
      "name": "NC State Wolfpack",
-     "record": "3-4",
+     "record": "8-8",
      "last": [
+      "W",
+      "W",
+      "W",
       "L",
       "W",
       "L",
@@ -14970,8 +14998,10 @@
     },
     "away": {
      "name": "California Golden Bears",
-     "record": "3-5",
+     "record": "7-10",
      "last": [
+      "W",
+      "L",
       "L",
       "W",
       "W",
@@ -15057,10 +15087,10 @@
     }
    },
    "model": {
-    "home": 0.6308,
-    "away": 0.3692,
-    "blendHome": 0.6852,
-    "gapPp": -7.3,
+    "home": 0.6969,
+    "away": 0.3031,
+    "blendHome": 0.7017,
+    "gapPp": -0.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15069,8 +15099,11 @@
     "h2h": [],
     "home": {
      "name": "Duke Blue Devils",
-     "record": "5-2",
+     "record": "12-5",
      "last": [
+      "W",
+      "W",
+      "W",
       "W",
       "W",
       "W",
@@ -15082,8 +15115,11 @@
     },
     "away": {
      "name": "Boston College Eagles",
-     "record": "4-3",
+     "record": "5-11",
      "last": [
+      "L",
+      "L",
+      "W",
       "L",
       "W",
       "W",
@@ -15168,20 +15204,31 @@
     }
    },
    "model": {
-    "home": 0.4325,
-    "away": 0.5675,
-    "blendHome": 0.4375,
-    "gapPp": -0.7,
+    "home": 0.3855,
+    "away": 0.6145,
+    "blendHome": 0.4257,
+    "gapPp": -5.4,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-15",
+      "home": "Illinois Fighting Illini",
+      "away": "Maryland Terrapins",
+      "homeScore": 24.0,
+      "awayScore": 6.0
+     }
+    ],
     "home": {
      "name": "Maryland Terrapins",
-     "record": "2-5",
+     "record": "2-13",
      "last": [
+      "L",
+      "L",
+      "L",
       "W",
       "W",
       "L",
@@ -15193,8 +15240,11 @@
     },
     "away": {
      "name": "Illinois Fighting Illini",
-     "record": "4-3",
+     "record": "10-6",
      "last": [
+      "L",
+      "W",
+      "W",
       "W",
       "L",
       "W",
@@ -15279,20 +15329,31 @@
     }
    },
    "model": {
-    "home": 0.6459,
-    "away": 0.3541,
-    "blendHome": 0.709,
-    "gapPp": -8.4,
+    "home": 0.6886,
+    "away": 0.3114,
+    "blendHome": 0.7197,
+    "gapPp": -4.1,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-22",
+      "home": "UAB Blazers",
+      "away": "South Florida Bulls",
+      "homeScore": 18.0,
+      "awayScore": 48.0
+     }
+    ],
     "home": {
      "name": "South Florida Bulls",
-     "record": "5-2",
+     "record": "11-5",
      "last": [
+      "W",
+      "W",
+      "L",
       "W",
       "W",
       "W",
@@ -15304,8 +15365,11 @@
     },
     "away": {
      "name": "UAB Blazers",
-     "record": "4-3",
+     "record": "6-9",
      "last": [
+      "L",
+      "L",
+      "W",
       "L",
       "W",
       "L",
@@ -15390,10 +15454,10 @@
     }
    },
    "model": {
-    "home": 0.7716,
-    "away": 0.2284,
-    "blendHome": 0.8224,
-    "gapPp": -6.8,
+    "home": 0.8174,
+    "away": 0.1826,
+    "blendHome": 0.8338,
+    "gapPp": -2.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15402,8 +15466,10 @@
     "h2h": [],
     "home": {
      "name": "Western Michigan Broncos",
-     "record": "5-3",
+     "record": "14-4",
      "last": [
+      "W",
+      "W",
       "L",
       "W",
       "W",
@@ -15416,8 +15482,10 @@
     },
     "away": {
      "name": "Bowling Green Falcons",
-     "record": "2-6",
+     "record": "4-12",
      "last": [
+      "L",
+      "W",
       "L",
       "L",
       "L",
@@ -15483,10 +15551,10 @@
     }
    },
    "model": {
-    "home": 0.7273,
-    "away": 0.2727,
-    "blendHome": 0.7809,
-    "gapPp": -7.2,
+    "home": 0.7657,
+    "away": 0.2343,
+    "blendHome": 0.7905,
+    "gapPp": -3.3,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -15495,8 +15563,11 @@
     "h2h": [],
     "home": {
      "name": "Ole Miss Rebels",
-     "record": "5-2",
+     "record": "14-4",
      "last": [
+      "W",
+      "W",
+      "L",
       "W",
       "W",
       "W",
@@ -15508,8 +15579,11 @@
     },
     "away": {
      "name": "Auburn Tigers",
-     "record": "4-3",
+     "record": "6-9",
      "last": [
+      "L",
+      "W",
+      "L",
       "W",
       "W",
       "L",
@@ -15594,20 +15668,30 @@
     }
    },
    "model": {
-    "home": 0.4633,
-    "away": 0.5367,
-    "blendHome": 0.4405,
-    "gapPp": 3.0,
+    "home": 0.4989,
+    "away": 0.5011,
+    "blendHome": 0.4494,
+    "gapPp": 6.6,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-10-11",
+      "home": "Marshall Thundering Herd",
+      "away": "Old Dominion Monarchs",
+      "homeScore": 48.0,
+      "awayScore": 24.0
+     }
+    ],
     "home": {
      "name": "Old Dominion Monarchs",
-     "record": "2-6",
+     "record": "10-8",
      "last": [
+      "W",
+      "W",
       "W",
       "L",
       "L",
@@ -15620,8 +15704,11 @@
     },
     "away": {
      "name": "Marshall Thundering Herd",
-     "record": "4-3",
+     "record": "7-8",
      "last": [
+      "W",
+      "L",
+      "L",
       "L",
       "W",
       "W",
@@ -15686,20 +15773,31 @@
     }
    },
    "model": {
-    "home": 0.5511,
-    "away": 0.4489,
-    "blendHome": 0.5094,
-    "gapPp": 5.6,
+    "home": 0.5564,
+    "away": 0.4436,
+    "blendHome": 0.5107,
+    "gapPp": 6.1,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-15",
+      "home": "UConn Huskies",
+      "away": "Air Force Falcons",
+      "homeScore": 26.0,
+      "awayScore": 16.0
+     }
+    ],
     "home": {
      "name": "Air Force Falcons",
-     "record": "5-2",
+     "record": "8-8",
      "last": [
+      "L",
+      "L",
+      "W",
       "W",
       "L",
       "W",
@@ -15711,8 +15809,11 @@
     },
     "away": {
      "name": "UConn Huskies",
-     "record": "4-3",
+     "record": "11-5",
      "last": [
+      "W",
+      "W",
+      "L",
       "W",
       "L",
       "W",
@@ -15729,127 +15830,6 @@
     "biggestMovePts": -6.4,
     "biggestMoveAt": "2026-10-28T00:31:24+00:00",
     "totalDriftPts": -9.1,
-    "snapshots": 38,
-    "firstSeen": "2026-10-25T17:10:02+00:00",
-    "lastSeen": "2026-10-31T13:50:27+00:00"
-   }
-  },
-  {
-   "key": "ncaaf|templeowls|eastcarolinapirates|2026-10-31T19:00",
-   "sport": "ncaaf",
-   "home": "East Carolina Pirates",
-   "away": "Temple Owls",
-   "start": "2026-10-31T19:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.6409,
-    "away": 0.3591
-   },
-   "best": {
-    "home": {
-     "book": "Bovada",
-     "american": -190,
-     "decimal": 1.526
-    },
-    "away": {
-     "book": "Bovada",
-     "american": 165,
-     "decimal": 2.65
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0325,
-   "bets": [],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Temple vs East Carolina",
-     "url": "https://kalshi.com/markets/kxncaafgame",
-     "tickers": {
-      "Temple": "KXNCAAFGAME-26OCT30TEMECU-TEM",
-      "East Carolina": "KXNCAAFGAME-26OCT30TEMECU-ECU"
-     },
-     "home": 0.64,
-     "homeEdgePp": 0.1,
-     "away": 0.37,
-     "awayEdgePp": -1.1
-    }
-   ],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
-     "color": "582c83"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/218.png",
-     "color": "a41e35"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": 4.0,
-     "american": -105
-    },
-    "home": {
-     "handicap": -4.0,
-     "american": -115
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 50.5,
-     "american": -108
-    },
-    "under": {
-     "handicap": 50.5,
-     "american": -112
-    }
-   },
-   "model": {
-    "home": 0.7097,
-    "away": 0.2903,
-    "blendHome": 0.6581,
-    "gapPp": 6.9,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "East Carolina Pirates",
-     "record": "3-4",
-     "last": [
-      "L",
-      "L",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Temple Owls",
-     "record": "2-5",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "L",
-      "W",
-      "L",
-      "L"
-     ]
-    }
-   },
-   "steam": {
-    "kind": "steam",
-    "side": "home",
-    "biggestMovePts": 4.8,
-    "biggestMoveAt": "2026-10-25T22:04:26+00:00",
-    "totalDriftPts": 2.7,
     "snapshots": 38,
     "firstSeen": "2026-10-25T17:10:02+00:00",
     "lastSeen": "2026-10-31T13:50:27+00:00"
@@ -15908,10 +15888,10 @@
     }
    },
    "model": {
-    "home": 0.7449,
-    "away": 0.2551,
-    "blendHome": 0.7815,
-    "gapPp": -4.9,
+    "home": 0.7828,
+    "away": 0.2172,
+    "blendHome": 0.791,
+    "gapPp": -1.1,
     "weight": 0.25,
     "injuries": [
      "Florida Gators: -4 Elo"
@@ -15920,11 +15900,22 @@
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-01",
+      "home": "Florida Gators",
+      "away": "Georgia Bulldogs",
+      "homeScore": 20.0,
+      "awayScore": 24.0
+     }
+    ],
     "home": {
      "name": "Georgia Bulldogs",
-     "record": "6-1",
+     "record": "15-3",
      "last": [
+      "W",
+      "W",
+      "L",
       "W",
       "W",
       "W",
@@ -15936,8 +15927,11 @@
     },
     "away": {
      "name": "Florida Gators",
-     "record": "5-2",
+     "record": "8-7",
      "last": [
+      "L",
+      "L",
+      "W",
       "W",
       "W",
       "W",
@@ -16022,10 +16016,10 @@
     }
    },
    "model": {
-    "home": 0.6671,
-    "away": 0.3329,
-    "blendHome": 0.6763,
-    "gapPp": -1.2,
+    "home": 0.6898,
+    "away": 0.3102,
+    "blendHome": 0.6819,
+    "gapPp": 1.0,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16034,8 +16028,11 @@
     "h2h": [],
     "home": {
      "name": "TCU Horned Frogs",
-     "record": "3-4",
+     "record": "9-8",
      "last": [
+      "W",
+      "W",
+      "W",
       "L",
       "W",
       "W",
@@ -16047,8 +16044,11 @@
     },
     "away": {
      "name": "Kansas Jayhawks",
-     "record": "3-4",
+     "record": "5-10",
      "last": [
+      "L",
+      "L",
+      "L",
       "W",
       "L",
       "L",
@@ -16119,10 +16119,10 @@
     }
    },
    "model": {
-    "home": 0.9037,
-    "away": 0.0963,
-    "blendHome": 0.9352,
-    "gapPp": -4.2,
+    "home": 0.9271,
+    "away": 0.0729,
+    "blendHome": 0.941,
+    "gapPp": -1.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16131,8 +16131,10 @@
     "h2h": [],
     "home": {
      "name": "North Dakota State Bison",
-     "record": "6-2",
+     "record": "15-3",
      "last": [
+      "W",
+      "L",
       "W",
       "W",
       "W",
@@ -16145,8 +16147,11 @@
     },
     "away": {
      "name": "UTEP Miners",
-     "record": "1-6",
+     "record": "2-13",
      "last": [
+      "L",
+      "L",
+      "L",
       "L",
       "W",
       "L",
@@ -16231,20 +16236,31 @@
     }
    },
    "model": {
-    "home": 0.8006,
-    "away": 0.1994,
-    "blendHome": 0.8232,
-    "gapPp": -3.0,
+    "home": 0.7904,
+    "away": 0.2096,
+    "blendHome": 0.8206,
+    "gapPp": -4.0,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-15",
+      "home": "Florida International Panthers",
+      "away": "Liberty Flames",
+      "homeScore": 34.0,
+      "awayScore": 27.0
+     }
+    ],
     "home": {
      "name": "Liberty Flames",
-     "record": "6-1",
+     "record": "9-6",
      "last": [
+      "L",
+      "L",
+      "L",
       "L",
       "W",
       "W",
@@ -16256,8 +16272,11 @@
     },
     "away": {
      "name": "Florida International Panthers",
-     "record": "3-4",
+     "record": "8-8",
      "last": [
+      "W",
+      "W",
+      "L",
       "L",
       "W",
       "L",
@@ -16265,6 +16284,111 @@
       "W",
       "L",
       "L"
+     ]
+    }
+   }
+  },
+  {
+   "key": "ncaaf|utahutes|cincinnatibearcats|2026-10-31T19:45",
+   "sport": "ncaaf",
+   "home": "Cincinnati Bearcats",
+   "away": "Utah Utes",
+   "start": "2026-10-31T19:45Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.2861,
+    "away": 0.7139
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 225.0,
+     "decimal": 3.25
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -278.0,
+     "decimal": 1.36
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0431,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Utah vs Cincinnati",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Utah": "KXNCAAFGAME-26OCT30UTAHCIN-UTAH",
+      "Cincinnati": "KXNCAAFGAME-26OCT30UTAHCIN-CIN"
+     },
+     "home": 0.29,
+     "homeEdgePp": -0.4,
+     "away": 0.72,
+     "awayEdgePp": -0.6
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
+     "color": "000000"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
+     "color": "be0000"
+    }
+   },
+   "model": {
+    "home": 0.3805,
+    "away": 0.6195,
+    "blendHome": 0.3097,
+    "gapPp": 9.4,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-11-02",
+      "home": "Utah Utes",
+      "away": "Cincinnati Bearcats",
+      "homeScore": 45.0,
+      "awayScore": 14.0
+     }
+    ],
+    "home": {
+     "name": "Cincinnati Bearcats",
+     "record": "10-7",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "Utah Utes",
+     "record": "15-1",
+     "last": [
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W"
      ]
     }
    }
@@ -16322,20 +16446,31 @@
     }
    },
    "model": {
-    "home": 0.8138,
-    "away": 0.1862,
-    "blendHome": 0.8164,
-    "gapPp": -0.3,
+    "home": 0.8173,
+    "away": 0.1827,
+    "blendHome": 0.8173,
+    "gapPp": 0.0,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-09",
+      "home": "Virginia Cavaliers",
+      "away": "Wake Forest Demon Deacons",
+      "homeScore": 9.0,
+      "awayScore": 16.0
+     }
+    ],
     "home": {
      "name": "Wake Forest Demon Deacons",
-     "record": "6-1",
+     "record": "13-4",
      "last": [
+      "W",
+      "L",
+      "W",
       "W",
       "W",
       "L",
@@ -16347,8 +16482,10 @@
     },
     "away": {
      "name": "Virginia Cavaliers",
-     "record": "4-4",
+     "record": "12-6",
      "last": [
+      "L",
+      "W",
       "W",
       "W",
       "L",
@@ -16434,20 +16571,31 @@
     }
    },
    "model": {
-    "home": 0.5309,
-    "away": 0.4691,
-    "blendHome": 0.5839,
-    "gapPp": -7.1,
+    "home": 0.5593,
+    "away": 0.4407,
+    "blendHome": 0.591,
+    "gapPp": -4.2,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-10-18",
+      "home": "South Carolina Gamecocks",
+      "away": "Oklahoma Sooners",
+      "homeScore": 7.0,
+      "awayScore": 26.0
+     }
+    ],
     "home": {
      "name": "Oklahoma Sooners",
-     "record": "4-3",
+     "record": "10-6",
      "last": [
+      "W",
+      "W",
+      "L",
       "W",
       "L",
       "W",
@@ -16459,8 +16607,11 @@
     },
     "away": {
      "name": "South Carolina Gamecocks",
-     "record": "4-3",
+     "record": "6-9",
      "last": [
+      "L",
+      "W",
+      "L",
       "W",
       "W",
       "L",
@@ -16470,6 +16621,114 @@
       "W"
      ]
     }
+   }
+  },
+  {
+   "key": "ncaaf|appstatemountaineers|georgiasoutherneagles|2026-10-31T22:30",
+   "sport": "ncaaf",
+   "home": "Georgia Southern Eagles",
+   "away": "App State Mountaineers",
+   "start": "2026-10-31T22:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.6642,
+    "away": 0.3358
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -218.0,
+     "decimal": 1.459
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 180.0,
+     "decimal": 2.8
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0427,
+   "bets": [],
+   "pm": [],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/290.png",
+     "color": "041e42"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2026.png",
+     "color": "000000"
+    }
+   },
+   "model": {
+    "home": 0.5723,
+    "away": 0.4277,
+    "blendHome": 0.6412,
+    "gapPp": -9.2,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2025-12-29",
+      "home": "App State Mountaineers",
+      "away": "Georgia Southern Eagles",
+      "homeScore": 10.0,
+      "awayScore": 29.0
+     },
+     {
+      "date": "2025-11-07",
+      "home": "App State Mountaineers",
+      "away": "Georgia Southern Eagles",
+      "homeScore": 23.0,
+      "awayScore": 25.0
+     }
+    ],
+    "home": {
+     "name": "Georgia Southern Eagles",
+     "record": "8-8",
+     "last": [
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "App State Mountaineers",
+     "record": "8-9",
+     "last": [
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W"
+     ]
+    }
+   },
+   "steam": {
+    "kind": "steam",
+    "side": "home",
+    "biggestMovePts": 4.5,
+    "biggestMoveAt": "2026-10-25T22:04:26+00:00",
+    "totalDriftPts": 6.7,
+    "snapshots": 38,
+    "firstSeen": "2026-10-25T17:10:02+00:00",
+    "lastSeen": "2026-10-31T13:50:27+00:00"
    }
   },
   {
@@ -16511,10 +16770,10 @@
     }
    },
    "model": {
-    "home": 0.3885,
-    "away": 0.6115,
-    "blendHome": 0.3308,
-    "gapPp": 7.7,
+    "home": 0.363,
+    "away": 0.637,
+    "blendHome": 0.3244,
+    "gapPp": 5.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16523,8 +16782,10 @@
     "h2h": [],
     "home": {
      "name": "USC Trojans",
-     "record": "6-2",
+     "record": "11-6",
      "last": [
+      "W",
+      "L",
       "W",
       "W",
       "W",
@@ -16537,8 +16798,11 @@
     },
     "away": {
      "name": "Ohio State Buckeyes",
-     "record": "6-1",
+     "record": "15-3",
      "last": [
+      "W",
+      "L",
+      "L",
       "W",
       "L",
       "W",
@@ -16623,20 +16887,30 @@
     }
    },
    "model": {
-    "home": 0.7627,
-    "away": 0.2373,
-    "blendHome": 0.7382,
-    "gapPp": 3.3,
+    "home": 0.7728,
+    "away": 0.2272,
+    "blendHome": 0.7407,
+    "gapPp": 4.3,
     "weight": 0.25
    },
    "crossArbs": [],
    "middles": [],
    "matchup": {
-    "h2h": [],
+    "h2h": [
+     {
+      "date": "2025-11-23",
+      "home": "Georgia Tech Yellow Jackets",
+      "away": "Pittsburgh Panthers",
+      "homeScore": 28.0,
+      "awayScore": 42.0
+     }
+    ],
     "home": {
      "name": "Pittsburgh Panthers",
-     "record": "5-3",
+     "record": "11-7",
      "last": [
+      "L",
+      "L",
       "W",
       "W",
       "W",
@@ -16649,8 +16923,11 @@
     },
     "away": {
      "name": "Georgia Tech Yellow Jackets",
-     "record": "2-5",
+     "record": "7-9",
      "last": [
+      "L",
+      "L",
+      "L",
       "L",
       "L",
       "W",
@@ -16721,10 +16998,10 @@
     }
    },
    "model": {
-    "home": 0.7041,
-    "away": 0.2959,
-    "blendHome": 0.727,
-    "gapPp": -3.1,
+    "home": 0.676,
+    "away": 0.324,
+    "blendHome": 0.72,
+    "gapPp": -5.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16733,8 +17010,11 @@
     "h2h": [],
     "home": {
      "name": "Nebraska Cornhuskers",
-     "record": "5-2",
+     "record": "9-7",
      "last": [
+      "L",
+      "L",
+      "L",
       "W",
       "W",
       "W",
@@ -16746,8 +17026,11 @@
     },
     "away": {
      "name": "Washington Huskies",
-     "record": "4-3",
+     "record": "10-7",
      "last": [
+      "W",
+      "L",
+      "W",
       "W",
       "W",
       "W",
@@ -16798,10 +17081,10 @@
     }
    },
    "model": {
-    "home": 0.7723,
-    "away": 0.2277,
-    "blendHome": 0.7884,
-    "gapPp": -2.2,
+    "home": 0.7732,
+    "away": 0.2268,
+    "blendHome": 0.7886,
+    "gapPp": -2.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16810,8 +17093,11 @@
     "h2h": [],
     "home": {
      "name": "Boise State Broncos",
-     "record": "6-1",
+     "record": "13-5",
      "last": [
+      "W",
+      "W",
+      "L",
       "L",
       "W",
       "W",
@@ -16823,8 +17109,11 @@
     },
     "away": {
      "name": "Texas State Bobcats",
-     "record": "4-3",
+     "record": "8-8",
      "last": [
+      "W",
+      "W",
+      "W",
       "L",
       "L",
       "W",
@@ -16909,10 +17198,10 @@
     }
    },
    "model": {
-    "home": 0.8875,
-    "away": 0.1125,
-    "blendHome": 0.919,
-    "gapPp": -4.2,
+    "home": 0.9029,
+    "away": 0.0971,
+    "blendHome": 0.9228,
+    "gapPp": -2.7,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -16921,8 +17210,11 @@
     "h2h": [],
     "home": {
      "name": "UNLV Rebels",
-     "record": "4-3",
+     "record": "10-7",
      "last": [
+      "W",
+      "L",
+      "L",
       "L",
       "W",
       "L",
@@ -16934,8 +17226,11 @@
     },
     "away": {
      "name": "Northern Illinois Huskies",
-     "record": "0-7",
+     "record": "2-14",
      "last": [
+      "W",
+      "L",
+      "L",
       "L",
       "L",
       "L",
@@ -16943,6 +17238,103 @@
       "L",
       "L",
       "L"
+     ]
+    }
+   }
+  },
+  {
+   "key": "ncaaf|virginiatechhokies|smumustangs|2026-11-07T00:00",
+   "sport": "ncaaf",
+   "home": "SMU Mustangs",
+   "away": "Virginia Tech Hokies",
+   "start": "2026-11-07T00:00Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.7139,
+    "away": 0.2861
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -278.0,
+     "decimal": 1.36
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 225.0,
+     "decimal": 3.25
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0431,
+   "bets": [],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Virginia Tech vs SMU",
+     "url": "https://kalshi.com/markets/kxncaafgame",
+     "tickers": {
+      "Virginia Tech": "KXNCAAFGAME-26NOV06VTSMU-VT",
+      "SMU": "KXNCAAFGAME-26NOV06VTSMU-SMU"
+     },
+     "home": 0.72,
+     "homeEdgePp": -0.6,
+     "away": 0.31,
+     "awayEdgePp": -2.4
+    }
+   ],
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png",
+     "color": "a80000"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/259.png",
+     "color": "6a2c3e"
+    }
+   },
+   "model": {
+    "home": 0.6267,
+    "away": 0.3733,
+    "blendHome": 0.6921,
+    "gapPp": -8.7,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "SMU Mustangs",
+     "record": "13-3",
+     "last": [
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "Virginia Tech Hokies",
+     "record": "8-8",
+     "last": [
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W"
      ]
     }
    }
@@ -17287,8 +17679,8 @@
     }
    },
    "model": {
-    "home": 0.5443,
-    "away": 0.4557,
+    "home": 0.5444,
+    "away": 0.4556,
     "blendHome": 0.5196,
     "gapPp": 3.3,
     "weight": 0.25,
@@ -18589,29 +18981,29 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.5803,
-    "away": 0.1852,
-    "draw": 0.2345
+    "home": 0.5911,
+    "away": 0.178,
+    "draw": 0.2309
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -150.0,
-     "decimal": 1.667
+     "american": -155.0,
+     "decimal": 1.645
     },
     "away": {
      "book": "DraftKings",
-     "american": 400.0,
-     "decimal": 5.0
+     "american": 425.0,
+     "decimal": 5.25
     },
     "draw": {
      "book": "DraftKings",
-     "american": 300.0,
-     "decimal": 4.0
+     "american": 310.0,
+     "decimal": 4.1
     }
    },
    "arb": false,
-   "impliedSum": 1.05,
+   "impliedSum": 1.0422,
    "bets": [],
    "pm": [],
    "teamMeta": {
@@ -18628,8 +19020,8 @@
     "home": 0.592,
     "draw": 0.2382,
     "away": 0.1699,
-    "blendHome": 0.5832,
-    "gapPp": 1.2,
+    "blendHome": 0.5913,
+    "gapPp": 0.1,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -18889,20 +19281,20 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.6166,
-    "away": 0.176,
-    "draw": 0.2074
+    "home": 0.6088,
+    "away": 0.1846,
+    "draw": 0.2065
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -175.0,
-     "decimal": 1.571
+     "american": -170.0,
+     "decimal": 1.588
     },
     "away": {
      "book": "DraftKings",
-     "american": 425.0,
-     "decimal": 5.25
+     "american": 400.0,
+     "decimal": 5.0
     },
     "draw": {
      "book": "DraftKings",
@@ -18911,7 +19303,7 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.0491,
+   "impliedSum": 1.0519,
    "bets": [],
    "pm": [],
    "teamMeta": {
@@ -18928,8 +19320,8 @@
     "home": 0.5101,
     "draw": 0.2562,
     "away": 0.2337,
-    "blendHome": 0.59,
-    "gapPp": -10.6,
+    "blendHome": 0.5841,
+    "gapPp": -9.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -21837,95 +22229,6 @@
    }
   },
   {
-   "key": "bundesliga2|1heidenheim1846|karlsruher|2026-10-31T19:30",
-   "sport": "bundesliga2",
-   "home": "Karlsruher SC",
-   "away": "1. FC Heidenheim 1846",
-   "start": "2026-10-31T19:30Z",
-   "nBooks": 1,
-   "threeWay": true,
-   "fair": {
-    "home": 0.2877,
-    "away": 0.4651,
-    "draw": 0.2473
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 225.0,
-     "decimal": 3.25
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 105.0,
-     "decimal": 2.05
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 275.0,
-     "decimal": 3.75
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0622,
-   "bets": [],
-   "pm": [],
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4471.png",
-     "color": "2563B8"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6418.png",
-     "color": "DA0308"
-    }
-   },
-   "model": {
-    "home": 0.3258,
-    "draw": 0.2612,
-    "away": 0.413,
-    "blendHome": 0.2972,
-    "gapPp": 3.8,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Karlsruher SC",
-     "record": "12-19-9",
-     "last": [
-      "L",
-      "W",
-      "T",
-      "L",
-      "T",
-      "L",
-      "L",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "1. FC Heidenheim 1846",
-     "record": "4-2-3",
-     "last": [
-      "W",
-      "L",
-      "W",
-      "W",
-      "W",
-      "T",
-      "T",
-      "L",
-      "T"
-     ]
-    }
-   }
-  },
-  {
    "key": "bundesliga2|dynamodresden|hannover96|2026-11-01T12:30",
    "sport": "bundesliga2",
    "home": "Hannover 96",
@@ -21970,10 +22273,10 @@
     }
    },
    "model": {
-    "home": 0.5285,
-    "draw": 0.2474,
-    "away": 0.2241,
-    "blendHome": 0.4648,
+    "home": 0.5288,
+    "draw": 0.2467,
+    "away": 0.2244,
+    "blendHome": 0.4649,
     "gapPp": 8.5,
     "weight": 0.25
    },
@@ -22075,11 +22378,11 @@
     }
    },
    "model": {
-    "home": 0.4365,
-    "draw": 0.2597,
-    "away": 0.3039,
-    "blendHome": 0.3949,
-    "gapPp": 5.5,
+    "home": 0.4368,
+    "draw": 0.2589,
+    "away": 0.3042,
+    "blendHome": 0.395,
+    "gapPp": 5.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -22173,11 +22476,11 @@
     }
    },
    "model": {
-    "home": 0.3783,
-    "draw": 0.2624,
-    "away": 0.3593,
-    "blendHome": 0.4267,
-    "gapPp": -6.5,
+    "home": 0.3787,
+    "draw": 0.2617,
+    "away": 0.3597,
+    "blendHome": 0.4268,
+    "gapPp": -6.4,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -22226,29 +22529,29 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.5757,
-    "away": 0.176,
-    "draw": 0.2483
+    "home": 0.5867,
+    "away": 0.1693,
+    "draw": 0.244
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -155.0,
-     "decimal": 1.645
+     "american": -160.0,
+     "decimal": 1.625
     },
     "away": {
      "book": "DraftKings",
-     "american": 400.0,
-     "decimal": 5.0
+     "american": 425.0,
+     "decimal": 5.25
     },
     "draw": {
      "book": "DraftKings",
-     "american": 265.0,
-     "decimal": 3.65
+     "american": 275.0,
+     "decimal": 3.75
     }
    },
    "arb": false,
-   "impliedSum": 1.0818,
+   "impliedSum": 1.0725,
    "bets": [],
    "pm": [
     {
@@ -22261,9 +22564,9 @@
       "Bologna": "KXSERIEAGAME-26OCT31BFCMON-BFC"
      },
      "home": 0.59,
-     "homeEdgePp": -1.4,
-     "away": 0.18,
-     "awayEdgePp": -0.4
+     "homeEdgePp": -0.3,
+     "away": 0.17,
+     "awayEdgePp": -0.1
     }
    ],
    "teamMeta": {
@@ -22280,8 +22583,8 @@
     "home": 0.5778,
     "draw": 0.2199,
     "away": 0.2023,
-    "blendHome": 0.5759,
-    "gapPp": 0.2,
+    "blendHome": 0.5858,
+    "gapPp": -0.9,
     "weight": 0.1
    },
    "crossArbs": [],
@@ -22574,8 +22877,8 @@
       "Tie": "KXSERIEAGAME-26NOV01COMVEN-TIE",
       "Como": "KXSERIEAGAME-26NOV01COMVEN-COM"
      },
-     "home": 0.76,
-     "homeEdgePp": -1.3,
+     "home": 0.75,
+     "homeEdgePp": -0.3,
      "away": 0.1,
      "awayEdgePp": 0.3
     }
@@ -23366,29 +23669,29 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.4152,
-    "away": 0.2995,
-    "draw": 0.2853
+    "home": 0.4232,
+    "away": 0.2884,
+    "draw": 0.2884
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 130.0,
-     "decimal": 2.3
+     "american": 125.0,
+     "decimal": 2.25
     },
     "away": {
      "book": "DraftKings",
-     "american": 215.0,
-     "decimal": 3.15
+     "american": 225.0,
+     "decimal": 3.25
     },
     "draw": {
      "book": "DraftKings",
-     "american": 230.0,
-     "decimal": 3.3
+     "american": 225.0,
+     "decimal": 3.25
     }
    },
    "arb": false,
-   "impliedSum": 1.0553,
+   "impliedSum": 1.0598,
    "bets": [],
    "pm": [],
    "teamMeta": {
@@ -23405,8 +23708,8 @@
     "home": 0.3614,
     "draw": 0.3083,
     "away": 0.3302,
-    "blendHome": 0.4018,
-    "gapPp": -5.4,
+    "blendHome": 0.4077,
+    "gapPp": -6.2,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -23449,10 +23752,10 @@
     "side": "home",
     "biggestMovePts": 7.1,
     "biggestMoveAt": "2026-10-31T13:50:27+00:00",
-    "totalDriftPts": 7.0,
-    "snapshots": 22,
+    "totalDriftPts": 7.8,
+    "snapshots": 23,
     "firstSeen": "2026-10-28T02:09:00+00:00",
-    "lastSeen": "2026-10-31T13:50:27+00:00"
+    "lastSeen": "2026-10-31T13:56:23+00:00"
    }
   },
   {
@@ -40306,8 +40609,8 @@
    "awayScore": 3,
    "state": "in",
    "completed": false,
-   "detail": "87'",
-   "clock": "87'",
+   "detail": "90'+3'",
+   "clock": "90'+3'",
    "period": 2
   },
   {
@@ -40320,22 +40623,22 @@
    "awayScore": 1,
    "state": "in",
    "completed": false,
-   "detail": "89'",
-   "clock": "89'",
+   "detail": "90'+5'",
+   "clock": "90'+5'",
    "period": 2
   },
   {
    "sport": "bundesliga2",
    "start": "2026-10-31T12:00Z",
-   "link": "https://www.espn.com/soccer/match/_/gameId/401885074",
+   "link": "https://www.espn.com/soccer/match/_/gameId/401885074/vfl-osnabruck-vfl-wolfsburg",
    "home": "VfL Wolfsburg",
    "away": "VfL Osnabruck",
    "homeScore": 2,
    "awayScore": 0,
-   "state": "in",
-   "completed": false,
-   "detail": "90'+1'",
-   "clock": "90'+1'",
+   "state": "post",
+   "completed": true,
+   "detail": "FT",
+   "clock": "90'+3'",
    "period": 2
   },
   {
@@ -40348,8 +40651,8 @@
    "awayScore": 0,
    "state": "in",
    "completed": false,
-   "detail": "73'",
-   "clock": "73'",
+   "detail": "79'",
+   "clock": "79'",
    "period": 2
   },
   {
@@ -40358,12 +40661,12 @@
    "link": "https://www.espn.com/soccer/match/_/gameId/401879248",
    "home": "Chelsea",
    "away": "Manchester United",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "state": "in",
    "completed": false,
-   "detail": "61'",
-   "clock": "61'",
+   "detail": "67'",
+   "clock": "67'",
    "period": 2
   },
   {
@@ -40376,8 +40679,8 @@
    "awayScore": 1,
    "state": "in",
    "completed": false,
-   "detail": "53'",
-   "clock": "53'",
+   "detail": "59'",
+   "clock": "59'",
    "period": 2
   },
   {
@@ -40386,12 +40689,12 @@
    "link": "https://www.espn.com/soccer/match/_/gameId/401880191",
    "home": "Norwich City",
    "away": "Watford",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 2,
    "state": "in",
    "completed": false,
-   "detail": "62'",
-   "clock": "62'",
+   "detail": "68'",
+   "clock": "68'",
    "period": 2
   },
   {
@@ -40404,8 +40707,8 @@
    "awayScore": 0,
    "state": "in",
    "completed": false,
-   "detail": "60'",
-   "clock": "60'",
+   "detail": "66'",
+   "clock": "66'",
    "period": 2
   },
   {
@@ -40418,8 +40721,8 @@
    "awayScore": 3,
    "state": "in",
    "completed": false,
-   "detail": "64'",
-   "clock": "64'",
+   "detail": "70'",
+   "clock": "70'",
    "period": 2
   },
   {
@@ -40428,12 +40731,12 @@
    "link": "https://www.espn.com/soccer/match/_/gameId/401880763",
    "home": "Leyton Orient",
    "away": "Cambridge United",
-   "homeScore": 2,
+   "homeScore": 3,
    "awayScore": 0,
    "state": "in",
    "completed": false,
-   "detail": "62'",
-   "clock": "62'",
+   "detail": "68'",
+   "clock": "68'",
    "period": 2
   },
   {
@@ -40446,8 +40749,8 @@
    "awayScore": 0,
    "state": "in",
    "completed": false,
-   "detail": "61'",
-   "clock": "61'",
+   "detail": "67'",
+   "clock": "67'",
    "period": 2
   },
   {
@@ -40460,8 +40763,8 @@
    "awayScore": 2,
    "state": "in",
    "completed": false,
-   "detail": "61'",
-   "clock": "61'",
+   "detail": "67'",
+   "clock": "67'",
    "period": 2
   },
   {
@@ -40474,8 +40777,8 @@
    "awayScore": 0,
    "state": "in",
    "completed": false,
-   "detail": "60'",
-   "clock": "60'",
+   "detail": "66'",
+   "clock": "66'",
    "period": 2
   },
   {
@@ -40502,8 +40805,8 @@
    "awayScore": 0,
    "state": "in",
    "completed": false,
-   "detail": "45'+4'",
-   "clock": "45'+4'",
+   "detail": "HT",
+   "clock": "45'+5'",
    "period": 1
   },
   {
@@ -50686,15 +50989,15 @@
   }
  ],
  "day": {
-  "nBets": 82,
-  "scale": 0.106,
-  "totalStake": 7.95,
-  "meanPnl": 0.84,
+  "nBets": 78,
+  "scale": 0.115,
+  "totalStake": 8.07,
+  "meanPnl": 0.73,
   "var95": 6.0,
-  "pBreakEven": 0.506,
-  "pProfit": 0.506,
-  "best": 20.98,
-  "worst": -7.95,
+  "pBreakEven": 0.503,
+  "pProfit": 0.503,
+  "best": 20.81,
+  "worst": -8.07,
   "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."
  },
  "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
@@ -55117,14 +55420,24 @@
    "home": "Chelsea",
    "away": "Manchester United",
    "start": "2026-10-31T12:30Z",
-   "kalshiHome": 0.72,
-   "detail": "61'",
-   "homeScore": 1,
+   "kalshiHome": 0.98,
+   "detail": "67'",
+   "homeScore": 2,
    "awayScore": 0,
-   "lastSeen": "2026-10-31T13:50:27+00:00",
-   "snapshots": 1,
+   "lastSeen": "2026-10-31T13:56:23+00:00",
+   "snapshots": 2,
+   "move": {
+    "kind": "steam",
+    "side": "home",
+    "biggestMovePts": 26.0,
+    "biggestMoveAt": "2026-10-31T13:56:23+00:00",
+    "totalDriftPts": 26.0,
+    "snapshots": 2,
+    "firstSeen": "2026-10-31T13:50:27+00:00",
+    "lastSeen": "2026-10-31T13:56:23+00:00"
+   },
    "closeHome": 0.4821,
-   "swingPts": 23.8,
+   "swingPts": 49.8,
    "swingSide": "home"
   }
  ],
@@ -55138,16 +55451,16 @@
     "side": "Navy Midshipmen",
     "book": "DraftKings",
     "american": 2000.0,
-    "fair": 0.0879,
-    "evPct": 84.51,
+    "fair": 0.087,
+    "evPct": 82.69,
     "basis": "model-blend",
     "nBooks": 1,
     "tier": "low",
-    "stakePct": 1.48,
-    "stake": 1.48,
+    "stakePct": 1.45,
+    "stake": 1.45,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 2.2,
+     "hoursToStart": 2.1,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55161,16 +55474,16 @@
     "side": "Stanford Cardinal",
     "book": "DraftKings",
     "american": 1100.0,
-    "fair": 0.1182,
-    "evPct": 41.89,
+    "fair": 0.1173,
+    "evPct": 40.71,
     "basis": "model-blend",
     "nBooks": 2,
     "tier": "low",
-    "stakePct": 1.33,
-    "stake": 1.33,
+    "stakePct": 1.3,
+    "stake": 1.3,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 5.4,
+     "hoursToStart": 5.3,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55184,39 +55497,16 @@
     "side": "Rutgers Scarlet Knights",
     "book": "DraftKings",
     "american": 525.0,
-    "fair": 0.2262,
-    "evPct": 41.37,
+    "fair": 0.2159,
+    "evPct": 34.93,
     "basis": "model-blend",
     "nBooks": 2,
     "tier": "low",
-    "stakePct": 2.76,
-    "stake": 2.76,
+    "stakePct": 2.33,
+    "stake": 2.33,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 2.7,
-     "reasons": [
-      "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-     ]
-    }
-   },
-   {
-    "sport": "ncaaf",
-    "home": "Texas Longhorns",
-    "away": "Mississippi State Bulldogs",
-    "start": "2026-10-31T23:30Z",
-    "side": "Mississippi State Bulldogs",
-    "book": "DraftKings",
-    "american": 900.0,
-    "fair": 0.1305,
-    "evPct": 30.52,
-    "basis": "model-blend",
-    "nBooks": 1,
-    "tier": "low",
-    "stakePct": 1.19,
-    "stake": 1.19,
-    "timing": {
-     "advice": "no_strong_signal",
-     "hoursToStart": 9.7,
+     "hoursToStart": 2.6,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55239,7 +55529,7 @@
     "stake": 1.48,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 11.2,
+     "hoursToStart": 11.1,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55247,22 +55537,22 @@
    },
    {
     "sport": "ncaaf",
-    "home": "Indiana Hoosiers",
-    "away": "Minnesota Golden Gophers",
-    "start": "2026-10-31T19:30Z",
-    "side": "Minnesota Golden Gophers",
+    "home": "Texas Longhorns",
+    "away": "Mississippi State Bulldogs",
+    "start": "2026-10-31T23:30Z",
+    "side": "Mississippi State Bulldogs",
     "book": "DraftKings",
-    "american": 850.0,
-    "fair": 0.1227,
-    "evPct": 16.57,
+    "american": 900.0,
+    "fair": 0.1162,
+    "evPct": 16.2,
     "basis": "model-blend",
     "nBooks": 1,
     "tier": "low",
-    "stakePct": 0.68,
-    "stake": 0.68,
+    "stakePct": 0.63,
+    "stake": 0.63,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 5.7,
+     "hoursToStart": 9.6,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55285,30 +55575,7 @@
     "stake": 1.54,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 10.7,
-     "reasons": [
-      "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-     ]
-    }
-   },
-   {
-    "sport": "ncaaf",
-    "home": "San Jos\u00e9 State Spartans",
-    "away": "New Mexico Lobos",
-    "start": "2026-10-31T20:00Z",
-    "side": "San Jos\u00e9 State Spartans",
-    "book": "Bovada",
-    "american": 475,
-    "fair": 0.197,
-    "evPct": 13.27,
-    "basis": "model-blend",
-    "nBooks": 2,
-    "tier": "low",
-    "stakePct": 0.98,
-    "stake": 0.98,
-    "timing": {
-     "advice": "no_strong_signal",
-     "hoursToStart": 6.2,
+     "hoursToStart": 10.6,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55331,7 +55598,7 @@
     "stake": 1.16,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 53.2,
+     "hoursToStart": 53.1,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55354,7 +55621,53 @@
     "stake": 3.0,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 31.6,
+     "hoursToStart": 31.5,
+     "reasons": [
+      "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+     ]
+    }
+   },
+   {
+    "sport": "primeira",
+    "home": "Moreirense",
+    "away": "Estrela",
+    "start": "2026-10-31T15:30Z",
+    "side": "Moreirense",
+    "book": "DraftKings",
+    "american": 205.0,
+    "fair": 0.3641,
+    "evPct": 11.04,
+    "basis": "model-blend",
+    "nBooks": 1,
+    "tier": "low",
+    "stakePct": 1.88,
+    "stake": 1.88,
+    "timing": {
+     "advice": "closing_soon",
+     "hoursToStart": 1.6,
+     "reasons": [
+      "Game starts in 1.6h -- lines tighten and liquidity dries up close to kickoff."
+     ]
+    }
+   },
+   {
+    "sport": "ncaaf",
+    "home": "Iowa State Cyclones",
+    "away": "Oklahoma State Cowboys",
+    "start": "2026-10-31T23:00Z",
+    "side": "Iowa State Cyclones",
+    "book": "DraftKings",
+    "american": 285.0,
+    "fair": 0.2879,
+    "evPct": 10.84,
+    "basis": "model-blend",
+    "nBooks": 1,
+    "tier": "low",
+    "stakePct": 1.33,
+    "stake": 1.33,
+    "timing": {
+     "advice": "no_strong_signal",
+     "hoursToStart": 9.1,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55372,8 +55685,8 @@
       "side": "Navy Midshipmen",
       "book": "DraftKings",
       "american": 2000.0,
-      "fair": 0.0879,
-      "evPct": 84.51,
+      "fair": 0.087,
+      "evPct": 82.69,
       "basis": "model-blend",
       "nBooks": 1,
       "tier": "low"
@@ -55386,8 +55699,8 @@
       "side": "Stanford Cardinal",
       "book": "DraftKings",
       "american": 1100.0,
-      "fair": 0.1182,
-      "evPct": 41.89,
+      "fair": 0.1173,
+      "evPct": 40.71,
       "basis": "model-blend",
       "nBooks": 2,
       "tier": "low"
@@ -55400,19 +55713,19 @@
       "side": "Rutgers Scarlet Knights",
       "book": "DraftKings",
       "american": 525.0,
-      "fair": 0.2262,
-      "evPct": 41.37,
+      "fair": 0.2159,
+      "evPct": 34.93,
       "basis": "model-blend",
       "nBooks": 2,
       "tier": "low"
      }
     ],
     "nLegs": 3,
-    "combinedProb": 0.0024,
+    "combinedProb": 0.0022,
     "combinedAmerican": 157400,
-    "evPct": 270.15,
-    "stakePct": 0.06,
-    "stake": 0.06,
+    "evPct": 247.02,
+    "stakePct": 0.05,
+    "stake": 0.05,
     "tier": "low",
     "correlationWarning": "3 of 3 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once, so treat this as riskier than the combined EV alone suggests."
    },
@@ -55426,8 +55739,8 @@
       "side": "Navy Midshipmen",
       "book": "DraftKings",
       "american": 2000.0,
-      "fair": 0.0879,
-      "evPct": 84.51,
+      "fair": 0.087,
+      "evPct": 82.69,
       "basis": "model-blend",
       "nBooks": 1,
       "tier": "low"
@@ -55440,116 +55753,8 @@
       "side": "Stanford Cardinal",
       "book": "DraftKings",
       "american": 1100.0,
-      "fair": 0.1182,
-      "evPct": 41.89,
-      "basis": "model-blend",
-      "nBooks": 2,
-      "tier": "low"
-     },
-     {
-      "sport": "ncaaf",
-      "home": "Texas Longhorns",
-      "away": "Mississippi State Bulldogs",
-      "start": "2026-10-31T23:30Z",
-      "side": "Mississippi State Bulldogs",
-      "book": "DraftKings",
-      "american": 900.0,
-      "fair": 0.1305,
-      "evPct": 30.52,
-      "basis": "model-blend",
-      "nBooks": 1,
-      "tier": "low"
-     }
-    ],
-    "nLegs": 3,
-    "combinedProb": 0.0014,
-    "combinedAmerican": 251900,
-    "evPct": 241.68,
-    "stakePct": 0.03,
-    "stake": 0.03,
-    "tier": "low",
-    "correlationWarning": "3 of 3 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once, so treat this as riskier than the combined EV alone suggests."
-   },
-   {
-    "legs": [
-     {
-      "sport": "ncaaf",
-      "home": "Navy Midshipmen",
-      "away": "Notre Dame Fighting Irish",
-      "start": "2026-10-31T16:00Z",
-      "side": "Navy Midshipmen",
-      "book": "DraftKings",
-      "american": 2000.0,
-      "fair": 0.0879,
-      "evPct": 84.51,
-      "basis": "model-blend",
-      "nBooks": 1,
-      "tier": "low"
-     },
-     {
-      "sport": "ncaaf",
-      "home": "Rutgers Scarlet Knights",
-      "away": "Michigan Wolverines",
-      "start": "2026-10-31T16:30Z",
-      "side": "Rutgers Scarlet Knights",
-      "book": "DraftKings",
-      "american": 525.0,
-      "fair": 0.2262,
-      "evPct": 41.37,
-      "basis": "model-blend",
-      "nBooks": 2,
-      "tier": "low"
-     },
-     {
-      "sport": "ncaaf",
-      "home": "Texas Longhorns",
-      "away": "Mississippi State Bulldogs",
-      "start": "2026-10-31T23:30Z",
-      "side": "Mississippi State Bulldogs",
-      "book": "DraftKings",
-      "american": 900.0,
-      "fair": 0.1305,
-      "evPct": 30.52,
-      "basis": "model-blend",
-      "nBooks": 1,
-      "tier": "low"
-     }
-    ],
-    "nLegs": 3,
-    "combinedProb": 0.0026,
-    "combinedAmerican": 131150,
-    "evPct": 240.56,
-    "stakePct": 0.06,
-    "stake": 0.06,
-    "tier": "low",
-    "correlationWarning": "3 of 3 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once, so treat this as riskier than the combined EV alone suggests."
-   },
-   {
-    "legs": [
-     {
-      "sport": "ncaaf",
-      "home": "Navy Midshipmen",
-      "away": "Notre Dame Fighting Irish",
-      "start": "2026-10-31T16:00Z",
-      "side": "Navy Midshipmen",
-      "book": "DraftKings",
-      "american": 2000.0,
-      "fair": 0.0879,
-      "evPct": 84.51,
-      "basis": "model-blend",
-      "nBooks": 1,
-      "tier": "low"
-     },
-     {
-      "sport": "ncaaf",
-      "home": "Louisville Cardinals",
-      "away": "Stanford Cardinal",
-      "start": "2026-10-31T19:15Z",
-      "side": "Stanford Cardinal",
-      "book": "DraftKings",
-      "american": 1100.0,
-      "fair": 0.1182,
-      "evPct": 41.89,
+      "fair": 0.1173,
+      "evPct": 40.71,
       "basis": "model-blend",
       "nBooks": 2,
       "tier": "low"
@@ -55572,7 +55777,115 @@
     "nLegs": 3,
     "combinedProb": 0.0023,
     "combinedAmerican": 132200,
-    "evPct": 208.87,
+    "evPct": 203.38,
+    "stakePct": 0.05,
+    "stake": 0.05,
+    "tier": "low",
+    "correlationWarning": "3 of 3 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once, so treat this as riskier than the combined EV alone suggests."
+   },
+   {
+    "legs": [
+     {
+      "sport": "ncaaf",
+      "home": "Navy Midshipmen",
+      "away": "Notre Dame Fighting Irish",
+      "start": "2026-10-31T16:00Z",
+      "side": "Navy Midshipmen",
+      "book": "DraftKings",
+      "american": 2000.0,
+      "fair": 0.087,
+      "evPct": 82.69,
+      "basis": "model-blend",
+      "nBooks": 1,
+      "tier": "low"
+     },
+     {
+      "sport": "ncaaf",
+      "home": "Louisville Cardinals",
+      "away": "Stanford Cardinal",
+      "start": "2026-10-31T19:15Z",
+      "side": "Stanford Cardinal",
+      "book": "DraftKings",
+      "american": 1100.0,
+      "fair": 0.1173,
+      "evPct": 40.71,
+      "basis": "model-blend",
+      "nBooks": 2,
+      "tier": "low"
+     },
+     {
+      "sport": "ncaaf",
+      "home": "Texas Longhorns",
+      "away": "Mississippi State Bulldogs",
+      "start": "2026-10-31T23:30Z",
+      "side": "Mississippi State Bulldogs",
+      "book": "DraftKings",
+      "american": 900.0,
+      "fair": 0.1162,
+      "evPct": 16.2,
+      "basis": "model-blend",
+      "nBooks": 1,
+      "tier": "low"
+     }
+    ],
+    "nLegs": 3,
+    "combinedProb": 0.0012,
+    "combinedAmerican": 251900,
+    "evPct": 198.83,
+    "stakePct": 0.03,
+    "stake": 0.03,
+    "tier": "low",
+    "correlationWarning": "3 of 3 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once, so treat this as riskier than the combined EV alone suggests."
+   },
+   {
+    "legs": [
+     {
+      "sport": "ncaaf",
+      "home": "Navy Midshipmen",
+      "away": "Notre Dame Fighting Irish",
+      "start": "2026-10-31T16:00Z",
+      "side": "Navy Midshipmen",
+      "book": "DraftKings",
+      "american": 2000.0,
+      "fair": 0.087,
+      "evPct": 82.69,
+      "basis": "model-blend",
+      "nBooks": 1,
+      "tier": "low"
+     },
+     {
+      "sport": "ncaaf",
+      "home": "Louisville Cardinals",
+      "away": "Stanford Cardinal",
+      "start": "2026-10-31T19:15Z",
+      "side": "Stanford Cardinal",
+      "book": "DraftKings",
+      "american": 1100.0,
+      "fair": 0.1173,
+      "evPct": 40.71,
+      "basis": "model-blend",
+      "nBooks": 2,
+      "tier": "low"
+     },
+     {
+      "sport": "argentina",
+      "home": "Estudiantes de La Plata",
+      "away": "Instituto (C\u00f3rdoba)",
+      "start": "2026-11-01T00:30Z",
+      "side": "Instituto (C\u00f3rdoba)",
+      "book": "DraftKings",
+      "american": 350.0,
+      "fair": 0.2565,
+      "evPct": 15.44,
+      "basis": "model-blend",
+      "nBooks": 1,
+      "tier": "low"
+     }
+    ],
+    "nLegs": 3,
+    "combinedProb": 0.0026,
+    "combinedAmerican": 113300,
+    "evPct": 196.84,
     "stakePct": 0.06,
     "stake": 0.06,
     "tier": "low",
@@ -55588,8 +55901,8 @@
       "side": "Navy Midshipmen",
       "book": "DraftKings",
       "american": 2000.0,
-      "fair": 0.0879,
-      "evPct": 84.51,
+      "fair": 0.087,
+      "evPct": 82.69,
       "basis": "model-blend",
       "nBooks": 1,
       "tier": "low"
@@ -55602,8 +55915,8 @@
       "side": "Rutgers Scarlet Knights",
       "book": "DraftKings",
       "american": 525.0,
-      "fair": 0.2262,
-      "evPct": 41.37,
+      "fair": 0.2159,
+      "evPct": 34.93,
       "basis": "model-blend",
       "nBooks": 2,
       "tier": "low"
@@ -55624,11 +55937,11 @@
      }
     ],
     "nLegs": 3,
-    "combinedProb": 0.0045,
+    "combinedProb": 0.0042,
     "combinedAmerican": 68806,
-    "evPct": 207.85,
-    "stakePct": 0.11,
-    "stake": 0.11,
+    "evPct": 190.83,
+    "stakePct": 0.1,
+    "stake": 0.1,
     "tier": "low",
     "correlationWarning": "3 of 3 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once, so treat this as riskier than the combined EV alone suggests."
    },
@@ -55642,8 +55955,8 @@
       "side": "Navy Midshipmen",
       "book": "DraftKings",
       "american": 2000.0,
-      "fair": 0.0879,
-      "evPct": 84.51,
+      "fair": 0.087,
+      "evPct": 82.69,
       "basis": "model-blend",
       "nBooks": 1,
       "tier": "low"
@@ -55656,33 +55969,33 @@
       "side": "Stanford Cardinal",
       "book": "DraftKings",
       "american": 1100.0,
-      "fair": 0.1182,
-      "evPct": 41.89,
+      "fair": 0.1173,
+      "evPct": 40.71,
       "basis": "model-blend",
       "nBooks": 2,
       "tier": "low"
      },
      {
-      "sport": "ncaaf",
-      "home": "Indiana Hoosiers",
-      "away": "Minnesota Golden Gophers",
-      "start": "2026-10-31T19:30Z",
-      "side": "Minnesota Golden Gophers",
+      "sport": "eerstedivisie",
+      "home": "Jong PSV",
+      "away": "NAC Breda",
+      "start": "2026-11-02T19:00Z",
+      "side": "Jong PSV",
       "book": "DraftKings",
-      "american": 850.0,
-      "fair": 0.1227,
-      "evPct": 16.57,
+      "american": 360.0,
+      "fair": 0.2434,
+      "evPct": 11.97,
       "basis": "model-blend",
       "nBooks": 1,
       "tier": "low"
      }
     ],
     "nLegs": 3,
-    "combinedProb": 0.0013,
-    "combinedAmerican": 239300,
-    "evPct": 205.19,
-    "stakePct": 0.03,
-    "stake": 0.03,
+    "combinedProb": 0.0025,
+    "combinedAmerican": 115820,
+    "evPct": 187.94,
+    "stakePct": 0.06,
+    "stake": 0.06,
     "tier": "low",
     "correlationWarning": "3 of 3 legs are priced from our own model rather than independent book consensus -- a single model error could hit all of them at once, so treat this as riskier than the combined EV alone suggests."
    }
