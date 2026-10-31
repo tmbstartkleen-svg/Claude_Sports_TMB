@@ -72,11 +72,16 @@ SOCCER = {
     "worldcup": ("FIFA World Cup", "", "fifa.world", False),
     "clubworldcup": ("Club World Cup", "", "fifa.cwc", False),
 }
-# other sports: key -> (label, Odds API key or '', ESPN path). ESPN returned events but no odds for college hockey and
-# volleyball, so they are not listed. Tennis (atp/wta) was previously excluded on the same "no odds" finding, but that
-# was never reverified -- it is wired in below (consensus-only, no Elo model) so a live run's sources log settles it
-# honestly: if espn_direct()/_espn_events() finds no usable moneyline odds for these, "odds[atp]"/"odds[wta]" will log
-# "espn":False and the game list stays empty, same as any other dead source, with zero effect on the rest of the slate.
+# other sports: key -> (label, Odds API key or '', ESPN path). ESPN returned events but no odds for tennis, college
+# hockey and volleyball, so they are not listed. Tennis was reverified live (2026-10-31 GitHub Actions run, which has
+# real ESPN access unlike this dev sandbox): wiring atp/wta into this dict and dispatching a real build_slate.py run
+# produced "odds[atp]:espn ... RuntimeError('ESPN parse failed for atp: KeyError: \'competitions\' at line 210')" for
+# both atp and wta -- ESPN's tennis scoreboard does not return the standard competitions[0] shape every other sport
+# here uses (singles matches are evidently not modeled as a competitions array the same way), so _espn_events() cannot
+# parse it at all, let alone find odds. sports-skills has no atp/wta module either. A free, keyless, LIVE tennis
+# moneyline/odds source was not found; a historical closing-odds research dataset exists (backtest/atp_wta_2025_closing
+# _odds.csv, Hugging Face minmaxxxer, CC-BY-4.0) but that is backtest-only data, not a live feed, so it cannot carry
+# tennis in the slate. Tennis stays unavailable under the zero-paid-key constraint.
 OTHER = {
     "nfl": ("NFL", "americanfootball_nfl", "football/nfl"),
     "nba": ("NBA", "basketball_nba", "basketball/nba"),
@@ -92,6 +97,4 @@ OTHER = {
     "cbb": ("College Baseball", "", "baseball/college-baseball"),
     "mma": ("UFC", "mma_mixed_martial_arts", "mma/ufc"),
     "bellator": ("Bellator", "", "mma/bellator"),
-    "atp": ("ATP Tennis", "tennis_atp_french_open", "tennis/atp"),
-    "wta": ("WTA Tennis", "tennis_wta_french_open", "tennis/wta"),
 }
