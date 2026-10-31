@@ -72,7 +72,11 @@ SOCCER = {
     "worldcup": ("FIFA World Cup", "", "fifa.world", False),
     "clubworldcup": ("Club World Cup", "", "fifa.cwc", False),
 }
-# other sports: key -> (label, Odds API key or '', ESPN path). ESPN returned events but no odds for tennis, college hockey and volleyball, so they are not listed.
+# other sports: key -> (label, Odds API key or '', ESPN path). ESPN returned events but no odds for college hockey and
+# volleyball, so they are not listed. Tennis (atp/wta) was previously excluded on the same "no odds" finding, but that
+# was never reverified -- it is wired in below (consensus-only, no Elo model) so a live run's sources log settles it
+# honestly: if espn_direct()/_espn_events() finds no usable moneyline odds for these, "odds[atp]"/"odds[wta]" will log
+# "espn":False and the game list stays empty, same as any other dead source, with zero effect on the rest of the slate.
 OTHER = {
     "nfl": ("NFL", "americanfootball_nfl", "football/nfl"),
     "nba": ("NBA", "basketball_nba", "basketball/nba"),
@@ -88,4 +92,6 @@ OTHER = {
     "cbb": ("College Baseball", "", "baseball/college-baseball"),
     "mma": ("UFC", "mma_mixed_martial_arts", "mma/ufc"),
     "bellator": ("Bellator", "", "mma/bellator"),
+    "atp": ("ATP Tennis", "tennis_atp_french_open", "tennis/atp"),
+    "wta": ("WTA Tennis", "tennis_wta_french_open", "tennis/wta"),
 }

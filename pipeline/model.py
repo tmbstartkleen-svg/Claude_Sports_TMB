@@ -18,11 +18,33 @@ CFG = {  # assumptions, all tunable
     # more than rest, and this model does not know who is pitching. Treat MLB output as the weakest of the four.
     "nhl": {"espn": "hockey/nhl", "k": 8, "home": 35, "regress": 1 / 3, "rest": {"b2b": -30, "rested": 10}, "elo_per_pt": 0},
     "mlb": {"espn": "baseball/mlb", "k": 5, "home": 24, "regress": 1 / 3, "rest": {}, "elo_per_pt": 0},
+    # WNBA: based on the NBA config but independently tuned, not copied -- a ~40-game regular season (vs NBA's 82) means
+    # ratings have roughly half as many games to converge, so K is higher to adapt faster per game. Home edge is set
+    # lower than NBA's (smaller arenas, less of a travel/altitude effect across the league) and regress-to-mean is
+    # stronger (free agency and overseas-season player movement reshuffle rosters more between WNBA seasons than NBA's).
+    # Back-to-backs happen but are less frequent than in the NBA, so the rest penalty is milder.
+    "wnba": {"espn": "basketball/wnba", "k": 26, "home": 60, "regress": 1 / 2, "rest": {"b2b": -30, "rested": 14}, "elo_per_pt": 28},
+    # NCAAF/NCAAB (men's and women's share the NCAAB config -- same sport mechanics, separate ESPN paths/ratings pools):
+    # college rosters turn over far more than pro ones (graduation, transfer portal, one-and-done draft entrants), so
+    # true preseason strength matters much more and stale ratings should be trusted less -- regress-to-mean is roughly
+    # double the pro default. K is also higher so a small sample of early-season games moves ratings quickly, because a
+    # full season of 1500-default placeholder ratings for every newly-relevant team is nearly useless otherwise. No rest
+    # rule: with 130+ FBS/360+ D-I teams playing wildly uneven schedules, a bye-week/back-to-back signal is swamped by
+    # the far bigger talent-gap noise. See build_slate.py's per-sport baseline gate: if this config's real walk-forward
+    # brier does not beat a flat coin flip, the model is auto-rejected for that run and the slate falls back to
+    # market-consensus-only for that sport -- college sports are notoriously hard to beat with a plain Elo, so this is
+    # treated as a reasonable attempt rather than a guaranteed win.
+    "ncaaf": {"espn": "football/college-football", "k": 32, "home": 65, "regress": 2 / 3, "rest": {}, "elo_per_pt": 0},
+    "ncaab": {"espn": "basketball/mens-college-basketball", "k": 30, "home": 90, "regress": 1 / 2, "rest": {}, "elo_per_pt": 0},
+    "wncaab": {"espn": "basketball/womens-college-basketball", "k": 30, "home": 90, "regress": 1 / 2, "rest": {}, "elo_per_pt": 0},
 }
 MODEL_WEIGHT = float(os.environ.get("MODEL_WEIGHT", 0.25))  # default when a sport has no validated weight below
 # Per-sport blend weights, fit by log-loss against real closing-line datasets (backtest_report.json, Hugging Face
 # minmaxxxer, point-in-time, no lookahead). Shrunk toward the 0.25 default rather than taking the fitted optimum
 # outright: nfl's fitted weight (1.0) came from only 78 games of one still-open season and is not trusted at face value.
+# nba/wnba/ncaaf/ncaab/wncaab have no entry here on purpose: there is no independent closing-odds dataset for them
+# (validate_backtest.py's DIRECT table only covers nfl/nhl/mlb) to fit a weight against, so making one up would not be
+# a "real fitted" weight -- they fall back to the conservative MODEL_WEIGHT default below until such data exists.
 MODEL_WEIGHTS = {"nfl": 0.4, "nhl": 0.25, "mlb": 0.12, "epl": 0.12, "laliga": 0.1, "seriea": 0.1, "bundesliga": 0.12}
 for _kv in filter(None, os.environ.get("MODEL_WEIGHTS", "").split(",")):  # e.g. MODEL_WEIGHTS="nfl=0.5,mlb=0.15"
     _k, _v = _kv.split("=")
@@ -213,6 +235,10 @@ INJ = {
     "nba": {"key": {}, "other": -10, "cap": -50},   # cannot tell stars from bench players here
     "nhl": {"key": {"G": -50}, "other": -3, "cap": -24},
     "mlb": {"key": {}, "other": -3, "cap": -12},
+    "wnba": {"key": {}, "other": -10, "cap": -50},  # same treatment as nba: smaller rosters, cannot tell stars from bench
+    "ncaaf": {"key": {"QB": -80}, "other": -4, "cap": -30},  # deeper rosters than NFL soften a non-QB loss further
+    "ncaab": {"key": {}, "other": -8, "cap": -40},
+    "wncaab": {"key": {}, "other": -8, "cap": -40},
 }
 
 

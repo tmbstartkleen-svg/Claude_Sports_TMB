@@ -816,6 +816,20 @@ def simulate_day(rows, rho=0.25, N=20000, seed=7):
             "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."}
 
 
+def build_elo_or_reject(sp, res, min_games=50):
+    """Build an Elo model for one sport and apply the same accept/reject discipline soccer's model uses: a model whose
+    own walk-forward backtest does not beat a naive coin-flip baseline is rejected rather than blended into the slate.
+    Returns (model, backtest) on acceptance; raises RuntimeError (with the reason) on rejection, so callers that want
+    the sport to silently fall back to market-consensus-only need only catch it, same as every other optional source."""
+    if len(res) < min_games:
+        raise RuntimeError(f"only {len(res)} completed games found")
+    mdl = elo.build(sp, res)
+    bt = mdl["backtest"]
+    if not bt or bt["brier"] >= bt["coinFlipBrier"]:
+        raise RuntimeError(f"model does not beat the naive baseline ({bt and bt['brier']} vs {bt and bt['coinFlipBrier']}); not used")
+    return mdl, bt
+
+
 def models_ran(sp):
     return any(l["source"] == f"model[{sp}]" and l["ok"] for l in LOG)
 
@@ -936,10 +950,11 @@ def main():
             try:
                 res = elo.fetch_results(sp, cache=True)
                 results_by_sport[sp] = res
-                if len(res) < 50:
-                    raise RuntimeError(f"only {len(res)} completed games found")
-                models[sp] = elo.build(sp, res)
-                backtests[sp] = models[sp]["backtest"]
+                # Same hard rule as soccer's model-acceptance check below: a model that does not beat a naive coin-flip
+                # baseline on its own walk-forward backtest is auto-rejected for this run rather than blended in anyway.
+                # This matters most for the sports with no dedicated backtest history yet (wnba, ncaaf, ncaab, wncaab):
+                # a bad college-football Elo config should silently fall back to market-consensus-only, not get forced in.
+                models[sp], backtests[sp] = build_elo_or_reject(sp, res)
                 log(f"model[{sp}]", True, f"{len(res)} games, brier {backtests[sp] and backtests[sp]['brier']}")
             except Exception as e:  # noqa
                 log(f"model[{sp}]", False, repr(e))

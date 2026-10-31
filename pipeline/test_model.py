@@ -80,3 +80,44 @@ assert abs(M.blend(0.6, 0.5, sport="mlb") - (0.12 * 0.6 + 0.88 * 0.5)) < 1e-9
 assert abs(M.blend(0.6, 0.5, sport="unknownsport") - (M.MODEL_WEIGHT * 0.6 + (1 - M.MODEL_WEIGHT) * 0.5)) < 1e-9
 assert M.blend(0.6, 0.5, w=0.9, sport="mlb") == 0.9 * 0.6 + 0.1 * 0.5, "explicit w overrides the per-sport table"
 print("OK per-sport blend weights")
+
+# ---- WNBA/NCAAF/NCAAB/WNCAAB: config exists, is independently tuned (not a copy of NBA), has an ESPN path, and an
+# injury-adjustment entry so these sports flow through the existing injury_adj() path instead of bypassing it
+for sp in ("wnba", "ncaaf", "ncaab", "wncaab"):
+    assert sp in M.CFG and M.CFG[sp]["espn"], sp
+    assert sp in M.INJ, f"{sp} missing from INJ -- would KeyError in injury_adj() and silently drop injury signal"
+assert M.CFG["wnba"] != {k: v for k, v in M.CFG["nba"].items()}, "wnba must be its own fit, not a copy of nba"
+assert M.CFG["wnba"]["k"] != M.CFG["nba"]["k"] or M.CFG["wnba"]["home"] != M.CFG["nba"]["home"], "wnba params must differ from nba's"
+for sp in ("nba", "wnba", "ncaaf", "ncaab", "wncaab"):
+    assert sp not in M.MODEL_WEIGHTS, f"{sp} has no real market-fitted weight data (no HF closing-odds dataset) -- must not fabricate one"
+print("OK new-sport CFG/INJ wiring")
+
+# ---- build_elo_or_reject: the same accept/reject discipline soccer's model-acceptance check uses, generalized to
+# every Elo sport (model.py's CFG), so a bad config (e.g. a college-sports Elo that does not beat a coin flip) falls
+# back to market-consensus-only instead of being forced into the slate.
+import random as _rnd
+rng2 = _rnd.Random(11)
+coin_games = []  # no real strength signal at all: every game is a coin flip, so any Elo fit should hover near 0.25 brier
+d0 = date(2026, 1, 1)
+for i in range(400):
+    h, a = rng2.sample([f"CT{i}" for i in range(20)], 2)
+    hs, as_ = (1, 0) if rng2.random() < 0.5 else (0, 1)
+    coin_games.append({"date": str(d0 + timedelta(days=i // 10)), "home": h, "away": a, "hs": hs, "as": as_})
+M.CFG["_coinflip_test"] = {"espn": "x", "k": 20, "home": 0, "regress": 1 / 3, "rest": {}, "elo_per_pt": 0}
+try:
+    mdl, bt = b.build_elo_or_reject("_coinflip_test", coin_games)
+    assert bt["brier"] >= bt["coinFlipBrier"] - 0.01, "a coin-flip dataset should not meaningfully beat the baseline"
+    print("coinflip config:", bt, "(accepted -- borderline, within noise)")
+except RuntimeError as e:
+    assert "does not beat the naive baseline" in str(e), e
+    print("coinflip config correctly rejected:", e)
+try:
+    b.build_elo_or_reject("_coinflip_test", coin_games[:10])
+    raise SystemExit("should have rejected on too few games")
+except RuntimeError as e:
+    assert "completed games" in str(e), e
+del M.CFG["_coinflip_test"]
+# a real signal (nba synthetic fixture from above) must be accepted
+mdl2, bt2 = b.build_elo_or_reject("nba", res)
+assert bt2["brier"] < bt2["coinFlipBrier"], bt2
+print("OK build_elo_or_reject gate")
