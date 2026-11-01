@@ -467,7 +467,9 @@ input[type=checkbox]{width:auto;}
         <button class="act btn-ghost" onclick="slateFetch(true)">Reload from site</button>
         <button class="act btn-ghost" onclick="slateExample()">Show example</button>
         <button class="act btn-ghost" onclick="slatePullClv()">Pull closing lines into CLV</button>
+        <label class="desc" style="display:flex;align-items:center;gap:6px;margin:0"><input type="checkbox" id="coreOnlyToggle" checked onchange="coreOnlyChanged()"> Core sports only</label>
       </div>
+      <p class="desc" style="margin-top:4px">Core = NFL, NBA, MLB, NHL, NCAAF, NCAAB/WNCAAB, WNBA and soccer: the sports a 2026 cross-book margin study (~69.6M market observations, Bet Better's "State of the Vig") found carry the tightest average bookmaker margins, and the only sports with a validated model behind them here. Everything else (CFL, AFL, UFC/MMA, Bellator, UFL, college baseball) still shows real prices and real EV when you untick this — it's just a lower-confidence hunting ground. Tennis is on that same research list but isn't available: ESPN's tennis scoreboard carries no usable odds feed and no other free, keyless live tennis source exists.</p>
       <div class="callout" id="slNote" style="margin:12px 0 0;"></div>
       <div class="hero-grid" id="slHero"></div>
       <div class="stat-grid" id="slStats"></div>
@@ -582,9 +584,14 @@ input[type=checkbox]{width:auto;}
       </div>
       <div style="margin:8px 0"><label><input id="wkHail" type="checkbox"> Hail Mary mode: low-probability, high-payout longshots (sets 0.1%–4% combined chance, payout of +1000 or more, legs down to 8%, no EV filter)</label></div>
       <div id="wkStatus" class="desc"></div>
-      <h2 style="font-size:1rem;margin-top:12px">The week</h2>
+      <h2 style="font-size:1rem;margin-top:12px">Rolling 24 hours</h2>
+      <p class="desc">Resets continuously around "now" — every game and parlay below starts within the next 24 hours, so this list quietly rolls forward through the day rather than sitting fixed to a calendar date.</p>
+      <div id="wk24hStatus" class="desc"></div>
+      <div id="wk24h"></div>
+      <h2 style="font-size:1rem;margin-top:16px">The week</h2>
       <div id="wkWeek" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px"></div>
       <h2 style="font-size:1rem;margin-top:16px">Parlays</h2>
+      <p class="desc">Each parlay below also shows a cash-out projection: the guaranteed value a book would likely offer once some legs have started/won, versus the expected value of letting the rest ride. Cash-out offers aren't public data anywhere free, so this uses a standard assumption (book keeps ~10% of the fair value) spelled out below — treat it as a framework for the decision, not a quoted price.</p>
       <div id="wkParlays"></div>
     </div>
   </div>
@@ -1610,6 +1617,64 @@ function wkLegs(g,now){
   return out;
 }
 function wkDayKey(t){return t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');}
+// Shared N-leg assembler: picks from a candidate pool (already filtered/sorted by caller), returns parlays within [pmin,pmax] combined win chance / minAm payout / day-spread rule.
+function assembleParlays(legsPool,n,pmin,pmax,minAm,spread,hail,candCap){
+  const cand=legsPool.slice().sort((a,b)=>hail?b.dec-a.dec:b.ev-a.ev).slice(0,candCap);
+  const res=[];
+  const rec=(start,pick)=>{
+    if(pick.length===n){
+      const days_=pick.map(l=>wkDayKey(l.t));
+      const nd=new Set(days_).size;
+      if(spread==='same'&&nd!==1)return;if(spread==='multi'&&nd!==n)return;
+      const p=pick.reduce((a,l)=>a*l.p,1),dec=pick.reduce((a,l)=>a*l.dec,1);
+      const am_=dec>=2?(dec-1)*100:-100/(dec-1);
+      if(p<pmin||p>pmax)return;if(minAm&&am_<minAm)return;
+      res.push({pick:pick.slice().sort((a,b)=>a.t-b.t),p,dec,ev:p*dec-1,am:am_,nd});return;}
+    for(let i=start;i<cand.length;i++){if(pick.some(l=>l.gi===cand[i].gi))continue;pick.push(cand[i]);rec(i+1,pick);pick.pop();}
+  };
+  rec(0,[]);
+  res.sort((a,b)=>b.ev-a.ev);
+  return res;
+}
+// Cash-out projection: assumes a book offers ~90% of the fair expected value of the legs still in play once some legs have
+// already won (a standard, documented assumption — real cash-out pricing isn't public data anywhere free). For each point in
+// the parlay (after leg k has hit), shows the running locked-in multiplier, the fair value of letting the rest ride, and the
+// book's likely cash-out offer at ~10% off that fair value.
+const CASHOUT_HOLDBACK=0.90;
+function cashoutSchedule(pick,stake){
+  const n=pick.length,steps=[];
+  for(let k=1;k<n;k++){
+    const locked=pick.slice(0,k).reduce((a,l)=>a*l.dec,1);
+    const remP=pick.slice(k).reduce((a,l)=>a*l.p,1),remDec=pick.slice(k).reduce((a,l)=>a*l.dec,1);
+    const fullIfHit=stake*locked*remDec;
+    const fairRemaining=stake*locked*remP*remDec;
+    steps.push({k,n,leg:pick[k-1],locked,remP,fullIfHit,cashout:fairRemaining*CASHOUT_HOLDBACK});
+  }
+  return steps;
+}
+function cashoutHtml(pick){
+  const stake=100;
+  const steps=cashoutSchedule(pick,stake);
+  if(!steps.length)return'';
+  return '<div class="desc" style="margin:4px 0 0"><b>Cash-out watch (on a $100 stake):</b><br>'+steps.map(s=>
+    'After <b>'+esc(s.leg.name)+'</b> hits ('+(s.k)+'/'+s.n+' legs, '+esc(s.leg.t.toLocaleDateString(undefined,{weekday:'short'}))+'): cash out ≈ <b>'+d100(s.cashout)+'</b> now, vs letting it ride for '+d100(s.fullIfHit)+' if the rest hit ('+(s.remP*100).toFixed(1)+'% chance) or $0 if not.'
+  ).join('<br>')+'</div>';
+}
+function wk24hRender(g,now){
+  const elS=$('wk24hStatus'),elL=$('wk24h');if(!elS||!elL)return;
+  const end=new Date(now.getTime()+24*3600e3);
+  const hail=$('wkHail').checked;
+  const n=+$('wkLegs').value,pmin=hail?0.001:(+$('wkPmin').value||0)/100,pmax=hail?0.04:(+$('wkPmax').value||100)/100,legP=hail?0.08:(+$('wkLegP').value||0)/100,
+        legEv=hail?-1:(+$('wkLegEv').value||0)/100,minAm=hail?1000:(+$('wkOdds').value||0),pool=$('wkPool').value,spread=$('wkSpread').value;
+  const all24=wkLegs(g,now).filter(l=>l.t<end);
+  const ok=l=>l.p>=legP&&(l.ev>=legEv||hail)&&(pool!=='flag'||l.flagged||hail);
+  const legs24=all24.filter(ok);
+  const res=assembleParlays(legs24,n,pmin,pmax,minAm,spread,hail,hail?16:14).slice(0,6);
+  elS.innerHTML='As of '+now.toLocaleTimeString()+' · '+all24.length+' legs from games starting in the next 24h · '+legs24.length+' pass the filters · '+res.length+' parlays match. This list rolls forward automatically — reopen the tab or wait for the auto-refresh and the 24h window moves with "now."';
+  elL.innerHTML=res.length?res.map(x=>'<div style="margin:8px 0;padding:8px;border:1px solid var(--border,#8884);border-radius:8px"><b>'+x.pick.length+'-leg, next 24h</b> · pays '+(x.am>=0?'+':'−')+Math.round(Math.abs(x.am))+' · win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+
+    '<br>'+x.pick.map(l=>esc(l.t.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}))+' '+esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+esc(SN(l.r.sport))+(l.flagged?', flagged':'')+')</span>').join('<br>')+
+    cashoutHtml(x.pick)+'</div>').join('') : '<div class="desc">No 24-hour parlays match these filters right now — check back as more games get close, or loosen the filters.</div>';
+}
 function wkRender(){
   const el=$('wkParlays');if(!el)return;
   const g=(wkSlate&&wkSlate.games)||[];
@@ -1629,31 +1694,21 @@ function wkRender(){
     return '<div style="border:1px solid var(--border,#8884);border-radius:8px;padding:8px"><b>'+esc(x.d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}))+'</b><div class="desc" style="margin:2px 0 6px">'+x.games.size+' games · '+x.legs.length+' legs pass</div>'+
       (top.map(l=>'<div style="font-size:.78rem;margin:2px 0">'+esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+(l.p*100).toFixed(0)+'% · $100 wins '+d100(win100(l.am))+')</span></div>').join('')||'<div class="desc" style="margin:0">No legs pass the filters.</div>')+'</div>';}).join('');
   // assemble parlays from the best candidates (cap keeps the search small)
-  const cand=legs.slice().sort((a,b)=>hail?b.dec-a.dec:b.ev-a.ev).slice(0,hail?16:14);
-  const res=[];
-  const rec=(start,pick)=>{
-    if(pick.length===n){
-      const days_=pick.map(l=>wkDayKey(l.t));
-      const nd=new Set(days_).size;
-      if(spread==='same'&&nd!==1)return;if(spread==='multi'&&nd!==n)return;
-      const p=pick.reduce((a,l)=>a*l.p,1),dec=pick.reduce((a,l)=>a*l.dec,1);
-      const am_=dec>=2?(dec-1)*100:-100/(dec-1);
-      if(p<pmin||p>pmax)return;if(minAm&&am_<minAm)return;
-      res.push({pick:pick.slice(),p,dec,ev:p*dec-1,am:am_,nd});return;}
-    for(let i=start;i<cand.length;i++){if(pick.some(l=>l.gi===cand[i].gi))continue;pick.push(cand[i]);rec(i+1,pick);pick.pop();}
-  };
-  rec(0,[]);
-  res.sort((a,b)=>hail?b.ev-a.ev:b.ev-a.ev);
+  const res=assembleParlays(legs,n,pmin,pmax,minAm,spread,hail,hail?16:14);
   const show=res.slice(0,12);
   $('wkStatus').innerHTML='Built '+now.toLocaleString()+' · '+all.length+' possible legs in the next 7 days · '+legs.length+' pass the filters · '+res.length+' parlays match'+(hail?' · <b>Hail Mary mode</b>':'')+'.';
   el.innerHTML=show.map(x=>'<div style="margin:8px 0;padding:8px;border:1px solid var(--border,#8884);border-radius:8px"><b>'+x.pick.length+'-leg'+(x.nd>1?' across '+x.nd+' days':'')+'</b> · pays '+(x.am>=0?'+':'−')+Math.round(Math.abs(x.am))+' · win chance '+(x.p*100).toFixed(1)+'% · EV '+signed(x.ev*100,1,'%')+
     '<br><b>$100 bet: win '+d100((x.dec-1)*100)+' / lose −$100 · EV '+d100(x.ev*100)+'</b><br>'+
-    x.pick.map(l=>esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+esc(l.t.toLocaleDateString(undefined,{weekday:'short'}))+', '+esc(SN(l.r.sport))+(l.flagged?', flagged':'')+')</span>').join('<br>')+'</div>').join('')+
+    x.pick.map(l=>esc(l.name)+' '+am(l.am)+' <span class="desc" style="margin:0">('+esc(l.t.toLocaleDateString(undefined,{weekday:'short'}))+', '+esc(SN(l.r.sport))+(l.flagged?', flagged':'')+')</span>').join('<br>')+
+    cashoutHtml(x.pick)+'</div>').join('')+
     (show.length?'':'<div class="desc">No parlays match these filters. Loosen the win-chance range, lower the leg EV filter, or try Hail Mary mode.</div>')+
-    '<div class="warnc">'+(hail?'Hail Mary parlays hit rarely by design. The expected value still depends on our probabilities being right, and longshot probabilities are the least reliable. Size them as money you expect to lose.':'Parlays stack the book margin and our error on every leg. Treat EV as a hypothesis the Track Record must confirm.')+'</div>';
+    '<div class="warnc">'+(hail?'Hail Mary parlays hit rarely by design. The expected value still depends on our probabilities being right, and longshot probabilities are the least reliable. Size them as money you expect to lose.':'Parlays stack the book margin and our error on every leg. Treat EV as a hypothesis the Track Record must confirm.')+' Cash-out figures are a documented estimate (book keeps ~10% of fair remaining value), not a quoted price — no free source publishes real cash-out offers.</div>';
+  wk24hRender(g,now);
 }
 function am(a){return a==null?'—':(a>0?'+':'')+Math.round(a);}
 setTimeout(()=>{['wkLegs','wkPmin','wkPmax','wkLegP','wkLegEv','wkOdds','wkPool','wkSpread','wkHail'].forEach(i=>{const e=document.getElementById(i);if(e)e.addEventListener('input',wkRender);});},0);
+// Rolling 24h view updates on its own even if the user just leaves the tab open.
+setInterval(()=>{if($('tab-week')&&$('tab-week').classList.contains('active'))wkRender();},60000);
 
 // ---------- This Week (week-of scoreboard: live scores, finished games hidden unless searched) ----------
 let weekScores=[];
@@ -1700,14 +1755,20 @@ function btRender(){
 function navLiveDot(on){
   ['navDotSlate','navDotScores'].forEach(id=>{const el=$(id);if(el)el.classList.toggle('on',!!on);});
 }
+let LAST_SLATE=null,LAST_SLATE_LABEL='';
+function coreOnlyChanged(){if(LAST_SLATE)slateRender(LAST_SLATE,LAST_SLATE_LABEL);}
 function slateRender(d,label){
+  LAST_SLATE=d;LAST_SLATE_LABEL=label;
   btRender();
   SPORT_LABELS=d.labels||{};
-  wkSlate=d;if($('tab-week')&&$('tab-week').classList.contains('active'))wkRender();
+  const coreOnly=$('coreOnlyToggle')?$('coreOnlyToggle').checked:true;
+  const dF=coreOnly?{...d,games:(d.games||[]).filter(r=>r.tier!=='extended')}:d;
+  const hiddenN=(d.games||[]).length-(dF.games||[]).length;
+  wkSlate=dF;if($('tab-week')&&$('tab-week').classList.contains('active'))wkRender();
   weekScores=d.weekScores||[];if($('tab-scores')&&$('tab-scores').classList.contains('active'))scoresRender();
   slateBets=[];slateClosing=d.closing||{};
-  $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.';
-  const day=d.day,g=d.games||[];
+  $('slNote').textContent=label+(d.generatedAt?' Built '+new Date(d.generatedAt).toLocaleString()+'.':'')+' Bets come from book consensus plus a 25% blend of our Elo model, with a rough injury adjustment. Cross-venue arbs and middles are estimates; confirm live prices first.'+(hiddenN?' ('+hiddenN+' non-core game'+(hiddenN===1?'':'s')+' hidden — untick "Core sports only" to see them.)':'');
+  const day=d.day,g=dF.games||[];
   heroRender(d);
   navLiveDot((d.liveEdges||[]).length>0);
   liveRender(d.liveEdges||[]);

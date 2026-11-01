@@ -115,6 +115,15 @@ SPORTS.update({k: "soccer/" + v[2] for k, v in _lg.SOCCER.items()})
 LABELS = {**{k: v[0] for k, v in _lg.OTHER.items()}, **{k: v[0] for k, v in _lg.SOCCER.items()}}
 ALL_SPORTS = ",".join(SPORTS)
 THREE_WAY = set(_lg.SOCCER)  # soccer: always home / draw / away
+# "Core" sports: the ones research backs as the best hunting ground for real edges -- a 2026 cross-book margin study
+# (~69.6M market observations, Bet Better's "State of the Vig") found MLB/NBA/NCAAF/NFL/NHL carry the tightest average
+# bookmaker margins among major sports, and this project's own fitted models (model.py's MODEL_WEIGHTS/CFG) exist for
+# exactly these plus WNBA/NCAAB/WNCAAB/soccer. Tennis is on that same research list but is NOT included here: a real,
+# live run confirmed ESPN's tennis scoreboard has no usable odds feed (see leagues.py's tennis comment and git history
+# commit "Revert tennis wiring") and no other free/keyless live tennis odds source exists, so it cannot honestly ship.
+# This labels rows for the UI's "Core Sports" filter; it never changes EV math, sorting, or what the model computes --
+# a lower-tier sport with a real +EV edge is just as real a bet as a core one, this is a research-informed default view.
+CORE_SPORTS = {"nfl", "nba", "mlb", "nhl", "ncaaf", "ncaab", "wncaab", "wnba"} | set(_lg.SOCCER)
 # Books whose prices count more in the consensus fair price (substring match on the book name, case-insensitive).
 SHARP_WEIGHTS = {"pinnacle": 4.0, "circa": 3.0, "betonline": 2.0, "lowvig": 2.0, "bookmaker": 2.0, "betcris": 2.0}
 for _kv in filter(None, os.environ.get("SHARP_BOOKS", "").split(",")):  # e.g. SHARP_BOOKS="pinnacle=5,circa=3"
@@ -669,7 +678,8 @@ def analyze(games, pms, models=None, injuries=None, now=None):
                "sport": g["sport"], "home": g["home"], "away": g["away"], "start": g["start"], "nBooks": n, "threeWay": three,
                "fair": {k: round(v, 4) for k, v in fair.items()},
                "best": {k: {"book": best[k][1], "american": best[k][2], "decimal": round(best[k][0], 3)} for k in best},
-               "arb": implied_sum < 1, "impliedSum": round(implied_sum, 4), "bets": [], "pm": []}
+               "arb": implied_sum < 1, "impliedSum": round(implied_sum, 4), "bets": [], "pm": [],
+               "tier": "core" if g["sport"] in CORE_SPORTS else "extended"}
         if sharp:
             row["sharpBooks"] = sharp
         if g.get("teamMeta"):
