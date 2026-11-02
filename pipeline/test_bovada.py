@@ -227,3 +227,30 @@ finally:
 print("OK _merge_bovada_soccer: matches any soccer sport key by team name, never touches non-soccer rows")
 
 print("BOVADA TESTS PASS (name matching)")
+
+# ---- parse_event: soccer's real shape, confirmed from a live run -- "3-Way Moneyline" (not plain
+# "Moneyline") with a third outcome literally named "Draw", and "Goal Spread" (not "Point Spread").
+# Before this fix, 599 real soccer events came back 0 parsed because of this exact mismatch.
+def three_way_event(home, away, home_odds="+255", away_odds="+105", draw_odds="+235", with_goal_spread=True):
+    markets = [{"description": "3-Way Moneyline", "outcomes": [
+        outcome(home, home_odds), outcome(away, away_odds), outcome("Draw", draw_odds)]}]
+    if with_goal_spread:
+        markets.insert(0, {"description": "Goal Spread", "outcomes": [
+            outcome(home, "+105", "0.0"), outcome(away, "-135", "0.0")]})
+    comps = [{"id": "1", "name": home, "home": True}, {"id": "2", "name": away, "home": False}]
+    return {"id": "ev2", "startTime": 1700000000000, "live": False, "competitors": comps,
+            "displayGroups": [{"description": "Game Lines", "markets": markets}]}
+ev3 = three_way_event("AGF Aarhus", "Braga")
+g4 = B.parse_event(ev3)
+assert g4 is not None, "3-Way Moneyline + Draw outcome must parse"
+assert g4["books"]["Bovada"]["home"] == 255 and g4["books"]["Bovada"]["away"] == 105
+assert g4["books"]["Bovada"]["draw"] == 235
+assert g4["spread"]["home"]["handicap"] == 0.0  # "Goal Spread" recognized as a spread market
+print("OK parse_event: real soccer shape ('3-Way Moneyline' + 'Draw' outcome, 'Goal Spread') parses correctly")
+
+# ---- parse_event: 2-way "Moneyline" (American sports) still works unchanged after the "in mlow" widen
+g5 = B.parse_event(event("Example Home", "Example Away"))
+assert g5["books"]["Bovada"] == {"home": -150, "away": 130} and "draw" not in g5["books"]["Bovada"]
+print("OK parse_event: plain 2-way Moneyline unaffected by the 3-way widening")
+
+print("BOVADA TESTS PASS (soccer 3-way moneyline)")

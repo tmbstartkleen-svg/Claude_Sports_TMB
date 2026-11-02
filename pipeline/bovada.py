@@ -113,7 +113,7 @@ def parse_event(ev):
         return None
     out = {"home": home, "away": away, "start": ev.get("startTime"), "live": bool(ev.get("live")),
            "bovadaId": ev.get("id")}
-    ml_home = ml_away = None
+    ml_home = ml_away = ml_draw = None
     spread = None
     total = None
     props = []
@@ -123,15 +123,27 @@ def parse_event(ev):
             mdesc = (mkt.get("description") or "")
             mlow = mdesc.lower()
             outcomes = mkt.get("outcomes") or []
-            if mlow == "moneyline" or mlow.startswith("moneyline"):
+            # American sports: "Moneyline". Soccer (and other 3-outcome sports): "3-Way Moneyline",
+            # with a third outcome literally named "Draw" -- matched separately since _match_side only
+            # knows the two named competitors.
+            if "moneyline" in mlow:
                 for o in outcomes:
+                    d = (o.get("description") or "").strip().lower()
+                    if d == "draw":
+                        px = _outcome_price(o)
+                        if px is not None:
+                            ml_draw = px
+                        continue
                     side = _match_side(o.get("description"), home, away)
                     px = _outcome_price(o)
                     if side == "home" and px is not None:
                         ml_home = px
                     elif side == "away" and px is not None:
                         ml_away = px
-            elif "point spread" in mlow or mlow == "spread":
+            # American sports: "Point Spread"/"Spread". Soccer: "Goal Spread" (Asian-handicap style,
+            # carries a second "handicap2" field for the half-line side -- not captured here, the
+            # single `handicap` value is still a usable spread line on its own).
+            elif "point spread" in mlow or mlow == "spread" or "goal spread" in mlow:
                 sides = {}
                 for o in outcomes:
                     side = _match_side(o.get("description"), home, away)
@@ -157,6 +169,9 @@ def parse_event(ev):
     if ml_home is None or ml_away is None:
         return None  # no usable moneyline: not worth carrying (props without a base line aren't gradeable here)
     out["books"] = {"Bovada": {"home": ml_home, "away": ml_away}}
+    if ml_draw is not None:
+        out["books"]["Bovada"]["draw"] = ml_draw  # 3-way sports (soccer): build_slate.py's analyze()
+        # only treats a book as usable for a three-outcome game when its row carries a "draw" price.
     if spread:
         out["spread"] = spread
     if total:
