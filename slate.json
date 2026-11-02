@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T01:57:11+00:00",
+ "generatedAt": "2026-11-02T02:20:50+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -16,7 +16,7 @@
   {
    "source": "odds[nba]:espn",
    "ok": true,
-   "detail": "12 items"
+   "detail": "11 items"
   },
   {
    "source": "odds[mlb]:espn",
@@ -676,17 +676,17 @@
   {
    "source": "bovada[soccer]",
    "ok": true,
-   "detail": "595 games (all leagues)"
+   "detail": "597 games (all leagues)"
   },
   {
    "source": "bovada:merge",
    "ok": true,
-   "detail": "220 games gained a second book (+ spread/total/props where carried)"
+   "detail": "219 games gained a second book (+ spread/total/props where carried)"
   },
   {
    "source": "collectors",
    "ok": true,
-   "detail": "mlb_probables:paused, nhl_schedule:ok, nfl_injuries:ok, soccer_fixtures:ok"
+   "detail": "mlb_probables:failing, nhl_schedule:ok, nfl_injuries:ok, soccer_fixtures:ok"
   },
   {
    "source": "kalshi-auth",
@@ -696,7 +696,7 @@
   {
    "source": "kalshi:games",
    "ok": true,
-   "detail": "436 items"
+   "detail": "437 items"
   },
   {
    "source": "polymarket:direct",
@@ -1026,7 +1026,7 @@
   {
    "source": "matchup",
    "ok": true,
-   "detail": "288 games with head-to-head/form history"
+   "detail": "287 games with head-to-head/form history"
   },
   {
    "source": "weekScores",
@@ -1041,7 +1041,7 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "172 snapshots added, 508 closing lines available"
+   "detail": "13 snapshots added, 508 closing lines available"
   },
   {
    "source": "steam",
@@ -1056,22 +1056,22 @@
   {
    "source": "grading",
    "ok": true,
-   "detail": "7 picks added, 0 settled, 0 CLV, 604 total"
+   "detail": "0 picks added, 0 settled, 0 CLV, 604 total"
   },
   {
    "source": "timing",
    "ok": true,
-   "detail": "65 bets with buy-now/wait guidance"
+   "detail": "64 bets with buy-now/wait guidance"
   },
   {
    "source": "whales",
    "ok": true,
-   "detail": "40 markets checked, 2 games with a notable trade"
+   "detail": "40 markets checked, 3 games with a notable trade"
   },
   {
    "source": "alerts",
    "ok": true,
-   "detail": "43 found, 0 sent: nothing new"
+   "detail": "43 found, 15 sent: sent"
   },
   {
    "source": "suggestions",
@@ -1174,8 +1174,17 @@
    "note": "Probable starting pitchers (names). ERA comes from ESPN in the main pipeline.",
    "ok": false,
    "n": 0,
-   "status": "paused",
-   "error": "no items matched the spec (could be an off day, or the item path is wrong)"
+   "status": "failing",
+   "error": "no items matched the spec (could be an off day, or the item path is wrong)",
+   "fails": 8,
+   "shape": {
+    "copyright": "str",
+    "totalItems": "int",
+    "totalEvents": "int",
+    "totalGames": "int",
+    "totalGamesInProgress": "int",
+    "dates": []
+   }
   },
   {
    "id": "nhl_schedule",
@@ -1660,7 +1669,7 @@
   }
  },
  "diagnostics": {
-  "predictionMarketsFetched": 990,
+  "predictionMarketsFetched": 991,
   "bySport": {
    "aleague": {
     "games": 6,
@@ -1828,7 +1837,7 @@
     "avgBooks": 1.8,
     "withModel": 5,
     "withPmMatch": 0,
-    "edgeBets": 2
+    "edgeBets": 1
    },
    "league1": {
     "games": 3,
@@ -1863,11 +1872,11 @@
     "edgeBets": 1
    },
    "nba": {
-    "games": 12,
-    "withOdds": 12,
+    "games": 11,
+    "withOdds": 11,
     "avgBooks": 1.9,
-    "withModel": 12,
-    "withPmMatch": 12,
+    "withModel": 11,
+    "withPmMatch": 11,
     "edgeBets": 1
    },
    "ncaab": {
@@ -2076,7 +2085,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 24.0,
+      "hoursToStart": 23.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2171,7 +2180,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.0,
+      "hoursToStart": 21.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2266,7 +2275,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 25.5,
+      "hoursToStart": 25.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2362,7 +2371,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 21.5,
+      "hoursToStart": 21.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2458,7 +2467,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 70.0,
+      "hoursToStart": 69.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2580,7 +2589,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 160.0,
+      "hoursToStart": 159.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2700,7 +2709,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 135.0,
+      "hoursToStart": 134.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2835,7 +2844,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.5,
+      "hoursToStart": 22.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2937,7 +2946,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 135.0,
+      "hoursToStart": 134.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3053,7 +3062,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 21.0,
+      "hoursToStart": 20.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3166,7 +3175,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 17.0,
+      "hoursToStart": 16.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3289,7 +3298,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 22.5,
+      "hoursToStart": 22.2,
       "reasons": [
        "Historically, NBA edges we've flagged have lost 1.7% to the closing line on average (n=40) -- the price has tended to improve by waiting."
       ]
@@ -3305,10 +3314,10 @@
       "Washington": "KXNBAGAME-26NOV02WASORL-WAS",
       "Orlando": "KXNBAGAME-26NOV02WASORL-ORL"
      },
-     "home": 0.57,
-     "homeEdgePp": -1.6,
-     "away": 0.44,
-     "awayEdgePp": 0.6
+     "home": 0.58,
+     "homeEdgePp": -2.6,
+     "away": 0.43,
+     "awayEdgePp": 1.6
     }
    ],
    "tier": "core",
@@ -3490,7 +3499,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 160.0,
+      "hoursToStart": 159.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3616,7 +3625,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 18.3,
+      "hoursToStart": 17.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3740,7 +3749,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 123.0,
+      "hoursToStart": 122.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3863,7 +3872,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 156.5,
+      "hoursToStart": 156.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3989,7 +3998,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 137.0,
+      "hoursToStart": 136.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4112,7 +4121,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 119.0,
+      "hoursToStart": 118.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4130,8 +4139,8 @@
      },
      "home": 0.36,
      "homeEdgePp": -0.3,
-     "away": 0.65,
-     "awayEdgePp": -0.7
+     "away": 0.64,
+     "awayEdgePp": 0.3
     }
    ],
    "tier": "core",
@@ -4254,7 +4263,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 46.5,
+      "hoursToStart": 46.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4391,7 +4400,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 16.0,
+      "hoursToStart": 15.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4485,143 +4494,6 @@
    }
   },
   {
-   "key": "argentina|centralcordobasantiagodelestero|platense|2026-11-02T22:00",
-   "sport": "argentina",
-   "home": "Platense",
-   "away": "Central C\u00f3rdoba (Santiago del Estero)",
-   "start": "2026-11-02T22:00Z",
-   "nBooks": 2,
-   "threeWay": true,
-   "fair": {
-    "home": 0.6207,
-    "away": 0.1416,
-    "draw": 0.2376
-   },
-   "best": {
-    "home": {
-     "book": "Bovada",
-     "american": -182,
-     "decimal": 1.549
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 550.0,
-     "decimal": 6.5
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 290.0,
-     "decimal": 3.9
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0556,
-   "bets": [
-    {
-     "side": "Central C\u00f3rdoba (Santiago del Estero)",
-     "book": "DraftKings",
-     "american": 550.0,
-     "fair": 0.1662,
-     "evPct": 8.05,
-     "stakePct": 0.51,
-     "stake": 0.51,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 20.0,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "tier": "core",
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-     "color": "000000"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-     "color": "000000"
-    }
-   },
-   "spread": {
-    "home": {
-     "handicap": -1.0,
-     "american": -102
-    },
-    "away": {
-     "handicap": 1.0,
-     "american": -118
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 2.5,
-     "american": 118
-    },
-    "under": {
-     "handicap": 2.5,
-     "american": -143
-    }
-   },
-   "model": {
-    "home": 0.4754,
-    "draw": 0.2845,
-    "away": 0.2401,
-    "blendHome": 0.5844,
-    "gapPp": -14.5,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [
-     {
-      "date": "2026-04-20",
-      "home": "Central C\u00f3rdoba (Santiago del Estero)",
-      "away": "Platense",
-      "homeScore": 4.0,
-      "awayScore": 3.0
-     }
-    ],
-    "home": {
-     "name": "Platense",
-     "record": "7-19-15",
-     "last": [
-      "T",
-      "W",
-      "L",
-      "T",
-      "L",
-      "L",
-      "T",
-      "T",
-      "L",
-      "W"
-     ]
-    },
-    "away": {
-     "name": "Central C\u00f3rdoba (Santiago del Estero)",
-     "record": "10-19-13",
-     "last": [
-      "L",
-      "L",
-      "T",
-      "L",
-      "L",
-      "T",
-      "T",
-      "T",
-      "L",
-      "L"
-     ]
-    }
-   }
-  },
-  {
    "key": "ncaaf|hawaiirainbowwarriors|utepminers|2026-11-08T02:30",
    "sport": "ncaaf",
    "home": "UTEP Miners",
@@ -4659,7 +4531,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 144.5,
+      "hoursToStart": 144.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4801,7 +4673,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 17.8,
+      "hoursToStart": 17.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4902,6 +4774,143 @@
    }
   },
   {
+   "key": "argentina|centralcordobasantiagodelestero|platense|2026-11-02T22:00",
+   "sport": "argentina",
+   "home": "Platense",
+   "away": "Central C\u00f3rdoba (Santiago del Estero)",
+   "start": "2026-11-02T22:00Z",
+   "nBooks": 2,
+   "threeWay": true,
+   "fair": {
+    "home": 0.6235,
+    "away": 0.1386,
+    "draw": 0.2379
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -185.0,
+     "decimal": 1.541
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 550.0,
+     "decimal": 6.5
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 290.0,
+     "decimal": 3.9
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0594,
+   "bets": [
+    {
+     "side": "Central C\u00f3rdoba (Santiago del Estero)",
+     "book": "DraftKings",
+     "american": 550.0,
+     "fair": 0.164,
+     "evPct": 6.58,
+     "stakePct": 0.42,
+     "stake": 0.42,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 19.7,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "tier": "core",
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+     "color": "000000"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+     "color": "000000"
+    }
+   },
+   "spread": {
+    "home": {
+     "handicap": -1.0,
+     "american": -102
+    },
+    "away": {
+     "handicap": 1.0,
+     "american": -118
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 2.5,
+     "american": 118
+    },
+    "under": {
+     "handicap": 2.5,
+     "american": -143
+    }
+   },
+   "model": {
+    "home": 0.4754,
+    "draw": 0.2845,
+    "away": 0.2401,
+    "blendHome": 0.5865,
+    "gapPp": -14.8,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2026-04-20",
+      "home": "Central C\u00f3rdoba (Santiago del Estero)",
+      "away": "Platense",
+      "homeScore": 4.0,
+      "awayScore": 3.0
+     }
+    ],
+    "home": {
+     "name": "Platense",
+     "record": "7-19-15",
+     "last": [
+      "T",
+      "W",
+      "L",
+      "T",
+      "L",
+      "L",
+      "T",
+      "T",
+      "L",
+      "W"
+     ]
+    },
+    "away": {
+     "name": "Central C\u00f3rdoba (Santiago del Estero)",
+     "record": "10-19-13",
+     "last": [
+      "L",
+      "L",
+      "T",
+      "L",
+      "L",
+      "T",
+      "T",
+      "T",
+      "L",
+      "L"
+     ]
+    }
+   }
+  },
+  {
    "key": "austria|rheindorfaltach|tsvhartberg|2026-11-08T13:30",
    "sport": "austria",
    "home": "TSV Hartberg",
@@ -4945,7 +4954,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 155.5,
+      "hoursToStart": 155.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5070,7 +5079,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 142.5,
+      "hoursToStart": 142.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5180,7 +5189,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 138.5,
+      "hoursToStart": 138.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5330,7 +5339,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.3,
+      "hoursToStart": 21.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5467,7 +5476,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 136.5,
+      "hoursToStart": 136.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5592,7 +5601,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 143.0,
+      "hoursToStart": 142.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5728,7 +5737,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 70.5,
+      "hoursToStart": 70.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5846,7 +5855,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "buy_now",
-      "hoursToStart": 135.0,
+      "hoursToStart": 134.7,
       "reasons": [
        "The market has already moved 5.1 pts toward this side -- the price you're seeing is likely to get worse, not better."
       ]
@@ -6000,7 +6009,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 135.8,
+      "hoursToStart": 135.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6144,7 +6153,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 47.0,
+      "hoursToStart": 46.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6162,8 +6171,8 @@
      },
      "home": 0.71,
      "homeEdgePp": -1.7,
-     "away": 0.3,
-     "awayEdgePp": 0.7
+     "away": 0.31,
+     "awayEdgePp": -0.3
     }
    ],
    "tier": "core",
@@ -6274,7 +6283,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 42.0,
+      "hoursToStart": 41.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6412,7 +6421,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 95.0,
+      "hoursToStart": 94.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6430,8 +6439,8 @@
      },
      "home": 0.16,
      "homeEdgePp": -1.1,
-     "away": 0.86,
-     "awayEdgePp": -0.9
+     "away": 0.85,
+     "awayEdgePp": 0.1
     }
    ],
    "tier": "core",
@@ -6528,7 +6537,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 135.0,
+      "hoursToStart": 134.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6656,7 +6665,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 163.5,
+      "hoursToStart": 163.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6782,7 +6791,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 157.8,
+      "hoursToStart": 157.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6911,7 +6920,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 147.0,
+      "hoursToStart": 146.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7022,7 +7031,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 138.5,
+      "hoursToStart": 138.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7144,7 +7153,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 142.5,
+      "hoursToStart": 142.2,
       "reasons": [
        "The market has moved 4.2 pts toward the other side -- this price may hold or improve if your view is right."
       ]
@@ -7291,7 +7300,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 158.3,
+      "hoursToStart": 157.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7450,7 +7459,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 17.0,
+      "hoursToStart": 16.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7573,7 +7582,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 142.5,
+      "hoursToStart": 142.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7715,7 +7724,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 65.8,
+      "hoursToStart": 65.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7844,7 +7853,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 66.0,
+      "hoursToStart": 65.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7967,7 +7976,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 144.5,
+      "hoursToStart": 144.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7985,8 +7994,8 @@
      },
      "home": 0.88,
      "homeEdgePp": -0.1,
-     "away": 0.13,
-     "awayEdgePp": -0.9
+     "away": 0.14,
+     "awayEdgePp": -1.9
     }
    ],
    "tier": "core",
@@ -8091,7 +8100,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 163.5,
+      "hoursToStart": 163.1,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8225,7 +8234,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 68.5,
+      "hoursToStart": 68.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8336,7 +8345,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 22.0,
+      "hoursToStart": 21.7,
       "reasons": [
        "Historically, NHL edges we've flagged have lost 4.5% to the closing line on average (n=33) -- the price has tended to improve by waiting."
       ]
@@ -8495,7 +8504,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 142.5,
+      "hoursToStart": 142.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8631,7 +8640,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 134.0,
+      "hoursToStart": 133.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8768,7 +8777,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 41.8,
+      "hoursToStart": 41.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8912,7 +8921,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 124.0,
+      "hoursToStart": 123.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9040,7 +9049,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 21.0,
+      "hoursToStart": 20.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9150,7 +9159,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.0,
+      "hoursToStart": 21.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9210,135 +9219,6 @@
    }
   },
   {
-   "key": "laliga2|andorra|tenerife|2026-11-02T13:00",
-   "sport": "laliga2",
-   "home": "Tenerife",
-   "away": "FC Andorra",
-   "start": "2026-11-02T13:00Z",
-   "nBooks": 2,
-   "threeWay": true,
-   "fair": {
-    "home": 0.4234,
-    "away": 0.2805,
-    "draw": 0.2961
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": 125.0,
-     "decimal": 2.25
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 235.0,
-     "decimal": 3.35
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 215.0,
-     "decimal": 3.15
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0604,
-   "bets": [
-    {
-     "side": "Tenerife",
-     "book": "DraftKings",
-     "american": 125.0,
-     "fair": 0.4512,
-     "evPct": 1.52,
-     "stakePct": 0.43,
-     "stake": 0.43,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 11.0,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "tier": "core",
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/245.png",
-     "color": "008bc4"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20179.png",
-     "color": "000000"
-    }
-   },
-   "spread": {
-    "home": {
-     "handicap": 0.0,
-     "american": -108
-    },
-    "away": {
-     "handicap": 0.0,
-     "american": -112
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 2.0,
-     "american": -112
-    },
-    "under": {
-     "handicap": 2.0,
-     "american": -108
-    }
-   },
-   "model": {
-    "home": 0.5347,
-    "draw": 0.2319,
-    "away": 0.2334,
-    "blendHome": 0.4512,
-    "gapPp": 11.1,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Tenerife",
-     "record": "3-3-5",
-     "last": [
-      "W",
-      "L",
-      "T",
-      "W",
-      "L",
-      "T",
-      "L",
-      "T",
-      "T",
-      "T"
-     ]
-    },
-    "away": {
-     "name": "FC Andorra",
-     "record": "18-23-10",
-     "last": [
-      "L",
-      "L",
-      "L",
-      "L",
-      "L",
-      "W",
-      "T",
-      "W",
-      "L",
-      "L"
-     ]
-    }
-   }
-  },
-  {
    "key": "championship|burnley|queensparkrangers|2026-11-03T19:45",
    "sport": "championship",
    "home": "Queens Park Rangers",
@@ -9382,7 +9262,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 41.8,
+      "hoursToStart": 41.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9511,7 +9391,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 15.5,
+      "hoursToStart": 15.2,
       "reasons": [
        "The market has moved 4.6 pts toward the other side -- this price may hold or improve if your view is right."
       ]
@@ -9674,7 +9554,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "buy_now",
-      "hoursToStart": 118.0,
+      "hoursToStart": 117.7,
       "reasons": [
        "The market has already moved 5.0 pts toward this side -- the price you're seeing is likely to get worse, not better."
       ]
@@ -9820,7 +9700,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 136.0,
+      "hoursToStart": 135.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9913,6 +9793,135 @@
    }
   },
   {
+   "key": "laliga2|laspalmas|realoviedo|2026-11-02T15:15",
+   "sport": "laliga2",
+   "home": "Real Oviedo",
+   "away": "Las Palmas",
+   "start": "2026-11-02T15:15Z",
+   "nBooks": 2,
+   "threeWay": true,
+   "fair": {
+    "home": 0.5646,
+    "away": 0.1955,
+    "draw": 0.2399
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -140.0,
+     "decimal": 1.714
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 370.0,
+     "decimal": 4.7
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 285.0,
+     "decimal": 3.85
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0558,
+   "bets": [
+    {
+     "side": "Las Palmas",
+     "book": "DraftKings",
+     "american": 370.0,
+     "fair": 0.2152,
+     "evPct": 1.15,
+     "stakePct": 0.11,
+     "stake": 0.11,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 12.9,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [],
+   "tier": "core",
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/92.png",
+     "color": "e23627"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/98.png",
+     "color": "ffff00"
+    }
+   },
+   "spread": {
+    "home": {
+     "handicap": -0.5,
+     "american": -108
+    },
+    "away": {
+     "handicap": 0.5,
+     "american": -112
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 2.5,
+     "american": -108
+    },
+    "under": {
+     "handicap": 2.5,
+     "american": -112
+    }
+   },
+   "model": {
+    "home": 0.4868,
+    "draw": 0.2389,
+    "away": 0.2742,
+    "blendHome": 0.5451,
+    "gapPp": -7.8,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "Real Oviedo",
+     "record": "5-3-3",
+     "last": [
+      "L",
+      "W",
+      "T",
+      "W",
+      "L",
+      "W",
+      "L",
+      "W",
+      "W",
+      "T"
+     ]
+    },
+    "away": {
+     "name": "Las Palmas",
+     "record": "23-15-15",
+     "last": [
+      "W",
+      "L",
+      "T",
+      "W",
+      "L",
+      "L",
+      "T",
+      "L",
+      "L",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "ncaaf|texasstatebobcats|oregonstatebeavers|2026-11-08T03:30",
    "sport": "ncaaf",
    "home": "Oregon State Beavers",
@@ -9950,7 +9959,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 145.5,
+      "hoursToStart": 145.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -10078,7 +10087,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 130.5,
+      "hoursToStart": 130.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -10194,135 +10203,6 @@
    }
   },
   {
-   "key": "laliga2|laspalmas|realoviedo|2026-11-02T15:15",
-   "sport": "laliga2",
-   "home": "Real Oviedo",
-   "away": "Las Palmas",
-   "start": "2026-11-02T15:15Z",
-   "nBooks": 2,
-   "threeWay": true,
-   "fair": {
-    "home": 0.5634,
-    "away": 0.1953,
-    "draw": 0.2413
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -140.0,
-     "decimal": 1.714
-    },
-    "away": {
-     "book": "DraftKings",
-     "american": 370.0,
-     "decimal": 4.7
-    },
-    "draw": {
-     "book": "DraftKings",
-     "american": 285.0,
-     "decimal": 3.85
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0558,
-   "bets": [
-    {
-     "side": "Las Palmas",
-     "book": "DraftKings",
-     "american": 370.0,
-     "fair": 0.215,
-     "evPct": 1.05,
-     "stakePct": 0.1,
-     "stake": 0.1,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 13.3,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [],
-   "tier": "core",
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/92.png",
-     "color": "e23627"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/98.png",
-     "color": "ffff00"
-    }
-   },
-   "spread": {
-    "home": {
-     "handicap": -0.5,
-     "american": -108
-    },
-    "away": {
-     "handicap": 0.5,
-     "american": -112
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 2.5,
-     "american": -105
-    },
-    "under": {
-     "handicap": 2.5,
-     "american": -115
-    }
-   },
-   "model": {
-    "home": 0.4868,
-    "draw": 0.2389,
-    "away": 0.2742,
-    "blendHome": 0.5443,
-    "gapPp": -7.7,
-    "weight": 0.25
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Real Oviedo",
-     "record": "5-3-3",
-     "last": [
-      "L",
-      "W",
-      "T",
-      "W",
-      "L",
-      "W",
-      "L",
-      "W",
-      "W",
-      "T"
-     ]
-    },
-    "away": {
-     "name": "Las Palmas",
-     "record": "23-15-15",
-     "last": [
-      "W",
-      "L",
-      "T",
-      "W",
-      "L",
-      "L",
-      "T",
-      "L",
-      "L",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "ncaaf|oklahomasooners|floridagators|2026-11-08T00:45",
    "sport": "ncaaf",
    "home": "Florida Gators",
@@ -10360,7 +10240,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 142.8,
+      "hoursToStart": 142.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -10439,7 +10319,19 @@
       "L"
      ]
     }
-   }
+   },
+   "whales": [
+    {
+     "side": "yes",
+     "notional": 2545.14,
+     "price": 0.66,
+     "contracts": 3856.3,
+     "block": false,
+     "time": "2026-11-01T20:13:14.174099Z",
+     "team": "Florida",
+     "source": "kalshi"
+    }
+   ]
   },
   {
    "key": "nfl|chicagobears|seattleseahawks|2026-11-03T01:15",
@@ -10450,14 +10342,14 @@
    "nBooks": 2,
    "threeWay": false,
    "fair": {
-    "home": 0.6124,
-    "away": 0.3876
+    "home": 0.6085,
+    "away": 0.3915
    },
    "best": {
     "home": {
      "book": "Bovada",
-     "american": -170,
-     "decimal": 1.588
+     "american": -165,
+     "decimal": 1.606
     },
     "away": {
      "book": "DraftKings",
@@ -10466,7 +10358,7 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.0378,
+   "impliedSum": 1.0308,
    "bets": [],
    "pm": [
     {
@@ -10478,9 +10370,9 @@
       "Chicago": "KXNFLGAME-26NOV02CHISEA-CHI"
      },
      "home": 0.62,
-     "homeEdgePp": -0.8,
+     "homeEdgePp": -1.1,
      "away": 0.39,
-     "awayEdgePp": -0.2
+     "awayEdgePp": 0.1
     }
    ],
    "tier": "core",
@@ -10517,8 +10409,8 @@
    "model": {
     "home": 0.5663,
     "away": 0.4337,
-    "blendHome": 0.594,
-    "gapPp": -4.6,
+    "blendHome": 0.5917,
+    "gapPp": -4.2,
     "weight": 0.4,
     "injuries": [
      "Seattle Seahawks: -58 Elo (Drew Lock (QB) questionable)",
@@ -10572,23 +10464,23 @@
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.2012,
-    "away": 0.7988
+    "home": 0.2115,
+    "away": 0.7885
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 350.0,
-     "decimal": 4.5
+     "american": 330.0,
+     "decimal": 4.3
     },
     "away": {
      "book": "DraftKings",
-     "american": -455.0,
-     "decimal": 1.22
+     "american": -425.0,
+     "decimal": 1.235
     }
    },
    "arb": false,
-   "impliedSum": 1.042,
+   "impliedSum": 1.0421,
    "bets": [],
    "pm": [
     {
@@ -10600,9 +10492,9 @@
       "Baltimore": "KXNFLGAME-26NOV05JACBAL-BAL"
      },
      "home": 0.23,
-     "homeEdgePp": -2.9,
-     "away": 0.77,
-     "awayEdgePp": 2.9
+     "homeEdgePp": -1.8,
+     "away": 0.78,
+     "awayEdgePp": 0.8
     }
    ],
    "tier": "core",
@@ -10619,8 +10511,8 @@
    "model": {
     "home": 0.194,
     "away": 0.806,
-    "blendHome": 0.1983,
-    "gapPp": -0.7,
+    "blendHome": 0.2045,
+    "gapPp": -1.8,
     "weight": 0.4,
     "injuries": [
      "Baltimore Ravens: -261 Elo (Tyler Huntley (QB) questionable; Joe Fagnano (QB) out; Lamar Jackson (QB) out)",
@@ -10669,10 +10561,10 @@
     "side": "away",
     "biggestMovePts": -38.5,
     "biggestMoveAt": "2026-11-02T01:44:22+00:00",
-    "totalDriftPts": -38.5,
-    "snapshots": 21,
+    "totalDriftPts": -37.5,
+    "snapshots": 22,
     "firstSeen": "2026-10-30T00:24:06+00:00",
-    "lastSeen": "2026-11-02T01:44:22+00:00"
+    "lastSeen": "2026-11-02T02:20:50+00:00"
    }
   },
   {
@@ -10990,23 +10882,23 @@
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.3723,
-    "away": 0.6277
+    "home": 0.3358,
+    "away": 0.6642
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 154.0,
-     "decimal": 2.54
+     "american": 180.0,
+     "decimal": 2.8
     },
     "away": {
      "book": "DraftKings",
-     "american": -185.0,
-     "decimal": 1.541
+     "american": -218.0,
+     "decimal": 1.459
     }
    },
    "arb": false,
-   "impliedSum": 1.0428,
+   "impliedSum": 1.0427,
    "bets": [],
    "pm": [
     {
@@ -11017,10 +10909,10 @@
       "Los Angeles C": "KXNFLGAME-26NOV08HOULAC-LAC",
       "Houston": "KXNFLGAME-26NOV08HOULAC-HOU"
      },
-     "home": 0.38,
-     "homeEdgePp": -0.8,
-     "away": 0.64,
-     "awayEdgePp": -1.2
+     "home": 0.37,
+     "homeEdgePp": -3.4,
+     "away": 0.65,
+     "awayEdgePp": 1.4
     }
    ],
    "tier": "core",
@@ -11037,8 +10929,8 @@
    "model": {
     "home": 0.367,
     "away": 0.633,
-    "blendHome": 0.3702,
-    "gapPp": -0.5,
+    "blendHome": 0.3483,
+    "gapPp": 3.1,
     "weight": 0.4,
     "injuries": [
      "Los Angeles Chargers: -36 Elo",
@@ -11134,8 +11026,8 @@
       "Seattle": "KXNFLGAME-26NOV08ARISEA-SEA",
       "Arizona": "KXNFLGAME-26NOV08ARISEA-ARI"
      },
-     "home": 0.87,
-     "homeEdgePp": -0.9,
+     "home": 0.86,
+     "homeEdgePp": 0.1,
      "away": 0.15,
      "awayEdgePp": -1.1
     }
@@ -11231,23 +11123,23 @@
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.6884,
-    "away": 0.3116
+    "home": 0.699,
+    "away": 0.301
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": -245.0,
-     "decimal": 1.408
+     "american": -258.0,
+     "decimal": 1.388
     },
     "away": {
      "book": "DraftKings",
-     "american": 200.0,
-     "decimal": 3.0
+     "american": 210.0,
+     "decimal": 3.1
     }
    },
    "arb": false,
-   "impliedSum": 1.0435,
+   "impliedSum": 1.0433,
    "bets": [],
    "pm": [
     {
@@ -11259,9 +11151,9 @@
       "Chicago": "KXNFLGAME-26NOV08TBCHI-CHI"
      },
      "home": 0.73,
-     "homeEdgePp": -4.2,
+     "homeEdgePp": -3.1,
      "away": 0.3,
-     "awayEdgePp": 1.2
+     "awayEdgePp": 0.1
     }
    ],
    "tier": "core",
@@ -11278,8 +11170,8 @@
    "model": {
     "home": 0.7229,
     "away": 0.2771,
-    "blendHome": 0.7022,
-    "gapPp": 3.4,
+    "blendHome": 0.7086,
+    "gapPp": 2.4,
     "weight": 0.4,
     "injuries": [
      "Chicago Bears: -21 Elo",
@@ -11320,143 +11212,6 @@
       "L",
       "W",
       "W"
-     ]
-    }
-   }
-  },
-  {
-   "key": "nba|torontoraptors|losangeleslakers|2026-11-02T02:00",
-   "sport": "nba",
-   "home": "Los Angeles Lakers",
-   "away": "Toronto Raptors",
-   "start": "2026-11-02T02:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.6001,
-    "away": 0.3999
-   },
-   "best": {
-    "home": {
-     "book": "DraftKings",
-     "american": -162.0,
-     "decimal": 1.617
-    },
-    "away": {
-     "book": "Bovada",
-     "american": 140,
-     "decimal": 2.4
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.035,
-   "bets": [],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Toronto vs Los Angeles L",
-     "url": "https://kalshi.com/markets/kxnbagame",
-     "tickers": {
-      "Toronto": "KXNBAGAME-26NOV01TORLAL-TOR",
-      "Los Angeles L": "KXNBAGAME-26NOV01TORLAL-LAL"
-     },
-     "home": 0.6,
-     "homeEdgePp": 0.0,
-     "away": 0.41,
-     "awayEdgePp": -1.0
-    }
-   ],
-   "tier": "core",
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
-     "color": "552583"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png",
-     "color": "d91244"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": 3.5,
-     "american": -110
-    },
-    "home": {
-     "handicap": -3.5,
-     "american": -110
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 223.0,
-     "american": -110
-    },
-    "under": {
-     "handicap": 223.0,
-     "american": -110
-    }
-   },
-   "model": {
-    "home": 0.6096,
-    "away": 0.3904,
-    "blendHome": 0.6025,
-    "gapPp": 0.9,
-    "weight": 0.25,
-    "injuries": [
-     "Los Angeles Lakers: -20 Elo",
-     "Toronto Raptors: -20 Elo"
-    ]
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [
-     {
-      "date": "2026-01-19",
-      "home": "Los Angeles Lakers",
-      "away": "Toronto Raptors",
-      "homeScore": 110.0,
-      "awayScore": 93.0
-     },
-     {
-      "date": "2025-12-05",
-      "home": "Toronto Raptors",
-      "away": "Los Angeles Lakers",
-      "homeScore": 120.0,
-      "awayScore": 123.0
-     }
-    ],
-    "home": {
-     "name": "Los Angeles Lakers",
-     "record": "64-45",
-     "last": [
-      "L",
-      "W",
-      "L",
-      "L",
-      "W",
-      "W",
-      "W",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Toronto Raptors",
-     "record": "58-47",
-     "last": [
-      "L",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "W",
-      "L",
-      "W",
-      "L"
      ]
     }
    }
@@ -11690,11 +11445,11 @@
    },
    "total": {
     "over": {
-     "handicap": 209.0,
+     "handicap": 209.5,
      "american": -110
     },
     "under": {
-     "handicap": 209.0,
+     "handicap": 209.5,
      "american": -110
     }
    },
@@ -11850,14 +11605,14 @@
     }
    },
    "model": {
-    "home": 0.9046,
-    "away": 0.0954,
-    "blendHome": 0.8908,
-    "gapPp": 1.8,
+    "home": 0.9008,
+    "away": 0.0992,
+    "blendHome": 0.8898,
+    "gapPp": 1.5,
     "weight": 0.25,
     "injuries": [
      "New York Knicks: -10 Elo",
-     "Brooklyn Nets: -30 Elo"
+     "Brooklyn Nets: -22 Elo"
     ]
    },
    "crossArbs": [],
@@ -11963,8 +11718,8 @@
       "Philadelphia": "KXNBAGAME-26NOV02CHIPHI-PHI",
       "Chicago": "KXNBAGAME-26NOV02CHIPHI-CHI"
      },
-     "home": 0.83,
-     "homeEdgePp": 1.4,
+     "home": 0.84,
+     "homeEdgePp": 0.4,
      "away": 0.17,
      "awayEdgePp": -1.4
     }
@@ -11992,11 +11747,11 @@
    },
    "total": {
     "over": {
-     "handicap": 237.5,
+     "handicap": 238.0,
      "american": -110
     },
     "under": {
-     "handicap": 237.5,
+     "handicap": 238.0,
      "american": -110
     }
    },
@@ -12109,8 +11864,8 @@
      },
      "home": 0.79,
      "homeEdgePp": -1.3,
-     "away": 0.22,
-     "awayEdgePp": 0.3
+     "away": 0.21,
+     "awayEdgePp": 1.3
     }
    ],
    "tier": "core",
@@ -12355,23 +12110,23 @@
    "nBooks": 2,
    "threeWay": false,
    "fair": {
-    "home": 0.8076,
-    "away": 0.1924
+    "home": 0.8018,
+    "away": 0.1982
    },
    "best": {
     "home": {
-     "book": "Bovada",
-     "american": -480,
-     "decimal": 1.208
+     "book": "DraftKings",
+     "american": -470.0,
+     "decimal": 1.213
     },
     "away": {
      "book": "DraftKings",
-     "american": 380.0,
-     "decimal": 4.8
+     "american": 360.0,
+     "decimal": 4.6
     }
    },
    "arb": false,
-   "impliedSum": 1.0359,
+   "impliedSum": 1.042,
    "bets": [],
    "pm": [
     {
@@ -12383,9 +12138,9 @@
       "Milwaukee": "KXNBAGAME-26NOV02MILMIN-MIL"
      },
      "home": 0.79,
-     "homeEdgePp": 1.8,
+     "homeEdgePp": 1.2,
      "away": 0.22,
-     "awayEdgePp": -2.8
+     "awayEdgePp": -2.2
     }
    ],
    "tier": "core",
@@ -12401,12 +12156,12 @@
    },
    "spread": {
     "away": {
-     "handicap": 10.5,
-     "american": -115
+     "handicap": 10.0,
+     "american": -105
     },
     "home": {
-     "handicap": -10.5,
-     "american": -105
+     "handicap": -10.0,
+     "american": -115
     }
    },
    "total": {
@@ -12422,8 +12177,8 @@
    "model": {
     "home": 0.9201,
     "away": 0.0799,
-    "blendHome": 0.8357,
-    "gapPp": 11.3,
+    "blendHome": 0.8313,
+    "gapPp": 11.8,
     "weight": 0.25,
     "injuries": [
      "Minnesota Timberwolves: -20 Elo"
@@ -13097,8 +12852,8 @@
       "Colorado": "KXNHLGAME-26NOV02COLCHI-COL",
       "Chicago": "KXNHLGAME-26NOV02COLCHI-CHI"
      },
-     "home": 0.33,
-     "homeEdgePp": -0.9,
+     "home": 0.32,
+     "homeEdgePp": 0.1,
      "away": 0.69,
      "awayEdgePp": -1.1
     }
@@ -13372,8 +13127,8 @@
       "Ohio": "KXNCAAFGAME-26NOV03OHIOAKR-OHIO",
       "Akron": "KXNCAAFGAME-26NOV03OHIOAKR-AKR"
      },
-     "home": 0.2,
-     "homeEdgePp": -0.4,
+     "home": 0.19,
+     "homeEdgePp": 0.6,
      "away": 0.81,
      "awayEdgePp": -0.6
     }
@@ -13834,8 +13589,8 @@
       "South Florida": "KXNCAAFGAME-26NOV06USFECU-USF",
       "East Carolina": "KXNCAAFGAME-26NOV06USFECU-ECU"
      },
-     "home": 0.52,
-     "homeEdgePp": 0.3,
+     "home": 0.54,
+     "homeEdgePp": -1.7,
      "away": 0.48,
      "awayEdgePp": -0.3
     }
@@ -14464,8 +14219,8 @@
       "Syracuse": "KXNCAAFGAME-26NOV07CLEMSYR-SYR",
       "Clemson": "KXNCAAFGAME-26NOV07CLEMSYR-CLEM"
      },
-     "home": 0.49,
-     "homeEdgePp": -1.3,
+     "home": 0.48,
+     "homeEdgePp": -0.3,
      "away": 0.54,
      "awayEdgePp": -1.7
     }
@@ -15040,8 +14795,8 @@
      },
      "home": 0.72,
      "homeEdgePp": 0.3,
-     "away": 0.29,
-     "awayEdgePp": -1.3
+     "away": 0.28,
+     "awayEdgePp": -0.3
     }
    ],
    "tier": "core",
@@ -15360,8 +15115,8 @@
       "LSU": "KXNCAAFGAME-26NOV07ALALSU-LSU",
       "Alabama": "KXNCAAFGAME-26NOV07ALALSU-ALA"
      },
-     "home": 0.66,
-     "homeEdgePp": 1.1,
+     "home": 0.67,
+     "homeEdgePp": 0.1,
      "away": 0.35,
      "awayEdgePp": -2.1
     }
@@ -15570,8 +15325,8 @@
       "Houston": "KXNCAAFGAME-26NOV07CINHOU-HOU",
       "Cincinnati": "KXNCAAFGAME-26NOV07CINHOU-CIN"
      },
-     "home": 0.79,
-     "homeEdgePp": 0.4,
+     "home": 0.8,
+     "homeEdgePp": -0.6,
      "away": 0.21,
      "awayEdgePp": -0.4
     }
@@ -22353,6 +22108,117 @@
    }
   },
   {
+   "key": "laliga2|andorra|tenerife|2026-11-02T13:00",
+   "sport": "laliga2",
+   "home": "Tenerife",
+   "away": "FC Andorra",
+   "start": "2026-11-02T13:00Z",
+   "nBooks": 2,
+   "threeWay": true,
+   "fair": {
+    "home": 0.4193,
+    "away": 0.2819,
+    "draw": 0.2988
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 125.0,
+     "decimal": 2.25
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 235.0,
+     "decimal": 3.35
+    },
+    "draw": {
+     "book": "DraftKings",
+     "american": 215.0,
+     "decimal": 3.15
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0604,
+   "bets": [],
+   "pm": [],
+   "tier": "core",
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/245.png",
+     "color": "008bc4"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20179.png",
+     "color": "000000"
+    }
+   },
+   "spread": {
+    "home": {
+     "handicap": 0.0,
+     "american": -105
+    },
+    "away": {
+     "handicap": 0.0,
+     "american": -115
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 2.0,
+     "american": -108
+    },
+    "under": {
+     "handicap": 2.0,
+     "american": -112
+    }
+   },
+   "model": {
+    "home": 0.5347,
+    "draw": 0.2319,
+    "away": 0.2334,
+    "blendHome": 0.4482,
+    "gapPp": 11.5,
+    "weight": 0.25
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "Tenerife",
+     "record": "3-3-5",
+     "last": [
+      "W",
+      "L",
+      "T",
+      "W",
+      "L",
+      "T",
+      "L",
+      "T",
+      "T",
+      "T"
+     ]
+    },
+    "away": {
+     "name": "FC Andorra",
+     "record": "18-23-10",
+     "last": [
+      "L",
+      "L",
+      "L",
+      "L",
+      "L",
+      "W",
+      "T",
+      "W",
+      "L",
+      "L"
+     ]
+    }
+   }
+  },
+  {
    "key": "laliga2|leganes|realvalladolid|2026-11-02T17:30",
    "sport": "laliga2",
    "home": "Real Valladolid",
@@ -26424,29 +26290,29 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.3782,
-    "away": 0.3552,
-    "draw": 0.2666
+    "home": 0.3724,
+    "away": 0.3502,
+    "draw": 0.2774
    },
    "best": {
     "home": {
      "book": "DraftKings",
-     "american": 145.0,
-     "decimal": 2.45
+     "american": 150.0,
+     "decimal": 2.5
     },
     "away": {
      "book": "DraftKings",
-     "american": 160.0,
-     "decimal": 2.6
+     "american": 165.0,
+     "decimal": 2.65
     },
     "draw": {
      "book": "DraftKings",
-     "american": 240.0,
-     "decimal": 3.4
+     "american": 230.0,
+     "decimal": 3.3
     }
    },
    "arb": false,
-   "impliedSum": 1.0869,
+   "impliedSum": 1.0804,
    "bets": [],
    "pm": [],
    "tier": "core",
@@ -26464,8 +26330,8 @@
     "home": 0.451,
     "draw": 0.3044,
     "away": 0.2446,
-    "blendHome": 0.3964,
-    "gapPp": 7.3,
+    "blendHome": 0.3921,
+    "gapPp": 7.9,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -29854,9 +29720,9 @@
    "nBooks": 1,
    "threeWay": true,
    "fair": {
-    "home": 0.4069,
-    "away": 0.3577,
-    "draw": 0.2353
+    "home": 0.4058,
+    "away": 0.3566,
+    "draw": 0.2376
    },
    "best": {
     "home": {
@@ -29871,12 +29737,12 @@
     },
     "draw": {
      "book": "DraftKings",
-     "american": 285.0,
-     "decimal": 3.85
+     "american": 280.0,
+     "decimal": 3.8
     }
    },
    "arb": false,
-   "impliedSum": 1.0791,
+   "impliedSum": 1.0826,
    "bets": [],
    "pm": [],
    "tier": "core",
@@ -29894,8 +29760,8 @@
     "home": 0.4614,
     "draw": 0.2633,
     "away": 0.2753,
-    "blendHome": 0.4205,
-    "gapPp": 5.4,
+    "blendHome": 0.4197,
+    "gapPp": 5.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -32741,9 +32607,9 @@
    "nBooks": 2,
    "threeWay": true,
    "fair": {
-    "home": 0.4386,
-    "away": 0.2841,
-    "draw": 0.2773
+    "home": 0.4408,
+    "away": 0.2818,
+    "draw": 0.2774
    },
    "best": {
     "home": {
@@ -32780,11 +32646,11 @@
    "spread": {
     "home": {
      "handicap": 0.0,
-     "american": -115
+     "american": -120
     },
     "away": {
      "handicap": 0.0,
-     "american": -115
+     "american": -110
     }
    },
    "total": {
@@ -32801,8 +32667,8 @@
     "home": 0.527,
     "draw": 0.266,
     "away": 0.207,
-    "blendHome": 0.4607,
-    "gapPp": 8.8,
+    "blendHome": 0.4624,
+    "gapPp": 8.6,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -32860,20 +32726,20 @@
    "nBooks": 2,
    "threeWay": true,
    "fair": {
-    "home": 0.3912,
-    "away": 0.3093,
-    "draw": 0.2995
+    "home": 0.3883,
+    "away": 0.3053,
+    "draw": 0.3065
    },
    "best": {
     "home": {
-     "book": "DraftKings",
-     "american": 140.0,
-     "decimal": 2.4
+     "book": "Bovada",
+     "american": 145,
+     "decimal": 2.45
     },
     "away": {
-     "book": "DraftKings",
-     "american": 200.0,
-     "decimal": 3.0
+     "book": "Bovada",
+     "american": 210,
+     "decimal": 3.1
     },
     "draw": {
      "book": "DraftKings",
@@ -32882,7 +32748,7 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.0577,
+   "impliedSum": 1.0384,
    "bets": [],
    "pm": [],
    "tier": "core",
@@ -32899,29 +32765,29 @@
    "spread": {
     "home": {
      "handicap": 0.0,
-     "american": 105
+     "american": 108
     },
     "away": {
      "handicap": 0.0,
-     "american": -135
+     "american": -140
     }
    },
    "total": {
     "over": {
      "handicap": 2.0,
-     "american": 100
+     "american": 102
     },
     "under": {
      "handicap": 2.0,
-     "american": -130
+     "american": -132
     }
    },
    "model": {
     "home": 0.4632,
     "draw": 0.2769,
     "away": 0.2599,
-    "blendHome": 0.4092,
-    "gapPp": 7.2,
+    "blendHome": 0.407,
+    "gapPp": 7.5,
     "weight": 0.25
    },
    "crossArbs": [],
@@ -33508,11 +33374,11 @@
    "spread": {
     "home": {
      "handicap": 0.0,
-     "american": -118
+     "american": -115
     },
     "away": {
      "handicap": 0.0,
-     "american": -112
+     "american": -115
     }
    },
    "total": {
@@ -36163,21 +36029,21 @@
    "spread": {
     "home": {
      "handicap": -0.5,
-     "american": 102
+     "american": 110
     },
     "away": {
      "handicap": 0.5,
-     "american": -122
+     "american": -130
     }
    },
    "total": {
     "over": {
      "handicap": 3.0,
-     "american": -102
+     "american": 110
     },
     "under": {
      "handicap": 3.0,
-     "american": -118
+     "american": -130
     }
    },
    "model": {
@@ -36971,15 +36837,15 @@
    "nBooks": 2,
    "threeWay": true,
    "fair": {
-    "home": 0.3657,
-    "away": 0.3885,
-    "draw": 0.2458
+    "home": 0.3694,
+    "away": 0.3846,
+    "draw": 0.2459
    },
    "best": {
     "home": {
-     "book": "Bovada",
-     "american": 165,
-     "decimal": 2.65
+     "book": "DraftKings",
+     "american": 160.0,
+     "decimal": 2.6
     },
     "away": {
      "book": "DraftKings",
@@ -36993,7 +36859,7 @@
     }
    },
    "arb": false,
-   "impliedSum": 1.0371,
+   "impliedSum": 1.0444,
    "bets": [],
    "pm": [],
    "tier": "core",
@@ -37020,11 +36886,11 @@
    "total": {
     "over": {
      "handicap": 3.5,
-     "american": 105
+     "american": 108
     },
     "under": {
      "handicap": 3.5,
-     "american": -125
+     "american": -128
     }
    },
    "crossArbs": [],
@@ -37034,10 +36900,10 @@
     "side": "home",
     "biggestMovePts": 3.4,
     "biggestMoveAt": "2026-10-31T20:27:15+00:00",
-    "totalDriftPts": 7.9,
-    "snapshots": 38,
+    "totalDriftPts": 8.2,
+    "snapshots": 39,
     "firstSeen": "2026-10-28T00:31:24+00:00",
-    "lastSeen": "2026-11-02T01:57:11+00:00"
+    "lastSeen": "2026-11-02T02:20:50+00:00"
    }
   },
   {
@@ -37901,11 +37767,11 @@
    "total": {
     "over": {
      "handicap": 3.5,
-     "american": -110
+     "american": -112
     },
     "under": {
      "handicap": 3.5,
-     "american": -110
+     "american": -108
     }
    },
    "crossArbs": [],
@@ -50940,15 +50806,15 @@
   }
  ],
  "day": {
-  "nBets": 65,
-  "scale": 0.111,
-  "totalStake": 8.01,
-  "meanPnl": 2.83,
+  "nBets": 64,
+  "scale": 0.112,
+  "totalStake": 8.08,
+  "meanPnl": 2.91,
   "var95": 6.0,
-  "pBreakEven": 0.507,
-  "pProfit": 0.507,
-  "best": 50.16,
-  "worst": -8.01,
+  "pBreakEven": 0.514,
+  "pProfit": 0.514,
+  "best": 52.09,
+  "worst": -8.08,
   "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."
  },
  "disclaimer": "Edges are measured against the consensus of the books returned, not a private model. Informational only.",
@@ -54836,36 +54702,6 @@
    "snaps": 40,
    "fairDraw": 0.244
   },
-  "nhl|ottawasenators|vegasgoldenknights|2026-10-28T02:00": {
-   "sport": "nhl",
-   "home": "Vegas Golden Knights",
-   "away": "Ottawa Senators",
-   "start": "2026-10-28T02:00Z",
-   "capturedAt": "2026-10-28T00:31:24+00:00",
-   "minutesBeforeStart": 89,
-   "fairHome": 0.5973,
-   "fairAway": 0.4027,
-   "bestHome": -162.0,
-   "bestAway": 136.0,
-   "nBooks": 1,
-   "firstFairHome": 0.5865,
-   "snaps": 9
-  },
-  "nhl|vancouvercanucks|anaheimducks|2026-10-28T02:00": {
-   "sport": "nhl",
-   "home": "Anaheim Ducks",
-   "away": "Vancouver Canucks",
-   "start": "2026-10-28T02:00Z",
-   "capturedAt": "2026-10-28T00:31:24+00:00",
-   "minutesBeforeStart": 89,
-   "fairHome": 0.6642,
-   "fairAway": 0.3358,
-   "bestHome": -218.0,
-   "bestAway": 180.0,
-   "nBooks": 1,
-   "firstFairHome": 0.6428,
-   "snaps": 10
-  },
   "nhl|buffalosabres|sanjosesharks|2026-10-28T02:30": {
    "sport": "nhl",
    "home": "San Jose Sharks",
@@ -55801,6 +55637,22 @@
    "firstFairHome": 0.4457,
    "snaps": 37,
    "fairDraw": 0.264
+  },
+  "usl|tulsa|sacramentorepublic|2026-11-02T02:00": {
+   "sport": "usl",
+   "home": "Sacramento Republic FC",
+   "away": "FC Tulsa",
+   "start": "2026-11-02T02:00Z",
+   "capturedAt": "2026-11-01T21:09:36+00:00",
+   "minutesBeforeStart": 290,
+   "fairHome": 0.5772,
+   "fairAway": 0.1716,
+   "bestHome": -160.0,
+   "bestAway": 400.0,
+   "nBooks": 1,
+   "firstFairHome": 0.5851,
+   "snaps": 37,
+   "fairDraw": 0.2511
   },
   "ligamx|necaxa|santos|2026-11-01T23:00": {
    "sport": "ligamx",
@@ -58873,6 +58725,21 @@
    "firstFairHome": 0.6124,
    "snaps": 7
   },
+  "nba|torontoraptors|losangeleslakers|2026-11-02T02:00": {
+   "sport": "nba",
+   "home": "Los Angeles Lakers",
+   "away": "Toronto Raptors",
+   "start": "2026-11-02T02:00Z",
+   "capturedAt": "2026-11-02T01:48:32+00:00",
+   "minutesBeforeStart": 11,
+   "fairHome": 0.6001,
+   "fairAway": 0.3999,
+   "bestHome": -162.0,
+   "bestAway": 140,
+   "nBooks": 2,
+   "firstFairHome": 0.6316,
+   "snaps": 10
+  },
   "nba|laclippers|goldenstatewarriors|2026-11-02T01:30": {
    "sport": "nba",
    "home": "Golden State Warriors",
@@ -59502,7 +59369,7 @@
     "stake": 2.17,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 24.0,
+     "hoursToStart": 23.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59525,7 +59392,7 @@
     "stake": 1.86,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 22.0,
+     "hoursToStart": 21.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59548,7 +59415,7 @@
     "stake": 2.34,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 25.5,
+     "hoursToStart": 25.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59571,7 +59438,7 @@
     "stake": 1.38,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 21.5,
+     "hoursToStart": 21.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59594,7 +59461,7 @@
     "stake": 1.11,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 70.0,
+     "hoursToStart": 69.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59617,7 +59484,7 @@
     "stake": 2.22,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 160.0,
+     "hoursToStart": 159.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59640,7 +59507,7 @@
     "stake": 3.0,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 135.0,
+     "hoursToStart": 134.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59663,7 +59530,7 @@
     "stake": 3.0,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 22.5,
+     "hoursToStart": 22.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59686,7 +59553,7 @@
     "stake": 2.95,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 135.0,
+     "hoursToStart": 134.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -59709,7 +59576,7 @@
     "stake": 0.23,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 21.0,
+     "hoursToStart": 20.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
