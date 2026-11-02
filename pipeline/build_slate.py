@@ -256,6 +256,12 @@ def _espn_events(sport, data):
                 g["pitchers"] = pitchers
             if meta:
                 g["teamMeta"] = meta
+            ven = comp.get("venue") or {}
+            vname = ven.get("fullName")
+            vaddr = ven.get("address") or {}
+            vcity = ", ".join(x for x in (vaddr.get("city"), vaddr.get("state") or vaddr.get("country")) if x)
+            if vname or vcity:
+                g["venue"] = {"name": vname, "location": vcity or None}
             out.append(g)
     return out
 
@@ -728,8 +734,13 @@ def analyze(games, pms, models=None, injuries=None, now=None):
                "sport": g["sport"], "home": g["home"], "away": g["away"], "start": g["start"], "nBooks": n, "threeWay": three,
                "fair": {k: round(v, 4) for k, v in fair.items()},
                "best": {k: {"book": best[k][1], "american": best[k][2], "decimal": round(best[k][0], 3)} for k in best},
+               # Every book's own price per outcome (not just the single best one) -- lets the UI show a real
+               # DraftKings-vs-Bovada-vs-whatever-else side-by-side comparison, not just "here's the best price".
+               "allBooks": {k: sorted(({"book": bk, "american": px} for d, bk, px in sides[k]), key=lambda x: x["book"]) for k in outcomes},
                "arb": implied_sum < 1, "impliedSum": round(implied_sum, 4), "bets": [], "pm": [],
                "tier": "core" if g["sport"] in CORE_SPORTS else "extended"}
+        if g.get("venue"):
+            row["venue"] = g["venue"]
         if sharp:
             row["sharpBooks"] = sharp
         if g.get("teamMeta"):

@@ -115,6 +115,24 @@ tbody tr:hover td{background:var(--panel2);}
 .chip button{background:transparent;border:none;color:var(--text);cursor:pointer;font-size:.8rem;padding:4px 6px;border-radius:999px;}
 .chip button.x{color:var(--sub);}
 .chip .n{background:var(--accent2);color:#06262b;border-radius:999px;padding:0 7px;font-size:.7rem;margin-left:4px;font-weight:700;}
+/* ---- Edge card: one flagged bet or arb, OddsJam-style ---- */
+.edge-card{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin:10px 0;}
+.edge-card-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.edge-ev{font-size:1.3rem;font-weight:800;color:var(--gain);font-family:var(--mono);}
+.edge-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--sub);font-size:.78rem;}
+.edge-sim{display:inline-flex;align-items:center;gap:3px;background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-family:var(--mono);}
+.edge-league{color:var(--sub);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;margin-top:6px;}
+.edge-matchup{font-weight:700;font-size:.95rem;margin:2px 0 6px;}
+.edge-pick{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+.book-badge{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-weight:700;font-size:.78rem;border-radius:6px;padding:3px 8px;color:#06120f;}
+.book-draftkings{background:#53d337;}
+.book-bovada{background:#c99b45;}
+.book-kalshi{background:#00d395;}
+.book-polymarket{background:#9d8cff;}
+.book-fanduel{background:#1493ff;}
+.book-other{background:var(--accent2);}
+.edge-why{font-size:.8rem;color:var(--sub);line-height:1.5;}
+.edge-why b{color:var(--text);}
 
 /* ---- signal card: one tradeable call, scannable at a glance (the big number IS the
    headline -- no card needs a title to say what it is) ---------------------------- */
@@ -478,6 +496,13 @@ input[type=checkbox]{width:auto;}
       <div class="callout" id="slNote" style="margin:12px 0 0;"></div>
       <div class="hero-grid" id="slHero"></div>
       <div class="stat-grid" id="slStats"></div>
+    </div>
+    <div class="card">
+      <h2>Top Edges</h2>
+      <p class="desc">Every bet the pipeline currently flags as +EV, ranked by edge size. Each card shows the win chance behind the number (🎲), the specific bet and where it's priced best, and the reasoning: how that price compares to the de-vigged consensus, what the model and prediction markets say, and the timing read. Real, live sources right now: <b>DraftKings</b> (via ESPN's public feed), <b>Bovada</b> (a genuine second book), <b>Kalshi</b> and <b>Polymarket</b> (prediction markets, used for the cross-venue comparison and signals). FanDuel has no free, keyless odds API of any kind — confirmed by research, not assumed — so it is never shown here; adding it would mean either paying for a feed or faking the data, and this dashboard doesn't do either.</p>
+      <div id="edgeFeed"></div>
+    </div>
+    <div class="card">
       <h2 style="margin-top:16px;font-size:.9rem">Data sources used</h2>
       <div id="slSources" class="desc"></div>
       <h2 style="margin-top:16px;font-size:.9rem">Health check</h2>
@@ -1522,6 +1547,71 @@ function liveRender(items){
       'Kalshi live: <b>'+(x.kalshiHome*100).toFixed(0)+'%</b> '+esc(x.home)+(bits.length?'<br>'+bits.join('<br>'):'<br><span class="desc" style="margin:0">No notable move yet — tracking.</span>')+'</div>';
   }).join('');
 }
+function bookBadgeClass(book){
+  const b=(book||'').toLowerCase();
+  if(b.includes('draftkings'))return 'book-draftkings';
+  if(b.includes('bovada'))return 'book-bovada';
+  if(b.includes('kalshi'))return 'book-kalshi';
+  if(b.includes('polymarket'))return 'book-polymarket';
+  if(b.includes('fanduel'))return 'book-fanduel';
+  return 'book-other';
+}
+function sideKeyFor(r,side){return side===r.home?'home':side===r.away?'away':side==='Draw'||side===r.draw?'draw':null;}
+function edgeFeedRender(g){
+  const el=$('edgeFeed');if(!el)return;
+  const items=[];
+  (g||[]).forEach(r=>{
+    (r.bets||[]).forEach(b=>{
+      const sk=sideKeyFor(r,b.side);
+      const implied=1/am2dec(b.american);
+      const edgePp=(b.fair-implied)*100;
+      items.push({r,b,sk,implied,edgePp});
+    });
+  });
+  items.sort((x,y)=>y.b.evPct-x.b.evPct);
+  if(!items.length){el.innerHTML='<div class="desc">No +EV edges in the current slate. This list updates automatically as odds move and new games get added.</div>';return;}
+  el.innerHTML=items.slice(0,60).map(x=>{
+    const r=x.r,b=x.b,sk=x.sk;
+    const t0=new Date(r.start);
+    const when=isNaN(t0)?'TBD':t0.toLocaleString(undefined,{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+    const simPct=(b.fair*100).toFixed(1);
+    const modelPct=(r.model&&sk&&r.model[sk]!=null)?(r.model[sk]*100).toFixed(1):null;
+    const marketFairPct=(r.fair&&sk&&r.fair[sk]!=null)?(r.fair[sk]*100).toFixed(1):null;
+    const basisLabel=b.basis==='model-blend'?'includes our own unproven Elo model blend':(r.nBooks>=2?'de-vigged multi-book consensus':'de-vigged single-book price');
+    const pmBits=[];
+    (r.pm||[]).forEach(m=>{
+      if(sk&&m[sk]!=null)pmBits.push(esc(m.source)+' prices this side at '+(m[sk]*100).toFixed(1)+'%'+(m[sk+'EdgePp']!=null?' ('+signed(m[sk+'EdgePp'],1,'pp')+' vs. our fair)':''));
+    });
+    const whyParts=[];
+    whyParts.push('Fair price ('+basisLabel+') puts '+esc(b.side)+' at <b>'+simPct+'%</b> to win vs. '+esc(b.book)+'\'s implied <b>'+(x.implied*100).toFixed(1)+'%</b> — a <b>'+signed(x.edgePp,1,'pp')+'</b> edge.');
+    if(modelPct&&b.basis!=='model-blend')whyParts.push('Our Elo model alone sees it at '+modelPct+'%.');
+    if(marketFairPct&&b.basis==='model-blend')whyParts.push('Books alone have it at '+marketFairPct+'% (the model blend is what pushes this one over the edge threshold).');
+    if(pmBits.length)whyParts.push(pmBits.join(' '));
+    else whyParts.push('No matching Kalshi/Polymarket market to cross-check against right now.');
+    if(b.timing&&b.timing.reasons&&b.timing.reasons.length)whyParts.push(b.timing.reasons.join(' '));
+    const venueTxt=r.venue&&r.venue.name?esc(r.venue.name)+(r.venue.location?' · '+esc(r.venue.location):''):null;
+    // Every book's own price for THIS side, best first -- the actual DraftKings-vs-Bovada-vs-(whatever else is
+    // live) comparison, not just "here's the single best price". Falls back to the one best price when a sport
+    // only has one book (allBooks rides on every row built after the per-book-price change; older cached slates
+    // won't have it, hence the fallback).
+    const sideBooks=(sk&&r.allBooks&&r.allBooks[sk]&&r.allBooks[sk].length)?r.allBooks[sk].slice().sort((p,q)=>am2dec(q.american)-am2dec(p.american)):[{book:b.book,american:b.american}];
+    const pmPrices=(r.pm||[]).filter(m=>sk&&m[sk]!=null).map(m=>({book:m.source,american:null,pct:m[sk]}));
+    const priceRow=sideBooks.map(pb=>'<span class="book-badge '+bookBadgeClass(pb.book)+'">'+esc(pb.book)+' '+fmtOdds(pb.american)+'</span>').join(' ')+
+      pmPrices.map(pb=>'<span class="book-badge '+bookBadgeClass(pb.book)+'" title="Prediction market price, not a sportsbook odds line">'+esc(pb.book)+' '+(pb.pct*100).toFixed(0)+'¢</span>').join(' ');
+    return '<div class="edge-card">'+
+      '<div class="edge-card-top">'+
+        '<span class="edge-ev">+'+b.evPct+'% EV</span>'+
+        '<span class="edge-meta"><span class="edge-sim" title="Fair win probability behind this edge">🎲 '+simPct+'%</span>'+tierChip(b.basis==='model-blend'?'low':(r.nBooks>=2?'high':'medium'))+timingChip(b.timing)+'<span>'+when+'</span></span>'+
+      '</div>'+
+      '<div class="edge-league">'+esc(SN(r.sport)||r.sport.toUpperCase())+' · Moneyline'+(venueTxt?' · '+venueTxt:'')+'</div>'+
+      '<div class="edge-matchup">'+esc(r.away)+' @ '+esc(r.home)+'</div>'+
+      '<div class="edge-pick"><b>'+esc(b.side)+' ML — bet this one:</b> <span class="book-badge '+bookBadgeClass(b.book)+'">'+esc(b.book)+' '+fmtOdds(b.american)+'</span>'+
+        '<span class="desc" style="margin:0">stake '+usd(b.stake)+' ('+b.stakePct+'% of bankroll, Kelly-sized) · $100 bet: win '+d100(win100(b.american))+' / lose −$100</span></div>'+
+      '<div class="edge-pick" style="margin-bottom:8px">'+priceRow+'</div>'+
+      '<div class="edge-why">'+whyParts.join(' ')+'</div>'+
+    '</div>';
+  }).join('');
+}
 function arbFeedRender(g){
   const el=$('arbFeed');if(!el)return;
   const items=[];
@@ -1811,6 +1901,7 @@ function slateRender(d,label){
   oppRender(g);
   propsRender(g);
   predictRender(g);
+  edgeFeedRender(g);
   arbFeedRender(g);
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
@@ -1846,7 +1937,10 @@ function slateRender(d,label){
 function slateExample(){
   slateRender({generatedAt:new Date().toISOString(),sources:[{source:'odds[nfl]:oddsapi',ok:true,detail:'EXAMPLE'},{source:'kalshi:direct',ok:false,detail:'example failure, fell back'},{source:'kalshi:sports-skills',ok:true,detail:'EXAMPLE'}],
    day:{totalStake:2.4,meanPnl:0.06,pBreakEven:.46,var95:2.4},diagnostics:{warnings:['EXAMPLE: nfl: only one book per game, so edge bets, arbitrage and middles cannot appear'],bySport:{nfl:{games:14,withOdds:14,avgBooks:1,withModel:14,withPmMatch:2,edgeBets:0}}},
-   games:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),nBooks:3,fair:{home:.58,away:.42},best:{home:{american:-140,book:'FanDuel'},away:{american:150,book:'BetMGM'}},arb:false,bets:[{side:'Example Away',american:150,book:'BetMGM',evPct:5,fair:.44,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved 4.5 pts toward this side.']}}],pm:[{source:'polymarket',home:.559,away:.441,homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'FanDuel',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ FanDuel (-110)',legB:'Example Away +3.5 @ BetMGM (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}],
+   games:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),nBooks:3,fair:{home:.58,away:.42},model:{home:.56,away:.44,gapPp:-2.0},best:{home:{american:-140,book:'DraftKings'},away:{american:150,book:'Bovada'}},
+    allBooks:{home:[{book:'DraftKings',american:-140},{book:'Bovada',american:-135}],away:[{book:'Bovada',american:150},{book:'DraftKings',american:142}]},
+    venue:{name:'EXAMPLE Stadium',location:'Example City, EX'},
+    arb:false,bets:[{side:'Example Away',american:150,book:'Bovada',evPct:5,fair:.44,stakePct:0.8,stake:1.2,timing:{advice:'buy_now',hoursToStart:6.5,reasons:['EXAMPLE: the market has already moved 4.5 pts toward this side.']}}],pm:[{source:'polymarket',home:.559,away:.441,homeEdgePp:2.1,awayEdgePp:-2.1}],crossArbs:[{bookSide:'home',book:'DraftKings',american:-105,pmSide:'away',pmSource:'polymarket',pmPrice:.45,roiPct:1.4,allInCost:.986}],middles:[{kind:'spread',legA:'Example Home -2.5 @ DraftKings (-110)',legB:'Example Away +3.5 @ Bovada (-110)',gap:1,pMiddle:.05,evPct:-0.6,outerPct:-4.5,middlePct:90.9,splitA:.5,splitB:.5}],
     spread:{home:{handicap:-2.5,american:-110},away:{handicap:2.5,american:-110}},
     total:{over:{handicap:47.5,american:-110},under:{handicap:47.5,american:-108}},
     props:[{market:'EXAMPLE: Star QB Total Passing Yards',legs:[{name:'Over',handicap:265.5,american:-115},{name:'Under',handicap:265.5,american:-105}]},
@@ -1855,7 +1949,7 @@ function slateExample(){
     teamMeta:{home:{color:'e31837'},away:{color:'002244'}},
     matchup:{h2h:[{date:'2026-09-14',home:'Example Home',away:'Example Away',homeScore:24,awayScore:20},{date:'2025-11-02',home:'Example Away',away:'Example Home',homeScore:17,awayScore:27}],
       home:{name:'Example Home',record:'4-2',last:['W','W','L','W','T','W']},away:{name:'Example Away',record:'3-3',last:['L','W','L','L','W','W']}}},
-   {sport:'epl',home:'Example FC',away:'Sample United',start:new Date(Date.now()+26*3600e3).toISOString(),nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'FanDuel'},away:{american:260,book:'BetMGM'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[{side:'Example FC',american:120,book:'FanDuel',evPct:3.2,fair:.47,stake:0.8,timing:{advice:'wait_ok',hoursToStart:25.5,reasons:['EXAMPLE: this edge has historically gotten slightly better closer to kickoff.']}}],pm:[]}],
+   {sport:'epl',home:'Example FC',away:'Sample United',start:new Date(Date.now()+26*3600e3).toISOString(),nBooks:3,threeWay:true,fair:{home:.46,draw:.27,away:.27},best:{home:{american:120,book:'DraftKings'},away:{american:260,book:'Bovada'},draw:{american:260,book:'DraftKings'}},arb:false,bets:[{side:'Example FC',american:120,book:'DraftKings',evPct:3.2,fair:.47,stakePct:0.6,stake:0.8,timing:{advice:'wait_ok',hoursToStart:25.5,reasons:['EXAMPLE: this edge has historically gotten slightly better closer to kickoff.']}}],pm:[]}],
    weekScores:[{sport:'nfl',home:'Example Home',away:'Example Away',start:new Date(Date.now()+3*3600e3).toISOString(),state:'pre',completed:false,homeScore:null,awayScore:null,detail:'',link:null},
     {sport:'nba',home:'Sample City',away:'Demo United',start:new Date(Date.now()-1800e3).toISOString(),state:'in',completed:false,homeScore:61,awayScore:58,detail:'Q3 6:42',link:null},
     {sport:'nhl',home:'Test Town',away:'Practice FC',start:new Date(Date.now()-5*3600e3).toISOString(),state:'post',completed:true,homeScore:4,awayScore:2,detail:'Final',link:'https://www.espn.com/'}],
