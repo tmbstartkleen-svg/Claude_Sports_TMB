@@ -28,7 +28,22 @@ PATHS = {
     "ncaab": "basketball/college-basketball",
     "mlb": "baseball/mlb",
     "nhl": "hockey/nhl",
+    # WNBA: not in any documented client (the ones referenced above predate the league's modern
+    # betting coverage), but bovada.lv's own basketball paths are consistently "basketball/<league
+    # slug>" (basketball/nba, basketball/college-basketball above) -- "basketball/wnba" follows that
+    # exact pattern and is a reasonable, low-risk guess. Degrades to a clean, logged empty result in
+    # slate["sources"] if wrong; corrected once a live run shows a 404.
+    "wnba": "basketball/wnba",
 }
+# Soccer: Bovada's own site groups every league under one shared "soccer" path (confirmed by
+# automation-lab's bovada-sportsbook-odds-scraper Actor docs on Apify, which lists bovada.lv/sports/
+# soccer[/<league>] as the site's own URL pattern with league sub-paths "also supported when that
+# path exists on Bovada" -- but doesn't enumerate exact league slugs for EPL/La Liga/etc., so rather
+# than guess ~70 individual slugs, we fetch this ONE top-level path, which returns whatever leagues
+# Bovada currently has events for, and let merge_bovada_soccer() match each event to our existing
+# ESPN-sourced games by team name + date across every soccer sport key at once (there's no reliable
+# league identifier in the response to pre-sort by, since we never confirmed the breadcrumb shape).
+SOCCER_PATH = "soccer"
 
 
 def _url(path):
@@ -165,6 +180,41 @@ def fetch(sport, getter=None):
                 g["sport"] = sport
                 games.append(g)
     return games
+
+
+def fetch_soccer(getter=None):
+    """All usable soccer games across every league Bovada currently lists under its one shared
+    'soccer' path, with no sport/league key attached (see SOCCER_PATH's comment -- we don't have a
+    confirmed way to read which league an event belongs to from the response). The caller matches
+    each game to one of our own soccer sport keys by team name + date instead."""
+    get = getter or _http_json
+    raw = get(_url(SOCCER_PATH)) or []
+    games = []
+    for block in raw or []:
+        for ev in (block or {}).get("events") or []:
+            try:
+                g = parse_event(ev)
+            except Exception:  # noqa
+                g = None
+            if g:
+                games.append(g)
+    return games
+
+
+def diag_soccer(getter=None):
+    """Same purpose as diag(), for the soccer catch-all path."""
+    try:
+        get = getter or _http_json
+        raw = get(_url(SOCCER_PATH)) or []
+    except Exception as e:  # noqa
+        return f"fetch raised: {e!r}"
+    if not raw:
+        return "response was empty/non-list -- check the 'soccer' path segment is still valid"
+    all_events = [ev for block in raw for ev in (block or {}).get("events") or []]
+    if not all_events:
+        return f"{len(raw)} block(s), 0 events -- likely no soccer games right now"
+    n_parsed = sum(1 for ev in all_events if parse_event(ev))
+    return f"{len(raw)} block(s), {len(all_events)} events, {n_parsed} parsed as usable games (across all leagues combined)"
 
 
 def diag(sport, getter=None):

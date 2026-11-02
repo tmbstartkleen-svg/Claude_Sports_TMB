@@ -165,8 +165,12 @@ def fake_fetch(sport, getter=None):
     assert sport == "ncaaf"
     return [{"sport": "ncaaf", "home": "Baylor", "away": "UCF", "start": 4102358400000,  # 2099-12-31T00:00:00Z
              "books": {"Bovada": {"home": -150, "away": 130}}}]
+def fake_fetch_soccer(getter=None):
+    return []  # no soccer games in this test slate; keeps merge_bovada offline (no real HTTP call)
 orig_fetch = b.bovada_mod.fetch
+orig_fetch_soccer = b.bovada_mod.fetch_soccer
 b.bovada_mod.fetch = fake_fetch
+b.bovada_mod.fetch_soccer = fake_fetch_soccer
 try:
     gg = [{"sport": "ncaaf", "home": "Baylor Bears", "away": "UCF Knights", "start": "2099-12-31T00:00Z",
            "books": {"DraftKings": {"home": -145, "away": 125}}}]
@@ -174,6 +178,52 @@ try:
     assert n == 1 and "Bovada" in gg[0]["books"], gg
 finally:
     b.bovada_mod.fetch = orig_fetch
+    b.bovada_mod.fetch_soccer = orig_fetch_soccer
 print("OK merge_bovada: school-name-only Bovada game matches its school+mascot ESPN game")
+
+# ---- PATHS: wnba follows the confirmed basketball/<league> pattern
+assert B.PATHS["wnba"] == "basketball/wnba"
+print("OK PATHS: wnba wired to basketball/wnba")
+
+# ---- fetch_soccer: no sport key attached (unlike fetch()), pulls every league from one shared path
+def soccer_getter(url):
+    assert "soccer" in url and "football" not in url
+    return [{"events": [event("Arsenal", "Chelsea"), event("Real Madrid", "Barcelona", moneyline=False)]}]
+sg = B.fetch_soccer(getter=soccer_getter)
+assert len(sg) == 1 and sg[0]["home"] == "Arsenal" and "sport" not in sg[0]
+print("OK fetch_soccer: fetches the shared path, drops unusable events, tags no sport key")
+
+# ---- diag_soccer: same empty/zero-event/zero-parsed distinctions as diag()
+d3 = B.diag_soccer(getter=lambda url: [])
+assert "empty" in d3
+d4 = B.diag_soccer(getter=lambda url: [{"events": []}])
+assert "0 events" in d4
+d5 = B.diag_soccer(getter=lambda url: [{"events": [event("A", "B", moneyline=False)]}])
+assert "1 events, 0 parsed" in d5
+print("OK diag_soccer: distinguishes empty / zero-events / zero-parsed")
+
+# ---- _merge_bovada_soccer (via merge_bovada): matches ANY THREE_WAY sport by team name, no
+# per-league path needed, and skips non-soccer rows / already-matched rows
+def fake_fetch_main(sport, getter=None):
+    return []  # force the per-sport loop to find nothing, so only the soccer catch-all can merge
+def fake_fetch_soccer_real(getter=None):
+    return [{"home": "Example FC", "away": "Sample United", "start": 4102358400000,
+             "books": {"Bovada": {"home": -120, "away": 110}}}]
+b.bovada_mod.fetch = fake_fetch_main
+b.bovada_mod.fetch_soccer = fake_fetch_soccer_real
+try:
+    soccer_row = {"sport": "epl", "home": "Example FC", "away": "Sample United", "start": "2099-12-31T00:00Z",
+                  "books": {"DraftKings": {"home": -115, "away": 105}}}
+    non_soccer_row = {"sport": "nfl", "home": "Example FC", "away": "Sample United", "start": "2099-12-31T00:00Z",
+                       "books": {"DraftKings": {"home": -115, "away": 105}}}
+    rows = [soccer_row, non_soccer_row]
+    n = b.merge_bovada(rows, ["epl", "nfl"])
+    assert n == 1, n
+    assert "Bovada" in soccer_row["books"]
+    assert "Bovada" not in non_soccer_row["books"]  # nfl row never matched despite identical team names
+finally:
+    b.bovada_mod.fetch = orig_fetch
+    b.bovada_mod.fetch_soccer = orig_fetch_soccer
+print("OK _merge_bovada_soccer: matches any soccer sport key by team name, never touches non-soccer rows")
 
 print("BOVADA TESTS PASS (name matching)")

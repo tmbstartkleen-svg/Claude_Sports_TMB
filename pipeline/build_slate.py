@@ -427,6 +427,56 @@ def merge_bovada(games, sports):
                     g["bovadaLive"] = True
                 n_merged += 1
                 break
+    n_merged += _merge_bovada_soccer(games)
+    return n_merged
+
+
+def _merge_bovada_soccer(games):
+    """Bovada's soccer coverage sits behind one shared path with every league mixed together and no
+    reliable league identifier in the response (see bovada.py's SOCCER_PATH comment), unlike every
+    other sport above which has its own confirmed per-league path. So instead of matching by sport
+    key, this matches each Bovada soccer event to ANY of our ESPN-sourced soccer games (every row
+    whose sport is in THREE_WAY) by team name + date -- the same _bovada_team_match + same-UTC-day
+    rule as merge_bovada, just without the per-sport filter. A false-positive cross-league match is
+    structurally near-impossible (two different leagues essentially never field two same-named teams
+    on the same calendar day), so this stays safe without knowing which league is which. Never raises:
+    same failure contract as merge_bovada."""
+    if not bovada_mod:
+        return 0
+    try:
+        bg = bovada_mod.fetch_soccer()
+    except Exception as e:  # noqa
+        log("bovada[soccer]", False, repr(e))
+        return 0
+    if bg:
+        log("bovada[soccer]", True, f"{len(bg)} games (all leagues)")
+    else:
+        try:
+            detail = bovada_mod.diag_soccer()
+        except Exception as e:  # noqa
+            detail = f"empty (diag also failed: {e!r})"
+        log("bovada[soccer]", False, detail)
+    n_merged = 0
+    for b in bg:
+        b_day = (_epoch_ms_to_iso(b.get("start")) or "")[:10]
+        for g in games:
+            if g["sport"] not in THREE_WAY or not _bovada_team_match(g["home"], b["home"]) or not _bovada_team_match(g["away"], b["away"]):
+                continue
+            if b_day and str(g.get("start") or "")[:10] not in (b_day, ""):
+                continue
+            if "Bovada" in g["books"]:
+                continue  # already matched (shouldn't happen twice, but never overwrite)
+            g["books"]["Bovada"] = b["books"]["Bovada"]
+            if b.get("spread") and "spread" not in g:
+                g["spread"] = b["spread"]
+            if b.get("total") and "total" not in g:
+                g["total"] = b["total"]
+            if b.get("props"):
+                g["props"] = b["props"]
+            if b.get("live"):
+                g["bovadaLive"] = True
+            n_merged += 1
+            break
     return n_merged
 
 

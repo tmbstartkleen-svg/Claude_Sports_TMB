@@ -291,8 +291,13 @@ input[type=checkbox]{width:auto;}
   <!-- ARBITRAGE -->
   <div class="tab" id="tab-arb">
     <div class="card">
-      <h2>Cross-Book Arbitrage</h2>
-      <p class="desc">Best odds per outcome, from different sources on the <em>same event</em>. Sub-100% implied sum = guaranteed profit.</p>
+      <h2>Live Arb Feed</h2>
+      <p class="desc">Every arbitrage opportunity in the current slate, auto-found and ranked by ROI: cross-book (two different sportsbooks disagree enough on the same game that both sides can be locked in for a guaranteed profit) and cross-venue (a sportsbook price vs. a Kalshi/Polymarket prediction-market price on the same game). This updates automatically with the slate — no manual entry needed.</p>
+      <div id="arbFeed"></div>
+    </div>
+    <div class="card">
+      <h2>Manual Arb Calculator</h2>
+      <p class="desc">Best odds per outcome, from different sources on the <em>same event</em> — type any two or three prices in by hand. Sub-100% implied sum = guaranteed profit.</p>
       <div class="row">
         <div class="field"><label>Outcome A source</label><input id="arbSrcA" placeholder="DraftKings"></div>
         <div class="field"><label>Odds (Am.)</label><input id="arbOddsA" type="number" placeholder="-120"></div>
@@ -1517,6 +1522,36 @@ function liveRender(items){
       'Kalshi live: <b>'+(x.kalshiHome*100).toFixed(0)+'%</b> '+esc(x.home)+(bits.length?'<br>'+bits.join('<br>'):'<br><span class="desc" style="margin:0">No notable move yet — tracking.</span>')+'</div>';
   }).join('');
 }
+function arbFeedRender(g){
+  const el=$('arbFeed');if(!el)return;
+  const items=[];
+  (g||[]).forEach(r=>{
+    if(r.arb&&r.impliedSum){
+      const roi=(1/r.impliedSum-1)*100;
+      const outs=r.threeWay?['home','draw','away']:['home','away'];
+      const legs=outs.filter(k=>r.best&&r.best[k]).map(k=>'<b>'+esc(k==='draw'?'Draw':r[k])+'</b> '+fmtOdds(r.best[k].american)+' @ '+esc(r.best[k].book));
+      if(legs.length>1)items.push({roi,kind:'Cross-book',r,legs,start:r.start});
+    }
+    (r.crossArbs||[]).forEach(a=>{
+      items.push({roi:a.roiPct,kind:'Book vs '+esc(a.pmSource),r,
+        legs:['<b>'+esc(a.bookSide==='home'?r.home:r.away)+'</b> '+fmtOdds(a.american)+' @ '+esc(a.book),
+              '<b>'+esc(a.pmSide==='home'?r.home:r.away)+'</b> '+(a.pmPrice*100).toFixed(0)+'¢ @ '+esc(a.pmSource)],start:r.start});
+    });
+  });
+  items.sort((x,y)=>y.roi-x.roi);
+  el.innerHTML=items.length?items.slice(0,40).map(x=>{
+    const t0=new Date(x.start);
+    return '<div style="margin:8px 0;padding:10px;border:1px solid var(--border,#8884);border-radius:8px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">'+
+        '<span class="pos" style="font-size:1.15rem;font-weight:700">'+x.roi.toFixed(2)+'%</span>'+
+        '<span class="desc" style="margin:0">'+esc(SN(x.r.sport)||x.r.sport.toUpperCase())+' · '+(isNaN(t0)?'':t0.toLocaleString(undefined,{weekday:'short',hour:'numeric',minute:'2-digit'}))+'</span>'+
+      '</div>'+
+      '<div style="font-weight:600;margin:2px 0">'+esc(x.r.away)+' @ '+esc(x.r.home)+'</div>'+
+      '<div class="desc" style="margin:0 0 4px">'+x.kind+'</div>'+
+      x.legs.join('<br>')+
+    '</div>';
+  }).join('') : '<div class="desc">No arbitrage right now, across books or against prediction markets. This list refreshes with the slate — check back as more books and markets move.</div>';
+}
 function oppRender(g){
   whaleRender(g);
   steamRender(g);
@@ -1776,6 +1811,7 @@ function slateRender(d,label){
   oppRender(g);
   propsRender(g);
   predictRender(g);
+  arbFeedRender(g);
   const nb=g.reduce((a,r)=>a+r.bets.length,0),na=g.filter(r=>r.arb).length,nx=g.reduce((a,r)=>a+(r.crossArbs||[]).length,0),nm=g.reduce((a,r)=>a+(r.middles||[]).length,0);
   $('slStats').innerHTML=`<div class="stat"><div class="v">${g.length}</div><div class="k">Games</div></div>
    <div class="stat"><div class="v ${nb?'pos':''}">${nb}</div><div class="k">Edge bets</div></div>
