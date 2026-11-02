@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T01:44:22+00:00",
+ "generatedAt": "2026-11-02T01:48:32+00:00",
  "settings": {
   "bankroll": 100.0,
   "kellyFrac": 0.35,
@@ -656,7 +656,7 @@
   {
    "source": "bovada[nhl]",
    "ok": true,
-   "detail": "6 games"
+   "detail": "5 games"
   },
   {
    "source": "bovada[ncaaf]",
@@ -1041,7 +1041,7 @@
   {
    "source": "history",
    "ok": true,
-   "detail": "324 snapshots added, 508 closing lines available"
+   "detail": "6 snapshots added, 508 closing lines available"
   },
   {
    "source": "steam",
@@ -1056,22 +1056,22 @@
   {
    "source": "grading",
    "ok": true,
-   "detail": "14 picks added, 11 settled, 0 CLV, 596 total"
+   "detail": "1 picks added, 0 settled, 0 CLV, 597 total"
   },
   {
    "source": "timing",
    "ok": true,
-   "detail": "58 bets with buy-now/wait guidance"
+   "detail": "59 bets with buy-now/wait guidance"
   },
   {
    "source": "whales",
    "ok": true,
-   "detail": "40 markets checked, 2 games with a notable trade"
+   "detail": "40 markets checked, 1 games with a notable trade"
   },
   {
    "source": "alerts",
    "ok": true,
-   "detail": "43 found, 6 sent: sent"
+   "detail": "43 found, 0 sent: nothing new"
   },
   {
    "source": "suggestions",
@@ -1868,7 +1868,7 @@
     "avgBooks": 2.0,
     "withModel": 11,
     "withPmMatch": 11,
-    "edgeBets": 1
+    "edgeBets": 2
    },
    "ncaab": {
     "games": 12,
@@ -2066,12 +2066,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -100000.0,
      "decimal": 1.001
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 5000.0,
      "decimal": 51.0
     }
@@ -2081,7 +2081,7 @@
    "bets": [
     {
      "side": "Chattanooga Mocs",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 5000.0,
      "fair": 0.0803,
      "evPct": 309.56,
@@ -2090,7 +2090,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 24.3,
+      "hoursToStart": 24.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2161,12 +2161,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -100000.0,
      "decimal": 1.001
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 5000.0,
      "decimal": 51.0
     }
@@ -2176,7 +2176,7 @@
    "bets": [
     {
      "side": "Quinnipiac Bobcats",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 5000.0,
      "fair": 0.0717,
      "evPct": 265.5,
@@ -2185,7 +2185,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.3,
+      "hoursToStart": 22.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2256,12 +2256,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -20000.0,
      "decimal": 1.005
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 3500.0,
      "decimal": 36.0
     }
@@ -2271,7 +2271,7 @@
    "bets": [
     {
      "side": "Milwaukee Panthers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 3500.0,
      "fair": 0.0928,
      "evPct": 234.07,
@@ -2280,7 +2280,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 25.8,
+      "hoursToStart": 25.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2352,12 +2352,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -50000.0,
      "decimal": 1.002
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 4000.0,
      "decimal": 41.0
     }
@@ -2367,7 +2367,7 @@
    "bets": [
     {
      "side": "Monmouth Hawks",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 4000.0,
      "fair": 0.0628,
      "evPct": 157.51,
@@ -2376,7 +2376,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 21.8,
+      "hoursToStart": 21.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2448,7 +2448,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 1400.0,
      "decimal": 15.0
     },
@@ -2463,7 +2463,7 @@
    "bets": [
     {
      "side": "Sacramento State Hornets",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 1400.0,
      "fair": 0.0962,
      "evPct": 44.37,
@@ -2472,7 +2472,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 70.3,
+      "hoursToStart": 70.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2570,12 +2570,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -520.0,
      "decimal": 1.192
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 390.0,
      "decimal": 4.9
     }
@@ -2585,7 +2585,7 @@
    "bets": [
     {
      "side": "New York Jets",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 390.0,
      "fair": 0.2546,
      "evPct": 24.77,
@@ -2594,7 +2594,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 160.3,
+      "hoursToStart": 160.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2695,7 +2695,7 @@
      "decimal": 3.15
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     }
@@ -2714,7 +2714,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 135.3,
+      "hoursToStart": 135.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2825,12 +2825,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 195.0,
      "decimal": 2.95
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -238.0,
      "decimal": 1.42
     }
@@ -2840,7 +2840,7 @@
    "bets": [
     {
      "side": "Purdue Boilermakers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 195.0,
      "fair": 0.4053,
      "evPct": 19.57,
@@ -2849,7 +2849,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.8,
+      "hoursToStart": 22.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -2927,12 +2927,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 225.0,
      "decimal": 3.25
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -278.0,
      "decimal": 1.36
     }
@@ -2942,7 +2942,7 @@
    "bets": [
     {
      "side": "UConn Huskies",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 225.0,
      "fair": 0.366,
      "evPct": 18.93,
@@ -2951,7 +2951,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 135.3,
+      "hoursToStart": 135.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3043,12 +3043,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -9000.0,
      "decimal": 1.011
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 2500.0,
      "decimal": 26.0
     }
@@ -3058,7 +3058,7 @@
    "bets": [
     {
      "side": "Oakland Golden Grizzlies",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 2500.0,
      "fair": 0.0447,
      "evPct": 16.2,
@@ -3067,7 +3067,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 21.3,
+      "hoursToStart": 21.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3180,7 +3180,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 17.3,
+      "hoursToStart": 17.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3254,36 +3254,36 @@
    "nBooks": 2,
    "threeWay": false,
    "fair": {
-    "home": 0.5387,
-    "away": 0.4613
+    "home": 0.5538,
+    "away": 0.4462
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
-     "american": -120.0,
-     "decimal": 1.833
+     "book": "DraftKings",
+     "american": -125.0,
+     "decimal": 1.8
     },
     "away": {
      "book": "Bovada",
-     "american": 115,
-     "decimal": 2.15
+     "american": 125,
+     "decimal": 2.25
     }
    },
    "arb": false,
-   "impliedSum": 1.0106,
+   "impliedSum": 1.0,
    "bets": [
     {
      "side": "Orlando Magic",
-     "book": "Draft Kings",
-     "american": -120.0,
-     "fair": 0.6138,
-     "evPct": 12.53,
+     "book": "DraftKings",
+     "american": -125.0,
+     "fair": 0.6251,
+     "evPct": 12.52,
      "stakePct": 3.0,
      "stake": 3.0,
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 22.8,
+      "hoursToStart": 22.7,
       "reasons": [
        "Historically, NBA edges we've flagged have lost 1.7% to the closing line on average (n=40) -- the price has tended to improve by waiting."
       ]
@@ -3300,9 +3300,9 @@
       "Orlando": "KXNBAGAME-26NOV02WASORL-ORL"
      },
      "home": 0.56,
-     "homeEdgePp": -2.1,
+     "homeEdgePp": -0.6,
      "away": 0.44,
-     "awayEdgePp": 2.1
+     "awayEdgePp": 0.6
     }
    ],
    "tier": "core",
@@ -3319,11 +3319,11 @@
    "spread": {
     "away": {
      "handicap": 2.5,
-     "american": -115
+     "american": -110
     },
     "home": {
      "handicap": -2.5,
-     "american": -105
+     "american": -110
     }
    },
    "total": {
@@ -3339,8 +3339,8 @@
    "model": {
     "home": 0.839,
     "away": 0.161,
-    "blendHome": 0.6138,
-    "gapPp": 30.0,
+    "blendHome": 0.6251,
+    "gapPp": 28.5,
     "weight": 0.25,
     "injuries": [
      "Orlando Magic: -50 Elo",
@@ -3460,12 +3460,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -148.0,
      "decimal": 1.676
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 124.0,
      "decimal": 2.24
     }
@@ -3475,7 +3475,7 @@
    "bets": [
     {
      "side": "New Orleans Saints",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -148.0,
      "fair": 0.6671,
      "evPct": 11.78,
@@ -3484,7 +3484,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 160.3,
+      "hoursToStart": 160.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3610,7 +3610,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 18.5,
+      "hoursToStart": 18.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3734,7 +3734,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 137.3,
+      "hoursToStart": 137.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -3800,126 +3800,6 @@
    }
   },
   {
-   "key": "nfl|cincinnatibengals|atlantafalcons|2026-11-08T14:30",
-   "sport": "nfl",
-   "home": "Atlanta Falcons",
-   "away": "Cincinnati Bengals",
-   "start": "2026-11-08T14:30Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.3918,
-    "away": 0.6082
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": 142.0,
-     "decimal": 2.42
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": -170.0,
-     "decimal": 1.588
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0429,
-   "bets": [
-    {
-     "side": "Cincinnati Bengals",
-     "book": "Draft Kings",
-     "american": -170.0,
-     "fair": 0.6903,
-     "evPct": 9.63,
-     "stakePct": 3.0,
-     "stake": 3.0,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 156.8,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Cincinnati vs Atlanta",
-     "url": "https://kalshi.com/markets/kxnflgame",
-     "tickers": {
-      "Cincinnati": "KXNFLGAME-26NOV08CINATL-CIN",
-      "Atlanta": "KXNFLGAME-26NOV08CINATL-ATL"
-     },
-     "home": 0.38,
-     "homeEdgePp": 1.2,
-     "away": 0.63,
-     "awayEdgePp": -2.2
-    }
-   ],
-   "tier": "core",
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png",
-     "color": "a71930"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png",
-     "color": "fb4f14"
-    }
-   },
-   "model": {
-    "home": 0.1867,
-    "away": 0.8133,
-    "blendHome": 0.3097,
-    "gapPp": -20.5,
-    "weight": 0.4,
-    "injuries": [
-     "Atlanta Falcons: -236 Elo (Andy Dalton (QB) out; Jack Strand (QB) out)",
-     "Cincinnati Bengals: -36 Elo"
-    ]
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [],
-    "home": {
-     "name": "Atlanta Falcons",
-     "record": "13-15",
-     "last": [
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Cincinnati Bengals",
-     "record": "14-13",
-     "last": [
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "W",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "ncaaf|nebraskacornhuskers|illinoisfightingillini|2026-11-07T01:00",
    "sport": "ncaaf",
    "home": "Illinois Fighting Illini",
@@ -3957,7 +3837,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 119.3,
+      "hoursToStart": 119.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4099,7 +3979,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 123.3,
+      "hoursToStart": 123.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4165,6 +4045,126 @@
    }
   },
   {
+   "key": "nfl|cincinnatibengals|atlantafalcons|2026-11-08T14:30",
+   "sport": "nfl",
+   "home": "Atlanta Falcons",
+   "away": "Cincinnati Bengals",
+   "start": "2026-11-08T14:30Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.3786,
+    "away": 0.6214
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": 150.0,
+     "decimal": 2.5
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": -180.0,
+     "decimal": 1.556
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0429,
+   "bets": [
+    {
+     "side": "Cincinnati Bengals",
+     "book": "DraftKings",
+     "american": -180.0,
+     "fair": 0.6982,
+     "evPct": 8.61,
+     "stakePct": 3.0,
+     "stake": 3.0,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 156.7,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Cincinnati vs Atlanta",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "Cincinnati": "KXNFLGAME-26NOV08CINATL-CIN",
+      "Atlanta": "KXNFLGAME-26NOV08CINATL-ATL"
+     },
+     "home": 0.38,
+     "homeEdgePp": -0.1,
+     "away": 0.63,
+     "awayEdgePp": -0.9
+    }
+   ],
+   "tier": "core",
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png",
+     "color": "a71930"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png",
+     "color": "fb4f14"
+    }
+   },
+   "model": {
+    "home": 0.1867,
+    "away": 0.8133,
+    "blendHome": 0.3018,
+    "gapPp": -19.2,
+    "weight": 0.4,
+    "injuries": [
+     "Atlanta Falcons: -236 Elo (Andy Dalton (QB) out; Jack Strand (QB) out)",
+     "Cincinnati Bengals: -36 Elo"
+    ]
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [],
+    "home": {
+     "name": "Atlanta Falcons",
+     "record": "13-15",
+     "last": [
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Cincinnati Bengals",
+     "record": "14-13",
+     "last": [
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "brasileirao|coritiba|internacional|2026-11-04T00:30",
    "sport": "brasileirao",
    "home": "Internacional",
@@ -4208,7 +4208,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 46.8,
+      "hoursToStart": 46.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4300,7 +4300,7 @@
      "decimal": 3.9
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -360.0,
      "decimal": 1.278
     }
@@ -4319,7 +4319,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 144.8,
+      "hoursToStart": 144.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4461,7 +4461,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 18.0,
+      "hoursToStart": 17.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4585,7 +4585,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 16.3,
+      "hoursToStart": 16.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4702,7 +4702,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 155.8,
+      "hoursToStart": 155.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4803,12 +4803,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -218.0,
      "decimal": 1.459
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 180.0,
      "decimal": 2.8
     }
@@ -4818,7 +4818,7 @@
    "bets": [
     {
      "side": "Miami Hurricanes",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 180.0,
      "fair": 0.3789,
      "evPct": 6.08,
@@ -4827,7 +4827,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 142.8,
+      "hoursToStart": 142.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -4913,12 +4913,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -395.0,
      "decimal": 1.253
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 310.0,
      "decimal": 4.1
     }
@@ -4928,7 +4928,7 @@
    "bets": [
     {
      "side": "Marshall Thundering Herd",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 310.0,
      "fair": 0.2585,
      "evPct": 5.99,
@@ -4937,7 +4937,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 138.8,
+      "hoursToStart": 138.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5087,7 +5087,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 20.3,
+      "hoursToStart": 20.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5204,7 +5204,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 136.8,
+      "hoursToStart": 136.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5305,12 +5305,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "decimal": 7.0
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -900.0,
      "decimal": 1.111
     }
@@ -5320,7 +5320,7 @@
    "bets": [
     {
      "side": "New Mexico State Aggies",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "fair": 0.1503,
      "evPct": 5.18,
@@ -5329,7 +5329,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 143.3,
+      "hoursToStart": 143.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5465,7 +5465,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.5,
+      "hoursToStart": 22.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5582,7 +5582,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 70.8,
+      "hoursToStart": 70.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5676,7 +5676,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -102.0,
      "decimal": 1.98
     },
@@ -5691,7 +5691,7 @@
    "bets": [
     {
      "side": "Tulane Green Wave",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -102.0,
      "fair": 0.5287,
      "evPct": 4.71,
@@ -5700,7 +5700,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "buy_now",
-      "hoursToStart": 135.3,
+      "hoursToStart": 135.2,
       "reasons": [
        "The market has already moved 5.1 pts toward this side -- the price you're seeing is likely to get worse, not better."
       ]
@@ -5830,12 +5830,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -425.0,
      "decimal": 1.235
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 330.0,
      "decimal": 4.3
     }
@@ -5845,7 +5845,7 @@
    "bets": [
     {
      "side": "Arkansas Razorbacks",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 330.0,
      "fair": 0.2429,
      "evPct": 4.46,
@@ -5854,7 +5854,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 136.0,
+      "hoursToStart": 135.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -5974,12 +5974,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -250.0,
      "decimal": 1.4
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 205.0,
      "decimal": 3.05
     }
@@ -5989,7 +5989,7 @@
    "bets": [
     {
      "side": "Buffalo Bulls",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 205.0,
      "fair": 0.3423,
      "evPct": 4.41,
@@ -5998,7 +5998,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 47.3,
+      "hoursToStart": 47.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6098,12 +6098,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 490.0,
      "decimal": 5.9
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -675.0,
      "decimal": 1.148
     }
@@ -6113,7 +6113,7 @@
    "bets": [
     {
      "side": "Southern Miss Golden Eagles",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 490.0,
      "fair": 0.1768,
      "evPct": 4.31,
@@ -6122,7 +6122,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 95.3,
+      "hoursToStart": 95.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6214,12 +6214,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 124.0,
      "decimal": 2.24
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -148.0,
      "decimal": 1.676
     }
@@ -6229,7 +6229,7 @@
    "bets": [
     {
      "side": "Missouri Tigers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 124.0,
      "fair": 0.4654,
      "evPct": 4.25,
@@ -6238,7 +6238,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 135.3,
+      "hoursToStart": 135.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6330,12 +6330,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -148.0,
      "decimal": 1.676
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 124.0,
      "decimal": 2.24
     }
@@ -6345,7 +6345,7 @@
    "bets": [
     {
      "side": "Green Bay Packers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 124.0,
      "fair": 0.4649,
      "evPct": 4.14,
@@ -6354,7 +6354,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 163.7,
+      "hoursToStart": 163.6,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6372,8 +6372,8 @@
      },
      "home": 0.57,
      "homeEdgePp": 0.5,
-     "away": 0.45,
-     "awayEdgePp": -2.5
+     "away": 0.44,
+     "awayEdgePp": -1.5
     }
    ],
    "tier": "core",
@@ -6480,7 +6480,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 42.3,
+      "hoursToStart": 42.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6604,7 +6604,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 147.3,
+      "hoursToStart": 147.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6691,7 +6691,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -122.0,
      "decimal": 1.82
     },
@@ -6706,7 +6706,7 @@
    "bets": [
     {
      "side": "Washington Huskies",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -122.0,
      "fair": 0.5685,
      "evPct": 3.45,
@@ -6715,7 +6715,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 138.8,
+      "hoursToStart": 138.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -6813,12 +6813,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 142.0,
      "decimal": 2.42
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -170.0,
      "decimal": 1.588
     }
@@ -6828,7 +6828,7 @@
    "bets": [
     {
      "side": "Ole Miss Rebels",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 142.0,
      "fair": 0.4268,
      "evPct": 3.29,
@@ -6837,7 +6837,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 142.8,
+      "hoursToStart": 142.7,
       "reasons": [
        "The market has moved 4.2 pts toward the other side -- this price may hold or improve if your view is right."
       ]
@@ -6954,12 +6954,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 490.0,
      "decimal": 5.9
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -675.0,
      "decimal": 1.148
     }
@@ -6969,7 +6969,7 @@
    "bets": [
     {
      "side": "Georgia Tech Yellow Jackets",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 490.0,
      "fair": 0.1749,
      "evPct": 3.18,
@@ -6978,7 +6978,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 142.8,
+      "hoursToStart": 142.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7120,7 +7120,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 66.0,
+      "hoursToStart": 65.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7229,7 +7229,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 66.3,
+      "hoursToStart": 66.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7308,12 +7308,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -900.0,
      "decimal": 1.111
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "decimal": 7.0
     }
@@ -7323,7 +7323,7 @@
    "bets": [
     {
      "side": "West Virginia Mountaineers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "fair": 0.1463,
      "evPct": 2.41,
@@ -7332,7 +7332,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 144.8,
+      "hoursToStart": 144.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7350,8 +7350,8 @@
      },
      "home": 0.88,
      "homeEdgePp": -0.1,
-     "away": 0.14,
-     "awayEdgePp": -1.9
+     "away": 0.13,
+     "awayEdgePp": -0.9
     }
    ],
    "tier": "core",
@@ -7419,6 +7419,134 @@
    }
   },
   {
+   "key": "nfl|lasvegasraiders|sanfrancisco49ers|2026-11-08T21:25",
+   "sport": "nfl",
+   "home": "San Francisco 49ers",
+   "away": "Las Vegas Raiders",
+   "start": "2026-11-08T21:25Z",
+   "nBooks": 1,
+   "threeWay": false,
+   "fair": {
+    "home": 0.8173,
+    "away": 0.1827
+   },
+   "best": {
+    "home": {
+     "book": "DraftKings",
+     "american": -520.0,
+     "decimal": 1.192
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 390.0,
+     "decimal": 4.9
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0428,
+   "bets": [
+    {
+     "side": "San Francisco 49ers",
+     "book": "DraftKings",
+     "american": -520.0,
+     "fair": 0.8568,
+     "evPct": 2.15,
+     "stakePct": 3.0,
+     "stake": 3.0,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "no_strong_signal",
+      "hoursToStart": 163.6,
+      "reasons": [
+       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "San Francisco vs Las Vegas",
+     "url": "https://kalshi.com/markets/kxnflgame",
+     "tickers": {
+      "San Francisco": "KXNFLGAME-26NOV08LVSF-SF",
+      "Las Vegas": "KXNFLGAME-26NOV08LVSF-LV"
+     },
+     "home": 0.8,
+     "homeEdgePp": 1.7,
+     "away": 0.21,
+     "awayEdgePp": -2.7
+    }
+   ],
+   "tier": "core",
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png",
+     "color": "aa0000"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png",
+     "color": "000000"
+    }
+   },
+   "model": {
+    "home": 0.916,
+    "away": 0.084,
+    "blendHome": 0.8568,
+    "gapPp": 9.9,
+    "weight": 0.4,
+    "injuries": [
+     "San Francisco 49ers: -24 Elo",
+     "Las Vegas Raiders: -136 Elo (Aidan O'Connell (QB) out)"
+    ]
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2026-08-28",
+      "home": "Las Vegas Raiders",
+      "away": "San Francisco 49ers",
+      "homeScore": 12.0,
+      "awayScore": 18.0
+     }
+    ],
+    "home": {
+     "name": "San Francisco 49ers",
+     "record": "21-8",
+     "last": [
+      "L",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Las Vegas Raiders",
+     "record": "8-20",
+     "last": [
+      "W",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "L",
+      "L",
+      "W"
+     ]
+    }
+   }
+  },
+  {
    "key": "brasileirao|vascodagama|athleticopr|2026-11-04T22:30",
    "sport": "brasileirao",
    "home": "Athletico-PR",
@@ -7462,7 +7590,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 68.8,
+      "hoursToStart": 68.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7549,7 +7677,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -175.0,
      "decimal": 1.571
     },
@@ -7564,7 +7692,7 @@
    "bets": [
     {
      "side": "Arizona State Sun Devils",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -175.0,
      "fair": 0.6488,
      "evPct": 1.95,
@@ -7573,7 +7701,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 142.8,
+      "hoursToStart": 142.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7709,7 +7837,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 42.0,
+      "hoursToStart": 41.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -7790,134 +7918,6 @@
    }
   },
   {
-   "key": "nfl|lasvegasraiders|sanfrancisco49ers|2026-11-08T21:25",
-   "sport": "nfl",
-   "home": "San Francisco 49ers",
-   "away": "Las Vegas Raiders",
-   "start": "2026-11-08T21:25Z",
-   "nBooks": 1,
-   "threeWay": false,
-   "fair": {
-    "home": 0.825,
-    "away": 0.175
-   },
-   "best": {
-    "home": {
-     "book": "Draft Kings",
-     "american": -550.0,
-     "decimal": 1.182
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": 410.0,
-     "decimal": 5.1
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0422,
-   "bets": [
-    {
-     "side": "San Francisco 49ers",
-     "book": "Draft Kings",
-     "american": -550.0,
-     "fair": 0.8614,
-     "evPct": 1.8,
-     "stakePct": 3.0,
-     "stake": 3.0,
-     "basis": "model-blend",
-     "timing": {
-      "advice": "no_strong_signal",
-      "hoursToStart": 163.7,
-      "reasons": [
-       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
-      ]
-     }
-    }
-   ],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "San Francisco vs Las Vegas",
-     "url": "https://kalshi.com/markets/kxnflgame",
-     "tickers": {
-      "San Francisco": "KXNFLGAME-26NOV08LVSF-SF",
-      "Las Vegas": "KXNFLGAME-26NOV08LVSF-LV"
-     },
-     "home": 0.8,
-     "homeEdgePp": 2.5,
-     "away": 0.21,
-     "awayEdgePp": -3.5
-    }
-   ],
-   "tier": "core",
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png",
-     "color": "aa0000"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png",
-     "color": "000000"
-    }
-   },
-   "model": {
-    "home": 0.916,
-    "away": 0.084,
-    "blendHome": 0.8614,
-    "gapPp": 9.1,
-    "weight": 0.4,
-    "injuries": [
-     "San Francisco 49ers: -24 Elo",
-     "Las Vegas Raiders: -136 Elo (Aidan O'Connell (QB) out)"
-    ]
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [
-     {
-      "date": "2026-08-28",
-      "home": "Las Vegas Raiders",
-      "away": "San Francisco 49ers",
-      "homeScore": 12.0,
-      "awayScore": 18.0
-     }
-    ],
-    "home": {
-     "name": "San Francisco 49ers",
-     "record": "21-8",
-     "last": [
-      "L",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Las Vegas Raiders",
-     "record": "8-20",
-     "last": [
-      "W",
-      "L",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
-      "L",
-      "L",
-      "W"
-     ]
-    }
-   }
-  },
-  {
    "key": "ncaab|miamihurricanes|floridagators|2026-11-02T23:00",
    "sport": "ncaab",
    "home": "Florida Gators",
@@ -7931,12 +7931,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -205.0,
      "decimal": 1.488
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 170.0,
      "decimal": 2.7
     }
@@ -7946,7 +7946,7 @@
    "bets": [
     {
      "side": "Florida Gators",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -205.0,
      "fair": 0.6836,
      "evPct": 1.7,
@@ -7955,7 +7955,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 21.3,
+      "hoursToStart": 21.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8041,12 +8041,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1200.0,
      "decimal": 1.083
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 750.0,
      "decimal": 8.5
     }
@@ -8056,7 +8056,7 @@
    "bets": [
     {
      "side": "Memphis Tigers",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 750.0,
      "fair": 0.1195,
      "evPct": 1.61,
@@ -8065,7 +8065,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 22.3,
+      "hoursToStart": 22.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8168,7 +8168,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 11.3,
+      "hoursToStart": 11.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8277,7 +8277,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 42.0,
+      "hoursToStart": 41.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8386,7 +8386,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 13.5,
+      "hoursToStart": 13.4,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8465,7 +8465,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -225.0,
      "decimal": 1.444
     },
@@ -8489,7 +8489,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "buy_now",
-      "hoursToStart": 118.3,
+      "hoursToStart": 118.2,
       "reasons": [
        "The market has already moved 5.0 pts toward this side -- the price you're seeing is likely to get worse, not better."
       ]
@@ -8598,6 +8598,167 @@
    }
   },
   {
+   "key": "nba|milwaukeebucks|minnesotatimberwolves|2026-11-03T01:00",
+   "sport": "nba",
+   "home": "Minnesota Timberwolves",
+   "away": "Milwaukee Bucks",
+   "start": "2026-11-03T01:00Z",
+   "nBooks": 2,
+   "threeWay": false,
+   "fair": {
+    "home": 0.81,
+    "away": 0.19
+   },
+   "best": {
+    "home": {
+     "book": "Bovada",
+     "american": -480,
+     "decimal": 1.208
+    },
+    "away": {
+     "book": "DraftKings",
+     "american": 390.0,
+     "decimal": 4.9
+    }
+   },
+   "arb": false,
+   "impliedSum": 1.0317,
+   "bets": [
+    {
+     "side": "Minnesota Timberwolves",
+     "book": "Bovada",
+     "american": -480,
+     "fair": 0.8375,
+     "evPct": 1.2,
+     "stakePct": 2.02,
+     "stake": 2.02,
+     "basis": "model-blend",
+     "timing": {
+      "advice": "wait_ok",
+      "hoursToStart": 23.2,
+      "reasons": [
+       "Historically, NBA edges we've flagged have lost 1.7% to the closing line on average (n=40) -- the price has tended to improve by waiting."
+      ]
+     }
+    }
+   ],
+   "pm": [
+    {
+     "source": "kalshi",
+     "title": "Minnesota vs Milwaukee",
+     "url": "https://kalshi.com/markets/kxnbagame",
+     "tickers": {
+      "Minnesota": "KXNBAGAME-26NOV02MILMIN-MIN",
+      "Milwaukee": "KXNBAGAME-26NOV02MILMIN-MIL"
+     },
+     "home": 0.79,
+     "homeEdgePp": 2.0,
+     "away": 0.22,
+     "awayEdgePp": -3.0
+    }
+   ],
+   "tier": "core",
+   "teamMeta": {
+    "home": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
+     "color": "266092"
+    },
+    "away": {
+     "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png",
+     "color": "00471b"
+    }
+   },
+   "spread": {
+    "away": {
+     "handicap": 10.5,
+     "american": -115
+    },
+    "home": {
+     "handicap": -10.5,
+     "american": -105
+    }
+   },
+   "total": {
+    "over": {
+     "handicap": 233.5,
+     "american": -110
+    },
+    "under": {
+     "handicap": 233.5,
+     "american": -110
+    }
+   },
+   "model": {
+    "home": 0.9201,
+    "away": 0.0799,
+    "blendHome": 0.8375,
+    "gapPp": 11.0,
+    "weight": 0.25,
+    "injuries": [
+     "Minnesota Timberwolves: -20 Elo"
+    ]
+   },
+   "crossArbs": [],
+   "middles": [],
+   "matchup": {
+    "h2h": [
+     {
+      "date": "2026-10-06",
+      "home": "Milwaukee Bucks",
+      "away": "Minnesota Timberwolves",
+      "homeScore": 97.0,
+      "awayScore": 116.0
+     },
+     {
+      "date": "2026-01-14",
+      "home": "Milwaukee Bucks",
+      "away": "Minnesota Timberwolves",
+      "homeScore": 106.0,
+      "awayScore": 139.0
+     },
+     {
+      "date": "2025-12-22",
+      "home": "Minnesota Timberwolves",
+      "away": "Milwaukee Bucks",
+      "homeScore": 103.0,
+      "awayScore": 100.0
+     }
+    ],
+    "home": {
+     "name": "Minnesota Timberwolves",
+     "record": "64-49",
+     "last": [
+      "W",
+      "L",
+      "L",
+      "W",
+      "W",
+      "W",
+      "L",
+      "L",
+      "W",
+      "L"
+     ]
+    },
+    "away": {
+     "name": "Milwaukee Bucks",
+     "record": "38-59",
+     "last": [
+      "W",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L",
+      "L",
+      "W",
+      "L",
+      "L"
+     ]
+    }
+   }
+  },
+  {
    "key": "nhl|detroitredwings|floridapanthers|2026-11-03T00:00",
    "sport": "nhl",
    "home": "Florida Panthers",
@@ -8635,7 +8796,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "wait_ok",
-      "hoursToStart": 22.3,
+      "hoursToStart": 22.2,
       "reasons": [
        "Historically, NHL edges we've flagged have lost 4.5% to the closing line on average (n=33) -- the price has tended to improve by waiting."
       ]
@@ -8794,7 +8955,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 136.3,
+      "hoursToStart": 136.2,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -8900,7 +9061,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     },
@@ -8924,7 +9085,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 145.8,
+      "hoursToStart": 145.7,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9022,12 +9183,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -258.0,
      "decimal": 1.388
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "decimal": 3.1
     }
@@ -9037,7 +9198,7 @@
    "bets": [
     {
      "side": "Oklahoma Sooners",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 210.0,
      "fair": 0.3259,
      "evPct": 1.04,
@@ -9046,7 +9207,7 @@
      "basis": "model-blend",
      "timing": {
       "advice": "no_strong_signal",
-      "hoursToStart": 143.0,
+      "hoursToStart": 142.9,
       "reasons": [
        "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
       ]
@@ -9125,19 +9286,7 @@
       "L"
      ]
     }
-   },
-   "whales": [
-    {
-     "side": "yes",
-     "notional": 2545.14,
-     "price": 0.66,
-     "contracts": 3856.3,
-     "block": false,
-     "time": "2026-11-01T20:13:14.174099Z",
-     "team": "Florida",
-     "source": "kalshi"
-    }
-   ]
+   }
   },
   {
    "key": "nfl|chicagobears|seattleseahawks|2026-11-03T01:15",
@@ -9153,7 +9302,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -166.0,
      "decimal": 1.602
     },
@@ -9275,12 +9424,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 350.0,
      "decimal": 4.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -455.0,
      "decimal": 1.22
     }
@@ -9387,12 +9536,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 205.0,
      "decimal": 3.05
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -250.0,
      "decimal": 1.4
     }
@@ -9489,12 +9638,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 280.0,
      "decimal": 3.8
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -355.0,
      "decimal": 1.282
     }
@@ -9591,12 +9740,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 124.0,
      "decimal": 2.24
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -148.0,
      "decimal": 1.676
     }
@@ -9613,8 +9762,8 @@
       "Denver": "KXNFLGAME-26NOV08DENCAR-DEN",
       "Carolina": "KXNFLGAME-26NOV08DENCAR-CAR"
      },
-     "home": 0.43,
-     "homeEdgePp": -0.5,
+     "home": 0.42,
+     "homeEdgePp": 0.5,
      "away": 0.6,
      "awayEdgePp": -2.5
     }
@@ -9693,12 +9842,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 154.0,
      "decimal": 2.54
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -185.0,
      "decimal": 1.541
     }
@@ -9717,8 +9866,8 @@
      },
      "home": 0.39,
      "homeEdgePp": -1.8,
-     "away": 0.62,
-     "awayEdgePp": 0.8
+     "away": 0.63,
+     "awayEdgePp": -0.2
     }
    ],
    "tier": "core",
@@ -9810,12 +9959,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -750.0,
      "decimal": 1.133
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 525.0,
      "decimal": 6.25
     }
@@ -9929,23 +10078,23 @@
    "nBooks": 1,
    "threeWay": false,
    "fair": {
-    "home": 0.6884,
-    "away": 0.3116
+    "home": 0.6761,
+    "away": 0.3239
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
-     "american": -245.0,
-     "decimal": 1.408
+     "book": "DraftKings",
+     "american": -230.0,
+     "decimal": 1.435
     },
     "away": {
-     "book": "Draft Kings",
-     "american": 200.0,
-     "decimal": 3.0
+     "book": "DraftKings",
+     "american": 190.0,
+     "decimal": 2.9
     }
    },
    "arb": false,
-   "impliedSum": 1.0435,
+   "impliedSum": 1.0418,
    "bets": [],
    "pm": [
     {
@@ -9956,10 +10105,10 @@
       "Tampa Bay": "KXNFLGAME-26NOV08TBCHI-TB",
       "Chicago": "KXNFLGAME-26NOV08TBCHI-CHI"
      },
-     "home": 0.74,
-     "homeEdgePp": -5.2,
+     "home": 0.73,
+     "homeEdgePp": -5.4,
      "away": 0.3,
-     "awayEdgePp": 1.2
+     "awayEdgePp": 2.4
     }
    ],
    "tier": "core",
@@ -9976,8 +10125,8 @@
    "model": {
     "home": 0.7229,
     "away": 0.2771,
-    "blendHome": 0.7022,
-    "gapPp": 3.4,
+    "blendHome": 0.6948,
+    "gapPp": 4.7,
     "weight": 0.4,
     "injuries": [
      "Chicago Bears: -21 Elo",
@@ -10031,23 +10180,23 @@
    "nBooks": 2,
    "threeWay": false,
    "fair": {
-    "home": 0.5961,
-    "away": 0.4039
+    "home": 0.6001,
+    "away": 0.3999
    },
    "best": {
     "home": {
-     "book": "Bovada",
-     "american": -160,
-     "decimal": 1.625
+     "book": "DraftKings",
+     "american": -162.0,
+     "decimal": 1.617
     },
     "away": {
-     "book": "Draft Kings",
-     "american": 136.0,
-     "decimal": 2.36
+     "book": "Bovada",
+     "american": 140,
+     "decimal": 2.4
     }
    },
    "arb": false,
-   "impliedSum": 1.0391,
+   "impliedSum": 1.035,
    "bets": [],
    "pm": [
     {
@@ -10059,9 +10208,9 @@
       "Los Angeles L": "KXNBAGAME-26NOV01TORLAL-LAL"
      },
      "home": 0.6,
-     "homeEdgePp": -0.4,
+     "homeEdgePp": 0.0,
      "away": 0.41,
-     "awayEdgePp": -0.6
+     "awayEdgePp": -1.0
     }
    ],
    "tier": "core",
@@ -10098,8 +10247,8 @@
    "model": {
     "home": 0.6096,
     "away": 0.3904,
-    "blendHome": 0.5995,
-    "gapPp": 1.3,
+    "blendHome": 0.6025,
+    "gapPp": 0.9,
     "weight": 0.25,
     "injuries": [
      "Los Angeles Lakers: -20 Elo",
@@ -10178,7 +10327,7 @@
      "decimal": 1.588
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 150.0,
      "decimal": 2.5
     }
@@ -10258,7 +10407,7 @@
    "crossArbs": [
     {
      "bookSide": "away",
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 150.0,
      "pmSide": "home",
      "pmSource": "kalshi",
@@ -10342,7 +10491,7 @@
      "decimal": 2.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -175.0,
      "decimal": 1.571
     }
@@ -10488,7 +10637,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -850.0,
      "decimal": 1.118
     },
@@ -10639,12 +10788,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -650.0,
      "decimal": 1.154
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 470.0,
      "decimal": 5.7
     }
@@ -10783,12 +10932,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -225.0,
      "decimal": 1.444
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 185.0,
      "decimal": 2.85
     }
@@ -10921,149 +11070,6 @@
    }
   },
   {
-   "key": "nba|milwaukeebucks|minnesotatimberwolves|2026-11-03T01:00",
-   "sport": "nba",
-   "home": "Minnesota Timberwolves",
-   "away": "Milwaukee Bucks",
-   "start": "2026-11-03T01:00Z",
-   "nBooks": 2,
-   "threeWay": false,
-   "fair": {
-    "home": 0.8126,
-    "away": 0.1874
-   },
-   "best": {
-    "home": {
-     "book": "Bovada",
-     "american": -500,
-     "decimal": 1.2
-    },
-    "away": {
-     "book": "Draft Kings",
-     "american": 390.0,
-     "decimal": 4.9
-    }
-   },
-   "arb": false,
-   "impliedSum": 1.0374,
-   "bets": [],
-   "pm": [
-    {
-     "source": "kalshi",
-     "title": "Minnesota vs Milwaukee",
-     "url": "https://kalshi.com/markets/kxnbagame",
-     "tickers": {
-      "Minnesota": "KXNBAGAME-26NOV02MILMIN-MIN",
-      "Milwaukee": "KXNBAGAME-26NOV02MILMIN-MIL"
-     },
-     "home": 0.79,
-     "homeEdgePp": 2.3,
-     "away": 0.22,
-     "awayEdgePp": -3.3
-    }
-   ],
-   "tier": "core",
-   "teamMeta": {
-    "home": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
-     "color": "266092"
-    },
-    "away": {
-     "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png",
-     "color": "00471b"
-    }
-   },
-   "spread": {
-    "away": {
-     "handicap": 10.5,
-     "american": -110
-    },
-    "home": {
-     "handicap": -10.5,
-     "american": -110
-    }
-   },
-   "total": {
-    "over": {
-     "handicap": 233.5,
-     "american": -110
-    },
-    "under": {
-     "handicap": 233.5,
-     "american": -110
-    }
-   },
-   "model": {
-    "home": 0.9201,
-    "away": 0.0799,
-    "blendHome": 0.8395,
-    "gapPp": 10.7,
-    "weight": 0.25,
-    "injuries": [
-     "Minnesota Timberwolves: -20 Elo"
-    ]
-   },
-   "crossArbs": [],
-   "middles": [],
-   "matchup": {
-    "h2h": [
-     {
-      "date": "2026-10-06",
-      "home": "Milwaukee Bucks",
-      "away": "Minnesota Timberwolves",
-      "homeScore": 97.0,
-      "awayScore": 116.0
-     },
-     {
-      "date": "2026-01-14",
-      "home": "Milwaukee Bucks",
-      "away": "Minnesota Timberwolves",
-      "homeScore": 106.0,
-      "awayScore": 139.0
-     },
-     {
-      "date": "2025-12-22",
-      "home": "Minnesota Timberwolves",
-      "away": "Milwaukee Bucks",
-      "homeScore": 103.0,
-      "awayScore": 100.0
-     }
-    ],
-    "home": {
-     "name": "Minnesota Timberwolves",
-     "record": "64-49",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "W",
-      "W",
-      "W",
-      "L",
-      "L",
-      "W",
-      "L"
-     ]
-    },
-    "away": {
-     "name": "Milwaukee Bucks",
-     "record": "38-59",
-     "last": [
-      "W",
-      "L",
-      "L",
-      "W",
-      "L",
-      "L",
-      "L",
-      "W",
-      "L",
-      "L"
-     ]
-    }
-   }
-  },
-  {
    "key": "nba|bostonceltics|houstonrockets|2026-11-03T01:30",
    "sport": "nba",
    "home": "Houston Rockets",
@@ -11077,7 +11083,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -192.0,
      "decimal": 1.521
     },
@@ -11214,7 +11220,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1000.0,
      "decimal": 1.1
     },
@@ -11372,7 +11378,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -170.0,
      "decimal": 1.588
     },
@@ -11523,12 +11529,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -108.0,
      "decimal": 1.926
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -112.0,
      "decimal": 1.893
     }
@@ -11654,7 +11660,7 @@
      "decimal": 2.95
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -230.0,
      "decimal": 1.435
     }
@@ -11783,7 +11789,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -135.0,
      "decimal": 1.741
     },
@@ -11929,7 +11935,7 @@
      "decimal": 4.7
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -455.0,
      "decimal": 1.22
     }
@@ -12042,7 +12048,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -155.0,
      "decimal": 1.645
     },
@@ -12146,7 +12152,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -125.0,
      "decimal": 1.8
     },
@@ -12258,7 +12264,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 225.0,
      "decimal": 3.25
     },
@@ -12386,12 +12392,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -120.0,
      "decimal": 1.833
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 100.0,
      "decimal": 2.0
     }
@@ -12504,12 +12510,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 320.0,
      "decimal": 4.2
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -410.0,
      "decimal": 1.244
     }
@@ -12610,12 +12616,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -360.0,
      "decimal": 1.278
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 285.0,
      "decimal": 3.85
     }
@@ -12708,12 +12714,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -218.0,
      "decimal": 1.459
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 180.0,
      "decimal": 2.8
     }
@@ -12814,12 +12820,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 195.0,
      "decimal": 2.95
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -238.0,
      "decimal": 1.42
     }
@@ -12912,12 +12918,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -375.0,
      "decimal": 1.267
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 295.0,
      "decimal": 3.95
     }
@@ -13016,12 +13022,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 100.0,
      "decimal": 2.0
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -120.0,
      "decimal": 1.833
     }
@@ -13142,7 +13148,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 170.0,
      "decimal": 2.7
     },
@@ -13259,7 +13265,7 @@
      "decimal": 1.417
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 200.0,
      "decimal": 3.0
     }
@@ -13377,7 +13383,7 @@
      "decimal": 1.351
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 235.0,
      "decimal": 3.35
     }
@@ -13396,8 +13402,8 @@
      },
      "home": 0.73,
      "homeEdgePp": -0.8,
-     "away": 0.3,
-     "awayEdgePp": -2.2
+     "away": 0.29,
+     "awayEdgePp": -1.2
     }
    ],
    "tier": "core",
@@ -13498,12 +13504,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -180.0,
      "decimal": 1.556
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 150.0,
      "decimal": 2.5
     }
@@ -13590,12 +13596,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -290.0,
      "decimal": 1.345
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 235.0,
      "decimal": 3.35
     }
@@ -13701,7 +13707,7 @@
      "decimal": 1.148
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 500.0,
      "decimal": 6.0
     }
@@ -13808,7 +13814,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 114.0,
      "decimal": 2.14
     },
@@ -13912,12 +13918,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -218.0,
      "decimal": 1.459
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 180.0,
      "decimal": 2.8
     }
@@ -13934,8 +13940,8 @@
       "LSU": "KXNCAAFGAME-26NOV07ALALSU-LSU",
       "Alabama": "KXNCAAFGAME-26NOV07ALALSU-ALA"
      },
-     "home": 0.65,
-     "homeEdgePp": 1.4,
+     "home": 0.66,
+     "homeEdgePp": 0.4,
      "away": 0.35,
      "awayEdgePp": -1.4
     }
@@ -14028,12 +14034,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -278.0,
      "decimal": 1.36
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 225.0,
      "decimal": 3.25
     }
@@ -14122,12 +14128,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -440.0,
      "decimal": 1.227
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 340.0,
      "decimal": 4.4
     }
@@ -14144,8 +14150,8 @@
       "Houston": "KXNCAAFGAME-26NOV07CINHOU-HOU",
       "Cincinnati": "KXNCAAFGAME-26NOV07CINHOU-CIN"
      },
-     "home": 0.8,
-     "homeEdgePp": -0.6,
+     "home": 0.79,
+     "homeEdgePp": 0.4,
      "away": 0.21,
      "awayEdgePp": -0.4
     }
@@ -14220,7 +14226,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -425.0,
      "decimal": 1.235
     },
@@ -14338,7 +14344,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     },
@@ -14464,12 +14470,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -112.0,
      "decimal": 1.893
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -108.0,
      "decimal": 1.926
     }
@@ -14570,12 +14576,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -155.0,
      "decimal": 1.645
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 130.0,
      "decimal": 2.3
     }
@@ -14676,12 +14682,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -900.0,
      "decimal": 1.111
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "decimal": 7.0
     }
@@ -14802,12 +14808,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -395.0,
      "decimal": 1.253
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 310.0,
      "decimal": 4.1
     }
@@ -15018,7 +15024,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 185.0,
      "decimal": 2.85
     },
@@ -15136,7 +15142,7 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -148.0,
      "decimal": 1.676
     },
@@ -15240,12 +15246,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -900.0,
      "decimal": 1.111
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 600.0,
      "decimal": 7.0
     }
@@ -15358,12 +15364,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -360.0,
      "decimal": 1.278
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 285.0,
      "decimal": 3.85
     }
@@ -15474,12 +15480,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 650.0,
      "decimal": 7.5
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -1000.0,
      "decimal": 1.1
     }
@@ -15566,12 +15572,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -245.0,
      "decimal": 1.408
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 200.0,
      "decimal": 3.0
     }
@@ -15672,12 +15678,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -800.0,
      "decimal": 1.125
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 550.0,
      "decimal": 6.5
     }
@@ -15764,12 +15770,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -125.0,
      "decimal": 1.8
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 105.0,
      "decimal": 2.05
     }
@@ -15862,12 +15868,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -550.0,
      "decimal": 1.182
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 410.0,
      "decimal": 5.1
     }
@@ -15992,7 +15998,7 @@
      "decimal": 1.588
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 154.0,
      "decimal": 2.54
     }
@@ -16118,7 +16124,7 @@
      "decimal": 2.22
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -135.0,
      "decimal": 1.741
     }
@@ -16230,7 +16236,7 @@
      "decimal": 1.37
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 225.0,
      "decimal": 3.25
     }
@@ -16351,12 +16357,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     }
@@ -16421,12 +16427,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -8000.0,
      "decimal": 1.012
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 2200.0,
      "decimal": 23.0
     }
@@ -16487,12 +16493,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -162.0,
      "decimal": 1.617
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 136.0,
      "decimal": 2.36
     }
@@ -16571,12 +16577,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 164.0,
      "decimal": 2.64
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -198.0,
      "decimal": 1.505
     }
@@ -16831,12 +16837,12 @@
    },
    "best": {
     "home": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": -310.0,
      "decimal": 1.323
     },
     "away": {
-     "book": "Draft Kings",
+     "book": "DraftKings",
      "american": 250.0,
      "decimal": 3.5
     }
@@ -22795,8 +22801,8 @@
      },
      "home": 0.54,
      "homeEdgePp": -1.0,
-     "away": 0.21,
-     "awayEdgePp": -0.0
+     "away": 0.22,
+     "awayEdgePp": -1.0
     }
    ],
    "tier": "core",
@@ -23567,8 +23573,8 @@
      },
      "home": 0.25,
      "homeEdgePp": 0.3,
-     "away": 0.49,
-     "awayEdgePp": -0.0
+     "away": 0.5,
+     "awayEdgePp": -1.0
     }
    ],
    "tier": "core",
@@ -47394,14 +47400,14 @@
   }
  ],
  "day": {
-  "nBets": 58,
-  "scale": 0.117,
+  "nBets": 59,
+  "scale": 0.114,
   "totalStake": 8.06,
-  "meanPnl": 2.97,
+  "meanPnl": 2.89,
   "var95": 6.0,
-  "pBreakEven": 0.504,
-  "pProfit": 0.504,
-  "best": 53.96,
+  "pBreakEven": 0.512,
+  "pProfit": 0.512,
+  "best": 51.45,
   "worst": -8.06,
   "note": "Independent-edge assumption: fair probabilities come from market consensus, not a private model. A positive mean here is only as good as that assumption."
  },
@@ -55945,7 +55951,7 @@
     "away": "Chattanooga Mocs",
     "start": "2026-11-03T02:00Z",
     "side": "Chattanooga Mocs",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 5000.0,
     "fair": 0.0803,
     "evPct": 309.56,
@@ -55956,7 +55962,7 @@
     "stake": 2.17,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 24.3,
+     "hoursToStart": 24.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55968,7 +55974,7 @@
     "away": "Quinnipiac Bobcats",
     "start": "2026-11-03T00:00Z",
     "side": "Quinnipiac Bobcats",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 5000.0,
     "fair": 0.0717,
     "evPct": 265.5,
@@ -55979,7 +55985,7 @@
     "stake": 1.86,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 22.3,
+     "hoursToStart": 22.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -55991,7 +55997,7 @@
     "away": "Milwaukee Panthers",
     "start": "2026-11-03T03:30Z",
     "side": "Milwaukee Panthers",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 3500.0,
     "fair": 0.0928,
     "evPct": 234.07,
@@ -56002,7 +56008,7 @@
     "stake": 2.34,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 25.8,
+     "hoursToStart": 25.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56014,7 +56020,7 @@
     "away": "Monmouth Hawks",
     "start": "2026-11-02T23:30Z",
     "side": "Monmouth Hawks",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 4000.0,
     "fair": 0.0628,
     "evPct": 157.51,
@@ -56025,7 +56031,7 @@
     "stake": 1.38,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 21.8,
+     "hoursToStart": 21.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56037,7 +56043,7 @@
     "away": "Toledo Rockets",
     "start": "2026-11-05T00:00Z",
     "side": "Sacramento State Hornets",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 1400.0,
     "fair": 0.0962,
     "evPct": 44.37,
@@ -56048,7 +56054,7 @@
     "stake": 1.11,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 70.3,
+     "hoursToStart": 70.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56060,7 +56066,7 @@
     "away": "New York Jets",
     "start": "2026-11-08T18:00Z",
     "side": "New York Jets",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 390.0,
     "fair": 0.2546,
     "evPct": 24.77,
@@ -56071,7 +56077,7 @@
     "stake": 2.22,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 160.3,
+     "hoursToStart": 160.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56094,7 +56100,7 @@
     "stake": 3.0,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 135.3,
+     "hoursToStart": 135.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56106,7 +56112,7 @@
     "away": "Gonzaga Bulldogs",
     "start": "2026-11-03T00:30Z",
     "side": "Purdue Boilermakers",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 195.0,
     "fair": 0.4053,
     "evPct": 19.57,
@@ -56117,7 +56123,7 @@
     "stake": 3.0,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 22.8,
+     "hoursToStart": 22.7,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56129,7 +56135,7 @@
     "away": "North Carolina Tar Heels",
     "start": "2026-11-07T17:00Z",
     "side": "UConn Huskies",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 225.0,
     "fair": 0.366,
     "evPct": 18.93,
@@ -56140,7 +56146,7 @@
     "stake": 2.95,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 135.3,
+     "hoursToStart": 135.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56152,7 +56158,7 @@
     "away": "Oakland Golden Grizzlies",
     "start": "2026-11-02T23:00Z",
     "side": "Oakland Golden Grizzlies",
-    "book": "Draft Kings",
+    "book": "DraftKings",
     "american": 2500.0,
     "fair": 0.0447,
     "evPct": 16.2,
@@ -56163,7 +56169,7 @@
     "stake": 0.23,
     "timing": {
      "advice": "no_strong_signal",
-     "hoursToStart": 21.3,
+     "hoursToStart": 21.2,
      "reasons": [
       "Not enough graded history yet for this sport to say whether waiting tends to help or hurt."
      ]
@@ -56179,7 +56185,7 @@
       "away": "Chattanooga Mocs",
       "start": "2026-11-03T02:00Z",
       "side": "Chattanooga Mocs",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0803,
       "evPct": 309.56,
@@ -56193,7 +56199,7 @@
       "away": "Quinnipiac Bobcats",
       "start": "2026-11-03T00:00Z",
       "side": "Quinnipiac Bobcats",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0717,
       "evPct": 265.5,
@@ -56207,7 +56213,7 @@
       "away": "Milwaukee Panthers",
       "start": "2026-11-03T03:30Z",
       "side": "Milwaukee Panthers",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 3500.0,
       "fair": 0.0928,
       "evPct": 234.07,
@@ -56233,7 +56239,7 @@
       "away": "Chattanooga Mocs",
       "start": "2026-11-03T02:00Z",
       "side": "Chattanooga Mocs",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0803,
       "evPct": 309.56,
@@ -56247,7 +56253,7 @@
       "away": "Quinnipiac Bobcats",
       "start": "2026-11-03T00:00Z",
       "side": "Quinnipiac Bobcats",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0717,
       "evPct": 265.5,
@@ -56261,7 +56267,7 @@
       "away": "Monmouth Hawks",
       "start": "2026-11-02T23:30Z",
       "side": "Monmouth Hawks",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 4000.0,
       "fair": 0.0628,
       "evPct": 157.51,
@@ -56287,7 +56293,7 @@
       "away": "Chattanooga Mocs",
       "start": "2026-11-03T02:00Z",
       "side": "Chattanooga Mocs",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0803,
       "evPct": 309.56,
@@ -56301,7 +56307,7 @@
       "away": "Milwaukee Panthers",
       "start": "2026-11-03T03:30Z",
       "side": "Milwaukee Panthers",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 3500.0,
       "fair": 0.0928,
       "evPct": 234.07,
@@ -56315,7 +56321,7 @@
       "away": "Monmouth Hawks",
       "start": "2026-11-02T23:30Z",
       "side": "Monmouth Hawks",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 4000.0,
       "fair": 0.0628,
       "evPct": 157.51,
@@ -56341,7 +56347,7 @@
       "away": "Quinnipiac Bobcats",
       "start": "2026-11-03T00:00Z",
       "side": "Quinnipiac Bobcats",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0717,
       "evPct": 265.5,
@@ -56355,7 +56361,7 @@
       "away": "Milwaukee Panthers",
       "start": "2026-11-03T03:30Z",
       "side": "Milwaukee Panthers",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 3500.0,
       "fair": 0.0928,
       "evPct": 234.07,
@@ -56369,7 +56375,7 @@
       "away": "Monmouth Hawks",
       "start": "2026-11-02T23:30Z",
       "side": "Monmouth Hawks",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 4000.0,
       "fair": 0.0628,
       "evPct": 157.51,
@@ -56395,7 +56401,7 @@
       "away": "Chattanooga Mocs",
       "start": "2026-11-03T02:00Z",
       "side": "Chattanooga Mocs",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0803,
       "evPct": 309.56,
@@ -56409,7 +56415,7 @@
       "away": "Quinnipiac Bobcats",
       "start": "2026-11-03T00:00Z",
       "side": "Quinnipiac Bobcats",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0717,
       "evPct": 265.5,
@@ -56423,7 +56429,7 @@
       "away": "Toledo Rockets",
       "start": "2026-11-05T00:00Z",
       "side": "Sacramento State Hornets",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 1400.0,
       "fair": 0.0962,
       "evPct": 44.37,
@@ -56449,7 +56455,7 @@
       "away": "Chattanooga Mocs",
       "start": "2026-11-03T02:00Z",
       "side": "Chattanooga Mocs",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 5000.0,
       "fair": 0.0803,
       "evPct": 309.56,
@@ -56463,7 +56469,7 @@
       "away": "Milwaukee Panthers",
       "start": "2026-11-03T03:30Z",
       "side": "Milwaukee Panthers",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 3500.0,
       "fair": 0.0928,
       "evPct": 234.07,
@@ -56477,7 +56483,7 @@
       "away": "Toledo Rockets",
       "start": "2026-11-05T00:00Z",
       "side": "Sacramento State Hornets",
-      "book": "Draft Kings",
+      "book": "DraftKings",
       "american": 1400.0,
       "fair": 0.0962,
       "evPct": 44.37,
