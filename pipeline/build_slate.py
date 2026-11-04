@@ -58,6 +58,10 @@ try:
 except ImportError:  # pragma: no cover
     bovada_mod = None
 try:
+    import oddsapi as oddsapi_mod
+except ImportError:  # pragma: no cover
+    oddsapi_mod = None
+try:
     import network as net_mod
 except ImportError:  # pragma: no cover
     net_mod = None
@@ -124,6 +128,9 @@ THREE_WAY = set(_lg.SOCCER)  # soccer: always home / draw / away
 # This labels rows for the UI's "Core Sports" filter; it never changes EV math, sorting, or what the model computes --
 # a lower-tier sport with a real +EV edge is just as real a bet as a core one, this is a research-informed default view.
 CORE_SPORTS = {"nfl", "nba", "mlb", "nhl", "ncaaf", "ncaab", "wncaab", "wnba"} | set(_lg.SOCCER)
+# our sport key -> The Odds API's own sport key, for the subset of sports the project cares most
+# about covering with real FanDuel odds (American sports only, for now -- see merge_oddsapi).
+ODDSAPI_KEYS = {k: v[1] for k, v in _lg.OTHER.items() if v[1]}
 # Books whose prices count more in the consensus fair price (substring match on the book name, case-insensitive).
 SHARP_WEIGHTS = {"pinnacle": 4.0, "circa": 3.0, "betonline": 2.0, "lowvig": 2.0, "bookmaker": 2.0, "betcris": 2.0}
 for _kv in filter(None, os.environ.get("SHARP_BOOKS", "").split(",")):  # e.g. SHARP_BOOKS="pinnacle=5,circa=3"
@@ -483,6 +490,45 @@ def _merge_bovada_soccer(games):
                 g["bovadaLive"] = True
             n_merged += 1
             break
+    return n_merged
+
+
+def merge_oddsapi(games, sports):
+    """Fetch The Odds API (real FanDuel/DraftKings/BetMGM/etc odds) as extra books and merge them
+    into the ESPN-sourced `games` list in place, same shape and same "never breaks the slate on
+    failure" contract as merge_bovada. Entirely a no-op with no ODDS_API_KEY set -- see oddsapi.py.
+
+    Credit-budget-conscious by design: only called by main() on full runs (not the 15-min capture
+    runs), and only for a sport that (a) has a known Odds API key and (b) already has at least one
+    ESPN-sourced game in `games` today -- an off-season sport with zero games never costs a credit.
+    One call per qualifying sport, each costing exactly 1 credit (1 market x 1 region)."""
+    if not oddsapi_mod or not oddsapi_mod.available():
+        return 0
+    sports_with_games = {g["sport"] for g in games}
+    n_merged = 0
+    for sp in sports:
+        key = ODDSAPI_KEYS.get(sp)
+        if not key or sp not in sports_with_games:
+            continue
+        try:
+            og, remaining, used = oddsapi_mod.fetch(key)
+        except Exception as e:  # noqa  a paid/optional source must never break the free slate
+            log(f"oddsapi[{sp}]", False, repr(e))
+            continue
+        detail = f"{len(og)} games" + (f" ({remaining} credits left this month)" if remaining else "")
+        log(f"oddsapi[{sp}]", bool(og), detail)
+        for o in og:
+            o_day = str(o.get("start") or "")[:10]
+            for g in games:
+                if g["sport"] != sp or not _bovada_team_match(g["home"], o["home"]) or not _bovada_team_match(g["away"], o["away"]):
+                    continue
+                if o_day and str(g.get("start") or "")[:10] not in (o_day, ""):
+                    continue
+                new_books = {name: px for name, px in o["books"].items() if name not in g["books"]}
+                if new_books:
+                    g["books"].update(new_books)
+                    n_merged += 1
+                break
     return n_merged
 
 
@@ -990,6 +1036,7 @@ def grade_step(rows, closing, capture_only, now):
 
 
 def main():
+    capture_only = os.environ.get("CAPTURE_ONLY") == "1"
     sports = [s for s in os.environ.get("SPORTS", "nfl,nba,mlb,nhl").replace("all", ALL_SPORTS).split(",") if s in SPORTS]
     games = []
     for s in sports:
@@ -1002,6 +1049,15 @@ def main():
             log("bovada:merge", True, f"{n_bov} games gained a second book (+ spread/total/props where carried)")
     except Exception as e:  # noqa  bovada is a bonus source; its failure must never break the ESPN-only slate
         log("bovada:merge", False, repr(e))
+    if oddsapi_mod and oddsapi_mod.available() and not capture_only:
+        # Only on full runs (3x/day), never the 15-min capture runs -- keeps this well inside the
+        # free tier's 500-credits/month budget. See merge_oddsapi's docstring for the exact math.
+        try:
+            n_oa = merge_oddsapi(games, sports)
+            if n_oa:
+                log("oddsapi:merge", True, f"{n_oa} games gained real FanDuel/DraftKings/etc odds")
+        except Exception as e:  # noqa  same never-break-the-free-slate contract as bovada
+            log("oddsapi:merge", False, repr(e))
     enrich_pitchers(games)
     net_rows = []
     if net_mod and os.environ.get("NO_NETWORK") != "1":
@@ -1014,7 +1070,6 @@ def main():
         log("kalshi-auth", kalshi_auth.available(), "signed requests (higher rate limit)" if kalshi_auth.available() else "no key set, unauthenticated (still free)")
     pms = try_sources("kalshi", [("games", kalshi_games), ("direct", kalshi_direct), ("sports-skills", kalshi_via_skills)])
     pms += try_sources("polymarket", [("direct", polymarket_direct), ("sports-skills", polymarket_via_skills)])
-    capture_only = os.environ.get("CAPTURE_ONLY") == "1"
     models, backtests, injuries, results_by_sport = {}, {}, {}, {}
     if elo and not capture_only:
         for sp in [x for x in sports if x in elo.CFG]:

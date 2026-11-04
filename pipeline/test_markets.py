@@ -73,5 +73,9 @@ assert b.main() == 0
 sl = json.load(open(f"{tmp}/s.json")); sports = {g["sport"] for g in sl["games"]}
 assert sports == set(b.SPORTS) - b.THREE_WAY, sports                       # every sport reached the slate straight off ESPN
 assert set(calls) == set(b.SPORTS)                                         # ESPN was hit for every sport (mlb twice: odds, then pitcher enrichment)
-assert not any("oddsapi" in x["source"] for x in sl["sources"]), "no paid odds feed anywhere in the pipeline"
+# The Odds API is the one deliberate, opt-in exception to "no paid key anywhere" (see oddsapi.py's
+# module docstring): it's off unless the project owner sets their own ODDS_API_KEY, and this test
+# run has no key set (os.environ wasn't given one above), so it must still be silent here -- proving
+# the zero-key path stays truly zero-key by default, not that the source can never exist at all.
+assert not any("oddsapi" in x["source"] for x in sl["sources"]), "oddsapi must stay silent with no ODDS_API_KEY set"
 print("MARKETS TESTS PASS")
